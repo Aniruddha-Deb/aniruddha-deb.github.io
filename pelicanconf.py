@@ -7,7 +7,16 @@ SITENAME = 'Aniruddha Deb'
 SITEURL = ''
 
 PATH = 'content'
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['articles/2020/res', 'favicon']
+USE_FOLDER_AS_CATEGORY = False
+DEFAULT_CATEGORY = 'Posts'
+ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
+ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
+ARTICLE_URL = '{date:%Y}/{slug}.html'
+
+EXTRA_PATH_METADATA = {
+	'favicon/favicon.ico': {'path': 'favicon.ico'}
+}
 
 TIMEZONE = 'Asia/Kolkata'
 
