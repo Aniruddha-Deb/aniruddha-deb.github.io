@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Aniruddha Deb'
 SITENAME = 'Aniruddha Deb'
 SITEURL = ''
+THEME = 'themes/Flex'
 
 PATH = 'content'
 STATIC_PATHS = ['articles/2020/res', 'favicon']
