@@ -4,19 +4,20 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Aniruddha Deb'
 SITENAME = 'Aniruddha Deb'
-SITEURL = ''
+SITEURL = '/'
 THEME = 'themes/Flex'
+SITELOGO = '/favicon/android-chrome-192x192.png'
 
 PATH = 'content'
 STATIC_PATHS = ['articles/2020/res', 'favicon']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
-ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
-ARTICLE_URL = '{date:%Y}/{slug}.html'
+ARTICLE_SAVE_AS = 'articles/{date:%Y}/{slug}.html'
+ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
 
 EXTRA_PATH_METADATA = {
-	'favicon/favicon.ico': {'path': 'favicon.ico'}
+	'/favicon/favicon.ico': {'path': 'favicon.ico'}
 }
 
 TIMEZONE = 'Asia/Kolkata'
@@ -36,10 +37,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = []
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
