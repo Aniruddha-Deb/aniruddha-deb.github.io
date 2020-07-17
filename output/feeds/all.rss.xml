@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>Aniruddha Deb</title><link>/</link><description></description><lastBuildDate>Mon, 13 Jul 2020 03:44:00 +0530</lastBuildDate><item><title>Testing</title><link>/articles/2020/subdir-test.html</link><description>&lt;p&gt;This is some test content
-&lt;img alt="Test Image" src="/articles/2020/res/test_post/big_buck_bunny.png"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 13 Jul 2020 03:44:00 +0530</pubDate><guid isPermaLink="false">tag:None,2020-07-13:/articles/2020/subdir-test.html</guid><category>Posts</category></item></channel></rss>
+&lt;img alt="Test Image" src="/articles/2020/res/test_post/big_buck_bunny.png"&gt;&lt;/p&gt;
+&lt;p&gt;This is a MathJax test:
+$$\oint \vec{B} \cdot \vec{dl} = \mu_0 I$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 13 Jul 2020 03:44:00 +0530</pubDate><guid isPermaLink="false">tag:None,2020-07-13:/articles/2020/subdir-test.html</guid><category>Posts</category></item></channel></rss>

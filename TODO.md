@@ -1,10 +1,11 @@
 **TODO**:
-- Fix image serving loc
 - Content transfer
-- Theme (Flex)
-- About page 
-- Embed Github and SE widgets
+- Add Github/SE/Goodreads social
+- Add Github/SE widgets to about
 
 **DONE**:
 - Google Analytics
 - Disqus
+- Theme (Flex)
+- MathJax
+- Fix image serving loc

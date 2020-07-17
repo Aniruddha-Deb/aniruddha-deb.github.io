@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Posts</title><link href="/" rel="alternate"></link><link href="/feeds/posts.atom.xml" rel="self"></link><id>/</id><updated>2020-07-13T03:44:00+05:30</updated><entry><title>Testing</title><link href="/articles/2020/subdir-test.html" rel="alternate"></link><published>2020-07-13T03:44:00+05:30</published><updated>2020-07-13T03:44:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:None,2020-07-13:/articles/2020/subdir-test.html</id><content type="html">&lt;p&gt;This is some test content
-&lt;img alt="Test Image" src="/articles/2020/res/test_post/big_buck_bunny.png"&gt;&lt;/p&gt;</content><category term="Posts"></category></entry></feed>
+&lt;img alt="Test Image" src="/articles/2020/res/test_post/big_buck_bunny.png"&gt;&lt;/p&gt;
+&lt;p&gt;This is a MathJax test:
+$$\oint \vec{B} \cdot \vec{dl} = \mu_0 I$$&lt;/p&gt;</content><category term="Posts"></category></entry></feed>

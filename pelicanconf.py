@@ -6,10 +6,10 @@ AUTHOR = 'Aniruddha Deb'
 SITENAME = 'Aniruddha Deb'
 SITEURL = '/'
 THEME = 'themes/Flex'
-SITELOGO = '/favicon/android-chrome-192x192.png'
+SITELOGO = '/extras/favicon/android-chrome-192x192.png'
 
 PATH = 'content'
-STATIC_PATHS = ['articles/2020/res', 'favicon']
+STATIC_PATHS = ['articles/2020/res', 'extras/favicon']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
@@ -17,7 +17,7 @@ ARTICLE_SAVE_AS = 'articles/{date:%Y}/{slug}.html'
 ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
 
 EXTRA_PATH_METADATA = {
-	'/favicon/favicon.ico': {'path': 'favicon.ico'}
+	'extras/favicon/favicon.ico': {'path': 'favicon.ico'}
 }
 
 TIMEZONE = 'Asia/Kolkata'
