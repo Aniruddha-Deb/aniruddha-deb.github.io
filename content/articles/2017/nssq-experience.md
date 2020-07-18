@@ -24,12 +24,12 @@ On stage, three out of four rounds are on 'pounce', that is, if another person g
 It is confidence that will carry you through the stage rounds. The questions on stage are comparatively very easy. Do not be afraid to pounce on each and every question on stage. Pounce hard and victory will be yours.
 The national semifinals are a completely different game. Every question is on buzzer. There are 10 questions spread over 4 rounds. The rounds are arranged according to the table below:
 
-| No. | Num Questions | Points per question | Notes                                                                                                                                                                   |   |
-|-----|---------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| 1   | 3             | ±10                 | Single questions 1 normal question 2 anagram questions                                                                                                                  |   |
-| 2   | 3             | ±20                 | Double questions 2 picture based questions 1 true/false question                                                                                                        |   |
-| 3   | 3             | ±50                 | 5 part questions 1 true/false question 1 word maze 1 spot the safety hazards question                                                                                   |   |
-| 4   | 1             | \*/2                 | Make or break question: can double or halve all your points 5 part question All 5 parts need to be correct to double Question type: Match the symbols to their meanings |   |
+| No. | Num Questions | Points per question | Notes                                                                                                                                                                   |   
+|-----|---------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | 3             | ±10                 | Single questions <br>1 normal question <br>2 anagram questions                                                                                                                  |
+| 2   | 3             | ±20                 | Double questions <br>2 picture based questions <br>1 true/false question                                                                                                        |
+| 3   | 3             | ±50                 | 5 part questions <br>1 true/false question <br>1 word maze <br>1 spot the safety hazards question                                                                                   |
+| 4   | 1             | \*/2                | Make or break question: can double or halve all your points <br>5 part question <br>All 5 parts need to be correct to double <br>Question type: Match the symbols to their meanings |
 
 Till now, nobody who has attempted a make or break question has won the quiz. Everyone gets four right and one wrong
 The right strategy for the semifinal and final is to be quick on the buzzer and make minimal mistakes. Attempt the make or break question only if you are in dire conditions.

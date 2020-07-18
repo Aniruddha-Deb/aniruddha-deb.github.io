@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Aniruddha Deb'
 EMAIL_ID = 'aniruddha.deb.2002@gmail.com'
 SITENAME = 'Aniruddha Deb'
-SITEURL = ''
+SITEURL = 'https://aniruddha-deb.github.io'
 THEME = 'themes/Flex'
 SITELOGO = '/extras/favicon/android-chrome-192x192.png'
 
@@ -48,4 +48,4 @@ SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
