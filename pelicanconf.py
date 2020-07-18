@@ -3,8 +3,9 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Aniruddha Deb'
+EMAIL_ID = 'aniruddha.deb.2002@gmail.com'
 SITENAME = 'Aniruddha Deb'
-SITEURL = '/'
+SITEURL = ''
 THEME = 'themes/Flex'
 SITELOGO = '/extras/favicon/android-chrome-192x192.png'
 
@@ -37,11 +38,12 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = []
+LINKS = [('categories', '/categories'), ('tags', '/tags')]
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),
+          ('stack-exchange', 'https://stackexchange.com/users/12827944/aniruddha-deb'),
+		  ('goodreads-g', 'https://www.goodreads.com/aniruddhadeb'),)
 
 DEFAULT_PAGINATION = 10
 
