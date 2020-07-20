@@ -45,22 +45,22 @@ MathJax = {
 <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
 
 <meta name="author" content="Aniruddha Deb" />
-<meta name="description" content="A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years." />
+<meta name="description" content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&#39;m going to engineer the clock signal generator, the most crucial part of our clock Importance of the Signal in a clock Every clock is only as accurate as …" />
 <meta name="keywords" content="">
 
 <meta property="og:site_name" content="Aniruddha Deb"/>
-<meta property="og:title" content="ICSE Mathematics - Last 23 years analysis and 2018 forecast"/>
-<meta property="og:description" content="A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years."/>
+<meta property="og:title" content="Electronic Clock II - Generating the Clock Signal pt.1"/>
+<meta property="og:description" content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&#39;m going to engineer the clock signal generator, the most crucial part of our clock Importance of the Signal in a clock Every clock is only as accurate as …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2018/icse-mathematics-analysis.html"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-i.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-01-09 10:30:00+05:30"/>
+<meta property="article:published_time" content="2018-06-14 22:30:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
-<meta property="article:section" content="Mathematics"/>
+<meta property="article:section" content="Electronics"/>
 <meta property="og:image" content="/extras/favicon/android-chrome-192x192.png">
 
-  <title>Aniruddha Deb &ndash; ICSE Mathematics - Last 23 years analysis and 2018 forecast</title>
+  <title>Aniruddha Deb &ndash; Electronic Clock II - Generating the Clock Signal pt.1</title>
 
 </head>
 <body>
@@ -97,9 +97,9 @@ MathJax = {
 <article class="single">
   <header>
       
-    <h1 id="icse-mathematics-analysis">ICSE Mathematics - Last 23 years analysis and 2018 forecast</h1>
+    <h1 id="electronic-clock-2-i">Electronic Clock II - Generating the Clock Signal pt.1</h1>
     <p>
-          Posted on Tue 09 January 2018 in <a href="https://aniruddha-deb.github.io/category/mathematics.html">Mathematics</a>
+          Posted on Thu 14 June 2018 in <a href="https://aniruddha-deb.github.io/category/electronics.html">Electronics</a>
 
 
     </p>
@@ -107,11 +107,19 @@ MathJax = {
 
 
   <div>
-    <p><img alt="Analysis results" src="https://aniruddha-deb.github.io/articles/2018/res/icse_math_analysis.png"></p>
-<p>A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years. The boards are fast approaching and hope this helps out those in need.</p>
-<p>Best of luck for the exams!</p>
+    <p>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock</p>
+<h3>Importance of the Signal in a clock</h3>
+<p>Every clock is only as accurate as it's signal. An <a href="https://en.wikipedia.org/wiki/Atomic_clock">atomic clock</a> uses radiations emitted by cesium-133 as it's signal, a <a href="https://en.wikipedia.org/wiki/Quartz_clock">quartz clock</a> uses a 32768 Hz quartz crystal as it's signal whereas a mechanical clock uses an <a href="https://en.wikipedia.org/wiki/Escapement">Escapement</a> powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!</p>
+<h3>Make an accurate electronic signal</h3>
+<p>Our clock (like most other clocks) is going to use a quartz crystal as it's main signal. An <a href="https://en.wikipedia.org/wiki/RC_oscillator">RC</a> or <a href="https://en.wikipedia.org/wiki/LC_circuit">LC</a> oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%</p>
+<p>The signal generated by this crystal has a frequency of 32768 Hz, which isn't very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.</p>
+<p>The HEF4060 has the capacity to give us a minimum frequency of 32768/214 = 2 Hz. This will later be scaled down using a flip-flop to give us a frequency of 1 Hz. The circuit for this looks like the following:</p>
+<p><img alt="Clock circuit" src="https://aniruddha-deb.github.io/articles/2018/res/clock_signal_schematic.png"></p>
+<p>After testing the above circuit on a breadboard, pin 7 (Q4) gave the following results on an oscilloscope:</p>
+<p><img alt="oscilloscope" src="https://aniruddha-deb.github.io/articles/2018/res/pic_44_3.bmp"></p>
+<p>These results were expected as 32768/16 gives us 2048, which is approximately 2.049 kHz. the extra 1 Hz is probably a result of breadboard capacitance, which should go away once the circuit is soldered on a PCB. </p>
+<p>In the next installment, I will use a flip flop to halve the 2Hz signal to give us a resultant signal of 1Hz, which can be used to drive the seconds counter.</p>
 <p>- Deb</p>
-<p>EDIT: As of 16th June, 2018, I cleared the 2018 ICSE Mathematics paper with a perfect 100. The above statistical analysis truly paid off as most of the questions followed the same pattern :D</p>
   </div>
   <div class="tag-cloud">
     <p>

@@ -44,18 +44,23 @@ MathJax = {
 </script>
 <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
 
-    <meta name="author" content="Aniruddha Deb" />
-    <meta name="description" content="" />
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop: Flip-Flop: Concept A Flip flop is a one-bit storage …" />
+<meta name="keywords" content="">
+
 <meta property="og:site_name" content="Aniruddha Deb"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Aniruddha Deb"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="Electronic Clock II - Generating the Clock Signal pt. 2"/>
+<meta property="og:description" content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop: Flip-Flop: Concept A Flip flop is a one-bit storage …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://aniruddha-deb.github.io"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-ii.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-06-16 10:30:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
+<meta property="article:section" content="Electronics"/>
 <meta property="og:image" content="/extras/favicon/android-chrome-192x192.png">
 
-  <title>Aniruddha Deb &ndash;     Categories
-</title>
+  <title>Aniruddha Deb &ndash; Electronic Clock II - Generating the Clock Signal pt. 2</title>
 
 </head>
 <body>
@@ -91,18 +96,56 @@ MathJax = {
 
 <article class="single">
   <header>
-    <h1>    Categories
-</h1>
+      
+    <h1 id="electronic-clock-2-ii">Electronic Clock II - Generating the Clock Signal pt. 2</h1>
+    <p>
+          Posted on Sat 16 June 2018 in <a href="https://aniruddha-deb.github.io/category/electronics.html">Electronics</a>
+
+
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="https://aniruddha-deb.github.io/category/electronics.html">Electronics</a> (3)</li>
-      <li><a href="https://aniruddha-deb.github.io/category/mathematics.html">Mathematics</a> (1)</li>
-      <li><a href="https://aniruddha-deb.github.io/category/posts.html">Posts</a> (1)</li>
-      <li><a href="https://aniruddha-deb.github.io/category/programming.html">Programming</a> (2)</li>
-      <li><a href="https://aniruddha-deb.github.io/category/quizzing.html">Quizzing</a> (2)</li>
-    </ul>
+    <p>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:</p>
+<h3>Flip-Flop: Concept</h3>
+<p>A Flip flop is a one-bit storage device which looks somewhat like this:</p>
+<p><img alt="flip flop" src="https://aniruddha-deb.github.io/articles/2018/res/flip_flop.png"></p>
+<p>The truth table of this device looks somewhat like this:</p>
+<p><img alt="truth table" src="https://aniruddha-deb.github.io/articles/2018/res/jk-flip-flop-truth-table.jpg"></p>
+<p>Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin. </p>
+<h3>Adding the flip-flop to our circuit:</h3>
+<p>On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):</p>
+<p><img alt="1hz schematic" src="https://aniruddha-deb.github.io/articles/2018/res/1hz_schematic.png"></p>
+<p>As calculated, this gives us a frequency of 1 Hz on the Q pin</p>
+<p><img alt="oscilloscope output" src="https://aniruddha-deb.github.io/articles/2018/res/pic.png"></p>
+<p>This concludes our clock signal source. In the next post, we will have a look at counting seconds with the clock signal. </p>
+<p>- Deb</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
