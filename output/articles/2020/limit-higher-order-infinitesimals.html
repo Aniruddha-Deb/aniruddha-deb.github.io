@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some …" />
+<meta name="keywords" content="Mathematics">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="Limit involving higher order infinitesimals"/>
+<meta property="og:description" content="Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2020/limit-higher-order-infinitesimals.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-06-05 07:30:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
+<meta property="article:section" content="Mathematics"/>
+<meta property="article:tag" content="Mathematics"/>
+<meta property="og:image" content="/extras/favicon/android-chrome-192x192.png">
+
+  <title>Aniruddha Deb &ndash; Limit involving higher order infinitesimals</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddha-deb.github.io">
+        <img src="/extras/favicon/android-chrome-192x192.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddha-deb.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddha-deb.github.io/pages/about.html#about">About</a></li>
+
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="limit-higher-order-infinitesimals">Limit involving higher order infinitesimals</h1>
+    <p>
+          Posted on Fri 05 June 2020 in <a href="https://aniruddha-deb.github.io/category/mathematics.html">Mathematics</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L'Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3. To illustrate how to solve these problems, I'll give a trickier example:</p>
+<blockquote>
+<p>Evaluate the limit $$\lim_{n \to \infty} \left( e - \left( 1 + \frac1n \right) ^n \right) ^\frac 1n$$</p>
+</blockquote>
+<p>It's easy to assume that the limit $\lim_{n \to \infty} \left( 1 + \frac1n \right)^n$ evaluates to $e$, which means that the expression inside the outer brackets would tend to zero, giving the answer as zero. However, all is not as it seems. This is a good example of difference between infinitesimals yielding a higher order infinitesimal. To start with, consider the function
+$$f(n) =  \lim_{n \to \infty} \left( 1 + \frac1n \right)^n$$
+Taking a logarithm both sides and using a taylor series expansion for the log on the right side gives
+$$\begin{gather}
+\log f(n) = \lim_{n \to \infty} n \left( \frac1n - \frac 1{2n^2} + O\left(\frac 1 {n^3}\right) \right) \\
+f(n) = \lim_{n \to \infty}e^{1 - \frac 1{2n} + O\left(\frac 1 {n^2}\right)}
+\end{gather}$$</p>
+<p>If we substitute $f(n)$ in the limit now, we can see that
+$$L = \lim_{n \to \infty} \left( e \left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right) \right) ^\frac 1n$$</p>
+<p>Taking a logarithm both sides gives us
+$$\log L = \lim_{n \to \infty} \underbrace{\frac{1}{n}}_{f_1} + \underbrace{\frac{ \log\left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right)}{n}}_{f_2}$$</p>
+<p>$f_1$ is trivially $0$. $f_2$ can be evaluated using L'Hopital rule, which gives
+$$f_2 = \lim_{n \to \infty} \frac{\frac{1}{2n^2} + ... }{1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}}$$</p>
+<p>This evaluates to $0$ as the numerator is a higher order infinitesimal than the denominator. Thus, we have
+$$\log L = 0$$</p>
+<p>Taking an exponent both sides gives us
+$$\boxed{L = 1}$$</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddha-deb.github.io/tag/mathematics.html">Mathematics</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddha-deb.github.io",
+  "image": "/extras/favicon/android-chrome-192x192.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

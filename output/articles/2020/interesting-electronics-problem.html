@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we&#39;ll …" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="An Interesting Electronics Problem"/>
+<meta property="og:description" content="An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we&#39;ll …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-04-29 22:20:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
+<meta property="article:section" content="Electronics"/>
+<meta property="og:image" content="/extras/favicon/android-chrome-192x192.png">
+
+  <title>Aniruddha Deb &ndash; An Interesting Electronics Problem</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddha-deb.github.io">
+        <img src="/extras/favicon/android-chrome-192x192.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddha-deb.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddha-deb.github.io/pages/about.html#about">About</a></li>
+
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="interesting-electronics-problem">An Interesting Electronics Problem</h1>
+    <p>
+          Posted on Wed 29 April 2020 in <a href="https://aniruddha-deb.github.io/category/electronics.html">Electronics</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network</p>
+<p><img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"></p>
+<p>This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll use the concept of symmetry and a few tricks. Let's start by connecting a battery to the circuit and labeling the currents and loops</p>
+<p><img alt="tweaked resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_2.png"></p>
+<p>We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.</p>
+<p><img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/iep_3.png"></p>
+<p>The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.</p>
+<p><img alt="loops" src="https://aniruddha-deb.github.io/articles/2020/res/iep_4.png"></p>
+<p>Solving the loops gives us the equations
+$$\begin{align} &amp; V = Ri_3 + ri_1 \tag{2} \\ &amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$
+Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$
+The net current through the cell is \( i = i_1 + i_3 = \frac{R+3r}{R+r}i_1 \). Therefore, the net resistance \(R_p = \frac Vi = \frac{r(3R+r)}{3r+R} \)
+We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \) 
+$$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\ 
+\boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$ </p>
+<hr>
+<p><sup>p.s: The <code>\eqref</code> or <code>\ref</code> commands don't work for some reason. I'll have to figure out why.</sup></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddha-deb.github.io",
+  "image": "/extras/favicon/android-chrome-192x192.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

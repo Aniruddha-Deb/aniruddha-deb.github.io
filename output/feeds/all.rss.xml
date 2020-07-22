@@ -152,7 +152,346 @@ chess player to show one of my games)&lt;/p&gt;
 
 
 &lt;p&gt;Everything looks in place! Looking forward to writing some great content here.
-Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 13 Jul 2020 03:44:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-13:/articles/2020/subdir-test.html</guid><category>Posts</category></item><item><title>Electronic Clock II - Generating the Clock Signal pt. 2</title><link>https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-ii.html</link><description>&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
+Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 13 Jul 2020 03:44:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-13:/articles/2020/subdir-test.html</guid><category>Posts</category></item><item><title>ISC 2020 Analysis: An application of Data Science and Statistics</title><link>https://aniruddha-deb.github.io/articles/2020/isc-2020-analysis.html</link><description>&lt;p&gt;The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I'll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.&lt;/p&gt;
+&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Elementary inferences: How have people fared overall?&lt;/li&gt;
+&lt;li&gt;Frequency Distribution of Marks: How many people got the same marks in a subject?&lt;/li&gt;
+&lt;li&gt;Quartiles: What score is comparatively a good score?&lt;/li&gt;
+&lt;li&gt;Corellation Analysis: Is there a relation between marks scored in different subjects?&lt;/li&gt;
+&lt;li&gt;Using other datapoints: Do girls perform better than boys? Are back-benchers doing poorly?&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Elementary Inferences&lt;/h3&gt;
+&lt;p&gt;The Science Stream consists of 117 Students, with 80 boys and 37 girls, all of whom passed.&lt;/p&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{mode} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{Bo4%} &amp;amp; 83.11 &amp;amp; 84.75 &amp;amp; - &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.86 \\
+\text{Overall %} &amp;amp; 80.32 &amp;amp; 82.6 &amp;amp; 85.8 &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 10.10 \\
+\text{Boys Bo4%} &amp;amp; 83.70 &amp;amp; 85.5 &amp;amp; 80.25 &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.62 \\
+\text{Boys overall %} &amp;amp; 80.94 &amp;amp; 82.70 &amp;amp; - &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 9.61 \\
+\text{Girls Bo4 %} &amp;amp; 81.84 &amp;amp; 81.25 &amp;amp; - &amp;amp; 95.25 &amp;amp; 59.5 &amp;amp; 9.34 \\
+\text{Girls overall %} &amp;amp; 78.98 &amp;amp; 80.5 &amp;amp; - &amp;amp; 94.8 &amp;amp; 54.6 &amp;amp; 11.10 \\
+\hline
+\end{array}$$
+&lt;center&gt;&lt;sup&gt;(Bo4 = Best of 4, - = no mode exists, $\sigma$ = standard deviation)&lt;/sup&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The mean, median and mode lie in the $80-85 %$ range for almost all datasets. There is a standard deviation of 8.86 from the mean and the toppers lie $1.5\sigma$ right of mean ($&amp;gt;96.4\%$). Interestingly, the people who scored the least lie $3\sigma$ left of mean ($~56 \%$), which is more than the toppers lie right of the mean. The Boys and Girls datasets are compared in more detail in Section 5: Using other datapoints&lt;/p&gt;
+&lt;p&gt;A similar raw data comparision can also be done with subjectwise marks:
+$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; n &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{English} &amp;amp; 117 &amp;amp; 87.54 &amp;amp; 88 &amp;amp; 96 &amp;amp; 70 &amp;amp; 4.46 \\
+\text{Physics} &amp;amp; 117 &amp;amp; 78.75 &amp;amp; 81 &amp;amp; 100 &amp;amp; 45 &amp;amp; 13.94 \\
+\text{Chemistry} &amp;amp; 116 &amp;amp; 72.49 &amp;amp; 71.50 &amp;amp; 98 &amp;amp; 42 &amp;amp; 13.65 \\
+\text{Mathematics} &amp;amp; 107 &amp;amp; 73.98 &amp;amp; 77 &amp;amp; 100 &amp;amp; 16 &amp;amp; 19.32 \\
+\text{Computer Science} &amp;amp; 80 &amp;amp; 88.85 &amp;amp; 91 &amp;amp; 100 &amp;amp; 54 &amp;amp; 8.20 \\
+\text{Biology} &amp;amp; 28 &amp;amp; 89.14 &amp;amp; 90 &amp;amp; 97 &amp;amp; 75 &amp;amp; 5.35 \\
+\text{Environmental Science} &amp;amp; 7 &amp;amp; 80.71 &amp;amp; 78 &amp;amp; 94 &amp;amp; 72 &amp;amp; 6.85 \\
+\text{Art} &amp;amp; 4 &amp;amp; 88.25 &amp;amp; 88 &amp;amp; 91 &amp;amp; 86 &amp;amp; 2.22 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;This is an interesting dataset; looking at it, a few stories are evident:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Low Standard deviation in English and Computer Science: This is an interesting theme. English, given it's size, has the lowest standard deviation of $4.46$. Computer Science has a remarkably high mean of $88.85$ and a median of $91$. &lt;del&gt;Most students in class do not go to external tuitions for these subjects&lt;/del&gt;(see edit). This means that the quality of education imparted in the class room is quite good and brings results for English and Computer Science.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;EDIT: Turns out that quite a few people who have taken Computer Science and scored above 90 went for tuitions. A Majority of students don't go to tuitions for English, though, and I believe that our school has an above-average showing in English this time. (reference)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;High standard deviation and low mean in Physics, Chemistry and Mathematics: Another very interesting (and scary) theme: these subjects make up the core of science and it is shocking to see students perform badly in these core subjects. Most students seek external help for these subjects, and in spite of the external help, are not able to perform well. The mean marks in Math are 74, while they should ideally be close to 90, due to the precise nature of the subject. The education system needs to have a serious rethink on where they are going wrong in imparting the knowledge of these core subjects to the students.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In the following sections, I won't be focusing too much on Arts, EVS and Biology: Arts and EVS make up a very small dataset, whose results may not be reliable. The marks obtained in Biology are not representative of the students' potential: due to the exams being cancelled, the marks for Biology were derived via this averaging algorithm.&lt;/p&gt;
+&lt;h3&gt;Frequency Distribution of Marks&lt;/h3&gt;
+&lt;p&gt;I'll be plotting a few Histograms in this section and doing an overview of the 'spread' of marks across the spectrum. This helps visualize the data presented in the previous section. The data for most subjects fits into a bell curve, with the exception of Physics, Chemistry and Mathematics&lt;/p&gt;
+&lt;p&gt;As a small primer: A histogram plots the frequency of a particular element in a data set. If 5 people scored 95 marks, then a bar 5 units tall would be placed at the 95th element. The graphs would make this clearer.&lt;/p&gt;
+&lt;p&gt;Let's start with the small subjects: Arts, EVS and Biology&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Art.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/EVS.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Biology.png"&gt;&lt;/p&gt;
+&lt;p&gt;There's not too much to see here, because of the sparsity of these graphs. Let's move on to English:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/English.png"&gt;&lt;/p&gt;
+&lt;p&gt;The graph for English nicely highlights the bell curve distribution; a majority of people have scored 89, and almost all students have obtained marks in the $79-94$ range. Computer Science also shows a similar trend&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/CS.png"&gt;&lt;/p&gt;
+&lt;p&gt;Apart from a few outliers on the lower end of the spectrum, most people have obtained above $85$ here, with 91 being the most common score. 17 people obtained a score of 95 and above. One person obtained a solid $100$. This is a good result in a not-so-easy subject.&lt;/p&gt;
+&lt;p&gt;Moving on to Physics:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Physics.png"&gt;&lt;/p&gt;
+&lt;p&gt;The Median for Physics was much higher than that of Maths and Chemistry (In part maybe because the paper was easy). We see that around 29 people have scored less than 70 here. 92 is the mode for this dataset, which is a good score. Again, one person has scored $100$, which is not an impossible feat in any of the sciences. &lt;/p&gt;
+&lt;p&gt;What immediately pops out in the Physics graph is that there is no well-defined 'peak' or 'cluster' in the data as there was for the previous subjects. This becomes even more apparent in Chemistry:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Chemistry.png"&gt;&lt;/p&gt;
+&lt;p&gt;Mark segmentation is heavily apparent in chemistry, with four clearly defined segments: those scoring above 95, those in the 80-95 range, those in the 60-80 range and those who obtained below 60. The segmentation explains the high standard deviation as well as the low mean (a large number of people are centered around 70 and 85). The number of people scoring above 90 drops heavily here, with only 10 people crossing the barrier. Amazingly, nobody obtained a 100 or a 99 in this paper, with 98 being the highest. &lt;/p&gt;
+&lt;p&gt;Finally, Maths teaches us a lot of lessons:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Mathematics.png"&gt;&lt;/p&gt;
+&lt;p&gt;Marks in math resemble a bag of dropped marbles: there seems to be a slight pattern here, but one that is heavily tinged by apparent randomness. Heavy segmentation and sparse distribution show why the standard deviation is around 20 here. Inequality is also highly apparent here: those who do well at maths do exceptionally well (3 people scored a 100) and those who do poorly do extremely poorly. Part of this is due to the high-stakes nature of the math paper: the marking pattern has a tendency to be ruthless here, while the other part boils down to imparting math education to the people who don't have a knack for math. There are two lessons here: for the people who are yet to give their exams, Study math and Study math hard. For those who have already given their exams, If you have done poorly in Math, take comfort in the fact that you are not alone. Math (and Chemistry) was tricky this time and if you are taking a math-heavy field, you will have several opportunities in life to do better in this subject later.&lt;/p&gt;
+&lt;p&gt;Finally, Here's the histograms for Best of 4 percentage and Overall percentage:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Bo4Pct.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/TotPct.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Quartiles&lt;/h3&gt;
+&lt;p&gt;What score is a good score? The same set of marks, when viewed by different people, can have different interpretations. While your parents may think you have done poorly, compared to your friends, you may have done pretty well! Quartiles take care of this: they convert your percentage to percentile (A concept we're all familiar with, after JEE Main) and tell you into which 'bucket' you fit:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;1st quartile or Lower quartile: below 25th percentile&lt;/li&gt;
+&lt;li&gt;2nd quartile: between 25th-50th percentile&lt;/li&gt;
+&lt;li&gt;3rd quartile: between 50th-75th percentile&lt;/li&gt;
+&lt;li&gt;4th quartile or Upper quartile: above 75th percentile
+This table shows the entry marks required to break into a particular quartile:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{Q1} &amp;amp; \text{Q2} &amp;amp; \text{Q3} &amp;amp; \text{Q4}\\
+\hline
+\text{Bo4%} &amp;amp; 0 &amp;amp; 78 &amp;amp; 84.75 &amp;amp; 89.75 \\
+\text{Overall %} &amp;amp; 0 &amp;amp; 74.60 &amp;amp; 82.60 &amp;amp; 87.80 \\
+\text{English} &amp;amp; 0 &amp;amp; 85 &amp;amp; 88 &amp;amp; 91 \\
+\text{Physics} &amp;amp; 0 &amp;amp; 72 &amp;amp; 81 &amp;amp; 91 \\
+\text{Chemistry} &amp;amp; 0 &amp;amp; 64 &amp;amp; 71.50 &amp;amp; 84.25 \\
+\text{Mathematics} &amp;amp; 0 &amp;amp; 62.50 &amp;amp; 77 &amp;amp; 89.50 \\
+\text{Computer Science} &amp;amp; 0 &amp;amp; 86 &amp;amp; 91 &amp;amp; 94 \\
+\text{Biology} &amp;amp; 0 &amp;amp; 86 &amp;amp; 90 &amp;amp; 93.25 \\
+\text{Environmental Science} &amp;amp; 0 &amp;amp; 78 &amp;amp; 78 &amp;amp; 82.50 \\
+\text{Art} &amp;amp; 0 &amp;amp; 86.75 &amp;amp; 88 &amp;amp; 89.50 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;As an example, if you obtained a best of 4 percentage of $85\%$, you would fit in the Third Quartile. This is because you broke through the first (0), second (78) and third (84.75) quartile entry limits but could not break into the fourth quartile (89.75). Hence, your quartile is detemined by the entry marks just below/equal to your own marks.&lt;/p&gt;
+&lt;h3&gt;Corellation Analysis&lt;/h3&gt;
+&lt;p&gt;Subjects are not disjoint sets: there is quite a bit of overlap between two subjects. As an example, Atomic Structure is a topic we study both in Physics and Chemistry. For a broader example, a firm understanding of Mathematics is required to do well in Physics and Physical Chemistry. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="On the other hand, physicists like to say physics is to math as sex is to masturbation." src="https://imgs.xkcd.com/comics/purity.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;Obligatory XKCD :)&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;In this analysis, I'll treat Mathematics as the 'glue' subject and analyze how Physics and Chemistry coreelate with Mathematics, as well as how Physics and Chemistry correlate with each other. &lt;/p&gt;
+&lt;p&gt;First up, Mathematics-Physics and Mathematics-Chemistry corellations:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/MP_correlation.png"&gt;
+&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/MC_correlation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Notice that $r &amp;gt; 0.8$ for both of these correlations: this means that those who did well in math automatically did well in Physics and Chemistry, which reiterates a key point to upcoming students: learn to love Math. Also notice that $r_{MP} &amp;gt; r_{MC}$. This also validates the fact that Maths is more important for Physics than it is for Chemistry (which is kind of obvious, since Physical chemistry has around 30-40% weightage only). &lt;/p&gt;
+&lt;p&gt;Physics-Chemistry yields an interesting graph:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/PC_correlation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Amazingly, there is an even higher degree of correlation here than there is between Math-Physics and Math-Chemistry. This stumped me. If any of the readers have an idea as to why Physics and Chemistry are so interlinked (only the 12th syllabus), then feel free to drop a comment down below. The only theory I have for now is that there are 9 students who have not taken math but have taken Physics and Chemistry (or a similar permutation). These 9 extra data points are contributing the extra $0.04$ to the correlation coefficient.&lt;/p&gt;
+&lt;h3&gt;Using Other Datapoints&lt;/h3&gt;
+&lt;p&gt;Remember this table from the first section?&lt;/p&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{mode} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{Boys Bo4%} &amp;amp; 83.70 &amp;amp; 85.5 &amp;amp; 80.25 &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.62 \\
+\text{Boys overall %} &amp;amp; 80.94 &amp;amp; 82.70 &amp;amp; - &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 9.61 \\
+\text{Girls Bo4 %} &amp;amp; 81.84 &amp;amp; 81.25 &amp;amp; - &amp;amp; 95.25 &amp;amp; 59.5 &amp;amp; 9.34 \\
+\text{Girls overall %} &amp;amp; 78.98 &amp;amp; 80.5 &amp;amp; - &amp;amp; 94.8 &amp;amp; 54.6 &amp;amp; 11.10 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;I'll be expanding on this to display separate statistics for Boys and Girls in all the subjects. One problem that exists is that the number of boys and girls is not the same: not normalizing the data beforehand would favour the boys in every case. In these graphs, both the boys and girls are normalized, such that each boy or girl represents a fraction of the total boys and girls (for boys this fraction is $\frac{1}{80}$ as there are 80 boys, and for girls this fraction is $\frac{1}{37}$, as there are 37 girls&lt;/p&gt;
+&lt;p&gt;As we did previously, Let's start with Art, EVS and Biology, three subjects from which there are minimal inferences to be drawn:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Art_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/EVS_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Biology_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Not too many inferences to be drawn here: EVS and Art have a very small sample size and Biology was calculated based on averages. Let's move on to English and Computer Science&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/English_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Computers_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Girls and Boys are pretty much on par with each other in Computer Science, whereas for English, Girls do better than Boys.&lt;/p&gt;
+&lt;p&gt;The Sciences, however, have a different story to tell. Here's Physics:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Physics_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;We clearly see that the boys are doing better than girls in Physics. A large number of girls have score in the $72-75$ mark range, as well as in the $46-53$ mark range. Girls lead boys in the $88-92$ mark range, however, the $95-100$ mark range is completely occupied by boys. Chemistry paints a similar picture:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Chemistry_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Again, the frequency of girls in the $&amp;lt;60$ mark range is high and the $95-100$ mark range is again occupied by boys. Girls do outperform boys in the $82-93$ mark range here.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Mathematics_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Mathematics too is similar. There are no girls in the $97-100$ range and an abundance of them in the $&amp;lt;40$ mark range.&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;This analysis is by no means exhaustive: many other stories can also be told with exactly the same data set. However, the most important lesson that stands out is to Focus on Math. I cannot stress this enough. Math is required for Physics, Chemistry and to a small extent, Computer Science as well. Having a firm grounding in math is essential for all science students. Math is also a 'precise' subject, which means that the probability of scoring better marks in Math is higher than it is 'soft' subjects such as English.&lt;/p&gt;
+&lt;p&gt;For the ones who have already given their papers, I hope that this analysis shows you how well you have done and also points out places where you could have improved. The real value of this analysis lies for the students who are yet to give their papers. I would have benefited immensely had such an analysis been available for me to read before my exams. I hope that upcoming students can use this wisdom to shape their own preparation strategy for the exams.&lt;/p&gt;
+&lt;h3&gt;Behind the scenes&lt;/h3&gt;
+&lt;p&gt;The data was analysed with Python. Matplotlib was used for drawing the beautiful graphs and numpy, along with python's inbuilt statistics library was used for doing the calculations. This is the first time I've ventured into data science, and I'm really enjoying it :)  R was a candidate for doing most of this processing (I really like R's ggplot2 library: it's built on solid concepts), but I already had my python development environment set up on my machine and wanted to do this in a language I'm comfortable with.&lt;/p&gt;
+&lt;p&gt;Further reading (for those interested in Data Science):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Towards Data Science - Amazing medium blog on Data Science&lt;/li&gt;
+&lt;li&gt;R Project - R, a language for statistical computing and graphics&lt;/li&gt;
+&lt;li&gt;Statistics How to - For absolute beginners in statistics&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 11 Jul 2020 16:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-11:/articles/2020/isc-2020-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>ISC</category><category>Data Science</category></item><item><title>A Compilation of hard limits</title><link>https://aniruddha-deb.github.io/articles/2020/hard-limits.html</link><description>&lt;p&gt;This list consists of the limits that I found most challenging.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{x+1} \right)$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \frac{n + n^2 + n^3 + ... + n^n}{1^n + 2^n + 3^n + ... + n^n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( \frac{n^n(x+n)\left(x+\frac n2\right)...\left(x+\frac nn\right)}{n!(x^2+n^2)\left(x^2+\frac {n^2}{4}\right)...\left( x^2 + \frac{n^2}{n^2}\right)}\right)^{\frac x n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to 0} \left( 1^{\sin^{-2}x} + 2^{\sin^{-2}x} + ... + n^{\sin^{-2}x}\right)^{\sin^2 x}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \sqrt[\leftroot{-2}\uproot{2}n+1]{(n+1)!}-\sqrt[\leftroot{-2}\uproot{2}n]{n!}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( e - \left( 1 + \frac1n \right) ^n \right) ^\frac 1n$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \underbrace{\sin(\sin(\sin(...\sin(a)..)))}_\text{n times}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + 4\sqrt{ ... 1 + (n-1)\sqrt{1+n}}}}}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to \infty} \binom{x}{n} \left(\frac{a}{x}\right)^n \left( 1 - \frac{a}{x}\right)^{x-n}$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Answers:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;$e$&lt;/li&gt;
+&lt;li&gt;$-\frac 12$&lt;/li&gt;
+&lt;li&gt;$1 - \frac 1e$&lt;/li&gt;
+&lt;li&gt;$\exp\left( \int_0^x \ln \left( \frac{t+1}{t^2+1}\right)dt\right)$ (from JEE(A) 2016)&lt;/li&gt;
+&lt;li&gt;$n$&lt;/li&gt;
+&lt;li&gt;$e^{-1}$&lt;/li&gt;
+&lt;li&gt;$1$&lt;/li&gt;
+&lt;li&gt;$0$&lt;/li&gt;
+&lt;li&gt;$3$ (Ramanujan found this one :)&lt;/li&gt;
+&lt;li&gt;$\frac{a^n e^a}{n!}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/hard-limits.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Limit involving higher order infinitesimals</title><link>https://aniruddha-deb.github.io/articles/2020/limit-higher-order-infinitesimals.html</link><description>&lt;p&gt;Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L'Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3. To illustrate how to solve these problems, I'll give a trickier example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Evaluate the limit $$\lim_{n \to \infty} \left( e - \left( 1 + \frac1n \right) ^n \right) ^\frac 1n$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's easy to assume that the limit $\lim_{n \to \infty} \left( 1 + \frac1n \right)^n$ evaluates to $e$, which means that the expression inside the outer brackets would tend to zero, giving the answer as zero. However, all is not as it seems. This is a good example of difference between infinitesimals yielding a higher order infinitesimal. To start with, consider the function
+$$f(n) =  \lim_{n \to \infty} \left( 1 + \frac1n \right)^n$$
+Taking a logarithm both sides and using a taylor series expansion for the log on the right side gives
+$$\begin{gather}
+\log f(n) = \lim_{n \to \infty} n \left( \frac1n - \frac 1{2n^2} + O\left(\frac 1 {n^3}\right) \right) \\
+f(n) = \lim_{n \to \infty}e^{1 - \frac 1{2n} + O\left(\frac 1 {n^2}\right)}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;If we substitute $f(n)$ in the limit now, we can see that
+$$L = \lim_{n \to \infty} \left( e \left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right) \right) ^\frac 1n$$&lt;/p&gt;
+&lt;p&gt;Taking a logarithm both sides gives us
+$$\log L = \lim_{n \to \infty} \underbrace{\frac{1}{n}}_{f_1} + \underbrace{\frac{ \log\left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right)}{n}}_{f_2}$$&lt;/p&gt;
+&lt;p&gt;$f_1$ is trivially $0$. $f_2$ can be evaluated using L'Hopital rule, which gives
+$$f_2 = \lim_{n \to \infty} \frac{\frac{1}{2n^2} + ... }{1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}}$$&lt;/p&gt;
+&lt;p&gt;This evaluates to $0$ as the numerator is a higher order infinitesimal than the denominator. Thus, we have
+$$\log L = 0$$&lt;/p&gt;
+&lt;p&gt;Taking an exponent both sides gives us
+$$\boxed{L = 1}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 07:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/limit-higher-order-infinitesimals.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>No square ends in 3</title><link>https://aniruddha-deb.github.io/articles/2020/no-square-ends-in-3.html</link><description>&lt;p&gt;This is an interesting number theory fact that seems strange when taken at face value. Here's a small proof of it:
+$$\begin{array}{|c|c|}
+\hline
+\text{last digit of number} &amp;amp; \text{last digit of square} \\
+\hline
+0 &amp;amp; 0 \\
+1 &amp;amp; 1 \\
+2 &amp;amp; 4 \\
+3 &amp;amp; 9 \\
+4 &amp;amp; 6 \\
+5 &amp;amp; 5 \\
+6 &amp;amp; 6 \\
+7 &amp;amp; 9 \\
+8 &amp;amp; 4 \\
+9 &amp;amp; 1 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;It's easy to see that no square is ending in 3 (or 2, 7 or 8 for that matter). What are the implications of this? Try the following sum:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How many solutions of $x$ exist such that $$\sum_{i=1}^x i! = n^2, \space n \in N$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In simpler terms, what summations of the factorial give us a perfect square? We can work out the first few by hand
+$$\begin{gather}
+x = 1 \implies S_1 = 1! = 1\\
+x = 2 \implies S_2 = S_1 + 2! = 3 \\
+x = 3 \implies S_3 = S_2 + 3! = 9 \\
+x = 4 \implies S_4 = S_3 + 4! = 33
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;For $5!$ and above, the last number is always 0. When we use the above recurrence relation for $x \ge 5$, the last digit will always be 3, and since no square ends in 3, there are only two values of $x$ for which the given equation holds, which are $1$ and $3$.  $\blacksquare$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 15 May 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-15:/articles/2020/no-square-ends-in-3.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Inorganic Heterocyclic compounds</title><link>https://aniruddha-deb.github.io/articles/2020/inorganic-heterocycles.html</link><description>&lt;p&gt;The 45th IChO preparatory problem list had this as it's fifth problem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;5.1&lt;/strong&gt; The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals &lt;strong&gt;X&lt;/strong&gt;, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of &lt;strong&gt;X&lt;/strong&gt; and give the reaction equation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.2&lt;/strong&gt; Draw two stereoisomers of &lt;strong&gt;X&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.3&lt;/strong&gt; A colorless liquid &lt;strong&gt;Y&lt;/strong&gt; was prepared by a reaction between &lt;strong&gt;X&lt;/strong&gt; and antimony(III) fluoride. Addition of 1.00 g of &lt;strong&gt;Y&lt;/strong&gt; to the excess of barium acetate aqueous solution gave the precipitate with the mass of 3.96 g. Determine the chemical formula of &lt;strong&gt;Y&lt;/strong&gt;, draw its structure and write the reaction equation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.4&lt;/strong&gt; &lt;strong&gt;Y&lt;/strong&gt; enters the substitution reactions with typical nucleophiles such as methylamine. What product will be formed in the reaction between &lt;strong&gt;Y&lt;/strong&gt; and the excess of methylamine? Draw its structure.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.5&lt;/strong&gt; Give two examples of molecules or ions which are isoelectronic to &lt;strong&gt;Y&lt;/strong&gt;, draw their structures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.6&lt;/strong&gt; One of the substances isoelectronic to &lt;strong&gt;Y&lt;/strong&gt; transforms in the presence of water traces into polymer &lt;strong&gt;Z&lt;/strong&gt;. 1.00 g of &lt;strong&gt;Z&lt;/strong&gt; was dissolved in water and the resulting solution was added to the excess of barium acetate solution. The precipitate with the mass of 2.91 g was formed. Determine the formula of &lt;strong&gt;Z&lt;/strong&gt; and draw its structure.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks like a very sketchy problem: we know for a fact that:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;X is a cyclic trimer, with 34.5% w/w of $\ce{Cl}$. &lt;/li&gt;
+&lt;li&gt;The use of Sodium Azide suggests that the trimer also contains $\ce{N}$&lt;/li&gt;
+&lt;li&gt;The $\ce{Cl}$ atoms are substituted by $\ce{F}$ atoms in 5.3. The white precipitate in 5.3 is Barium Sulphate. Thus, the trimer of 5.1 has $\ce{Cl, O}$ and $\ce{S}$. 1 gram of Y thus gives $\pu{\frac{3.96}{233} mol }\ce{BaSO4}$. &lt;/li&gt;
+&lt;li&gt;5.6 is very similar to 5.3. The polymer has sulphur and oxygen, in order to produce $\ce{BaSO4}$ as precipitate.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The reaction of 5.1 can be written as $\ce{SOCl2 + NaN3 -&amp;gt; (S_xO_yCl_zN_a)3 }$ based on whatever information we have till now. Let's try getting some values for x,y,z and a. If we let all of them be 1, then the compound becomes $\ce{(SO(Cl)N)3}$. We can check if this is the correct compound by checking the mass % of $\ce{Cl}$ here. The mass % comes out to be
+$$\frac{35.5}{35.5+14+16+32} \times 100 \approx 36.4\%$$&lt;/p&gt;
+&lt;p&gt;This perfectly matches what we are looking for. Thus, the formula of the compound is $\ce{(NSOCl)3}$. This compound has been synthesized and it's name is sulphanuric chloride (Hazell et al.)&lt;/p&gt;
+&lt;p&gt;Drawing the structure is a bit trickier. A possible stable trimeric structure is&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Initial guess" src="https://aniruddha-deb.github.io/articles/2020/res/X_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;However, this is not the experimentally verified structure of sulphanuric chloride. Hazell et al. states that the structure (originally proposed by Kirsanov(1952)) has the $\ce{Cl}$ atoms attached to the $\ce{S}$ atom, with a formal charge of +1 on the $\ce{S}$ and -1 on the $\ce{N}$ atom. This structure has been proposed keeping in mind the physical properties of the compound.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fig. showing (I) $\alpha$ and (II) $\beta$ forms" src="https://aniruddha-deb.github.io/articles/2020/res/X_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Without knowing about these findings, drawing the correct structure is nigh impossible. This is what makes this a very hard question, as the first guess is to draw the structure that I have drawn above.&lt;/del&gt; See edit&lt;/p&gt;
+&lt;p&gt;Once the structure is known, 5.2, 5.3 and 5.4 are very easy. 5.2 involves drawing the two stereoisomers, which consist of an all cis $\ce{Cl}$ isomer and a trans $\ce{Cl}$ isomer, both of which are shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="stereoisomers" src="https://aniruddha-deb.github.io/articles/2020/res/X_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;5.3 involves a simple halogen substitution reaction with Fluorine, giving us $\ce{(NSOF)3}$. This is isostructural with $\ce{(NSOCl)3}$. 5.4 involves a substitution reaction with methylamine, giving us $$\ce{(NSOF)3 + 3CH3NH2 -&amp;gt; (NSO(NHCH3))3 + 3HF}$$&lt;/p&gt;
+&lt;p&gt;5.5 again requires a bit of mental hardwork. Y contains 120 electrons. An easy choice would be to replace the $\ce{F}$ atoms with $\ce{O-}$ atoms, giving us $\ce{(NSO2)3^3-}$. Drawing a second one is much trickier. Keeping in line with the problem, if we think of other inorganic heterocycles, $\ce{(SO3)3}$, the cyclic trimer of $\ce{SO3}$ comes to mind. Indeed, this is isoelectronic as it has 120 electrons. Once $\ce{(SO3)3}$ is obtained, 5.6 becomes easy as $\ce{(SO3)3}$ polymerizes in aqueous solution to give polymeric $\ce{(SO3)_n}$.&lt;/p&gt;
+&lt;p&gt;A very good problem, well above the regular inorganic standard. Breaking through the first step is the hardest, followed by obtaining the correct structure for the trimer and it's isoelectronic counterparts. The rest is quite easy.&lt;/p&gt;
+&lt;h3&gt;EDIT:&lt;/h3&gt;
+&lt;p&gt;There is a better, mechanism-based way of solving this question, as pointed out by &lt;a href="https://chemistry.stackexchange.com/users/54655/yusuf-hasan"&gt;Yusuf Hasan&lt;/a&gt; over at Chemistry StackExchange. Thionyl Chloride reacts with organic molecules via this reaction pathway:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SNi pathway" src="https://aniruddha-deb.github.io/articles/2020/res/SNi.png"&gt;&lt;/p&gt;
+&lt;p&gt;To solve this problem, we need to formulate a similar reaction pathway, but with the Azide anion as the substrate instead of pentan-2-ol. Here's the proposed pathway:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Monomer formation" src="https://aniruddha-deb.github.io/articles/2020/res/monomer.png"&gt;&lt;/p&gt;
+&lt;p&gt;Trimerization occurs through a pericyclic mechanism similar to the trimerization of $\ce{SO3}$. Note that the $\ce{Cl-}$ atoms shift from $\ce{N}$ to $\ce{S}$ in a concerted manner, similar to the mechanism proposed by &lt;a href="https://www.researchgate.net/publication/11505683_Theoretical_Study_on_Chlorine_and_Hydrogen_Shift_in_Cycloheptatriene_and_Cyclopentadiene_Derivatives"&gt;Okajima and Imafuku&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Trimer formation" src="https://aniruddha-deb.github.io/articles/2020/res/trimer.png"&gt;&lt;/p&gt;
+&lt;p&gt;This is a more concrete way to get to the answer and one that does not involve guesswork or hit and trial.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;sup&gt;P.S: Adding MHChem required an update to MathJax 3.x, which brings with it improved rendering (and stricter use of align and gather environments). The MathJax rendering bugs on mobile should be gone now.&lt;/sup&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 03 May 2020 10:40:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-03:/articles/2020/inorganic-heterocycles.html</guid><category>Chemistry</category></item><item><title>Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 + bx + c $, are symmetric about $ \frac{-b}{2a} $</title><link>https://aniruddha-deb.github.io/articles/2020/roots-of-fffx.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&amp;gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This seems like a complicated problem. Let's start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots. Also, all roots of a quadratic of the form $ ax^2 + bx + c , a,b \in \mathbb{R} $ can be expressed as $ \frac{-b}{2a} \pm k$, where $k$ is some constant, which can be real or complex. To find all the real roots of $ f^n(x) $, we have to solve the set of equations $ f^{n-1}(x) = \alpha_i \backepsilon \alpha_i $ is a root of $ f^{n-1}(x) $.&lt;/p&gt;
+&lt;p&gt;This problem can be recursively broken down until we arrive at finding the roots of $ f^2(x) $, which are the roots of $ f(x) = \alpha_1 = \frac{-b}{2a} + k $ and $ f(x) = \alpha_2 = \frac{-b}{2a} - k $. Since these two quadratics also assume the form in the paragraph discussed above, their roots can be written as $ \frac{-b}{2a} \pm u $ and $ \frac{-b}{2a} \pm v $. Note that if the equation has complex roots, then the values of u and v would be imaginary. This does not matter, as any further equations solved upon them will continue to have their roots expressed as $ \frac{-b}{2a} \pm k $. Moving to solve $ f^3(x) $ requires us to solve the equations $f(x) = \frac{-b}{2a} \pm u $ and $f(x) = \frac{-b}{2a} \pm v $. If we continue to do this, we can notice that all the $ 2^n $ roots of $ ax^2 + bx + c $ can be expressed in the same form $ \frac{-b}{2a} \pm v $, as the value of the first two coefficients of the quadratic(s) to be solved remains the same. Thus, all the real roots are symmetric about the said vertical line and all imaginary roots have their real part equal to $ \frac{-b}{2a} $. $ \blacksquare $&lt;/p&gt;
+&lt;p&gt;A graphical proof for this is as follows: consider any arbitary quadratic with two real roots (this can also be proven with a quadratic with no real roots, but that requires mapping the complex plane on the z-axis, which I don't want to do).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic f(x)" src="https://aniruddha-deb.github.io/articles/2020/res/roots_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Here the roots are A and B. Reflecting them onto the Y-axis and drawing two parallel lines through them gives us the following graph:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic with roots on y-axis" src="https://aniruddha-deb.github.io/articles/2020/res/roots_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;The two lines represent the roots and the points of intersection of the parabola with the line (That's C,D,E and F) represent the roots of the equation $f^2(x)$. This can be verified by plotting $ f(f(x)) $ in the same graph&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic f(f(x))" src="https://aniruddha-deb.github.io/articles/2020/res/roots_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;This provides a more intuitive approach to the above proof. As is clearly visible, $ f^2(x) $ has all it's roots symmetrical. This procedure can be repeated $n$ times, giving us the requisite proof.&lt;/p&gt;
+&lt;p&gt;Both of my proofs are not very mathematically rigorous. A rigorous proof would involve induction using the principles I showed here. That exercise is left to the readers (mainly because my induction &amp;amp; formal proof-writing skills are horrible :P). &lt;/p&gt;
+&lt;p&gt;An application of this problem can be found in the &lt;a href="https://jason-shi-f9dm.squarespace.com/s/2019Algebra_A.pdf"&gt;PUMAC 2019 Algebra A paper, Q3&lt;/a&gt;. This is a rather nice problem, which involves the sum of the roots of $ f^n(x) $. Since all the roots are symmetric, you would end up with $ 2^n $ times the abscissa of the vertex of said quadratic.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 30 Apr 2020 20:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-30:/articles/2020/roots-of-fffx.html</guid><category>Mathematics</category></item><item><title>An integral involving ζ(2) (And Euler's first proof for the Basel Problem)</title><link>https://aniruddha-deb.github.io/articles/2020/zeta-2-integral.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \):
+$$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ 
+$$I = \int_0^1 \frac 1x \left( x + \frac{x^2}{2} + \frac{x^3}{3} + ... \right) $$&lt;/p&gt;
+&lt;p&gt;This expression nicely integrates to give
+$$I = 1 + \frac{1}{2^2} + \frac{1}{3^2} + ... = \boxed{\frac{\pi^2}{6}}$$&lt;/p&gt;
+&lt;p&gt;The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\). This summation is known as the &lt;a href="https://en.wikipedia.org/wiki/Basel_problem"&gt;Basel Problem&lt;/a&gt; (more on this later). For now, we'll use this as a fact and move forward.&lt;/p&gt;
+&lt;p&gt;Another solution that does not involve the taylor series requires some substitutions and limit evaluation.&lt;/p&gt;
+&lt;p&gt;$$\begin{gather}
+I = \int_0^1\frac{\log x}{x-1} dx= -\int_0^1\log x(1+x+x^2+...)dx \\
+= -\int_0^1 \log x \sum_{r=0}^\infty x^r dx \\
+= -\sum_{r=0}^\infty\int_0^1x^r \log x dx 
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;let \(\log x = t \implies dx = e^t dt\):
+$$\begin{gather}I = -\sum_{r=0}^\infty \int_{-\infty}^0te^{(r+1)t}dt \\
+=-\sum_{r=0}^\infty \left[\frac{te^{(r+1)t}}{(r+1)} - \frac{e^{(r+1)t}}{(r+1)^2}\right]_{-\infty}^0\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} + \lim_{t \to -\infty} \frac{(t(r+1)-1)e^{(r+1)t}}{(r+1)^2} \right]\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{(t(r+1)+1)}{e^{(r+1)t}(r+1)^2} \right] \\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{r+1}{e^{(r+1)t}(r+1)^3} \right] \\
+= \sum_{r=0}^\infty \frac{1}{(r+1)^2}\\
+= \sum_{k=1}^\infty \frac{1}{k^2}\\
+\boxed{I = \frac{\pi^2}{6}}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;This solution also involves the same summation. There is, however, a solution that does not involve the summation: The general form of this integral is known as &lt;a href="https://en.wikipedia.org/wiki/Spence%27s_function"&gt;Spence's Function&lt;/a&gt; or Dilogarithm. It's a transcendental function which has the values \( Li_2(0) = 1 \) and \( Li_2(1) = \zeta(2) = \frac{\pi^2}{6} \). If you know these values beforehand, you can cut out the lengthy calculation.&lt;/p&gt;
+&lt;p&gt;Back to the Basel Problem, and a bit of a primer first. The &lt;a href="https://en.wikipedia.org/wiki/Riemann_zeta_function"&gt;Riemann-Zeta&lt;/a&gt; function is a mathematical function that is defined as \( \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} \). Thus, a convenient way of referring to the sum \( \sum_{k=1}^{\infty} \frac{1}{k^2} \) would be \( \zeta(2) \), which I will use hereon. The quest for the value of \( \zeta(2) \) far predates the Riemann-zeta function (and Bernhard Riemann himself for that matter). This problem was first posed by Pietro Mengoli, an Italian mathematician who had proved that the harmonic series \( \left( \sum_{n=1}^{\infty} \frac 1n \right) \) diverges and also found the value of the sum \( \sum_{r=1}^\infty (-1)^{r-1} \frac 1r \) to be \( \log(2) \). The problem is called the Basel problem as Basel in Switzerland is the hometown of Euler, who solved the problem and the Bernoulli family, who unsuccessfully attacked the problem.&lt;/p&gt;
+&lt;p&gt;The story goes that the first proof Euler gave was not accepted as it involved an unproven factorization of \( \sin(x) \). Euler being Euler, gave a second proof and a third proof as well, which were accepted. The initial proof is as follows: From the taylor series expansion of \( \sin(x) \), we have
+$$\sin(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + ... $$&lt;/p&gt;
+&lt;p&gt;\( \sin(x) \) can also be written as a function of it's roots, according to the &lt;a href="https://en.wikipedia.org/wiki/Weierstrass_factorization_theorem"&gt;Weierstrass Factorization Theorem&lt;/a&gt;. Note that this theorem was published a 100 years after Euler's proof, which is why Euler's proof was initially not accepted. Euler factorized \( \sin(x) \) as follows:
+$$\sin(x) = x(1 - \frac x\pi)(1 + \frac x\pi)(1 - \frac{x}{2\pi})(1+\frac{x}{2\pi})...$$ $$\sin(x) = x(1-\frac{x^2}{\pi^2})(1-\frac{x^2}{4\pi^2})... \tag{1}$$&lt;/p&gt;
+&lt;p&gt;Why did Euler choose to factorize \( \sin(x) \) as such? He could also have chosen the function \(x(x-\pi)(x+\pi)(x-2\pi)(x+2\pi)...\). A simple trick I used to explain this is that the function chosen by Euler is bounded and also converges to a common limit. Dividing both sides by \( x \) and evaluating the limit \(lim_{x \to 0} \frac{\sin(x)}{x}\) in equation \( (1) \), we see that both sides converge to 1.&lt;/p&gt;
+&lt;p&gt;Back to the proof, since we have two equivalent representations of \( \sin(x) \), all we have to do is compare the coefficients of \( x^3 \) in both of them to find the value of \( \zeta(2) \)
+$$\frac{1}{3!} = \frac{1}{\pi^2} \sum_{k=1}^{\infty} \frac{1}{k^2}$$
+$$\boxed{\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}}$$&lt;/p&gt;
+&lt;p&gt;This completes the proof. A really beautiful and simple proof, this was the one of the two proofs (Along with &lt;a href="https://en.wikipedia.org/wiki/Basel_problem#Cauchy's_proof"&gt;Cauchy's proof&lt;/a&gt;) that I was able to understand. For more proofs involving higher order mathematics, you can check out the links &lt;a href="http://math.cmu.edu/~bwsulliv/basel-problem.pdf"&gt;here&lt;/a&gt; and &lt;a href="https://math.stackexchange.com/questions/8337/different-methods-to-compute-sum-limits-k-1-infty-frac1k2-basel-pro"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 22:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/zeta-2-integral.html</guid><category>Mathematics</category></item><item><title>An Interesting Electronics Problem</title><link>https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html</link><description>&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
+&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll use the concept of symmetry and a few tricks. Let's start by connecting a battery to the circuit and labeling the currents and loops&lt;/p&gt;
+&lt;p&gt;&lt;img alt="tweaked resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/iep_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="loops" src="https://aniruddha-deb.github.io/articles/2020/res/iep_4.png"&gt;&lt;/p&gt;
+&lt;p&gt;Solving the loops gives us the equations
+$$\begin{align} &amp;amp; V = Ri_3 + ri_1 \tag{2} \\ &amp;amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$
+Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$
+The net current through the cell is \( i = i_1 + i_3 = \frac{R+3r}{R+r}i_1 \). Therefore, the net resistance \(R_p = \frac Vi = \frac{r(3R+r)}{3r+R} \)
+We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \) 
+$$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\ 
+\boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$ &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;sup&gt;p.s: The &lt;code&gt;\eqref&lt;/code&gt; or &lt;code&gt;\ref&lt;/code&gt; commands don't work for some reason. I'll have to figure out why.&lt;/sup&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 22:20:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/interesting-electronics-problem.html</guid><category>Electronics</category></item><item><title>MathJax Test</title><link>https://aniruddha-deb.github.io/articles/2020/mathjax-test.html</link><description>&lt;p&gt;This is a test to see if MathJax works on blogger.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For \(\alpha, \beta \gt -1\), find the value of \(\lim_{n \to \infty} n^{\beta - \alpha} \frac{1^\alpha + 2^\alpha + 3^\alpha + ... + n^\alpha}{1^\beta + 2^\beta + 3^\beta + ... + n^\beta}\)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So we have&lt;/p&gt;
+&lt;p&gt;$$L = \lim_{n \to \infty} \frac{n^\beta}{n^\alpha} \times \frac{\sum_{r=0}^n r^\alpha}{\sum_{r=0}^n r^\beta}\
+= \lim_{n \to \infty} \frac{\sum_{r=0}^n (\frac rn)^\alpha}{\sum_{r=0}^n (\frac rn)^\beta}$$&lt;/p&gt;
+&lt;p&gt;The summations can now be evaluated as Riemann sums by multiplying numerator and denominator by (\frac 1n)&lt;/p&gt;
+&lt;p&gt;$$L = \frac{\int_0^1 x^\alpha dx}{\int_0^1 x^\beta dx}\
+L = \frac{\beta+1}{\alpha +1}$$&lt;/p&gt;
+&lt;p&gt;Indeed it does! Looking forward to writing more mathematical posts.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 10:20:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/mathjax-test.html</guid><category>Posts</category></item><item><title>Electronic Clock II - Generating the Clock Signal pt. 2</title><link>https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-ii.html</link><description>&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
 &lt;h3&gt;Flip-Flop: Concept&lt;/h3&gt;
 &lt;p&gt;A Flip flop is a one-bit storage device which looks somewhat like this:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="flip flop" src="https://aniruddha-deb.github.io/articles/2018/res/flip_flop.png"&gt;&lt;/p&gt;
