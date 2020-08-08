@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Mon, 13 Jul 2020 03:44:00 +0530</lastBuildDate><item><title>Testing</title><link>https://aniruddha-deb.github.io/articles/2020/subdir-test.html</link><description>&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Sun, 26 Jul 2020 21:00:00 +0530</lastBuildDate><item><title>Is the shortest solution to a problem the best?</title><link>https://aniruddha-deb.github.io/articles/2020/shortest-solution-best-or-not.html</link><description>&lt;p&gt;My old man always used to say that there are two ways to solve a problem: there's 
+the horse way, and there's the donkey way. The donkey way involves tedious 
+calculations, whereas the horse way 'cuts' through the problem. Take this problem
+as an example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For each positive integer $n$, let $$y_n = ((n+1)(n+2)...(n+n))^\frac1n$$ for
+$x \in \mathbb{R}$. Let $[x]$ be the greatest integer less than or equal to $x$. 
+If $\lim_{n \to \infty} y_n = L$, then the value of $[L]$ is ______ ?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This problem is taken from the JEE(A) 2018 Paper 1 Math section. There are two 
+ways of doing this: the first one is the naive, or donkey way:
+$$\begin{gather}
+L = \lim_{n \to \infty} \left((1+\frac1n)(1+\frac2n)....(1+\frac nn)\right)^\frac1n \\
+\log L = \lim_{n \to \infty} \frac{1}{n} \sum_{r=0}^n \log\left(1+\frac rn\right) \\
+\log L = \int_0^1 \log(1+x)dx \\
+\log L = (1+x)\log(1+x) - x |_0^1 \\
+\log L = 2\log2 - 1 \\
+L = \frac{4}{e} \\
+\boxed{[L] = 1} \\
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;It looks simple, because I've made it look simple. The integration by parts step
+is time consuming, as well as the substitution and conversion into Riemann sum.
+They're all simple steps, but quite lengthy when done in succession. This is 
+how we are taught to approach most problems: do the steps to yield an answer. 
+Here's an example of the 'horse' way:
+$$\begin{gather}
+(1+0)(1+0)(1+0)...(1+0) &amp;lt; (1+\frac1n)(1+\frac2n)...(1+\frac nn) &amp;lt; (1+1)(1+1)(1+1)...(1+1) \\
+\lim_{n \to \infty} 1^\frac1n &amp;lt; \lim_{n \to \infty} \left((1+\frac1n)(1+\frac2n)....(1+\frac nn)\right)^\frac1n &amp;lt; \lim_{n \to \infty} 2^{n \cdot \frac1n} \\
+1 &amp;lt; L &amp;lt; 2 \\
+\boxed{[L] = 1}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;And we're done! Simple application of sandwich theorem gives us the answer here
+to the required accuracy. Looking at both techniques, the way of the horse 
+always seems smarter and more elegant than the way of the donkey... or does it?
+Here's an example of another problem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If 
+$$a = 1 + \frac{x^3}{3!} + \frac{x^6}{6!} + \frac{x^9}{9!} + ...$$
+$$b = x + \frac{x^4}{4!} + \frac{x^7}{7!} + \frac{x^{10}}{10!} + ...$$
+$$c = \frac{x^2}{2!} + \frac{x^5}{5!} + \frac{x^8}{8!} + \frac{x^{11}}{11!} + ...$$
+the value of $a^3 + b^3 + c^3 - 3abc = ?$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks like an interesting problem. The horse way of doing this would be to
+first make a (perfectly valid) assumption that the answer is independent of $x$, 
+because the answer is a constant and if it was dependent on $x$, it would be 
+of the form $f(x)$, which it clearly isn't. Since it is independent of $x$, 
+let $x=0$, giving us $a=1, b=0, c=0$. Thus, $a^3 + b^3 + c^3 - 3abc = 1$, which
+is the correct answer.&lt;/p&gt;
+&lt;p&gt;This solution looks good, but it is hacky at best and incomplete at worst. 
+Note that the problem setters have not defined the domain of $a,b,c$. An interesting
+twist would have been if $x \in \mathbb{R}^+$, then this hack would have been 
+&lt;a href="https://www.google.com/search?q=defenestrated"&gt;defenestrated&lt;/a&gt;. Here, the donkey method, though longer, 
+is more elegant and meaningful than the horse method. To solve this the right 
+way, recall the identity
+$$a^3 + b^3 + c^3 - 3abc = (a+b+c)(a+b\omega+c\omega^2)(a+b\omega^2+c\omega)$$
+where $\omega$ is the complex cube root of unity.
+If we substitute $a,b,c$ in the RHS and use the taylor expansion of $e^x$, then 
+we get:
+$$e^x \cdot e^{x\omega} \cdot e^{x\omega^2}$$
+this is the same as $e^{x(1+\omega+\omega^2)}$, and, as $1 + \omega + \omega^2 = 0$,
+the final answer is 
+$$e^{x \cdot 0} = \boxed{1}$$&lt;/p&gt;
+&lt;p&gt;This is The Right Way&lt;sup&gt;TM&lt;/sup&gt; of solving the problem. Even though it is 
+the lengthier, more mentally strenuous way, this is a case where the 'donkey'
+method is more elegant than the 'horse' method.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 26 Jul 2020 21:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-26:/articles/2020/shortest-solution-best-or-not.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Testing</title><link>https://aniruddha-deb.github.io/articles/2020/subdir-test.html</link><description>&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
 &lt;p&gt;Let's start with an Image:
 &lt;img alt="Test Image" src="https://aniruddha-deb.github.io/articles/2020/res/test_post/big_buck_bunny.png"&gt;
 Big buck bunny looking real handsome ;) Some tweaks have to be made to expand 
@@ -302,7 +366,84 @@ This table shows the entry marks required to break into a particular quartile:&l
 &lt;li&gt;Towards Data Science - Amazing medium blog on Data Science&lt;/li&gt;
 &lt;li&gt;R Project - R, a language for statistical computing and graphics&lt;/li&gt;
 &lt;li&gt;Statistics How to - For absolute beginners in statistics&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 11 Jul 2020 16:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-11:/articles/2020/isc-2020-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>ISC</category><category>Data Science</category></item><item><title>A Compilation of hard limits</title><link>https://aniruddha-deb.github.io/articles/2020/hard-limits.html</link><description>&lt;p&gt;This list consists of the limits that I found most challenging.&lt;/p&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 11 Jul 2020 16:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-11:/articles/2020/isc-2020-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>ISC</category><category>Data Science</category></item><item><title>Solving the African Integral (from YG file cover)</title><link>https://aniruddha-deb.github.io/articles/2020/african-integral.html</link><description>&lt;p&gt;A long time ago, I gave my friend (Let's call him C) an integral to solve. He came back to me a few days later and the conversation went something like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;C:&lt;/strong&gt; Debu, I couldn't solve that African integral you gave me.&lt;br&gt;
+&lt;strong&gt;Me:&lt;/strong&gt; Ok, but why are you calling it African?&lt;br&gt;
+&lt;strong&gt;C:&lt;/strong&gt; Because Africa is a really big continent, y'know?&lt;br&gt;
+&lt;strong&gt;Me:&lt;/strong&gt; Ok, but isn't Asia bigger?&lt;br&gt;
+&lt;strong&gt;C:&lt;/strong&gt; Debu, please stop making me feel dumb&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The integral in question appears prominently on the YG file cover as well, and is also featured in Advanced Problems in Mathematics for JEE(A) by Vikas Gupta (Question 24 chapter 7, for those following along)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="YG File cover" src="https://aniruddha-deb.github.io/articles/2020/res/yg_file.jpg"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Evaluate $$\int e^{x\sin x + \cos x} \left( \frac{x^4\cos^3x - x\sin x + \cos x}{x^2 \cos^2x}\right) dx$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks fearsome, but we can solve it easily by extending the trick $\int e^x (f(x) + f'(x)) dx = e^xf(x) + c$ just a little bit. Consider the function $$e^{g(x)}f(x)$$ Differentiating said function, we see that $$\frac{d}{dx} (e^{g(x)}f(x)) = e^{g(x)}(f'(x) + g'(x)f(x))$$ Rearranging the terms and integrating on both sides: $$e^{g(x)}f(x) = \int e^{g(x)}(f'(x) + g'(x)f(x)) dx$$ For the given problem, $g(x) = x\sin x + \cos x \implies g'(x) = x\cos x$. Therefore, the answer will be something of the form $$I = e^{x\sin x + \cos x} f(x) + c$$ The problem now becomes finding $f(x)$, which we can do through some rearrangement. Rewriting the problem to fit in $g'(x)$, the problem becomes: $$I = \int e^{x\sin x + \cos x} \left( x\cos x \cdot x + \frac{\sec x}{x^2} - \frac{\tan x \sec x}{x}\right) dx$$ We can see that the first term in the bracket implies that $f(x) = x$, but $f'(x) \ne \frac{\sec x}{x^2} - \frac{\tan x \sec x}{x}$. It's easy to see that the last two terms have some kind of pattern going on, as $\frac{d}{dx}\sec x = \sec x \tan x$ and $\frac{d}{dx} \frac{1}{x} = -\frac{1}{x^2}$. The last two terms can be rewritten as $\frac{d}{dx} \left( \frac{\sec x}{x}\right)$. Go through the above steps once again if you're unsure of what is happening, because this is important. The integral can then be rewritten as: 
+$$I = \int e^{x\sin x + \cos x} \left( x\cos x \cdot x - \frac{d}{dx} \left( \frac{\sec x}{x}\right) \right) dx$$&lt;/p&gt;
+&lt;p&gt;We're finally getting somewhere! We had initially assumed that $f(x) = x$, but now, seeing the differential term in the bracket, let's assume 
+$$f(x) = x - \frac{\sec x}{x} \implies f'(x) = 1 - \frac{d}{dx} \left( \frac{\sec x}{x}\right)$$&lt;/p&gt;
+&lt;p&gt;Also, $g'(x)f(x)$ then becomes 
+$$g'(x)f(x) = x\cos x \left(x - \frac{\sec x}{x}\right) = x\cos x \cdot x - 1$$&lt;/p&gt;
+&lt;p&gt;Adding them together, we get
+$$g'(x)f(x) + f'(x) = x\cos x \cdot x - \frac{d}{dx} \left( \frac{\sec x}{x}\right)$$&lt;/p&gt;
+&lt;p&gt;Which is the term in the brackets in the integral. Thus, $f(x) = x - \frac{\sec x}{x}$. We have now solved our integral, and the answer is
+$$\boxed{I =  e^{x\sin x + \cos x} \left( x - \frac{\sec x}{x}\right) + c}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 09 Jul 2020 20:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-09:/articles/2020/african-integral.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Debunking Concepts of Physics, and why you should NOT use this book.</title><link>https://aniruddha-deb.github.io/articles/2020/debunking-concepts-of-physics.html</link><description>&lt;p&gt;I generally don't post stuff that is extremely specific to JEE, but this time I'm willing to make an exception.&lt;/p&gt;
+&lt;p&gt;A lot has been said about &lt;a href="https://www.concepts-of-physics.com/concepts-of-physics.php"&gt;Concepts of Physics&lt;/a&gt; by Dr. H. C.Verma and it's usefulness for JEE Preparation. The website itself claims that&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Students from the past twenty years of JEE preparation used this book and have successfully cleared JEE. So, you cannot neglect this book. A common problem that was observed with many JEE aspirants is that they follow multiple books in parallel, thereby ending up in confusion. Follow only one book at a time and make sure it is reputed one like Concepts of Physics by HC Verma. You may consults other books too but not at the cost of creating more confusion.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Thankfully, this website is not endorsed by Dr. H. C. Verma himself. It seems to be made by a third party looking to sell their own books, in conjunction with Dr. Verma's. I have nothing against the book itself: as far as physics books go, it is brilliantly formatted and lucidly explained. It's a great introduction to Physics for several physics noobs, including me. Let me repeat that again:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Concepts of Physics is a great introductory book for people who are not good at physics.&lt;/strong&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everyone starts out a learner. It's fine to use a book like this when you're learning. However, this book has almost zero applicability when it comes to preparing for JEE(A). It might get you through JEE(M), but it's extremely risky to refer to ONLY this book and accept it's word as the word of god. Here are a few reasons not to use Concepts of Physics for long term preparation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It's not exam-oriented!&lt;/strong&gt; This has to be the biggest gripe of mine. The book's content has not kept up with the demands of the exam, but that is not it's purpose. However, people still believe that it has kept up and is still as relevant as it was 20 years ago. The Single Correct and Multiple Correct questions (Objective I and Objective II) are mainly concept oriented, with no numericals. Even the subjective questions suck big time, compared to Irodov or Krotov. Here's a snap of Chapter 18, Geometrical Optics:&lt;br&gt;
+&lt;center&gt;&lt;img alt="chapter 18" src="https://aniruddha-deb.github.io/articles/2020/res/chp18_optics.png"&gt;&lt;/center&gt;&lt;br&gt;
+ Notice that questions 61-66 are exactly the same with the only difference being the type of lens and mirror in the situation and the parameter being asked. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It covers irrelevant concepts!&lt;/strong&gt; TVF made a point of this in their skit "A Day with H C Verma". Chapter 47, Relativity, is not included in syllabus. A lot of other concepts, such as Peltier effect, Zeeman effect, measuring speed of light etc are irrelevant from an exam point of view. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It does not cover relevant concepts!&lt;/strong&gt; Some concepts such as force on a dielectric (question 74 of Capacitors chapter) are not explained in the textbook and are left to the students to solve. Angular momentum (one of the most important concepts, see JEE(A) 2016) is paid a lip service in Rotational motion, with one big mathematical derivation explaining the whole concept.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As I already mentioned, Concepts of physics is a great physics book, which is often the entry point of many students into the world of Higher Secondary Physics. However, I am tired of self-proclaimed 'gurus' and other JEE toppers proclaiming that this book is all you need to crack the exam. This is a blatant lie. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 22 Jun 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-22:/articles/2020/debunking-concepts-of-physics.html</guid><category>JEE</category><category>JEE</category><category>Physics</category></item><item><title>Icosahedron Resistor Network</title><link>https://aniruddha-deb.github.io/articles/2020/icosahedron-resistor-network.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
+B) The resistance between points A and B is $\frac{r}{3}$&lt;br&gt;
+C) The resistance between any two adjacent vertices is $\frac{11r}{30}$&lt;br&gt;
+D) The resistance between any two adjacent vertices is $\frac{11r}{20}$&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This question looks really tricky. This is a variation of the problem of finding the resistance of a wire cube. This can be solved in a similar way, using symmetry and equipotential reduction.&lt;/p&gt;
+&lt;p&gt;Let's start off by finding the resistance between A and B, since this is easier than finding the resistance between adjacent vertices. On connecting a battery, the points marked in the same colour will be at the same potential.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="battery" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_2.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;You can clearly see the symmetry now. If we connect all the points with the same potential, we end up with the following resistor network (each resistance is $r$).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="res net" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/res_net.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This is simple to solve. It's resistance is
+$$R_{AB} = \frac r5 + \frac r{10} + \frac r5 = \boxed{\frac r2}$$
+which corresponds to option (A).&lt;/p&gt;
+&lt;p&gt;Solving the network between adjacent vertices is a lot trickier. The first trick is to pick a pair of vertices from which symmetry is easily identifiable. If I connect my battery as shown in the following figure, it is easy to identify which points are equipotential and how the currents are flowing.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_3.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The dotted line shows the plane of symmetry of this icosahedron perpendicular to $CD$ whereas the blue dots show equipotential nodes. We can see that no current flows through $R_{AJ}$ and $R_{EB}$ since the ends are at the same potential. Also, at all equipotential points, no mixing of currents occurs. This means that $I_{AC} = I_{AD}$ and $I_{CE} = I_{ED}$, along with a few others. Performing some modifications on this circuit in line with the above observations reduces the complexity quite drastically as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simple" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_4.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Simplifying these resistors, we obtain a cubical network with a resistor across two opposite face diagonals&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="cube" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_5.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is easy to see that $V_F = V_L$ and $V_G = V_K$. Connecting these two points and getting rid of the resistances $R_{GK}$ and $R_{LF}$, we get the following resistor network:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simplest" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_6.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is now simple to calculate the resistance across CD by using the formulae for resistors in parallel and series.&lt;/p&gt;
+&lt;p&gt;$$\begin{gather} 
+\frac 1 {R_{FG}} = \frac 2 r + \frac 2 {3r} \\
+R_{FG} = \frac{3r}{8} \\
+\frac{1}{R_{CD}} = \frac{8}{11r} + \frac{2}{r} \\
+\boxed{R_{CD} = \frac{11r}{30}} 
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;Which corresponds to option (C)&lt;/p&gt;
+&lt;p&gt;A good problem that I came up with on my own; the next step is to do the same for a dodecahedric resistor network. Stay tuned for that :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Tue, 09 Jun 2020 12:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-09:/articles/2020/icosahedron-resistor-network.html</guid><category>Electronics</category><category>Physics</category><category>Electronics</category></item><item><title>A Compilation of hard limits</title><link>https://aniruddha-deb.github.io/articles/2020/hard-limits.html</link><description>&lt;p&gt;This list consists of the limits that I found most challenging.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;$$\lim_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$&lt;/li&gt;
@@ -351,7 +492,29 @@ $$f_2 = \lim_{n \to \infty} \frac{\frac{1}{2n^2} + ... }{1 - e^{-\frac 1{2n} + O
 &lt;p&gt;This evaluates to $0$ as the numerator is a higher order infinitesimal than the denominator. Thus, we have
 $$\log L = 0$$&lt;/p&gt;
 &lt;p&gt;Taking an exponent both sides gives us
-$$\boxed{L = 1}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 07:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/limit-higher-order-infinitesimals.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>No square ends in 3</title><link>https://aniruddha-deb.github.io/articles/2020/no-square-ends-in-3.html</link><description>&lt;p&gt;This is an interesting number theory fact that seems strange when taken at face value. Here's a small proof of it:
+$$\boxed{L = 1}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 07:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/limit-higher-order-infinitesimals.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>COVID-19 USA Analysis: effects of the lack of lockdown</title><link>https://aniruddha-deb.github.io/articles/2020/covid-19-usa.html</link><description>&lt;p&gt;The USA currently stands at 1.76 million COVID-19 cases. That's more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here's a graph showing the daily number of cases of COVID-19 in the USA.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="Daily covid cases" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-cases-daily.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Source: Google&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour. Is there a pattern to this? Let's overlay some week markers on the data to get a better feel of it.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="covid weekly" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-weekly.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Source: Our World in data*&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+The pattern is much more obvious now. It is clearly visible that reported cases are at their lowest on the first few days of the week and they are at their highest during the weekends. Summing up the data proves this (quite dramatically)&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="covid sum" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-sum.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Sum of cases/day from 1 Mar to today&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+This data now allows us to paint a picture. The mean time of incubation of Coronavirus is 5.1 days&lt;sup&gt;[1]&lt;/sup&gt;. One inference is that more people are going out on Sunday night and getting tested on Friday morning. This is not very probable as most of the hospitality business (malls, hotels etc) is shut. The more likely reason is that &lt;em&gt;people are going to work on a Monday and Tuesday, displaying symptoms in a week and then getting tested at the end of the week&lt;/em&gt;. &lt;strong&gt;This situation would not arise if a nationwide lockdown was implemented&lt;/strong&gt;. This is the key reason behind the large number of cases and also behind the recurring patterns of occurence of new cases.&lt;/p&gt;
+&lt;p&gt;The analysis also presents several lessons for nations in the nascent phase of the virus: India has lifted it's lockdown just as the number of cases are peaking. While isolation of zones where infected patients have been found continues, urging people to return to work in these times may present the same pattern as shown above.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;* Our World in Data recorded a spike of ~48000 cases on April 26. This seemed suspicious, which is why that data point was substituted by the Google/Wikipedia data for the same date.&lt;/p&gt;
+&lt;p&gt;[1]: Lauer, Stephen A., et al. “The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application.” Annals of Internal Medicine, vol. 172, no. 9, Mar. 2020, pp. 577–82. acpjournals.org (Atypon), doi:&lt;a href="https://doi.org/10.7326/M20-0504"&gt;10.7326/M20-0504&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 29 May 2020 20:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-29:/articles/2020/covid-19-usa.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>COVID 19 Regression analysis Update</title><link>https://aniruddha-deb.github.io/articles/2020/covid-regression-analysis-update.html</link><description>&lt;p&gt;The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="covid static" src="https://aniruddha-deb.github.io/articles/2020/res/covid_update/covid_static.png"&gt;&lt;br&gt;
+&lt;sup&gt;Y-axis: number of new cases per day. X-axis: number of days since first case.&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Here's an animated view:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="covid dynamic" src="https://aniruddha-deb.github.io/articles/2020/res/covid_update/covid_dynamic.gif"&gt;&lt;/p&gt;
+&lt;p&gt;The relevant files can be found in &lt;a href="https://github.com/Aniruddha-Deb/COVID_19_regression"&gt;this GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;UPDATE: As of May 30 9:30 pm, The recorded cases are ~174,000. I was assuming a ~10% error margin on this prediction, but I ended up being quite close to the number. The final number of cases are expected to be ~181,000 by 31st May night, resulting in an error margin of 4.1%.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;P.S: Feel free to clone and tweak the data while citing this as the original source. I do not assume responsibility in the event that this data proves to be wrong or otherwise.&lt;/p&gt;
+&lt;p&gt;P.P.S: GeoGebra 6 sucks big time! GeoGebra 5 da real MVP.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Tue, 19 May 2020 22:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-19:/articles/2020/covid-regression-analysis-update.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>No square ends in 3</title><link>https://aniruddha-deb.github.io/articles/2020/no-square-ends-in-3.html</link><description>&lt;p&gt;This is an interesting number theory fact that seems strange when taken at face value. Here's a small proof of it:
 $$\begin{array}{|c|c|}
 \hline
 \text{last digit of number} &amp;amp; \text{last digit of square} \\
@@ -379,7 +542,10 @@ x = 2 \implies S_2 = S_1 + 2! = 3 \\
 x = 3 \implies S_3 = S_2 + 3! = 9 \\
 x = 4 \implies S_4 = S_3 + 4! = 33
 \end{gather}$$&lt;/p&gt;
-&lt;p&gt;For $5!$ and above, the last number is always 0. When we use the above recurrence relation for $x \ge 5$, the last digit will always be 3, and since no square ends in 3, there are only two values of $x$ for which the given equation holds, which are $1$ and $3$.  $\blacksquare$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 15 May 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-15:/articles/2020/no-square-ends-in-3.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Inorganic Heterocyclic compounds</title><link>https://aniruddha-deb.github.io/articles/2020/inorganic-heterocycles.html</link><description>&lt;p&gt;The 45th IChO preparatory problem list had this as it's fifth problem:&lt;/p&gt;
+&lt;p&gt;For $5!$ and above, the last number is always 0. When we use the above recurrence relation for $x \ge 5$, the last digit will always be 3, and since no square ends in 3, there are only two values of $x$ for which the given equation holds, which are $1$ and $3$.  $\blacksquare$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 15 May 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-15:/articles/2020/no-square-ends-in-3.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>COVID 19 regression analysis</title><link>https://aniruddha-deb.github.io/articles/2020/covid-regression-analysis.html</link><description>&lt;p&gt;&lt;img alt="regression" src="https://aniruddha-deb.github.io/articles/2020/res/covid-regression-analysis.png"&gt;
+This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don't fit the USA data very well though)&lt;/p&gt;
+&lt;p&gt;The y-axis scale is 5000 cases/large division and 1000 cases/small division. Currently, 50 represents today's date for India i.e. May 6. Looking at a predicted worst case curve, we see it peaking somewhere around May 20 ($\pm$ 5 days). It should go down post that point. The total number of cases is the integral under the curve. For a gaussian distribution, it comes out to be $a\sqrt{\frac \pi b}$. Taking half of this (before the peak), we end up with $\approx 130,000$ cases. India can expect to see this number $\pm$ 10% of cases by May end and a overall of $\approx 200,000 \pm 10%$ cases by June end, worst case. &lt;/p&gt;
+&lt;p&gt;Let's hope I'm wrong here and we can flatten the curve sooner than expected.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 06 May 2020 21:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-06:/articles/2020/covid-regression-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>Inorganic Heterocyclic compounds</title><link>https://aniruddha-deb.github.io/articles/2020/inorganic-heterocycles.html</link><description>&lt;p&gt;The 45th IChO preparatory problem list had this as it's fifth problem:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;5.1&lt;/strong&gt; The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals &lt;strong&gt;X&lt;/strong&gt;, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of &lt;strong&gt;X&lt;/strong&gt; and give the reaction equation.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5.2&lt;/strong&gt; Draw two stereoisomers of &lt;strong&gt;X&lt;/strong&gt;.&lt;/p&gt;

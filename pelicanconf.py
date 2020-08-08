@@ -10,7 +10,7 @@ THEME = 'themes/Flex'
 SITELOGO = '/extras/favicon/android-chrome-192x192.png'
 
 PATH = 'content'
-STATIC_PATHS = ['articles/2020/res', 'extras/favicon']
+STATIC_PATHS = ['pages', 'articles/2020/res', 'extras/favicon']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?

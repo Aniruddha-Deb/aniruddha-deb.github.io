@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Electronics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/electronics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-04-29T22:20:00+05:30</updated><entry><title>An Interesting Electronics Problem</title><link href="https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html" rel="alternate"></link><published>2020-04-29T22:20:00+05:30</published><updated>2020-04-29T22:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/interesting-electronics-problem.html</id><summary type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Electronics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/electronics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-06-09T12:30:00+05:30</updated><entry><title>Icosahedron Resistor Network</title><link href="https://aniruddha-deb.github.io/articles/2020/icosahedron-resistor-network.html" rel="alternate"></link><published>2020-06-09T12:30:00+05:30</published><updated>2020-06-09T12:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-06-09:/articles/2020/icosahedron-resistor-network.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
+B) The resistance between points A and B is $\frac …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
+B) The resistance between points A and B is $\frac{r}{3}$&lt;br&gt;
+C) The resistance between any two adjacent vertices is $\frac{11r}{30}$&lt;br&gt;
+D) The resistance between any two adjacent vertices is $\frac{11r}{20}$&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This question looks really tricky. This is a variation of the problem of finding the resistance of a wire cube. This can be solved in a similar way, using symmetry and equipotential reduction.&lt;/p&gt;
+&lt;p&gt;Let's start off by finding the resistance between A and B, since this is easier than finding the resistance between adjacent vertices. On connecting a battery, the points marked in the same colour will be at the same potential.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="battery" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_2.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;You can clearly see the symmetry now. If we connect all the points with the same potential, we end up with the following resistor network (each resistance is $r$).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="res net" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/res_net.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This is simple to solve. It's resistance is
+$$R_{AB} = \frac r5 + \frac r{10} + \frac r5 = \boxed{\frac r2}$$
+which corresponds to option (A).&lt;/p&gt;
+&lt;p&gt;Solving the network between adjacent vertices is a lot trickier. The first trick is to pick a pair of vertices from which symmetry is easily identifiable. If I connect my battery as shown in the following figure, it is easy to identify which points are equipotential and how the currents are flowing.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_3.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The dotted line shows the plane of symmetry of this icosahedron perpendicular to $CD$ whereas the blue dots show equipotential nodes. We can see that no current flows through $R_{AJ}$ and $R_{EB}$ since the ends are at the same potential. Also, at all equipotential points, no mixing of currents occurs. This means that $I_{AC} = I_{AD}$ and $I_{CE} = I_{ED}$, along with a few others. Performing some modifications on this circuit in line with the above observations reduces the complexity quite drastically as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simple" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_4.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Simplifying these resistors, we obtain a cubical network with a resistor across two opposite face diagonals&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="cube" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_5.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is easy to see that $V_F = V_L$ and $V_G = V_K$. Connecting these two points and getting rid of the resistances $R_{GK}$ and $R_{LF}$, we get the following resistor network:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simplest" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_6.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is now simple to calculate the resistance across CD by using the formulae for resistors in parallel and series.&lt;/p&gt;
+&lt;p&gt;$$\begin{gather} 
+\frac 1 {R_{FG}} = \frac 2 r + \frac 2 {3r} \\
+R_{FG} = \frac{3r}{8} \\
+\frac{1}{R_{CD}} = \frac{8}{11r} + \frac{2}{r} \\
+\boxed{R_{CD} = \frac{11r}{30}} 
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;Which corresponds to option (C)&lt;/p&gt;
+&lt;p&gt;A good problem that I came up with on my own; the next step is to do the same for a dodecahedric resistor network. Stay tuned for that :)&lt;/p&gt;</content><category term="Electronics"></category><category term="Physics"></category><category term="Electronics"></category></entry><entry><title>An Interesting Electronics Problem</title><link href="https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html" rel="alternate"></link><published>2020-04-29T22:20:00+05:30</published><updated>2020-04-29T22:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/interesting-electronics-problem.html</id><summary type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
 &lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
 &lt;p&gt;This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll …&lt;/p&gt;</summary><content type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
 &lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
