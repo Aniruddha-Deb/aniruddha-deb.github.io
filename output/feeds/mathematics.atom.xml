@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-07-26T21:00:00+05:30</updated><entry><title>Is the shortest solution to a problem the best?</title><link href="https://aniruddha-deb.github.io/articles/2020/shortest-solution-best-or-not.html" rel="alternate"></link><published>2020-07-26T21:00:00+05:30</published><updated>2020-07-26T21:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-07-26:/articles/2020/shortest-solution-best-or-not.html</id><summary type="html">&lt;p&gt;My old man always used to say that there are two ways to solve a problem: there's 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-08-14T17:37:00+05:30</updated><entry><title>Math Notes: Lagrange interpolation</title><link href="https://aniruddha-deb.github.io/articles/2020/math-notes-1.html" rel="alternate"></link><published>2020-08-14T17:37:00+05:30</published><updated>2020-08-14T17:37:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-08-14:/articles/2020/math-notes-1.html</id><summary type="html">&lt;p&gt;This is a small set of posts that come into the category of "notes": 
+self-explanations of concepts that I have recently picked up and found 
+interesting.&lt;/p&gt;
+&lt;h2&gt;Lagrange Interpolation&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Lagrange_multiplier"&gt;Lagrange Interpolation&lt;/a&gt; is a concept that allows us to find a polynomial of 
+least degree passing through a given set of points …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a small set of posts that come into the category of "notes": 
+self-explanations of concepts that I have recently picked up and found 
+interesting.&lt;/p&gt;
+&lt;h2&gt;Lagrange Interpolation&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Lagrange_multiplier"&gt;Lagrange Interpolation&lt;/a&gt; is a concept that allows us to find a polynomial of 
+least degree passing through a given set of points. Specifically:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If $S = {(x_i, y_i) : x_i, y_i \in R, 1 \lt i \le n}$, then the polynomial
+of least degree passing through all the points in $S$ is given by
+$$P(x) = \sum_{i=1}^n L_i(x) \cdot y_i$$
+where $$L_i(x) = \frac{(x-x_1)(x-x_2)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)}
+{(x_i-x_1)(x_i-x_2)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)}$$
+or simply,
+$$P(x) = \sum_{i=1}^n \frac{\prod_{r \ne i}(x-x_r)}{\prod_{r \ne i}{(x_i-x_r)}} \cdot y_i$$
+note that the degree of polynomial $P &amp;lt; n$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here's an example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If $P(x)$ is a function such that $P(-1) = -2,  P(0) = 2, P(1) = 0, P(2) = 2$, 
+then find $P(x)$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So we have $S = {(-1,-2), (0,2), (1,0), (2,2)}$. Using lagrange interpolation 
+gives us $P(x)$ as:
+$$\begin{gather}
+P(x) = \frac{(x-0)(x-1)(x-2)}{(-1-0)(-1-1)(-1-2)} \cdot -2 + \\
+\frac{(x+1)(x-1)(x-2)}{(0+1)(0-1)(0-2)} \cdot 2 + \\
+\frac{(x+1)(x-0)(x-2)}{(1+1)(1-0)(1-2)} \cdot 0 + \\
+\frac{(x+1)(x-0)(x-1)}{(2+1)(2-0)(2-1)} \cdot -2
+\end{gather}$$
+or, once simplified,
+$$P(x) = x^3 - 3x + 2$$&lt;/p&gt;
+&lt;p&gt;This technique is also useful for other stuff, such as finding patterns in 
+hard-to-decipher sequences:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Find the nth term of the sequence $$5, 65, 325, 1025, 2501 ...$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Letting $T(1) = 5, T(2) = 65$ and so on, lagrange interpolation gives us:
+$$\begin{gather}
+T(n) = \frac{5(x-2)(x-3)(x-4)(x-5)}{(-1)(-2)(-3)(-4)} + \\ 
+\frac{65(x-1)(x-3)(x-4)(x-5)}{(1)(-1)(-2)(-3)} + \\
+\frac{325(x-1)(x-2)(x-4)(x-5)}{(2)(1)(-1)(-2)} + \\
+\frac{1025(x-1)(x-2)(x-3)(x-5)}{(3)(2)(1)(-1)} + \\
+\frac{2501(x-1)(x-2)(x-3)(x-4)}{(4)(3)(2)(1)}
+\end{gather}$$
+simplified:
+$$T(n) = 4n^4 + 1$$&lt;/p&gt;
+&lt;p&gt;Of course, there are some problems that cannot be solved by this technique, 
+namely problems where it is specified that the polynomial is of a higher order
+than the number of points it passes through:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let $P(x)=x^4+ax^3+bx^2+cx+d$. If $P(1) = 1, P(2)=8, P(3)=27, P(4)=64$, then 
+  the value of $P(5)$ is?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The lagrange interpolated polynomial for the above values is $P(x) = x^3$. However, 
+this gives the wrong answer of $P(5) = 145$. The correct answer is $P(5) = 149$, 
+because we have been asked to fit a polynomial of higher order in this equation.&lt;/p&gt;
+&lt;p&gt;Also, this technique should only be used as a last resort for pattern finding. 
+This is extremely computation heavy and is more of a bruteforce algorithm, that 
+is better suited to computers rather than manual calculation. Most math softwares
+have a lagrange interpolation function in them. Geogebra's is called &lt;code&gt;Polynomial()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As a bonus, here's the code I used to generate the above function:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+&lt;span class="n"&gt;pts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])])&lt;/span&gt;
+
+&lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;P(x) = &amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;continue&lt;/span&gt;
+        &lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(x+&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(x-&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;frac{{&lt;/span&gt;&lt;span class="si"&gt;{2}{0}&lt;/span&gt;&lt;span class="s2"&gt;}}{{&lt;/span&gt;&lt;span class="si"&gt;{1}&lt;/span&gt;&lt;span class="s2"&gt;}} + &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="Math Notes"></category></entry><entry><title>Is the shortest solution to a problem the best?</title><link href="https://aniruddha-deb.github.io/articles/2020/shortest-solution-best-or-not.html" rel="alternate"></link><published>2020-07-26T21:00:00+05:30</published><updated>2020-07-26T21:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-07-26:/articles/2020/shortest-solution-best-or-not.html</id><summary type="html">&lt;p&gt;My old man always used to say that there are two ways to solve a problem: there's 
 the horse way, and there's the donkey way. The donkey way involves tedious 
 calculations, whereas the horse way 'cuts' through the problem. Take this problem
 as an example:&lt;/p&gt;

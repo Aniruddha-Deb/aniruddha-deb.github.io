@@ -7,10 +7,10 @@ EMAIL_ID = 'aniruddha.deb.2002@gmail.com'
 SITENAME = 'Aniruddha Deb'
 SITEURL = 'https://aniruddha-deb.github.io'
 THEME = 'themes/Flex'
-SITELOGO = '/extras/favicon/android-chrome-192x192.png'
+SITELOGO = '/extras/sitelogo.png'
 
 PATH = 'content'
-STATIC_PATHS = ['pages', 'articles/2020/res', 'extras/favicon']
+STATIC_PATHS = ['pages', 'articles/2020/res', 'extras']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
@@ -22,7 +22,7 @@ EXTRA_PATH_METADATA = {
 }
 
 TIMEZONE = 'Asia/Kolkata'
-
+PYGMENTS_STYLE  = 'monokai'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 AUTHOR_FEED_RSS = 'feeds/%s.rss.xml'

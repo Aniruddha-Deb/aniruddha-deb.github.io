@@ -1,0 +1,1 @@
+# TODO make robots.txt and link with blog

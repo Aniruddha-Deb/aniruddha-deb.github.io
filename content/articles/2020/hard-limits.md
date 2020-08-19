@@ -16,6 +16,7 @@ This list consists of the limits that I found most challenging.
 > 8. $$\lim\_{n \to \infty} \underbrace{\sin(\sin(\sin(...\sin(a)..)))}\_\text{n times}$$
 > 9. $$\lim\_{n \to \infty} \sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + 4\sqrt{ ... 1 + (n-1)\sqrt{1+n}}}}}$$
 > 10. $$\lim\_{x \to \infty} \binom{x}{n} \left(\frac{a}{x}\right)^n \left( 1 - \frac{a}{x}\right)^{x-n}$$
+> 11. $$\lim\_{n \to \infty} \ \frac{2^{n+1}}{n+1} \ \left| 3\sum\_{k=1}^n (-1)^k\frac{k}{2^k} + \frac 23\right|$$
 
 Answers:
 
@@ -29,3 +30,4 @@ Answers:
 > 8. $0$
 > 9. $3$ (Ramanujan found this one :)
 > 10. $\frac{a^n e^a}{n!}$
+> 11. $2$
