@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Fri, 14 Aug 2020 17:37:00 +0530</lastBuildDate><item><title>Math Notes: Lagrange interpolation</title><link>https://aniruddha-deb.github.io/articles/2020/math-notes-1.html</link><description>&lt;p&gt;This is a small set of posts that come into the category of "notes": 
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Fri, 11 Sep 2020 09:01:00 +0530</lastBuildDate><item><title>A Good JEE Main (September) problem</title><link>https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html</link><description>&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
+$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
+then the set A:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;is a singleton&lt;/li&gt;
+&lt;li&gt;is an empty set&lt;/li&gt;
+&lt;li&gt;contains exactly two elements&lt;/li&gt;
+&lt;li&gt;contains more than two elements&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a great problem, one that should have featured in advanced rather than 
+main. It involves matrices and 3D Geometry and fits in to linear algebra more 
+than any other topic.&lt;/p&gt;
+&lt;p&gt;To solve this, notice that $A$ is a set of column vectors which lie on the intersection
+of the three planes determined by $PX = 0$. The three planes are:
+$$\begin{align}
+x + 2y + z &amp;amp;= 0 \\
+-2x + 3y - 4z &amp;amp;= 0 \\
+x + 9y - z &amp;amp;= 0 \\
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;These three planes have a trivial solution $x = y = z = 0$. Let's see if they
+have non-trivial solutions by obtaining $det(P)$:
+$$\begin{align}
+|P| &amp;amp;= \left| \begin{array}{l l l}1&amp;amp;2&amp;amp;1\\ -2&amp;amp;3&amp;amp;-4\\ 1&amp;amp;9&amp;amp;1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\
+|P| &amp;amp;= 0 \
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;Thus, they have non-trivial solutions. All the planes are concurrent and form a 
+line that passes through origin. Thus, if $S = \{ X = (\lambda_1x,\  \lambda_2y,\  \lambda_3z)^t : 
+\lambda_1,\  \lambda_2,\  \lambda_3 \in R \}$ is the line formed by the planes, 
+then S has only two elements for which the magnitude of $X$ is 1. These two elements
+are the only elements of $A$, thus $A$ contains exactly two elements. $\blacksquare$&lt;/p&gt;
+&lt;p&gt;A great problem, that required good thinking and visualization skills. The JEE
+was a toss-up between great problems like this and stupid ones like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you spill a chemical toilet cleaning liquid on your hand, your first aid 
+would be : &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;vinegar&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NH3}$&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NaHCO3}$&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NaOH}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here's to hoping the JEE advanced has better chemistry problems :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 11 Sep 2020 09:01:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</guid><category>Mathematics</category><category>Mathematics</category><category>JEE</category></item><item><title>Math Notes: Lagrange interpolation</title><link>https://aniruddha-deb.github.io/articles/2020/math-notes-1.html</link><description>&lt;p&gt;This is a small set of posts that come into the category of "notes": 
 self-explanations of concepts that I have recently picked up and found 
 interesting.&lt;/p&gt;
 &lt;h2&gt;Lagrange Interpolation&lt;/h2&gt;
@@ -539,6 +584,7 @@ R_{FG} = \frac{3r}{8} \\
 &lt;li&gt;$$\lim_{n \to \infty} \underbrace{\sin(\sin(\sin(...\sin(a)..)))}_\text{n times}$$&lt;/li&gt;
 &lt;li&gt;$$\lim_{n \to \infty} \sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + 4\sqrt{ ... 1 + (n-1)\sqrt{1+n}}}}}$$&lt;/li&gt;
 &lt;li&gt;$$\lim_{x \to \infty} \binom{x}{n} \left(\frac{a}{x}\right)^n \left( 1 - \frac{a}{x}\right)^{x-n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \ \frac{2^{n+1}}{n+1} \ \left| 3\sum_{k=1}^n (-1)^k\frac{k}{2^k} + \frac 23\right|$$&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Answers:&lt;/p&gt;
@@ -554,6 +600,7 @@ R_{FG} = \frac{3r}{8} \\
 &lt;li&gt;$0$&lt;/li&gt;
 &lt;li&gt;$3$ (Ramanujan found this one :)&lt;/li&gt;
 &lt;li&gt;$\frac{a^n e^a}{n!}$&lt;/li&gt;
+&lt;li&gt;$2$&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/hard-limits.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Limit involving higher order infinitesimals</title><link>https://aniruddha-deb.github.io/articles/2020/limit-higher-order-infinitesimals.html</link><description>&lt;p&gt;Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L'Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3. To illustrate how to solve these problems, I'll give a trickier example:&lt;/p&gt;
 &lt;blockquote&gt;
