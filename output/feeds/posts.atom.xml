@@ -128,7 +128,6 @@ $A_2$ is also now doable. Add $A_1$ and $A_2$ to get $A$ and substitute back til
 &lt;p&gt;Here's an example of some embedded HTML: (using the &lt;a href="chess.com"&gt;chess.com&lt;/a&gt; 
 chess player to show one of my games)&lt;/p&gt;
 &lt;iframe id="6878876" allowtransparency="true" frameborder="0" style="width:760px;height:480px;margin:auto;display:block;border:none;" src="//www.chess.com/emboard?id=6878876"&gt;&lt;/iframe&gt;
-
 &lt;script type="text/javascript"&gt;window.addEventListener("message",e=&gt;{e['data']&amp;&amp;"6878876"===e['data']['id']&amp;&amp;document.getElementById(\`${e['data']['id']}\`)&amp;&amp;(document.getElementById(\`${e['data']['id']}\`).style.height=\`${e['data']['frameHeight']+60}px\`)});&lt;/script&gt;
 
 &lt;p&gt;Here's some code to generate a minefield (Taken from the &lt;a href="https://github.com/Aniruddha-Deb/Mines/blob/master/src/com/sensei/mines/core/MinefieldGenerator.java"&gt;Mines&lt;/a&gt; repo):&lt;/p&gt;
@@ -160,7 +159,6 @@ chess player to show one of my games)&lt;/p&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Everything looks in place! Looking forward to writing some great content here.
 Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</content><category term="Posts"></category></entry><entry><title>MathJax Test</title><link href="https://aniruddha-deb.github.io/articles/2020/mathjax-test.html" rel="alternate"></link><published>2020-04-29T10:20:00+05:30</published><updated>2020-04-29T10:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/mathjax-test.html</id><summary type="html">&lt;p&gt;This is a test to see if MathJax works on blogger.&lt;/p&gt;

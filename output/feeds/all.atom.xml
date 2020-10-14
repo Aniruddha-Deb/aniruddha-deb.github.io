@@ -1,5 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-09-11T09:01:00+05:30</updated><entry><title>A Good JEE Main (September) problem</title><link href="https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html" rel="alternate"></link><published>2020-09-11T09:01:00+05:30</published><updated>2020-09-11T09:01:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</id><summary type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-10-14T22:48:00+05:30</updated><entry><title>Setting up my Mac (again)</title><link href="https://aniruddha-deb.github.io/articles/2020/mac-system-setup.html" rel="alternate"></link><published>2020-10-14T22:48:00+05:30</published><updated>2020-10-14T22:48:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-10-14:/articles/2020/mac-system-setup.html</id><summary type="html">&lt;p&gt;This was also published on &lt;a href="https://github.com/Aniruddha-Deb/SystemSetup"&gt;GitHub&lt;/a&gt;. 
+The GitHub version is more up-to-date, and I won't be updating this one as 
+frequently.&lt;/p&gt;
+&lt;h1&gt;System Setup Log&lt;/h1&gt;
+&lt;p&gt;My MacBook battery started to swell around a year back, and the machine 
+became unusable 6 months ago and was put into temporary hibernation. Post my …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This was also published on &lt;a href="https://github.com/Aniruddha-Deb/SystemSetup"&gt;GitHub&lt;/a&gt;. 
+The GitHub version is more up-to-date, and I won't be updating this one as 
+frequently.&lt;/p&gt;
+&lt;h1&gt;System Setup Log&lt;/h1&gt;
+&lt;p&gt;My MacBook battery started to swell around a year back, and the machine 
+became unusable 6 months ago and was put into temporary hibernation. Post my 
+exams, I did a battery replacement and the computer was out of the hospital 
+today, with a fresh operating system and a formatted disk. The last time I set 
+this machine up, I did a halfhearted job of logging the process. This time, I've
+done it properly :)&lt;/p&gt;
+&lt;h2&gt;The Procedure&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;User Settings&lt;ul&gt;
+&lt;li&gt;System came with my home directory set as 'aniruddadeb' and User name as 
+  'Anirudda Deb'&lt;/li&gt;
+&lt;li&gt;Create a new admin account, log out of current account and into admin account&lt;/li&gt;
+&lt;li&gt;In admin account, rename home directory to 'Sensei' (or whatever name), 
+  and then in Preferences-&amp;gt;Users and Groups, unlock and ctrl-click on your 
+  account for 'advanced settings'&lt;/li&gt;
+&lt;li&gt;In advanced settings, change the name to your name and name of the home 
+  directory to the name of your home directory. Make sure user name is same 
+  as that of home directory.&lt;/li&gt;
+&lt;li&gt;Restart, log back in and delete admin account.&lt;/li&gt;
+&lt;li&gt;Set the computer HostName, LocalHostName and ComputerName to MacBook-Pro:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo scutil --set HostName MacBook-Pro  
+sudo scutil --set LocalHostName MacBook-Pro  
+sudo scutil --set ComputerName MacBook-Pro  
+dscacheutil -flushcache  
+&amp;lt;restart&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;System Prefs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resolution of 1440x900 (Displays)&lt;/li&gt;
+&lt;li&gt;Uncheck natural scroll direction (Trackpad-&amp;gt;Scroll and Zoom)&lt;/li&gt;
+&lt;li&gt;Use F1, F2 as function keys (Keyboard)&lt;/li&gt;
+&lt;li&gt;Don't show input menu in menu bar (Keyboard-&amp;gt;Input Sources)&lt;/li&gt;
+&lt;li&gt;Dark Mode&lt;br&gt;
+&lt;img alt="dark side meme" src="res/darkside.jpeg"&gt;&lt;/li&gt;
+&lt;li&gt;Change computer name to MacBook-Pro (Sharing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Chrome:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;li&gt;Sign in and sync stuff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sublime Text&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Content&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transfer personal files from HDD&lt;/li&gt;
+&lt;li&gt;Screen background to &lt;code&gt;hackerfx_img.jpg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Things 3&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install from Mac App Store&lt;/li&gt;
+&lt;li&gt;Sign in and sync tasks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm 2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By now, the system should be looking pretty good. Catalina uses &lt;code&gt;zsh&lt;/code&gt; rather than 
+bash, and clang rather than gcc, so porting some stuff over will be tricky, but 
+we'll get to that in a minute.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&lt;ul&gt;
+&lt;li&gt;download mac installer from &lt;code&gt;git-scm.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ctrl-click and click 'open' (security won't let you click to open)&lt;/li&gt;
+&lt;li&gt;follow installer guidelines
+? Will xcode command line tools eat this up?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python&lt;ul&gt;
+&lt;li&gt;Download latest stable installer from web&lt;/li&gt;
+&lt;li&gt;Double click and install &lt;br&gt;
+! Don't do this because this does not install python properly; you have to 
+  hack around it and do a ton of exports and stuff. I had to uninstall
+  python after this, using instructions from &lt;a href="https://stackoverflow.com/questions/3819449/how-to-uninstall-python-2-7-on-a-mac-os-x-10-6-4/3819829#381982"&gt;here&lt;/a&gt;9
+  and &lt;a href="https://superuser.com/questions/276840/uninstalling-python-3-on-a-mac"&gt;here&lt;/a&gt;. 
+  Best way to install is to use &lt;code&gt;brew&lt;/code&gt; (this keeps the python updated) and 
+  &lt;code&gt;pyenv&lt;/code&gt;, so first install &lt;code&gt;brew&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;/DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;XCode Command Line Tools&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GCC, &lt;code&gt;clang&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt; etc etc&lt;/li&gt;
+&lt;li&gt;Download from developer.apple.com, mount, use .pkg installer&lt;/li&gt;
+&lt;li&gt;It's a 400 MB download and takes 2.54 GB of space on the system.&lt;/li&gt;
+&lt;li&gt;This doesn't eat up git (&lt;code&gt;git --version&lt;/code&gt; still gives git 2.27, so yay!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Needed for practically everything :P&lt;/li&gt;
+&lt;li&gt;visit brew.sh and copy-paste the installation command&lt;/li&gt;
+&lt;li&gt;Again, a huge download here (350 MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;pyenv&lt;/code&gt; to download and install python, as shown in the article https://opensource.com/article/19/5/python-3-default-mac&lt;/li&gt;
+&lt;li&gt;In short, do the following:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install pyenv
+pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# replace with latest python version&lt;/span&gt;
+pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# set 3.9.0 as global version&lt;/span&gt;
+pyenv version &lt;span class="c1"&gt;# double check version&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s1"&gt;&amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n  eval &amp;quot;$(pyenv init -)&amp;quot;\nfi&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.zshrc &lt;span class="c1"&gt;# voodoo magic that allows pyenv to work&lt;/span&gt;
+&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and now do &lt;code&gt;python -V&lt;/code&gt; and &lt;code&gt;pip -V&lt;/code&gt; to verify that python 3.9.0 is loaded&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vim&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy &lt;code&gt;.vim&lt;/code&gt; and &lt;code&gt;.vimrc&lt;/code&gt; from previous system&lt;/li&gt;
+&lt;li&gt;check if clipboard copy/paste is enabled: &lt;code&gt;vim --version | grep clipboard&lt;/code&gt;, 
+  a + sign appears if clipboard is enabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ZSH&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;.zprofile&lt;/code&gt; and add &lt;code&gt;export CLICOLOR=1&lt;/code&gt; for coloured output from commands&lt;/li&gt;
+&lt;li&gt;add prompt tweaks &lt;code&gt;PS1='%n@%m %F{blue}%~%f %% '&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tweak profile; first, create a new profile&lt;/li&gt;
+&lt;li&gt;Change background color to &lt;code&gt;333333&lt;/code&gt;, foreground to &lt;code&gt;dddddd&lt;/code&gt; and other colors
+  to pastel colours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mail&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log in to google&lt;/li&gt;
+&lt;li&gt;Configure signatures, calendars, mail folders etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Projects&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is the meaty part. Start with the blog:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone --select-branch --branch &lt;span class="nb"&gt;source&lt;/span&gt; https://github.com/Aniruddha-Deb/aniruddha-deb.github.io 
+mv aniruddha-deb.github.io blog
+&lt;span class="nb"&gt;cd&lt;/span&gt; blog
+virtualenv venv
+&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;venv&amp;quot;&lt;/span&gt; &amp;gt; .gitignore
+pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;then whip up this article. I ran into a small hiccup while using &lt;code&gt;make html&lt;/code&gt;: 
+the version of Pelican that &lt;code&gt;pip&lt;/code&gt; installed was 4.5.0, and that broke with the 
+old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
+want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
+the files. Takeaway is use &lt;code&gt;make html DEBUG=1&lt;/code&gt; for debugger output. Do a make serve&lt;code&gt;to check out formatting, after which do&lt;/code&gt;make github` to push to github pages, which is what
+you're reading now (this article has been made from the mac :)&lt;/p&gt;
+&lt;p&gt;for further updates, refer to the repository linked above.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>A Good JEE Main (September) problem</title><link href="https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html" rel="alternate"></link><published>2020-09-11T09:01:00+05:30</published><updated>2020-09-11T09:01:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</id><summary type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
 $$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
@@ -334,7 +535,6 @@ $A_2$ is also now doable. Add $A_1$ and $A_2$ to get $A$ and substitute back til
 &lt;p&gt;Here's an example of some embedded HTML: (using the &lt;a href="chess.com"&gt;chess.com&lt;/a&gt; 
 chess player to show one of my games)&lt;/p&gt;
 &lt;iframe id="6878876" allowtransparency="true" frameborder="0" style="width:760px;height:480px;margin:auto;display:block;border:none;" src="//www.chess.com/emboard?id=6878876"&gt;&lt;/iframe&gt;
-
 &lt;script type="text/javascript"&gt;window.addEventListener("message",e=&gt;{e['data']&amp;&amp;"6878876"===e['data']['id']&amp;&amp;document.getElementById(\`${e['data']['id']}\`)&amp;&amp;(document.getElementById(\`${e['data']['id']}\`).style.height=\`${e['data']['frameHeight']+60}px\`)});&lt;/script&gt;
 
 &lt;p&gt;Here's some code to generate a minefield (Taken from the &lt;a href="https://github.com/Aniruddha-Deb/Mines/blob/master/src/com/sensei/mines/core/MinefieldGenerator.java"&gt;Mines&lt;/a&gt; repo):&lt;/p&gt;
@@ -366,7 +566,6 @@ chess player to show one of my games)&lt;/p&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Everything looks in place! Looking forward to writing some great content here.
 Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</content><category term="Posts"></category></entry><entry><title>ISC 2020 Analysis: An application of Data Science and Statistics</title><link href="https://aniruddha-deb.github.io/articles/2020/isc-2020-analysis.html" rel="alternate"></link><published>2020-07-11T16:30:00+05:30</published><updated>2020-07-11T16:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-07-11:/articles/2020/isc-2020-analysis.html</id><summary type="html">&lt;p&gt;The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I'll also weave a story with the data and point out things that could …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I'll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.&lt;/p&gt;
