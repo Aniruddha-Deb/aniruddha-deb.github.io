@@ -2,7 +2,7 @@ Title: About
 
 *Programmer, Hardware Hacker, Quizzer and Student*
 
-I generally hang out on GitHub or StackExchange.
+Accepted in the Mathematics and Computing dual degree programme at IIT Delhi
 
 <script type="text/javascript" src="https://github-profile.com/dist/gh-profile-card.min.js"></script>
 <center><div id="github-card" 

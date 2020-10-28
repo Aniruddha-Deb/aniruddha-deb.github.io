@@ -122,7 +122,7 @@ and now do `python -V` and `pip -V` to verify that python 3.9.0 is loaded
 
 - ZSH
 	- edit `.zprofile` and add `export CLICOLOR=1` for coloured output from commands
-	- add prompt tweaks `PS1='%n@%m %F{blue}%~%f %% '`
+	- add prompt tweaks `PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '`
 
 - iTerm2
 	- Tweak profile; first, create a new profile
@@ -149,7 +149,7 @@ then whip up this article. I ran into a small hiccup while using `make html`:
 the version of Pelican that `pip` installed was 4.5.0, and that broke with the 
 old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
 want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
-the files. Takeaway is use `make html DEBUG=1` for debugger output. Do a make serve`
+the files. Takeaway is use `make html DEBUG=1` for debugger output. Do a `make serve`
 to check out formatting, after which do `make github` to push to github pages, which is what
 you're reading now (this article has been made from the mac :)
 

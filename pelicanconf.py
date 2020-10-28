@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Aniruddha Deb'
 EMAIL_ID = 'aniruddha.deb.2002@gmail.com'
 SITENAME = 'Aniruddha Deb'
-SITEURL = 'https://aniruddha-deb.github.io'
+SITEURL = 'http://www.aniruddhadeb.com'
 THEME = 'themes/Flex'
 SITELOGO = '/extras/sitelogo.png'
 
