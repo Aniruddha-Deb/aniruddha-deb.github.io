@@ -18,7 +18,8 @@ ARTICLE_SAVE_AS = 'articles/{date:%Y}/{slug}.html'
 ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
 
 EXTRA_PATH_METADATA = {
-	'extras/favicon/favicon.ico': {'path': 'favicon.ico'}
+	'extras/favicon/favicon.ico': {'path': 'favicon.ico'},
+	'extras/CNAME': {'path': 'CNAME'}
 }
 
 TIMEZONE = 'Asia/Kolkata'
