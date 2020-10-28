@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Wed, 28 Oct 2020 20:39:00 +0530</lastBuildDate><item><title>IIT Department Finder Launch (plus personal website domain)</title><link>https://aniruddha-deb.github.io/articles/2020/iit-dep-finder.html</link><description>&lt;p&gt;For IIT admissions, I had created a small command line tool called &lt;code&gt;iit_dep_finder.py&lt;/code&gt; 
+to check the departments I would get, given a particular rank. Once the round 
+one allocation results came out, I decided to create a web version, for others 
+to use as well. This article chronicles the steps I took, and while I did get 
+the department finder up and running, I also did a lot of other stuff in the 
+process (including changing the domain name, in case you haven't noticed :). 
+It's a long and uncensored article, so be warned.&lt;/p&gt;
+&lt;h2&gt;Index:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#flask-app-development"&gt;Flask App Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nginx-and-gunicorn-local-setup"&gt;NGINX and GUnicorn local setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#lightsail-vps-setup-and-deployment"&gt;Lightsail (VPS) setup and deployment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#domain-acquisition-and-setup"&gt;Domain acquisition and Setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#domain-routing-and-site-setup"&gt;Domain routing and site setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#enabling-ssl-and-security"&gt;Enabling SSL and Security&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Flask App Development&lt;/h2&gt;
+&lt;p&gt;Developing the Flask app was probably the most rewarding part of the process, 
+considering that the rest of it was DevOps, which is not exactly my cup of 
+tea. I started out by downloading the data from 
+&lt;a href="https://josaa.nic.in/Result/Result/currentorcr.aspx"&gt;https://josaa.nic.in/Result/Result/currentorcr.aspx&lt;/a&gt;
+as a set of HTML files, to retain their tabular format. The data was then 
+scraped with BeautifulSoup and LXML into a CSV intermediate using the following
+snippet of code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;main_table&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;soup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;table&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;border_table_at&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="n"&gt;table_rows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;main_table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;table_rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;cells&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;td&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;cell&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cell&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Female-only (including Supernumerary)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; (including Supernumerary)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The CSV file was then cleaned up a bit manually, such as removing commas at the
+end of the line and changing a few typos and values. After this, I created the 
+SQLite database and added a table, whose schema was as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;EXISTS&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;orcr_2020_r3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;institute&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;department&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;quota&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;category&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;gender&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;OPR&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;OPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;CPR&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;CPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This was enough to store the required data. Notice the &lt;code&gt;OPR\_prep&lt;/code&gt; and &lt;code&gt;CPR\_prep&lt;/code&gt; 
+fields, which are there for &lt;a href="https://www.iitism.ac.in/assets/pdfs/rules/pcr.pdf"&gt;Preparatory Course ranklists&lt;/a&gt;.
+The ranks for these ranklists have a 'P' appended to the number. Since we want 
+to store the number as an integer for sorting purposes, the 'P' needs to be 
+abstracted into this boolean-esque field. &lt;/p&gt;
+&lt;h2&gt;NGINX and GUnicorn local setup&lt;/h2&gt;
+&lt;h2&gt;Lightsail (VPS) Setup and Deployment&lt;/h2&gt;
+&lt;h2&gt;Domain Acquisition and Setup&lt;/h2&gt;
+&lt;h2&gt;Domain routing and Site Setup&lt;/h2&gt;
+&lt;h2&gt;Enabling SSL and Security&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 28 Oct 2020 20:39:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-28:/articles/2020/iit-dep-finder.html</guid><category>Programming</category><category>Programming</category><category>Python</category><category>Web Development</category></item><item><title>To IIT Delhi and beyond</title><link>https://aniruddha-deb.github.io/articles/2020/iit-delhi-mnc.html</link><description>&lt;p&gt;I think an update on the JEE Situation has been due for a long time, and I'll 
+try to compress the past few months into this single post. Long story
+short, my JEE(M) was held on 2nd September, in the evening shift. After giving 
+my best and getting a 260/300, I was disappointed (putting it mildly) to see 
+the CRL of 1861 on my screen. AITS JEE(A) Mocks followed, and after giving three 
+of them, I had to give my BITSAT. I did not do any preparation, went and gave 
+the exam and got a 422/450 (including bonus marks). This was enough for BITSP 
+CSE, so my safety net was intact. &lt;/p&gt;
+&lt;p&gt;Another AITS Mock followed, which I pretty much aced (got an AIR of 28ish) and 
+I was feeling pretty pumped up for the final exam. I chilled out post the mock, 
+hanging out on StackExchage and revising the odd inorganic formula or two. The 
+date of the exam finally came, and the papers were no easier than the AITS 
+test I gave a week back (lol for those who say AITS are hard). I left 4 questions 
+in the first paper, 6 in the second and did 2-3 silly mistakes overall. &lt;/p&gt;
+&lt;p&gt;Over the next week, I checked my paper out, computed the score from the answer 
+key and saw that I was getting 245ish. I had taken a ton of negatives in Chem 
+paper 2 and had also taken Giga as $10^6$ instead of $10^9$. I was expecting a 
+rank in the 250-400 bracket, with 500 being an absolute worst case result. 
+Best case department was Bombay EE, whereas worst case was Madras EE. &lt;/p&gt;
+&lt;p&gt;Result day finally rolled around and I got a CRL rank of &lt;strong&gt;323&lt;/strong&gt; with 249 marks 
+(258 positive marks). I had fallen in a little pocket, just outside of CSE but 
+ahead of EE. Following an intensive search of the available departments and 
+programmes, I realized that EE would be an absolute bore. I liked EE and had 
+experience in it, but looking at the course structure and hearing about the 
+profs, I stayed back from EE. KGP CSE closed at 30 ranks above me, so tough 
+luck there. Maths and Computing at Delhi emerged as the frontrunner here, with
+a CR of 314 last year. The Dual Degree programme was more optimistic for me, 
+with a CR of 373. At this point, I was in a massive conundrum: a Dual Degree was
+something that I was not considering from the start; is doing a Dual worth it? 
+There were positives and negatives; positives being that I get an extra year 
+to explore stuff and that I can skip a year on an MS and directly do a PhD if 
+I want to. Negatives were that the value of an MTech from an IIT is very low
+(IIT Lingo for MTech's is 'Matkas' (pots)). 
+If I was considering Duals, then IITB EE Dual also entered the fray, because 
+of it's CR of 500ish something, and IITB had been a target of sorts during my 
+preparation, so an emotional factor was also present.&lt;/p&gt;
+&lt;p&gt;In the end, I decided to screw emotion; taking EE dual with hopes of a Department 
+change was not a good decision, and IIT Delhi Maths and Computing won over. 
+I would get the 4 year degree if I was lucky or I
+would take the dual degree, without any regrets. I got the dual in both my 
+mock seat allocations and also in the first round of seat allocation. Looking 
+at the closing ranks across all 7 rounds from last year, I realized that there
+is no change in the top 100 and very little (couple seats) in the top 500, so
+this is it. The fat lady has sung, and I'll be packing my bags for Delhi whenever 
+the pandemic blows over.&lt;/p&gt;
+&lt;p&gt;I thought about offering some pearls of advice to others by penning down the 
+story of the past two years; I wrote a draft, but it was too lengthy, too 
+egocentric and too offensive. Unfortunately, I'm not very good at talking or 
+writing about myself, and the story would piss off more people than I can count. 
+I would like to thank those who have been on this journey with me, starting with
+my Parents: suffice it to say that I wouldn't have made it this far in life without 
+them, and any attempts to thank them in words will not do their efforts justice.
+Most of my time was spent with my Textbooks (mostly Cengage series and couple of 
+Sri Balaji texts), so kudos to the authors of those. My Notebooks were amazing 
+(I filled around 60-70 of those, and each was ~120 pages) and bore my frustrated 
+scribbles without complaint when I couldn't solve problems. Thank you as well 
+to all nonliving things and articles I used in this journey. &lt;/p&gt;
+&lt;p&gt;I did not take a classroom coaching course, so no teachers to be thanked there. 
+I would like to thank FIITJEE for AITS: the hardest test series 
+out there. The problems from here were great (note that not all of them were 
+original; quite a few were lifted from IPhO, IChO, INPhO, IMO, HMMT etc) and 
+truly tested my abilities. Shout out to the community over at Physics, Chemistry 
+and Math StackExchange for answering most of my stupid questions, and some 
+not-so-stupid ones. Another mention for my school, for indirectly helping me 
+out with the ISC curriculum. Thanks also to all the seniors whom I reached out 
+to following the JEE results for talking time out to connect with me and help
+me out: you guys are the read MVP's! Finally, thanks to anybody I missed out on 
+here and who has been a part of this journey: this includes my friends, family
+members and anybody who directly or indirectly guided me. Thank you!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 19 Oct 2020 14:23:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-19:/articles/2020/iit-delhi-mnc.html</guid><category>JEE</category><category>JEE</category></item><item><title>Setting up MathNotes - an online math repository</title><link>https://aniruddha-deb.github.io/articles/2020/mathnotes-launch.md.html</link><description>&lt;p&gt;Just after 10th and as I was beginning my JEE Preparation, I felt the need for 
+an extensible note-taking apparatus. Online notes would be too much trouble 
+and would keep me hooked to the computer. Notebooks were also difficult, as 
+I wanted my notes to be extensible; adding pages in the middle of a notebook 
+is extremely difficult. I finally settled on using Binders; you can add/remove
+pages quite easily and they're decently sized to accommodate all the notes you
+could ever need.&lt;/p&gt;
+&lt;p&gt;I took out two old binders; they had ~120 pages each and used one for math and 
+one for physics. Soon enough, I had to get more pages and by the end of my 
+JEE Journey, the binders had somewhere around 200 pages, each filled with notes&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Binders" src="res/mathnotes/binders.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;Left one is maths, right one is physics&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="monotonicity" src="res/mathnotes/monotonicity.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PnC" src="res/mathnotes/PnC.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MI" src="res/mathnotes/MI.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;These tend to follow a very hierarchical format, and also tend to be extremely 
+diverse with symbols and diagrams (I did all the notes in pencil, so that if 
+any errors arise, I can change the content). &lt;/p&gt;
+&lt;p&gt;I now needed a note-taking repository that had the same level of extensibility 
+and one that I could use through college life. The computer was not a limitation 
+now, and I was also decently skilled in LaTeX by now. I decided to make an 
+online website using Sphinx and Read the docs, for keeping my math notes. &lt;/p&gt;
+&lt;p&gt;I followed the great guide by Ryan Dale on &lt;a href="https://daler.github.io/sphinxdoc-test/includeme.html"&gt;settting up sphinx on GitHub Pages&lt;/a&gt;. 
+I took a few liberties with the folder structure, but now setting up the repo
+for contributors is as simple as cloning the repo and running the &lt;code&gt;install.sh&lt;/code&gt; 
+script in it. 
+The website is now live at &lt;a href="https://aniruddha-deb.github.io/MathNotes"&gt;https://aniruddha-deb.github.io/MathNotes&lt;/a&gt;, 
+and I will be porting all my math and physics content over, and also creating 
+notes in the future, for the math courses that I take.&lt;/p&gt;
+&lt;p&gt;This means that this blog would feature fewer 'Math Notes' sections that I 
+spoke about previously (link &lt;a href="https://aniruddha-deb.github.io/articles/2020/math-notes-1.html"&gt;here&lt;/a&gt;).
+The math content will also go down, but I will continue to write about math 
+stuff that made me go 'wow' (there are a few of those coming in the future, 
+so stay tuned)&lt;/p&gt;
+&lt;p&gt;If you would like to contribute to the math notes repository, feel free to 
+reach out to me on my eMail, by clicking the mail icon in the sidebar.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 16 Oct 2020 12:54:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-16:/articles/2020/mathnotes-launch.md.html</guid><category>Mathematics</category><category>Mathematics</category><category>Programming</category></item><item><title>Setting up my Mac (again)</title><link>https://aniruddha-deb.github.io/articles/2020/mac-system-setup.html</link><description>&lt;p&gt;This was also published on &lt;a href="https://github.com/Aniruddha-Deb/SystemSetup"&gt;GitHub&lt;/a&gt;. 
+The GitHub version is more up-to-date, and I won't be updating this one as 
+frequently.&lt;/p&gt;
+&lt;h1&gt;System Setup Log&lt;/h1&gt;
+&lt;p&gt;My MacBook battery started to swell around a year back, and the machine 
+became unusable 6 months ago and was put into temporary hibernation. Post my 
+exams, I did a battery replacement and the computer was out of the hospital 
+today, with a fresh operating system and a formatted disk. The last time I set 
+this machine up, I did a halfhearted job of logging the process. This time, I've
+done it properly :)&lt;/p&gt;
+&lt;h2&gt;The Procedure&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;User Settings&lt;ul&gt;
+&lt;li&gt;System came with my home directory set as 'aniruddadeb' and User name as 
+  'Anirudda Deb'&lt;/li&gt;
+&lt;li&gt;Create a new admin account, log out of current account and into admin account&lt;/li&gt;
+&lt;li&gt;In admin account, rename home directory to 'Sensei' (or whatever name), 
+  and then in Preferences-&amp;gt;Users and Groups, unlock and ctrl-click on your 
+  account for 'advanced settings'&lt;/li&gt;
+&lt;li&gt;In advanced settings, change the name to your name and name of the home 
+  directory to the name of your home directory. Make sure user name is same 
+  as that of home directory.&lt;/li&gt;
+&lt;li&gt;Restart, log back in and delete admin account.&lt;/li&gt;
+&lt;li&gt;Set the computer HostName, LocalHostName and ComputerName to MacBook-Pro:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo scutil --set HostName MacBook-Pro  
+sudo scutil --set LocalHostName MacBook-Pro  
+sudo scutil --set ComputerName MacBook-Pro  
+dscacheutil -flushcache  
+&amp;lt;restart&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;System Prefs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resolution of 1440x900 (Displays)&lt;/li&gt;
+&lt;li&gt;Uncheck natural scroll direction (Trackpad-&amp;gt;Scroll and Zoom)&lt;/li&gt;
+&lt;li&gt;Use F1, F2 as function keys (Keyboard)&lt;/li&gt;
+&lt;li&gt;Don't show input menu in menu bar (Keyboard-&amp;gt;Input Sources)&lt;/li&gt;
+&lt;li&gt;Dark Mode&lt;br&gt;
+&lt;img alt="dark side meme" src="res/darkside.jpeg"&gt;&lt;/li&gt;
+&lt;li&gt;Change computer name to MacBook-Pro (Sharing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Chrome:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;li&gt;Sign in and sync stuff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sublime Text&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Content&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transfer personal files from HDD&lt;/li&gt;
+&lt;li&gt;Screen background to &lt;code&gt;hackerfx_img.jpg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Things 3&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install from Mac App Store&lt;/li&gt;
+&lt;li&gt;Sign in and sync tasks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm 2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By now, the system should be looking pretty good. Catalina uses &lt;code&gt;zsh&lt;/code&gt; rather than 
+bash, and clang rather than gcc, so porting some stuff over will be tricky, but 
+we'll get to that in a minute.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&lt;ul&gt;
+&lt;li&gt;download mac installer from &lt;code&gt;git-scm.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ctrl-click and click 'open' (security won't let you click to open)&lt;/li&gt;
+&lt;li&gt;follow installer guidelines
+? Will xcode command line tools eat this up?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python&lt;ul&gt;
+&lt;li&gt;Download latest stable installer from web&lt;/li&gt;
+&lt;li&gt;Double click and install &lt;br&gt;
+! Don't do this because this does not install python properly; you have to 
+  hack around it and do a ton of exports and stuff. I had to uninstall
+  python after this, using instructions from &lt;a href="https://stackoverflow.com/questions/3819449/how-to-uninstall-python-2-7-on-a-mac-os-x-10-6-4/3819829#381982"&gt;here&lt;/a&gt;9
+  and &lt;a href="https://superuser.com/questions/276840/uninstalling-python-3-on-a-mac"&gt;here&lt;/a&gt;. 
+  Best way to install is to use &lt;code&gt;brew&lt;/code&gt; (this keeps the python updated) and 
+  &lt;code&gt;pyenv&lt;/code&gt;, so first install &lt;code&gt;brew&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;/DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;XCode Command Line Tools&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GCC, &lt;code&gt;clang&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt; etc etc&lt;/li&gt;
+&lt;li&gt;Download from developer.apple.com, mount, use .pkg installer&lt;/li&gt;
+&lt;li&gt;It's a 400 MB download and takes 2.54 GB of space on the system.&lt;/li&gt;
+&lt;li&gt;This doesn't eat up git (&lt;code&gt;git --version&lt;/code&gt; still gives git 2.27, so yay!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Needed for practically everything :P&lt;/li&gt;
+&lt;li&gt;visit brew.sh and copy-paste the installation command&lt;/li&gt;
+&lt;li&gt;Again, a huge download here (350 MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;pyenv&lt;/code&gt; to download and install python, as shown in the article https://opensource.com/article/19/5/python-3-default-mac&lt;/li&gt;
+&lt;li&gt;In short, do the following:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install pyenv
+pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# replace with latest python version&lt;/span&gt;
+pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# set 3.9.0 as global version&lt;/span&gt;
+pyenv version &lt;span class="c1"&gt;# double check version&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s1"&gt;&amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n  eval &amp;quot;$(pyenv init -)&amp;quot;\nfi&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.zshrc &lt;span class="c1"&gt;# voodoo magic that allows pyenv to work&lt;/span&gt;
+&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and now do &lt;code&gt;python -V&lt;/code&gt; and &lt;code&gt;pip -V&lt;/code&gt; to verify that python 3.9.0 is loaded&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vim&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy &lt;code&gt;.vim&lt;/code&gt; and &lt;code&gt;.vimrc&lt;/code&gt; from previous system&lt;/li&gt;
+&lt;li&gt;check if clipboard copy/paste is enabled: &lt;code&gt;vim --version | grep clipboard&lt;/code&gt;, 
+  a + sign appears if clipboard is enabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ZSH&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;.zprofile&lt;/code&gt; and add &lt;code&gt;export CLICOLOR=1&lt;/code&gt; for coloured output from commands&lt;/li&gt;
+&lt;li&gt;add prompt tweaks &lt;code&gt;PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tweak profile; first, create a new profile&lt;/li&gt;
+&lt;li&gt;Change background color to &lt;code&gt;333333&lt;/code&gt;, foreground to &lt;code&gt;dddddd&lt;/code&gt; and other colors
+  to pastel colours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mail&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log in to google&lt;/li&gt;
+&lt;li&gt;Configure signatures, calendars, mail folders etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Projects&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is the meaty part. Start with the blog:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone --select-branch --branch &lt;span class="nb"&gt;source&lt;/span&gt; https://github.com/Aniruddha-Deb/aniruddha-deb.github.io 
+mv aniruddha-deb.github.io blog
+&lt;span class="nb"&gt;cd&lt;/span&gt; blog
+virtualenv venv
+&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;venv&amp;quot;&lt;/span&gt; &amp;gt; .gitignore
+pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;then whip up this article. I ran into a small hiccup while using &lt;code&gt;make html&lt;/code&gt;: 
+the version of Pelican that &lt;code&gt;pip&lt;/code&gt; installed was 4.5.0, and that broke with the 
+old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
+want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
+the files. Takeaway is use &lt;code&gt;make html DEBUG=1&lt;/code&gt; for debugger output. Do a &lt;code&gt;make serve&lt;/code&gt;
+to check out formatting, after which do &lt;code&gt;make github&lt;/code&gt; to push to github pages, which is what
+you're reading now (this article has been made from the mac :)&lt;/p&gt;
+&lt;p&gt;for further updates, refer to the repository linked above.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 14 Oct 2020 22:48:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-14:/articles/2020/mac-system-setup.html</guid><category>Programming</category><category>Programming</category></item><item><title>A Good JEE Main (September) problem</title><link>https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html</link><description>&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
+$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
+then the set A:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;is a singleton&lt;/li&gt;
+&lt;li&gt;is an empty set&lt;/li&gt;
+&lt;li&gt;contains exactly two elements&lt;/li&gt;
+&lt;li&gt;contains more than two elements&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a great problem, one that should have featured in advanced rather than 
+main. It involves matrices and 3D Geometry and fits in to linear algebra more 
+than any other topic.&lt;/p&gt;
+&lt;p&gt;To solve this, notice that $A$ is a set of column vectors which lie on the intersection
+of the three planes determined by $PX = 0$. The three planes are:
+$$\begin{align}
+x + 2y + z &amp;amp;= 0 \\
+-2x + 3y - 4z &amp;amp;= 0 \\
+x + 9y - z &amp;amp;= 0 \\
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;These three planes have a trivial solution $x = y = z = 0$. Let's see if they
+have non-trivial solutions by obtaining $det(P)$:
+$$\begin{align}
+|P| &amp;amp;= \left| \begin{array}{l l l}1&amp;amp;2&amp;amp;1\\ -2&amp;amp;3&amp;amp;-4\\ 1&amp;amp;9&amp;amp;1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\
+|P| &amp;amp;= 0 \
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;Thus, they have non-trivial solutions. All the planes are concurrent and form a 
+line that passes through origin. Thus, if $S = \{ X = (\lambda_1x,\  \lambda_2y,\  \lambda_3z)^t : 
+\lambda_1,\  \lambda_2,\  \lambda_3 \in R \}$ is the line formed by the planes, 
+then S has only two elements for which the magnitude of $X$ is 1. These two elements
+are the only elements of $A$, thus $A$ contains exactly two elements. $\blacksquare$&lt;/p&gt;
+&lt;p&gt;A great problem, that required good thinking and visualization skills. The JEE
+was a toss-up between great problems like this and stupid ones like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you spill a chemical toilet cleaning liquid on your hand, your first aid 
+would be : &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;vinegar&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NH3}$&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NaHCO3}$&lt;/li&gt;
+&lt;li&gt;aqueous $\ce{NaOH}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here's to hoping the JEE advanced has better chemistry problems :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 11 Sep 2020 09:01:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</guid><category>Mathematics</category><category>Mathematics</category><category>JEE</category></item><item><title>Math Notes: Lagrange interpolation</title><link>https://aniruddha-deb.github.io/articles/2020/math-notes-1.html</link><description>&lt;p&gt;This is a small set of posts that come into the category of "notes": 
+self-explanations of concepts that I have recently picked up and found 
+interesting.&lt;/p&gt;
+&lt;h2&gt;Lagrange Interpolation&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Lagrange_multiplier"&gt;Lagrange Interpolation&lt;/a&gt; is a concept that allows us to find a polynomial of 
+least degree passing through a given set of points. Specifically:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If $S = {(x_i, y_i) : x_i, y_i \in R, 1 \lt i \le n}$, then the polynomial
+of least degree passing through all the points in $S$ is given by
+$$P(x) = \sum_{i=1}^n L_i(x) \cdot y_i$$
+where $$L_i(x) = \frac{(x-x_1)(x-x_2)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)}
+{(x_i-x_1)(x_i-x_2)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)}$$
+or simply,
+$$P(x) = \sum_{i=1}^n \frac{\prod_{r \ne i}(x-x_r)}{\prod_{r \ne i}{(x_i-x_r)}} \cdot y_i$$
+note that the degree of polynomial $P &amp;lt; n$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here's an example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If $P(x)$ is a function such that $P(-1) = -2,  P(0) = 2, P(1) = 0, P(2) = 2$, 
+then find $P(x)$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So we have $S = {(-1,-2), (0,2), (1,0), (2,2)}$. Using lagrange interpolation 
+gives us $P(x)$ as:
+$$\begin{gather}
+P(x) = \frac{(x-0)(x-1)(x-2)}{(-1-0)(-1-1)(-1-2)} \cdot -2 + \\
+\frac{(x+1)(x-1)(x-2)}{(0+1)(0-1)(0-2)} \cdot 2 + \\
+\frac{(x+1)(x-0)(x-2)}{(1+1)(1-0)(1-2)} \cdot 0 + \\
+\frac{(x+1)(x-0)(x-1)}{(2+1)(2-0)(2-1)} \cdot -2
+\end{gather}$$
+or, once simplified,
+$$P(x) = x^3 - 3x + 2$$&lt;/p&gt;
+&lt;p&gt;This technique is also useful for other stuff, such as finding patterns in 
+hard-to-decipher sequences:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Find the nth term of the sequence $$5, 65, 325, 1025, 2501 ...$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Letting $T(1) = 5, T(2) = 65$ and so on, lagrange interpolation gives us:
+$$\begin{gather}
+T(n) = \frac{5(x-2)(x-3)(x-4)(x-5)}{(-1)(-2)(-3)(-4)} + \\ 
+\frac{65(x-1)(x-3)(x-4)(x-5)}{(1)(-1)(-2)(-3)} + \\
+\frac{325(x-1)(x-2)(x-4)(x-5)}{(2)(1)(-1)(-2)} + \\
+\frac{1025(x-1)(x-2)(x-3)(x-5)}{(3)(2)(1)(-1)} + \\
+\frac{2501(x-1)(x-2)(x-3)(x-4)}{(4)(3)(2)(1)}
+\end{gather}$$
+simplified:
+$$T(n) = 4n^4 + 1$$&lt;/p&gt;
+&lt;p&gt;Of course, there are some problems that cannot be solved by this technique, 
+namely problems where it is specified that the polynomial is of a higher order
+than the number of points it passes through:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let $P(x)=x^4+ax^3+bx^2+cx+d$. If $P(1) = 1, P(2)=8, P(3)=27, P(4)=64$, then 
+  the value of $P(5)$ is?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The lagrange interpolated polynomial for the above values is $P(x) = x^3$. However, 
+this gives the wrong answer of $P(5) = 145$. The correct answer is $P(5) = 149$, 
+because we have been asked to fit a polynomial of higher order in this equation.&lt;/p&gt;
+&lt;p&gt;Also, this technique should only be used as a last resort for pattern finding. 
+This is extremely computation heavy and is more of a bruteforce algorithm, that 
+is better suited to computers rather than manual calculation. Most math softwares
+have a lagrange interpolation function in them. Geogebra's is called &lt;code&gt;Polynomial()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As a bonus, here's the code I used to generate the above function:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+&lt;span class="n"&gt;pts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])])&lt;/span&gt;
+
+&lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;P(x) = &amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;continue&lt;/span&gt;
+        &lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(x+&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(x-&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;frac{{&lt;/span&gt;&lt;span class="si"&gt;{2}{0}&lt;/span&gt;&lt;span class="s2"&gt;}}{{&lt;/span&gt;&lt;span class="si"&gt;{1}&lt;/span&gt;&lt;span class="s2"&gt;}} + &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 14 Aug 2020 17:37:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-08-14:/articles/2020/math-notes-1.html</guid><category>Mathematics</category><category>Mathematics</category><category>Math Notes</category></item><item><title>Is the shortest solution to a problem the best?</title><link>https://aniruddha-deb.github.io/articles/2020/shortest-solution-best-or-not.html</link><description>&lt;p&gt;My old man always used to say that there are two ways to solve a problem: there's 
+the horse way, and there's the donkey way. The donkey way involves tedious 
+calculations, whereas the horse way 'cuts' through the problem. Take this problem
+as an example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For each positive integer $n$, let $$y_n = ((n+1)(n+2)...(n+n))^\frac1n$$ for
+$x \in \mathbb{R}$. Let $[x]$ be the greatest integer less than or equal to $x$. 
+If $\lim_{n \to \infty} y_n = L$, then the value of $[L]$ is ______ ?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This problem is taken from the JEE(A) 2018 Paper 1 Math section. There are two 
+ways of doing this: the first one is the naive, or donkey way:
+$$\begin{gather}
+L = \lim_{n \to \infty} \left((1+\frac1n)(1+\frac2n)....(1+\frac nn)\right)^\frac1n \\
+\log L = \lim_{n \to \infty} \frac{1}{n} \sum_{r=0}^n \log\left(1+\frac rn\right) \\
+\log L = \int_0^1 \log(1+x)dx \\
+\log L = (1+x)\log(1+x) - x |_0^1 \\
+\log L = 2\log2 - 1 \\
+L = \frac{4}{e} \\
+\boxed{[L] = 1} \\
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;It looks simple, because I've made it look simple. The integration by parts step
+is time consuming, as well as the substitution and conversion into Riemann sum.
+They're all simple steps, but quite lengthy when done in succession. This is 
+how we are taught to approach most problems: do the steps to yield an answer. 
+Here's an example of the 'horse' way:
+$$\begin{gather}
+(1+0)(1+0)(1+0)...(1+0) &amp;lt; (1+\frac1n)(1+\frac2n)...(1+\frac nn) &amp;lt; (1+1)(1+1)(1+1)...(1+1) \\
+\lim_{n \to \infty} 1^\frac1n &amp;lt; \lim_{n \to \infty} \left((1+\frac1n)(1+\frac2n)....(1+\frac nn)\right)^\frac1n &amp;lt; \lim_{n \to \infty} 2^{n \cdot \frac1n} \\
+1 &amp;lt; L &amp;lt; 2 \\
+\boxed{[L] = 1}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;And we're done! Simple application of sandwich theorem gives us the answer here
+to the required accuracy. Looking at both techniques, the way of the horse 
+always seems smarter and more elegant than the way of the donkey... or does it?
+Here's an example of another problem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If 
+$$a = 1 + \frac{x^3}{3!} + \frac{x^6}{6!} + \frac{x^9}{9!} + ...$$
+$$b = x + \frac{x^4}{4!} + \frac{x^7}{7!} + \frac{x^{10}}{10!} + ...$$
+$$c = \frac{x^2}{2!} + \frac{x^5}{5!} + \frac{x^8}{8!} + \frac{x^{11}}{11!} + ...$$
+the value of $a^3 + b^3 + c^3 - 3abc = ?$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks like an interesting problem. The horse way of doing this would be to
+first make a (perfectly valid) assumption that the answer is independent of $x$, 
+because the answer is a constant and if it was dependent on $x$, it would be 
+of the form $f(x)$, which it clearly isn't. Since it is independent of $x$, 
+let $x=0$, giving us $a=1, b=0, c=0$. Thus, $a^3 + b^3 + c^3 - 3abc = 1$, which
+is the correct answer.&lt;/p&gt;
+&lt;p&gt;This solution looks good, but it is hacky at best and incomplete at worst. 
+Note that the problem setters have not defined the domain of $a,b,c$. An interesting
+twist would have been if $x \in \mathbb{R}^+$, then this hack would have been 
+&lt;a href="https://www.google.com/search?q=defenestrated"&gt;defenestrated&lt;/a&gt;. Here, the donkey method, though longer, 
+is more elegant and meaningful than the horse method. To solve this the right 
+way, recall the identity
+$$a^3 + b^3 + c^3 - 3abc = (a+b+c)(a+b\omega+c\omega^2)(a+b\omega^2+c\omega)$$
+where $\omega$ is the complex cube root of unity.
+If we substitute $a,b,c$ in the RHS and use the taylor expansion of $e^x$, then 
+we get:
+$$e^x \cdot e^{x\omega} \cdot e^{x\omega^2}$$
+this is the same as $e^{x(1+\omega+\omega^2)}$, and, as $1 + \omega + \omega^2 = 0$,
+the final answer is 
+$$e^{x \cdot 0} = \boxed{1}$$&lt;/p&gt;
+&lt;p&gt;This is The Right Way&lt;sup&gt;TM&lt;/sup&gt; of solving the problem. Even though it is 
+the lengthier, more mentally strenuous way, this is a case where the 'donkey'
+method is more elegant than the 'horse' method.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 26 Jul 2020 21:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-26:/articles/2020/shortest-solution-best-or-not.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Testing</title><link>https://aniruddha-deb.github.io/articles/2020/subdir-test.html</link><description>&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
+&lt;p&gt;Let's start with an Image:
+&lt;img alt="Test Image" src="https://aniruddha-deb.github.io/articles/2020/res/test_post/big_buck_bunny.png"&gt;
+Big buck bunny looking real handsome ;) Some tweaks have to be made to expand 
+the image on click but this is ok for now..&lt;/p&gt;
+&lt;p&gt;Let's try headings!&lt;/p&gt;
+&lt;h1&gt;Echo&lt;/h1&gt;
+&lt;h2&gt;Echo&lt;/h2&gt;
+&lt;h3&gt;Echo&lt;/h3&gt;
+&lt;h4&gt;Echo&lt;/h4&gt;
+&lt;h5&gt;Echo&lt;/h5&gt;
+&lt;h6&gt;Echo&lt;/h6&gt;
+&lt;p&gt;looking good, although I will personally never use anything lower than H4 (if 
+you're nesting these many headings, you should just go write a book).&lt;/p&gt;
+&lt;p&gt;Lists looking fine as well:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This&lt;/li&gt;
+&lt;li&gt;is &lt;/li&gt;
+&lt;li&gt;an &lt;/li&gt;
+&lt;li&gt;unordered&lt;/li&gt;
+&lt;li&gt;list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ordered list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Law&lt;/li&gt;
+&lt;li&gt;And&lt;/li&gt;
+&lt;li&gt;Order&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Tables (top 10 chess players as of 19th July 2020):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Country&lt;/th&gt;
+&lt;th&gt;Rating&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Magnus Carlsen&lt;/td&gt;
+&lt;td&gt;NOR&lt;/td&gt;
+&lt;td&gt;2863&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Fabiano Caruana&lt;/td&gt;
+&lt;td&gt;USA&lt;/td&gt;
+&lt;td&gt;2835&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Liren Ding&lt;/td&gt;
+&lt;td&gt;CHN&lt;/td&gt;
+&lt;td&gt;2791&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Ian Nepomniachtchi&lt;/td&gt;
+&lt;td&gt;RUS&lt;/td&gt;
+&lt;td&gt;2784&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;Maxime Vachier-Lagrave&lt;/td&gt;
+&lt;td&gt;FRA&lt;/td&gt;
+&lt;td&gt;2778&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;Alexander Grischuk&lt;/td&gt;
+&lt;td&gt;RUS&lt;/td&gt;
+&lt;td&gt;2777&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;Levon Aronian&lt;/td&gt;
+&lt;td&gt;ARM&lt;/td&gt;
+&lt;td&gt;2773&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;Wesley So&lt;/td&gt;
+&lt;td&gt;USA&lt;/td&gt;
+&lt;td&gt;2770&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;Teimour Radjabov&lt;/td&gt;
+&lt;td&gt;AZE&lt;/td&gt;
+&lt;td&gt;2765&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;Anish Giri&lt;/td&gt;
+&lt;td&gt;NED&lt;/td&gt;
+&lt;td&gt;2764&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Some MathJax, and a quote/hyperlink example (this is taken from 
+&lt;a href="https://math.stackexchange.com/questions/3761395/will-t12-x-substitution-work-for-this-integral/3761410#3761410"&gt;Math SE&lt;/a&gt;):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;let $x = t^{12} \implies dx = 12t^{11} dt$
+$$A = \int \left( \frac{1}{t^4+t^3} + \frac{\ln(1+t^2)}{t^4 + t^6} \right) 12t^{11}dt \ 
+= \underbrace{\int \frac{12t^8}{t+1}dt}_{A_1} + \underbrace{\int \frac{\ln(1+t^2)}{1+t^2}12t^7dt}_{A_2} $$
+$A_1$ can be written as:
+$$A_1 = 12 \int \frac{x^8 - 1 + 1}{x+1} dx= 12 \int (x^4+1)(x^2+1)(x-1) + \frac{1}{x+1}dx$$
+Which is doable. For $A_2$, make the substitution $1+t^2 = k \implies 2tdt = dk$
+$$A_2 = 6 \int \frac{\ln(k)}{k}(k-1)^3dk$$
+This can be integrated by parts as follows:
+$$A_2 = 6\left( \ln(k) \cdot \left( \frac{k^3}{3} - \frac{3k^2}{2} + 3k - \ln(k)\right) + \int \frac 1k \cdot \left( \frac{k^3}{3} - \frac{3k^2}{2} + 3k - \ln(k)\right) dk\right)$$
+$A_2$ is also now doable. Add $A_1$ and $A_2$ to get $A$ and substitute back till you get $A = f(x) + c$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here's an example of some embedded HTML: (using the &lt;a href="chess.com"&gt;chess.com&lt;/a&gt; 
+chess player to show one of my games)&lt;/p&gt;
+&lt;iframe id="6878876" allowtransparency="true" frameborder="0" style="width:760px;height:480px;margin:auto;display:block;border:none;" src="//www.chess.com/emboard?id=6878876"&gt;&lt;/iframe&gt;
+&lt;script type="text/javascript"&gt;window.addEventListener("message",e=&gt;{e['data']&amp;&amp;"6878876"===e['data']['id']&amp;&amp;document.getElementById(\`${e['data']['id']}\`)&amp;&amp;(document.getElementById(\`${e['data']['id']}\`).style.height=\`${e['data']['frameHeight']+60}px\`)});&lt;/script&gt;
+
+&lt;p&gt;Here's some code to generate a minefield (Taken from the &lt;a href="https://github.com/Aniruddha-Deb/Mines/blob/master/src/com/sensei/mines/core/MinefieldGenerator.java"&gt;Mines&lt;/a&gt; repo):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;prefs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getRows&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;prefs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getCols&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;numMines&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;prefs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getMines&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numMines&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="n"&gt;put&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;xLoc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;yLoc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;yDiff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;yLoc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;xDiff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;xLoc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="n"&gt;putable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;yDiff&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xDiff&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;yLoc&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;xLoc&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hasMine&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;putable&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;put&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                 
+            &lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;yLoc&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;xLoc&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setMine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hasMine&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;padAround&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;buttons&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Everything looks in place! Looking forward to writing some great content here.
+Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 13 Jul 2020 03:44:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-13:/articles/2020/subdir-test.html</guid><category>Posts</category></item><item><title>ISC 2020 Analysis: An application of Data Science and Statistics</title><link>https://aniruddha-deb.github.io/articles/2020/isc-2020-analysis.html</link><description>&lt;p&gt;The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I'll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.&lt;/p&gt;
+&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Elementary inferences: How have people fared overall?&lt;/li&gt;
+&lt;li&gt;Frequency Distribution of Marks: How many people got the same marks in a subject?&lt;/li&gt;
+&lt;li&gt;Quartiles: What score is comparatively a good score?&lt;/li&gt;
+&lt;li&gt;Corellation Analysis: Is there a relation between marks scored in different subjects?&lt;/li&gt;
+&lt;li&gt;Using other datapoints: Do girls perform better than boys? Are back-benchers doing poorly?&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Elementary Inferences&lt;/h3&gt;
+&lt;p&gt;The Science Stream consists of 117 Students, with 80 boys and 37 girls, all of whom passed.&lt;/p&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{mode} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{Bo4%} &amp;amp; 83.11 &amp;amp; 84.75 &amp;amp; - &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.86 \\
+\text{Overall %} &amp;amp; 80.32 &amp;amp; 82.6 &amp;amp; 85.8 &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 10.10 \\
+\text{Boys Bo4%} &amp;amp; 83.70 &amp;amp; 85.5 &amp;amp; 80.25 &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.62 \\
+\text{Boys overall %} &amp;amp; 80.94 &amp;amp; 82.70 &amp;amp; - &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 9.61 \\
+\text{Girls Bo4 %} &amp;amp; 81.84 &amp;amp; 81.25 &amp;amp; - &amp;amp; 95.25 &amp;amp; 59.5 &amp;amp; 9.34 \\
+\text{Girls overall %} &amp;amp; 78.98 &amp;amp; 80.5 &amp;amp; - &amp;amp; 94.8 &amp;amp; 54.6 &amp;amp; 11.10 \\
+\hline
+\end{array}$$
+&lt;center&gt;&lt;sup&gt;(Bo4 = Best of 4, - = no mode exists, $\sigma$ = standard deviation)&lt;/sup&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The mean, median and mode lie in the $80-85 %$ range for almost all datasets. There is a standard deviation of 8.86 from the mean and the toppers lie $1.5\sigma$ right of mean ($&amp;gt;96.4\%$). Interestingly, the people who scored the least lie $3\sigma$ left of mean ($~56 \%$), which is more than the toppers lie right of the mean. The Boys and Girls datasets are compared in more detail in Section 5: Using other datapoints&lt;/p&gt;
+&lt;p&gt;A similar raw data comparision can also be done with subjectwise marks:
+$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; n &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{English} &amp;amp; 117 &amp;amp; 87.54 &amp;amp; 88 &amp;amp; 96 &amp;amp; 70 &amp;amp; 4.46 \\
+\text{Physics} &amp;amp; 117 &amp;amp; 78.75 &amp;amp; 81 &amp;amp; 100 &amp;amp; 45 &amp;amp; 13.94 \\
+\text{Chemistry} &amp;amp; 116 &amp;amp; 72.49 &amp;amp; 71.50 &amp;amp; 98 &amp;amp; 42 &amp;amp; 13.65 \\
+\text{Mathematics} &amp;amp; 107 &amp;amp; 73.98 &amp;amp; 77 &amp;amp; 100 &amp;amp; 16 &amp;amp; 19.32 \\
+\text{Computer Science} &amp;amp; 80 &amp;amp; 88.85 &amp;amp; 91 &amp;amp; 100 &amp;amp; 54 &amp;amp; 8.20 \\
+\text{Biology} &amp;amp; 28 &amp;amp; 89.14 &amp;amp; 90 &amp;amp; 97 &amp;amp; 75 &amp;amp; 5.35 \\
+\text{Environmental Science} &amp;amp; 7 &amp;amp; 80.71 &amp;amp; 78 &amp;amp; 94 &amp;amp; 72 &amp;amp; 6.85 \\
+\text{Art} &amp;amp; 4 &amp;amp; 88.25 &amp;amp; 88 &amp;amp; 91 &amp;amp; 86 &amp;amp; 2.22 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;This is an interesting dataset; looking at it, a few stories are evident:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Low Standard deviation in English and Computer Science: This is an interesting theme. English, given it's size, has the lowest standard deviation of $4.46$. Computer Science has a remarkably high mean of $88.85$ and a median of $91$. &lt;del&gt;Most students in class do not go to external tuitions for these subjects&lt;/del&gt;(see edit). This means that the quality of education imparted in the class room is quite good and brings results for English and Computer Science.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;EDIT: Turns out that quite a few people who have taken Computer Science and scored above 90 went for tuitions. A Majority of students don't go to tuitions for English, though, and I believe that our school has an above-average showing in English this time. (reference)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;High standard deviation and low mean in Physics, Chemistry and Mathematics: Another very interesting (and scary) theme: these subjects make up the core of science and it is shocking to see students perform badly in these core subjects. Most students seek external help for these subjects, and in spite of the external help, are not able to perform well. The mean marks in Math are 74, while they should ideally be close to 90, due to the precise nature of the subject. The education system needs to have a serious rethink on where they are going wrong in imparting the knowledge of these core subjects to the students.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In the following sections, I won't be focusing too much on Arts, EVS and Biology: Arts and EVS make up a very small dataset, whose results may not be reliable. The marks obtained in Biology are not representative of the students' potential: due to the exams being cancelled, the marks for Biology were derived via this averaging algorithm.&lt;/p&gt;
+&lt;h3&gt;Frequency Distribution of Marks&lt;/h3&gt;
+&lt;p&gt;I'll be plotting a few Histograms in this section and doing an overview of the 'spread' of marks across the spectrum. This helps visualize the data presented in the previous section. The data for most subjects fits into a bell curve, with the exception of Physics, Chemistry and Mathematics&lt;/p&gt;
+&lt;p&gt;As a small primer: A histogram plots the frequency of a particular element in a data set. If 5 people scored 95 marks, then a bar 5 units tall would be placed at the 95th element. The graphs would make this clearer.&lt;/p&gt;
+&lt;p&gt;Let's start with the small subjects: Arts, EVS and Biology&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Art.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/EVS.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Biology.png"&gt;&lt;/p&gt;
+&lt;p&gt;There's not too much to see here, because of the sparsity of these graphs. Let's move on to English:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/English.png"&gt;&lt;/p&gt;
+&lt;p&gt;The graph for English nicely highlights the bell curve distribution; a majority of people have scored 89, and almost all students have obtained marks in the $79-94$ range. Computer Science also shows a similar trend&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/CS.png"&gt;&lt;/p&gt;
+&lt;p&gt;Apart from a few outliers on the lower end of the spectrum, most people have obtained above $85$ here, with 91 being the most common score. 17 people obtained a score of 95 and above. One person obtained a solid $100$. This is a good result in a not-so-easy subject.&lt;/p&gt;
+&lt;p&gt;Moving on to Physics:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Physics.png"&gt;&lt;/p&gt;
+&lt;p&gt;The Median for Physics was much higher than that of Maths and Chemistry (In part maybe because the paper was easy). We see that around 29 people have scored less than 70 here. 92 is the mode for this dataset, which is a good score. Again, one person has scored $100$, which is not an impossible feat in any of the sciences. &lt;/p&gt;
+&lt;p&gt;What immediately pops out in the Physics graph is that there is no well-defined 'peak' or 'cluster' in the data as there was for the previous subjects. This becomes even more apparent in Chemistry:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Chemistry.png"&gt;&lt;/p&gt;
+&lt;p&gt;Mark segmentation is heavily apparent in chemistry, with four clearly defined segments: those scoring above 95, those in the 80-95 range, those in the 60-80 range and those who obtained below 60. The segmentation explains the high standard deviation as well as the low mean (a large number of people are centered around 70 and 85). The number of people scoring above 90 drops heavily here, with only 10 people crossing the barrier. Amazingly, nobody obtained a 100 or a 99 in this paper, with 98 being the highest. &lt;/p&gt;
+&lt;p&gt;Finally, Maths teaches us a lot of lessons:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Mathematics.png"&gt;&lt;/p&gt;
+&lt;p&gt;Marks in math resemble a bag of dropped marbles: there seems to be a slight pattern here, but one that is heavily tinged by apparent randomness. Heavy segmentation and sparse distribution show why the standard deviation is around 20 here. Inequality is also highly apparent here: those who do well at maths do exceptionally well (3 people scored a 100) and those who do poorly do extremely poorly. Part of this is due to the high-stakes nature of the math paper: the marking pattern has a tendency to be ruthless here, while the other part boils down to imparting math education to the people who don't have a knack for math. There are two lessons here: for the people who are yet to give their exams, Study math and Study math hard. For those who have already given their exams, If you have done poorly in Math, take comfort in the fact that you are not alone. Math (and Chemistry) was tricky this time and if you are taking a math-heavy field, you will have several opportunities in life to do better in this subject later.&lt;/p&gt;
+&lt;p&gt;Finally, Here's the histograms for Best of 4 percentage and Overall percentage:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/Bo4Pct.png"&gt;
+&lt;img alt="histogram" src="https://aniruddha-deb.github.io/articles/2020/res/results/histogram/TotPct.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Quartiles&lt;/h3&gt;
+&lt;p&gt;What score is a good score? The same set of marks, when viewed by different people, can have different interpretations. While your parents may think you have done poorly, compared to your friends, you may have done pretty well! Quartiles take care of this: they convert your percentage to percentile (A concept we're all familiar with, after JEE Main) and tell you into which 'bucket' you fit:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;1st quartile or Lower quartile: below 25th percentile&lt;/li&gt;
+&lt;li&gt;2nd quartile: between 25th-50th percentile&lt;/li&gt;
+&lt;li&gt;3rd quartile: between 50th-75th percentile&lt;/li&gt;
+&lt;li&gt;4th quartile or Upper quartile: above 75th percentile
+This table shows the entry marks required to break into a particular quartile:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{Q1} &amp;amp; \text{Q2} &amp;amp; \text{Q3} &amp;amp; \text{Q4}\\
+\hline
+\text{Bo4%} &amp;amp; 0 &amp;amp; 78 &amp;amp; 84.75 &amp;amp; 89.75 \\
+\text{Overall %} &amp;amp; 0 &amp;amp; 74.60 &amp;amp; 82.60 &amp;amp; 87.80 \\
+\text{English} &amp;amp; 0 &amp;amp; 85 &amp;amp; 88 &amp;amp; 91 \\
+\text{Physics} &amp;amp; 0 &amp;amp; 72 &amp;amp; 81 &amp;amp; 91 \\
+\text{Chemistry} &amp;amp; 0 &amp;amp; 64 &amp;amp; 71.50 &amp;amp; 84.25 \\
+\text{Mathematics} &amp;amp; 0 &amp;amp; 62.50 &amp;amp; 77 &amp;amp; 89.50 \\
+\text{Computer Science} &amp;amp; 0 &amp;amp; 86 &amp;amp; 91 &amp;amp; 94 \\
+\text{Biology} &amp;amp; 0 &amp;amp; 86 &amp;amp; 90 &amp;amp; 93.25 \\
+\text{Environmental Science} &amp;amp; 0 &amp;amp; 78 &amp;amp; 78 &amp;amp; 82.50 \\
+\text{Art} &amp;amp; 0 &amp;amp; 86.75 &amp;amp; 88 &amp;amp; 89.50 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;As an example, if you obtained a best of 4 percentage of $85\%$, you would fit in the Third Quartile. This is because you broke through the first (0), second (78) and third (84.75) quartile entry limits but could not break into the fourth quartile (89.75). Hence, your quartile is detemined by the entry marks just below/equal to your own marks.&lt;/p&gt;
+&lt;h3&gt;Corellation Analysis&lt;/h3&gt;
+&lt;p&gt;Subjects are not disjoint sets: there is quite a bit of overlap between two subjects. As an example, Atomic Structure is a topic we study both in Physics and Chemistry. For a broader example, a firm understanding of Mathematics is required to do well in Physics and Physical Chemistry. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="On the other hand, physicists like to say physics is to math as sex is to masturbation." src="https://imgs.xkcd.com/comics/purity.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;Obligatory XKCD :)&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;In this analysis, I'll treat Mathematics as the 'glue' subject and analyze how Physics and Chemistry coreelate with Mathematics, as well as how Physics and Chemistry correlate with each other. &lt;/p&gt;
+&lt;p&gt;First up, Mathematics-Physics and Mathematics-Chemistry corellations:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/MP_correlation.png"&gt;
+&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/MC_correlation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Notice that $r &amp;gt; 0.8$ for both of these correlations: this means that those who did well in math automatically did well in Physics and Chemistry, which reiterates a key point to upcoming students: learn to love Math. Also notice that $r_{MP} &amp;gt; r_{MC}$. This also validates the fact that Maths is more important for Physics than it is for Chemistry (which is kind of obvious, since Physical chemistry has around 30-40% weightage only). &lt;/p&gt;
+&lt;p&gt;Physics-Chemistry yields an interesting graph:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="correlation" src="https://aniruddha-deb.github.io/articles/2020/res/results/correlation/PC_correlation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Amazingly, there is an even higher degree of correlation here than there is between Math-Physics and Math-Chemistry. This stumped me. If any of the readers have an idea as to why Physics and Chemistry are so interlinked (only the 12th syllabus), then feel free to drop a comment down below. The only theory I have for now is that there are 9 students who have not taken math but have taken Physics and Chemistry (or a similar permutation). These 9 extra data points are contributing the extra $0.04$ to the correlation coefficient.&lt;/p&gt;
+&lt;h3&gt;Using Other Datapoints&lt;/h3&gt;
+&lt;p&gt;Remember this table from the first section?&lt;/p&gt;
+&lt;p&gt;$$\begin{array}{|c|c|}
+\hline
+\text{Dataset} &amp;amp; \text{mean} &amp;amp; \text{median} &amp;amp; \text{mode} &amp;amp; \text{max} &amp;amp; \text{min} &amp;amp; \sigma \\
+\hline
+\text{Boys Bo4%} &amp;amp; 83.70 &amp;amp; 85.5 &amp;amp; 80.25 &amp;amp; 97.75 &amp;amp; 57.5 &amp;amp; 8.62 \\
+\text{Boys overall %} &amp;amp; 80.94 &amp;amp; 82.70 &amp;amp; - &amp;amp; 97.6 &amp;amp; 52.6 &amp;amp; 9.61 \\
+\text{Girls Bo4 %} &amp;amp; 81.84 &amp;amp; 81.25 &amp;amp; - &amp;amp; 95.25 &amp;amp; 59.5 &amp;amp; 9.34 \\
+\text{Girls overall %} &amp;amp; 78.98 &amp;amp; 80.5 &amp;amp; - &amp;amp; 94.8 &amp;amp; 54.6 &amp;amp; 11.10 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;I'll be expanding on this to display separate statistics for Boys and Girls in all the subjects. One problem that exists is that the number of boys and girls is not the same: not normalizing the data beforehand would favour the boys in every case. In these graphs, both the boys and girls are normalized, such that each boy or girl represents a fraction of the total boys and girls (for boys this fraction is $\frac{1}{80}$ as there are 80 boys, and for girls this fraction is $\frac{1}{37}$, as there are 37 girls&lt;/p&gt;
+&lt;p&gt;As we did previously, Let's start with Art, EVS and Biology, three subjects from which there are minimal inferences to be drawn:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Art_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/EVS_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Biology_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Not too many inferences to be drawn here: EVS and Art have a very small sample size and Biology was calculated based on averages. Let's move on to English and Computer Science&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/English_BvG.png"&gt;
+&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Computers_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Girls and Boys are pretty much on par with each other in Computer Science, whereas for English, Girls do better than Boys.&lt;/p&gt;
+&lt;p&gt;The Sciences, however, have a different story to tell. Here's Physics:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Physics_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;We clearly see that the boys are doing better than girls in Physics. A large number of girls have score in the $72-75$ mark range, as well as in the $46-53$ mark range. Girls lead boys in the $88-92$ mark range, however, the $95-100$ mark range is completely occupied by boys. Chemistry paints a similar picture:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Chemistry_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Again, the frequency of girls in the $&amp;lt;60$ mark range is high and the $95-100$ mark range is again occupied by boys. Girls do outperform boys in the $82-93$ mark range here.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BvG" src="https://aniruddha-deb.github.io/articles/2020/res/results/BvG/Mathematics_BvG.png"&gt;&lt;/p&gt;
+&lt;p&gt;Mathematics too is similar. There are no girls in the $97-100$ range and an abundance of them in the $&amp;lt;40$ mark range.&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;This analysis is by no means exhaustive: many other stories can also be told with exactly the same data set. However, the most important lesson that stands out is to Focus on Math. I cannot stress this enough. Math is required for Physics, Chemistry and to a small extent, Computer Science as well. Having a firm grounding in math is essential for all science students. Math is also a 'precise' subject, which means that the probability of scoring better marks in Math is higher than it is 'soft' subjects such as English.&lt;/p&gt;
+&lt;p&gt;For the ones who have already given their papers, I hope that this analysis shows you how well you have done and also points out places where you could have improved. The real value of this analysis lies for the students who are yet to give their papers. I would have benefited immensely had such an analysis been available for me to read before my exams. I hope that upcoming students can use this wisdom to shape their own preparation strategy for the exams.&lt;/p&gt;
+&lt;h3&gt;Behind the scenes&lt;/h3&gt;
+&lt;p&gt;The data was analysed with Python. Matplotlib was used for drawing the beautiful graphs and numpy, along with python's inbuilt statistics library was used for doing the calculations. This is the first time I've ventured into data science, and I'm really enjoying it :)  R was a candidate for doing most of this processing (I really like R's ggplot2 library: it's built on solid concepts), but I already had my python development environment set up on my machine and wanted to do this in a language I'm comfortable with.&lt;/p&gt;
+&lt;p&gt;Further reading (for those interested in Data Science):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Towards Data Science - Amazing medium blog on Data Science&lt;/li&gt;
+&lt;li&gt;R Project - R, a language for statistical computing and graphics&lt;/li&gt;
+&lt;li&gt;Statistics How to - For absolute beginners in statistics&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 11 Jul 2020 16:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-11:/articles/2020/isc-2020-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>ISC</category><category>Data Science</category></item><item><title>Solving the African Integral (from YG file cover)</title><link>https://aniruddha-deb.github.io/articles/2020/african-integral.html</link><description>&lt;p&gt;A long time ago, I gave my friend (Let's call him C) an integral to solve. He came back to me a few days later and the conversation went something like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;C:&lt;/strong&gt; Debu, I couldn't solve that African integral you gave me.&lt;br&gt;
+&lt;strong&gt;Me:&lt;/strong&gt; Ok, but why are you calling it African?&lt;br&gt;
+&lt;strong&gt;C:&lt;/strong&gt; Because Africa is a really big continent, y'know?&lt;br&gt;
+&lt;strong&gt;Me:&lt;/strong&gt; Ok, but isn't Asia bigger?&lt;br&gt;
+&lt;strong&gt;C:&lt;/strong&gt; Debu, please stop making me feel dumb&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The integral in question appears prominently on the YG file cover as well, and is also featured in Advanced Problems in Mathematics for JEE(A) by Vikas Gupta (Question 24 chapter 7, for those following along)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="YG File cover" src="https://aniruddha-deb.github.io/articles/2020/res/yg_file.jpg"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Evaluate $$\int e^{x\sin x + \cos x} \left( \frac{x^4\cos^3x - x\sin x + \cos x}{x^2 \cos^2x}\right) dx$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks fearsome, but we can solve it easily by extending the trick $\int e^x (f(x) + f'(x)) dx = e^xf(x) + c$ just a little bit. Consider the function $$e^{g(x)}f(x)$$ Differentiating said function, we see that $$\frac{d}{dx} (e^{g(x)}f(x)) = e^{g(x)}(f'(x) + g'(x)f(x))$$ Rearranging the terms and integrating on both sides: $$e^{g(x)}f(x) = \int e^{g(x)}(f'(x) + g'(x)f(x)) dx$$ For the given problem, $g(x) = x\sin x + \cos x \implies g'(x) = x\cos x$. Therefore, the answer will be something of the form $$I = e^{x\sin x + \cos x} f(x) + c$$ The problem now becomes finding $f(x)$, which we can do through some rearrangement. Rewriting the problem to fit in $g'(x)$, the problem becomes: $$I = \int e^{x\sin x + \cos x} \left( x\cos x \cdot x + \frac{\sec x}{x^2} - \frac{\tan x \sec x}{x}\right) dx$$ We can see that the first term in the bracket implies that $f(x) = x$, but $f'(x) \ne \frac{\sec x}{x^2} - \frac{\tan x \sec x}{x}$. It's easy to see that the last two terms have some kind of pattern going on, as $\frac{d}{dx}\sec x = \sec x \tan x$ and $\frac{d}{dx} \frac{1}{x} = -\frac{1}{x^2}$. The last two terms can be rewritten as $\frac{d}{dx} \left( \frac{\sec x}{x}\right)$. Go through the above steps once again if you're unsure of what is happening, because this is important. The integral can then be rewritten as: 
+$$I = \int e^{x\sin x + \cos x} \left( x\cos x \cdot x - \frac{d}{dx} \left( \frac{\sec x}{x}\right) \right) dx$$&lt;/p&gt;
+&lt;p&gt;We're finally getting somewhere! We had initially assumed that $f(x) = x$, but now, seeing the differential term in the bracket, let's assume 
+$$f(x) = x - \frac{\sec x}{x} \implies f'(x) = 1 - \frac{d}{dx} \left( \frac{\sec x}{x}\right)$$&lt;/p&gt;
+&lt;p&gt;Also, $g'(x)f(x)$ then becomes 
+$$g'(x)f(x) = x\cos x \left(x - \frac{\sec x}{x}\right) = x\cos x \cdot x - 1$$&lt;/p&gt;
+&lt;p&gt;Adding them together, we get
+$$g'(x)f(x) + f'(x) = x\cos x \cdot x - \frac{d}{dx} \left( \frac{\sec x}{x}\right)$$&lt;/p&gt;
+&lt;p&gt;Which is the term in the brackets in the integral. Thus, $f(x) = x - \frac{\sec x}{x}$. We have now solved our integral, and the answer is
+$$\boxed{I =  e^{x\sin x + \cos x} \left( x - \frac{\sec x}{x}\right) + c}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 09 Jul 2020 20:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-07-09:/articles/2020/african-integral.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Debunking Concepts of Physics, and why you should NOT use this book.</title><link>https://aniruddha-deb.github.io/articles/2020/debunking-concepts-of-physics.html</link><description>&lt;p&gt;I generally don't post stuff that is extremely specific to JEE, but this time I'm willing to make an exception.&lt;/p&gt;
+&lt;p&gt;A lot has been said about &lt;a href="https://www.concepts-of-physics.com/concepts-of-physics.php"&gt;Concepts of Physics&lt;/a&gt; by Dr. H. C.Verma and it's usefulness for JEE Preparation. The website itself claims that&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Students from the past twenty years of JEE preparation used this book and have successfully cleared JEE. So, you cannot neglect this book. A common problem that was observed with many JEE aspirants is that they follow multiple books in parallel, thereby ending up in confusion. Follow only one book at a time and make sure it is reputed one like Concepts of Physics by HC Verma. You may consults other books too but not at the cost of creating more confusion.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Thankfully, this website is not endorsed by Dr. H. C. Verma himself. It seems to be made by a third party looking to sell their own books, in conjunction with Dr. Verma's. I have nothing against the book itself: as far as physics books go, it is brilliantly formatted and lucidly explained. It's a great introduction to Physics for several physics noobs, including me. Let me repeat that again:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Concepts of Physics is a great introductory book for people who are not good at physics.&lt;/strong&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everyone starts out a learner. It's fine to use a book like this when you're learning. However, this book has almost zero applicability when it comes to preparing for JEE(A). It might get you through JEE(M), but it's extremely risky to refer to ONLY this book and accept it's word as the word of god. Here are a few reasons not to use Concepts of Physics for long term preparation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It's not exam-oriented!&lt;/strong&gt; This has to be the biggest gripe of mine. The book's content has not kept up with the demands of the exam, but that is not it's purpose. However, people still believe that it has kept up and is still as relevant as it was 20 years ago. The Single Correct and Multiple Correct questions (Objective I and Objective II) are mainly concept oriented, with no numericals. Even the subjective questions suck big time, compared to Irodov or Krotov. Here's a snap of Chapter 18, Geometrical Optics:&lt;br&gt;
+&lt;center&gt;&lt;img alt="chapter 18" src="https://aniruddha-deb.github.io/articles/2020/res/chp18_optics.png"&gt;&lt;/center&gt;&lt;br&gt;
+ Notice that questions 61-66 are exactly the same with the only difference being the type of lens and mirror in the situation and the parameter being asked. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It covers irrelevant concepts!&lt;/strong&gt; TVF made a point of this in their skit "A Day with H C Verma". Chapter 47, Relativity, is not included in syllabus. A lot of other concepts, such as Peltier effect, Zeeman effect, measuring speed of light etc are irrelevant from an exam point of view. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It does not cover relevant concepts!&lt;/strong&gt; Some concepts such as force on a dielectric (question 74 of Capacitors chapter) are not explained in the textbook and are left to the students to solve. Angular momentum (one of the most important concepts, see JEE(A) 2016) is paid a lip service in Rotational motion, with one big mathematical derivation explaining the whole concept.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As I already mentioned, Concepts of physics is a great physics book, which is often the entry point of many students into the world of Higher Secondary Physics. However, I am tired of self-proclaimed 'gurus' and other JEE toppers proclaiming that this book is all you need to crack the exam. This is a blatant lie. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 22 Jun 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-22:/articles/2020/debunking-concepts-of-physics.html</guid><category>JEE</category><category>JEE</category><category>Physics</category></item><item><title>Icosahedron Resistor Network</title><link>https://aniruddha-deb.github.io/articles/2020/icosahedron-resistor-network.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
+B) The resistance between points A and B is $\frac{r}{3}$&lt;br&gt;
+C) The resistance between any two adjacent vertices is $\frac{11r}{30}$&lt;br&gt;
+D) The resistance between any two adjacent vertices is $\frac{11r}{20}$&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This question looks really tricky. This is a variation of the problem of finding the resistance of a wire cube. This can be solved in a similar way, using symmetry and equipotential reduction.&lt;/p&gt;
+&lt;p&gt;Let's start off by finding the resistance between A and B, since this is easier than finding the resistance between adjacent vertices. On connecting a battery, the points marked in the same colour will be at the same potential.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="battery" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_2.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;You can clearly see the symmetry now. If we connect all the points with the same potential, we end up with the following resistor network (each resistance is $r$).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="res net" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/res_net.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This is simple to solve. It's resistance is
+$$R_{AB} = \frac r5 + \frac r{10} + \frac r5 = \boxed{\frac r2}$$
+which corresponds to option (A).&lt;/p&gt;
+&lt;p&gt;Solving the network between adjacent vertices is a lot trickier. The first trick is to pick a pair of vertices from which symmetry is easily identifiable. If I connect my battery as shown in the following figure, it is easy to identify which points are equipotential and how the currents are flowing.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_3.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The dotted line shows the plane of symmetry of this icosahedron perpendicular to $CD$ whereas the blue dots show equipotential nodes. We can see that no current flows through $R_{AJ}$ and $R_{EB}$ since the ends are at the same potential. Also, at all equipotential points, no mixing of currents occurs. This means that $I_{AC} = I_{AD}$ and $I_{CE} = I_{ED}$, along with a few others. Performing some modifications on this circuit in line with the above observations reduces the complexity quite drastically as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simple" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_4.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Simplifying these resistors, we obtain a cubical network with a resistor across two opposite face diagonals&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="cube" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_5.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is easy to see that $V_F = V_L$ and $V_G = V_K$. Connecting these two points and getting rid of the resistances $R_{GK}$ and $R_{LF}$, we get the following resistor network:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simplest" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_6.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;It is now simple to calculate the resistance across CD by using the formulae for resistors in parallel and series.&lt;/p&gt;
+&lt;p&gt;$$\begin{gather} 
+\frac 1 {R_{FG}} = \frac 2 r + \frac 2 {3r} \\
+R_{FG} = \frac{3r}{8} \\
+\frac{1}{R_{CD}} = \frac{8}{11r} + \frac{2}{r} \\
+\boxed{R_{CD} = \frac{11r}{30}} 
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;Which corresponds to option (C)&lt;/p&gt;
+&lt;p&gt;A good problem that I came up with on my own; the next step is to do the same for a dodecahedric resistor network. Stay tuned for that :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Tue, 09 Jun 2020 12:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-09:/articles/2020/icosahedron-resistor-network.html</guid><category>Electronics</category><category>Physics</category><category>Electronics</category></item><item><title>A Compilation of hard limits</title><link>https://aniruddha-deb.github.io/articles/2020/hard-limits.html</link><description>&lt;p&gt;This list consists of the limits that I found most challenging.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{x+1} \right)$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \frac{n + n^2 + n^3 + ... + n^n}{1^n + 2^n + 3^n + ... + n^n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( \frac{n^n(x+n)\left(x+\frac n2\right)...\left(x+\frac nn\right)}{n!(x^2+n^2)\left(x^2+\frac {n^2}{4}\right)...\left( x^2 + \frac{n^2}{n^2}\right)}\right)^{\frac x n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to 0} \left( 1^{\sin^{-2}x} + 2^{\sin^{-2}x} + ... + n^{\sin^{-2}x}\right)^{\sin^2 x}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \sqrt[\leftroot{-2}\uproot{2}n+1]{(n+1)!}-\sqrt[\leftroot{-2}\uproot{2}n]{n!}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \left( e - \left( 1 + \frac1n \right) ^n \right) ^\frac 1n$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \underbrace{\sin(\sin(\sin(...\sin(a)..)))}_\text{n times}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + 4\sqrt{ ... 1 + (n-1)\sqrt{1+n}}}}}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{x \to \infty} \binom{x}{n} \left(\frac{a}{x}\right)^n \left( 1 - \frac{a}{x}\right)^{x-n}$$&lt;/li&gt;
+&lt;li&gt;$$\lim_{n \to \infty} \ \frac{2^{n+1}}{n+1} \ \left| 3\sum_{k=1}^n (-1)^k\frac{k}{2^k} + \frac 23\right|$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Answers:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;$e$&lt;/li&gt;
+&lt;li&gt;$-\frac 12$&lt;/li&gt;
+&lt;li&gt;$1 - \frac 1e$&lt;/li&gt;
+&lt;li&gt;$\exp\left( \int_0^x \ln \left( \frac{t+1}{t^2+1}\right)dt\right)$ (from JEE(A) 2016)&lt;/li&gt;
+&lt;li&gt;$n$&lt;/li&gt;
+&lt;li&gt;$e^{-1}$&lt;/li&gt;
+&lt;li&gt;$1$&lt;/li&gt;
+&lt;li&gt;$0$&lt;/li&gt;
+&lt;li&gt;$3$ (Ramanujan found this one :)&lt;/li&gt;
+&lt;li&gt;$\frac{a^n e^a}{n!}$&lt;/li&gt;
+&lt;li&gt;$2$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/hard-limits.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>Limit involving higher order infinitesimals</title><link>https://aniruddha-deb.github.io/articles/2020/limit-higher-order-infinitesimals.html</link><description>&lt;p&gt;Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L'Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3. To illustrate how to solve these problems, I'll give a trickier example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Evaluate the limit $$\lim_{n \to \infty} \left( e - \left( 1 + \frac1n \right) ^n \right) ^\frac 1n$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's easy to assume that the limit $\lim_{n \to \infty} \left( 1 + \frac1n \right)^n$ evaluates to $e$, which means that the expression inside the outer brackets would tend to zero, giving the answer as zero. However, all is not as it seems. This is a good example of difference between infinitesimals yielding a higher order infinitesimal. To start with, consider the function
+$$f(n) =  \lim_{n \to \infty} \left( 1 + \frac1n \right)^n$$
+Taking a logarithm both sides and using a taylor series expansion for the log on the right side gives
+$$\begin{gather}
+\log f(n) = \lim_{n \to \infty} n \left( \frac1n - \frac 1{2n^2} + O\left(\frac 1 {n^3}\right) \right) \\
+f(n) = \lim_{n \to \infty}e^{1 - \frac 1{2n} + O\left(\frac 1 {n^2}\right)}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;If we substitute $f(n)$ in the limit now, we can see that
+$$L = \lim_{n \to \infty} \left( e \left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right) \right) ^\frac 1n$$&lt;/p&gt;
+&lt;p&gt;Taking a logarithm both sides gives us
+$$\log L = \lim_{n \to \infty} \underbrace{\frac{1}{n}}_{f_1} + \underbrace{\frac{ \log\left( 1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}\right)}{n}}_{f_2}$$&lt;/p&gt;
+&lt;p&gt;$f_1$ is trivially $0$. $f_2$ can be evaluated using L'Hopital rule, which gives
+$$f_2 = \lim_{n \to \infty} \frac{\frac{1}{2n^2} + ... }{1 - e^{-\frac 1{2n} + O\left(\frac 1 {n^2}\right)}}$$&lt;/p&gt;
+&lt;p&gt;This evaluates to $0$ as the numerator is a higher order infinitesimal than the denominator. Thus, we have
+$$\log L = 0$$&lt;/p&gt;
+&lt;p&gt;Taking an exponent both sides gives us
+$$\boxed{L = 1}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 05 Jun 2020 07:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-06-05:/articles/2020/limit-higher-order-infinitesimals.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>COVID-19 USA Analysis: effects of the lack of lockdown</title><link>https://aniruddha-deb.github.io/articles/2020/covid-19-usa.html</link><description>&lt;p&gt;The USA currently stands at 1.76 million COVID-19 cases. That's more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here's a graph showing the daily number of cases of COVID-19 in the USA.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="Daily covid cases" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-cases-daily.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Source: Google&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour. Is there a pattern to this? Let's overlay some week markers on the data to get a better feel of it.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="covid weekly" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-weekly.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Source: Our World in data*&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+The pattern is much more obvious now. It is clearly visible that reported cases are at their lowest on the first few days of the week and they are at their highest during the weekends. Summing up the data proves this (quite dramatically)&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="covid sum" src="https://aniruddha-deb.github.io/articles/2020/res/covid-19-usa/covid-sum.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;sup&gt;Sum of cases/day from 1 Mar to today&lt;/sup&gt;&lt;/center&gt;&lt;br&gt;
+This data now allows us to paint a picture. The mean time of incubation of Coronavirus is 5.1 days&lt;sup&gt;[1]&lt;/sup&gt;. One inference is that more people are going out on Sunday night and getting tested on Friday morning. This is not very probable as most of the hospitality business (malls, hotels etc) is shut. The more likely reason is that &lt;em&gt;people are going to work on a Monday and Tuesday, displaying symptoms in a week and then getting tested at the end of the week&lt;/em&gt;. &lt;strong&gt;This situation would not arise if a nationwide lockdown was implemented&lt;/strong&gt;. This is the key reason behind the large number of cases and also behind the recurring patterns of occurence of new cases.&lt;/p&gt;
+&lt;p&gt;The analysis also presents several lessons for nations in the nascent phase of the virus: India has lifted it's lockdown just as the number of cases are peaking. While isolation of zones where infected patients have been found continues, urging people to return to work in these times may present the same pattern as shown above.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;* Our World in Data recorded a spike of ~48000 cases on April 26. This seemed suspicious, which is why that data point was substituted by the Google/Wikipedia data for the same date.&lt;/p&gt;
+&lt;p&gt;[1]: Lauer, Stephen A., et al. “The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application.” Annals of Internal Medicine, vol. 172, no. 9, Mar. 2020, pp. 577–82. acpjournals.org (Atypon), doi:&lt;a href="https://doi.org/10.7326/M20-0504"&gt;10.7326/M20-0504&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 29 May 2020 20:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-29:/articles/2020/covid-19-usa.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>COVID 19 Regression analysis Update</title><link>https://aniruddha-deb.github.io/articles/2020/covid-regression-analysis-update.html</link><description>&lt;p&gt;The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="covid static" src="https://aniruddha-deb.github.io/articles/2020/res/covid_update/covid_static.png"&gt;&lt;br&gt;
+&lt;sup&gt;Y-axis: number of new cases per day. X-axis: number of days since first case.&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Here's an animated view:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="covid dynamic" src="https://aniruddha-deb.github.io/articles/2020/res/covid_update/covid_dynamic.gif"&gt;&lt;/p&gt;
+&lt;p&gt;The relevant files can be found in &lt;a href="https://github.com/Aniruddha-Deb/COVID_19_regression"&gt;this GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;UPDATE: As of May 30 9:30 pm, The recorded cases are ~174,000. I was assuming a ~10% error margin on this prediction, but I ended up being quite close to the number. The final number of cases are expected to be ~181,000 by 31st May night, resulting in an error margin of 4.1%.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;P.S: Feel free to clone and tweak the data while citing this as the original source. I do not assume responsibility in the event that this data proves to be wrong or otherwise.&lt;/p&gt;
+&lt;p&gt;P.P.S: GeoGebra 6 sucks big time! GeoGebra 5 da real MVP.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Tue, 19 May 2020 22:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-19:/articles/2020/covid-regression-analysis-update.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>No square ends in 3</title><link>https://aniruddha-deb.github.io/articles/2020/no-square-ends-in-3.html</link><description>&lt;p&gt;This is an interesting number theory fact that seems strange when taken at face value. Here's a small proof of it:
+$$\begin{array}{|c|c|}
+\hline
+\text{last digit of number} &amp;amp; \text{last digit of square} \\
+\hline
+0 &amp;amp; 0 \\
+1 &amp;amp; 1 \\
+2 &amp;amp; 4 \\
+3 &amp;amp; 9 \\
+4 &amp;amp; 6 \\
+5 &amp;amp; 5 \\
+6 &amp;amp; 6 \\
+7 &amp;amp; 9 \\
+8 &amp;amp; 4 \\
+9 &amp;amp; 1 \\
+\hline
+\end{array}$$&lt;/p&gt;
+&lt;p&gt;It's easy to see that no square is ending in 3 (or 2, 7 or 8 for that matter). What are the implications of this? Try the following sum:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How many solutions of $x$ exist such that $$\sum_{i=1}^x i! = n^2, \space n \in N$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In simpler terms, what summations of the factorial give us a perfect square? We can work out the first few by hand
+$$\begin{gather}
+x = 1 \implies S_1 = 1! = 1\\
+x = 2 \implies S_2 = S_1 + 2! = 3 \\
+x = 3 \implies S_3 = S_2 + 3! = 9 \\
+x = 4 \implies S_4 = S_3 + 4! = 33
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;For $5!$ and above, the last number is always 0. When we use the above recurrence relation for $x \ge 5$, the last digit will always be 3, and since no square ends in 3, there are only two values of $x$ for which the given equation holds, which are $1$ and $3$.  $\blacksquare$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 15 May 2020 11:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-15:/articles/2020/no-square-ends-in-3.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>COVID 19 regression analysis</title><link>https://aniruddha-deb.github.io/articles/2020/covid-regression-analysis.html</link><description>&lt;p&gt;&lt;img alt="regression" src="https://aniruddha-deb.github.io/articles/2020/res/covid-regression-analysis.png"&gt;
+This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don't fit the USA data very well though)&lt;/p&gt;
+&lt;p&gt;The y-axis scale is 5000 cases/large division and 1000 cases/small division. Currently, 50 represents today's date for India i.e. May 6. Looking at a predicted worst case curve, we see it peaking somewhere around May 20 ($\pm$ 5 days). It should go down post that point. The total number of cases is the integral under the curve. For a gaussian distribution, it comes out to be $a\sqrt{\frac \pi b}$. Taking half of this (before the peak), we end up with $\approx 130,000$ cases. India can expect to see this number $\pm$ 10% of cases by May end and a overall of $\approx 200,000 \pm 10%$ cases by June end, worst case. &lt;/p&gt;
+&lt;p&gt;Let's hope I'm wrong here and we can flatten the curve sooner than expected.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 06 May 2020 21:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-06:/articles/2020/covid-regression-analysis.html</guid><category>Mathematics</category><category>Mathematics</category><category>COVID 19</category></item><item><title>Inorganic Heterocyclic compounds</title><link>https://aniruddha-deb.github.io/articles/2020/inorganic-heterocycles.html</link><description>&lt;p&gt;The 45th IChO preparatory problem list had this as it's fifth problem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;5.1&lt;/strong&gt; The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals &lt;strong&gt;X&lt;/strong&gt;, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of &lt;strong&gt;X&lt;/strong&gt; and give the reaction equation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.2&lt;/strong&gt; Draw two stereoisomers of &lt;strong&gt;X&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.3&lt;/strong&gt; A colorless liquid &lt;strong&gt;Y&lt;/strong&gt; was prepared by a reaction between &lt;strong&gt;X&lt;/strong&gt; and antimony(III) fluoride. Addition of 1.00 g of &lt;strong&gt;Y&lt;/strong&gt; to the excess of barium acetate aqueous solution gave the precipitate with the mass of 3.96 g. Determine the chemical formula of &lt;strong&gt;Y&lt;/strong&gt;, draw its structure and write the reaction equation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.4&lt;/strong&gt; &lt;strong&gt;Y&lt;/strong&gt; enters the substitution reactions with typical nucleophiles such as methylamine. What product will be formed in the reaction between &lt;strong&gt;Y&lt;/strong&gt; and the excess of methylamine? Draw its structure.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.5&lt;/strong&gt; Give two examples of molecules or ions which are isoelectronic to &lt;strong&gt;Y&lt;/strong&gt;, draw their structures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.6&lt;/strong&gt; One of the substances isoelectronic to &lt;strong&gt;Y&lt;/strong&gt; transforms in the presence of water traces into polymer &lt;strong&gt;Z&lt;/strong&gt;. 1.00 g of &lt;strong&gt;Z&lt;/strong&gt; was dissolved in water and the resulting solution was added to the excess of barium acetate solution. The precipitate with the mass of 2.91 g was formed. Determine the formula of &lt;strong&gt;Z&lt;/strong&gt; and draw its structure.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks like a very sketchy problem: we know for a fact that:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;X is a cyclic trimer, with 34.5% w/w of $\ce{Cl}$. &lt;/li&gt;
+&lt;li&gt;The use of Sodium Azide suggests that the trimer also contains $\ce{N}$&lt;/li&gt;
+&lt;li&gt;The $\ce{Cl}$ atoms are substituted by $\ce{F}$ atoms in 5.3. The white precipitate in 5.3 is Barium Sulphate. Thus, the trimer of 5.1 has $\ce{Cl, O}$ and $\ce{S}$. 1 gram of Y thus gives $\pu{\frac{3.96}{233} mol }\ce{BaSO4}$. &lt;/li&gt;
+&lt;li&gt;5.6 is very similar to 5.3. The polymer has sulphur and oxygen, in order to produce $\ce{BaSO4}$ as precipitate.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The reaction of 5.1 can be written as $\ce{SOCl2 + NaN3 -&amp;gt; (S_xO_yCl_zN_a)3 }$ based on whatever information we have till now. Let's try getting some values for x,y,z and a. If we let all of them be 1, then the compound becomes $\ce{(SO(Cl)N)3}$. We can check if this is the correct compound by checking the mass % of $\ce{Cl}$ here. The mass % comes out to be
+$$\frac{35.5}{35.5+14+16+32} \times 100 \approx 36.4\%$$&lt;/p&gt;
+&lt;p&gt;This perfectly matches what we are looking for. Thus, the formula of the compound is $\ce{(NSOCl)3}$. This compound has been synthesized and it's name is sulphanuric chloride (Hazell et al.)&lt;/p&gt;
+&lt;p&gt;Drawing the structure is a bit trickier. A possible stable trimeric structure is&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Initial guess" src="https://aniruddha-deb.github.io/articles/2020/res/X_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;However, this is not the experimentally verified structure of sulphanuric chloride. Hazell et al. states that the structure (originally proposed by Kirsanov(1952)) has the $\ce{Cl}$ atoms attached to the $\ce{S}$ atom, with a formal charge of +1 on the $\ce{S}$ and -1 on the $\ce{N}$ atom. This structure has been proposed keeping in mind the physical properties of the compound.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fig. showing (I) $\alpha$ and (II) $\beta$ forms" src="https://aniruddha-deb.github.io/articles/2020/res/X_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Without knowing about these findings, drawing the correct structure is nigh impossible. This is what makes this a very hard question, as the first guess is to draw the structure that I have drawn above.&lt;/del&gt; See edit&lt;/p&gt;
+&lt;p&gt;Once the structure is known, 5.2, 5.3 and 5.4 are very easy. 5.2 involves drawing the two stereoisomers, which consist of an all cis $\ce{Cl}$ isomer and a trans $\ce{Cl}$ isomer, both of which are shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="stereoisomers" src="https://aniruddha-deb.github.io/articles/2020/res/X_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;5.3 involves a simple halogen substitution reaction with Fluorine, giving us $\ce{(NSOF)3}$. This is isostructural with $\ce{(NSOCl)3}$. 5.4 involves a substitution reaction with methylamine, giving us $$\ce{(NSOF)3 + 3CH3NH2 -&amp;gt; (NSO(NHCH3))3 + 3HF}$$&lt;/p&gt;
+&lt;p&gt;5.5 again requires a bit of mental hardwork. Y contains 120 electrons. An easy choice would be to replace the $\ce{F}$ atoms with $\ce{O-}$ atoms, giving us $\ce{(NSO2)3^3-}$. Drawing a second one is much trickier. Keeping in line with the problem, if we think of other inorganic heterocycles, $\ce{(SO3)3}$, the cyclic trimer of $\ce{SO3}$ comes to mind. Indeed, this is isoelectronic as it has 120 electrons. Once $\ce{(SO3)3}$ is obtained, 5.6 becomes easy as $\ce{(SO3)3}$ polymerizes in aqueous solution to give polymeric $\ce{(SO3)_n}$.&lt;/p&gt;
+&lt;p&gt;A very good problem, well above the regular inorganic standard. Breaking through the first step is the hardest, followed by obtaining the correct structure for the trimer and it's isoelectronic counterparts. The rest is quite easy.&lt;/p&gt;
+&lt;h3&gt;EDIT:&lt;/h3&gt;
+&lt;p&gt;There is a better, mechanism-based way of solving this question, as pointed out by &lt;a href="https://chemistry.stackexchange.com/users/54655/yusuf-hasan"&gt;Yusuf Hasan&lt;/a&gt; over at Chemistry StackExchange. Thionyl Chloride reacts with organic molecules via this reaction pathway:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SNi pathway" src="https://aniruddha-deb.github.io/articles/2020/res/SNi.png"&gt;&lt;/p&gt;
+&lt;p&gt;To solve this problem, we need to formulate a similar reaction pathway, but with the Azide anion as the substrate instead of pentan-2-ol. Here's the proposed pathway:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Monomer formation" src="https://aniruddha-deb.github.io/articles/2020/res/monomer.png"&gt;&lt;/p&gt;
+&lt;p&gt;Trimerization occurs through a pericyclic mechanism similar to the trimerization of $\ce{SO3}$. Note that the $\ce{Cl-}$ atoms shift from $\ce{N}$ to $\ce{S}$ in a concerted manner, similar to the mechanism proposed by &lt;a href="https://www.researchgate.net/publication/11505683_Theoretical_Study_on_Chlorine_and_Hydrogen_Shift_in_Cycloheptatriene_and_Cyclopentadiene_Derivatives"&gt;Okajima and Imafuku&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Trimer formation" src="https://aniruddha-deb.github.io/articles/2020/res/trimer.png"&gt;&lt;/p&gt;
+&lt;p&gt;This is a more concrete way to get to the answer and one that does not involve guesswork or hit and trial.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;sup&gt;P.S: Adding MHChem required an update to MathJax 3.x, which brings with it improved rendering (and stricter use of align and gather environments). The MathJax rendering bugs on mobile should be gone now.&lt;/sup&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 03 May 2020 10:40:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-05-03:/articles/2020/inorganic-heterocycles.html</guid><category>Chemistry</category></item><item><title>Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 + bx + c $, are symmetric about $ \frac{-b}{2a} $</title><link>https://aniruddha-deb.github.io/articles/2020/roots-of-fffx.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&amp;gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This seems like a complicated problem. Let's start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots. Also, all roots of a quadratic of the form $ ax^2 + bx + c , a,b \in \mathbb{R} $ can be expressed as $ \frac{-b}{2a} \pm k$, where $k$ is some constant, which can be real or complex. To find all the real roots of $ f^n(x) $, we have to solve the set of equations $ f^{n-1}(x) = \alpha_i \backepsilon \alpha_i $ is a root of $ f^{n-1}(x) $.&lt;/p&gt;
+&lt;p&gt;This problem can be recursively broken down until we arrive at finding the roots of $ f^2(x) $, which are the roots of $ f(x) = \alpha_1 = \frac{-b}{2a} + k $ and $ f(x) = \alpha_2 = \frac{-b}{2a} - k $. Since these two quadratics also assume the form in the paragraph discussed above, their roots can be written as $ \frac{-b}{2a} \pm u $ and $ \frac{-b}{2a} \pm v $. Note that if the equation has complex roots, then the values of u and v would be imaginary. This does not matter, as any further equations solved upon them will continue to have their roots expressed as $ \frac{-b}{2a} \pm k $. Moving to solve $ f^3(x) $ requires us to solve the equations $f(x) = \frac{-b}{2a} \pm u $ and $f(x) = \frac{-b}{2a} \pm v $. If we continue to do this, we can notice that all the $ 2^n $ roots of $ ax^2 + bx + c $ can be expressed in the same form $ \frac{-b}{2a} \pm v $, as the value of the first two coefficients of the quadratic(s) to be solved remains the same. Thus, all the real roots are symmetric about the said vertical line and all imaginary roots have their real part equal to $ \frac{-b}{2a} $. $ \blacksquare $&lt;/p&gt;
+&lt;p&gt;A graphical proof for this is as follows: consider any arbitary quadratic with two real roots (this can also be proven with a quadratic with no real roots, but that requires mapping the complex plane on the z-axis, which I don't want to do).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic f(x)" src="https://aniruddha-deb.github.io/articles/2020/res/roots_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Here the roots are A and B. Reflecting them onto the Y-axis and drawing two parallel lines through them gives us the following graph:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic with roots on y-axis" src="https://aniruddha-deb.github.io/articles/2020/res/roots_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;The two lines represent the roots and the points of intersection of the parabola with the line (That's C,D,E and F) represent the roots of the equation $f^2(x)$. This can be verified by plotting $ f(f(x)) $ in the same graph&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quadratic f(f(x))" src="https://aniruddha-deb.github.io/articles/2020/res/roots_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;This provides a more intuitive approach to the above proof. As is clearly visible, $ f^2(x) $ has all it's roots symmetrical. This procedure can be repeated $n$ times, giving us the requisite proof.&lt;/p&gt;
+&lt;p&gt;Both of my proofs are not very mathematically rigorous. A rigorous proof would involve induction using the principles I showed here. That exercise is left to the readers (mainly because my induction &amp;amp; formal proof-writing skills are horrible :P). &lt;/p&gt;
+&lt;p&gt;An application of this problem can be found in the &lt;a href="https://jason-shi-f9dm.squarespace.com/s/2019Algebra_A.pdf"&gt;PUMAC 2019 Algebra A paper, Q3&lt;/a&gt;. This is a rather nice problem, which involves the sum of the roots of $ f^n(x) $. Since all the roots are symmetric, you would end up with $ 2^n $ times the abscissa of the vertex of said quadratic.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 30 Apr 2020 20:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-30:/articles/2020/roots-of-fffx.html</guid><category>Mathematics</category></item><item><title>An integral involving ζ(2) (And Euler's first proof for the Basel Problem)</title><link>https://aniruddha-deb.github.io/articles/2020/zeta-2-integral.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \):
+$$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ 
+$$I = \int_0^1 \frac 1x \left( x + \frac{x^2}{2} + \frac{x^3}{3} + ... \right) $$&lt;/p&gt;
+&lt;p&gt;This expression nicely integrates to give
+$$I = 1 + \frac{1}{2^2} + \frac{1}{3^2} + ... = \boxed{\frac{\pi^2}{6}}$$&lt;/p&gt;
+&lt;p&gt;The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\). This summation is known as the &lt;a href="https://en.wikipedia.org/wiki/Basel_problem"&gt;Basel Problem&lt;/a&gt; (more on this later). For now, we'll use this as a fact and move forward.&lt;/p&gt;
+&lt;p&gt;Another solution that does not involve the taylor series requires some substitutions and limit evaluation.&lt;/p&gt;
+&lt;p&gt;$$\begin{gather}
+I = \int_0^1\frac{\log x}{x-1} dx= -\int_0^1\log x(1+x+x^2+...)dx \\
+= -\int_0^1 \log x \sum_{r=0}^\infty x^r dx \\
+= -\sum_{r=0}^\infty\int_0^1x^r \log x dx 
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;let \(\log x = t \implies dx = e^t dt\):
+$$\begin{gather}I = -\sum_{r=0}^\infty \int_{-\infty}^0te^{(r+1)t}dt \\
+=-\sum_{r=0}^\infty \left[\frac{te^{(r+1)t}}{(r+1)} - \frac{e^{(r+1)t}}{(r+1)^2}\right]_{-\infty}^0\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} + \lim_{t \to -\infty} \frac{(t(r+1)-1)e^{(r+1)t}}{(r+1)^2} \right]\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{(t(r+1)+1)}{e^{(r+1)t}(r+1)^2} \right] \\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{r+1}{e^{(r+1)t}(r+1)^3} \right] \\
+= \sum_{r=0}^\infty \frac{1}{(r+1)^2}\\
+= \sum_{k=1}^\infty \frac{1}{k^2}\\
+\boxed{I = \frac{\pi^2}{6}}
+\end{gather}$$&lt;/p&gt;
+&lt;p&gt;This solution also involves the same summation. There is, however, a solution that does not involve the summation: The general form of this integral is known as &lt;a href="https://en.wikipedia.org/wiki/Spence%27s_function"&gt;Spence's Function&lt;/a&gt; or Dilogarithm. It's a transcendental function which has the values \( Li_2(0) = 1 \) and \( Li_2(1) = \zeta(2) = \frac{\pi^2}{6} \). If you know these values beforehand, you can cut out the lengthy calculation.&lt;/p&gt;
+&lt;p&gt;Back to the Basel Problem, and a bit of a primer first. The &lt;a href="https://en.wikipedia.org/wiki/Riemann_zeta_function"&gt;Riemann-Zeta&lt;/a&gt; function is a mathematical function that is defined as \( \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} \). Thus, a convenient way of referring to the sum \( \sum_{k=1}^{\infty} \frac{1}{k^2} \) would be \( \zeta(2) \), which I will use hereon. The quest for the value of \( \zeta(2) \) far predates the Riemann-zeta function (and Bernhard Riemann himself for that matter). This problem was first posed by Pietro Mengoli, an Italian mathematician who had proved that the harmonic series \( \left( \sum_{n=1}^{\infty} \frac 1n \right) \) diverges and also found the value of the sum \( \sum_{r=1}^\infty (-1)^{r-1} \frac 1r \) to be \( \log(2) \). The problem is called the Basel problem as Basel in Switzerland is the hometown of Euler, who solved the problem and the Bernoulli family, who unsuccessfully attacked the problem.&lt;/p&gt;
+&lt;p&gt;The story goes that the first proof Euler gave was not accepted as it involved an unproven factorization of \( \sin(x) \). Euler being Euler, gave a second proof and a third proof as well, which were accepted. The initial proof is as follows: From the taylor series expansion of \( \sin(x) \), we have
+$$\sin(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + ... $$&lt;/p&gt;
+&lt;p&gt;\( \sin(x) \) can also be written as a function of it's roots, according to the &lt;a href="https://en.wikipedia.org/wiki/Weierstrass_factorization_theorem"&gt;Weierstrass Factorization Theorem&lt;/a&gt;. Note that this theorem was published a 100 years after Euler's proof, which is why Euler's proof was initially not accepted. Euler factorized \( \sin(x) \) as follows:
+$$\sin(x) = x(1 - \frac x\pi)(1 + \frac x\pi)(1 - \frac{x}{2\pi})(1+\frac{x}{2\pi})...$$ $$\sin(x) = x(1-\frac{x^2}{\pi^2})(1-\frac{x^2}{4\pi^2})... \tag{1}$$&lt;/p&gt;
+&lt;p&gt;Why did Euler choose to factorize \( \sin(x) \) as such? He could also have chosen the function \(x(x-\pi)(x+\pi)(x-2\pi)(x+2\pi)...\). A simple trick I used to explain this is that the function chosen by Euler is bounded and also converges to a common limit. Dividing both sides by \( x \) and evaluating the limit \(lim_{x \to 0} \frac{\sin(x)}{x}\) in equation \( (1) \), we see that both sides converge to 1.&lt;/p&gt;
+&lt;p&gt;Back to the proof, since we have two equivalent representations of \( \sin(x) \), all we have to do is compare the coefficients of \( x^3 \) in both of them to find the value of \( \zeta(2) \)
+$$\frac{1}{3!} = \frac{1}{\pi^2} \sum_{k=1}^{\infty} \frac{1}{k^2}$$
+$$\boxed{\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}}$$&lt;/p&gt;
+&lt;p&gt;This completes the proof. A really beautiful and simple proof, this was the one of the two proofs (Along with &lt;a href="https://en.wikipedia.org/wiki/Basel_problem#Cauchy's_proof"&gt;Cauchy's proof&lt;/a&gt;) that I was able to understand. For more proofs involving higher order mathematics, you can check out the links &lt;a href="http://math.cmu.edu/~bwsulliv/basel-problem.pdf"&gt;here&lt;/a&gt; and &lt;a href="https://math.stackexchange.com/questions/8337/different-methods-to-compute-sum-limits-k-1-infty-frac1k2-basel-pro"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 22:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/zeta-2-integral.html</guid><category>Mathematics</category></item><item><title>An Interesting Electronics Problem</title><link>https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html</link><description>&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
+&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll use the concept of symmetry and a few tricks. Let's start by connecting a battery to the circuit and labeling the currents and loops&lt;/p&gt;
+&lt;p&gt;&lt;img alt="tweaked resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/iep_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="loops" src="https://aniruddha-deb.github.io/articles/2020/res/iep_4.png"&gt;&lt;/p&gt;
+&lt;p&gt;Solving the loops gives us the equations
+$$\begin{align} &amp;amp; V = Ri_3 + ri_1 \tag{2} \\ &amp;amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$
+Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$
+The net current through the cell is \( i = i_1 + i_3 = \frac{R+3r}{R+r}i_1 \). Therefore, the net resistance \(R_p = \frac Vi = \frac{r(3R+r)}{3r+R} \)
+We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \) 
+$$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\ 
+\boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$ &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;sup&gt;p.s: The &lt;code&gt;\eqref&lt;/code&gt; or &lt;code&gt;\ref&lt;/code&gt; commands don't work for some reason. I'll have to figure out why.&lt;/sup&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 22:20:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/interesting-electronics-problem.html</guid><category>Electronics</category></item><item><title>MathJax Test</title><link>https://aniruddha-deb.github.io/articles/2020/mathjax-test.html</link><description>&lt;p&gt;This is a test to see if MathJax works on blogger.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For \(\alpha, \beta \gt -1\), find the value of \(\lim_{n \to \infty} n^{\beta - \alpha} \frac{1^\alpha + 2^\alpha + 3^\alpha + ... + n^\alpha}{1^\beta + 2^\beta + 3^\beta + ... + n^\beta}\)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So we have&lt;/p&gt;
+&lt;p&gt;$$L = \lim_{n \to \infty} \frac{n^\beta}{n^\alpha} \times \frac{\sum_{r=0}^n r^\alpha}{\sum_{r=0}^n r^\beta}\
+= \lim_{n \to \infty} \frac{\sum_{r=0}^n (\frac rn)^\alpha}{\sum_{r=0}^n (\frac rn)^\beta}$$&lt;/p&gt;
+&lt;p&gt;The summations can now be evaluated as Riemann sums by multiplying numerator and denominator by (\frac 1n)&lt;/p&gt;
+&lt;p&gt;$$L = \frac{\int_0^1 x^\alpha dx}{\int_0^1 x^\beta dx}\
+L = \frac{\beta+1}{\alpha +1}$$&lt;/p&gt;
+&lt;p&gt;Indeed it does! Looking forward to writing more mathematical posts.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 29 Apr 2020 10:20:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/mathjax-test.html</guid><category>Posts</category></item><item><title>Electronic Clock II - Generating the Clock Signal pt. 2</title><link>https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-ii.html</link><description>&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
+&lt;h3&gt;Flip-Flop: Concept&lt;/h3&gt;
+&lt;p&gt;A Flip flop is a one-bit storage device which looks somewhat like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="flip flop" src="https://aniruddha-deb.github.io/articles/2018/res/flip_flop.png"&gt;&lt;/p&gt;
+&lt;p&gt;The truth table of this device looks somewhat like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="truth table" src="https://aniruddha-deb.github.io/articles/2018/res/jk-flip-flop-truth-table.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin. &lt;/p&gt;
+&lt;h3&gt;Adding the flip-flop to our circuit:&lt;/h3&gt;
+&lt;p&gt;On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1hz schematic" src="https://aniruddha-deb.github.io/articles/2018/res/1hz_schematic.png"&gt;&lt;/p&gt;
+&lt;p&gt;As calculated, this gives us a frequency of 1 Hz on the Q pin&lt;/p&gt;
+&lt;p&gt;&lt;img alt="oscilloscope output" src="https://aniruddha-deb.github.io/articles/2018/res/pic.png"&gt;&lt;/p&gt;
+&lt;p&gt;This concludes our clock signal source. In the next post, we will have a look at counting seconds with the clock signal. &lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 16 Jun 2018 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2018-06-16:/articles/2018/electronic-clock-2-ii.html</guid><category>Electronics</category></item><item><title>Electronic Clock II - Generating the Clock Signal pt.1</title><link>https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-i.html</link><description>&lt;p&gt;In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock&lt;/p&gt;
+&lt;h3&gt;Importance of the Signal in a clock&lt;/h3&gt;
+&lt;p&gt;Every clock is only as accurate as it's signal. An &lt;a href="https://en.wikipedia.org/wiki/Atomic_clock"&gt;atomic clock&lt;/a&gt; uses radiations emitted by cesium-133 as it's signal, a &lt;a href="https://en.wikipedia.org/wiki/Quartz_clock"&gt;quartz clock&lt;/a&gt; uses a 32768 Hz quartz crystal as it's signal whereas a mechanical clock uses an &lt;a href="https://en.wikipedia.org/wiki/Escapement"&gt;Escapement&lt;/a&gt; powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!&lt;/p&gt;
+&lt;h3&gt;Make an accurate electronic signal&lt;/h3&gt;
+&lt;p&gt;Our clock (like most other clocks) is going to use a quartz crystal as it's main signal. An &lt;a href="https://en.wikipedia.org/wiki/RC_oscillator"&gt;RC&lt;/a&gt; or &lt;a href="https://en.wikipedia.org/wiki/LC_circuit"&gt;LC&lt;/a&gt; oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%&lt;/p&gt;
+&lt;p&gt;The signal generated by this crystal has a frequency of 32768 Hz, which isn't very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.&lt;/p&gt;
+&lt;p&gt;The HEF4060 has the capacity to give us a minimum frequency of 32768/214 = 2 Hz. This will later be scaled down using a flip-flop to give us a frequency of 1 Hz. The circuit for this looks like the following:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clock circuit" src="https://aniruddha-deb.github.io/articles/2018/res/clock_signal_schematic.png"&gt;&lt;/p&gt;
+&lt;p&gt;After testing the above circuit on a breadboard, pin 7 (Q4) gave the following results on an oscilloscope:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="oscilloscope" src="https://aniruddha-deb.github.io/articles/2018/res/pic_44_3.bmp"&gt;&lt;/p&gt;
+&lt;p&gt;These results were expected as 32768/16 gives us 2048, which is approximately 2.049 kHz. the extra 1 Hz is probably a result of breadboard capacitance, which should go away once the circuit is soldered on a PCB. &lt;/p&gt;
+&lt;p&gt;In the next installment, I will use a flip flop to halve the 2Hz signal to give us a resultant signal of 1Hz, which can be used to drive the seconds counter.&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 14 Jun 2018 22:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2018-06-14:/articles/2018/electronic-clock-2-i.html</guid><category>Electronics</category></item><item><title>Electronic Clock I - Getting Started</title><link>https://aniruddha-deb.github.io/articles/2018/electronic-clock-1.html</link><description>&lt;p&gt;This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you're subscribed to the RSS feed so that you don't miss out on anything!&lt;/p&gt;
+&lt;h3&gt;Getting Started&lt;/h3&gt;
+&lt;p&gt;An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.&lt;/p&gt;
+&lt;p&gt;The first task is enumerating the requirements of the clock. A humble requirement list looks like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clock should run on a few AA cells&lt;/li&gt;
+&lt;li&gt;It should have a 24 hour display&lt;/li&gt;
+&lt;li&gt;It should display seconds, minutes and hours&lt;/li&gt;
+&lt;li&gt;It should have two LED's each to separate the hours, minutes and seconds&lt;/li&gt;
+&lt;li&gt;It should be moderately compact&lt;/li&gt;
+&lt;li&gt;It should be challenging to engineer and design&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The second task is deciding what components will form the base of the clock (akin to choosing a language or a technology stack for developing an application). For a clock, a few options are available:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a microcontroller:&lt;/li&gt;
+&lt;li&gt;Interface a DS1307 clock module with the microcontroller using SPI, or&lt;/li&gt;
+&lt;li&gt;Write your own code for a real-time clock in the microcontroller and use an external clock crystal (already done this here)&lt;/li&gt;
+&lt;li&gt;Use CMOS/TTL Logic IC's&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I decided to go with the second option as I had already written code for a microcontroller clock and gone halfway through the implementation when I realized that it was too easy and did not provide a challenge. If you are a beginner, you should take the microcontroller route, as in case of bugs, they are easily rectifiable via your code, whereas debugging a hardware circuit (especially a large CMOS/TTL one) is decently hard for beginners.&lt;/p&gt;
+&lt;p&gt;Within a few minutes, I drew a basic block diagram for the main components in the circuit.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://aniruddha-deb.github.io/articles/2018/res/disp.png"&gt;&lt;/p&gt;
+&lt;p&gt;The circuit mainly consists of a 1Hz signal generator, a few counters/dividers and the display logic. &lt;/p&gt;
+&lt;p&gt;In the next segment, I'm going to build the signal generator and produce an accurate 2Hz signal that can be used by the other counters.&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 14 Jun 2018 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2018-06-14:/articles/2018/electronic-clock-1.html</guid><category>Electronics</category></item><item><title>Cleared OCAJP with 94% - My Experience</title><link>https://aniruddha-deb.github.io/articles/2018/ocajp.html</link><description>&lt;p&gt;This was originally posted on &lt;a href="https://coderanch.com/t/695020/certification/Cleared-OCAJP-Experience"&gt;CodeRanch&lt;/a&gt;:&lt;/p&gt;
+&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;I'm a 15 year old student who has just cleared his secondary education. I have a knack for computers and am currently building my online profile (&lt;a href="https://github.com/Aniruddha-Deb"&gt;github&lt;/a&gt;, &lt;a href="aniruddha-deb.github.io"&gt;blog&lt;/a&gt;, etc.) I already had ~2 years of experience in java and had been eyeing the Oracle certification for quite some time. Eventually, in the summer vacations, I decided to go all in, bought a few books and sat down and studied for the exam. &lt;/p&gt;
+&lt;h3&gt;Process&lt;/h3&gt;
+&lt;p&gt;The books that I used for the certification were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OCA Java SE 8 Programmer I - Mala Gupta&lt;/li&gt;
+&lt;li&gt;OCA/OCP Java 8 practice tests - Selikoff and Boyarsky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I spent around 3 weeks studying for the exam with an average time of ~1.5 hours per day. I would go through the chapters and topics in Mala Gupta and do the respective questions for those topics from the practice tests book. I also wrote a lot of practice programs to wrap my head around some new concepts (Java 8 Date/Time API for instance). Most of the content was easy as I had already studied it in school and had prior programming experience. Personally for me, the hard parts were the new Java 8 features and interfaces in Java 8 (this may vary from person to person). My advice would be to spend extra time on the harder parts and comparatively less time on the easier parts (looping and decisions was easy - I went through those in a day each). &lt;/p&gt;
+&lt;p&gt;Most of my practice programs were written in Eclipse (even though most books ask you to NOT do this). I found eclipse's autocompilation features handy for spotting errors. I then got a chance to tweak the code to see if the error reappears in real time, something that iterative compilation will never be able to do. That did help me learn faster. (again, my methods may not necessarily resonate with someone else's) &lt;/p&gt;
+&lt;h3&gt;Before giving the exam&lt;/h3&gt;
+&lt;p&gt;Once I had finished the syllabus, I went through the two practice tests that I had - one from Mala Gupta and one from Selikoff and Boyarsky. I scored 85-86% on both tests. I also gave the free enthuware test containing 25 questions and scored 80% in that. I did not pay for the full enthuware mock test set as I felt pretty comfortable with my performance. &lt;/p&gt;
+&lt;h3&gt;Giving the exam&lt;/h3&gt;
+&lt;p&gt;There was a pearson VUE Centre right next to where I live (less than a kilometre away), which simplified travel quite a bit. Time management is not a problem in this exam. I repeat that - time management is NOT a problem. I finished all the questions in around one hour and 15 minutes and spent the rest of the time checking the answers. You will not be hard pressed for time in this exam, so take your time and think through every question calmly and carefully. Do not submit before time. &lt;/p&gt;
+&lt;h3&gt;After the exam&lt;/h3&gt;
+&lt;p&gt;Amazingly, I did not get my results in 30 minutes. It took close to one and a half hours for my results to come, and around one and a half days for my certificate to be generated. This is something oracle can definetly work on. &lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;If you're a young guy (like me) reading this, my advice would be to give this exam only if you are confident of your capabilities in Java and are passionate about a future in computers. You will also spend a significant amount of your vacation time in studying for this exam. in addition to being slightly tricky, this exam is also expensive and will have to be funded by your parents. Also, there are no short term benefits to clearing this exam: the benefits will only show 10 years later when you turn up for a job interview and proudly proclaim you cleared the OCA at the age of 15. If you're okay with the above, then best of luck for the exam! &lt;/p&gt;
+&lt;p&gt;p.s: all the code that I wrote for the exam is available &lt;a href="https://github.com/Aniruddha-Deb/OCAPrep"&gt;here&lt;/a&gt;. May come in handy to other aspirants. &lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 06 Jun 2018 22:05:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2018-06-06:/articles/2018/ocajp.html</guid><category>Programming</category></item><item><title>ICSE Mathematics - Last 23 years analysis and 2018 forecast</title><link>https://aniruddha-deb.github.io/articles/2018/icse-mathematics-analysis.html</link><description>&lt;p&gt;&lt;img alt="Analysis results" src="https://aniruddha-deb.github.io/articles/2018/res/icse_math_analysis.png"&gt;&lt;/p&gt;
+&lt;p&gt;A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years. The boards are fast approaching and hope this helps out those in need.&lt;/p&gt;
+&lt;p&gt;Best of luck for the exams!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;
+&lt;p&gt;EDIT: As of 16th June, 2018, I cleared the 2018 ICSE Mathematics paper with a perfect 100. The above statistical analysis truly paid off as most of the questions followed the same pattern :D&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Tue, 09 Jan 2018 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2018-01-09:/articles/2018/icse-mathematics-analysis.html</guid><category>Mathematics</category></item><item><title>Python Crash Course</title><link>https://aniruddha-deb.github.io/articles/2017/python-crash-course.html</link><description>&lt;p&gt;Recently, I felt the need of creating a to-do app based on the getting things done principle (link here). I had been using MyLifeOrganized in a virtual machine on my mac, but it just wasn't cutting it. Things 3 and OmniFocus for Mac were too pricey and other web-based todo apps like Trello and Todoist didn't suit me very much. As a result, I decided to jump into some code and create a custom to-do mac app.&lt;/p&gt;
+&lt;p&gt;My basic requirements were very humble: I need a task list in which I can create, read, update and delete tasks easily. I eventually decided to go with a unix-like command line application. Unix apps are usually made in C or Shell Script. My C is pathetic at the very least and I find shell script to be.. Queer. Java was too heavyweight a language to code a simple shell utility in, so I chose to go with Python.&lt;/p&gt;
+&lt;p&gt;I had minimal experience with python in the past. I barely knew the basic language constructs and features. Luckily, python has a very shallow learning curve. About two hours with google and my python concepts were acceptable enough to start coding. Initially, python felt very much like shell script, just slightly more verbose. The lack of semicolons in python still irritates a Java programmer like me and the absence of braces makes the code feel very different compared to Java. After a few days of coding, these features started to grow on me. &lt;/p&gt;
+&lt;p&gt;The first draft of GTD.py was a disaster. I used a text file to store all the application data and there was a ton of File I/O involved. Combine that with me using the google python fire library like an amateur and things quickly went downhill. Every time the code ran, it threw a horrendous looking python exception at my face (coming from java, python exceptions are much more beautiful compared to terrible.java.Stack.traces). Python looked like a terrible choice of language, as I could have a similar Java program up and running in about 10 minutes.&lt;/p&gt;
+&lt;p&gt;Eventually, though, my comfort with the language grew. I ditched the text based approach and decided to use an SQLite database to store the information. I also discarded python fire and chose to use argparse. These two libraries gave me a decent challenge to build the app.&lt;/p&gt;
+&lt;p&gt;The second draft came out much better than the first. The program is now usable (still needs a little refactoring). At the time of writing, I am still getting used to python programming conventions (reserved_chars as opposed to reservedChars) and the strange looking import statements. The language is still much less verbose as compared to Java and with enough practice, I may end up being more productive in Python. There's still a long way to go - I barely know the standard libraries and the functions. I also need to get to know the python runtime well enough before I start coding serious application critical components in python. The initial impression of python as a language for me was decently good. Would be interesting to see where I stand in about two to three months with the language.&lt;/p&gt;
+&lt;p&gt;Check out the GTD.py code &lt;a href="https://github.com/Aniruddha-Deb/GTD.py"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Good luck to all those starting their python journey!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 22 Dec 2017 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2017-12-22:/articles/2017/python-crash-course.html</guid><category>Programming</category></item><item><title>TCS IT Wiz - an Experience</title><link>https://aniruddha-deb.github.io/articles/2017/tcsitwiz-experience.html</link><description>&lt;p&gt;Anyone who is in college or in high school and is interested in quizzing will know about the TCS IT Wiz (website: &lt;a href="www.tcsitwiz.com"&gt;www.tcsitwiz.com&lt;/a&gt;) - one of the most prestigious high school quizzes, sponsored by Tata Consultancy Services and hosted by Greycaps CEO Giri 'Pickbrain' Balasubramaniam.&lt;/p&gt;
+&lt;p&gt;I got my first taste of this quiz when I was in eighth standard. I sheepishly went up to the head of department of computers and said that I was interested in participating in the TCS IT Wiz. After an announcement in class about the quiz, all the scholars in the class soon followed suit. Looking back, I barely knew anything about IT then. Around 30 of us were put in a bus and taken to the venue, where we managed to get a balcony seat. I couldn't answer more than 8 questions correctly. It was a complete disaster&lt;/p&gt;
+&lt;p&gt;Fast forward a year, and I was ready to tackle the quiz head-on another time. However, a science exhibition was held on the same day as that of the quiz, and I chose (and won) the science exhibition. Fast forward another year, and I am now Pune champion. How time flies!&lt;/p&gt;
+&lt;p&gt;This year, I was well aware of the quiz and did a moderate amount of preparation before the regionals. TCS uploads the regional finals of every city, so going through them and getting a feel of the questions and the rounds is essential. Preparation time also needs to be devoted to TCS itself - There is a round dedicated completely to it. Going over their website (thoroughly) and their wikipedia page should be adequate for the regionals.&lt;/p&gt;
+&lt;p&gt;We were among the first to reach the venue and were seated pretty far ahead. This time, when Pickbrain came on stage in his usual kurta, I was well prepared. With a score of 12 in the prelims, I successfully managed to get on stage along with my teammate, Rasesh. Well acquainted with the format of the quiz, we played along well and managed to top the quiz with a score of 40. UWC Mahindra college were runners up, with a score of 35. &lt;/p&gt;
+&lt;p&gt;Right after the quiz was over, the very next day, we drew up a schedule of preparation. Going over last year's regional finals was top priority, followed by researching about companies and new technology trends. Close observation of our competitors was also on the back of our minds as we continued researching.&lt;/p&gt;
+&lt;p&gt;The quiz finals are held on 10th December every year, at Taj Lands End in Mumbai. This was the first time I was in a TCS National final, up against stiff competition from last time's winners. Due to hasty decisions, we were knocked out of the quiz during the semifinal stage, getting a +1 and then a -1, bringing our score to 0. Delhi and Ahmedabad got 4 or 5 and Kochi got 1. The finals were a close contested battle between Delhi and Ahmedabad up till the fifth round. In the fifth round, Delhi built up an unassailable 30 point lead and went on to win the quiz again, with a score of 80 to Ahmedabad's 40. &lt;/p&gt;
+&lt;p&gt;Tata Consultancy Services are very generous with prizes. All national finalists got 35,000 rupees in Amazon gift vouchers, whereas the runner up got 1,00,000 and the winners received 1,50,000. Even though I lost, the experience in Mumbai will be unforgettable. Hope to come back next year and give Pranav from DPS Noida some stiff competition!&lt;/p&gt;
+&lt;p&gt;Watch the 2017 national finals &lt;a href="https://www.youtube.com/watch?v=3VsvX1Ateys"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Best of luck for next year's quiz!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 14 Dec 2017 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2017-12-14:/articles/2017/tcsitwiz-experience.html</guid><category>Quizzing</category></item><item><title>National Safety Science Quiz - an Experience</title><link>https://aniruddha-deb.github.io/articles/2017/nssq-experience.html</link><description>&lt;p&gt;'Safety science' is a novel term. Googling it up reveals a few obscure links. It doesn't even have a Wikipedia page of it's own! Safety science is a new term that refers to the science of keeping oneself safe from dangers at home, at work, on the streets and so on. This concept of safety science is spearheaded in India by Underwriters Laboratories (&lt;em&gt;whispers&lt;/em&gt; marketing) in association with NDTV (&lt;em&gt;whispers&lt;/em&gt; TRP.).&lt;/p&gt;
+&lt;p&gt;I got the first taste of this quiz last year, when I was in ninth grade. It was the first 'web quiz' of sorts that I had given (p.s.: cheating is very easy, only that I realized it after my quiz was over). &lt;/p&gt;
+&lt;p&gt;I did not qualify from the school (top 2 qualify for regional finals) and ultimately stayed back. This year though, I somehow managed to top the school and got 24 out of 25. &lt;/p&gt;
+&lt;p&gt;By a stroke of luck, I had done minimal preparation for the quiz and managed to go on stage. Playing the stage round wisely and steadily, I amazingly managed to win this round. This was the typical 'what the hell, I was not expecting this to happen' moment. We then had to travel to Delhi from 29th of November to the 3rd of December, which was right in the thick of our exams. After juggling the exams out of the way, we were on our way to Delhi!&lt;/p&gt;
+&lt;p&gt;On reaching Delhi, a welcome dinner was hosted on the 29th. We then had a safety parliament shoot (read: TRP) on the 30th, when a panel of safety experts came on stage and we had to ask them questions on the state of safety in India(more on this in a later blog). After a long night of preparation, we had our semifinals the following day. An aura of nervousness prevailed around all the participants as we got ready for the second semifinal, where we were pitted against the likes of winners and runner ups from Delhi, Jaipur, Bangalore and Calcutta. Ultimately, we managed to lose and dropped to last while the runner ups from Delhi managed to win.&lt;/p&gt;
+&lt;p&gt;It was a case of history repeating itself, as Chettinad Vidyaashram from Chennai, the winners of last year's national finals, won again this time. DAV Chennai, last year's runner ups, came runner up again.&lt;/p&gt;
+&lt;p&gt;If you have successfully survived my drunk rambling about the quiz, this is a step by step guide on how I prepared: 
+The first step is the web quiz. If you really want it that bad, just open up a new tab and google the questions in the quiz. Make sure you get above 20 out of 25 in the quiz.
+The top four people from each school participate in teams of two. Make sure you tie up with a person whom you are comfortable with. For good strategy, inform your expected teammate to prepare and do his best in the web round, so that the two of you are in the top four people.
+The prelims of the regional finals are going to be the hardest questions in the entire journey. Prepare hard for the regional finals. The minute you qualify on stage, it is a cakewalk.
+On stage, three out of four rounds are on 'pounce', that is, if another person gets an easy question, any team on stage can pounce and answer that question and will get +10 for a right and -7 for a wrong. The question remains open after you pounce, so all other teams can still answer the question. 
+It is confidence that will carry you through the stage rounds. The questions on stage are comparatively very easy. Do not be afraid to pounce on each and every question on stage. Pounce hard and victory will be yours.
+The national semifinals are a completely different game. Every question is on buzzer. There are 10 questions spread over 4 rounds. The rounds are arranged according to the table below:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No.&lt;/th&gt;
+&lt;th&gt;Num Questions&lt;/th&gt;
+&lt;th&gt;Points per question&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;±10&lt;/td&gt;
+&lt;td&gt;Single questions &lt;br&gt;1 normal question &lt;br&gt;2 anagram questions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;±20&lt;/td&gt;
+&lt;td&gt;Double questions &lt;br&gt;2 picture based questions &lt;br&gt;1 true/false question&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;±50&lt;/td&gt;
+&lt;td&gt;5 part questions &lt;br&gt;1 true/false question &lt;br&gt;1 word maze &lt;br&gt;1 spot the safety hazards question&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;*/2&lt;/td&gt;
+&lt;td&gt;Make or break question: can double or halve all your points &lt;br&gt;5 part question &lt;br&gt;All 5 parts need to be correct to double &lt;br&gt;Question type: Match the symbols to their meanings&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Till now, nobody who has attempted a make or break question has won the quiz. Everyone gets four right and one wrong
+The right strategy for the semifinal and final is to be quick on the buzzer and make minimal mistakes. Attempt the make or break question only if you are in dire conditions.&lt;/p&gt;
+&lt;p&gt;A few important topics to prepare on are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fire extinguishers and their classes&lt;/li&gt;
+&lt;li&gt;Personal Protective Equipment (PPE) and their types and classes&lt;/li&gt;
+&lt;li&gt;Safety symbols (make or break question)&lt;/li&gt;
+&lt;li&gt;Terms related to safety (word maze)&lt;/li&gt;
+&lt;li&gt;Picture recognition (for safety hazards)&lt;/li&gt;
+&lt;li&gt;Safety news (products banned for dangerous chemicals etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Best of luck for the quiz!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 09 Dec 2017 10:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2017-12-09:/articles/2017/nssq-experience.html</guid><category>Quizzing</category></item></channel></rss>

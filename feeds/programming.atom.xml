@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Programming</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-10-28T20:39:00+05:30</updated><entry><title>IIT Department Finder Launch (plus personal website domain)</title><link href="https://aniruddha-deb.github.io/articles/2020/iit-dep-finder.html" rel="alternate"></link><published>2020-10-28T20:39:00+05:30</published><updated>2020-10-28T20:39:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-10-28:/articles/2020/iit-dep-finder.html</id><summary type="html">&lt;p&gt;For IIT admissions, I had created a small command line tool called &lt;code&gt;iit_dep_finder.py&lt;/code&gt; 
+to check the departments I would get, given a particular rank. Once the round 
+one allocation results came out, I decided to create a web version, for others 
+to use as well. This article chronicles the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For IIT admissions, I had created a small command line tool called &lt;code&gt;iit_dep_finder.py&lt;/code&gt; 
+to check the departments I would get, given a particular rank. Once the round 
+one allocation results came out, I decided to create a web version, for others 
+to use as well. This article chronicles the steps I took, and while I did get 
+the department finder up and running, I also did a lot of other stuff in the 
+process (including changing the domain name, in case you haven't noticed :). 
+It's a long and uncensored article, so be warned.&lt;/p&gt;
+&lt;h2&gt;Index:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#flask-app-development"&gt;Flask App Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nginx-and-gunicorn-local-setup"&gt;NGINX and GUnicorn local setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#lightsail-vps-setup-and-deployment"&gt;Lightsail (VPS) setup and deployment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#domain-acquisition-and-setup"&gt;Domain acquisition and Setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#domain-routing-and-site-setup"&gt;Domain routing and site setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#enabling-ssl-and-security"&gt;Enabling SSL and Security&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Flask App Development&lt;/h2&gt;
+&lt;p&gt;Developing the Flask app was probably the most rewarding part of the process, 
+considering that the rest of it was DevOps, which is not exactly my cup of 
+tea. I started out by downloading the data from 
+&lt;a href="https://josaa.nic.in/Result/Result/currentorcr.aspx"&gt;https://josaa.nic.in/Result/Result/currentorcr.aspx&lt;/a&gt;
+as a set of HTML files, to retain their tabular format. The data was then 
+scraped with BeautifulSoup and LXML into a CSV intermediate using the following
+snippet of code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;main_table&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;soup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;table&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;border_table_at&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="n"&gt;table_rows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;main_table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;table_rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;cells&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;td&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;cell&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cell&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Female-only (including Supernumerary)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; (including Supernumerary)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;outfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The CSV file was then cleaned up a bit manually, such as removing commas at the
+end of the line and changing a few typos and values. After this, I created the 
+SQLite database and added a table, whose schema was as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;EXISTS&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;orcr_2020_r3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;institute&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;department&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;quota&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;category&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;gender&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;OPR&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;OPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;CPR&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;CPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This was enough to store the required data. Notice the &lt;code&gt;OPR\_prep&lt;/code&gt; and &lt;code&gt;CPR\_prep&lt;/code&gt; 
+fields, which are there for &lt;a href="https://www.iitism.ac.in/assets/pdfs/rules/pcr.pdf"&gt;Preparatory Course ranklists&lt;/a&gt;.
+The ranks for these ranklists have a 'P' appended to the number. Since we want 
+to store the number as an integer for sorting purposes, the 'P' needs to be 
+abstracted into this boolean-esque field. &lt;/p&gt;
+&lt;h2&gt;NGINX and GUnicorn local setup&lt;/h2&gt;
+&lt;h2&gt;Lightsail (VPS) Setup and Deployment&lt;/h2&gt;
+&lt;h2&gt;Domain Acquisition and Setup&lt;/h2&gt;
+&lt;h2&gt;Domain routing and Site Setup&lt;/h2&gt;
+&lt;h2&gt;Enabling SSL and Security&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="Python"></category><category term="Web Development"></category></entry><entry><title>Setting up my Mac (again)</title><link href="https://aniruddha-deb.github.io/articles/2020/mac-system-setup.html" rel="alternate"></link><published>2020-10-14T22:48:00+05:30</published><updated>2020-10-14T22:48:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-10-14:/articles/2020/mac-system-setup.html</id><summary type="html">&lt;p&gt;This was also published on &lt;a href="https://github.com/Aniruddha-Deb/SystemSetup"&gt;GitHub&lt;/a&gt;. 
+The GitHub version is more up-to-date, and I won't be updating this one as 
+frequently.&lt;/p&gt;
+&lt;h1&gt;System Setup Log&lt;/h1&gt;
+&lt;p&gt;My MacBook battery started to swell around a year back, and the machine 
+became unusable 6 months ago and was put into temporary hibernation. Post my …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This was also published on &lt;a href="https://github.com/Aniruddha-Deb/SystemSetup"&gt;GitHub&lt;/a&gt;. 
+The GitHub version is more up-to-date, and I won't be updating this one as 
+frequently.&lt;/p&gt;
+&lt;h1&gt;System Setup Log&lt;/h1&gt;
+&lt;p&gt;My MacBook battery started to swell around a year back, and the machine 
+became unusable 6 months ago and was put into temporary hibernation. Post my 
+exams, I did a battery replacement and the computer was out of the hospital 
+today, with a fresh operating system and a formatted disk. The last time I set 
+this machine up, I did a halfhearted job of logging the process. This time, I've
+done it properly :)&lt;/p&gt;
+&lt;h2&gt;The Procedure&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;User Settings&lt;ul&gt;
+&lt;li&gt;System came with my home directory set as 'aniruddadeb' and User name as 
+  'Anirudda Deb'&lt;/li&gt;
+&lt;li&gt;Create a new admin account, log out of current account and into admin account&lt;/li&gt;
+&lt;li&gt;In admin account, rename home directory to 'Sensei' (or whatever name), 
+  and then in Preferences-&amp;gt;Users and Groups, unlock and ctrl-click on your 
+  account for 'advanced settings'&lt;/li&gt;
+&lt;li&gt;In advanced settings, change the name to your name and name of the home 
+  directory to the name of your home directory. Make sure user name is same 
+  as that of home directory.&lt;/li&gt;
+&lt;li&gt;Restart, log back in and delete admin account.&lt;/li&gt;
+&lt;li&gt;Set the computer HostName, LocalHostName and ComputerName to MacBook-Pro:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo scutil --set HostName MacBook-Pro  
+sudo scutil --set LocalHostName MacBook-Pro  
+sudo scutil --set ComputerName MacBook-Pro  
+dscacheutil -flushcache  
+&amp;lt;restart&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;System Prefs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resolution of 1440x900 (Displays)&lt;/li&gt;
+&lt;li&gt;Uncheck natural scroll direction (Trackpad-&amp;gt;Scroll and Zoom)&lt;/li&gt;
+&lt;li&gt;Use F1, F2 as function keys (Keyboard)&lt;/li&gt;
+&lt;li&gt;Don't show input menu in menu bar (Keyboard-&amp;gt;Input Sources)&lt;/li&gt;
+&lt;li&gt;Dark Mode&lt;br&gt;
+&lt;img alt="dark side meme" src="res/darkside.jpeg"&gt;&lt;/li&gt;
+&lt;li&gt;Change computer name to MacBook-Pro (Sharing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Chrome:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;li&gt;Sign in and sync stuff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sublime Text&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Content&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transfer personal files from HDD&lt;/li&gt;
+&lt;li&gt;Screen background to &lt;code&gt;hackerfx_img.jpg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Things 3&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install from Mac App Store&lt;/li&gt;
+&lt;li&gt;Sign in and sync tasks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm 2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download, drag and drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By now, the system should be looking pretty good. Catalina uses &lt;code&gt;zsh&lt;/code&gt; rather than 
+bash, and clang rather than gcc, so porting some stuff over will be tricky, but 
+we'll get to that in a minute.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&lt;ul&gt;
+&lt;li&gt;download mac installer from &lt;code&gt;git-scm.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ctrl-click and click 'open' (security won't let you click to open)&lt;/li&gt;
+&lt;li&gt;follow installer guidelines
+? Will xcode command line tools eat this up?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python&lt;ul&gt;
+&lt;li&gt;Download latest stable installer from web&lt;/li&gt;
+&lt;li&gt;Double click and install &lt;br&gt;
+! Don't do this because this does not install python properly; you have to 
+  hack around it and do a ton of exports and stuff. I had to uninstall
+  python after this, using instructions from &lt;a href="https://stackoverflow.com/questions/3819449/how-to-uninstall-python-2-7-on-a-mac-os-x-10-6-4/3819829#381982"&gt;here&lt;/a&gt;9
+  and &lt;a href="https://superuser.com/questions/276840/uninstalling-python-3-on-a-mac"&gt;here&lt;/a&gt;. 
+  Best way to install is to use &lt;code&gt;brew&lt;/code&gt; (this keeps the python updated) and 
+  &lt;code&gt;pyenv&lt;/code&gt;, so first install &lt;code&gt;brew&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\&amp;lt;/DON'T DO THIS!&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;XCode Command Line Tools&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GCC, &lt;code&gt;clang&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt; etc etc&lt;/li&gt;
+&lt;li&gt;Download from developer.apple.com, mount, use .pkg installer&lt;/li&gt;
+&lt;li&gt;It's a 400 MB download and takes 2.54 GB of space on the system.&lt;/li&gt;
+&lt;li&gt;This doesn't eat up git (&lt;code&gt;git --version&lt;/code&gt; still gives git 2.27, so yay!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Needed for practically everything :P&lt;/li&gt;
+&lt;li&gt;visit brew.sh and copy-paste the installation command&lt;/li&gt;
+&lt;li&gt;Again, a huge download here (350 MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;pyenv&lt;/code&gt; to download and install python, as shown in the article https://opensource.com/article/19/5/python-3-default-mac&lt;/li&gt;
+&lt;li&gt;In short, do the following:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install pyenv
+pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# replace with latest python version&lt;/span&gt;
+pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.9.0 &lt;span class="c1"&gt;# set 3.9.0 as global version&lt;/span&gt;
+pyenv version &lt;span class="c1"&gt;# double check version&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s1"&gt;&amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n  eval &amp;quot;$(pyenv init -)&amp;quot;\nfi&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.zshrc &lt;span class="c1"&gt;# voodoo magic that allows pyenv to work&lt;/span&gt;
+&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and now do &lt;code&gt;python -V&lt;/code&gt; and &lt;code&gt;pip -V&lt;/code&gt; to verify that python 3.9.0 is loaded&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vim&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy &lt;code&gt;.vim&lt;/code&gt; and &lt;code&gt;.vimrc&lt;/code&gt; from previous system&lt;/li&gt;
+&lt;li&gt;check if clipboard copy/paste is enabled: &lt;code&gt;vim --version | grep clipboard&lt;/code&gt;, 
+  a + sign appears if clipboard is enabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ZSH&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;.zprofile&lt;/code&gt; and add &lt;code&gt;export CLICOLOR=1&lt;/code&gt; for coloured output from commands&lt;/li&gt;
+&lt;li&gt;add prompt tweaks &lt;code&gt;PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iTerm2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tweak profile; first, create a new profile&lt;/li&gt;
+&lt;li&gt;Change background color to &lt;code&gt;333333&lt;/code&gt;, foreground to &lt;code&gt;dddddd&lt;/code&gt; and other colors
+  to pastel colours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mail&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log in to google&lt;/li&gt;
+&lt;li&gt;Configure signatures, calendars, mail folders etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Projects&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is the meaty part. Start with the blog:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone --select-branch --branch &lt;span class="nb"&gt;source&lt;/span&gt; https://github.com/Aniruddha-Deb/aniruddha-deb.github.io 
+mv aniruddha-deb.github.io blog
+&lt;span class="nb"&gt;cd&lt;/span&gt; blog
+virtualenv venv
+&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;venv&amp;quot;&lt;/span&gt; &amp;gt; .gitignore
+pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;then whip up this article. I ran into a small hiccup while using &lt;code&gt;make html&lt;/code&gt;: 
+the version of Pelican that &lt;code&gt;pip&lt;/code&gt; installed was 4.5.0, and that broke with the 
+old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
+want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
+the files. Takeaway is use &lt;code&gt;make html DEBUG=1&lt;/code&gt; for debugger output. Do a &lt;code&gt;make serve&lt;/code&gt;
+to check out formatting, after which do &lt;code&gt;make github&lt;/code&gt; to push to github pages, which is what
+you're reading now (this article has been made from the mac :)&lt;/p&gt;
+&lt;p&gt;for further updates, refer to the repository linked above.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Cleared OCAJP with 94% - My Experience</title><link href="https://aniruddha-deb.github.io/articles/2018/ocajp.html" rel="alternate"></link><published>2018-06-06T22:05:00+05:30</published><updated>2018-06-06T22:05:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2018-06-06:/articles/2018/ocajp.html</id><summary type="html">&lt;p&gt;How I prepared and cleared the OCA examination in my summer holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;This was originally posted on &lt;a href="https://coderanch.com/t/695020/certification/Cleared-OCAJP-Experience"&gt;CodeRanch&lt;/a&gt;:&lt;/p&gt;
+&lt;h3&gt;Background&lt;/h3&gt;
+&lt;p&gt;I'm a 15 year old student who has just cleared his secondary education. I have a knack for computers and am currently building my online profile (&lt;a href="https://github.com/Aniruddha-Deb"&gt;github&lt;/a&gt;, &lt;a href="aniruddha-deb.github.io"&gt;blog&lt;/a&gt;, etc.) I already had ~2 years of experience in java and had been eyeing the Oracle certification for quite some time. Eventually, in the summer vacations, I decided to go all in, bought a few books and sat down and studied for the exam. &lt;/p&gt;
+&lt;h3&gt;Process&lt;/h3&gt;
+&lt;p&gt;The books that I used for the certification were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OCA Java SE 8 Programmer I - Mala Gupta&lt;/li&gt;
+&lt;li&gt;OCA/OCP Java 8 practice tests - Selikoff and Boyarsky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I spent around 3 weeks studying for the exam with an average time of ~1.5 hours per day. I would go through the chapters and topics in Mala Gupta and do the respective questions for those topics from the practice tests book. I also wrote a lot of practice programs to wrap my head around some new concepts (Java 8 Date/Time API for instance). Most of the content was easy as I had already studied it in school and had prior programming experience. Personally for me, the hard parts were the new Java 8 features and interfaces in Java 8 (this may vary from person to person). My advice would be to spend extra time on the harder parts and comparatively less time on the easier parts (looping and decisions was easy - I went through those in a day each). &lt;/p&gt;
+&lt;p&gt;Most of my practice programs were written in Eclipse (even though most books ask you to NOT do this). I found eclipse's autocompilation features handy for spotting errors. I then got a chance to tweak the code to see if the error reappears in real time, something that iterative compilation will never be able to do. That did help me learn faster. (again, my methods may not necessarily resonate with someone else's) &lt;/p&gt;
+&lt;h3&gt;Before giving the exam&lt;/h3&gt;
+&lt;p&gt;Once I had finished the syllabus, I went through the two practice tests that I had - one from Mala Gupta and one from Selikoff and Boyarsky. I scored 85-86% on both tests. I also gave the free enthuware test containing 25 questions and scored 80% in that. I did not pay for the full enthuware mock test set as I felt pretty comfortable with my performance. &lt;/p&gt;
+&lt;h3&gt;Giving the exam&lt;/h3&gt;
+&lt;p&gt;There was a pearson VUE Centre right next to where I live (less than a kilometre away), which simplified travel quite a bit. Time management is not a problem in this exam. I repeat that - time management is NOT a problem. I finished all the questions in around one hour and 15 minutes and spent the rest of the time checking the answers. You will not be hard pressed for time in this exam, so take your time and think through every question calmly and carefully. Do not submit before time. &lt;/p&gt;
+&lt;h3&gt;After the exam&lt;/h3&gt;
+&lt;p&gt;Amazingly, I did not get my results in 30 minutes. It took close to one and a half hours for my results to come, and around one and a half days for my certificate to be generated. This is something oracle can definetly work on. &lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;If you're a young guy (like me) reading this, my advice would be to give this exam only if you are confident of your capabilities in Java and are passionate about a future in computers. You will also spend a significant amount of your vacation time in studying for this exam. in addition to being slightly tricky, this exam is also expensive and will have to be funded by your parents. Also, there are no short term benefits to clearing this exam: the benefits will only show 10 years later when you turn up for a job interview and proudly proclaim you cleared the OCA at the age of 15. If you're okay with the above, then best of luck for the exam! &lt;/p&gt;
+&lt;p&gt;p.s: all the code that I wrote for the exam is available &lt;a href="https://github.com/Aniruddha-Deb/OCAPrep"&gt;here&lt;/a&gt;. May come in handy to other aspirants. &lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Programming"></category></entry><entry><title>Python Crash Course</title><link href="https://aniruddha-deb.github.io/articles/2017/python-crash-course.html" rel="alternate"></link><published>2017-12-22T10:30:00+05:30</published><updated>2017-12-22T10:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2017-12-22:/articles/2017/python-crash-course.html</id><summary type="html">&lt;p&gt;My initial experience with learning Python and using it to create a GTD app&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I felt the need of creating a to-do app based on the getting things done principle (link here). I had been using MyLifeOrganized in a virtual machine on my mac, but it just wasn't cutting it. Things 3 and OmniFocus for Mac were too pricey and other web-based todo apps like Trello and Todoist didn't suit me very much. As a result, I decided to jump into some code and create a custom to-do mac app.&lt;/p&gt;
+&lt;p&gt;My basic requirements were very humble: I need a task list in which I can create, read, update and delete tasks easily. I eventually decided to go with a unix-like command line application. Unix apps are usually made in C or Shell Script. My C is pathetic at the very least and I find shell script to be.. Queer. Java was too heavyweight a language to code a simple shell utility in, so I chose to go with Python.&lt;/p&gt;
+&lt;p&gt;I had minimal experience with python in the past. I barely knew the basic language constructs and features. Luckily, python has a very shallow learning curve. About two hours with google and my python concepts were acceptable enough to start coding. Initially, python felt very much like shell script, just slightly more verbose. The lack of semicolons in python still irritates a Java programmer like me and the absence of braces makes the code feel very different compared to Java. After a few days of coding, these features started to grow on me. &lt;/p&gt;
+&lt;p&gt;The first draft of GTD.py was a disaster. I used a text file to store all the application data and there was a ton of File I/O involved. Combine that with me using the google python fire library like an amateur and things quickly went downhill. Every time the code ran, it threw a horrendous looking python exception at my face (coming from java, python exceptions are much more beautiful compared to terrible.java.Stack.traces). Python looked like a terrible choice of language, as I could have a similar Java program up and running in about 10 minutes.&lt;/p&gt;
+&lt;p&gt;Eventually, though, my comfort with the language grew. I ditched the text based approach and decided to use an SQLite database to store the information. I also discarded python fire and chose to use argparse. These two libraries gave me a decent challenge to build the app.&lt;/p&gt;
+&lt;p&gt;The second draft came out much better than the first. The program is now usable (still needs a little refactoring). At the time of writing, I am still getting used to python programming conventions (reserved_chars as opposed to reservedChars) and the strange looking import statements. The language is still much less verbose as compared to Java and with enough practice, I may end up being more productive in Python. There's still a long way to go - I barely know the standard libraries and the functions. I also need to get to know the python runtime well enough before I start coding serious application critical components in python. The initial impression of python as a language for me was decently good. Would be interesting to see where I stand in about two to three months with the language.&lt;/p&gt;
+&lt;p&gt;Check out the GTD.py code &lt;a href="https://github.com/Aniruddha-Deb/GTD.py"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Good luck to all those starting their python journey!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Programming"></category></entry></feed>
