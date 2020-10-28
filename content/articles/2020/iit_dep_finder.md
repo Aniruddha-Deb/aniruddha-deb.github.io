@@ -30,7 +30,7 @@ as a set of HTML files, to retain their tabular format. The data was then
 scraped with BeautifulSoup and LXML into a CSV intermediate using the following
 snippet of code:
 
-:::
+```python
 main_table = soup.find("table", {"class":"border_table_at"})
 table_rows = main_table.find_all("tr")
 
@@ -42,13 +42,13 @@ for row in table_rows:
 			field = field.replace(" (including Supernumerary)", "")
 		outfile.write(field.replace(",", "") + ",")
 	outfile.write("\n")
-:::
+```
 
 The CSV file was then cleaned up a bit manually, such as removing commas at the
 end of the line and changing a few typos and values. After this, I created the 
 SQLite database and added a table, whose schema was as follows:
 
-:::sql
+```sql
 	CREATE TABLE IF NOT EXISTS "orcr_2020_r3"(
 	institute varchar(256),
 	department varchar(256),
@@ -60,7 +60,7 @@ SQLite database and added a table, whose schema was as follows:
 	CPR integer,
 	CPR_prep integer
 	);
-:::
+```
 
 This was enough to store the required data. Notice the `OPR\_prep` and `CPR\_prep` 
 fields, which are there for [Preparatory Course ranklists](https://www.iitism.ac.in/assets/pdfs/rules/pcr.pdf).
