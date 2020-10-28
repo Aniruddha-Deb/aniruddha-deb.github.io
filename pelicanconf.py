@@ -22,6 +22,14 @@ EXTRA_PATH_METADATA = {
 	'extras/CNAME': {'path': 'CNAME'}
 }
 
+# Adding markdown extensions breaks pygments for some strange reason....
+#MARKDOWN = {
+#	"extension_configs" : {
+#		'markdown.extensions.codehilite' : {},
+#		"markdown.extensions.toc": {}
+#	}
+#}
+
 TIMEZONE = 'Asia/Kolkata'
 PYGMENTS_STYLE  = 'monokai'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
