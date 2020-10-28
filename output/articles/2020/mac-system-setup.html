@@ -264,7 +264,7 @@ pyenv version <span class="c1"># double check version</span>
 <p>ZSH</p>
 <ul>
 <li>edit <code>.zprofile</code> and add <code>export CLICOLOR=1</code> for coloured output from commands</li>
-<li>add prompt tweaks <code>PS1='%n@%m %F{blue}%~%f %% '</code></li>
+<li>add prompt tweaks <code>PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '</code></li>
 </ul>
 </li>
 <li>
@@ -302,7 +302,8 @@ pip install -r requirements.txt
 the version of Pelican that <code>pip</code> installed was 4.5.0, and that broke with the 
 old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
 want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
-the files. Takeaway is use <code>make html DEBUG=1</code> for debugger output. Do a make serve<code>to check out formatting, after which do</code>make github` to push to github pages, which is what
+the files. Takeaway is use <code>make html DEBUG=1</code> for debugger output. Do a <code>make serve</code>
+to check out formatting, after which do <code>make github</code> to push to github pages, which is what
 you're reading now (this article has been made from the mac :)</p>
 <p>for further updates, refer to the repository linked above.</p>
   </div>

@@ -160,7 +160,7 @@ pyenv version &lt;span class="c1"&gt;# double check version&lt;/span&gt;
 &lt;p&gt;ZSH&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;edit &lt;code&gt;.zprofile&lt;/code&gt; and add &lt;code&gt;export CLICOLOR=1&lt;/code&gt; for coloured output from commands&lt;/li&gt;
-&lt;li&gt;add prompt tweaks &lt;code&gt;PS1='%n@%m %F{blue}%~%f %% '&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;add prompt tweaks &lt;code&gt;PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -198,7 +198,8 @@ pip install -r requirements.txt
 the version of Pelican that &lt;code&gt;pip&lt;/code&gt; installed was 4.5.0, and that broke with the 
 old Flex theme. I had made some modifications to the theme (MathJax) and didn't 
 want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
-the files. Takeaway is use &lt;code&gt;make html DEBUG=1&lt;/code&gt; for debugger output. Do a make serve&lt;code&gt;to check out formatting, after which do&lt;/code&gt;make github` to push to github pages, which is what
+the files. Takeaway is use &lt;code&gt;make html DEBUG=1&lt;/code&gt; for debugger output. Do a &lt;code&gt;make serve&lt;/code&gt;
+to check out formatting, after which do &lt;code&gt;make github&lt;/code&gt; to push to github pages, which is what
 you're reading now (this article has been made from the mac :)&lt;/p&gt;
 &lt;p&gt;for further updates, refer to the repository linked above.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Cleared OCAJP with 94% - My Experience</title><link href="https://aniruddha-deb.github.io/articles/2018/ocajp.html" rel="alternate"></link><published>2018-06-06T22:05:00+05:30</published><updated>2018-06-06T22:05:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2018-06-06:/articles/2018/ocajp.html</id><summary type="html">&lt;p&gt;How I prepared and cleared the OCA examination in my summer holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;This was originally posted on &lt;a href="https://coderanch.com/t/695020/certification/Cleared-OCAJP-Experience"&gt;CodeRanch&lt;/a&gt;:&lt;/p&gt;
 &lt;h3&gt;Background&lt;/h3&gt;

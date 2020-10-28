@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-09-11T09:01:00+05:30</updated><entry><title>A Good JEE Main (September) problem</title><link href="https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html" rel="alternate"></link><published>2020-09-11T09:01:00+05:30</published><updated>2020-09-11T09:01:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</id><summary type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-10-16T12:54:00+05:30</updated><entry><title>Setting up MathNotes - an online math repository</title><link href="https://aniruddha-deb.github.io/articles/2020/mathnotes-launch.md.html" rel="alternate"></link><published>2020-10-16T12:54:00+05:30</published><updated>2020-10-16T12:54:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-10-16:/articles/2020/mathnotes-launch.md.html</id><summary type="html">&lt;p&gt;Just after 10th and as I was beginning my JEE Preparation, I felt the need for 
+an extensible note-taking apparatus. Online notes would be too much trouble 
+and would keep me hooked to the computer. Notebooks were also difficult, as 
+I wanted my notes to be extensible; adding pages in …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Just after 10th and as I was beginning my JEE Preparation, I felt the need for 
+an extensible note-taking apparatus. Online notes would be too much trouble 
+and would keep me hooked to the computer. Notebooks were also difficult, as 
+I wanted my notes to be extensible; adding pages in the middle of a notebook 
+is extremely difficult. I finally settled on using Binders; you can add/remove
+pages quite easily and they're decently sized to accommodate all the notes you
+could ever need.&lt;/p&gt;
+&lt;p&gt;I took out two old binders; they had ~120 pages each and used one for math and 
+one for physics. Soon enough, I had to get more pages and by the end of my 
+JEE Journey, the binders had somewhere around 200 pages, each filled with notes&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Binders" src="res/mathnotes/binders.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;Left one is maths, right one is physics&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="monotonicity" src="res/mathnotes/monotonicity.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PnC" src="res/mathnotes/PnC.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MI" src="res/mathnotes/MI.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;These tend to follow a very hierarchical format, and also tend to be extremely 
+diverse with symbols and diagrams (I did all the notes in pencil, so that if 
+any errors arise, I can change the content). &lt;/p&gt;
+&lt;p&gt;I now needed a note-taking repository that had the same level of extensibility 
+and one that I could use through college life. The computer was not a limitation 
+now, and I was also decently skilled in LaTeX by now. I decided to make an 
+online website using Sphinx and Read the docs, for keeping my math notes. &lt;/p&gt;
+&lt;p&gt;I followed the great guide by Ryan Dale on &lt;a href="https://daler.github.io/sphinxdoc-test/includeme.html"&gt;settting up sphinx on GitHub Pages&lt;/a&gt;. 
+I took a few liberties with the folder structure, but now setting up the repo
+for contributors is as simple as cloning the repo and running the &lt;code&gt;install.sh&lt;/code&gt; 
+script in it. 
+The website is now live at &lt;a href="https://aniruddha-deb.github.io/MathNotes"&gt;https://aniruddha-deb.github.io/MathNotes&lt;/a&gt;, 
+and I will be porting all my math and physics content over, and also creating 
+notes in the future, for the math courses that I take.&lt;/p&gt;
+&lt;p&gt;This means that this blog would feature fewer 'Math Notes' sections that I 
+spoke about previously (link &lt;a href="https://aniruddha-deb.github.io/articles/2020/math-notes-1.html"&gt;here&lt;/a&gt;).
+The math content will also go down, but I will continue to write about math 
+stuff that made me go 'wow' (there are a few of those coming in the future, 
+so stay tuned)&lt;/p&gt;
+&lt;p&gt;If you would like to contribute to the math notes repository, feel free to 
+reach out to me on my eMail, by clicking the mail icon in the sidebar.&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="Programming"></category></entry><entry><title>A Good JEE Main (September) problem</title><link href="https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html" rel="alternate"></link><published>2020-09-11T09:01:00+05:30</published><updated>2020-09-11T09:01:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</id><summary type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
 $$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
