@@ -8,12 +8,12 @@ process (including changing the domain name, in case you haven't noticed :).
 It's a long and uncensored article, so be warned.&lt;/p&gt;
 &lt;h2&gt;Index:&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="#flask-app-development"&gt;Flask App Development&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#nginx-and-gunicorn-local-setup"&gt;NGINX and GUnicorn local setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#lightsail-vps-setup-and-deployment"&gt;Lightsail (VPS) setup and deployment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#domain-acquisition-and-setup"&gt;Domain acquisition and Setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#domain-routing-and-site-setup"&gt;Domain routing and site setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#enabling-ssl-and-security"&gt;Enabling SSL and Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Flask Backend app Development&lt;/li&gt;
+&lt;li&gt;Frontend Development&lt;/li&gt;
+&lt;li&gt;NGINX and GUnicorn local setup&lt;/li&gt;
+&lt;li&gt;Lightsail (VPS) setup and deployment&lt;/li&gt;
+&lt;li&gt;Domain acquisition and Setup&lt;/li&gt;
+&lt;li&gt;Enabling SSL and Security&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Flask App Development&lt;/h2&gt;
 &lt;p&gt;Developing the Flask app was probably the most rewarding part of the process, 
@@ -39,7 +39,7 @@ snippet of code:&lt;/p&gt;
 &lt;p&gt;The CSV file was then cleaned up a bit manually, such as removing commas at the
 end of the line and changing a few typos and values. After this, I created the 
 SQLite database and added a table, whose schema was as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;EXISTS&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;orcr_2020_r3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;EXISTS&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;orcr_2020_r1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;institute&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="n"&gt;department&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="n"&gt;quota&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -49,19 +49,157 @@ SQLite database and added a table, whose schema was as follows:&lt;/p&gt;
     &lt;span class="n"&gt;OPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;CPR&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;CPR_prep&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This was enough to store the required data. Notice the &lt;code&gt;OPR\_prep&lt;/code&gt; and &lt;code&gt;CPR\_prep&lt;/code&gt; 
 fields, which are there for &lt;a href="https://www.iitism.ac.in/assets/pdfs/rules/pcr.pdf"&gt;Preparatory Course ranklists&lt;/a&gt;.
 The ranks for these ranklists have a 'P' appended to the number. Since we want 
 to store the number as an integer for sorting purposes, the 'P' needs to be 
-abstracted into this boolean-esque field. &lt;/p&gt;
+abstracted into this boolean-esque field. After the table was created, it was 
+a matter of inserting all the records in the CSV file into the table. The CSV 
+file was used as a sort of 'staging location' for easily editing any errors in 
+the data or tweaking formatting. &lt;/p&gt;
+&lt;p&gt;Once the data creation methodology and tools were done, I moved on to developing
+the flask backend. There's nothing spectacular here, it was just querying the 
+database based on the JSON data it received from the frontend and returning 
+the results as a JSON encoded string. This part was probably the simplest, 
+because the rest was pretty tricky.&lt;/p&gt;
+&lt;h2&gt;Frontend Development&lt;/h2&gt;
+&lt;p&gt;I'm finally able to understand why Javascript developers use such humongous 
+frontend development frameworks like Angular and React: Frontend development
+without those is a huge pain in the ass&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Commitstrip comic" src="https://www.commitstrip.com/wp-content/uploads/2018/01/Strip-Les-bonnes-r%C3%A9solutions-650-finalenglish.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;This is a close second for the most disliked part of this entire development 
+cycle: writing HTML and CSS gets extremely repetitive. Since I was not using 
+any framework, all the CSS (including the little dropdown transitions for 
+advanced options) were written by hand. The JavaScript backend was slightly 
+better, but JS does indeed feel like a hacky kludge of a language rather than
+something you can write an entire frontend app with (like google sheets), or 
+maybe that's because I'm an amateur at the language.&lt;/p&gt;
+&lt;p&gt;Once the frontend was done, it didn't look too nasty. I still have to optimize 
+the frontend for mobile devices, but since I used &lt;code&gt;div&lt;/code&gt;'s for the layout, I don't 
+think there's going to be much to do.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Frontend preview" src="res/iit_dep_finder_frontend.gif"&gt;&lt;/p&gt;
 &lt;h2&gt;NGINX and GUnicorn local setup&lt;/h2&gt;
+&lt;p&gt;This is where the 'Flask 101' tutorials generally stop. Flask uses Werkzeug to
+serve it's files in the development stage, and you cannot carry that forward
+to production. Flask is merely a microframework to do the routing and keep 
+the application logic in the backend. You need an application server to act as 
+an interface for Flask and a web server to serve the static files, because 
+the application server is not optimized to do that. I went with NGINX because 
+it's light and smaller than apache, and GUnicorn because it's pretty well 
+documented. &lt;/p&gt;
+&lt;p&gt;Before deploying the app on a VPS, I had to setup the same environment on my 
+local machine. I was following this brilliant &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04"&gt;DigitalOcean tutorial&lt;/a&gt;
+but it proved to be tedious, because I'm using a mac, and UNIX-y
+stuff like &lt;code&gt;systemctl&lt;/code&gt; and &lt;code&gt;launchd&lt;/code&gt; don't play well (actually they don't play
+at all) on a mac. I then had to switch gears a bit and follow some part of 
+&lt;a href="http://cheng.logdown.com/posts/2015/01/27/deploy-django-nginx-gunicorn-on-mac-osx"&gt;Cheng's blog&lt;/a&gt;
+on setting up a similar development setup on Mac OS X. The long and short of it 
+is that NGINX on Mac doesn't ship with the &lt;code&gt;sites-available&lt;/code&gt; and &lt;code&gt;sites-enabled&lt;/code&gt;
+folders, so you will have to create them manually and add the &lt;code&gt;sites-enabled&lt;/code&gt; one
+to &lt;code&gt;nginx.conf&lt;/code&gt;. Once that is done, I made the &lt;code&gt;iit_dep_finder.conf&lt;/code&gt; config 
+file in &lt;code&gt;sites-available&lt;/code&gt; and linked it to &lt;code&gt;sites-enabled&lt;/code&gt;. One point of difference
+is the redirection of the API commands to the server; on the Mac machine, 
+GUnicorn runs on port 9000, whereas on the Ubuntu server, I can create a service 
+which has it's own socket, with the &lt;code&gt;unix:&lt;/code&gt; prefix. This difference is 
+reflected in the server, where I made a custom &lt;code&gt;gunicorn_prod.conf.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I had a lot of troubles with routing: the NGINX config files are not exactly 
+very intuititve, and finally going to the docs and learning the difference 
+between &lt;code&gt;root&lt;/code&gt; and &lt;code&gt;alias&lt;/code&gt; fixed it. &lt;code&gt;root&lt;/code&gt; appends everything in the location
+to the specified path, whereas &lt;code&gt;alias&lt;/code&gt; appends only the content after the 
+location to the specified path. &lt;/p&gt;
+&lt;p&gt;Once routing was fixed on the Mac, I did a test deployment to a Ubuntu machine
+I had hooked up to my local network, which was a success. I was then ready to 
+move to the next part&lt;/p&gt;
 &lt;h2&gt;Lightsail (VPS) Setup and Deployment&lt;/h2&gt;
+&lt;p&gt;This part ran in parallel with the development for a few days: turns out that 
+Amazon needs you to fill in your payment details along with doing a phone 
+number verification before your account setup is complete and you can use any
+of their services. This is really misleading, when they advertise a 'free month'.
+It's free only in the sense that they're not drawing any blood, but the needle 
+will be firmly inserted and kept in your flesh, ready to draw blood once the 
+month is over. Amazon is not the only provider to use this strategy: all SaaS/PaaS/Services
+companies are doing this now. This will turn into a full fledged rant if I 
+continue, so more on this in a later blog post maybe.&lt;/p&gt;
+&lt;p&gt;After going back and forth with Amazon support over a couple days, my account 
+was finally given a stamp of approval and allowed to partake in the holy services
+of AWS. I created the cheapest LightSail instance (with a free month :P) and 
+&lt;strong&gt;assigned a static IP to it&lt;/strong&gt;. This step is important, and Amazon does not 
+do it automatically. After that, download the default SSH key and use it to 
+SSH into the server from your terminal. You can now proceed to start installing
+stuff: &lt;code&gt;apt&lt;/code&gt; works here, so does &lt;code&gt;snap&lt;/code&gt;. The setup was pretty similar to the 
+stuff I did on the local ubuntu machine, and once it was done, I could access
+the site by entering the static IP in my web browser.&lt;/p&gt;
 &lt;h2&gt;Domain Acquisition and Setup&lt;/h2&gt;
-&lt;h2&gt;Domain routing and Site Setup&lt;/h2&gt;
-&lt;h2&gt;Enabling SSL and Security&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 28 Oct 2020 20:39:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-28:/articles/2020/iit-dep-finder.html</guid><category>Programming</category><category>Programming</category><category>Python</category><category>Web Development</category></item><item><title>To IIT Delhi and beyond</title><link>https://aniruddha-deb.github.io/articles/2020/iit-delhi-mnc.html</link><description>&lt;p&gt;I think an update on the JEE Situation has been due for a long time, and I'll 
+&lt;p&gt;This was decently tricky for me, as I knew nothing about DNS and domain routing 
+and related concepts. I purchased a domain off GoDaddy, and it was not a good 
+experience. GoDaddy provides pretty cheap domains compared to the competition, 
+and they try to poke money out of you in every other way. Still, the domain 
+setup and update times were pretty good, and I had linked my primary domain to 
+my server in under 2 hours. Not bad for a n00b like me.&lt;/p&gt;
+&lt;p&gt;The following day, I read more about DNS records, what A, CNAME and TXT records
+are. I then went ahead and created a small sitemap for my website, since I 
+would also host my blog on the website&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aniruddhadeb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Blog&lt;/span&gt; &lt;span class="n"&gt;linked&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Project&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Project&lt;/span&gt; &lt;span class="n"&gt;websites&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt;
+
+&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aniruddhadeb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="n"&gt;webapps&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;App&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;single&lt;/span&gt; &lt;span class="n"&gt;webapp&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;IIT_dep_finder&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The URL for this project would then be &lt;code&gt;http://apps.aniruddhadeb.com/IIT_dep_finder&lt;/code&gt;. 
+I then had to add a CNAME to my DNS record with the &lt;code&gt;apps&lt;/code&gt; prefix and redirect
+it to the LightSail static IP. Following this, I linked up a custom domain with
+GitHub Pages, the process for which is well documented &lt;a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site"&gt;here&lt;/a&gt;.
+This was all on the domain side of things, and I had to configure my NGINX server
+to serve from &lt;code&gt;/IIT_dep_finder&lt;/code&gt; instead of from the root, which was frustruating 
+because I'm not that good with the NGINX config. Practice makes perfect, as they 
+say, and I'm a greenfoot when it comes to full stack development.&lt;/p&gt;
+&lt;p&gt;When all was said and done, I had a running website, with my blog on the main 
+page and IIT dep finder on the URL above. All was good! or was it?&lt;/p&gt;
+&lt;h2&gt;Enabling SSL and Security&lt;/h2&gt;
+&lt;p&gt;This takes the cake for the most frustruating part of development. Not because 
+acquiring and setting up an SSL certificate was hard (Thank you to &lt;code&gt;certbot&lt;/code&gt;!), 
+but because &lt;strong&gt;Amazon has their own fucking firewall in front of the LightSail 
+instance&lt;/strong&gt;, and it took me 3 hours to figure that out. Important disclaimer for
+all out there on LightSail: &lt;strong&gt;If you create a default ubuntu instance, ONLY 
+ports &lt;code&gt;22&lt;/code&gt; and &lt;code&gt;80&lt;/code&gt; are enabled by default, which is why my server was getting 
+NO HTTPS requests on &lt;code&gt;443&lt;/code&gt;&lt;/strong&gt;. Setting up certbot was easy, as shown in the 
+DigitalOcean tutorial above. CertBot takes your domain and hooks you up with an 
+SSL certificate, which you have to renew every 90 days by typing in &lt;code&gt;certbot renew&lt;/code&gt;.
+Certbot also takes care of adding the certificate to your NGINX config automatically
+so you don't have to do anything. However, when I tried hitting the link via 
+&lt;code&gt;https://&lt;/code&gt; instead of &lt;code&gt;http://&lt;/code&gt;, the web browser would time out. I tried all 
+of the follwing, in order after that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chrome inspector, to see if the request is going through. Request was going through&lt;/li&gt;
+&lt;li&gt;Change NGINX config to listen on port 80 and serve pages. Worked on port 80&lt;/li&gt;
+&lt;li&gt;Duplicated the NGINX config and ripped the SSL stuff, to go back to normal. Worked&lt;/li&gt;
+&lt;li&gt;Tried restoring the SSL config lines one line at a time. Did not work&lt;/li&gt;
+&lt;li&gt;Tailed the logs. Nothing coming in.&lt;/li&gt;
+&lt;li&gt;Realized that there might be a firewall. Checked &lt;code&gt;sudo ufw status&lt;/code&gt;. Firewall 
+  was inactive&lt;/li&gt;
+&lt;li&gt;Created a firewall and allowed selective ports through. No change, https:// 
+  requests still timed out&lt;/li&gt;
+&lt;li&gt;Realized that LightSail might have it's own firewall. Logged in to lightsail
+  and saw the firewall settings. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="motherfucker" src="https://i.gifer.com/2Jc.gif"&gt;&lt;/p&gt;
+&lt;p&gt;Needless to say, I took the rest of the day off after that.&lt;/p&gt;
+&lt;h2&gt;Conclusion and next steps&lt;/h2&gt;
+&lt;p&gt;While I have a website that is fortunately up and running well, there are still
+a lot of things left to do. Some of those include:
+- Registering on search engines
+- SEO with sitemaps and &lt;code&gt;robots.txt&lt;/code&gt;
+- Adding Google Analytics
+- Adding some ads?
+- Improvements on the app itself: more cutoff data and smarter suggestions&lt;/p&gt;
+&lt;p&gt;All of these things will be tackled one by one, but developing and setting up
+my first full stack app was a challenging experience and certainly one of the
+trickier projects I have undertaken so far.&lt;/p&gt;
+&lt;p&gt;The WebApp is live at &lt;a href="https://apps.aniruddhadeb.com/IIT_dep_finder"&gt;https://apps.aniruddhadeb.com/IIT_dep_finder&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 28 Oct 2020 20:39:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-10-28:/articles/2020/iit-dep-finder.html</guid><category>Programming</category><category>Programming</category><category>Python</category><category>Web Development</category></item><item><title>To IIT Delhi and beyond</title><link>https://aniruddha-deb.github.io/articles/2020/iit-delhi-mnc.html</link><description>&lt;p&gt;I think an update on the JEE Situation has been due for a long time, and I'll 
 try to compress the past few months into this single post. Long story
 short, my JEE(M) was held on 2nd September, in the evening shift. After giving 
 my best and getting a 260/300, I was disappointed (putting it mildly) to see 
