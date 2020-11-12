@@ -40,11 +40,11 @@ so stay tuned)&lt;/p&gt;
 reach out to me on my eMail, by clicking the mail icon in the sidebar.&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="Programming"></category></entry><entry><title>A Good JEE Main (September) problem</title><link href="https://aniruddha-deb.github.io/articles/2020/good-jee-main-problem.html" rel="alternate"></link><published>2020-09-11T09:01:00+05:30</published><updated>2020-09-11T09:01:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-09-11:/articles/2020/good-jee-main-problem.html</id><summary type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
-$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
+$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;-1 \end{array}\right]$$
 then the …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;This beauty came in the 2nd September shift 2 paper:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where 
-$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;1 \end{array}\right]$$
+$$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;-1 \end{array}\right]$$
 then the set A:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;is a singleton&lt;/li&gt;
@@ -66,7 +66,7 @@ x + 9y - z &amp;amp;= 0 \\
 &lt;p&gt;These three planes have a trivial solution $x = y = z = 0$. Let's see if they
 have non-trivial solutions by obtaining $det(P)$:
 $$\begin{align}
-|P| &amp;amp;= \left| \begin{array}{l l l}1&amp;amp;2&amp;amp;1\\ -2&amp;amp;3&amp;amp;-4\\ 1&amp;amp;9&amp;amp;1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\
+|P| &amp;amp;= \left| \begin{array}{l l l}1&amp;amp;2&amp;amp;1\\ -2&amp;amp;3&amp;amp;-4\\ 1&amp;amp;9&amp;amp;-1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\
 |P| &amp;amp;= 0 \
 \end{align}$$&lt;/p&gt;
 &lt;p&gt;Thus, they have non-trivial solutions. All the planes are concurrent and form a 
@@ -145,7 +145,7 @@ than the number of points it passes through:&lt;/p&gt;
   the value of $P(5)$ is?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The lagrange interpolated polynomial for the above values is $P(x) = x^3$. However, 
-this gives the wrong answer of $P(5) = 145$. The correct answer is $P(5) = 149$, 
+this gives the wrong answer of $P(5) = 125$. The correct answer is $P(5) = 149$, 
 because we have been asked to fit a polynomial of higher order in this equation.&lt;/p&gt;
 &lt;p&gt;Also, this technique should only be used as a last resort for pattern finding. 
 This is extremely computation heavy and is more of a bruteforce algorithm, that 
