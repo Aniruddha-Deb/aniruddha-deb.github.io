@@ -117,49 +117,7 @@ from bugs&lt;/a&gt;.&lt;/p&gt;
 had significant corporate backing from the start, which explains it's superiority
 in overall fit, finish and polish to other kludgy open-source softwares. The 
 Blender community (Both developers and artists) have also done an awesome job 
-keeping the software relevant and up-to-date. More on this &lt;a href="https://www.blender.org/foundation/history/"&gt;here&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 31 Dec 2020 18:41:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-12-31:/articles/2020/freecad-intro.html</guid><category>Engineering</category><category>CAD</category></item><item><title>An introduction to Quantum Mechanics</title><link>https://aniruddha-deb.github.io/articles/2020/quantum-intro.html</link><description>&lt;p&gt;The best way to learn a subject is to try teaching it to others. Unfortunately,
-I'm quite bad at teaching, and most of it will be incorrect anyways, so I'll
-try to capture whatever I've learnt in Quantum Mechanics so far in this article. 
-Note that I'm not an expert in Quantum Mechanics, and these notes are primarily
-for my own understanding of the subject. Pointing out errors and suggesting 
-improvements is appreciated :)&lt;/p&gt;
-&lt;h2&gt;Why Quantum Mechanics?&lt;/h2&gt;
-&lt;p&gt;This is a good question, which doesn't get enough attention. For most of us, 
-we have to learn quantum mechanics because it's in the course curriculum, or 
-because "classical mechanics fails at the microscopic level" or some BS like that.
-&lt;a href="https://www.feynmanlectures.caltech.edu/III_01.html"&gt;Chapter 1 of the Feynman Lectures, Vol. 3&lt;/a&gt; 
-explains this amazingly, and if you're still not satisfied and want a more 
-hardcore explanation, check out the afterword of &lt;a href="https://www.fisica.net/mecanica-quantica/Griffiths%20-%20Introduction%20to%20quantum%20mechanics.pdf"&gt;Griffiths' Introduction to 
-Quantum Mechanics&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;In short, Quantum mechanics primarily arises to explain the behaviour of things 
-that cannot be measured without disturbing their state. Like the electron or 
-photon in a double slit experiment, trying to measure their position would 
-cause a transfer of energy, however infinitesimal. This would disturb them from
-the state that they were in, which would defeat the purpose of the measurement.&lt;/p&gt;
-&lt;h2&gt;Wave functions and Probabilities&lt;/h2&gt;
-&lt;p&gt;The next question that arises is how do we explain the behaviour of something
-that we can't measure? We do this using something called a 'wave function'. The
-wave function is called so, because it has a huge amount in common with the 
-amplitude of a classical wave (see &lt;a href="https://physics.stackexchange.com/questions/274988/what-is-the-etymology-of-the-term-wave-function"&gt;here&lt;/a&gt; for more). 
-Since we can't measure the actual location, all we can do is estimate the properties
-of the particle using a set of probabilities. Suppose, we have a black box with 
-a marble in it, divided into 4 quadrants. Something like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="sorry shutterstock :P" src="res/box.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;Let's say that the marble can pass through the partitions; then, the probability
-that the marble is in a particular quadrant at any given time is $1/4$. The wavefunction
-for this system would then be&lt;/p&gt;
-&lt;p&gt;$$\psi(Q_x, Q_y) = \frac{1}{4}$$&lt;/p&gt;
-&lt;p&gt;Where $Q_x$ and $Q_y$ represent the quadrant number along the x-axis and y-axis respectively.
-The wavefunction being constant means that &lt;strong&gt;the probability of finding the 
-particle in any quadrant is the same&lt;/strong&gt;. Some assumptions
-are being made here: the marble is very small in comparision to the quadrant size 
-(thus, it can't be in two quadrants at the same time), it's mass is finite and 
-known and it can collide with the walls of the box without a loss of energy. &lt;/p&gt;
-&lt;p&gt;Now, suppose we had to predict the location of the marble a bit more accurately: 
-let's increase the number of partitions to 4 per axis, so that we now have 
-16 slots. The probability distribution would probably change now; there's a 
-higher probability of the marble being in the middle 4 regions as compared to the 
-other regions. If we make an infinite number of partitions, then the wav&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 03 Dec 2020 10:28:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-12-03:/articles/2020/quantum-intro.html</guid><category>Physics</category><category>Physics</category><category>Quantum Mechanics</category></item><item><title>Sorting Testbench in C</title><link>https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html</link><description>&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
+keeping the software relevant and up-to-date. More on this &lt;a href="https://www.blender.org/foundation/history/"&gt;here&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 31 Dec 2020 18:41:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-12-31:/articles/2020/freecad-intro.html</guid><category>Engineering</category><category>CAD</category></item><item><title>Sorting Testbench in C</title><link>https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html</link><description>&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
 that CLRS starts the reader off with sort algorithms (technically they start with 
 math and basic CS, but I've already covered that). I decided to make a Sorting 
 testbench, whose requirements were pretty simple:&lt;/p&gt;
