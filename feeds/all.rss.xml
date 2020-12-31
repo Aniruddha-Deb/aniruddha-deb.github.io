@@ -1,5 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Wed, 11 Nov 2020 19:20:00 +0530</lastBuildDate><item><title>Sorting Testbench in C</title><link>https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html</link><description>&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddha-deb.github.io/</link><description></description><lastBuildDate>Thu, 31 Dec 2020 18:41:00 +0530</lastBuildDate><item><title>Intro to FreeCAD</title><link>https://aniruddha-deb.github.io/articles/2020/freecad-intro.html</link><description>&lt;p&gt;MCP100 is a course that all first year undergrads in IITD have to go through. 
+It consists of two parts: the first part is engineering drawing, using rulers
+and pencils, and CAD. After a disastrous drawing minor, the next phase involved
+getting to terms with CAD. The CAD package our course instructor decided on was
+FreeCAD, and since the minor ended, I've done nothing but create FreeCAD models.&lt;/p&gt;
+&lt;p&gt;I'm not a &lt;em&gt;pero&lt;/em&gt;&lt;sup&gt;1&lt;/sup&gt; at it though, (there's still plenty to learn), and 
+once that is done, there are plenty of bugs to fix :P. I do think I've got a 
+decently good footing in it, and I'll be sharing my experiences here.&lt;/p&gt;
+&lt;h2&gt;Parametric Modelling&lt;/h2&gt;
+&lt;p&gt;While the basic concepts of Drafting are pretty easy to pick up (parallel lines,
+projections, isometric view etc), the concepts of 3D CAD are a bit different. 
+Most 3D CAD packages you'll encounter will belong to a family of softwares 
+called &lt;strong&gt;Parametric Modellers&lt;/strong&gt;: Fusion 360, Inventor, SolidWorks, Siemens NX are
+all parametric modellers. What 'Parametric' means is that the geometry of your 
+part is determined by parameters, and changing the parameters changes the 
+geometry. Here's a small example: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Parametric Modeling" src="res/parametric_modelling.gif"&gt;&lt;/p&gt;
+&lt;p&gt;Notice how changing the parameters of the sketch change the values of the model
+as well. As opposed to this &lt;strong&gt;Direct Modelling&lt;/strong&gt; is a method of modelling which
+is more like molding clay: once the hole is made, changing it's parameters are
+trickier. This is used more in the art industry, and softwares such as Blender
+Maya and 3DSMax are direct modellers.&lt;/p&gt;
+&lt;p&gt;Parametric modeling has it's benefits in manufacturing; it is very easy to 
+translate exact dimensions to the part when using this methodology as opposed
+to direct modelling. One downside is that modelling curves and free-form surfaces
+is notoriously difficult. There are many more articles on parametric vs direct
+modelling on the internet &lt;a href="https://www.ptc.com/en/blogs/cad/parametric-vs-direct-modeling-which-side-are-you-on"&gt;here&lt;/a&gt;, 
+&lt;a href="https://www.designworldonline.com/what-is-parametric-modeling/"&gt;here&lt;/a&gt; and 
+&lt;a href="https://www.engineering.com/DesignSoftware/DesignSoftwareArticles/ArticleID/16587/Whats-the-Difference-Between-Parametric-and-Direct-Modeling.aspx"&gt;here&lt;/a&gt;,
+so I won't go further in this article.&lt;/p&gt;
+&lt;h2&gt;FreeCAD: 3D Parametric Modelling for Free&lt;/h2&gt;
+&lt;p&gt;Notice something common in all the aforementioned softwares? &lt;em&gt;Their prices&lt;/em&gt;. All
+of them, with the exception of Blender, cost over $1000 for a single license. The
+ones that don't come with a license, generally tie you to their platform with
+a notorious subscription-based model (Autodesk, I'm looking at you). FreeCAD 
+in this manner is pretty good, but you get what you pay for. I was expecting it
+to be like Blender&lt;sup&gt;2&lt;/sup&gt;, but became pretty disappointed when I saw that it's pretty
+buggy and not as fully featured as other packages. &lt;/p&gt;
+&lt;p&gt;I'm not a n00b to parametric modelling, having done it multiple times in Fusion
+360 for several projects, so jumping into FreeCAD was relatively painless. Much
+of the workflow is the same; create a sketch, extrude (they call it 'pad' here),
+create another sketch, push (they call it 'pocket' here), rinse and repeat. &lt;/p&gt;
+&lt;p&gt;In a few hours time, I was done with the assignment that was uploaded.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Yes I know this was done by Sir, do you really think I'll post snaps of the others so that you can copy them? ;)" src="res/assignment.png"&gt;&lt;/p&gt;
+&lt;p&gt;Here are some observations I picked up while doing the assignment:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Change the line drawing to 4xMSAA for smoother lines&lt;/li&gt;
+&lt;li&gt;Change navigation style to Blender (More intuitive for me, as I have prior 
+   experience with Blender)&lt;/li&gt;
+&lt;li&gt;Change orbit style to 'Turntable'. Trackball is a nightmare&lt;/li&gt;
+&lt;li&gt;Change to a dark theme &lt;strong&gt;If you're on Windows or Linux&lt;/strong&gt;. Any theme is 
+   horribly glitchy on Mac&lt;/li&gt;
+&lt;li&gt;Background color for the viewport can be changed in settings as well, if you're more used to AutoCAD/Blender dark backgrounds&lt;/li&gt;
+&lt;li&gt;The Cube is the best way to navigate; try to spend most of your time in 
+   isometric views and front/side/back views. Panning/rotating is not too
+   smooth here compared to the other packages.&lt;/li&gt;
+&lt;li&gt;If you've zoomed in too much or too little, use the 'fit contents to viewport'
+   button or just hit V and F&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;More Complex models&lt;/h2&gt;
+&lt;p&gt;I then decided to do something a bit more complex: create and assemble an entire
+product using FreeCAD. I have done this with Fusion 360 twice, and since FreeCAD
+is not very different, it should handle this workload fine as well.&lt;/p&gt;
+&lt;p&gt;Wrong.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;There are so many features that other CAD packages have, which have no analogue
+in FreeCAD, or a very half-baked implementation&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You created a sketch with multiple faces in it and want to extrude only a 
+   select few of those? Nope, sorry, can't do that&lt;/li&gt;
+&lt;li&gt;You created all your parts and want to assemble them? Nope, FreeCAD doesn't
+   ship with an assembly workbench. You need to install another assembly
+   workbench. By 'Other', there is only one assembly workbench for v18.x (A2Plus),
+   and Assembly3 and Assembly4 are for v19+ only.&lt;/li&gt;
+&lt;li&gt;Now you want to install this workbench? Well, good luck if you're on Mac, because
+   the addon manager seems to be broken. Here's what it looks like on the FreeCAD
+   wiki, and here's what it looks like on my machine&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="On Windows" src="res/addonmgr.png"&gt; &lt;img alt="On Mac" src="res/addonmgr_mac.png"&gt;&lt;/p&gt;
+&lt;p&gt;So much for platform independence. I had to install the addon manually which, 
+thankfully, was painless enough. No proprietrary formats involved, just clone 
+the git repo into the &lt;code&gt;Mod&lt;/code&gt; directory&lt;/p&gt;
+&lt;p&gt;Once the assembly was imported, using A2Plus, &lt;strong&gt;I had to manually import 
+all the parts in one file separately&lt;/strong&gt;. A2Plus didn't pick them up automatically
+and add the parts as different parts: if you open the file normally, it just 
+mushes all the parts up as one big 'blob', which is then inserted.&lt;/p&gt;
+&lt;p&gt;After some frustration, the Assembly was finally complete.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Assembly" src="res/assembly.png"&gt;&lt;/p&gt;
+&lt;p&gt;I now had to generate a top view and a cross-sectional view. The procedure for
+this was pretty simple: go into TechDraw, insert a top view, then insert a 
+sectional view. This would be great and smooth, &lt;strong&gt;if only the section view 
+wasn't so glitchy&lt;/strong&gt;. I couldn't find options to change hatching patterns for 
+individual parts, and the handle for the vice glitched out and wasn't shaded. 
+Instead, there were these two long, parallel lines that I couldn't delete. 
+&lt;strong&gt;And how do you scale views in TechDraw!?&lt;/strong&gt; Everything I tried didn't work, 
+and finally I had to increase the paper size to fit the diagram in 1:1. 
+This was ok for a vice, but could you imagine designing your next aeroplane
+in this software?&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1:1 Projection on an A2 sheet" src="res/A2.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Concluding remarks&lt;/h2&gt;
+&lt;p&gt;I do have mixed feelings for this software: on one side, it represents that 
+large softwares with multimillion dollar licenses can also have open-source
+alternatives. On the other hand, it's bugginess, glitchiness and lack of 
+industry-grade features truly disappoint me. Of course, since it's open source,
+sitting on the sidelines and pointing fingers won't help. The only way to 
+fix the software is to wade into the muck yourself and help with reporting and 
+fixing bugs. This is a double-edged sword, because in one way it gives you 
+freedom and absolute control, but on the other hand, for a student looking to 
+use a glitch-free software on his computer to pass a course, well...&lt;/p&gt;
+&lt;p&gt;I would like to point out that even though I've bashed FreeCAD quite a bit for
+bugs, do note that &lt;a href="https://www.cadalyst.com/cad/product-design/what-grounded-airbus-a380-10903"&gt;even using the most premier CAD packages don't save you
+from bugs&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt; IITD lingo for Pro :P&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt; Blender was initially started as an in-house creation tool and 
+had significant corporate backing from the start, which explains it's superiority
+in overall fit, finish and polish to other kludgy open-source softwares. The 
+Blender community (Both developers and artists) have also done an awesome job 
+keeping the software relevant and up-to-date. More on this &lt;a href="https://www.blender.org/foundation/history/"&gt;here&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 31 Dec 2020 18:41:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-12-31:/articles/2020/freecad-intro.html</guid><category>Engineering</category><category>CAD</category></item><item><title>An introduction to Quantum Mechanics</title><link>https://aniruddha-deb.github.io/articles/2020/quantum-intro.html</link><description>&lt;p&gt;The best way to learn a subject is to try teaching it to others. Unfortunately,
+I'm quite bad at teaching, and most of it will be incorrect anyways, so I'll
+try to capture whatever I've learnt in Quantum Mechanics so far in this article. 
+Note that I'm not an expert in Quantum Mechanics, and these notes are primarily
+for my own understanding of the subject. Pointing out errors and suggesting 
+improvements is appreciated :)&lt;/p&gt;
+&lt;h2&gt;Why Quantum Mechanics?&lt;/h2&gt;
+&lt;p&gt;This is a good question, which doesn't get enough attention. For most of us, 
+we have to learn quantum mechanics because it's in the course curriculum, or 
+because "classical mechanics fails at the microscopic level" or some BS like that.
+&lt;a href="https://www.feynmanlectures.caltech.edu/III_01.html"&gt;Chapter 1 of the Feynman Lectures, Vol. 3&lt;/a&gt; 
+explains this amazingly, and if you're still not satisfied and want a more 
+hardcore explanation, check out the afterword of &lt;a href="https://www.fisica.net/mecanica-quantica/Griffiths%20-%20Introduction%20to%20quantum%20mechanics.pdf"&gt;Griffiths' Introduction to 
+Quantum Mechanics&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;In short, Quantum mechanics primarily arises to explain the behaviour of things 
+that cannot be measured without disturbing their state. Like the electron or 
+photon in a double slit experiment, trying to measure their position would 
+cause a transfer of energy, however infinitesimal. This would disturb them from
+the state that they were in, which would defeat the purpose of the measurement.&lt;/p&gt;
+&lt;h2&gt;Wave functions and Probabilities&lt;/h2&gt;
+&lt;p&gt;The next question that arises is how do we explain the behaviour of something
+that we can't measure? We do this using something called a 'wave function'. The
+wave function is called so, because it has a huge amount in common with the 
+amplitude of a classical wave (see &lt;a href="https://physics.stackexchange.com/questions/274988/what-is-the-etymology-of-the-term-wave-function"&gt;here&lt;/a&gt; for more). 
+Since we can't measure the actual location, all we can do is estimate the properties
+of the particle using a set of probabilities. Suppose, we have a black box with 
+a marble in it, divided into 4 quadrants. Something like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sorry shutterstock :P" src="res/box.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Let's say that the marble can pass through the partitions; then, the probability
+that the marble is in a particular quadrant at any given time is $1/4$. The wavefunction
+for this system would then be&lt;/p&gt;
+&lt;p&gt;$$\psi(Q_x, Q_y) = \frac{1}{4}$$&lt;/p&gt;
+&lt;p&gt;Where $Q_x$ and $Q_y$ represent the quadrant number along the x-axis and y-axis respectively.
+The wavefunction being constant means that &lt;strong&gt;the probability of finding the 
+particle in any quadrant is the same&lt;/strong&gt;. Some assumptions
+are being made here: the marble is very small in comparision to the quadrant size 
+(thus, it can't be in two quadrants at the same time), it's mass is finite and 
+known and it can collide with the walls of the box without a loss of energy. &lt;/p&gt;
+&lt;p&gt;Now, suppose we had to predict the location of the marble a bit more accurately: 
+let's increase the number of partitions to 4 per axis, so that we now have 
+16 slots. The probability distribution would probably change now; there's a 
+higher probability of the marble being in the middle 4 regions as compared to the 
+other regions. If we make an infinite number of partitions, then the wav&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 03 Dec 2020 10:28:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddha-deb.github.io,2020-12-03:/articles/2020/quantum-intro.html</guid><category>Physics</category><category>Physics</category><category>Quantum Mechanics</category></item><item><title>Sorting Testbench in C</title><link>https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html</link><description>&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
 that CLRS starts the reader off with sort algorithms (technically they start with 
 math and basic CS, but I've already covered that). I decided to make a Sorting 
 testbench, whose requirements were pretty simple:&lt;/p&gt;
