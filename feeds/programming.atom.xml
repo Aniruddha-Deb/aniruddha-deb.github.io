@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Programming</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-11-11T19:20:00+05:30</updated><entry><title>Sorting Testbench in C</title><link href="https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html" rel="alternate"></link><published>2020-11-11T19:20:00+05:30</published><updated>2020-11-11T19:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-11-11:/articles/2020/algorithms-in-c.html</id><summary type="html">&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Programming</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2021-03-18T11:46:00+05:30</updated><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
+Mac is supposed to be POSIX compliant. I'll cover a few of them here, with the
+hope that nobody repeats the same mistakes :)&lt;/p&gt;
+&lt;h2&gt;XCode CLT Pitfalls&lt;/h2&gt;
+&lt;p&gt;The first thing one does while starting out with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
+Mac is supposed to be POSIX compliant. I'll cover a few of them here, with the
+hope that nobody repeats the same mistakes :)&lt;/p&gt;
+&lt;h2&gt;XCode CLT Pitfalls&lt;/h2&gt;
+&lt;p&gt;The first thing one does while starting out with C development is to install
+a compiler. This is slightly more complicated than it looks on Mac: the simple
+way is to go the way of installing XCode command line tools, but there's a few
+things here to note:&lt;/p&gt;
+&lt;h3&gt;You have to be an apple developer&lt;/h3&gt;
+&lt;p&gt;This means that you can't have a C/C++ toolchain without being a part of
+of their developer program. There is a (messy) way of working around this, by instead
+installing and using GCC with HomeBrew, but I'll get to that in a minute. &lt;/p&gt;
+&lt;h3&gt;XCode CLT uses the &lt;code&gt;clang&lt;/code&gt; toolchain&lt;/h3&gt;
+&lt;p&gt;This is by far the most important pitfall, as XCode purposefully misaliases 
+a lot of stuff. After installing XCode CLT (and provided that you don't have
+GCC installed or aliased), try doing a &lt;code&gt;gcc -v&lt;/code&gt; or &lt;code&gt;g++ -v&lt;/code&gt;. You'd get&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple clang version 12.0.0 (clang-1200.0.32.27)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is quite misleading, as &lt;code&gt;gcc&lt;/code&gt; and &lt;code&gt;clang&lt;/code&gt; are fundamentally different 
+compilers. &lt;a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367"&gt;Here's one example of that&lt;/a&gt; 
+(more could be found). &lt;/p&gt;
+&lt;h3&gt;Headers? What Headers?&lt;/h3&gt;
+&lt;p&gt;Headers are also &lt;em&gt;very weirdly located&lt;/em&gt; in &lt;code&gt;/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include&lt;/code&gt;,
+and these headers are also &lt;strong&gt;not&lt;/strong&gt; symlinked to &lt;code&gt;/usr/include&lt;/code&gt; by the installer.
+This sucks, and I struggled with making vim autocomplete work because of this
+reason; vim's path searches &lt;code&gt;/usr/include&lt;/code&gt; and not this weird obscure path.
+Once I manually included it, it &lt;strike&gt;looked horrible and I needed to symlink it
+to /usr/include&lt;/strike&gt; worked okayish.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="res/vim_autocomp.png"&gt;&lt;/p&gt;
+&lt;p&gt;One note is that you could also use the path &lt;code&gt;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include&lt;/code&gt;,
+as &lt;code&gt;MacOSX.sdk&lt;/code&gt; is linked to the latest version of SDK installed. This does not
+make the location of includes any less weird. &lt;/p&gt;
+&lt;p&gt;Another thing to note is that other libraries install their headers in &lt;code&gt;/usr/local/include&lt;/code&gt;,
+so this discrepancy is bad. This has also not been fixed in Big Sur: how hard
+is it to keep a set of headers in &lt;code&gt;/usr/include&lt;/code&gt; rather than in this unsightly
+place! I mean every UNIX system does this! Ugh&lt;/p&gt;
+&lt;h3&gt;CTags&lt;/h3&gt;
+&lt;p&gt;CLT also ships with the old ctags rather than exuberant ctags, which is basically
+useless. Neither is there a simple way to distinguish between the ctags that
+it ships and exuberant ctags until it fails hard when you go to make your tags
+file, since they have the same &lt;code&gt;ctags&lt;/code&gt; command. The way of fixing this is to 
+install the proper ctags with &lt;code&gt;brew install ctags&lt;/code&gt; and then add 
+&lt;code&gt;alias ctags=/usr/local/include/ctags&lt;/code&gt; to your &lt;code&gt;.zshrc&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Using GCC&lt;/h2&gt;
+&lt;p&gt;So you decide that the &lt;code&gt;clang&lt;/code&gt; toolchain is not working out for you (maybe because
+it's slow or for other reasons), and you decide to switch to the &lt;code&gt;gcc&lt;/code&gt; toolchain
+(by Toolchain, I refer to all associated tools, so that's &lt;code&gt;gcc&lt;/code&gt;, &lt;code&gt;g++&lt;/code&gt;, &lt;code&gt;gdb&lt;/code&gt; etc).
+Installing the tools are quite easy, and they just happen with 
+&lt;code&gt;brew install gcc gdb&lt;/code&gt;. However, &lt;code&gt;gcc&lt;/code&gt; and &lt;code&gt;g++&lt;/code&gt; are already taken by &lt;code&gt;clang&lt;/code&gt;,
+so you'll have to export them in your &lt;code&gt;.zshrc&lt;/code&gt; again&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;gcc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/bin/gcc-10
+&lt;span class="nb"&gt;alias&lt;/span&gt; g++&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/bin/g++-10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;GDB, however, is &lt;em&gt;very&lt;/em&gt; tricky to get working right; MacOS due to SIP and 
+Gatekeeper, does not allow running processes to latch on to other processes.
+For GDB to work, it would need to be signed. For this, you'll have to sign
+it yourself with a certificate, and add that certificate to the trusted
+keychain in your system. I &lt;em&gt;still&lt;/em&gt; could not get it to work after this (more
+info &lt;a href="https://dev.to/jasonelwood/setup-gdb-on-macos-in-2020-489k"&gt;here&lt;/a&gt;), and 
+just using &lt;code&gt;sudo&lt;/code&gt; was a hack that I used while I tried to get GDB to work. 
+LLDB, however, is much better integrated with debugging, and I eventually
+shifted over to using LLDB rather than GDB (aided by &lt;a href="https://lldb.llvm.org/use/map.html"&gt;this&lt;/a&gt;
+resource). &lt;/p&gt;
+&lt;p&gt;The GCC/G++ aliasing is highly recommended, and you could leave out GDB (which
+is what I've done in my current setup)&lt;/p&gt;
+&lt;h2&gt;Other stuff&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;make&lt;/code&gt; seems to work without a hitch so far, which is a good thing. &lt;code&gt;cscope&lt;/code&gt; 
+also had to be installed with brew, and cscope also works well now. I'll need 
+to finish setting up my vim environment for C autocompletion and play around
+more with CTags and cscope (maybe write about it in the next post :)) For 
+now, this has unfortunately turned into more of a rant than a how-to, but I
+still hoped it help some of you avoid these traps and pitfalls.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="C"></category></entry><entry><title>Sorting Testbench in C</title><link href="https://aniruddha-deb.github.io/articles/2020/algorithms-in-c.html" rel="alternate"></link><published>2020-11-11T19:20:00+05:30</published><updated>2020-11-11T19:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-11-11:/articles/2020/algorithms-in-c.html</id><summary type="html">&lt;p&gt;I started reading CS theory in anticipation of my upcoming curriculum and I found
 that CLRS starts the reader off with sort algorithms (technically they start with 
 math and basic CS, but I've already covered that). I decided to make a Sorting 
 testbench, whose requirements were pretty simple:&lt;/p&gt;
