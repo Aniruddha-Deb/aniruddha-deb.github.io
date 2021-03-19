@@ -134,8 +134,13 @@ InstalledDir: /Library/Developer/CommandLineTools/usr/bin
 </code></pre></div>
 
 <p>This is quite misleading, as <code>gcc</code> and <code>clang</code> are fundamentally different 
-compilers. <a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367">Here's one example of that</a> 
-(more could be found). </p>
+compilers. <a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367">Here's one example of that</a>.
+A more accessible example would be this:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">/++</span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+
+<p>try compiling this with <code>gcc</code> and <code>clang</code>, and be surprised*.</p>
 <h3>Headers? What Headers?</h3>
 <p>Headers are also <em>very weirdly located</em> in <code>/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include</code>,
 and these headers are also <strong>not</strong> symlinked to <code>/usr/include</code> by the installer.
@@ -188,6 +193,8 @@ to finish setting up my vim environment for C autocompletion and play around
 more with CTags and cscope (maybe write about it in the next post :)) For 
 now, this has unfortunately turned into more of a rant than a how-to, but I
 still hoped it help some of you avoid these traps and pitfalls.</p>
+<hr>
+<p>*: GCC gives the output as 1, while clang gives it as 0</p>
   </div>
   <div class="tag-cloud">
     <p>

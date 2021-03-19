@@ -27,8 +27,13 @@ InstalledDir: /Library/Developer/CommandLineTools/usr/bin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is quite misleading, as &lt;code&gt;gcc&lt;/code&gt; and &lt;code&gt;clang&lt;/code&gt; are fundamentally different 
-compilers. &lt;a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367"&gt;Here's one example of that&lt;/a&gt; 
-(more could be found). &lt;/p&gt;
+compilers. &lt;a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367"&gt;Here's one example of that&lt;/a&gt;.
+A more accessible example would be this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/++&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;try compiling this with &lt;code&gt;gcc&lt;/code&gt; and &lt;code&gt;clang&lt;/code&gt;, and be surprised*.&lt;/p&gt;
 &lt;h3&gt;Headers? What Headers?&lt;/h3&gt;
 &lt;p&gt;Headers are also &lt;em&gt;very weirdly located&lt;/em&gt; in &lt;code&gt;/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include&lt;/code&gt;,
 and these headers are also &lt;strong&gt;not&lt;/strong&gt; symlinked to &lt;code&gt;/usr/include&lt;/code&gt; by the installer.
@@ -80,7 +85,9 @@ also had to be installed with brew, and cscope also works well now. I'll need
 to finish setting up my vim environment for C autocompletion and play around
 more with CTags and cscope (maybe write about it in the next post :)) For 
 now, this has unfortunately turned into more of a rant than a how-to, but I
-still hoped it help some of you avoid these traps and pitfalls.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="C"></category></entry><entry><title>Understanding Jacobians</title><link href="https://aniruddha-deb.github.io/articles/2021/understanding-jacobians.html" rel="alternate"></link><published>2021-01-29T15:11:00+05:30</published><updated>2021-01-29T15:11:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-01-29:/articles/2021/understanding-jacobians.html</id><summary type="html">&lt;p&gt;$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$
+still hoped it help some of you avoid these traps and pitfalls.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*: GCC gives the output as 1, while clang gives it as 0&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="C"></category></entry><entry><title>Understanding Jacobians</title><link href="https://aniruddha-deb.github.io/articles/2021/understanding-jacobians.html" rel="alternate"></link><published>2021-01-29T15:11:00+05:30</published><updated>2021-01-29T15:11:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-01-29:/articles/2021/understanding-jacobians.html</id><summary type="html">&lt;p&gt;$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$
 $\newcommand{\ah}{\pmb{a} + \pmb{h}}$
 $\newcommand{\a}{\pmb{a}}$
 $\newcommand{\h}{\pmb{h}}$&lt;/p&gt;
