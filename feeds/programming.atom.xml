@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Programming</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2021-03-18T11:46:00+05:30</updated><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Programming</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2021-03-21T21:36:00+05:30</updated><entry><title>LaTeX primer</title><link href="https://aniruddha-deb.github.io/articles/2021/latex-primer.html" rel="alternate"></link><published>2021-03-21T21:36:00+05:30</published><updated>2021-03-21T21:36:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-21:/articles/2021/latex-primer.html</id><summary type="html">&lt;p&gt;This is a short &lt;em&gt;getting started&lt;/em&gt; article on LaTeX; Recently, one of our courses
+involved a bit of LaTeX work, and this is meant to be a short introduction on 
+how to use LaTeX to explain one's working.&lt;/p&gt;
+&lt;h2&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;LaTeX (Pronounced &lt;em&gt;lay-tech&lt;/em&gt;, stylized $\LaTeX$), at it's core, is merely …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a short &lt;em&gt;getting started&lt;/em&gt; article on LaTeX; Recently, one of our courses
+involved a bit of LaTeX work, and this is meant to be a short introduction on 
+how to use LaTeX to explain one's working.&lt;/p&gt;
+&lt;h2&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;LaTeX (Pronounced &lt;em&gt;lay-tech&lt;/em&gt;, stylized $\LaTeX$), at it's core, is merely a text formatting system. One of the main differences
+between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM 
+(What you see is what you mean) system, as compared to WYSIWYG (What you see 
+is what you &lt;em&gt;get&lt;/em&gt;) systems. This means that you won't be able to see your changes
+while editing, say LaTeX in your moodle explanation. &lt;/p&gt;
+&lt;p&gt;To test small LaTeX snippets without installing anything, you can use 
+&lt;a href="https://quicklatex.com"&gt;quicklatex.com&lt;/a&gt; or &lt;a href="http://texrendr.com"&gt;texrendr.com&lt;/a&gt;.
+The former renders it using an actual LaTeX engine, while the latter uses 
+MathJax (there are minor differences, which I'll get to later). For now, both
+are equivalent, and you should be able to use both without problems. You could
+also try testing with the &lt;a href="https://top.gg/bot/510789298321096704"&gt;TeXit discord bot&lt;/a&gt;, on
+one of the many servers which have it. It also works if you Directly message it
+your code, which is nice.&lt;/p&gt;
+&lt;h2&gt;Basic commands&lt;/h2&gt;
+&lt;p&gt;Getting started is quite easy: here's an example of some LaTeX code which does stuff&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\int&lt;/span&gt; &lt;span class="k"&gt;\frac&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;dx&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\sqrt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1-x&lt;span class="nb"&gt;^&lt;/span&gt;2&lt;span class="nb"&gt;}}&lt;/span&gt; = &lt;span class="k"&gt;\sin&lt;/span&gt;&lt;span class="nb"&gt;^{&lt;/span&gt;-1&lt;span class="nb"&gt;}&lt;/span&gt;(x) + c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and here's the output it generates:&lt;/p&gt;
+&lt;p&gt;$$\int \frac{dx}{\sqrt{1-x^2}} = \sin^{-1}(x) + c$$&lt;/p&gt;
+&lt;p&gt;Let's go over what the code does, command by command:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The &lt;code&gt;\&lt;/code&gt; (backslash) is used to represent a &lt;em&gt;command&lt;/em&gt;: prefixing a word with 
+   a backslash identifies it as a command, and commands are used to either
+   render specific symbols (&lt;code&gt;\int&lt;/code&gt;, &lt;code&gt;\alpha&lt;/code&gt;) or typeset text in a specific way
+   (&lt;code&gt;\frac&lt;/code&gt;, &lt;code&gt;\sqrt&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\int&lt;/code&gt; renders an integral sign, and &lt;code&gt;\frac&lt;/code&gt; creates a fraction of the form
+   &lt;code&gt;\frac{numerator}{denominator}&lt;/code&gt;. Braces are used in latex to demarcate parts
+   of a command. They are optional, and in a pinch you could skip them
+   altogether; for example, &lt;code&gt;\frac 1n&lt;/code&gt; renders as $\frac 1n$&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;\sqrt&lt;/code&gt; sign is self-explanatory. Note that $\sin$ is prefixed with a 
+   backslash. There's a very minor difference here: &lt;code&gt;\sin&lt;/code&gt; would render $\sin$
+   (upright), while &lt;code&gt;sin&lt;/code&gt; would render $sin$ (slanting). Hence, it's a good
+   practice to prefix trig functions with a backslash. Raising -1 to the power
+   requires explicit braces, as &lt;code&gt;\sin^-1&lt;/code&gt; would render $\sin^-1$ rather than
+   $\sin^{-1}$, which is not what we need.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This small example covers most of what we'll use. The real power comes from
+the fact that &lt;em&gt;by nesting these commands, we can create as complex an 
+expression as we like&lt;/em&gt;. Here's an example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\int&lt;/span&gt; &lt;span class="k"&gt;\frac&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\sin&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;3&lt;span class="k"&gt;\frac\theta&lt;/span&gt; 2&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\cos\frac\theta&lt;/span&gt;2 &lt;span class="k"&gt;\sqrt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cos&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;3&lt;span class="k"&gt;\theta&lt;/span&gt; + &lt;span class="k"&gt;\cos&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;2&lt;span class="k"&gt;\theta&lt;/span&gt; + &lt;span class="k"&gt;\cos\theta&lt;/span&gt;&lt;span class="nb"&gt;}}&lt;/span&gt; d&lt;span class="k"&gt;\theta&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;gives us
+$$\int \frac{\sin^3\frac\theta 2}{\cos\frac\theta2 \sqrt{\cos^3\theta + \cos^2\theta + \cos\theta}} d\theta$$&lt;/p&gt;
+&lt;p&gt;Notice how this is only made up of the simple commands that we used (and &lt;code&gt;\theta&lt;/code&gt;
+to render the $\theta$ symbol)&lt;/p&gt;
+&lt;p&gt;There's a nice list of latex symbols &lt;a href="https://www.egr.msu.edu/~renjian/LaTeX-Math-Symbols.pdf"&gt;here&lt;/a&gt;.
+If you ever get stuck, or come across a weird symbol not mentioned here, 
+&lt;a href="https://detexify.kirelabs.org/classify.html"&gt;Detexify&lt;/a&gt; is a tool for converting
+handwritten math symbols into LaTeX, so use that. &lt;/p&gt;
+&lt;p&gt;Some more teeps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The backslash can also be used to add a small space between two terms, if 
+   there isn't any. For example, &lt;code&gt;\int x dx&lt;/code&gt; gives $\int x dx$, whereas 
+   &lt;code&gt;\int x\ dx&lt;/code&gt; gives $\int x\ dx$. Notice the space in the latter, which
+   improves readability&lt;/li&gt;
+&lt;li&gt;Brackets don't cover the en&lt;/li&gt;
+&lt;li&gt;Matrices&lt;/li&gt;
+&lt;li&gt;Determinants&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Difference between LaTeX and MathJax&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
 Mac is supposed to be POSIX compliant. I'll cover a few of them here, with the
 hope that nobody repeats the same mistakes :)&lt;/p&gt;
 &lt;h2&gt;XCode CLT Pitfalls&lt;/h2&gt;
