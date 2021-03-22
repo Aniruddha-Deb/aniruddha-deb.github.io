@@ -58,17 +58,108 @@ to render the $\theta$ symbol)&lt;/p&gt;
 If you ever get stuck, or come across a weird symbol not mentioned here, 
 &lt;a href="https://detexify.kirelabs.org/classify.html"&gt;Detexify&lt;/a&gt; is a tool for converting
 handwritten math symbols into LaTeX, so use that. &lt;/p&gt;
-&lt;p&gt;Some more teeps are:&lt;/p&gt;
+&lt;h2&gt;Environments&lt;/h2&gt;
+&lt;p&gt;An environment is used to format a block of text in latex. Environments 
+generally begin with a &lt;code&gt;\begin&lt;/code&gt; tag and end with a &lt;code&gt;\end&lt;/code&gt; tag. &lt;/p&gt;
+&lt;p&gt;Let's say you have a set of linear equations and you want to align all of them
+so that they look neat and tidy, something like the example below:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+5x + y - 3z &amp;amp;= 6 \\
+2x + 3y + 4z &amp;amp;= 8 \\
+x + 9y + 7z &amp;amp;= 3 
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;The way to do this is using the &lt;code&gt;align&lt;/code&gt; environment, The code to generate this
+is below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;align&lt;span class="nb"&gt;}&lt;/span&gt;
+5x + y - 3z &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;= 6 &lt;span class="k"&gt;\\&lt;/span&gt;
+2x + 3y + 4z &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;= 8 &lt;span class="k"&gt;\\&lt;/span&gt;
+x + 9y + 7z &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;= 3 
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;align&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Some key points here:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;The backslash can also be used to add a small space between two terms, if 
-   there isn't any. For example, &lt;code&gt;\int x dx&lt;/code&gt; gives $\int x dx$, whereas 
-   &lt;code&gt;\int x\ dx&lt;/code&gt; gives $\int x\ dx$. Notice the space in the latter, which
-   improves readability&lt;/li&gt;
-&lt;li&gt;Brackets don't cover the en&lt;/li&gt;
-&lt;li&gt;Matrices&lt;/li&gt;
-&lt;li&gt;Determinants&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;\begin{align}&lt;/code&gt; and &lt;code&gt;\end{align}&lt;/code&gt; commands demarcate the environment: 
+   similar to the &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; tags in HTML. There are different 
+   environments, such as &lt;code&gt;center&lt;/code&gt; and &lt;code&gt;bmatrix&lt;/code&gt;, but we'll get to those in a 
+   minute&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;\\&lt;/code&gt; command tells latex to end that equation and start the next equation
+   on a new line.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;&amp;amp;&lt;/code&gt; character tells latex to align the commands at that character. 
+   A small exercise for the reader would be to align the equations at the yth term
+   (eg &lt;code&gt;5x + &amp;amp;y - 3z = 6&lt;/code&gt; and so on) and see what happens. Note that the meaning
+   of &lt;code&gt;&amp;amp;&lt;/code&gt; changes depending on context, but in an align environment, this is 
+   what it's used for.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2&gt;Difference between LaTeX and MathJax&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
+&lt;p&gt;Another example: say you want to express this set of equations in a matrix. 
+Something like this:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{bmatrix}
+5 &amp;amp; 1 &amp;amp; -3 \\
+2 &amp;amp; 3 &amp;amp; 4 \\
+1 &amp;amp; 9 &amp;amp; 7 \\
+\end{bmatrix}
+\begin{bmatrix}x \\ y \\ z\end{bmatrix}
+= 
+\begin{bmatrix} 6 \\ 8 \\ 3 \end{bmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;We use the &lt;code&gt;bmatrix&lt;/code&gt; environment for this. The code is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt;
+5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; -3 &lt;span class="k"&gt;\\&lt;/span&gt;
+2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 4 &lt;span class="k"&gt;\\&lt;/span&gt;
+1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 7 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt;x &lt;span class="k"&gt;\\&lt;/span&gt; y &lt;span class="k"&gt;\\&lt;/span&gt; z&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt;
+= 
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt; 6 &lt;span class="k"&gt;\\&lt;/span&gt; 8 &lt;span class="k"&gt;\\&lt;/span&gt; 3 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bmatrix&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice the different use of &lt;code&gt;&amp;amp;&lt;/code&gt; here.&lt;/p&gt;
+&lt;p&gt;Let's say you want to solve this system of equations using cramer's rule, and 
+want to write it as a determinant. Here's how that's done, using &lt;code&gt;array&lt;/code&gt;:
+$$
+\Delta = \left| \begin{array}{ccc}
+5 &amp;amp; 1 &amp;amp; -3 \\
+2 &amp;amp; 3 &amp;amp; 4 \\
+1 &amp;amp; 9 &amp;amp; 7 \\
+\end{array} \right|
+$$&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\Delta&lt;/span&gt; = &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;array&lt;span class="nb"&gt;}{&lt;/span&gt;|ccc|&lt;span class="nb"&gt;}&lt;/span&gt;
+5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; -3 &lt;span class="k"&gt;\\\\&lt;/span&gt;
+2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 4 &lt;span class="k"&gt;\\\\&lt;/span&gt;
+1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 7 &lt;span class="k"&gt;\\\\&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;array&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice how &lt;code&gt;array&lt;/code&gt; has an additional set of parameters here: &lt;code&gt;{|ccc|}&lt;/code&gt; denotes
+that this array has three columns, and that we want vertical lines at the start
+of the first column and the end of the last column. If we wanted something
+like a table, then &lt;code&gt;{c|c|c}&lt;/code&gt; is what we would have used. Inserting horizontal
+lines in an array can be done using &lt;code&gt;\hline&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Some more tips&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;If you want to add a small space between terms in math mode, prefix the space
+   with a backslash. LaTeX ignores whitespace and a few special characters, so
+   displaying them requires that we escape them with a backslash, similar to
+   most other programming languages. For example, &lt;code&gt;\int x dx&lt;/code&gt; gives $\int x dx$, whereas 
+   &lt;code&gt;\int x\ dx&lt;/code&gt; gives $\int x\ dx$. Similarly, for special characters, try 
+   printing &lt;code&gt;5%&lt;/code&gt; in latex and be surprised :) how would you display the % symbol?&lt;/li&gt;
+&lt;li&gt;If you come across an interesting LaTeX snippet online (rendered with MathJaX),
+   right-click on it to open up the MathJaX context menu, and click on &lt;em&gt;show 
+   math as -&amp;gt; TeX commands&lt;/em&gt; to see the code that went into creating that.
+   This is a great way of learning LaTeX. You could &lt;a href="https://aniruddhadeb.com/articles/2020/hard-limits.html"&gt;skim through some of the
+   math-heavy content in this blog to get a taste of that&lt;/a&gt;
+   &lt;small&gt;&lt;/self-promotion&gt;&lt;/small&gt;
+   &lt;img alt="img" src="res/math_disp.png"&gt;&lt;/li&gt;
+&lt;li&gt;Hemlo does this work?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;. Brackets don't cover the en
+6. Matrices
+7. Determinants&lt;/p&gt;
+&lt;h2&gt;Difference between LaTeX and MathJax&lt;/h2&gt;
+&lt;h2&gt;Concluding notes &amp;amp; References&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
 Mac is supposed to be POSIX compliant. I'll cover a few of them here, with the
 hope that nobody repeats the same mistakes :)&lt;/p&gt;
 &lt;h2&gt;XCode CLT Pitfalls&lt;/h2&gt;

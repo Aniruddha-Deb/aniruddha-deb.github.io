@@ -164,17 +164,108 @@ to render the $\theta$ symbol)</p>
 If you ever get stuck, or come across a weird symbol not mentioned here, 
 <a href="https://detexify.kirelabs.org/classify.html">Detexify</a> is a tool for converting
 handwritten math symbols into LaTeX, so use that. </p>
-<p>Some more teeps are:</p>
+<h2>Environments</h2>
+<p>An environment is used to format a block of text in latex. Environments 
+generally begin with a <code>\begin</code> tag and end with a <code>\end</code> tag. </p>
+<p>Let's say you have a set of linear equations and you want to align all of them
+so that they look neat and tidy, something like the example below:</p>
+<p>$$
+\begin{align}
+5x + y - 3z &amp;= 6 \\
+2x + 3y + 4z &amp;= 8 \\
+x + 9y + 7z &amp;= 3 
+\end{align}
+$$</p>
+<p>The way to do this is using the <code>align</code> environment, The code to generate this
+is below:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+5x + y - 3z <span class="nb">&amp;</span>= 6 <span class="k">\\</span>
+2x + 3y + 4z <span class="nb">&amp;</span>= 8 <span class="k">\\</span>
+x + 9y + 7z <span class="nb">&amp;</span>= 3 
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+</code></pre></div>
+
+<p>Some key points here:</p>
 <ol>
-<li>The backslash can also be used to add a small space between two terms, if 
-   there isn't any. For example, <code>\int x dx</code> gives $\int x dx$, whereas 
-   <code>\int x\ dx</code> gives $\int x\ dx$. Notice the space in the latter, which
-   improves readability</li>
-<li>Brackets don't cover the en</li>
-<li>Matrices</li>
-<li>Determinants</li>
+<li>The <code>\begin{align}</code> and <code>\end{align}</code> commands demarcate the environment: 
+   similar to the <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code> tags in HTML. There are different 
+   environments, such as <code>center</code> and <code>bmatrix</code>, but we'll get to those in a 
+   minute</li>
+<li>The <code>\\</code> command tells latex to end that equation and start the next equation
+   on a new line.</li>
+<li>The <code>&amp;</code> character tells latex to align the commands at that character. 
+   A small exercise for the reader would be to align the equations at the yth term
+   (eg <code>5x + &amp;y - 3z = 6</code> and so on) and see what happens. Note that the meaning
+   of <code>&amp;</code> changes depending on context, but in an align environment, this is 
+   what it's used for.</li>
 </ol>
+<p>Another example: say you want to express this set of equations in a matrix. 
+Something like this:</p>
+<p>$$
+\begin{bmatrix}
+5 &amp; 1 &amp; -3 \\
+2 &amp; 3 &amp; 4 \\
+1 &amp; 9 &amp; 7 \\
+\end{bmatrix}
+\begin{bmatrix}x \\ y \\ z\end{bmatrix}
+= 
+\begin{bmatrix} 6 \\ 8 \\ 3 \end{bmatrix}
+$$</p>
+<p>We use the <code>bmatrix</code> environment for this. The code is:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+5 <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> -3 <span class="k">\\</span>
+2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="k">\\</span>
+1 <span class="nb">&amp;</span> 9 <span class="nb">&amp;</span> 7 <span class="k">\\</span>
+<span class="k">\end</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span>x <span class="k">\\</span> y <span class="k">\\</span> z<span class="k">\end</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+= 
+<span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span> 6 <span class="k">\\</span> 8 <span class="k">\\</span> 3 <span class="k">\end</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+</code></pre></div>
+
+<p>Notice the different use of <code>&amp;</code> here.</p>
+<p>Let's say you want to solve this system of equations using cramer's rule, and 
+want to write it as a determinant. Here's how that's done, using <code>array</code>:
+$$
+\Delta = \left| \begin{array}{ccc}
+5 &amp; 1 &amp; -3 \\
+2 &amp; 3 &amp; 4 \\
+1 &amp; 9 &amp; 7 \\
+\end{array} \right|
+$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">\Delta</span> = <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>|ccc|<span class="nb">}</span>
+5 <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> -3 <span class="k">\\\\</span>
+2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="k">\\\\</span>
+1 <span class="nb">&amp;</span> 9 <span class="nb">&amp;</span> 7 <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></div>
+
+<p>Notice how <code>array</code> has an additional set of parameters here: <code>{|ccc|}</code> denotes
+that this array has three columns, and that we want vertical lines at the start
+of the first column and the end of the last column. If we wanted something
+like a table, then <code>{c|c|c}</code> is what we would have used. Inserting horizontal
+lines in an array can be done using <code>\hline</code>.</p>
+<h2>Some more tips</h2>
+<ol>
+<li>If you want to add a small space between terms in math mode, prefix the space
+   with a backslash. LaTeX ignores whitespace and a few special characters, so
+   displaying them requires that we escape them with a backslash, similar to
+   most other programming languages. For example, <code>\int x dx</code> gives $\int x dx$, whereas 
+   <code>\int x\ dx</code> gives $\int x\ dx$. Similarly, for special characters, try 
+   printing <code>5%</code> in latex and be surprised :) how would you display the % symbol?</li>
+<li>If you come across an interesting LaTeX snippet online (rendered with MathJaX),
+   right-click on it to open up the MathJaX context menu, and click on <em>show 
+   math as -&gt; TeX commands</em> to see the code that went into creating that.
+   This is a great way of learning LaTeX. You could <a href="https://aniruddhadeb.com/articles/2020/hard-limits.html">skim through some of the
+   math-heavy content in this blog to get a taste of that</a>
+   <small></self-promotion></small>
+   <img alt="img" src="res/math_disp.png"></li>
+<li>Hemlo does this work?</li>
+</ol>
+<p>. Brackets don't cover the en
+6. Matrices
+7. Determinants</p>
 <h2>Difference between LaTeX and MathJax</h2>
+<h2>Concluding notes &amp; References</h2>
   </div>
   <div class="tag-cloud">
     <p>
