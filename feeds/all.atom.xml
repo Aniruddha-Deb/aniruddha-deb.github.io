@@ -127,9 +127,9 @@ $$
 \end{array} \right|
 $$&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\Delta&lt;/span&gt; = &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;array&lt;span class="nb"&gt;}{&lt;/span&gt;|ccc|&lt;span class="nb"&gt;}&lt;/span&gt;
-5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; -3 &lt;span class="k"&gt;\\\\&lt;/span&gt;
-2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 4 &lt;span class="k"&gt;\\\\&lt;/span&gt;
-1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 7 &lt;span class="k"&gt;\\\\&lt;/span&gt;
+5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; -3 &lt;span class="k"&gt;\\&lt;/span&gt;
+2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 4 &lt;span class="k"&gt;\\&lt;/span&gt;
+1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 7 &lt;span class="k"&gt;\\&lt;/span&gt;
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;array&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -151,15 +151,35 @@ lines in an array can be done using &lt;code&gt;\hline&lt;/code&gt;.&lt;/p&gt;
    math as -&amp;gt; TeX commands&lt;/em&gt; to see the code that went into creating that.
    This is a great way of learning LaTeX. You could &lt;a href="https://aniruddhadeb.com/articles/2020/hard-limits.html"&gt;skim through some of the
    math-heavy content in this blog to get a taste of that&lt;/a&gt;
-   &lt;small&gt;&lt;/self-promotion&gt;&lt;/small&gt;
+   &lt;small&gt;&amp;lt;/self-promotion&gt;&lt;/small&gt;
    &lt;img alt="img" src="res/math_disp.png"&gt;&lt;/li&gt;
-&lt;li&gt;Hemlo does this work?&lt;/li&gt;
+&lt;li&gt;Brackets are not auto-resizing in latex. Say you want to write the product 
+   of two integrals, such as &lt;code&gt;(\int x\ dx)(\int x^2\ dx)&lt;/code&gt;.This gives
+   us very puny brackets: $$(\int x\ dx)(\int x^2\ dx)$$ If we have to remedy
+   this, we use the &lt;code&gt;\left(&lt;/code&gt; and &lt;code&gt;\right)&lt;/code&gt; commands to auto-resize the enclosing
+   brackets to fit the content within: $$\left(\int x\ dx\right)\left(\int x^2\ dx\right)$$ This is
+   much nicer, and works with other brackets as well&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;. Brackets don't cover the en
-6. Matrices
-7. Determinants&lt;/p&gt;
 &lt;h2&gt;Difference between LaTeX and MathJax&lt;/h2&gt;
-&lt;h2&gt;Concluding notes &amp;amp; References&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
+&lt;p&gt;The pero few among you must have noticed that this was barely a LaTeX introduction
+(sorry for the misnomer :P) There is quite a bit of difference between MathJaX
+and LaTeX; LaTeX is an end-to-end typesetting system, while MathJaX is a javascript
+library that displays math online. A typical LaTeX document begins with the
+&lt;code&gt;\begin{document}&lt;/code&gt; environment, and a few imports before that. However, &lt;strong&gt;this
+was meant to be a tutorial on merely typesetting math using a few LaTeX commands,
+and I think it serves it's purpose&lt;/strong&gt;. There are quite a few links and resources
+in the conclusion section, which you should check out for more info on LaTeX.&lt;/p&gt;
+&lt;p&gt;Note that MathJaX requires you to enclose math within either &lt;code&gt;$ $&lt;/code&gt; or &lt;code&gt;\( \)&lt;/code&gt; 
+for inline math and &lt;code&gt;$$ $$&lt;/code&gt; or &lt;code&gt;\[ \]&lt;/code&gt; for displayed math (centered, on a 
+new line). &lt;strong&gt;Don't forget to do this, otherwise the math would not render&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;Concluding notes &amp;amp; References&lt;/h2&gt;
+&lt;p&gt;LaTeX is far larger than what I've covered in this article, but hopefully this
+shows you that there exists an elegant way to typeset math. For more information,
+check out the extensive LaTeX documentation on &lt;a href="https://www.overleaf.com/learn"&gt;Overleaf&lt;/a&gt;.
+If you have any doubts, check out the TeX community over at 
+&lt;a href="https://tex.stackexchange.com"&gt;tex.stackexchange.com&lt;/a&gt;, there's a high chance
+that your doubt is already answered. &lt;/p&gt;
+&lt;p&gt;Happy Math-ing!&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="Mathematics"></category></entry><entry><title>C development on a Mac</title><link href="https://aniruddha-deb.github.io/articles/2021/c-mac.html" rel="alternate"></link><published>2021-03-18T11:46:00+05:30</published><updated>2021-03-18T11:46:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2021-03-18:/articles/2021/c-mac.html</id><summary type="html">&lt;p&gt;C development on a Mac has it's fair share of traps and pitfalls, even though
 Mac is supposed to be POSIX compliant. I'll cover a few of them here, with the
 hope that nobody repeats the same mistakes :)&lt;/p&gt;
 &lt;h2&gt;XCode CLT Pitfalls&lt;/h2&gt;

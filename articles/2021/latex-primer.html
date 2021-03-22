@@ -46,7 +46,7 @@ MathJax = {
 
 <meta name="author" content="Aniruddha Deb" />
 <meta name="description" content="This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&#39;s working. Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&#39;s core, is merely …" />
-<meta name="keywords" content="Programming">
+<meta name="keywords" content="Programming, Mathematics">
 
 <meta property="og:site_name" content="Aniruddha Deb"/>
 <meta property="og:title" content="LaTeX primer"/>
@@ -59,6 +59,7 @@ MathJax = {
 <meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
 <meta property="article:section" content="Programming"/>
 <meta property="article:tag" content="Programming"/>
+<meta property="article:tag" content="Mathematics"/>
 <meta property="og:image" content="/extras/sitelogo.png">
 
   <title>Aniruddha Deb &ndash; LaTeX primer</title>
@@ -233,9 +234,9 @@ $$
 \end{array} \right|
 $$</p>
 <div class="highlight"><pre><span></span><code><span class="k">\Delta</span> = <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>|ccc|<span class="nb">}</span>
-5 <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> -3 <span class="k">\\\\</span>
-2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="k">\\\\</span>
-1 <span class="nb">&amp;</span> 9 <span class="nb">&amp;</span> 7 <span class="k">\\\\</span>
+5 <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> -3 <span class="k">\\</span>
+2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="k">\\</span>
+1 <span class="nb">&amp;</span> 9 <span class="nb">&amp;</span> 7 <span class="k">\\</span>
 <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
 </code></pre></div>
 
@@ -257,19 +258,40 @@ lines in an array can be done using <code>\hline</code>.</p>
    math as -&gt; TeX commands</em> to see the code that went into creating that.
    This is a great way of learning LaTeX. You could <a href="https://aniruddhadeb.com/articles/2020/hard-limits.html">skim through some of the
    math-heavy content in this blog to get a taste of that</a>
-   <small></self-promotion></small>
+   <small>&lt;/self-promotion></small>
    <img alt="img" src="res/math_disp.png"></li>
-<li>Hemlo does this work?</li>
+<li>Brackets are not auto-resizing in latex. Say you want to write the product 
+   of two integrals, such as <code>(\int x\ dx)(\int x^2\ dx)</code>.This gives
+   us very puny brackets: $$(\int x\ dx)(\int x^2\ dx)$$ If we have to remedy
+   this, we use the <code>\left(</code> and <code>\right)</code> commands to auto-resize the enclosing
+   brackets to fit the content within: $$\left(\int x\ dx\right)\left(\int x^2\ dx\right)$$ This is
+   much nicer, and works with other brackets as well</li>
 </ol>
-<p>. Brackets don't cover the en
-6. Matrices
-7. Determinants</p>
 <h2>Difference between LaTeX and MathJax</h2>
+<p>The pero few among you must have noticed that this was barely a LaTeX introduction
+(sorry for the misnomer :P) There is quite a bit of difference between MathJaX
+and LaTeX; LaTeX is an end-to-end typesetting system, while MathJaX is a javascript
+library that displays math online. A typical LaTeX document begins with the
+<code>\begin{document}</code> environment, and a few imports before that. However, <strong>this
+was meant to be a tutorial on merely typesetting math using a few LaTeX commands,
+and I think it serves it's purpose</strong>. There are quite a few links and resources
+in the conclusion section, which you should check out for more info on LaTeX.</p>
+<p>Note that MathJaX requires you to enclose math within either <code>$ $</code> or <code>\( \)</code> 
+for inline math and <code>$$ $$</code> or <code>\[ \]</code> for displayed math (centered, on a 
+new line). <strong>Don't forget to do this, otherwise the math would not render</strong>.</p>
 <h2>Concluding notes &amp; References</h2>
+<p>LaTeX is far larger than what I've covered in this article, but hopefully this
+shows you that there exists an elegant way to typeset math. For more information,
+check out the extensive LaTeX documentation on <a href="https://www.overleaf.com/learn">Overleaf</a>.
+If you have any doubts, check out the TeX community over at 
+<a href="https://tex.stackexchange.com">tex.stackexchange.com</a>, there's a high chance
+that your doubt is already answered. </p>
+<p>Happy Math-ing!</p>
   </div>
   <div class="tag-cloud">
     <p>
       <a href="https://aniruddha-deb.github.io/tag/programming.html">Programming</a>
+      <a href="https://aniruddha-deb.github.io/tag/mathematics.html">Mathematics</a>
     </p>
   </div>
 
