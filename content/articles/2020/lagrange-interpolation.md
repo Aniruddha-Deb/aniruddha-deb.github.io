@@ -61,7 +61,7 @@ than the number of points it passes through:
   the value of $P(5)$ is?
 
 The lagrange interpolated polynomial for the above values is $P(x) = x^3$. However, 
-this gives the wrong answer of $P(5) = 145$. The correct answer is $P(5) = 149$, 
+this gives the wrong answer of $P(5) = 125$. The correct answer is $P(5) = 149$, 
 because we have been asked to fit a polynomial of higher order in this equation.
 
 Also, this technique should only be used as a last resort for pattern finding. 

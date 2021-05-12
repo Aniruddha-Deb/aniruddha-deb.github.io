@@ -6,7 +6,7 @@ Slug: good-jee-main-problem
 
 This beauty came in the 2nd September shift 2 paper:
 > Let $A = \\{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \\}$, where 
-> $$P = \left[ \begin{array}{l l l}1&2&1 \\\\ -2&3&-4 \\\\ 1&9&1 \end{array}\right]$$
+> $$P = \left[ \begin{array}{l l l}1&2&1 \\\\ -2&3&-4 \\\\ 1&9&-1 \end{array}\right]$$
 > then the set A:
 >
 > 1. is a singleton
@@ -29,7 +29,7 @@ x + 9y - z &= 0 \\\\
 These three planes have a trivial solution $x = y = z = 0$. Let's see if they
 have non-trivial solutions by obtaining $det(P)$:
 $$\begin{align}
-|P| &= \left| \begin{array}{l l l}1&2&1\\\\ -2&3&-4\\\\ 1&9&1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\\\
+|P| &= \left| \begin{array}{l l l}1&2&1\\\\ -2&3&-4\\\\ 1&9&-1\end{array} \right| = -3 -8 -18 -3 +36 -4 \\\\
 |P| &= 0 \\
 \end{align}$$
 

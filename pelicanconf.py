@@ -10,7 +10,7 @@ THEME = 'themes/Flex'
 SITELOGO = '/extras/sitelogo.png'
 
 PATH = 'content'
-STATIC_PATHS = ['pages', 'articles/2020/res', 'extras']
+STATIC_PATHS = ['pages', 'articles/2021/res', 'articles/2020/res', 'extras']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
@@ -47,7 +47,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = [('categories', '/categories'), ('tags', '/tags')]
+LINKS = [('categories', '/categories'), ('tags', '/tags'), ('IIT Dep Finder', 'https://apps.aniruddhadeb.com/IIT_dep_finder')]
 
 # Social widget
 SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),

@@ -7,7 +7,7 @@ Slug: hard-limits
 This list consists of the limits that I found most challenging.
 
 > 1. $$\lim\_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$
-> 2. $$\lim\_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{x+1} \right)$$
+> 2. $$\lim\_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{\ln(x+1)} \right)$$
 > 3. $$\lim\_{n \to \infty} \frac{n + n^2 + n^3 + ... + n^n}{1^n + 2^n + 3^n + ... + n^n}$$
 > 4. $$\lim\_{n \to \infty} \left( \frac{n^n(x+n)\left(x+\frac n2\right)...\left(x+\frac nn\right)}{n!(x^2+n^2)\left(x^2+\frac {n^2}{4}\right)...\left( x^2 + \frac{n^2}{n^2}\right)}\right)^{\frac x n}$$
 > 5. $$\lim\_{x \to 0} \left( 1^{\sin^{-2}x} + 2^{\sin^{-2}x} + ... + n^{\sin^{-2}x}\right)^{\sin^2 x}$$
