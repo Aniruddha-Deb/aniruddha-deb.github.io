@@ -18,7 +18,7 @@ of those. Just keep in mind that &lt;strong&gt;addition and scalar multiplicatio
 vector space are closed.&lt;/strong&gt;&lt;/p&gt;
 &lt;h2&gt;Function Spaces&lt;/h2&gt;
 &lt;p&gt;Suppose for a function $f:X \to V$, the codomain of a function is a vector space 
-$V$ over $F$. Then, by definition, for any two elements $\vec{a}, \vec{b} \in V$ 
+$V$ over $F$ ($X$ is the domain, which can be any set). Then, by definition, for any two elements $\vec{a}, \vec{b} \in V$ 
 and a scalar $k \in F$, $\vec{a} + \vec{b} \in V$ and $k \cdot \vec{a} \in V$.&lt;/p&gt;
 &lt;p&gt;Consider another function $g: X \to V$. Suppose now that for any $x \in X$, 
 $f(x) = \vec{a}$ and $g(x) = \vec{b}$ for some $\vec{a}, \vec{b} \in V$. Therefore,
