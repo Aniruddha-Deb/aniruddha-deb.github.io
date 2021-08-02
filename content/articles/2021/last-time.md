@@ -132,3 +132,5 @@ Jitendra uncle sat down, and it was then that I realized his eyes were red and g
 
 This story was originally written for BSP IIT Delhi's Muse magazine, but that 
 hasn't been published yet :P
+
+**DISCLAIMER:** This is a work of fiction. Unless otherwise indicated, all the names, characters, businesses, places, events and incidents in this book are either the product of the author's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.

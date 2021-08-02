@@ -77,6 +77,10 @@ I was left with setting up a C++ autocompleter, and this was a bit tricky. The f
 
 ### Further updates
 
+The next day, I went ahead and realized that terminal wouldn't cut it, and I needed a terminal integrated into sublime text. I went ahead and installed the Terminus plugin for that. Terminus by default hides some of it's keybindings, so I had to go and change the keybinding user preferences. Now `` alt+` `` opens up a terminal where the default sublime terminal goes, and `ctrl+alt+T` opens up a terminal in place of a text pane. The default user theme was too dark for my taste, so I changed it with the 3024-dark theme that terminus ships with. This config works perfectly: no need to split sublime into two with a terminal, or open iTerm every time I use sublime! Here's a screenshot (the project in question is [PyGameOfLife](https://github.com/Aniruddha-Deb/PyGameOfLife))
+
+![Current sublime setup](res/sublime_ss.png)
+
 That's about it; everything now works and works well! NeoVintageous is probably the thing that is the best; it is miles ahead of vintageous, and it works brilliantly here. I don't feel like I've left vim, until sublime writes methods for me, closes braces/tags for me and also autocompletes my 3 dimensional vector definition. Which is great. I'll post more updates here if I do install/delete some plugins, but I have a feeling sublime is here to stay.
 
 -------
