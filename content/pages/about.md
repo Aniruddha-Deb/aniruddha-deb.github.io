@@ -2,7 +2,7 @@ Title: About
 
 *Programmer, Hardware Hacker, Quizzer and Student*
 
-Currently a Mathematics and Computing undergrad at IIT Delhi
+Currently a Computer Science undergrad at IIT Delhi
 
 <script type="text/javascript" src="https://github-profile.com/dist/gh-profile-card.min.js"></script>
 <center><div id="github-card" 

@@ -30,6 +30,6 @@ Concluding on a positive note, I had to dig up my old calendars and schedule to 
 
 ------------
 
-This article featured in [Reverie]([1]), Udaigiri house's submission for Gazettale 2021.
+This article featured in [Reverie][1], Udaigiri house's submission for Gazettale 2021.
 
 [1]: https://drive.google.com/file/d/1wwS-bnfLO5CfsutfuD20Vf9QpdBPam2C/view?usp=sharing

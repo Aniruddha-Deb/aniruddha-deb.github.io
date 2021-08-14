@@ -10,7 +10,7 @@ THEME = 'themes/Flex'
 SITELOGO = '/extras/sitelogo.png'
 
 PATH = 'content'
-STATIC_PATHS = ['pages', 'articles/2021/res', 'articles/2020/res', 'extras']
+STATIC_PATHS = ['pages', 'articles/2021/styles', 'articles/2021/res', 'articles/2020/res', 'extras']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
 ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
