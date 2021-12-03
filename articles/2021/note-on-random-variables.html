@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$ This note on random variables follows as a result of confusing notation in several math textbooks. I&#39;ll explain random variables (in measure theoretic terms) as verbosely as I can, and then prove some results. This article assumes that the …" />
+<meta name="keywords" content="Mathematics">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="A Note on Random Variables"/>
+<meta property="og:description" content="$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$ This note on random variables follows as a result of confusing notation in several math textbooks. I&#39;ll explain random variables (in measure theoretic terms) as verbosely as I can, and then prove some results. This article assumes that the …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2021/note-on-random-variables.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-12-03 21:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
+<meta property="article:section" content="Mathematics"/>
+<meta property="article:tag" content="Mathematics"/>
+<meta property="og:image" content="/extras/sitelogo.png">
+
+  <title>Aniruddha Deb &ndash; A Note on Random Variables</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddha-deb.github.io">
+        <img src="/extras/sitelogo.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddha-deb.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddha-deb.github.io/pages/about.html#about">About</a></li>
+
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+          <li><a href="https://apps.aniruddhadeb.com/IIT_dep_finder">IIT Dep Finder</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="note-on-random-variables">A Note on Random Variables</h1>
+    <p>
+          Posted on Fri 03 December 2021 in <a href="https://aniruddha-deb.github.io/category/mathematics.html">Mathematics</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
+This note on random variables follows as a result of confusing notation in several math textbooks. I'll explain random variables (in measure theoretic terms) as verbosely as I can, and then prove some results. This article assumes that the reader is familiar with probability triples $\triple$, as well as a basic idea of what random variables are, in non-measure theory terms.</p>
+<h2>1. Random Variable Prerequisites</h2>
+<p>We start with defining measurable spaces and measurable functions </p>
+<blockquote>
+<p><strong>Definition 1.1</strong>: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.</p>
+<p><strong>Definition 1.2</strong>: A Generated $\sigma$-algebra is the smallest $\sigma$-algebra containing a specified collection of sets. That is, if $A$ is a set of subsets of $X$, $\sigma(A)$ is the smallest sigma-algebra such that $A \subseteq \sigma(A)$. </p>
+<p><strong>Definition 1.3</strong>: A Measurable Function $f: (X,\Sigma) \to (Y,\Gamma)$ between two measurable spaces is a function such that for every $E \in \Gamma$, $\{x \in X\ |\ f(x) \in E\} \in \Sigma$.</p>
+</blockquote>
+<p>Since the definition $\{x \in X\ |\ f(x) \in E\}$ is used so commonly in the context of measurable functions, this has a special notation</p>
+<blockquote>
+<p><strong>Definition 1.4</strong>: $$f^{-1}(E) := \{x \in X\ |\ f(x) \in E\}$$</p>
+</blockquote>
+<p>NOTE: The above definition is confusing, but is unfortunately the norm when dealing with measurable functions. <span style="color: red;">In the context of measurable functions, $f^{-1}$ does not refer to the inverse of $f$ (which is a function from $Y \to X$), but rather the set of preimages of all the elements contained in a set in the sigma algebra.</span></p>
+<p>Measurable functions can also be defined in terms of the $\sigma$-algebra generated by a <em>function</em>, rather than that of a set</p>
+<blockquote>
+<p><strong>Definition 1.5</strong>: The $\sigma$-algebra generated by a function $f: (X,\Sigma) \to (Y, \Gamma)$ is the collection of all inverse images $f^{-1}(S),\ S \in \Gamma$. 
+$$\sigma(f) := \{ f^{-1}(S) : S \in \Gamma \}$$</p>
+</blockquote>
+<p>According to this definition, if $\sigma(f) \subseteq \Sigma$, then $f$ is a measurable function.</p>
+<h2>2. Random Variables</h2>
+<p>Random variables are unfortunately, neither random nor variables. This is the first of many misnomers that we encounter in their study. </p>
+<blockquote>
+<p><strong>Definition 2.1</strong>: A Random Variable $X$ defined on a probability triple $\triple$ is a measurable function $X : (\Omega, \mathcal{F}) \to (\mathbb{R}, \mathcal{B}(\mathbb{R}))$</p>
+</blockquote>
+<p>In it's simplest terms, A random variable is simply a function from $\Omega \to \mathbb{R}$, obeying some 'nice' rules which allow us to use probability measures with it. These nice rules would come into play a bit later, after we first see how random variables and probability measures go hand in hand.</p>
+<p>Consider $$\begin{align}\Omega &amp;= \{1,2,3\}\\ \mathcal{F} &amp;= 2^{\Omega} \\ \mathbf{P}&amp;:\mathcal{F} \to [0,1]\end{align}$$ such that $\mathbf{P}\{1\} = \mathbf{P}\{2\} = \mathbf{P}\{3\}$ (This is the discrete uniform probability space on $\{1,2,3\}$). Let our random variable $X: \Omega \to \mathbb{R}$ map $\{i\}$ to $i$, $i \in \{1,2,3\}$. A graphical depiction of this would look something like this:</p>
+<p><img alt="X" src="res/rv_x.jpeg"></p>
+<p>Now, suppose we had to calculate the probability that the random variable $X$ would be less than or equal to $2.5$. The probability of this event occuring is given by $\P\{\omega \in \Omega\ :\ X(\omega) \le 2.5\}$. From the inverse notation we developed in $\S$1.4, We can also write this as $\P(X^{-1}((-\infty, 2.5]))$. From the graph, we clearly see that $1$ and $2$ are the only elements in $\Omega$ that would be in this set, hence $\P\{1,2\} = 2/3$. This is how random variables and probability measures go hand in hand.</p>
+<p>Why then, do random variables need to be measurable functions? <strong>Note that the probability measure is only defined for sets in $\mathcal{F}$, and if $X$ is not measurable, we cannot find the probability of certain events associated with $X$</strong>. </p>
+<p>An example for this is to consider $$\begin{align}\Omega &amp;= \{1,2,3\}\\ \mathcal{F'} &amp;= \{\emptyset, \{1\}, \{2,3\}, \Omega\} \\ \mathbf{P}&amp;:\mathcal{F'} \to [0,1]\end{align}$$ such that $\P\{1\} = 1/3$. Now consider $X': \Omega \to \mathbb{R}$ such that $X'(i) = i,\ i \in \Omega$. This is the same map as before. However, if we try to calculate the probability that $X$ is less than or equal to 2.5 now, <strong>we find that $\P\{1,2\}$ is undefined, as $\{1,2\} \not\in \mathcal{F'}$</strong>. Hence, $X'$ is not a random variable, as it is not measurable on $(\Omega, \mathcal{F'})$. More specifically, $\sigma(X) = 2^\Omega \not\subseteq \mathcal{F'}$, hence, $X'$ is not measurable</p>
+<h2>3. Results on Random Variables</h2>
+<blockquote>
+<p><strong>Claim 3.1</strong>: If $X: \Omega \to \mathbb(R)$ is a random variable on $\triple$, then $X^{-1}(B) = A \implies X^{-1}(B^C) = A^C$. </p>
+</blockquote>
+<p>A simple (maybe even obvious) claim, the proof is by definition: $$\begin{align}
+X^{-1}(B) &amp;= A = \{\omega \in \Omega\ :\ X(\omega) \in B\} \\
+\implies X^{-1}(B^C) &amp;= \{\omega \in \Omega\ :\ X(\omega) \not\in B\} = A^C 
+\end{align}$$</p>
+<blockquote>
+<p><strong>Claim 3.2</strong>: If $X = \mathbf{1}_A$ is the indicator of some event $A \in \mathcal{F}$, then $X$ is a random variable</p>
+</blockquote>
+<p>Proof: for all $B \in \mathcal{B}(\mathbb{R})$, we have $X(B)$ equal to any one of $A$ (if $B$ contains 1 and not 0), $A^C$ (if $B$ contains 0 and not 1), $\emptyset$ (if $B$ contains neither 0 nor 1) or $\Omega$ (if $B$ contains both 0 and 1). Hence, $X$ is a random variable.</p>
+<p>The next two claims would be key to proving results about functions of random variables</p>
+<blockquote>
+<p><strong>Claim 3.3</strong>: if $f: (\Omega_1, \mathcal{F}_1) \to (\Omega_2, \mathcal{F}_2)$ and $g: (\Omega_2, \mathcal{F}_2) \to (\Omega_3, \mathcal{F}_3)$ are two measurable functions, then $f \circ g : (\Omega_1, \mathcal{F}_1) \to (\Omega_3, \mathcal{F}_3)$ is also a measurable function</p>
+</blockquote>
+<p>Proof: For all $B \in \mathcal{F}_3$, since $g$ is measurable, $g^{-1}(B) \in \mathcal{F}_2$. Since $f$ is measurable, $f^{-1}(g^{-1}(B)) \in \mathcal{F}_1$. Hence, $f\circ g$ is measurable.</p>
+<blockquote>
+<p><strong>Claim 3.4</strong>: $f: (\Omega_1, \mathcal{F}_1) \to (\Omega_2, \sigma(C))$ is measurable if $A \in C \implies f^{-1}(A) \in \mathcal{F}_1$.</p>
+</blockquote>
+<p>Proof: Note that $f^{-1}(\Omega_2 \setminus A) = \Omega_2 \setminus f^{-1}(A)$, and $f^{-1}(\cup_n A_n) = \cup_n f^{-1}(A_n)$. This, along with the fact that $\mathcal{F}_1$ is a $\sigma$-algebra proves that $\{A : f^{-1}(A) \in \mathcal{F}_1\}$ is a $\sigma$-algebra containing $C$. Since $\sigma(C)$ is the smallest $\sigma$-algbra containing C, $\sigma(C)$ would be a subset of the above $\sigma$-algebra, hence the claim is true.</p>
+<p>This above claim ensures that we don't need to prove that every set of a $\sigma$-algebra has a preimage in the previous $\sigma$-algebra. Proving it for only the generating set is enough eg. for $\mathcal{B}(\mathbb{R})$, it's sufficient to show that only the open sets have a preimage, something that we'll use in the next proof.</p>
+<blockquote>
+<p><strong>Claim 3.5</strong>: Every continuous function $f: \mathbb{R} \to \mathbb{R}$ is measurable.</p>
+</blockquote>
+<p>Proof: from (3.4), it's sufficient to prove that for every open set $A$, $f^{-1}(A) \in \mathcal{B}(\mathbb{R})$. This follows from the continuity of $f$: $f$ is continuous iff $G$ is open implies that $f^{-1}(G)$ is also open. Hence, $f$ is measurable.</p>
+<p>The above three claims give us the following very powerful result: <strong>every continuous function of a random variable is also a random variable</strong>. We can make a stronger claim, after proving the following claims as well:</p>
+<blockquote>
+<p><strong>Claim 3.6</strong>: If $X$ and $Y$ are random variables on $\triple$, then $X+Y$ and $XY$ are random variables as well</p>
+</blockquote>
+<p>Proof: This cute proof comes from Rosenthal. It's sufficient to prove that $X+Y$ is a random variable on the collection of sets $(-\infty, x)$, as the generated $\sigma$-algebra of this collection is $\mathcal{B}(\mathbb{R})$. Hence, consider the set $\{\omega \in \Omega : X(\omega) + Y(\omega) &lt; x\}$. From the density theorem, we can find a rational number in $(X, x-Y)$ (I've dropped the $(\omega)$, as it's implicit here). hence, $$\{X + Y &lt; x\} = \bigcup_{\text{r rational}} (\{X \lt r\} \cap \{Y \lt x - r\})$$ Since all the elements in the union belong to $\mathcal{F}$ and since $\mathcal{F}$ is a $\sigma$-algebra, $X+Y$ is a random variable.</p>
+<p>XY is also a random variable, as $XY = [(X+Y)^2 - (X^2+Y^2)]/2$, and a sum/function of random variables is a random variable, from the previous claims.</p>
+<p>We are now free to extend the claim that every continuous function of a random variable is a random variable, to piecewise continuity: <strong>every piecewise continuous function of a random variable is also a random variable</strong>. If $f$ is piecewise continuous, then $f(X) = f_1(X) \mathbf{1}_{I_1} + f_2(X) \mathbf{1}_{I_2} + \ldots + f_n(X) \mathbf{1}_{I_n}$, where $f_j(X)$ are random variables as $f_j$ is continuous, and $I_j$ are disjoint intervals. From claim (3.6), $f(X)$ is a linear sum of random variables, and hence is also a random variable.</p>
+<h2>4. References</h2>
+<ol>
+<li>Rosenthal, Jeffrey S. <em>A First Look at Rigorous Probability Theory</em>. World Scientific, 2006. <em>Open WorldCat</em>, <a href="http://public.ebookcentral.proquest.com/choice/publicfullrecord.aspx?p=5227675">http://public.ebookcentral.proquest.com/choice/publicfullrecord.aspx?p=5227675</a></li>
+<li>Lebanon, Guy, editor. <em>Probability: The Analysis of Data ; Vol. 1.</em> 2012. Available online at <a href="http://theanalysisofdata.com/probability/0_2.html">http://theanalysisofdata.com/probability/0_2.html</a></li>
+<li>Math StackExchange, Wikipedia, etc etc :)</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddha-deb.github.io/tag/mathematics.html">Mathematics</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddha-deb.github.io",
+  "image": "/extras/sitelogo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
