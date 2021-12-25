@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddha-deb.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddha-deb.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following …" />
+<meta name="keywords" content="Mathematics">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="A Note on Random Variables"/>
+<meta property="og:description" content="$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddha-deb.github.io/articles/2021/note-on-conditional-probability.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-12-25 15:20:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddha-deb.github.io/author/aniruddha-deb.html">
+<meta property="article:section" content="Mathematics"/>
+<meta property="article:tag" content="Mathematics"/>
+<meta property="og:image" content="/extras/sitelogo.png">
+
+  <title>Aniruddha Deb &ndash; A Note on Random Variables</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddha-deb.github.io">
+        <img src="/extras/sitelogo.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddha-deb.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddha-deb.github.io/pages/about.html#about">About</a></li>
+
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+          <li><a href="https://apps.aniruddhadeb.com/IIT_dep_finder">IIT Dep Finder</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="note-on-conditional-probability">A Note on Random Variables</h1>
+    <p>
+          Posted on Sat 25 December 2021 in <a href="https://aniruddha-deb.github.io/category/mathematics.html">Mathematics</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$
+To motivate this note, I’ll pose the following problem:</p>
+<blockquote>
+<p>Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?</p>
+</blockquote>
+<p>At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2.</p>
+<h2>Redefining Conditional Probability</h2>
+<p>To account for events of measure zero, we must first redefine $\cP{A}{B}$. So far, we've defined this as $\cP{A}{B} = \P{A \cap B}\ /\ \P{B}$, $\P{B} \ne 0$. We overcome the case where $\P{B} = 0$ by defining <strong>conditional probability as a random variable that satisfies some properties</strong>. The intuition behind this is that if the conditional probability doesn't exist by the previous definition, we can use expectation to say that it 'might' exist and be equal to some expected value. This also nicely sets us up for conditional expectation and variance, and the law of total expectation and law of total variance. Before formally defining conditional probability, Recall the following definitions first:</p>
+<blockquote>
+<p><strong>Definition</strong>: A Sub-$\sigma$ algebra of $\F$ is a $\sigma$ algebra $\G$ such that $\G \subset \F$</p>
+<p><strong>Definition</strong>: A Measurable Function $f: (X,\Sigma) \to (Y,\Gamma)$ between two measurable spaces is a function such that for every $E \in \Gamma$, $\{x \in X\ |\ f(x) \in E\} \in \Sigma$. If $(Y, \Gamma) = (\mathbb{R}, \mathcal{B}(\mathbb{R}))$, then $f$ is said to be $Sigma$-measurable</p>
+<p><strong>Definition</strong>: The $\sigma$-algebra generated by a function $f: (X,\Sigma) \to (Y, \Gamma)$ is the collection of all inverse images $f^{-1}(S),\ S \in \Gamma$. 
+$$\sigma(f) := \{ f^{-1}(S) : S \in \Gamma \}$$</p>
+</blockquote>
+<p>With these three definitions, we define the conditional probability function on a sub-$\sigma$ algebra $\G$ as follows:</p>
+<blockquote>
+<p><strong>Definition</strong>: The conditional probability $\cP{\cdot}{\G}$ is a $\G$-measurable random variable such that $$\E{\cP{A}{\G}\ind{G}} = \P{A \cap G} \quad \forall\ G \in \G$$ In terms of integrals, we can rewrite this as $$\int_G \cP{A}{\G} d\mathbf{P} = \P{A \cap G}$$</p>
+</blockquote>
+<p>Defining the conditioning on a sub-$\sigma$ algebra rather than an event or another random variable has the following benefits:</p>
+<ul>
+<li>If we want to condition on a random variable $X$, then $\G = \sigma(X)$</li>
+<li>If we want to condition on multiple random variables $X_1, X_2, \ldots$, then $\G = \sigma(X_1, X_2, \ldots)$ where $\sigma(X_1, X_2) = \{ \{X_1 \le a\} \cap \{X_2 \le b\}\ |\ a,b \in \mathbb{R}\}$ (can be extended to a countable sequence of random variables)</li>
+</ul>
+<p>Therefore, this definition of conditional probability is the most general definition.</p>
+<h2>Existence and Uniqueness of Conditional Probability</h2>
+<p>From the integral definition, it may be obvious that <strong>conditional probability is unique up to a set of measure zero</strong>, that is, if $\P{A} = 0$, then $\cP{A}{\G}$ can take any value. This leads to the problem of <em>regularized conditional probability</em>. Essentially, we define values for sets whose measure is zero such that the resulting conditional probability function is 'nice', ie measurable. This would need us to set up constructs such as a <a href="https://en.wikipedia.org/wiki/Radon_space">Polish Space</a> and then use some functional analysis results, but we'll not get into that in this article.</p>
+<p>Existence can be proved in many ways: here, we use the Radon-Nikodym theorem. I won't be proving the theorem, but I'll quote it, along with some exposition, which should be sufficient.</p>
+<blockquote>
+<p><strong>Definition</strong>: A measure $\mu$ is said to be <em>absolutely continuous</em> with respect to another measure $\lambda$ (both defined on the same $\sigma$-algebra) if for every measurable set $A$, $\lambda(A) = 0 \implies \mu(A) = 0$. We denote this as $\mu \ll \lambda$, and we say that $\lambda$ <em>dominates</em> $\mu$</p>
+<p><strong>Theorem (Radon-Nikodym):</strong> if $\mu$ and $\lambda$ are defined on $(X,\Sigma)$ such that $mu \ll \lambda$, then there exists a $\Sigma$-measurable function $f$ such that for any $A \in \Sigma$, $$\mu(A) = \int_A f\ d\lambda$$
+The function $f$ is called the <em>radon-nikodym</em> derivative of $\mu$ and is denoted as $d\mu/d\lambda$.</p>
+</blockquote>
+<p>We now prove our claim</p>
+<blockquote>
+<p><strong>Claim:</strong> $\cP{A}{\G}$ exists and is unique upto a set of probability 0</p>
+</blockquote>
+<p><strong>Proof:</strong> Define $\cP{A}{\G}$ to simply be $d\nu/d\mathbf{P}_\G$, where $\mathbf{P}_\G$ is simply $\mathbf{P}$ restricted to $\G$, and $$\nu(E) = \P{A \cap E}$$ Note $\nu \ll \mathbb{P}_\G$ and by the radon-nikodym theorem, $\cP{A}{\G}$ exists and is unique upto a set of probability 0. Note that defining $\cP{A}{\G}$ like so also takes care of the definition, as $$\E{\cP{A}{\G}\ind{G}} = \int_G \frac{d\nu}{d\mathbf{P}_\G}\ d\mathbf{P}_\G = \nu(G) = \P{A \cap G}$$</p>
+<h2>Conditional Expectation, and deriving Conditional Probability from Conditional Expectation</h2>
+<p>Conditional expectation is defined in much the same way: as a random variable satisfying the property $\E{\cE{Y}{\G}\ind{G}} = \E{Y \ind{G}}$. In a handwavy sense, conditional expectation is 'the best approximation' of the specified quantity, given the information we have from $\G$. There's a very nice functional analysis proof of this which treats random variables as vectors in a functional space and then approximates them using expectation, but I'll leave that out for now.</p>
+<p>Most of the same properties as conditional probability apply to conditional expectation as well, just that in the proof of existence, since expectation can be negative and we need a positive value for it to be a measure, we define $\cE{A}{\G}$ as $d\E{A^+ \ind{G}}/d\mathbf{P}_\G - d\E{A^- \ind{G}}/d\mathbf{P}_\G$ and proceed similarly. </p>
+<p>In several textbooks, conditional expectation is derived first, and conditional probability follows. This is because $\cP{A}{\G} = \cE{\ind{A}}{\G}$. Also, a neat proof involving functional analysis is used to prove the existence of conditional expectation: $\cE{Y}{\G}$ is the orthogonal projection of $Y$ onto the closed subspace $\mathbb{L}^2(\G)$, and from results about hilbert space, we can prove this.</p>
+<h2>The Problem</h2>
+<p>Now that we have this definition, how do we apply it? Sadly, we can't directly obtain the conditional probability from it (unless we evaluate the radon-nikodym derivative), and the best we can do is assume that the conditional probability is a reasonable random variable, and then verify that it satisfies the definition.</p>
+<p>For the given problem, $\G = \sigma(\mathbb{Q})$. This is because for $\cP{\{X &gt; x\}}{\G}$ to be $\G$-measurable, $G$ must have all the information we're given, namely whether $X$ is rational or not, hence the specification of the sub-$\sigma$ algebra as mentioned. You can also think of it from the best approximation perspective: we're only given information about whether X is rational or not and about X's magnitude, and both those quantities are expressed in this sub-$\sigma$ algebra. Now, let $\cP{\{X &gt; x\}}{\G} = 1-x$. This is $\G$-measurable (the preimage of any borel set lies in $\G$). Verifying the two integrals gives us
+$$\begin{align}
+\P{\{X &gt; x\} \cup G} &amp;= \int_G \int_x^1 1\ d\mathbf{P}\ d\mathbf{P_0}\\
+&amp;= \int_G 1-x\ d\mathbf{P_0}
+\end{align}$$
+$$\E{\cP{\{X &gt; x\}}{\G}\ind{G}} = \int_G 1-x\ d\mathbf{P_0}$$
+Since both these integrals are equal for all $G \in \G$, we have $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}} = 1/2$.</p>
+<h3>References:</h3>
+<ol>
+<li>Rosenthal, Jeffrey S. <em>A First Look at Rigorous Probability Theory</em>. 2nd ed, World Scientific, 2006.</li>
+<li><a href="https://math.stackexchange.com/questions/2306986/uniqueness-of-conditional-expectation">https://math.stackexchange.com/questions/2306986/uniqueness-of-conditional-expectation</a></li>
+<li><a href="https://stats.stackexchange.com/questions/395310/what-does-conditioning-on-a-random-variable-mean">https://stats.stackexchange.com/questions/395310/what-does-conditioning-on-a-random-variable-mean</a></li>
+<li><a href="https://www.stat.berkeley.edu/users/pitman/s205f02/lecture15.pdf">https://www.stat.berkeley.edu/users/pitman/s205f02/lecture15.pdf</a> (this contains the projection proof)</li>
+<li><a href="http://www.stat.cmu.edu/~arinaldo/Teaching/36752/S18/Notes/lec_notes_6.pdf">http://www.stat.cmu.edu/~arinaldo/Teaching/36752/S18/Notes/lec_notes_6.pdf</a> (this too has the projection proof)</li>
+<li>Billingsley, Patrick. Probability and Measure. 3rd ed, Wiley, 1995.</li>
+</ol>
+<h3>PS</h3>
+<p>Merry christmas to you if you're reading this! A junior emailed me a while back, stating that he read my blog and couldn't grasp at times why there are <em>random mathematical stuffs</em>. In my reply, the blog was supposed to be a math/programming blog with the occasional <em>random personal stuff</em>, but the tables seem to have turned :P</p>
+<p>I think a good new year's resolution would be to learn one new math topic every week and then blog about it. Technical blogging as of now takes a lot of time for me (this article took the good part of a day), and I think as I write and learn more, that time should go down. </p>
+<p>Here's to a more mathematical 2022!</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddha-deb.github.io/tag/mathematics.html">Mathematics</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddha-deb.github.io",
+  "image": "/extras/sitelogo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
