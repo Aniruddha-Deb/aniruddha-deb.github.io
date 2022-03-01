@@ -1,5 +1,5 @@
 Title: Updates on Life in general
-Date: 2021-09-13 17:53
+Date: 2021-08-14 21:20
 Category: Writing
 Tags: Writing
 Slug: updates-on-life
@@ -52,7 +52,7 @@ In the larger perspective of things, both of these are inconsequential; I will i
 
 ## Anything else?
 
-Following the Qiskit summer school, I took a break from everything for a week or so. I was yearning for a holiday, and I hadn't had one in a long time, so I switched off WhatsApp for a week and connected with the world around me. This was a refreshing experience, and it was the only time I can honestly claim in the summer vacations that felt like a 'vacation'. Some might argue that's a bad thing; In my opinion, it was just right. All I did was sketch a bit, write some poetry, play some volleyball and sleep a lot, and life was good.
+Following the Qiskit summer school, I took a break from everything for a week or so. I was yearning for a holiday, and I hadn't had one in a long time, so I switched off WhatsApp for a week and connected with the world around me. This was a refreshing experience, and it was the only time in the summer vacations that I can honestly claim felt like a 'vacation'. Some might argue that's a bad thing, and I should relax more often; In my opinion, it was just right. All I did was sketch a bit, write some poetry, play some volleyball and sleep a lot, and life was good.
 
 Anime! Yes, I watched a lot of anime. We had a clannad watchalong with friends, and I finished Steins;Gate on my own. What a show! I'm currently watching Code Geass, but that's proceeding at a snails' pace because <strike>I'm also watching the good doctor right now</strike> there's a lot of academic workload now. I also tried my hand at the clannad visual novel, but that's very slow again, so I play that occasionally.
 
