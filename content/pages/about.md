@@ -1,19 +1,9 @@
 Title: About
 
-I'm currently a sophomore undergraduate in the [Department of Computer Science](https://cse.iitd.ac.in) at [Indian Institute of Technology, Delhi](https://home.iitd.ac.in). My research interests are whatever sounds interesting to me :P but so far, I've dabbled (to varying degrees) in Probability, Statistics, Stochastic Processes, Machine Learning (Decision trees, SVM's, regression and clustering models, time series analysis), Blockchain, Modelling and Simulation, Computational Complexity and Proof Checking, Systems development and more recently, Game Theory and it's various subfields (Algorithmic, Combinatorial, Economic), Functional Programming and Computer Architecture and Organisation.
+I'm a Junior Undergraduate in the <a href="https://www.cse.iitd.ac.in">Computer Science and Engineering</a> Department at <a href="https://home.iitd.ac.in">IIT Delhi</a>, as well as a <a href="https://www.scholarships.reliancefoundation.org/">Reliance Foundation Scholar in Artificial Intelligence and Computer Sciences</a>. Prior to this, I was a student at <a href="https://www.thebishopsschool.org">The Bishop's School, Pune</a>.</p>
 
-When I'm not glued to my laptop, I quiz, read, write, sketch and binge anime. I'm good at shuffling cards, better at folding T-Shirts and unbeatable at sharpening pencils. If you have some book/anime recommendations or some interesting facts, reach out to me on email :)
+Being an undergraduate, I have the luxury to explore and change my academic interests from semester to semester, and from course to course :P At the moment, I'm interested in Neuroimaging and Algorithmic Game Theory, with a bit of Computational Social Choice. I'm currently advised by <a href="https://www.cse.iitd.ac.in/~rahulgarg/">Prof. Rahul Garg</a>, and am working towards the Summer Undergraduate Research Award.</p>
 
-<script type="text/javascript" src="https://github-profile.com/dist/gh-profile-card.min.js"></script>
-<center><div id="github-card" 
-	 data-max-repos="2"
-	 data-sort-by="updateTime"
-	 data-header-text="Recently updated:"
-     data-username="Aniruddha-Deb">
-</div></center>
+Apart from this, I've been a volunteer teacher for NSS, an Academic Mentor for MTL100, a runner-up in <a href="http://mimamsa.iiserpune.ac.in/">Mimamsa 2021</a>, a journalist at the <a href="https://www.bspiitd.com/">Board for Student Publications</a>, a Representative for the <a href="https://qciitdelhi.netlify.app">Quizzing Club</a> and a convenor of the Debating Society (albeit for a very short time).</p>
 
-<center><a href="https://stackexchange.com/users/12827944"><img src="https://stackexchange.com/users/flair/12827944.png" width="208" height="58" alt="profile for Aniruddha Deb on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Aniruddha Deb on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a></center>
-
-<center><img src="OCA.gif" alt="Oracle Certified Associate" width="150"></center>
-
-
+For more about me, check out [My Webpage](https://www.cse.iitd.ac.in/~cs1200869).
