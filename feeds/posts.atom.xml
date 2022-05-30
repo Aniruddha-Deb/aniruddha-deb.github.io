@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Posts</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-07-13T03:44:00+05:30</updated><entry><title>Testing</title><link href="https://aniruddha-deb.github.io/articles/2020/subdir-test.html" rel="alternate"></link><published>2020-07-13T03:44:00+05:30</published><updated>2020-07-13T03:44:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-07-13:/articles/2020/subdir-test.html</id><summary type="html">&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Posts</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/posts.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2020-07-13T03:44:00+05:30</updated><entry><title>Testing</title><link href="https://aniruddhadeb.com/articles/2020/subdir-test.html" rel="alternate"></link><published>2020-07-13T03:44:00+05:30</published><updated>2020-07-13T03:44:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-07-13:/articles/2020/subdir-test.html</id><summary type="html">&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
 &lt;p&gt;Let's start with an Image:
-&lt;img alt="Test Image" src="https://aniruddha-deb.github.io/articles/2020/res/test_post/big_buck_bunny.png"&gt;
+&lt;img alt="Test Image" src="https://aniruddhadeb.com/articles/2020/res/test_post/big_buck_bunny.png"&gt;
 Big buck bunny looking real handsome ;) Some tweaks have to be made to expand 
 the image on click but this is ok for now..&lt;/p&gt;
 &lt;p&gt;Let's try headings!&lt;/p&gt;
@@ -12,7 +12,7 @@ the image on click but this is ok for now..&lt;/p&gt;
 &lt;h5&gt;Echo&lt;/h5&gt;
 &lt;h6&gt;Echo …&lt;/h6&gt;</summary><content type="html">&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
 &lt;p&gt;Let's start with an Image:
-&lt;img alt="Test Image" src="https://aniruddha-deb.github.io/articles/2020/res/test_post/big_buck_bunny.png"&gt;
+&lt;img alt="Test Image" src="https://aniruddhadeb.com/articles/2020/res/test_post/big_buck_bunny.png"&gt;
 Big buck bunny looking real handsome ;) Some tweaks have to be made to expand 
 the image on click but this is ok for now..&lt;/p&gt;
 &lt;p&gt;Let's try headings!&lt;/p&gt;
@@ -161,7 +161,7 @@ chess player to show one of my games)&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Everything looks in place! Looking forward to writing some great content here.
-Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</content><category term="Posts"></category></entry><entry><title>MathJax Test</title><link href="https://aniruddha-deb.github.io/articles/2020/mathjax-test.html" rel="alternate"></link><published>2020-04-29T10:20:00+05:30</published><updated>2020-04-29T10:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/mathjax-test.html</id><summary type="html">&lt;p&gt;This is a test to see if MathJax works on blogger.&lt;/p&gt;
+Next post: How I migrated from Blogger to github-pages.&lt;/p&gt;</content><category term="Posts"></category></entry><entry><title>MathJax Test</title><link href="https://aniruddhadeb.com/articles/2020/mathjax-test.html" rel="alternate"></link><published>2020-04-29T10:20:00+05:30</published><updated>2020-04-29T10:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-04-29:/articles/2020/mathjax-test.html</id><summary type="html">&lt;p&gt;This is a test to see if MathJax works on blogger.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;For \(\alpha, \beta \gt -1\), find the value of \(\lim_{n \to \infty} n^{\beta - \alpha} \frac{1^\alpha + 2^\alpha + 3^\alpha + ... + n^\alpha}{1^\beta + 2^\beta + 3^\beta + ... + n^\beta}\)&lt;/p&gt;
 &lt;/blockquote&gt;

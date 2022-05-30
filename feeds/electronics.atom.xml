@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Electronics</title><link href="https://aniruddha-deb.github.io/" rel="alternate"></link><link href="https://aniruddha-deb.github.io/feeds/electronics.atom.xml" rel="self"></link><id>https://aniruddha-deb.github.io/</id><updated>2020-06-09T12:30:00+05:30</updated><entry><title>Icosahedron Resistor Network</title><link href="https://aniruddha-deb.github.io/articles/2020/icosahedron-resistor-network.html" rel="alternate"></link><published>2020-06-09T12:30:00+05:30</published><updated>2020-06-09T12:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-06-09:/articles/2020/icosahedron-resistor-network.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Electronics</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/electronics.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2020-06-09T12:30:00+05:30</updated><entry><title>Icosahedron Resistor Network</title><link href="https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network.html" rel="alternate"></link><published>2020-06-09T12:30:00+05:30</published><updated>2020-06-09T12:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-06-09:/articles/2020/icosahedron-resistor-network.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
-&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
 A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
 B) The resistance between points A and B is $\frac …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:&lt;br&gt;
-&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;img alt="icosahedron" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_1.png"&gt;&lt;/center&gt;&lt;br&gt;
 A) The resistance between points A and B is $\frac{r}{2}$&lt;br&gt;
 B) The resistance between points A and B is $\frac{r}{3}$&lt;br&gt;
 C) The resistance between any two adjacent vertices is $\frac{11r}{30}$&lt;br&gt;
@@ -13,20 +13,20 @@ D) The resistance between any two adjacent vertices is $\frac{11r}{20}$&lt;br&gt
 &lt;/blockquote&gt;
 &lt;p&gt;This question looks really tricky. This is a variation of the problem of finding the resistance of a wire cube. This can be solved in a similar way, using symmetry and equipotential reduction.&lt;/p&gt;
 &lt;p&gt;Let's start off by finding the resistance between A and B, since this is easier than finding the resistance between adjacent vertices. On connecting a battery, the points marked in the same colour will be at the same potential.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="battery" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_2.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="battery" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_2.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;You can clearly see the symmetry now. If we connect all the points with the same potential, we end up with the following resistor network (each resistance is $r$).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="res net" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/res_net.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="res net" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/res_net.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;This is simple to solve. It's resistance is
 $$R_{AB} = \frac r5 + \frac r{10} + \frac r5 = \boxed{\frac r2}$$
 which corresponds to option (A).&lt;/p&gt;
 &lt;p&gt;Solving the network between adjacent vertices is a lot trickier. The first trick is to pick a pair of vertices from which symmetry is easily identifiable. If I connect my battery as shown in the following figure, it is easy to identify which points are equipotential and how the currents are flowing.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_3.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="currents" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_3.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;The dotted line shows the plane of symmetry of this icosahedron perpendicular to $CD$ whereas the blue dots show equipotential nodes. We can see that no current flows through $R_{AJ}$ and $R_{EB}$ since the ends are at the same potential. Also, at all equipotential points, no mixing of currents occurs. This means that $I_{AC} = I_{AD}$ and $I_{CE} = I_{ED}$, along with a few others. Performing some modifications on this circuit in line with the above observations reduces the complexity quite drastically as shown below:&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="simple" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_4.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simple" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_4.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;Simplifying these resistors, we obtain a cubical network with a resistor across two opposite face diagonals&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="cube" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_5.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="cube" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_5.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;It is easy to see that $V_F = V_L$ and $V_G = V_K$. Connecting these two points and getting rid of the resistances $R_{GK}$ and $R_{LF}$, we get the following resistor network:&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="simplest" src="https://aniruddha-deb.github.io/articles/2020/res/icosa_res_net/icosa_6.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="simplest" src="https://aniruddhadeb.com/articles/2020/res/icosa_res_net/icosa_6.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;It is now simple to calculate the resistance across CD by using the formulae for resistors in parallel and series.&lt;/p&gt;
 &lt;p&gt;$$\begin{gather} 
 \frac 1 {R_{FG}} = \frac 2 r + \frac 2 {3r} \\
@@ -35,16 +35,16 @@ R_{FG} = \frac{3r}{8} \\
 \boxed{R_{CD} = \frac{11r}{30}} 
 \end{gather}$$&lt;/p&gt;
 &lt;p&gt;Which corresponds to option (C)&lt;/p&gt;
-&lt;p&gt;A good problem that I came up with on my own; the next step is to do the same for a dodecahedric resistor network. Stay tuned for that :)&lt;/p&gt;</content><category term="Electronics"></category><category term="Physics"></category><category term="Electronics"></category></entry><entry><title>An Interesting Electronics Problem</title><link href="https://aniruddha-deb.github.io/articles/2020/interesting-electronics-problem.html" rel="alternate"></link><published>2020-04-29T22:20:00+05:30</published><updated>2020-04-29T22:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2020-04-29:/articles/2020/interesting-electronics-problem.html</id><summary type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
-&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;A good problem that I came up with on my own; the next step is to do the same for a dodecahedric resistor network. Stay tuned for that :)&lt;/p&gt;</content><category term="Electronics"></category><category term="Physics"></category><category term="Electronics"></category></entry><entry><title>An Interesting Electronics Problem</title><link href="https://aniruddhadeb.com/articles/2020/interesting-electronics-problem.html" rel="alternate"></link><published>2020-04-29T22:20:00+05:30</published><updated>2020-04-29T22:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-04-29:/articles/2020/interesting-electronics-problem.html</id><summary type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
+&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddhadeb.com/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
 &lt;p&gt;This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll …&lt;/p&gt;</summary><content type="html">&lt;p&gt;An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network&lt;/p&gt;
-&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="resistor network" src="https://aniruddhadeb.com/articles/2020/res/iep_1.png"&gt;&lt;/p&gt;
 &lt;p&gt;This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we'll use the concept of symmetry and a few tricks. Let's start by connecting a battery to the circuit and labeling the currents and loops&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tweaked resistor network" src="https://aniruddha-deb.github.io/articles/2020/res/iep_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="tweaked resistor network" src="https://aniruddhadeb.com/articles/2020/res/iep_2.png"&gt;&lt;/p&gt;
 &lt;p&gt;We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="currents" src="https://aniruddha-deb.github.io/articles/2020/res/iep_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="currents" src="https://aniruddhadeb.com/articles/2020/res/iep_3.png"&gt;&lt;/p&gt;
 &lt;p&gt;The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="loops" src="https://aniruddha-deb.github.io/articles/2020/res/iep_4.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="loops" src="https://aniruddhadeb.com/articles/2020/res/iep_4.png"&gt;&lt;/p&gt;
 &lt;p&gt;Solving the loops gives us the equations
 $$\begin{align} &amp;amp; V = Ri_3 + ri_1 \tag{2} \\ &amp;amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$
 Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$
@@ -53,22 +53,22 @@ We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \)
 $$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\ 
 \boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$ &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;sup&gt;p.s: The &lt;code&gt;\eqref&lt;/code&gt; or &lt;code&gt;\ref&lt;/code&gt; commands don't work for some reason. I'll have to figure out why.&lt;/sup&gt;&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock II - Generating the Clock Signal pt. 2</title><link href="https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-ii.html" rel="alternate"></link><published>2018-06-16T10:30:00+05:30</published><updated>2018-06-16T10:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2018-06-16:/articles/2018/electronic-clock-2-ii.html</id><summary type="html">&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;p.s: The &lt;code&gt;\eqref&lt;/code&gt; or &lt;code&gt;\ref&lt;/code&gt; commands don't work for some reason. I'll have to figure out why.&lt;/sup&gt;&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock II - Generating the Clock Signal pt. 2</title><link href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii.html" rel="alternate"></link><published>2018-06-16T10:30:00+05:30</published><updated>2018-06-16T10:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2018-06-16:/articles/2018/electronic-clock-2-ii.html</id><summary type="html">&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
 &lt;h3&gt;Flip-Flop: Concept&lt;/h3&gt;
 &lt;p&gt;A Flip flop is a one-bit storage …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:&lt;/p&gt;
 &lt;h3&gt;Flip-Flop: Concept&lt;/h3&gt;
 &lt;p&gt;A Flip flop is a one-bit storage device which looks somewhat like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="flip flop" src="https://aniruddha-deb.github.io/articles/2018/res/flip_flop.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="flip flop" src="https://aniruddhadeb.com/articles/2018/res/flip_flop.png"&gt;&lt;/p&gt;
 &lt;p&gt;The truth table of this device looks somewhat like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="truth table" src="https://aniruddha-deb.github.io/articles/2018/res/jk-flip-flop-truth-table.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="truth table" src="https://aniruddhadeb.com/articles/2018/res/jk-flip-flop-truth-table.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin. &lt;/p&gt;
 &lt;h3&gt;Adding the flip-flop to our circuit:&lt;/h3&gt;
 &lt;p&gt;On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="1hz schematic" src="https://aniruddha-deb.github.io/articles/2018/res/1hz_schematic.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1hz schematic" src="https://aniruddhadeb.com/articles/2018/res/1hz_schematic.png"&gt;&lt;/p&gt;
 &lt;p&gt;As calculated, this gives us a frequency of 1 Hz on the Q pin&lt;/p&gt;
-&lt;p&gt;&lt;img alt="oscilloscope output" src="https://aniruddha-deb.github.io/articles/2018/res/pic.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="oscilloscope output" src="https://aniruddhadeb.com/articles/2018/res/pic.png"&gt;&lt;/p&gt;
 &lt;p&gt;This concludes our clock signal source. In the next post, we will have a look at counting seconds with the clock signal. &lt;/p&gt;
-&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock II - Generating the Clock Signal pt.1</title><link href="https://aniruddha-deb.github.io/articles/2018/electronic-clock-2-i.html" rel="alternate"></link><published>2018-06-14T22:30:00+05:30</published><updated>2018-06-14T22:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2018-06-14:/articles/2018/electronic-clock-2-i.html</id><summary type="html">&lt;p&gt;In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock II - Generating the Clock Signal pt.1</title><link href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-i.html" rel="alternate"></link><published>2018-06-14T22:30:00+05:30</published><updated>2018-06-14T22:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2018-06-14:/articles/2018/electronic-clock-2-i.html</id><summary type="html">&lt;p&gt;In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock&lt;/p&gt;
 &lt;h3&gt;Importance of the Signal in a clock&lt;/h3&gt;
 &lt;p&gt;Every clock is only as accurate as …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock&lt;/p&gt;
 &lt;h3&gt;Importance of the Signal in a clock&lt;/h3&gt;
@@ -77,12 +77,12 @@ $$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\
 &lt;p&gt;Our clock (like most other clocks) is going to use a quartz crystal as it's main signal. An &lt;a href="https://en.wikipedia.org/wiki/RC_oscillator"&gt;RC&lt;/a&gt; or &lt;a href="https://en.wikipedia.org/wiki/LC_circuit"&gt;LC&lt;/a&gt; oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%&lt;/p&gt;
 &lt;p&gt;The signal generated by this crystal has a frequency of 32768 Hz, which isn't very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.&lt;/p&gt;
 &lt;p&gt;The HEF4060 has the capacity to give us a minimum frequency of 32768/214 = 2 Hz. This will later be scaled down using a flip-flop to give us a frequency of 1 Hz. The circuit for this looks like the following:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Clock circuit" src="https://aniruddha-deb.github.io/articles/2018/res/clock_signal_schematic.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clock circuit" src="https://aniruddhadeb.com/articles/2018/res/clock_signal_schematic.png"&gt;&lt;/p&gt;
 &lt;p&gt;After testing the above circuit on a breadboard, pin 7 (Q4) gave the following results on an oscilloscope:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="oscilloscope" src="https://aniruddha-deb.github.io/articles/2018/res/pic_44_3.bmp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="oscilloscope" src="https://aniruddhadeb.com/articles/2018/res/pic_44_3.bmp"&gt;&lt;/p&gt;
 &lt;p&gt;These results were expected as 32768/16 gives us 2048, which is approximately 2.049 kHz. the extra 1 Hz is probably a result of breadboard capacitance, which should go away once the circuit is soldered on a PCB. &lt;/p&gt;
 &lt;p&gt;In the next installment, I will use a flip flop to halve the 2Hz signal to give us a resultant signal of 1Hz, which can be used to drive the seconds counter.&lt;/p&gt;
-&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock I - Getting Started</title><link href="https://aniruddha-deb.github.io/articles/2018/electronic-clock-1.html" rel="alternate"></link><published>2018-06-14T10:30:00+05:30</published><updated>2018-06-14T10:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddha-deb.github.io,2018-06-14:/articles/2018/electronic-clock-1.html</id><summary type="html">&lt;p&gt;This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you're subscribed to the RSS feed so that you don't miss out on anything!&lt;/p&gt;
+&lt;p&gt;- Deb&lt;/p&gt;</content><category term="Electronics"></category></entry><entry><title>Electronic Clock I - Getting Started</title><link href="https://aniruddhadeb.com/articles/2018/electronic-clock-1.html" rel="alternate"></link><published>2018-06-14T10:30:00+05:30</published><updated>2018-06-14T10:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2018-06-14:/articles/2018/electronic-clock-1.html</id><summary type="html">&lt;p&gt;This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you're subscribed to the RSS feed so that you don't miss out on anything!&lt;/p&gt;
 &lt;h3&gt;Getting Started&lt;/h3&gt;
 &lt;p&gt;An electronic clock is a good project for intermediate to advanced …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you're subscribed to the RSS feed so that you don't miss out on anything!&lt;/p&gt;
 &lt;h3&gt;Getting Started&lt;/h3&gt;
@@ -105,7 +105,7 @@ $$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\
 &lt;/ul&gt;
 &lt;p&gt;I decided to go with the second option as I had already written code for a microcontroller clock and gone halfway through the implementation when I realized that it was too easy and did not provide a challenge. If you are a beginner, you should take the microcontroller route, as in case of bugs, they are easily rectifiable via your code, whereas debugging a hardware circuit (especially a large CMOS/TTL one) is decently hard for beginners.&lt;/p&gt;
 &lt;p&gt;Within a few minutes, I drew a basic block diagram for the main components in the circuit.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://aniruddha-deb.github.io/articles/2018/res/disp.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://aniruddhadeb.com/articles/2018/res/disp.png"&gt;&lt;/p&gt;
 &lt;p&gt;The circuit mainly consists of a 1Hz signal generator, a few counters/dividers and the display logic. &lt;/p&gt;
 &lt;p&gt;In the next segment, I'm going to build the signal generator and produce an accurate 2Hz signal that can be used by the other counters.&lt;/p&gt;
 &lt;p&gt;- Deb&lt;/p&gt;</content><category term="Electronics"></category></entry></feed>
