@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-05-30T17:10:00+05:30</updated><entry><title>Freedom, Recaptured.</title><link href="https://aniruddhadeb.com/articles/2022/freedom.html" rel="alternate"></link><published>2022-05-30T17:10:00+05:30</published><updated>2022-05-30T17:10:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-05-30:/articles/2022/freedom.html</id><summary type="html">&lt;p&gt;With the creation of my &lt;a href="https://www.cse.iitd.ac.in/~cs1200869"&gt;official website&lt;/a&gt; (safari butchers the CSS :/), I've now got more creative liberty and artistic freedom on the content I post here. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-06-01T21:15:00+05:30</updated><entry><title>Of Knights and Knaves</title><link href="https://aniruddhadeb.com/articles/2022/knights-and-knaves.html" rel="alternate"></link><published>2022-06-01T21:15:00+05:30</published><updated>2022-06-01T21:15:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-06-01:/articles/2022/knights-and-knaves.html</id><summary type="html">&lt;p&gt;Once every year, when the sun beats down
+Students here become clowns
+They think on their command, people will fall
+But truly, they're just bricks in the wall
+Misled by the mirage of power
+Led astray till they flounder
+"You're barely 20! What do you think will change
+When you …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Once every year, when the sun beats down
+Students here become clowns
+They think on their command, people will fall
+But truly, they're just bricks in the wall
+Misled by the mirage of power
+Led astray till they flounder
+"You're barely 20! What do you think will change
+When you become Secretary, like others who've aged"
+"I'll tell you! Here's my manifesto:
+It says I'm great with a budget
+I'm smart, hardworking, and totally not a puppet
+I'm doing this for the Club, and not for my CV
+And totally not for my hostel, for them to gain glory
+I'm sure that ethics is slang for pathetics
+And morals? What are those? Are they smaller morsels?
+Who cares. Vote for me. Actually, it doesn't matter
+I'll just call all our trusty gangsters"
+And so the saga repeats: year on year
+Bridges broken, Friendships disappear
+Why is it so? Are we really so blinded
+To throw our mental health under the belt and be grinded?
+All I know is that I graduate in two years
+And people I know are unscruplous beyond my worst fears.&lt;/p&gt;</content><category term="Writing"></category><category term="Writing"></category></entry><entry><title>JoSAA Algorithm deep dive</title><link href="https://aniruddhadeb.com/articles/2022/josaa-seat-algorithm.html" rel="alternate"></link><published>2022-06-01T21:00:00+05:30</published><updated>2022-06-01T21:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-06-01:/articles/2022/josaa-seat-algorithm.html</id><summary type="html">&lt;p&gt;short two-line paper intro here&lt;/p&gt;
+&lt;h2&gt;What Sets this Apart&lt;/h2&gt;
+&lt;!-- TODO make the markdown look better --&gt;
+
+&lt;p&gt;In a sentence: the ability to &lt;strong&gt;incorporate multiple ranklists while giving people the course of their choice&lt;/strong&gt;. The paper itself does a good job explaining this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Consider a simple scenario of three merit lists, namely those of the IITs, the NITs …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;short two-line paper intro here&lt;/p&gt;
+&lt;h2&gt;What Sets this Apart&lt;/h2&gt;
+&lt;!-- TODO make the markdown look better --&gt;
+
+&lt;p&gt;In a sentence: the ability to &lt;strong&gt;incorporate multiple ranklists while giving people the course of their choice&lt;/strong&gt;. The paper itself does a good job explaining this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Consider a simple scenario of three merit lists, namely those of the IITs, the NITs and a merit list for the Architecture (ARCH) program. Again consider our 3 candidates, A, B and C. Let the three merit lists be as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;NIT merit List: (1, A), (2, B), (3, C)&lt;/span&gt;
+&lt;span class="err"&gt;IIT Merit List: (1, B), (2, C), (3, A)&lt;/span&gt;
+&lt;span class="err"&gt;ARCH merit List: (1, C), (2, A), (3, B)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And let the preferences be as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;A: (1, IIT), (2, ARCH), (3, NIT)&lt;/span&gt;
+&lt;span class="c"&gt;B: (1, ARCH), (2, NIT), (3, IIT)&lt;/span&gt;
+&lt;span class="c"&gt;C: (1, NIT), (2, IIT), (3, ARCH)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;How do we allocate seats? The first condition that comes to one’s mind is fairness.&lt;/p&gt;
+&lt;p&gt;Fairness may appear straightforward: A candidate’s choice for a program should be honored in the order of merit for that program. In the example, since candidate B does express a preference to go to NIT, it should never be the case that any candidate in the NIT merit list worse than B displaces B, and denies B a seat; B may however be given a seat which she prefers to NIT, say ARCH.&lt;/p&gt;
+&lt;p&gt;The issue with this approach is &lt;em&gt;given multiple merit lists, there may be several solutions for the same choices satisfying fairness&lt;/em&gt;. Consider the following allocations:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Allocation 1: (A,NIT), (B,IIT), (C,ARCH)&amp;lt;br&amp;gt;
+Allocation 2: (A,ARCH), (B,NIT), (C,IIT)&amp;lt;br&amp;gt;
+Allocation 3: (A,IIT), (B,ARCH), (C,NIT)&amp;lt;br&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Allocation 1 is fair because A is ranked first in NIT merit list, B is ranked first in IIT merit list and C is ranked first in ARCH merit list. But Allocation 1 gives each candidate their worst choice. In fact, should A and B meet each other, they would be willing to swap their allocation! Allocation 2 is also fair, and better from the candidate’s point of view than Allocation 1 because it gives everyone their second choice. Finally, Allocation 3 is also fair, and better than both Allocations 1 and 2 from the candidate’s point of view because everyone gets their first choice. This brings about the following scientific question, given that fairness is not good enough.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is there a “best” choice among the different available fair allocations, and how can one compute it?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;The Algorithm (+ a python implementation)&lt;/h2&gt;
+&lt;h2&gt;Reservations and "Virtual Programmes"&lt;/h2&gt;
+&lt;h2&gt;Supernumerary Seats&lt;/h2&gt;
+&lt;!-- TODO highlight flaws here --&gt;
+
+&lt;h2&gt;Dereservation of Seats&lt;/h2&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;</content><category term="Programming"></category><category term="Programming"></category><category term="Mathematics"></category></entry><entry><title>Freedom, Recaptured.</title><link href="https://aniruddhadeb.com/articles/2022/freedom.html" rel="alternate"></link><published>2022-05-30T17:10:00+05:30</published><updated>2022-05-30T17:10:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-05-30:/articles/2022/freedom.html</id><summary type="html">&lt;p&gt;With the creation of my &lt;a href="https://www.cse.iitd.ac.in/~cs1200869"&gt;official website&lt;/a&gt; (safari butchers the CSS :/), I've now got more creative liberty and artistic freedom on the content I post here. &lt;/p&gt;
 &lt;p&gt;When I first made this blog, it used to be my own little corner of the internet. That changed once more people got to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;With the creation of my &lt;a href="https://www.cse.iitd.ac.in/~cs1200869"&gt;official website&lt;/a&gt; (safari butchers the CSS :/), I've now got more creative liberty and artistic freedom on the content I post here. &lt;/p&gt;
 &lt;p&gt;When I first made this blog, it used to be my own little corner of the internet. That changed once more people got to know about it, and I subconsciously put more pressure on myself to keep a strong technical background to whatever I post. The problem with this approach is that:&lt;/p&gt;
 &lt;ol&gt;
