@@ -47,7 +47,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = [('categories', '/categories'), ('tags', '/tags'), ('IIT Dep Finder', 'https://apps.aniruddhadeb.com/IIT_dep_finder')]
+LINKS = [('archives', '/archives.html'), ('categories', '/categories'), ('tags', '/tags'), ('website', 'https://www.cse.iitd.ac.in/~cs1200869')]
 
 # Social widget
 SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),
