@@ -17,7 +17,8 @@ RELATIVE_URLS = False
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
-IGNORE_FILES = ['content/articles/drafts/*']
+# IGNORE_FILES = ['content/articles/drafts/*']
+# ARTICLE_EXCLUDES = ['content/articles/drafts/']
 
 DELETE_OUTPUT_DIRECTORY = True
 

@@ -13,9 +13,12 @@ PATH = 'content'
 STATIC_PATHS = ['pages', 'articles/2022/res', 'articles/2021/styles', 'articles/2021/res', 'articles/2020/res', 'extras']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
-ARTICLE_PATHS = ['articles'] # Any way of auto-adding year dates ?
+ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = 'articles/{date:%Y}/{slug}.html'
 ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
+DEFAULT_METADATA = {
+    'status': 'published',
+}
 
 EXTRA_PATH_METADATA = {
 	'extras/favicon/favicon.ico': {'path': 'favicon.ico'},
