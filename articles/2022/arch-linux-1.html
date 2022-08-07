@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddhadeb.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddhadeb.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&#39;s how I did it. Context For starters, I already …" />
+<meta name="keywords" content="Arch, Programming, Linux">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="The Arch Linux Journey"/>
+<meta property="og:description" content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&#39;s how I did it. Context For starters, I already …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddhadeb.com/articles/2022/arch-linux-1.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-08-07 15:30:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddhadeb.com/author/aniruddha-deb.html">
+<meta property="article:section" content="Programming"/>
+<meta property="article:tag" content="Arch"/>
+<meta property="article:tag" content="Programming"/>
+<meta property="article:tag" content="Linux"/>
+<meta property="og:image" content="/extras/sitelogo.png">
+
+  <title>Aniruddha Deb &ndash; The Arch Linux Journey</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddhadeb.com">
+        <img src="/extras/sitelogo.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddhadeb.com"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddhadeb.com/pages/about.html#about">About</a></li>
+
+          <li><a href="/archives.html">archives</a></li>
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+          <li><a href="https://www.cse.iitd.ac.in/~cs1200869">website</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="arch-linux-1">The Arch Linux Journey</h1>
+    <p>
+          Posted on Sun 07 August 2022 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi<sup>1</sup>: Here's how I did it.</p>
+<h2>Context</h2>
+<p>For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu. I got around this by running a VM on my 6 year old, 128GB mac <em>sobs</em>. While definetly a suboptimal solution, for the upcoming courses (networks, parallel programming, OS), a core linux machine would be a neccessity.</p>
+<p>Before you pick up your pitchforks, yes, RPi is ARM based: I know this is a completely different ballgame from CISC i386/x86-64 processors, which is also partly the reason I wanted linux on an ARM machine: we did ARM assembly in the previous course, so that'll make this easier? <sub>idk I'm bad at CS</sub></p>
+<h2>Baby Steps</h2>
+<p><img alt="arch_baby" src="res/bcd.jpeg"></p>
+<p>So why arch?<sup>2</sup> Well, the biggest reason is <strong>learning</strong>: learning to setup arch and use it would teach me more about UNIX fundamentals than using a prebuilt OS. And in the span of less than half a day, I've used atleast 6 utilities I've never seen or heard of before. So yeah, if you enjoy the hike a steep learning curve gives you, arch is perfect.</p>
+<h3>Installation</h3>
+<p>Installation was fairly straightforward: NOOBS doesn't ship with an option to get arch, so <a href="https://github.com/procount/pinn">PINN</a> was used. Remember to download it from GitHub rather than from SourceForge: SourceForge mirrors are garbage, while the GitHub one downloads in under a minute.</p>
+<p>After getting PINN, just point-and-click to install arch.</p>
+<p>And that's it!</p>
+<h2>Btw I use arch</h2>
+<p>Ok, I lied. Arch ships with nothing, and I mean <em>nothing</em> </p>
+<ul>
+<li>No windowing server</li>
+<li>No desktop environment (by extension)</li>
+<li>No setup screen</li>
+</ul>
+<p>All these are forgiveable (and quite common on server distros), but then we have:</p>
+<ul>
+<li>No man pages. Seriously?</li>
+<li>No <code>sudo</code></li>
+<li>No keychains set up</li>
+<li>No drivers for Bluetooth, or Wifi set up</li>
+</ul>
+<p>Fortunately, the ARM arch ships with a few more things: <code>netctl</code>, <code>X11</code>, and wifi drivers. And a SSH server running by default. The best way of setting up is to connect to your router via ethernet, then do an <code>arp-scan --localnet</code> (on mac, install with <code>brew install arp-scan</code>) to find the ip, ssh on, and get rolling (default user <code>alarm</code>, password <code>alarm</code> and root password is just <code>root</code>)</p>
+<h3>Connecting and basics</h3>
+<ul>
+<li>Plug in your Pi to ethernet, and use your WiFi router settings page to see all connected devices. From there, note down your pi's IP and ssh on to it. </li>
+<li>use <code>timedatectl</code> to see if the system clock is accurate:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">timedatectl set-ntp true</span>
+</code></pre></div>
+
+<p>use <code>timedatectl status</code> for information.
+- Set up the timezone:</p>
+<div class="highlight"><pre><span></span><code><span class="err">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</span>
+<span class="err">hwclock --systohc</span>
+</code></pre></div>
+
+<ul>
+<li>generating locales: edit <code>/etc/locale.gen</code> and uncomment <code>en_US.UTF-8</code>. Generate locales by running <code>locale-gen</code>. Then, create the <code>locale.conf</code> file and set <code>LANG</code> appropriately (I set it to <code>en_US.UTF-8</code>)</li>
+<li>Edit the hostname from <code>alarmpi</code> to something better, like <code>senseipi</code> :)</li>
+</ul>
+<h3>Setting up <code>pacman</code> and certificates</h3>
+<p>Now that you're on the pi with a connection, the first thing to do is to setup <code>pacman</code>. This needs certificates: since Arch is a rolling distro, there's a very rigorous signature process in place for packages, and the system by default won't install packages which are not signed by trusted certificates in the keychain. </p>
+<p>Setting this up on ARM is slightly different compared to a normal arch system (or so I found):</p>
+<div class="highlight"><pre><span></span><code><span class="err">pacman-key --init</span>
+<span class="err">pacman-key --populate archlinuxarm</span>
+<span class="err">pacman-key --refresh-keys</span>
+</code></pre></div>
+
+<p>After that, <code>pacman -Syy</code> and <code>pacman -S archlinux-keyring</code>. Will install a couple dependencies as well.</p>
+<p>You're now ready to run</p>
+<div class="highlight"><pre><span></span><code><span class="err">pacman -Syu</span>
+</code></pre></div>
+
+<p>to update and upgrade everything on your system.</p>
+<h3>Wifi setup</h3>
+<p>Just use <code>wifi-menu</code>, don't bother with anything more complicated. You'll also need to create a service to start wifi automatically on boot, by doing:</p>
+<div class="highlight"><pre><span></span><code><span class="err">systemctl enable wpa_supplicant@wlan0</span>
+<span class="err">systemctl start wpa_supplicant@wlan0</span>
+</code></pre></div>
+
+<p>After this and rebooting, I was able to ssh onto my pi, by connecting it to my mobile hotspot. This is still my primary means of using my Pi. One important thing to note: <strong>Don't try switching to NetworkManager without a working display and ethernet connection</strong>. I tried doing this, only to blow the network setup on my Pi, because once you set up the NetworkManager service, it would take over <code>wlan0</code> on boot and because it didn't know the wifi configuration, it would never connect to the network, so I couldn't SSH/VNC onto it. After a lot of repeated tries, <code>wpa_supplicant</code> finally launched before NetworkManager on one boot, allowing me to ssh on and disable NetworkManager for good.</p>
+<h3>Users, <code>sudo</code> and User Groups</h3>
+<ul>
+<li>Create your new user</li>
+<li>ssh on as your new user, and su to root</li>
+<li>delete the old user</li>
+<li>install sudo: <code>pacman -S sudo</code></li>
+<li><code>visudo</code> the sudoers file to give the wheel group access to sudo</li>
+<li>add your user to the wheel group</li>
+<li>run <code>id &lt;username&gt;</code> to verify you're added to the right groups</li>
+</ul>
+<h3>Other software</h3>
+<ul>
+<li>utilities: <code>sudo pacman -S man-db man-pages nvim htop tree</code><ul>
+<li>run <code>mandb</code> to generate the man database</li>
+<li><code>export EDITOR=nvim</code> in your <code>.bashrc</code></li>
+</ul>
+</li>
+<li>yay<ul>
+<li>install git: <code>sudo pacman -S git</code></li>
+<li>go to /opt</li>
+<li>clone <a href="https://aur.archlinux.org/yay.git">https://aur.archlinux.org/yay.git</a> there<ul>
+<li>needed to set a proxy for this: <code>git config --global http.proxy ""</code></li>
+</ul>
+</li>
+<li>chown to our user</li>
+<li>make the package with <code>makepkg -si</code></li>
+<li>had to install base-devel for this: <code>sudo pacman -S base-devel</code> (install everything, most of them are useful)<ul>
+<li>go was not installing, surprisingly go-2:1.19-1 was updated on Aug 3 itself and I hadn't done <code>pacman -Syy</code>Reiterated the importance of keeping my package lists updated in a rolling release distro.</li>
+<li><code>makepkg</code> was surprisingly straightforward thereafter</li>
+</ul>
+</li>
+<li>add colors:<ul>
+<li><code>sudo nvim /etc/pacman.conf</code>, uncomment the Color line</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GUI stuff<ul>
+<li>installing fonts<ul>
+<li><code>yay -S ttf-roboto ttf-opensans ttf-roboto-mono ttf-ubuntu-font-family ttf-dejavu ttf-hack ttf-liberation</code></li>
+</ul>
+</li>
+<li>install Xorg stuff<ul>
+<li><code>yay -S xorg-server xorg-xrefresh</code> (install libglvnd)</li>
+<li><code>yay -S xorg</code> (install everything)</li>
+<li><code>yay -S xterm</code></li>
+<li><code>yay -S xfce4</code></li>
+<li><code>yay -S arc-gtk-theme arc-icon-theme</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TigerVNC<ul>
+<li><code>yay -S tigervnc</code></li>
+<li>edit your vnc config and set a vnc password with <code>vncpasswd</code>, then run <code>vncserver</code>. Also, add this as a system service so that it starts on boot</li>
+</ul>
+</li>
+</ul>
+<h2>To come</h2>
+<p>Congratulations: if you don't have a working system by now, atleasy you would have enough confidence to take your system in the direction you want to take it now. Here's a snap of how mine looks like after I was done with setup:</p>
+<p><img alt="arch_setup" src="res/arch_setup.png"></p>
+<h2>References</h2>
+<ol>
+<li><a href="https://wiki.archlinux.org/title/installation_guide">Arch Linux Installation guide</a></li>
+<li><a href="https://wiki.archlinux.org/title/installation_guide">Arch Linux General Recommendations</a></li>
+<li><a href="https://gist.github.com/TheZoc/849a82d3eed219998cd82fb4040607ae">Gist on RPi Arch setup</a></li>
+<li><a href="https://www.instructables.com/Arch-Linux-on-Raspberry-Pi/">Instructable on Arch on RPi</a></li>
+<li>Too many arch linux forums threads to count.</li>
+</ol>
+<h2>Footnotes</h2>
+<p><sup>1</sup> Finally, a tech article! Reading the previous articles, it personally seemed a bit sad that what started out as a STEM blog is now basically me masquerading as Kalpit Veerwal or some armchair IITian celebrity, sans the obnoxious YouTube channel (the most viewed article on this blog is my JEE journey :'( ) This sucks, but is easily changeable. Since I write about what I do, the solution is to just do more tech :P </p>
+<p><sup>2</sup> In the middle of intern interview season and wrapping up my SURA, only a masochist would do this to himself</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddhadeb.com/tag/arch.html">Arch</a>
+      <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>
+      <a href="https://aniruddhadeb.com/tag/linux.html">Linux</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddhadeb.com",
+  "image": "/extras/sitelogo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
