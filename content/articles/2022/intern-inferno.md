@@ -62,6 +62,7 @@ Also, most companies won't have tests that are relevant to the work you'd be doi
 This is probably where the completely stochastic nature of life comes face-to-face with you: The stochasticity of the outcome is inversely proportional to your skill, and the only way to minimize it is to be an order-of-magnitude better than everyone else. Or, just get lucky. 
 
 This has two important implications:
+
 - If you got rejected, it doesn't mean that you're worse than the others who got shortlisted.
 - If you got shortlisted, it doesn't mean that you're better than the others who got rejected.
 
