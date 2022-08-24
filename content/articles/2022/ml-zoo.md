@@ -11,3 +11,5 @@ MLZoo is a set of jupyter notebooks which would contain implementations of sever
 Do star, fork and contribute in any way possible! 
 
 (Hopefully this doesn't end up like MathNotes :fingers\_crossed:)
+
+NOTE: MLZoo has temporarily been taken private. This is because it overlaps with a certain course that I'm doing, and just to be on the safe side, I'll make it public once this is over.
