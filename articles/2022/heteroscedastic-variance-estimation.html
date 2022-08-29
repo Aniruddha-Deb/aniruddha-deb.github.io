@@ -131,45 +131,7 @@ MathJax = {
 <p>The derivative with respect to $\theta_m$ is pretty standard: we get</p>
 <p>$$\frac{\partial \mathcal{LL}}{\partial \theta_m} = \sum_{i=1}^m x^{i} \frac{(y^{i} - \theta_m^T x^{i})}{(\theta_v^T x^{i})^2}$$</p>
 <h2>An Implementation</h2>
-<p>Implementation was fairly straightforward, using gradient descent:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">LL</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">):</span>
-    <span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_std</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_mean</span><span class="p">)</span>
-    <span class="k">return</span> <span class="o">-</span><span class="p">(((</span><span class="n">Y</span><span class="o">-</span><span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">grad_LL_var</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">):</span>
-    <span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_std</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_mean</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">@</span><span class="p">(((</span><span class="n">Y</span><span class="o">-</span><span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">S</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">grad_LL_mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">):</span>
-    <span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_std</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="nd">@T_mean</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">@</span><span class="p">((</span><span class="n">Y</span><span class="o">-</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">grad_desc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">,</span><span class="n">eta_mean</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">eta_std</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span><span class="n">conv_mean</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">conv_std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">new_T_mean</span> <span class="o">=</span> <span class="n">T_mean</span>
-    <span class="n">new_T_std</span> <span class="o">=</span> <span class="n">T_std</span>
-    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_iter</span><span class="p">:</span>
-        <span class="n">new_T_mean</span> <span class="o">=</span> <span class="n">T_mean</span> <span class="o">+</span> <span class="n">eta_mean</span><span class="o">*</span><span class="n">grad_LL_mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">)</span>
-        <span class="n">new_T_std</span> <span class="o">=</span> <span class="n">T_std</span> <span class="o">+</span> <span class="n">eta_std</span><span class="o">*</span><span class="n">grad_LL_var</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">T_mean</span><span class="p">,</span><span class="n">T_std</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">new_T_mean</span><span class="o">-</span><span class="n">T_mean</span><span class="p">))</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">conv_mean</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">new_T_std</span><span class="o">-</span><span class="n">T_std</span><span class="p">))</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">conv_std</span><span class="p">):</span>
-            <span class="k">break</span>
-
-        <span class="n">T_mean</span> <span class="o">=</span> <span class="n">new_T_mean</span>
-        <span class="n">T_std</span> <span class="o">=</span> <span class="n">new_T_std</span>
-
-        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged in </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">(</span><span class="n">new_T_mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">new_T_std</span><span class="p">))</span> <span class="c1"># if we don&#39;t take abs, this can give negative values (which we should ignore)</span>
-</code></pre></div>
-
-<p>And this converged nicely to some generated data</p>
+<p>Implementation was fairly straightforward, using gradient descent, and it converged nicely to some generated data</p>
 <p><img alt="hetero_model" src="res/hetero_sd_model.png"></p>
   </div>
   <div class="tag-cloud">
