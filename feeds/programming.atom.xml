@@ -4,7 +4,7 @@
 &lt;p&gt;$$y^{i} \approx \mathcal{N}(\theta^T x^{i}, \sigma^2)$$&lt;/p&gt;
 &lt;p&gt;The standard closed form for this, obtained via finding the MLE estimate, gives $(X^T X)^{-1} X^T Y$, where $X$ is the example matrix of shape $(m,n)$ and $Y$ is the label vector of shape $(n,1)$. Note that $m$ is the number of training examples and $n$ is the number of features.&lt;/p&gt;
 &lt;p&gt;However, the variance need not always be constant. Consider a model where the variance is varying linearly (or rather just increasing) with $x$: an example would be the &lt;a href="https://www.kaggle.com/code/chanakyavivekkapoor/house-price-prediction"&gt;House prices dataset&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="img" src="res/__results___43_0.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="img" src="res/house_prices.png"&gt;&lt;/p&gt;
 &lt;p&gt;While there are feature transformations that would make this less heteroscedastic, this article focuses on learning the variance parameters, so along with our regression estimate, we can provide a variance estimate as well&lt;/p&gt;
 &lt;h2&gt;The Model&lt;/h2&gt;
 &lt;p&gt;We assume that the &lt;strong&gt;standard deviation&lt;/strong&gt; (not variance) is a linear function of $x$&lt;/p&gt;
