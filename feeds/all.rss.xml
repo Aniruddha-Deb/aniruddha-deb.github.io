@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Mon, 29 Aug 2022 18:00:00 +0530</lastBuildDate><item><title>Variance Estimation in Heteroscedastic Regression</title><link>https://aniruddhadeb.com/articles/2022/heteroscedastic-variance-estimation.html</link><description>&lt;h2&gt;Motivation&lt;/h2&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sat, 03 Sep 2022 17:00:00 +0530</lastBuildDate><item><title>A Simple Sudoku Solver</title><link>https://aniruddhadeb.com/articles/2022/simple-sudoku-solver.html</link><description>&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;These problems, in general, are called &lt;a href="https://en.wikipedia.org/wiki/Constraint_satisfaction_problem"&gt;Constraint Satisfaction Problems&lt;/a&gt;. Given a set of constraints, find a valid solution which satisfies all the constraints.&lt;/p&gt;
+&lt;p&gt;A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge. &lt;a href="https://en.wikipedia.org/wiki/Sudoku_graph"&gt;Sudoku Graphs&lt;/a&gt; are well-studied, and here's an example of a 9x9 one (courtesy &lt;a href="https://www.researchgate.net/figure/b-Graph-coloring-of-Sudoku_fig9_311668725"&gt;Artacho and Campoy&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sudoku_graph" src="https://www.researchgate.net/profile/Ruben-Campoy/publication/311668725/figure/fig9/AS:439849451823105@1481879689246/b-Graph-coloring-of-Sudoku.png"&gt;&lt;/p&gt;
+&lt;p&gt;This gives us a nice formulation, and allows us to search for a solution on this graph using backtracking search (Pseudocode courtesy &lt;a href="https://www.cse.iitd.ac.in/~rohanpaul/teaching/data/2022-COL333/L06-Constraint-Satisfaction.pdf"&gt;Rohan Paul's Slides&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="csp_bts" src="res/backtracking_search_pseudocode.png"&gt;&lt;/p&gt;
+&lt;p&gt;The two key algorithmic decisions to make here are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In what order do we select unassigned variables&lt;/li&gt;
+&lt;li&gt;In what order do we assign values to the unassigned variable chosen?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is the crux of the functions &lt;code&gt;select-unassigned-variable&lt;/code&gt; and &lt;code&gt;order-domain-values&lt;/code&gt;. Thinking about it a bit more:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We want to first fill the variables whose values we already know: the ones which have only one possible value ie are fully constrained. This is designed to fail fast, and will make the search go quicker. Hence, the ordering here should be &lt;strong&gt;choose the most constrained variable&lt;/strong&gt;. &lt;ul&gt;
+&lt;li&gt;Note that among variables with the same number of constraints, to break ties, we'd choose the variable &lt;strong&gt;with the greatest degree&lt;/strong&gt;, however for sudoku all the vertices have the same degree so it doesn't really matter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;We want to fill the values that are the least used in the board first, that is, the most likely values (that would rule out the fewest values in the remaining variables). We want to fail last while making this assignment, so we choose &lt;strong&gt;The most likely variable&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are a few more optimizations, such as forward checking, but for a simple sudoku solver, these should be sufficient.&lt;/p&gt;
+&lt;h2&gt;The Implementation&lt;/h2&gt;
+&lt;p&gt;With the algorithm in mind, I cooked up a quick implementation in C++. I used the following bitboard structure:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Sudoku bitboard:&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="nc"&gt;board_t&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;324&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;gs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;cs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;uint8_t&lt;/span&gt; &lt;span class="n"&gt;n_set&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;board_t&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;gs&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;cs&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;n_set&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This structure makes checks constant time, and since we're having a mutable bitboard, size isn't really an issue (this clocks in at ~600 bytes). &lt;/p&gt;
+&lt;p&gt;The core backtracking algorithm itself looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board_t&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;n_set&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;81&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="c1"&gt;//std::cout &amp;lt;&amp;lt; (int)b.n_set &amp;lt;&amp;lt; std::endl;&lt;/span&gt;
+    &lt;span class="c1"&gt;// choose the most constrained cell c in b&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;mcc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_mcc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// I think this takes the most time now...&lt;/span&gt;
+                          &lt;span class="c1"&gt;// atleast 729 ops.&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mcc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mcc&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;unset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;        
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// move ordering... fail last&lt;/span&gt;
+    &lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;m1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;m2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m2&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nl"&gt;m&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;solved&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;solved&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;unset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The only issue? It's &lt;em&gt;slow&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;The Performance&lt;/h2&gt;
+&lt;p&gt;Initially, I was mighty pleased with myself for creating such a nice solver: it solved &lt;a href="https://www.sudokuwiki.org/sudoku.htm?bd=800000000003600000070090200050007000000045700000100030001000068008500010090000400"&gt;Arto Inkala's Unsolvable Sudoku&lt;/a&gt; in less than a second, as well as &lt;a href="https://www.sudokuwiki.org/Weekly_Sudoku.asp?puz=28"&gt;#28&lt;/a&gt; of the unsolveable sudoku puzzles in less than two seconds. &lt;/p&gt;
+&lt;p&gt;Then I saw how sudoku solver benchmarks are actually done&lt;/p&gt;
+&lt;h2&gt;State of the art&lt;/h2&gt;
+&lt;p&gt;Currently, this is &lt;a href="https://t-dillon.github.io/tdoku/"&gt;tdoku&lt;/a&gt;. Beautifully written and explained, tdoku takes &lt;strong&gt;41.7 us&lt;/strong&gt; on average for very difficult puzzles with Sudoku Explainer ratings of 11 or higher&lt;/p&gt;
+&lt;p&gt;And mine?&lt;/p&gt;
+&lt;p&gt;300,000 us&lt;/p&gt;
+&lt;p&gt;Yep.&lt;/p&gt;
+&lt;p&gt;From an instant to an eternity. Well, atleast there's still a long way to go! I had to limit my solver to solve only a hundred puzzles from the same dataset, otherwise it wouldn't terminate. &lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;This is by no means a conclusive solver: there are still a lot of optimizations I can make, such as faster move generation and some SIMD stuff to make checks faster, but I think I'll get to those later. Now, the tree search would need to be optimized first. &lt;/p&gt;
+&lt;p&gt;This was hacked up in ~3 hours, and you can find the entire code &lt;a href="https://gist.github.com/Aniruddha-Deb/45055de874701009525de9d04e044382"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Happy sudoku solving!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 03 Sep 2022 17:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-09-03:/articles/2022/simple-sudoku-solver.html</guid><category>Programming</category><category>Programming</category></item><item><title>Variance Estimation in Heteroscedastic Regression</title><link>https://aniruddhadeb.com/articles/2022/heteroscedastic-variance-estimation.html</link><description>&lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;Most linear regression models assume &lt;/p&gt;
 &lt;p&gt;$$y^{i} \approx \mathcal{N}(\theta^T x^{i}, \sigma^2)$$&lt;/p&gt;
 &lt;p&gt;The standard closed form for this, obtained via finding the MLE estimate, gives $(X^T X)^{-1} X^T Y$, where $X$ is the example matrix of shape $(m,n)$ and $Y$ is the label vector of shape $(n,1)$. Note that $m$ is the number of training examples and $n$ is the number of features.&lt;/p&gt;
