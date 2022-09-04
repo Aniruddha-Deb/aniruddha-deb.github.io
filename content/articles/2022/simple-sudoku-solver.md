@@ -50,7 +50,7 @@ struct board_t {
 };
 ```
 
-This structure makes checks constant time, and since we're having a mutable bitboard, size isn't really an issue (this clocks in at \~600 bytes). 
+This structure makes checks constant time, and since we're having a mutable bitboard, size isn't really an issue (this clocks in at ~600 bytes). 
 
 The core backtracking algorithm itself looks like this:
 
@@ -112,6 +112,6 @@ From an instant to an eternity. Well, atleast there's still a long way to go! I 
 
 This is by no means a conclusive solver: there are still a lot of optimizations I can make, such as faster move generation and some SIMD stuff to make checks faster, but I think I'll get to those later. Now, the tree search would need to be optimized first. 
 
-This was hacked up in \~3 hours, and you can find the entire code [here](https://gist.github.com/Aniruddha-Deb/45055de874701009525de9d04e044382)
+This was hacked up in ~3 hours, and you can find the entire code [here](https://gist.github.com/Aniruddha-Deb/45055de874701009525de9d04e044382)
 
 Happy sudoku solving!
