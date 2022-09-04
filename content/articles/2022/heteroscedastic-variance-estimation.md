@@ -45,46 +45,6 @@ $$\frac{\partial \mathcal{LL}}{\partial \theta_m} = \sum_{i=1}^m x^{i} \frac{(y^
 
 ## An Implementation
 
-Implementation was fairly straightforward, using gradient descent:
-
-```python
-def LL(X,Y,T_mean,T_std):
-    S = (X@T_std)
-    M = (X@T_mean)
-    return -(((Y-M)**2)/(2*S**2) + np.log(S)).mean()
-
-def grad_LL_var(X,Y,T_mean,T_std):
-    S = (X@T_std)
-    M = (X@T_mean)
-    return X.T@(((Y-M)**2 - S**2)/(S**3))
-
-def grad_LL_mean(X,Y,T_mean,T_std):
-    S = (X@T_std)
-    M = (X@T_mean)
-    return X.T@((Y-M)/(S**2))
-
-def grad_desc(X,Y,T_mean,T_std,eta_mean=0.001,eta_std=0.001,n_iter=100000,conv_mean=0.01,conv_std=0.01):
-    
-    i = 0
-    new_T_mean = T_mean
-    new_T_std = T_std
-    while i < n_iter:
-        new_T_mean = T_mean + eta_mean*grad_LL_mean(X,Y,T_mean,T_std)
-        new_T_std = T_std + eta_std*grad_LL_var(X,Y,T_mean,T_std)
-        
-        if ((np.abs(new_T_mean-T_mean)).max() < conv_mean and (np.abs(new_T_std-T_std)).max() < conv_std):
-            break
-            
-        T_mean = new_T_mean
-        T_std = new_T_std
-        
-        i += 1
-        
-    print(f"Converged in {i} steps")
-    
-    return (new_T_mean, np.abs(new_T_std)) # if we don't take abs, this can give negative values (which we should ignore)
-```
-
-And this converged nicely to some generated data
+Implementation was fairly straightforward, using gradient descent, and it converged nicely to some generated data
 
 ![hetero_model](res/hetero_sd_model.png)
