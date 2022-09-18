@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddhadeb.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddhadeb.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week." />
+<meta name="keywords" content="Programming, Systems">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="Seven Days of Creation"/>
+<meta property="og:description" content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-09-18 12:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddhadeb.com/author/aniruddha-deb.html">
+<meta property="article:section" content="Programming"/>
+<meta property="article:tag" content="Programming"/>
+<meta property="article:tag" content="Systems"/>
+<meta property="og:image" content="/extras/sitelogo.png">
+
+  <title>Aniruddha Deb &ndash; Seven Days of Creation</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddhadeb.com">
+        <img src="/extras/sitelogo.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddhadeb.com"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddhadeb.com/pages/about.html#about">About</a></li>
+
+          <li><a href="/archives.html">archives</a></li>
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+          <li><a href="https://www.cse.iitd.ac.in/~cs1200869">website</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="seven-days-of-creation">Seven Days of Creation</h1>
+    <p>
+          Posted on Sun 18 September 2022 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Our networks course required us to construct a peer-server-peer file transfer protocol, wherein once chunks of the file are evenly distributed to different clients, the clients contact the server for chunks they don't have, and the server in turn queries all other clients if they have the chunk. If they do, they send it back to the server, which in turn relays it back to the client. This continues until all connected parties have the complete file.</p>
+<p>A thread-based implementation in Python was suggested, but given the requirements, I decided to go one level deeper: make a C++-based implementation with non-blocking sockets and asynchronous IO.</p>
+<h2>Day One</h2>
+<blockquote>
+<p>In the beginning, God created sockets. Now the sockets were isolated, unable to connect to anything on the system. And God said, <strong>"Let there be syscalls"</strong>, and there were syscalls.</p>
+</blockquote>
+<p>Having decided to go as close to the metal as I could for performance reasons (the assignment requirements stated that we'd have to transfer a 100 MB file to 100 clients simultaneously, in a reasonable amount of time), I decided to cut no corners. Fortunately, socket programming is very well documented, and is actually one of the more reasonable subsystems of the Linux/BSD kernel (POSIX sockets API FTW!). </p>
+<p>There are a lot of guides online for this, but the best one is <a href="https://beej.us/guide/bgnet/pdf/bgnet_a4_c_1.pdf">Beej's network programming guide</a>, now updated for IPv6 ^_^. This goes through the basics of a lot of what is needed, namely the socket syscalls (<code>socket</code>, <code>bind</code>, <code>connect</code>, <code>accept</code>, <code>send</code>, <code>recv</code>, <code>sendto</code>, <code>recvfrom</code>, <code>close</code>) and a lot of other things, such as getting address information, setting socket options with <code>setsockopt</code> (and the various options available), making sockets nonblocking, as well as a small tutorial on <code>select</code> for asynchronous IO<sup><a href="#footnote-1">1</a></sup>.</p>
+<p>I won't be repeating whatever was mentioned there, but a few things that tripped me up were:</p>
+<ol>
+<li>
+<p><code>SO_REUSEADDR</code>. Yep. The first time <a href="https://stackoverflow.com/questions/14388706/how-do-so-reuseaddr-and-so-reuseport-differ">I read about this flag</a>, I understood nothing. It was only after I could not reconnect to my server immediately after shutting it down did I realize that something's up. TCP's TIME_WAIT state persists <em>after</em> the application has shut down, which is why if you close and restart a socket at the same port, it won't immediately rebind, as there may still be a FIN/ACK message out on the network, bound for this port. If that hits the second application, it would cause that application's port to shut down, which is why TIME_WAIT waits for 2 maximum segment lifetimes (approx. 30 to 120 seconds). Here's a TCP state diagram to help out, if the above didn't make sense</p>
+<p><center>
+<img src="res/tcp-state-diagram-v2.svg" width="400px">
+</center></p>
+</li>
+<li>
+<p><code>SO_RCVLOWAT</code>. TCP is a stream protocol, and not a datagram protocol, and I think nobody makes it obvious what the differences are between them.</p>
+<ul>
+<li>Reading from a SOCK_STREAM port (TCP) is like sucking bits from a straw on the network. <code>recv(fd, buf, len, flags)</code> will read<sup><a href="#footnote-2">2</a></sup> atmost <code>len</code> bytes from <code>fd</code>'s read buffer to <code>buf</code>. It doesn't care whether the bytes were part of a previous message, or if it's two messages, it will just read that many bytes in. If the entire message hasn't reached, it will read less than <code>len</code> bytes, and return the number of bytes read (basically reading partial messages).</li>
+<li>Reading from a SOCK_DGRAM port (UDP) is like eating potato chips from a pringles tube, one at a time. <code>recv(fd, buf, len, flags)</code> on a UDP port will read <em>min(len,size of one datagram)</em> into buf. This means that you only get single datagrams. The port will read an incomplete datagram <strong>only if len is less than the size of one datagram</strong>, otherwise you're guaranteed to read the complete datagram in, notwithstanding system/network errors.</li>
+</ul>
+<p>So, how do we emulate UDP's 'chunking' in TCP? The <code>SO_RCVLOWAT</code> parameter sets a low water mark for the socket read buffer: we are only alerted of a read if the number of bytes in the read buffer are more than those set by this flag (a blocking read will wait until the number of bytes is more than this, or the socket has closed). By setting the low water mark and our buffer length to the size of one 'packet' of information that we are expected to receive, we can read only one packet at a time, cleanly separated from the rest of the byte stream. Neat!</p>
+</li>
+<li>
+<p><strong>Respect the error message!</strong> I cannot stress on this enough. Always, <strong>ALWAYS</strong> check what these syscalls are returning. You'll save yourself a lot of pain. An example: this is terrible code</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// some code here</span>
+<span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+
+<span class="kt">uintptr_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">reuse</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
+
+<span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
+<span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">O_NONBLOCK</span><span class="p">);</span>
+<span class="n">freeaddrinfo</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+<span class="c1">// more code here</span>
+</code></pre></div>
+
+<p>Do you see the error? Exactly. You'll never see the error, until it blows up in your face 500 lines later. Your server needs to fail fast while debugging. There's no shame in throwing assert statements around like confetti.</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">errstr</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">msg</span> <span class="o">+</span> <span class="s">&quot; (errno &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not get address information&quot;</span><span class="p">));</span>
+
+<span class="kt">uintptr_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">fd</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not create socket&quot;</span><span class="p">));</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">reuse</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not set SO_REUSEADDR option&quot;</span><span class="p">));</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not bind socket to port&quot;</span><span class="p">));</span>
+
+<span class="c1">// ...</span>
+</code></pre></div>
+
+<h2>Day Two</h2>
+<blockquote>
+<p>And God said, <strong>"Let there be an event loop so that sockets can know when they have to read and write"</strong>, So God made an event loop and registered his sockets to it.</p>
+</blockquote>
+<p>Possibly the most fun part of this entire exercise. Event loops allow you to write superfast single-threaded concurrent servers, simply because the OS doesn't need to schedule a bunch of threads waiting for their clients to reply to them. In macOS (and other BSD distros), the kernel uses <code>kevent</code> for the event queue, but if you're looking to port to linux, <a href="https://github.com/mheily/libkqueue"><code>libkqueue</code></a> works like a charm (just make sure to build and install the latest version: the ones on the default package repositories are outdated and have bugs).</p>
+<p>Event loops and the reactor pattern are not-so-easy to understand, so <a href="https://dzone.com/articles/understanding-reactor-pattern-thread-based-and-eve">here</a> and <a href="http://www.dre.vanderbilt.edu/~schmidt/PDF/reactor-siemens.pdf">here</a> were some good resources I referred to. A broad overview (when applied to sockets) is:</p>
+<ul>
+<li>Each socket has a file descriptor, along with a read/write buffer (in the kernel).</li>
+<li>An event queue allows us to register this file descriptor with the queue, such that we are alerted when we can read/write from this file.</li>
+</ul>
+<p>What does an event queue look like? Here's a (rough) abstraction from my code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">event_t</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">filter</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">EventQueue</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">EventQueue</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="nf">add_event</span><span class="p">(</span><span class="k">const</span> <span class="n">event_t</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="nf">delete_event</span><span class="p">(</span><span class="k">const</span> <span class="n">event_t</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">event_t</span><span class="o">&gt;</span> <span class="n">get_events</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="nf">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>simple enough. Where does the event loop come in? The loop is responsible for polling the event queue and processing the events that occur</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">EventQueue</span> <span class="n">evtq</span><span class="p">;</span>
+    <span class="c1">// add events here</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">evts</span> <span class="o">=</span> <span class="n">evtq</span><span class="p">.</span><span class="n">get_events</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">evts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// process e;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Generally, a callback-like structure is employed within the event loop</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;&gt;</span> <span class="n">read_callbacks</span><span class="p">;</span>
+
+<span class="c1">//...</span>
+
+<span class="kt">void</span> <span class="nf">register_read_callback</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">read_callbacks</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// inside the event loop</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">evts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">filter</span> <span class="o">==</span> <span class="n">EV_READ</span><span class="p">)</span> <span class="n">read_callbacks</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">fd</span><span class="p">]();</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+</code></pre></div>
+
+<p>Short and sweet, add more callbacks as needed.</p>
+<p>There's a very nice <a href="https://wiki.netbsd.org/tutorials/kqueue_tutorial/">kqueue tutorial</a> here, which goes into more specifics; stuff such as timers and one-shot events, but read/write events on sockets should be enough to scale.</p>
+<h2>Day Three</h2>
+<blockquote>
+<p>And God said, <strong>"Let there be a client to keep the server company"</strong>, and it was so. God made a client using the same principles as the server, and God saw that it was good.</p>
+</blockquote>
+<p>The client was basically a mini-server, with a TCP and UDP port, that used the same event-loop based architecture to simultaneously transmit messages and receive file chunks. Once the protocol is implemented and the server is created, implementing a client is a relatively simple exercise, and was easy to do.</p>
+<p>One additional feature of kevent that I used were timers: if a request packet (over UDP) drops, then we won't receive a chunk in response to it. The way I solved this is to have a timer event every second, and a map that stores which chunk ID's are currently requested, and when those requests were sent out. Every second, when the timer event triggers, we check if there are any requests sent to which we haven't received a response in 5 seconds, and we resend these requests. Adding timer events to kqueue is relatively straightforward, just that the documentation doesn't make it clear whether we have to pass the time (in milliseconds) or a pointer to the time. The former works, but not the latter (even though <code>struct kevent</code> has the type of data as <code>intptr_t</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">kevent</span> <span class="n">evt</span><span class="p">;</span>
+<span class="kt">uint32_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">;</span>
+<span class="kt">uint32_t</span> <span class="n">period_in_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">EV_SET</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">EVFILT_TIMER</span><span class="p">,</span> <span class="n">EV_ADD</span><span class="o">|</span><span class="n">EV_ENABLE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">period_in_ms</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">kevent</span><span class="p">(</span><span class="n">_kq</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</code></pre></div>
+
+<p><code>fd</code> was chosen as 6000 as this is large enough to not clash with anything else. I couldn't think of a better way to choose a descriptor for a timer. If you do know of one (allocating a file descriptor which won't clash with other file descriptors), do let me know in the comments :)</p>
+<h2>Day Four</h2>
+<blockquote>
+<p>And God said, <strong>"Let there be two implementations of the protocol, for testing purposes"</strong>, and it was so. God set about refactoring the codebase, abstracting the interfaces and implementation out, and when he was done, he saw that it was good.</p>
+</blockquote>
+<p>This was probably the most frustrating part: after three straight days of programming, I realized that to switch protocols, I'd have to do it all over again. This is where effective design comes into picture: rather than making a hacky proof-of-concept server, abstracting out the various things that would have separate implementations from the start would've made this exercise very easy. </p>
+<p>I set about redesigning the server. Fortunately, a full rewrite wasn't needed, and a lot of the components could just be reused directly. For changing the protocol, I defined the interfaces in a header file, and implementation-specific versions in a source file. This allows me to change the implementation at compile time rather than in source (which would need me to subclass Server and override these methods). All I need to do now to change the protocol is <code>make proto=TCP</code> instead of normal <code>make</code>. </p>
+<p>The makefile flags to do something like this are:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">ifeq ($(PROTO), TCP)</span>
+    <span class="nv">SRC_SERVER</span> <span class="o">+=</span> &lt;tcp implementation files&gt;
+    ...
+    SERVER :<span class="o">=</span> bin/server_tcp
+    ...
+<span class="cp">else</span>
+    <span class="nv">SRC_SERVER</span> <span class="o">+=</span> &lt;udp implementation files&gt;
+    ...
+    SERVER :<span class="o">=</span> bin/server_udp
+    ...
+<span class="cp">endif</span>
+</code></pre></div>
+
+<p>The final source design looked like this (leaving out other non-relevant items)</p>
+<p><center>
+<img alt="protocol" src="res/protocol.svg">
+</center></p>
+<h2>Day Five</h2>
+<blockquote>
+<p>And God said, <strong>"Let this bounty be available to the users of Linux as well"</strong>, and it was so. God did not have a working Linux machine, so he created a QEMU VM to run Manjaro and to compile the code, and when he was done, he saw that it was good.</p>
+</blockquote>
+<p>The Linux machine I'd gotten from home had a broken keyboard, and my Raspberry Pi was not connecting to the cellular network (apparently my cellphone provider switched from an ipv4 to an ipv6 network, so arp-scan and everything was a mess; I couldn't locate my pi's IP, and an iPhone being an iPhone, doesn't let you see the IP of the devices connected to it's WiFi hotspot.)</p>
+<p>After messing around with an ethernet cable, a friend's laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that <a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image">it doesn't have a default password</a>, and an ISO containing login credentials had to be booted with the image to allow you to login, <em>and that too only via SSH</em>.</p>
+<p>Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly. </p>
+<p><center>
+<img alt="qemu" src="res/qemu_vm_2.png">
+</center></p>
+<p>QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that's for another post :)</p>
+<p>With access to a linux machine, there were two choices:</p>
+<ol>
+<li>Use a compatiability layer to get kqueue functionality: libkqueue, as previously mentioned, hadn't worked on an ubuntu machine because of an old version (a fact I didn't know till then)</li>
+<li>Write an epoll implementation of my abstracted event queue</li>
+</ol>
+<p>I really didn't want to do (2), but it looked like there was no choice. I decided to give libkqueue a final chance on linux, and since it was not available on manjaro default repositories, I downloaded and compiled from source.</p>
+<p>And it worked! I had to link the library with <code>-lkqueue</code> and <code>-lpthread</code>, so made some linux-specific flags for that. I can now see why <code>cmake</code> is such a popular build tool, as this os-dependent complexity would only increase with more modules</p>
+<div class="highlight"><pre><span></span><code><span class="cp">ifneq ($(OS),Windows_NT)</span>
+    uname_os :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
+<span class="cp">    ifneq ($(uname_os),Darwin)</span>
+        <span class="nv">CPPFLAGS</span> <span class="o">+=</span> -I/usr/include/kqueue
+        <span class="nv">LFLAGS</span> <span class="o">+=</span> -lkqueue -lpthread
+<span class="cp">    endif</span>
+<span class="cp">endif</span>
+</code></pre></div>
+
+<h2>Day Six</h2>
+<blockquote>
+<p>And God said, <strong>"Let there be a client manager to spawn clients, so that I may be absolved of the burden of testing"</strong>, and it was so. God crafted a client manager using threads, and did the server benchmarks, and he saw that they were good.</p>
+</blockquote>
+<p>This (and benchmarking) were boring but rewarding. For starters, a few changes had to be made in the protocol to make it a bit more reliable, and then some bookkeeping code had to be written for clients so that they could save their packet request round trip times to files, and also be called independently and run on separate threads. Once that was done, I created a client manager that took care of spawning a bunch of clients and making requests to the server</p>
+<p>The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.</p>
+<p>Here are some numbers. For context, A2_small_file.txt is a 100kB text file.</p>
+<p><center>
+<img alt="times" src="res/time_clients.svg">
+</center></p>
+<h2>Day Seven</h2>
+<blockquote>
+<p>Thus, the clients and server were completed in all their vast array, so on the seventh day, God rested from all his work. Then God <strike>Blessed the seventh day and made it holy</strike> <em>Cursed himself for having spent so much time on one assignment, when there were four more to do, and minors would begin in a week</em></p>
+</blockquote>
+<p>If you felt like this article was too fast, or too poorly written, you now know why :')</p>
+<p>Since the assignment deadline is still not over, I've consciously not divulged many specifics. Will probably release a follow-up on the protocol and client-server design itself later on.</p>
+<h2>Footnotes</h2>
+<p><sup id="footnote-1">1</sup> <code>select</code> can handle only 1024 events, and is linear in time, which makes it a very bad choice. More modern implementations use kqueue(BSD/macOS), epoll(Linux) or IOCP(Windows). A cross-platform option is to use <a href="https://libevent.org/">libevent</a>.</p>
+<p><sup id="footnote-2">2</sup> <code>recv</code> will block (wait until there are nonzero bytes in the read buffer) if the socket is blocking, and will read atmost <code>len</code> bytes to <code>buf</code> (the number of bytes read are returned by the syscall). If the socket is non-blocking, <code>recv</code> may return 0 if there's nothing in the buffer to read. Note that if a blocking <code>recv</code> returns 0, it means that the connection has been disconnected (why? Don't really know, but I guess it's because there's an EOF residing in the buffer, sent by the other party, up to which <code>recv</code> reads, and then there's nothing left to read but the EOF).</p>
+<p><sup id="footnote-3">3</sup> Tired of all the *buntu distros, and had experience with arch (loved the rolling distro functionality), so needed an arch experience with minimal effort.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>
+      <a href="https://aniruddhadeb.com/tag/systems.html">Systems</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddhadeb.com",
+  "image": "/extras/sitelogo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

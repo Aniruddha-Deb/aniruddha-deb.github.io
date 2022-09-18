@@ -1,5 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sat, 03 Sep 2022 17:00:00 +0530</lastBuildDate><item><title>A Simple Sudoku Solver</title><link>https://aniruddhadeb.com/articles/2022/simple-sudoku-solver.html</link><description>&lt;h2&gt;The Problem&lt;/h2&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sun, 18 Sep 2022 12:00:00 +0530</lastBuildDate><item><title>Seven Days of Creation</title><link>https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html</link><description>&lt;p&gt;Our networks course required us to construct a peer-server-peer file transfer protocol, wherein once chunks of the file are evenly distributed to different clients, the clients contact the server for chunks they don't have, and the server in turn queries all other clients if they have the chunk. If they do, they send it back to the server, which in turn relays it back to the client. This continues until all connected parties have the complete file.&lt;/p&gt;
+&lt;p&gt;A thread-based implementation in Python was suggested, but given the requirements, I decided to go one level deeper: make a C++-based implementation with non-blocking sockets and asynchronous IO.&lt;/p&gt;
+&lt;h2&gt;Day One&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the beginning, God created sockets. Now the sockets were isolated, unable to connect to anything on the system. And God said, &lt;strong&gt;"Let there be syscalls"&lt;/strong&gt;, and there were syscalls.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Having decided to go as close to the metal as I could for performance reasons (the assignment requirements stated that we'd have to transfer a 100 MB file to 100 clients simultaneously, in a reasonable amount of time), I decided to cut no corners. Fortunately, socket programming is very well documented, and is actually one of the more reasonable subsystems of the Linux/BSD kernel (POSIX sockets API FTW!). &lt;/p&gt;
+&lt;p&gt;There are a lot of guides online for this, but the best one is &lt;a href="https://beej.us/guide/bgnet/pdf/bgnet_a4_c_1.pdf"&gt;Beej's network programming guide&lt;/a&gt;, now updated for IPv6 ^_^. This goes through the basics of a lot of what is needed, namely the socket syscalls (&lt;code&gt;socket&lt;/code&gt;, &lt;code&gt;bind&lt;/code&gt;, &lt;code&gt;connect&lt;/code&gt;, &lt;code&gt;accept&lt;/code&gt;, &lt;code&gt;send&lt;/code&gt;, &lt;code&gt;recv&lt;/code&gt;, &lt;code&gt;sendto&lt;/code&gt;, &lt;code&gt;recvfrom&lt;/code&gt;, &lt;code&gt;close&lt;/code&gt;) and a lot of other things, such as getting address information, setting socket options with &lt;code&gt;setsockopt&lt;/code&gt; (and the various options available), making sockets nonblocking, as well as a small tutorial on &lt;code&gt;select&lt;/code&gt; for asynchronous IO&lt;sup&gt;&lt;a href="#footnote-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;I won't be repeating whatever was mentioned there, but a few things that tripped me up were:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;SO_REUSEADDR&lt;/code&gt;. Yep. The first time &lt;a href="https://stackoverflow.com/questions/14388706/how-do-so-reuseaddr-and-so-reuseport-differ"&gt;I read about this flag&lt;/a&gt;, I understood nothing. It was only after I could not reconnect to my server immediately after shutting it down did I realize that something's up. TCP's TIME_WAIT state persists &lt;em&gt;after&lt;/em&gt; the application has shut down, which is why if you close and restart a socket at the same port, it won't immediately rebind, as there may still be a FIN/ACK message out on the network, bound for this port. If that hits the second application, it would cause that application's port to shut down, which is why TIME_WAIT waits for 2 maximum segment lifetimes (approx. 30 to 120 seconds). Here's a TCP state diagram to help out, if the above didn't make sense&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img src="res/tcp-state-diagram-v2.svg" width="400px"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;SO_RCVLOWAT&lt;/code&gt;. TCP is a stream protocol, and not a datagram protocol, and I think nobody makes it obvious what the differences are between them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reading from a SOCK_STREAM port (TCP) is like sucking bits from a straw on the network. &lt;code&gt;recv(fd, buf, len, flags)&lt;/code&gt; will read&lt;sup&gt;&lt;a href="#footnote-2"&gt;2&lt;/a&gt;&lt;/sup&gt; atmost &lt;code&gt;len&lt;/code&gt; bytes from &lt;code&gt;fd&lt;/code&gt;'s read buffer to &lt;code&gt;buf&lt;/code&gt;. It doesn't care whether the bytes were part of a previous message, or if it's two messages, it will just read that many bytes in. If the entire message hasn't reached, it will read less than &lt;code&gt;len&lt;/code&gt; bytes, and return the number of bytes read (basically reading partial messages).&lt;/li&gt;
+&lt;li&gt;Reading from a SOCK_DGRAM port (UDP) is like eating potato chips from a pringles tube, one at a time. &lt;code&gt;recv(fd, buf, len, flags)&lt;/code&gt; on a UDP port will read &lt;em&gt;min(len,size of one datagram)&lt;/em&gt; into buf. This means that you only get single datagrams. The port will read an incomplete datagram &lt;strong&gt;only if len is less than the size of one datagram&lt;/strong&gt;, otherwise you're guaranteed to read the complete datagram in, notwithstanding system/network errors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So, how do we emulate UDP's 'chunking' in TCP? The &lt;code&gt;SO_RCVLOWAT&lt;/code&gt; parameter sets a low water mark for the socket read buffer: we are only alerted of a read if the number of bytes in the read buffer are more than those set by this flag (a blocking read will wait until the number of bytes is more than this, or the socket has closed). By setting the low water mark and our buffer length to the size of one 'packet' of information that we are expected to receive, we can read only one packet at a time, cleanly separated from the rest of the byte stream. Neat!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Respect the error message!&lt;/strong&gt; I cannot stress on this enough. Always, &lt;strong&gt;ALWAYS&lt;/strong&gt; check what these syscalls are returning. You'll save yourself a lot of pain. An example: this is terrible code&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// some code here&lt;/span&gt;
+&lt;span class="n"&gt;getaddrinfo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;nullptr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;c_str&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;hints&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="kt"&gt;uintptr_t&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_family&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_socktype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_protocol&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;reuse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;setsockopt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SOL_SOCKET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SO_REUSEADDR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;reuse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reuse&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_addr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_addrlen&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;fcntl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;F_SETFL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;O_NONBLOCK&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;freeaddrinfo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="c1"&gt;// more code here&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Do you see the error? Exactly. You'll never see the error, until it blows up in your face 500 lines later. Your server needs to fail fast while debugging. There's no shame in throwing assert statements around like confetti.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;errstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; (errno &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;errno&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// ...&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getaddrinfo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;nullptr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;c_str&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;hints&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;assert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;errstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Could not get address information&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="kt"&gt;uintptr_t&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_family&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_socktype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_protocol&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;assert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;errstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Could not create socket&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;reuse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;setsockopt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SOL_SOCKET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SO_REUSEADDR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;reuse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reuse&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="n"&gt;assert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;errstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Could not set SO_REUSEADDR option&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_addr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ai_addrlen&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;assert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;errstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Could not bind socket to port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="c1"&gt;// ...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Day Two&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And God said, &lt;strong&gt;"Let there be an event loop so that sockets can know when they have to read and write"&lt;/strong&gt;, So God made an event loop and registered his sockets to it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Possibly the most fun part of this entire exercise. Event loops allow you to write superfast single-threaded concurrent servers, simply because the OS doesn't need to schedule a bunch of threads waiting for their clients to reply to them. In macOS (and other BSD distros), the kernel uses &lt;code&gt;kevent&lt;/code&gt; for the event queue, but if you're looking to port to linux, &lt;a href="https://github.com/mheily/libkqueue"&gt;&lt;code&gt;libkqueue&lt;/code&gt;&lt;/a&gt; works like a charm (just make sure to build and install the latest version: the ones on the default package repositories are outdated and have bugs).&lt;/p&gt;
+&lt;p&gt;Event loops and the reactor pattern are not-so-easy to understand, so &lt;a href="https://dzone.com/articles/understanding-reactor-pattern-thread-based-and-eve"&gt;here&lt;/a&gt; and &lt;a href="http://www.dre.vanderbilt.edu/~schmidt/PDF/reactor-siemens.pdf"&gt;here&lt;/a&gt; were some good resources I referred to. A broad overview (when applied to sockets) is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each socket has a file descriptor, along with a read/write buffer (in the kernel).&lt;/li&gt;
+&lt;li&gt;An event queue allows us to register this file descriptor with the queue, such that we are alerted when we can read/write from this file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What does an event queue look like? Here's a (rough) abstraction from my code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="nc"&gt;event_t&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EventQueue&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;EventQueue&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;add_event&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;event_t&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;delete_event&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;event_t&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;event_t&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;get_events&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;close&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;simple enough. Where does the event loop come in? The loop is responsible for polling the event queue and processing the events that occur&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;EventQueue&lt;/span&gt; &lt;span class="n"&gt;evtq&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="c1"&gt;// add events here&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;evts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evtq&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_events&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nl"&gt;e&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;evts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="c1"&gt;// process e;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Generally, a callback-like structure is employed within the event loop&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;unordered_map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;read_callbacks&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="c1"&gt;//...&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;register_read_callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;read_callbacks&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// inside the event loop&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nl"&gt;e&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;evts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="c1"&gt;// ...&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;EV_READ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;read_callbacks&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;]();&lt;/span&gt;
+            &lt;span class="c1"&gt;// ...&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Short and sweet, add more callbacks as needed.&lt;/p&gt;
+&lt;p&gt;There's a very nice &lt;a href="https://wiki.netbsd.org/tutorials/kqueue_tutorial/"&gt;kqueue tutorial&lt;/a&gt; here, which goes into more specifics; stuff such as timers and one-shot events, but read/write events on sockets should be enough to scale.&lt;/p&gt;
+&lt;h2&gt;Day Three&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And God said, &lt;strong&gt;"Let there be a client to keep the server company"&lt;/strong&gt;, and it was so. God made a client using the same principles as the server, and God saw that it was good.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The client was basically a mini-server, with a TCP and UDP port, that used the same event-loop based architecture to simultaneously transmit messages and receive file chunks. Once the protocol is implemented and the server is created, implementing a client is a relatively simple exercise, and was easy to do.&lt;/p&gt;
+&lt;p&gt;One additional feature of kevent that I used were timers: if a request packet (over UDP) drops, then we won't receive a chunk in response to it. The way I solved this is to have a timer event every second, and a map that stores which chunk ID's are currently requested, and when those requests were sent out. Every second, when the timer event triggers, we check if there are any requests sent to which we haven't received a response in 5 seconds, and we resend these requests. Adding timer events to kqueue is relatively straightforward, just that the documentation doesn't make it clear whether we have to pass the time (in milliseconds) or a pointer to the time. The former works, but not the latter (even though &lt;code&gt;struct kevent&lt;/code&gt; has the type of data as &lt;code&gt;intptr_t&lt;/code&gt;)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="nc"&gt;kevent&lt;/span&gt; &lt;span class="n"&gt;evt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;uint32_t&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;6000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;uint32_t&lt;/span&gt; &lt;span class="n"&gt;period_in_ms&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;EV_SET&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;evt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;EVFILT_TIMER&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;EV_ADD&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;EV_ENABLE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;period_in_ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;kevent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_kq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;evt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;fd&lt;/code&gt; was chosen as 6000 as this is large enough to not clash with anything else. I couldn't think of a better way to choose a descriptor for a timer. If you do know of one (allocating a file descriptor which won't clash with other file descriptors), do let me know in the comments :)&lt;/p&gt;
+&lt;h2&gt;Day Four&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And God said, &lt;strong&gt;"Let there be two implementations of the protocol, for testing purposes"&lt;/strong&gt;, and it was so. God set about refactoring the codebase, abstracting the interfaces and implementation out, and when he was done, he saw that it was good.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This was probably the most frustrating part: after three straight days of programming, I realized that to switch protocols, I'd have to do it all over again. This is where effective design comes into picture: rather than making a hacky proof-of-concept server, abstracting out the various things that would have separate implementations from the start would've made this exercise very easy. &lt;/p&gt;
+&lt;p&gt;I set about redesigning the server. Fortunately, a full rewrite wasn't needed, and a lot of the components could just be reused directly. For changing the protocol, I defined the interfaces in a header file, and implementation-specific versions in a source file. This allows me to change the implementation at compile time rather than in source (which would need me to subclass Server and override these methods). All I need to do now to change the protocol is &lt;code&gt;make proto=TCP&lt;/code&gt; instead of normal &lt;code&gt;make&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;The makefile flags to do something like this are:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;ifeq ($(PROTO), TCP)&lt;/span&gt;
+    &lt;span class="nv"&gt;SRC_SERVER&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &amp;lt;tcp implementation files&amp;gt;
+    ...
+    SERVER :&lt;span class="o"&gt;=&lt;/span&gt; bin/server_tcp
+    ...
+&lt;span class="cp"&gt;else&lt;/span&gt;
+    &lt;span class="nv"&gt;SRC_SERVER&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &amp;lt;udp implementation files&amp;gt;
+    ...
+    SERVER :&lt;span class="o"&gt;=&lt;/span&gt; bin/server_udp
+    ...
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The final source design looked like this (leaving out other non-relevant items)&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="protocol" src="res/protocol.svg"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h2&gt;Day Five&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And God said, &lt;strong&gt;"Let this bounty be available to the users of Linux as well"&lt;/strong&gt;, and it was so. God did not have a working Linux machine, so he created a QEMU VM to run Manjaro and to compile the code, and when he was done, he saw that it was good.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The Linux machine I'd gotten from home had a broken keyboard, and my Raspberry Pi was not connecting to the cellular network (apparently my cellphone provider switched from an ipv4 to an ipv6 network, so arp-scan and everything was a mess; I couldn't locate my pi's IP, and an iPhone being an iPhone, doesn't let you see the IP of the devices connected to it's WiFi hotspot.)&lt;/p&gt;
+&lt;p&gt;After messing around with an ethernet cable, a friend's laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that &lt;a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image"&gt;it doesn't have a default password&lt;/a&gt;, and an ISO containing login credentials had to be booted with the image to allow you to login, &lt;em&gt;and that too only via SSH&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Noped out of that pretty quick. I then downloaded a Manjaro&lt;sup&gt;&lt;a href="#footnote-3"&gt;3&lt;/a&gt;&lt;/sup&gt; image, and installed and ran that painlessly. &lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="qemu" src="res/qemu_vm_2.png"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that's for another post :)&lt;/p&gt;
+&lt;p&gt;With access to a linux machine, there were two choices:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use a compatiability layer to get kqueue functionality: libkqueue, as previously mentioned, hadn't worked on an ubuntu machine because of an old version (a fact I didn't know till then)&lt;/li&gt;
+&lt;li&gt;Write an epoll implementation of my abstracted event queue&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I really didn't want to do (2), but it looked like there was no choice. I decided to give libkqueue a final chance on linux, and since it was not available on manjaro default repositories, I downloaded and compiled from source.&lt;/p&gt;
+&lt;p&gt;And it worked! I had to link the library with &lt;code&gt;-lkqueue&lt;/code&gt; and &lt;code&gt;-lpthread&lt;/code&gt;, so made some linux-specific flags for that. I can now see why &lt;code&gt;cmake&lt;/code&gt; is such a popular build tool, as this os-dependent complexity would only increase with more modules&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;ifneq ($(OS),Windows_NT)&lt;/span&gt;
+    uname_os :&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell uname&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="cp"&gt;    ifneq ($(uname_os),Darwin)&lt;/span&gt;
+        &lt;span class="nv"&gt;CPPFLAGS&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; -I/usr/include/kqueue
+        &lt;span class="nv"&gt;LFLAGS&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; -lkqueue -lpthread
+&lt;span class="cp"&gt;    endif&lt;/span&gt;
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Day Six&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And God said, &lt;strong&gt;"Let there be a client manager to spawn clients, so that I may be absolved of the burden of testing"&lt;/strong&gt;, and it was so. God crafted a client manager using threads, and did the server benchmarks, and he saw that they were good.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This (and benchmarking) were boring but rewarding. For starters, a few changes had to be made in the protocol to make it a bit more reliable, and then some bookkeeping code had to be written for clients so that they could save their packet request round trip times to files, and also be called independently and run on separate threads. Once that was done, I created a client manager that took care of spawning a bunch of clients and making requests to the server&lt;/p&gt;
+&lt;p&gt;The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.&lt;/p&gt;
+&lt;p&gt;Here are some numbers. For context, A2_small_file.txt is a 100kB text file.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="times" src="res/time_clients.svg"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h2&gt;Day Seven&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thus, the clients and server were completed in all their vast array, so on the seventh day, God rested from all his work. Then God &lt;strike&gt;Blessed the seventh day and made it holy&lt;/strike&gt; &lt;em&gt;Cursed himself for having spent so much time on one assignment, when there were four more to do, and minors would begin in a week&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you felt like this article was too fast, or too poorly written, you now know why :')&lt;/p&gt;
+&lt;p&gt;Since the assignment deadline is still not over, I've consciously not divulged many specifics. Will probably release a follow-up on the protocol and client-server design itself later on.&lt;/p&gt;
+&lt;h2&gt;Footnotes&lt;/h2&gt;
+&lt;p&gt;&lt;sup id="footnote-1"&gt;1&lt;/sup&gt; &lt;code&gt;select&lt;/code&gt; can handle only 1024 events, and is linear in time, which makes it a very bad choice. More modern implementations use kqueue(BSD/macOS), epoll(Linux) or IOCP(Windows). A cross-platform option is to use &lt;a href="https://libevent.org/"&gt;libevent&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;sup id="footnote-2"&gt;2&lt;/sup&gt; &lt;code&gt;recv&lt;/code&gt; will block (wait until there are nonzero bytes in the read buffer) if the socket is blocking, and will read atmost &lt;code&gt;len&lt;/code&gt; bytes to &lt;code&gt;buf&lt;/code&gt; (the number of bytes read are returned by the syscall). If the socket is non-blocking, &lt;code&gt;recv&lt;/code&gt; may return 0 if there's nothing in the buffer to read. Note that if a blocking &lt;code&gt;recv&lt;/code&gt; returns 0, it means that the connection has been disconnected (why? Don't really know, but I guess it's because there's an EOF residing in the buffer, sent by the other party, up to which &lt;code&gt;recv&lt;/code&gt; reads, and then there's nothing left to read but the EOF).&lt;/p&gt;
+&lt;p&gt;&lt;sup id="footnote-3"&gt;3&lt;/sup&gt; Tired of all the *buntu distros, and had experience with arch (loved the rolling distro functionality), so needed an arch experience with minimal effort.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 18 Sep 2022 12:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-09-18:/articles/2022/seven-days-of-creation.html</guid><category>Programming</category><category>Programming</category><category>Systems</category></item><item><title>A Simple Sudoku Solver</title><link>https://aniruddhadeb.com/articles/2022/simple-sudoku-solver.html</link><description>&lt;h2&gt;The Problem&lt;/h2&gt;
 &lt;p&gt;The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.&lt;/p&gt;
 &lt;h2&gt;The Solution&lt;/h2&gt;
 &lt;p&gt;These problems, in general, are called &lt;a href="https://en.wikipedia.org/wiki/Constraint_satisfaction_problem"&gt;Constraint Satisfaction Problems&lt;/a&gt;. Given a set of constraints, find a valid solution which satisfies all the constraints.&lt;/p&gt;
