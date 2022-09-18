@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css">
+  <link rel="icon" href="/images/my_logo.png" type="image/png">
+  <link rel="shortcut icon" href="/images/my_logo.png" type="image/png">
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,600italic,700,700italic|Inconsolata">
+  <link  href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="Writings by {{ AUTHOR }}">
+
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+  {% endif %}
+
+  {% block head %}
+  {% endblock %}
+
+  <title>
+    {% block title %}{{ SITENAME }}{% endblock %}
+  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="/">
+        {% if USER_LOGO_URL %}
+        <img src="{{ USER_LOGO_URL }}" alt="logo" align="middle"><br><br><br><br>
+        {% endif %}
+      </a>
+      <h2><a href="/">{{ AUTHOR }}</a></h2>
+      <p>{{ TAGLINE }}</p>
+      <ul>
+        {% for name, link in MENUITEMS %}
+        <li><a href="{{ link }}">{{ name }}</a></li>
+        {% endfor %}
+        {% if DISPLAY_PAGES_ON_MENU %}{% for p in pages %}
+        <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+        {% endfor %}{% endif %}
+      </ul>
+      <ul2>
+	{% for icon, name, link in SOCIAL_EMAIL %}
+        <li><a href="{{ link }}"><i class="fa {{icon}}"></i> {{ name }}</a></li>
+        {% endfor %}
+      </ul2>
+    </div>
+  </aside>
+
+  <main>
+    <br>
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+      {% block footer %}
+      {% endblock %}
+    </footer>
+
+    <div id="ending_message">
+      <p>Built using <a href="http://getpelican.com">Pelican</a>. <a
+      href="https://github.com/alvaroribas/pelican-minimal">Fork this theme on github!</a></p>
+    </div>
+  </main>
+  {% include "modules/analytics.html" %}
+</body>
+</html>
