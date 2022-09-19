@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2021-12-25T15:20:00+05:30</updated><entry><title>A Note on Conditional Probability</title><link href="https://aniruddhadeb.com/articles/2021/note-on-conditional-probability.html" rel="alternate"></link><published>2021-12-25T15:20:00+05:30</published><updated>2021-12-25T15:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2021-12-25:/articles/2021/note-on-conditional-probability.html</id><summary type="html">&lt;p&gt;$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-09-19T17:30:00+05:30</updated><entry><title>The JEE never fails to amaze</title><link href="https://aniruddhadeb.com/articles/2022/jee-2022-problem.html" rel="alternate"></link><published>2022-09-19T17:30:00+05:30</published><updated>2022-09-19T17:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-09-19:/articles/2022/jee-2022-problem.html</id><summary type="html">&lt;p&gt;I promised I wouldn't look at the JEE 2022 paper, but couldn't help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India's students difficult, and they never cease to amaze.&lt;/p&gt;
+&lt;p&gt;Welp, this will be a short …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I promised I wouldn't look at the JEE 2022 paper, but couldn't help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India's students difficult, and they never cease to amaze.&lt;/p&gt;
+&lt;p&gt;Welp, this will be a short one. Let's cut to the chase!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The greatest integer less than or equal to 
+$$\int_1^2 \log_2(x^3 + 1) dx + \int_1^{\log_2 9} (2^x - 1)^{1/3} dx$$
+is &lt;strong&gt;&lt;em&gt;_&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Looks fearsome, but peek between the lines and a pattern seems to emerge if you look at the limits of integration and the functions themselves.&lt;/p&gt;
+&lt;p&gt;$$\begin{align}
+y &amp;amp;= \log_2 (x^3 + 1) \\
+2^y &amp;amp;= x^3 + 1 \\
+(2^y - 1)^{1/3} &amp;amp;= x 
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;Okay, so both the functions are bijections in the domains of integration, and are inverses of each other. The limits of integration are also inverses! This suggests we should have a closer look at expressions of the form&lt;/p&gt;
+&lt;p&gt;$$\int_a^b f(x) dx + \int_{f^{-1}(a)}^{f^{-1}(b)} f^{-1}(x) dx$$&lt;/p&gt;
+&lt;p&gt;See a pattern? Try graphing out what these functions will look like. &lt;/p&gt;
+&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
+&lt;blockquote class='spoiler'&gt;
+&lt;div class='spoiler-prompt'&gt; Mouseover/tap for the answer&lt;/div&gt;
+&lt;div class='spoiler-text'&gt; Since they're perfect inverses, and the inverse domains also match, these functions will form a rectangle on the cartesian plane, and the integration will be a 'cutout' of this rectangle. 
+
+&lt;img src="res/integration.jpeg"&gt;
+
+Therefore, the answer is $4\log_2(3) - 1 \approx 5.3 &gt; 5$.
+&lt;/div&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Hint: Integrate without integrating :)&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="JEE"></category></entry><entry><title>A Note on Conditional Probability</title><link href="https://aniruddhadeb.com/articles/2021/note-on-conditional-probability.html" rel="alternate"></link><published>2021-12-25T15:20:00+05:30</published><updated>2021-12-25T15:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2021-12-25:/articles/2021/note-on-conditional-probability.html</id><summary type="html">&lt;p&gt;$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$
 To motivate this note, I’ll pose the following …&lt;/p&gt;</summary><content type="html">&lt;p&gt;$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$
 To motivate this note, I’ll pose the following problem:&lt;/p&gt;
 &lt;blockquote&gt;

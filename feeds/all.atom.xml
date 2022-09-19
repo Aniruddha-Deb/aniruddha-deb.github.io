@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-09-18T12:00:00+05:30</updated><entry><title>Seven Days of Creation</title><link href="https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html" rel="alternate"></link><published>2022-09-18T12:00:00+05:30</published><updated>2022-09-18T12:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-09-18:/articles/2022/seven-days-of-creation.html</id><summary type="html">&lt;p&gt;When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Our networks course required us to construct a peer-server-peer file transfer protocol, wherein once chunks of the file are evenly distributed to different clients, the clients contact the server for chunks they don't have, and the server in turn queries all other clients if they have the chunk. If they do, they send it back to the server, which in turn relays it back to the client. This continues until all connected parties have the complete file.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-09-19T17:30:00+05:30</updated><entry><title>The JEE never fails to amaze</title><link href="https://aniruddhadeb.com/articles/2022/jee-2022-problem.html" rel="alternate"></link><published>2022-09-19T17:30:00+05:30</published><updated>2022-09-19T17:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-09-19:/articles/2022/jee-2022-problem.html</id><summary type="html">&lt;p&gt;I promised I wouldn't look at the JEE 2022 paper, but couldn't help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India's students difficult, and they never cease to amaze.&lt;/p&gt;
+&lt;p&gt;Welp, this will be a short …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I promised I wouldn't look at the JEE 2022 paper, but couldn't help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India's students difficult, and they never cease to amaze.&lt;/p&gt;
+&lt;p&gt;Welp, this will be a short one. Let's cut to the chase!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The greatest integer less than or equal to 
+$$\int_1^2 \log_2(x^3 + 1) dx + \int_1^{\log_2 9} (2^x - 1)^{1/3} dx$$
+is &lt;strong&gt;&lt;em&gt;_&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Looks fearsome, but peek between the lines and a pattern seems to emerge if you look at the limits of integration and the functions themselves.&lt;/p&gt;
+&lt;p&gt;$$\begin{align}
+y &amp;amp;= \log_2 (x^3 + 1) \\
+2^y &amp;amp;= x^3 + 1 \\
+(2^y - 1)^{1/3} &amp;amp;= x 
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;Okay, so both the functions are bijections in the domains of integration, and are inverses of each other. The limits of integration are also inverses! This suggests we should have a closer look at expressions of the form&lt;/p&gt;
+&lt;p&gt;$$\int_a^b f(x) dx + \int_{f^{-1}(a)}^{f^{-1}(b)} f^{-1}(x) dx$$&lt;/p&gt;
+&lt;p&gt;See a pattern? Try graphing out what these functions will look like. &lt;/p&gt;
+&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
+&lt;blockquote class='spoiler'&gt;
+&lt;div class='spoiler-prompt'&gt; Mouseover/tap for the answer&lt;/div&gt;
+&lt;div class='spoiler-text'&gt; Since they're perfect inverses, and the inverse domains also match, these functions will form a rectangle on the cartesian plane, and the integration will be a 'cutout' of this rectangle. 
+
+&lt;img src="res/integration.jpeg"&gt;
+
+Therefore, the answer is $4\log_2(3) - 1 \approx 5.3 &gt; 5$.
+&lt;/div&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Hint: Integrate without integrating :)&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="JEE"></category></entry><entry><title>Seven Days of Creation</title><link href="https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html" rel="alternate"></link><published>2022-09-18T12:00:00+05:30</published><updated>2022-09-18T12:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-09-18:/articles/2022/seven-days-of-creation.html</id><summary type="html">&lt;p&gt;When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Our networks course required us to construct a peer-server-peer file transfer protocol, wherein once chunks of the file are evenly distributed to different clients, the clients contact the server for chunks they don't have, and the server in turn queries all other clients if they have the chunk. If they do, they send it back to the server, which in turn relays it back to the client. This continues until all connected parties have the complete file.&lt;/p&gt;
 &lt;p&gt;A thread-based implementation in Python was suggested, but given the requirements, I decided to go one level deeper: make a C++-based implementation with non-blocking sockets and asynchronous IO.&lt;/p&gt;
 &lt;h2&gt;Day One&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -400,15 +427,13 @@
 &lt;p&gt;&lt;sup id="footnote-4"&gt;4&lt;/sup&gt; Yes, I know &lt;a href="https://w3techs.com/technologies/history_overview/programming_language"&gt;more than 75% of the web uses PHP&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;sup id="footnote-5"&gt;5&lt;/sup&gt; Okay, this was actually a pretty nice article :P but you get my point&lt;/p&gt;
 &lt;p&gt;&lt;sup id="footnote-6"&gt;6&lt;/sup&gt; Humour is when the joke's on you but hits the other fellow first - before it boomerangs ~ Langston Hughes&lt;/p&gt;
-&lt;p&gt;&lt;sup id="footnote-7"&gt;7&lt;/sup&gt; Bad example, as we'll all probably be driving EV's soon&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Intern Inferno</title><link href="https://aniruddhadeb.com/articles/2022/intern-inferno.html" rel="alternate"></link><published>2022-08-14T15:30:00+05:30</published><updated>2022-08-14T15:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-08-14:/articles/2022/intern-inferno.html</id><summary type="html">&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;sup id="footnote-7"&gt;7&lt;/sup&gt; Bad example, as we'll all probably be driving EV's soon&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Intern Inferno</title><link href="https://aniruddhadeb.com/articles/2022/intern-inferno.html" rel="alternate"></link><published>2022-08-14T15:30:00+05:30</published><updated>2022-08-14T15:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-08-14:/articles/2022/intern-inferno.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Not everything goes exactly as planned. That's why it's a plan, not a certainty. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Aiming in&lt;/h2&gt;
 &lt;p&gt;Before this entire &lt;em&gt;joomla&lt;/em&gt; started, I asked myself: &lt;em&gt;What is it I want from an intern&lt;/em&gt;? &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I wanted to tour: I didn't pick up a foreign research intern this summer, and was tired of …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;li&gt;I wanted to tour: I didn't pick up a foreign research intern this summer, and was tired of …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;Not everything goes exactly as planned. That's why it's a plan, not a certainty. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Aiming in&lt;/h2&gt;
@@ -468,6 +493,7 @@
 &lt;h2&gt;What now?&lt;/h2&gt;
 &lt;p&gt;So your interviews are over, and you're waiting at your hostel room, playing cards and biding time till your offer comes in. Several others have received on-the-spot offers, and you've been told by all your interviewers that you'll "get to know via your placement cell". Someone pings you asking if you got the offer, because XYZ got it now, and you run to your laptop and load the portal. What does your next LinkedIn post say?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;drumrolls&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
 &lt;blockquote class='spoiler'&gt;
 &lt;div class='spoiler-prompt'&gt; I'm pleased to announce that I'll be joining ... &lt;/div&gt;
 &lt;div class='spoiler-text'&gt; I'm pleased to announce that I'll be joining &lt;a href="https://www.optiver.com"&gt;Optiver&lt;/a&gt; at their Amsterdam office next summer as a &lt;b&gt;Software Engineering Intern&lt;/b&gt;. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - General</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/general.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-08-14T15:30:00+05:30</updated><entry><title>Intern Inferno</title><link href="https://aniruddhadeb.com/articles/2022/intern-inferno.html" rel="alternate"></link><published>2022-08-14T15:30:00+05:30</published><updated>2022-08-14T15:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-08-14:/articles/2022/intern-inferno.html</id><summary type="html">&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - General</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/general.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-08-14T15:30:00+05:30</updated><entry><title>Intern Inferno</title><link href="https://aniruddhadeb.com/articles/2022/intern-inferno.html" rel="alternate"></link><published>2022-08-14T15:30:00+05:30</published><updated>2022-08-14T15:30:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-08-14:/articles/2022/intern-inferno.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Not everything goes exactly as planned. That's why it's a plan, not a certainty. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Aiming in&lt;/h2&gt;
 &lt;p&gt;Before this entire &lt;em&gt;joomla&lt;/em&gt; started, I asked myself: &lt;em&gt;What is it I want from an intern&lt;/em&gt;? &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I wanted to tour: I didn't pick up a foreign research intern this summer, and was tired of …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;li&gt;I wanted to tour: I didn't pick up a foreign research intern this summer, and was tired of …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;Not everything goes exactly as planned. That's why it's a plan, not a certainty. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Aiming in&lt;/h2&gt;
@@ -67,6 +65,7 @@
 &lt;h2&gt;What now?&lt;/h2&gt;
 &lt;p&gt;So your interviews are over, and you're waiting at your hostel room, playing cards and biding time till your offer comes in. Several others have received on-the-spot offers, and you've been told by all your interviewers that you'll "get to know via your placement cell". Someone pings you asking if you got the offer, because XYZ got it now, and you run to your laptop and load the portal. What does your next LinkedIn post say?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;drumrolls&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="res/spoiler.css"&gt;&lt;/p&gt;
 &lt;blockquote class='spoiler'&gt;
 &lt;div class='spoiler-prompt'&gt; I'm pleased to announce that I'll be joining ... &lt;/div&gt;
 &lt;div class='spoiler-text'&gt; I'm pleased to announce that I'll be joining &lt;a href="https://www.optiver.com"&gt;Optiver&lt;/a&gt; at their Amsterdam office next summer as a &lt;b&gt;Software Engineering Intern&lt;/b&gt;. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.
