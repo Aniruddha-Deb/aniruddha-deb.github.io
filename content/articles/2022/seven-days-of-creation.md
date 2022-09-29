@@ -248,7 +248,7 @@ Here are some numbers. For context, A2_small_file.txt is a 100kB text file.
 
 If you felt like this article was too fast, or too poorly written, you now know why :')
 
-Since the assignment deadline is still not over, I've consciously not divulged many specifics. Will probably release a follow-up on the protocol and client-server design itself later on.
+<strike>Since the assignment deadline is still not over, I've consciously not divulged many specifics. Will probably release a follow-up on the protocol and client-server design itself later on.</strike> Update: you can play with the code [here](https://github.com/Aniruddha-Deb/trickle)
 
 ## Footnotes
 
