@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Tue, 04 Oct 2022 19:00:00 +0530</lastBuildDate><item><title>Manjaro Rice</title><link>https://aniruddhadeb.com/articles/2022/manjaro-rice.html</link><description>&lt;p&gt;&lt;img alt="rice 1" src="/articles/2022/res/manjaro_rice_1.png"&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Thu, 06 Oct 2022 18:00:00 +0530</lastBuildDate><item><title>Installing ns3: What worked</title><link>https://aniruddhadeb.com/articles/2022/ns3-installation.html</link><description>&lt;h2&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;XCode CLT (which you should have)&lt;/li&gt;
+&lt;li&gt;QT 5. Install via &lt;code&gt;brew install qt5&lt;/code&gt;. NOTE: if you already have an updated version of Qt, you'll need to pass a different &lt;code&gt;qmake&lt;/code&gt;, and brew won't link this to your system. Brew will inform you of this, and you'll manually need to pass the path to &lt;code&gt;qmake&lt;/code&gt; while building. More on this later.&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;? PyBindGen - I installed this via &lt;code&gt;pip install pybindgen&lt;/code&gt;, but &lt;code&gt;waf&lt;/code&gt; didn't pick it up. If anyone else succeeds, let me know in the comments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the source code, unzip with &lt;code&gt;tar -xvf&lt;/code&gt; and &lt;code&gt;cd&lt;/code&gt; into the directory&lt;/li&gt;
+&lt;li&gt;Use the following command to build: &lt;code&gt;./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --disable-werror&lt;/code&gt; (Without the stuff in the square brackets, if you don't have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aaaand you're good! To test, change into the &lt;code&gt;ns-3.29&lt;/code&gt; directory and do &lt;code&gt;./waf --run hello-simulator&lt;/code&gt;. You should see &lt;code&gt;Hello Simulator&lt;/code&gt; printed. To test NetAnim, go to the &lt;code&gt;netanim-3.108&lt;/code&gt; folder and do &lt;code&gt;./NetAnim&lt;/code&gt;, and you should see the NetAnim GUI pop up. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 06 Oct 2022 18:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-10-06:/articles/2022/ns3-installation.html</guid><category>Programming</category><category>Programming</category><category>Networks</category></item><item><title>Manjaro Rice</title><link>https://aniruddhadeb.com/articles/2022/manjaro-rice.html</link><description>&lt;p&gt;&lt;img alt="rice 1" src="/articles/2022/res/manjaro_rice_1.png"&gt;
 &lt;img alt="rice 2" src="/articles/2022/res/manjaro_rice_2.png"&gt;&lt;/p&gt;
 &lt;p&gt;ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing. &lt;/p&gt;
 &lt;p&gt;Wallpaper: &lt;a href="https://i.imgur.com/cCIfZTm.jpeg"&gt;Pick and Place&lt;/a&gt;.&lt;/p&gt;
