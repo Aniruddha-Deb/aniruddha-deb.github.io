@@ -14,6 +14,8 @@ Slug: ns3-installation
 ## Installation
 
 * Download the source code, unzip with `tar -xvf` and `cd` into the directory
-* Use the following command to build: `./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --disable-werror` (Without the stuff in the square brackets, if you don't have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).
+* Use the following command to build: `./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --build-profile=optimized --disable-werror` (Without the stuff in the square brackets, if you don't have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).
 
 Aaaand you're good! To test, change into the `ns-3.29` directory and do `./waf --run hello-simulator`. You should see `Hello Simulator` printed. To test NetAnim, go to the `netanim-3.108` folder and do `./NetAnim`, and you should see the NetAnim GUI pop up. 
+
+**Update**: The python bindings are generated when you run `waf` using python2 (no idea why not with python3). To generate them, go to `ns-3.29` and run `python2 waf configure --build-profile=optimized --enable-examples --enable-tests --disable-werror` and then `./waf build`.
