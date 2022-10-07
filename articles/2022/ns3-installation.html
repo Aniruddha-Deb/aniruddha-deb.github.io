@@ -122,9 +122,10 @@ MathJax = {
 <h2>Installation</h2>
 <ul>
 <li>Download the source code, unzip with <code>tar -xvf</code> and <code>cd</code> into the directory</li>
-<li>Use the following command to build: <code>./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --disable-werror</code> (Without the stuff in the square brackets, if you don't have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).</li>
+<li>Use the following command to build: <code>./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --build-profile=optimized --disable-werror</code> (Without the stuff in the square brackets, if you don't have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).</li>
 </ul>
 <p>Aaaand you're good! To test, change into the <code>ns-3.29</code> directory and do <code>./waf --run hello-simulator</code>. You should see <code>Hello Simulator</code> printed. To test NetAnim, go to the <code>netanim-3.108</code> folder and do <code>./NetAnim</code>, and you should see the NetAnim GUI pop up. </p>
+<p><strong>Update</strong>: The python bindings are generated when you run <code>waf</code> using python2 (no idea why not with python3). To generate them, go to <code>ns-3.29</code> and run <code>python2 waf configure --build-profile=optimized --enable-examples --enable-tests --disable-werror</code> and then <code>./waf build</code>.</p>
   </div>
   <div class="tag-cloud">
     <p>
