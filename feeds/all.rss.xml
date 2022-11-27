@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Fri, 25 Nov 2022 21:05:00 +0530</lastBuildDate><item><title>The Man Who Sold The World</title><link>https://aniruddhadeb.com/articles/2022/man-who-sold-the-world.html</link><description>&lt;blockquote&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Mon, 28 Nov 2022 02:00:00 +0530</lastBuildDate><item><title>Martingale Basics</title><link>https://aniruddhadeb.com/articles/2022/martingale-basics.html</link><description>&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
+&lt;h2&gt;Recap&lt;/h2&gt;
+&lt;p&gt;If you remember the &lt;a href="https://aniruddhadeb.com/articles/2021/note-on-random-variables.md"&gt;note on random variables&lt;/a&gt;, then this picks up exactly where that left off.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.1&lt;/strong&gt;: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Recall that a $\sigma$-algebra is simply a collection of subsets over $X$ that is closed over unions, intersections and complements.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.2&lt;/strong&gt;: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a &lt;em&gt;sub $\sigma$-algebra&lt;/em&gt; of $\mathcal{A}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;An example: Say we have a probability triple $\triple$ defined over the experiment of tossing two coins. Then, 
+$$\begin{align}
+\Omega &amp;amp;= {HH, HT, TH, TT} \\
+\mathcal{F} &amp;amp;= 2^{\Omega} \\
+\mathbf{P}(S) &amp;amp;= |S|/4
+\end{align}$$&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 28 Nov 2022 02:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-11-28:/articles/2022/martingale-basics.html</guid><category>Mathematics</category><category>Mathematics</category></item><item><title>The Man Who Sold The World</title><link>https://aniruddhadeb.com/articles/2022/man-who-sold-the-world.html</link><description>&lt;blockquote&gt;
 &lt;p&gt;We passed upon the stair&lt;br&gt;
 We spoke of was and when&lt;br&gt;
 Although I wasn't there&lt;br&gt;
