@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-11-28T02:00:00+05:30</updated><entry><title>Martingale Basics</title><link href="https://aniruddhadeb.com/articles/2022/martingale-basics.html" rel="alternate"></link><published>2022-11-28T02:00:00+05:30</published><updated>2022-11-28T02:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-28:/articles/2022/martingale-basics.html</id><summary type="html">&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/all.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-11-28T03:00:00+05:30</updated><entry><title>Filtrations</title><link href="https://aniruddhadeb.com/articles/2022/filtrations.html" rel="alternate"></link><published>2022-11-28T03:00:00+05:30</published><updated>2022-11-28T03:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-28:/articles/2022/filtrations.html</id><summary type="html">&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
 &lt;h2&gt;Recap&lt;/h2&gt;
 &lt;p&gt;If you remember the &lt;a href="https://aniruddhadeb.com/articles/2021/note-on-random-variables.md"&gt;note on random variables&lt;/a&gt;, then this picks up exactly where that left off.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -13,12 +13,47 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Definition 1.2&lt;/strong&gt;: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a &lt;em&gt;sub $\sigma$-algebra&lt;/em&gt; of $\mathcal{A}$&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;An example: Say we have a probability triple $\triple$ defined over the experiment of tossing two coins. Then, 
+&lt;p&gt;An example: Say we have a probability triple $\triple$ defined over the experiment of tossing two &lt;em&gt;independent, unbiased&lt;/em&gt; coins. Then, 
 $$\begin{align}
-\Omega &amp;amp;= {HH, HT, TH, TT} \\
+\Omega &amp;amp;= \{HH, HT, TH, TT\} \\
 \mathcal{F} &amp;amp;= 2^{\Omega} \\
 \mathbf{P}(S) &amp;amp;= |S|/4
-\end{align}$$&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category></entry><entry><title>The Man Who Sold The World</title><link href="https://aniruddhadeb.com/articles/2022/man-who-sold-the-world.html" rel="alternate"></link><published>2022-11-25T21:05:00+05:30</published><updated>2022-11-25T21:05:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-25:/articles/2022/man-who-sold-the-world.html</id><summary type="html">&lt;blockquote&gt;
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;The role of a $\sigma$-algebra in a probability triple is to define over what events probability is defined. If we toss two coins sequentially, our probability space would be $\Omega = \{HH, HT, TH, TT\}$, but after tossing the first coin, we wouldn't be able to obtain the probability for events such as &lt;em&gt;Both coins show the same face&lt;/em&gt; (as we simply don't know the probability that the second coin turns up heads, or, in a more complicated setup, if the second coin's toss is correlated with the first coin's toss). An even simpler example is the state before we toss both coins: the coins are guaranteed to turn up some configuration in $\Omega$ with probability 1, but we can't pinpoint which configuration without knowing the probabilities associated with the coins. &lt;/p&gt;
+&lt;p&gt;$\sigma$-algebras, then, give us the 'coarseness' of the type of events that we're allowed to play with. The trivial $\sigma$-algebra $\{\emptyset, 2^{\Omega}\}$ will give us either the event happening or not happening, and the complete $\sigma$-algebra $2^{\Omega}$ will give us the probability of every possible type of event (provided we have a suitable measure over this space).&lt;/p&gt;
+&lt;h2&gt;Filtrations&lt;/h2&gt;
+&lt;p&gt;We'll now explore the concept of a &lt;em&gt;filtration&lt;/em&gt;: A filtration is formally defined as follows:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.3&lt;/strong&gt;: A filtration is a sequence of $\sigma$-algebras $\mathcal{F}_i$ such that $\mathcal{F}_0 \subseteq \mathcal{F}_1 \subseteq \ldots \subseteq \mathcal{F}_n \subseteq \ldots$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Filtrations can be finite as well as infinite. A filtration basically captures the 'coarseness' of a set of events. Consider the same example as before. We'll obtain three $\sigma$-algebras corresponding to the three states of the experiment&lt;sup&gt;&lt;a href="#footnote-1"&gt;1&lt;/a&gt;&lt;/sup&gt;: no coins are tossed, one coin has been tossed and both coins have been tossed. The set of outcomes of a single coin is defined as $\Omega_1 = \{ H, T\}$ and that for two coins is defined as $\Omega_2 = \{HH, HT, TH, TT\}$. Then&lt;/p&gt;
+&lt;p&gt;\begin{align}
+\mathcal{F}_{0}  &amp;amp; =\{ \emptyset,\Omega_{2}\} \\
+\mathcal{F}_{1}  &amp;amp;=\{ \emptyset,\{ HH,HT\} ,\{ TH,TT\} ,\{ HH,HT,TH,TT\} \} \\
+\mathcal{F}_{2} &amp;amp; = \left\{ \begin{array}{c}
+\emptyset,\\
+\{ HH\} ,\{ HT\} ,\{ TH\} ,\{ TT\} \\
+\{ HH,HT\} ,\{ HH,TH\} ,\{ HH,TT\} ,\{ HT,TH\} ,\{ HT,TT\} ,\{ TH,TT\} \\
+\{ HH,HT,TH\} ,\{ HH,HT,TT\} ,\{ HH,TH,TT\} ,\{ HT,TH, TT\} \\
+\{ HH,HT,TH,TT\}
+\end{array}\right\} 
+\end{align}&lt;/p&gt;
+&lt;p&gt;Are the filtrations after these steps. Why only these? Looking at $\mathcal{F}_1$, we can obtain probabilities for the following events:&lt;/p&gt;
+&lt;p&gt;$$\mathcal{F}_1 = \{ \emptyset, \underset{\text{first coin is H}}{\{ HH, HT \}}, \underset{\text{first coin is T}}{\{TH, TT\}}, \underset{\text{first coin is H or T}}{\{HH, HT, TH, TT\}}\}$$&lt;/p&gt;
+&lt;p&gt;We can also write $\mathcal{F}_1$ as the cross product of the $\sigma$-algebra of $\Omega_1$ with $\Omega_1$:&lt;/p&gt;
+&lt;p&gt;$$\mathcal{F}_1 = \underset{\text{All possibilities for the first coin}}{2^{\Omega_1}} \times \underset{\text{Possibilities for the next coin}}{\Omega_1}$$&lt;/p&gt;
+&lt;p&gt;This final argument lends itself to the generalization we seek: If we now have, say an infinite number of coins that we toss, then we can generate the sub $\sigma$-algebras &lt;/p&gt;
+&lt;p&gt;$$\mathcal{F}_i = 2^{\Omega_i} \times \Omega_\infty$$&lt;/p&gt;
+&lt;p&gt;This is a filtration, as we have $\mathcal{F}_0 \subseteq \mathcal{F}_1 \subseteq \ldots \subseteq \mathcal{F}_n \subseteq \ldots$&lt;/p&gt;
+&lt;h2&gt;What next?&lt;/h2&gt;
+&lt;p&gt;This only scratches the tip of the surface on what filtrations are and what they can do. Filtrations lend themselves well to stochastic processes (basically sequences of random variables defined on the same probability space). They are so common that we have the following definition:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.4&lt;/strong&gt;: A &lt;em&gt;natural filtration&lt;/em&gt; of a stochastic process $X = (X_i)_{i=1}^n$ is defined as $\mathcal{F}_i = \sigma(X_k | k \le i)$ (The $\sigma$-algebra generated by the random variables upto $i$).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As an exercise, try to verify that this is indeed a filtration.&lt;/p&gt;
+&lt;p&gt;Most of this work was taken from &lt;a href="https://en.wikipedia.org/wiki/Filtration_(probability_theory)"&gt;Wikipedia&lt;/a&gt; and this very helpful &lt;a href="https://math.stackexchange.com/questions/3029823/intuition-of-sub-sigma-algebra-definition"&gt;StackExchange thread&lt;/a&gt;. I would've preferred a more verbose explanation in both these areas, which is why I wrote this up in case someone needs it :)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;sup id="footnote-1"&gt;1&lt;/sup&gt; Why are there not three probability triples corresponding to the three states? A philosophical explanation is that they're the same experiment, but a mathematical one is that even if we do have three triples, the sample space $\Omega$ would be the same across all three, and all three probability measures $\P$ would have to agree with each other. That is, for $S \in \mathcal{F}_1$, we cannot have $\P_1(S) \neq \P_2(S)$: the experiment remains the same (we're tossing the same coins, so this is not possible). Also, note that $\mathcal{F}_1 \subseteq \mathcal{F}_2$, so if $S \in \mathcal{F}_1$, then we'll also have $S \in \mathcal{F}_2$. Hence, it suffices to have just three $\sigma$-algebras&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category></entry><entry><title>The Man Who Sold The World</title><link href="https://aniruddhadeb.com/articles/2022/man-who-sold-the-world.html" rel="alternate"></link><published>2022-11-25T21:05:00+05:30</published><updated>2022-11-25T21:05:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-25:/articles/2022/man-who-sold-the-world.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;We passed upon the stair&lt;br&gt;
 We spoke of was and when&lt;br&gt;
 Although I wasn't there&lt;br&gt;
