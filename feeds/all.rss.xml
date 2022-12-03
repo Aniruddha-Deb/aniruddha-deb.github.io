@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Mon, 28 Nov 2022 03:00:00 +0530</lastBuildDate><item><title>Filtrations</title><link>https://aniruddhadeb.com/articles/2022/filtrations.html</link><description>&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sat, 03 Dec 2022 05:00:00 +0530</lastBuildDate><item><title>Bootloader Deep Dive</title><link>https://aniruddhadeb.com/articles/2022/boot-deep-dive.html</link><description>&lt;h2&gt;The Basics&lt;/h2&gt;
+&lt;p&gt;The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS
+first detects the CPU/RAM, then initializes the remainder of the hardware, and
+then begins the boot sequence. The boot sequence basically consists of finding 
+a bootable device, loading the boot program in that bootable device into the 
+processor cache and letting the processor do it's thing.&lt;/p&gt;
+&lt;p&gt;How is a bootable device found? A device is considered bootable if it has the 
+magic bytes &lt;code&gt;0x55&lt;/code&gt; and &lt;code&gt;0xaa&lt;/code&gt; at offsets 511 and 512 from the start. This block
+is called the &lt;em&gt;boot block&lt;/em&gt; or &lt;em&gt;master boot record&lt;/em&gt; (MBR), and this is what
+kicks off the boot process. &lt;/p&gt;
+&lt;p&gt;The MBR looks something like this: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;sensei@manjaro-vm temp&lt;span class="o"&gt;]&lt;/span&gt;$ sudo dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sda &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;mbr.bin &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;512&lt;/span&gt; &lt;span class="nv"&gt;count&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;1&lt;/span&gt;+0 records in
+&lt;span class="m"&gt;1&lt;/span&gt;+0 records out
+&lt;span class="m"&gt;512&lt;/span&gt; bytes copied, &lt;span class="m"&gt;0&lt;/span&gt;.00493179 s, &lt;span class="m"&gt;104&lt;/span&gt; kB/s
+&lt;span class="o"&gt;[&lt;/span&gt;sensei@manjaro-vm temp&lt;span class="o"&gt;]&lt;/span&gt;$ hexdump mbr.bin 
+&lt;span class="m"&gt;0000000&lt;/span&gt; 63eb &lt;span class="m"&gt;0090&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt;
+&lt;span class="m"&gt;0000010&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt;
+*
+&lt;span class="m"&gt;0000050&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;8000&lt;/span&gt; &lt;span class="m"&gt;0001&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt;
+&lt;span class="m"&gt;0000060&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; faff &lt;span class="m"&gt;9090&lt;/span&gt; c2f6 &lt;span class="m"&gt;7480&lt;/span&gt; f605 70c2
+...
+...
+00001c0 &lt;span class="m"&gt;0021&lt;/span&gt; fe83 ffff &lt;span class="m"&gt;0800&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; f026 01df &lt;span class="m"&gt;0000&lt;/span&gt;
+00001d0 &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt;
+*
+00001f0 &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; &lt;span class="m"&gt;0000&lt;/span&gt; aa55
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;dd&lt;/code&gt; copies the first 512 bytes of my disk to a binary called &lt;code&gt;mbr.bin&lt;/code&gt;, and 
+we hexdump it's contents. Note the &lt;code&gt;0x55&lt;/code&gt; and &lt;code&gt;0xaa&lt;/code&gt; magic bytes right at the 
+end (the system is little endian, so it reads as &lt;code&gt;aa55&lt;/code&gt;). These 512 bytes tell 
+the system to load in GRUB, which then begins the boot process.&lt;/p&gt;
+&lt;h2&gt;GRUB&lt;/h2&gt;
+&lt;p&gt;The GRand Unified Bootloader is the default bootloader on Linux systems. What 
+GRUB does is create a basic runtime, initializes the ramdisk and finally loads 
+the kernel in. GRUB is launched by those 512 bytes that we saw above. The
+actual GRUB files are stored in &lt;code&gt;/boot/grub&lt;/code&gt;, and they look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/boot/grub
+├── fonts
+│   └── unicode.pf2
+├── grub.cfg
+├── grubenv
+├── i386-pc
+│   ├── acpi.mod
+│   ├── adler32.mod
+│   │   ...
+│   │   ...
+│   └── zstd.mod
+├── locale
+│   ├── ast.mo
+│   ├── ca.mo
+│   │   ...
+│   │   ...
+│   └── zh_TW.mo
+└── themes
+    └── starfield
+        ├── blob_w.png
+        │   ...
+        │   ...
+        └── theme.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;What GRUB does is essentially create a 'mini 32-bit linux OS', with debug
+environments, a shell, and a lot of creature comforts, but beyond all that, it 
+creates the RAMFS and loads the kernel and points it to the RAMFS. This can be 
+seen in the &lt;code&gt;grub.cfg&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;menuentry &lt;span class="s1"&gt;&amp;#39;Manjaro Linux&amp;#39;&lt;/span&gt; --class manjaro --class gnu-linux --class gnu --class os &lt;span class="nv"&gt;$menuentry_id_option&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;gnulinux-simple-ffd2d1d7-a3e5-4e24-816d-d83f13c56708&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    savedefault
+    load_video
+    ...
+    ...
+    linux   /boot/vmlinuz-5.15-x86_64 &lt;span class="nv"&gt;root&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;UUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ffd2d1d7-a3e5-4e24-816d-d83f13c56708 rw  quiet udev.log_priority&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;
+    initrd  /boot/intel-ucode.img /boot/initramfs-5.15-x86_64.img
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note the last two lines: here we're specifying the actual linux kernel image
+using the &lt;code&gt;linux&lt;/code&gt; command, and the files that initialize the RAMFS using &lt;code&gt;initrd&lt;/code&gt;.
+(The &lt;code&gt;intel-ucode.img&lt;/code&gt; is a bunch of microcode patches that the OS loads in to 
+workaround hardware-level bugs, think heartbleed, spectre etc. It's super 
+important to load this in before anything else, so that the boot process may 
+not be compromised and so on.)&lt;/p&gt;
+&lt;h2&gt;What's a RAMFS&lt;/h2&gt;
+&lt;p&gt;A RAM file system (or RAM disk) is, quite simply, a file system in memory! When 
+the system needs to boot, the files for the system may not simply be on the 
+HDD/SSD: they can be somewhere on the network (PXE boot), on a removable media 
+(USB,CDROM) or on an encrypted drive! (BootLocker equivalents on Linux). For 
+all this, we need a temporary file system that the kernel can run off of to
+load the OS into actual memory.&lt;/p&gt;
+&lt;p&gt;Another reason for a RAMFS is that the Linux kernel is neither monolithic, nor 
+a microkernel: it's somewhere in between in the sense that you can load modules 
+into the kernel while it's running. To do the stuff that we've described above,
+(Boot off of the network, decrypt an encrypted drive, etc), the relevant kernel 
+modules will need to be loaded into the kernel first. These generally reside in 
+the initramfs image, and are loaded into memory by the kernel. &lt;code&gt;initramfs&lt;/code&gt; is 
+generally a &lt;code&gt;cpio&lt;/code&gt; compressed image, which is decompressed when it's loaded in 
+(something that GRUB does), and this is generated using the &lt;code&gt;mkinitcpio&lt;/code&gt; command, 
+after specifying the default modules and hooks (for more information, check 
+out &lt;a href="https://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/"&gt;This great resource&lt;/a&gt;
+which boots a Linux Kernel from scratch in QEMU)&lt;/p&gt;
+&lt;h2&gt;From Kernel to Login Screen&lt;/h2&gt;
+&lt;p&gt;Once the Kernel has finally loaded all the modules from the RAMFS and entrenched 
+itself in memory, it calls &lt;code&gt;/init&lt;/code&gt; in the RAMFS to finally load the disk and 
+all other modules from disk.&lt;/p&gt;
+&lt;p&gt;It's all downhill from here: once all modules have been loaded, &lt;code&gt;systemd&lt;/code&gt; (or 
+&lt;a href="https://nosystemd.org/"&gt;Your favourite Init Daemon&lt;/a&gt;) is called, which starts 
+as PID 1 and spawns all relevant processes on the system. &lt;code&gt;systemd&lt;/code&gt; will then 
+start LightDM (On Manjaro, you might have a different Desktop Manager), which 
+displays your login prompt, and you can now finally login!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image of a login screen" src="res/manjaro_cinnamon.png"&gt;&lt;/p&gt;
+&lt;p&gt;Unless, of course, you've locked yourself out with too many failed password 
+attempts&lt;/p&gt;
+&lt;h2&gt;Is this process standard across systems?&lt;/h2&gt;
+&lt;p&gt;Nope. Atleast, not when you change architectures. Or go to UEFI. Ah, let's just 
+say this is very specific.&lt;/p&gt;
+&lt;p&gt;I bumped into this whole process as I wanted to do some kernel hacking on my 
+faithful &lt;a href="https://aniruddhadeb.com/articles/2022/arch-linux-1.html"&gt;Raspberry Pi&lt;/a&gt;.
+I regret to inform all Pi hackers that the bootloader process for the Pi is 
+&lt;a href="https://raspberrypi.stackexchange.com/questions/10442/what-is-the-boot-sequence/10595#10595"&gt;completely different&lt;/a&gt;,
+and much easier, and all you have to do is place your kernel image with the 
+appropriate name in the '/boot' directory and the Pi will boot from it.&lt;/p&gt;
+&lt;p&gt;TL;DR the Pi has a two (three?) stage bootloader, which curiously completely 
+runs on the GPU. The only time the CPU is actually used is when the kernel image 
+is loaded into memory, and the actual init process starts. The bootloaders are 
+&lt;code&gt;.elf&lt;/code&gt; files, and are apparently proprietrary. I'll give decompiling them a 
+shot if I have free time, but I think someone would already have tried that out.&lt;/p&gt;
+&lt;p&gt;On a side note, embedded systems with limited memory and a fairly fixed device 
+layout generally boot without a RAMFS, as there's simply no need to hotload a 
+bunch of modules into the linux kernel, when you know exactly what modules you'll 
+need and what the hardware arrangement (where you're going to boot from) is.&lt;/p&gt;
+&lt;p&gt;Happy Hacking!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 03 Dec 2022 05:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-12-03:/articles/2022/boot-deep-dive.html</guid><category>Programming</category><category>Programming</category></item><item><title>Filtrations</title><link>https://aniruddhadeb.com/articles/2022/filtrations.html</link><description>&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
 &lt;h2&gt;Recap&lt;/h2&gt;
 &lt;p&gt;If you remember the &lt;a href="https://aniruddhadeb.com/articles/2021/note-on-random-variables.md"&gt;note on random variables&lt;/a&gt;, then this picks up exactly where that left off.&lt;/p&gt;
 &lt;blockquote&gt;
