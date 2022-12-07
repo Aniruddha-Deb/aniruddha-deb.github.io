@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sat, 03 Dec 2022 05:00:00 +0530</lastBuildDate><item><title>Bootloader Deep Dive</title><link>https://aniruddhadeb.com/articles/2022/boot-deep-dive.html</link><description>&lt;h2&gt;The Basics&lt;/h2&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Thu, 08 Dec 2022 01:00:00 +0530</lastBuildDate><item><title>HackerFX v2</title><link>https://aniruddhadeb.com/articles/2022/hackerfx-v2.html</link><description>&lt;p&gt;Some of you might have come across &lt;a href="https://github.com/Aniruddha-Deb/HackerFX"&gt;HackerFX&lt;/a&gt;,
+an image binarizer. This was written a long time back, when the only language I 
+knew was Java, and when I was still in school. &lt;/p&gt;
+&lt;p&gt;An update was on the cards for a while, because I wanted to change my desktop 
+background (which still looks surprisingly pretty for something made so long 
+ago). I started playing around with PIL today evening to update this, and the 
+end result is &lt;a href="https://github.com/Aniruddha-Deb/hackerfx-v2"&gt;HackerFX v2&lt;/a&gt;, a 
+python rewrite that supports multicoloured input images, hex, file dumps, 
+variable colors and a manual 5x5 font for the output charactes (so the aspect 
+ratio doesn't have to be manually tweaked). It's a step jump in every way, and 
+the images it generates are super pretty&lt;/p&gt;
+&lt;p&gt;&lt;img alt="jojo" src="res/jojo.jpg"&gt;
+&lt;img alt="jojo_out" src="res/jojo_out.png"&gt;&lt;/p&gt;
+&lt;p&gt;Especially with hi-res shots, you have to zoom in to tell the difference. The 
+performance is also very cool, given that you're iterating over millions of 
+pixels. This does it all in less than 10 seconds.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="input" src="res/hallway.jpeg"&gt;
+&lt;img alt="output" src="res/hallway_out.png"&gt;&lt;/p&gt;
+&lt;p&gt;More examples are there in the github repo, and I haven't played around with 
+the options much to generate prettier ones (it's getting kind of late, should sleep).
+Feel free to clone the code, give it a spin on your images and enter the matrix :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Thu, 08 Dec 2022 01:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2022-12-08:/articles/2022/hackerfx-v2.html</guid><category>Programming</category><category>Programming</category></item><item><title>Bootloader Deep Dive</title><link>https://aniruddhadeb.com/articles/2022/boot-deep-dive.html</link><description>&lt;h2&gt;The Basics&lt;/h2&gt;
 &lt;p&gt;The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS
 first detects the CPU/RAM, then initializes the remainder of the hardware, and
 then begins the boot sequence. The boot sequence basically consists of finding 

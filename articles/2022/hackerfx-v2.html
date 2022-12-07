@@ -44,18 +44,24 @@ MathJax = {
 </script>
 <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
 
-    <meta name="author" content="Aniruddha Deb" />
-    <meta name="description" content="" />
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="Some of you might have come across HackerFX, an image binarizer. This was written a long time back, when the only language I knew was Java, and when I was still in school. An update was on the cards for a while, because I wanted to change my desktop background …" />
+<meta name="keywords" content="Programming">
+
 <meta property="og:site_name" content="Aniruddha Deb"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Aniruddha Deb"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="HackerFX v2"/>
+<meta property="og:description" content="Some of you might have come across HackerFX, an image binarizer. This was written a long time back, when the only language I knew was Java, and when I was still in school. An update was on the cards for a while, because I wanted to change my desktop background …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://aniruddhadeb.com"/>
+<meta property="og:url" content="https://aniruddhadeb.com/articles/2022/hackerfx-v2.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-12-08 01:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddhadeb.com/author/aniruddha-deb.html">
+<meta property="article:section" content="Programming"/>
+<meta property="article:tag" content="Programming"/>
 <meta property="og:image" content="/extras/sitelogo.png">
 
-  <title>Aniruddha Deb &ndash;     Categories
-</title>
+  <title>Aniruddha Deb &ndash; HackerFX v2</title>
 
 </head>
 <body>
@@ -94,23 +100,64 @@ MathJax = {
 
 <article class="single">
   <header>
-    <h1>    Categories
-</h1>
+      
+    <h1 id="hackerfx-v2">HackerFX v2</h1>
+    <p>
+          Posted on Thu 08 December 2022 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
+
+
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="https://aniruddhadeb.com/category/chemistry.html">Chemistry</a> (1)</li>
-      <li><a href="https://aniruddhadeb.com/category/electronics.html">Electronics</a> (5)</li>
-      <li><a href="https://aniruddhadeb.com/category/engineering.html">Engineering</a> (1)</li>
-      <li><a href="https://aniruddhadeb.com/category/general.html">General</a> (6)</li>
-      <li><a href="https://aniruddhadeb.com/category/jee.html">JEE</a> (2)</li>
-      <li><a href="https://aniruddhadeb.com/category/mathematics.html">Mathematics</a> (21)</li>
-      <li><a href="https://aniruddhadeb.com/category/posts.html">Posts</a> (2)</li>
-      <li><a href="https://aniruddhadeb.com/category/programming.html">Programming</a> (21)</li>
-      <li><a href="https://aniruddhadeb.com/category/quizzing.html">Quizzing</a> (2)</li>
-      <li><a href="https://aniruddhadeb.com/category/writing.html">Writing</a> (6)</li>
-    </ul>
+    <p>Some of you might have come across <a href="https://github.com/Aniruddha-Deb/HackerFX">HackerFX</a>,
+an image binarizer. This was written a long time back, when the only language I 
+knew was Java, and when I was still in school. </p>
+<p>An update was on the cards for a while, because I wanted to change my desktop 
+background (which still looks surprisingly pretty for something made so long 
+ago). I started playing around with PIL today evening to update this, and the 
+end result is <a href="https://github.com/Aniruddha-Deb/hackerfx-v2">HackerFX v2</a>, a 
+python rewrite that supports multicoloured input images, hex, file dumps, 
+variable colors and a manual 5x5 font for the output charactes (so the aspect 
+ratio doesn't have to be manually tweaked). It's a step jump in every way, and 
+the images it generates are super pretty</p>
+<p><img alt="jojo" src="res/jojo.jpg">
+<img alt="jojo_out" src="res/jojo_out.png"></p>
+<p>Especially with hi-res shots, you have to zoom in to tell the difference. The 
+performance is also very cool, given that you're iterating over millions of 
+pixels. This does it all in less than 10 seconds.</p>
+<p><img alt="input" src="res/hallway.jpeg">
+<img alt="output" src="res/hallway_out.png"></p>
+<p>More examples are there in the github repo, and I haven't played around with 
+the options much to generate prettier ones (it's getting kind of late, should sleep).
+Feel free to clone the code, give it a spin on your images and enter the matrix :)</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
