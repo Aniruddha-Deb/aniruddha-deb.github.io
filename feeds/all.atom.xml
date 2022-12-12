@@ -102,7 +102,11 @@ pixels. This does it all in less than 10 seconds.&lt;/p&gt;
 &lt;img alt="output" src="res/hallway_out.png"&gt;&lt;/p&gt;
 &lt;p&gt;More examples are there in the github repo, and I haven't played around with 
 the options much to generate prettier ones (it's getting kind of late, should sleep).
-Feel free to clone the code, give it a spin on your images and enter the matrix :)&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Bootloader Deep Dive</title><link href="https://aniruddhadeb.com/articles/2022/boot-deep-dive.html" rel="alternate"></link><published>2022-12-03T05:00:00+05:30</published><updated>2022-12-03T05:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-12-03:/articles/2022/boot-deep-dive.html</id><summary type="html">&lt;h2&gt;The Basics&lt;/h2&gt;
+Feel free to clone the code, give it a spin on your images and enter the matrix :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: Thanks to &lt;a href="https://github.com/Salil03"&gt;Salil&lt;/a&gt; for implementing this 
+for videos, and improvements to make video processing faster/better 
+(multithreading, bitstream pre-generation, etc). Here's the result:&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/O16AXOghFd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Bootloader Deep Dive</title><link href="https://aniruddhadeb.com/articles/2022/boot-deep-dive.html" rel="alternate"></link><published>2022-12-03T05:00:00+05:30</published><updated>2022-12-03T05:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-12-03:/articles/2022/boot-deep-dive.html</id><summary type="html">&lt;h2&gt;The Basics&lt;/h2&gt;
 &lt;p&gt;The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS
 first detects the CPU/RAM, then initializes the remainder of the hardware, and
 then begins the boot sequence. The boot sequence basically consists of finding 
