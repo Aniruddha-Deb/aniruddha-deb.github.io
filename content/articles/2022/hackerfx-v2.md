@@ -30,3 +30,9 @@ pixels. This does it all in less than 10 seconds.
 More examples are there in the github repo, and I haven't played around with 
 the options much to generate prettier ones (it's getting kind of late, should sleep).
 Feel free to clone the code, give it a spin on your images and enter the matrix :)
+
+**UPDATE**: Thanks to [Salil](https://github.com/Salil03) for implementing this 
+for videos, and improvements to make video processing faster/better 
+(multithreading, bitstream pre-generation, etc). Here's the result:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O16AXOghFd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
