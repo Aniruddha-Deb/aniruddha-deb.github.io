@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://aniruddhadeb.com/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+
+    <link href="https://aniruddhadeb.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Aniruddha Deb Atom">
+
+    <link href="https://aniruddhadeb.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Aniruddha Deb RSS">
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79245932-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
+
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="Happy New Year! This is going to be a long one, so sit back and grab a chocolate (and preferably view this on your laptop) Table of Contents Introduction Do Solutions Even Exist? How this guide is structured Gradient Descent Optimizers Stochastic Gradient Descent SGD with Momentum SGD with Nesterov …" />
+<meta name="keywords" content="Programming, Machine Learning">
+
+<meta property="og:site_name" content="Aniruddha Deb"/>
+<meta property="og:title" content="Optimizers"/>
+<meta property="og:description" content="Happy New Year! This is going to be a long one, so sit back and grab a chocolate (and preferably view this on your laptop) Table of Contents Introduction Do Solutions Even Exist? How this guide is structured Gradient Descent Optimizers Stochastic Gradient Descent SGD with Momentum SGD with Nesterov …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://aniruddhadeb.com/drafts/optimizers.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2023-01-01 15:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddhadeb.com/author/aniruddha-deb.html">
+<meta property="article:section" content="Programming"/>
+<meta property="article:tag" content="Programming"/>
+<meta property="article:tag" content="Machine Learning"/>
+<meta property="og:image" content="/extras/sitelogo.png">
+
+  <title>Aniruddha Deb &ndash; Optimizers</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://aniruddhadeb.com">
+        <img src="/extras/sitelogo.png" alt="" title="">
+      </a>
+      <h1><a href="https://aniruddhadeb.com"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://aniruddhadeb.com/pages/about.html#about">About</a></li>
+          <li><a href="https://aniruddhadeb.com/pages/feeds.html#feeds">Feeds</a></li>
+
+          <li><a href="/archives.html">archives</a></li>
+          <li><a href="/categories">categories</a></li>
+          <li><a href="/tags">tags</a></li>
+          <li><a href="https://www.cse.iitd.ac.in/~cs1200869">website</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://www.github.com/Aniruddha-Deb" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-stack-exchange" href="https://stackexchange.com/users/12827944/aniruddha-deb" target="_blank"><i class="fab fa-stack-exchange"></i></a></li>
+        <li><a class="sc-goodreads-g" href="https://www.goodreads.com/aniruddhadeb" target="_blank"><i class="fab fa-goodreads-g"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:aniruddha.deb.2002@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="optimizers">Optimizers</h1>
+    <p>
+          Posted on Sun 01 January 2023 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Happy New Year! This is going to be a long one, so sit back and grab a 
+chocolate (and preferably view this on your laptop)</p>
+<iframe src="/articles/2023/res/optim_intro.html" style="width: 100%; height: 650px; border: 0"></iframe>
+
+<h1>Table of Contents</h1>
+<ol>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#solution-existence">Do Solutions Even Exist?</a></li>
+<li><a href="#structure">How this guide is structured</a></li>
+</ul>
+</li>
+<li><a href="#gradient-descent-optimizers">Gradient Descent Optimizers</a><ul>
+<li><a href="#stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
+<li><a href="#sgd-with-momentum">SGD with Momentum</a></li>
+<li><a href="#sgd-with-nesterov-momentum">SGD with Nesterov Momentum</a></li>
+</ul>
+</li>
+<li><a href="#adaptive-optimizers">Adaptive Optimizers</a><ul>
+<li><a href="#adagrad">AdaGrad</a></li>
+<li><a href="#rmsprop">RMSProp</a></li>
+<li><a href="#rmsprop-with-nesterov-momentum">RMSProp with Nesterov Momentum</a></li>
+<li><a href="#adam">Adam</a></li>
+<li><a href="#nadam-nesterov-adam">NAdam (Nesterov Adam)</a></li>
+<li><a href="#adamw">AdamW</a></li>
+<li><a href="#amsgrad">AMSGrad</a></li>
+<li><a href="#adabound">AdaBound</a></li>
+<li><a href="#adabelief">AdaBelief</a></li>
+</ul>
+</li>
+<li><a href="#second-order-optimizers">Second Order Optimizers</a><ul>
+<li><a href="#newton">Newton</a></li>
+<li><a href="#conjugate-gradients">Conjugate Gradients</a><ul>
+<li><a href="#fletcher-reeves">Fletcher-Reeves</a></li>
+<li><a href="#polak-ribiere">Polak-Ribiere</a></li>
+</ul>
+</li>
+<li><a href="#bfgs">BFGS</a></li>
+<li><a href="#l-bfgs">L-BFGS</a></li>
+</ul>
+</li>
+<li><a href="#refs-and-footnotes">References and Footnotes</a></li>
+</ol>
+<h1 id="introduction">Introduction</h1>
+
+<p>Most supervised learning tasks involve optimizing a loss function, in order to
+fit the model to the given training data. Of these, the most common is neural
+network training: neural networks have millions (even billions) of parameters
+which need to be tuned so that the model can predict the right outputs.</p>
+<p>Obtaining closed form solutions to neural network problems is more often than
+not intractable, and so we perform this optimization algorithmically and 
+numerically. The main things we look for in an algorithm that optimizes the
+loss function are:</p>
+<ul>
+<li>
+<p><strong>It should converge</strong>: Sounds like a no-brainer, but the algorithm should be
+  able to decide when and where to stop, and to ensure that the location at 
+  which it stops is a local minima.</p>
+</li>
+<li>
+<p><strong>It should converge quickly</strong>: The algorithm should take as few steps as
+  possible to converge, as every step requires a parameter update, and updating
+  millions (if not billions) of parameters is inefficient. Therefore, it should
+  take the optimal steps at every point.</p>
+</li>
+<li>
+<p><strong>It should be able to deal with ambiguity</strong>: Loosely worded, the algorithm 
+  would not have the exact value of the gradient: all the algorithms described 
+  use a batch of samples to obtain an estimate of the gradient, and the 
+  expected value of the gradient obtained should equal the gradient of the 
+  function at this point. The algorithm should be able to converge to a local 
+  minima even if it obtains incorrect gradients at some steps in the process.</p>
+</li>
+</ul>
+<h2 id="solution-existence">Do solutions even exist?</h2>
+
+<p>We can't really go further without knowing what the loss landscape looks like: 
+do solutions even exist? How do we visualize a high-dimensional loss landscape?</p>
+<p>A few observations about the loss landscape of a neural network from Goodfellow
+are:</p>
+<ol>
+<li>
+<p><strong>As dimensionality of the latent space increases, the probability a
+   critical point is a local minima decreases</strong>. The curvature of a point is
+   given by the eigenvalues of the hessian: if all the eigenvalues are positive,
+   the point is a local minima (and the hessian is positive semi-definite), and
+   the opposite for a local maxima. If we consider a random function, choosing 
+   the sign of the eigenvalue is akin to tossing a coin. Therefore, in
+   n-dimensional space, if we toss n coins to determine these signs, the
+   probability that all of them turn up positive is very low. Therefore, high-
+   dimensional space has more saddle points than local minima/maxima</p>
+</li>
+<li>
+<p><strong>There are several equally good local minima</strong>: because of scale invariance,
+   if you scale the inputs to a layer down by 10 and multiply the outputs by 10,
+   then you get the same resultant network. Also, if you switch the position of
+   two neurons in a layer with each other while maintaining the connections, 
+   you get the same network. These two similarities result in a large number of
+   similar optima, reaching any one of which will optimize the entire network.</p>
+</li>
+</ol>
+<p>Both of these are in our favour, and show us that reaching a local minima in
+high-dimensional space should be sufficient to fit the network. We'll now take 
+a look at some algorithms which do this.</p>
+<h2 id="structure">How this guide is structured</h2>
+
+<p>While most deep learning problems use a super high-dimensional loss function, 
+for the purposes of this guide we'll use a simple 2-D loss function which is 
+a linear combination of gaussians of the following form
+$$\begin{gather}
+f(x, y) = se^{-(ax+by+c)^2} \\
+\mathcal{L} = \sum_{i=1}^{n} f_i(x, y)
+\end{gather}$$</p>
+<p>The good thing about gaussians is that they're easy to differentiate
+$$\begin{align}
+\frac{\partial f}{\partial x} &amp;= -2a(ax+by+c)f(x,y) \\
+\frac{\partial f}{\partial y} &amp;= -2b(ax+by+c)f(x,y) \\
+\frac{\partial^2 f}{\partial x^2} &amp;= -2a^2(1 - 2(ax+by+c)^2)f(x,y) \\
+\frac{\partial^2 f}{\partial x \partial y} &amp;= -2ab(1 - 2(ax+by+c)^2)f(x,y) \\
+\frac{\partial^2 f}{\partial y^2} &amp;= -2b^2(1 - 2(ax+by+c)^2)f(x,y)
+\end{align}$$</p>
+<p>so all the methods can use the exact gradient/hessian of the loss function
+rather than a <em>stochastic</em> one. This is kind of cheating, but since this is a
+science experiment, let's run with it. about this loss func</p>
+<p>$s, a, b, c$ are generated uniform randomly from a suitable range, and I played
+around manually with this till I got a loss function that looked funky enough
+for my needs. We finally use the following loss function, and it's been
+exported to the file <code>func.dill</code> if you want to load it in (use dill to load it, 
+as there were some errors serializing it via pickle)</p>
+<iframe src="/articles/2023/res/loss_fn_interactive.html" style="width: 100%; height: 620px; border: 0"></iframe>
+
+<p>The convergence criterion that's used for all optimizers is when the gradient norm 
+is less than 0.05, and all the optimizers are limited to take atmost 1000 steps.</p>
+<p>The plots are made in Bokeh/Plotly and are interactive (if you haven't already 
+played with the plot we generated in the start). I've done my best to be 
+inspired by <a href="https://distill.pub">Distill</a>, most notably <a href="https://distill.pub/2017/momentum/">Gabriel Goh</a>'s
+beautiful, interactive article on momentum.</p>
+<h1 id="gradient-descent-optimizers">Gradient Descent Optimizers</h1>
+
+<p>Gradient Descent optimizers converge to a local minimum by simply following the
+gradient: there's no adaptiveness here, and it's akin to feeling the area 
+around your feet and just taking a small step in the steepest direction, and 
+repeating that till you get to the minima</p>
+<h2 id="stochastic-gradient-descent">Stochastic Gradient Descent</h2>
+
+<p>$$\begin{align}
+\theta_{t+1} &amp;\leftarrow \theta_{t} - \epsilon g(\theta_{t})
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">SGD</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-</span> <span class="n">eps</span><span class="o">*</span><span class="n">g</span>
+</code></pre></div>
+
+<h2 id="sgd-with-momentum">SGD with Momentum</h2>
+
+<p>$$\begin{align}
+v_{t+1} &amp;\leftarrow \alpha v_{t} - \epsilon g(\theta_{t}) \\
+\theta_{t+1} &amp;\leftarrow \theta_{t} + v_{t+1}
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">SGD_momentum</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span> <span class="o">-</span> <span class="n">eps</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="sgd-with-nesterov-momentum">SGD with Nesterov Momentum</h2>
+
+<p>$$\begin{align}
+v_{t+1} &amp;\leftarrow \alpha v_{t} - \epsilon g(\theta_{t} + \alpha v_{t}) \\
+\theta_{t+1} &amp;\leftarrow \theta_{t} + v_{t+1}
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">SGD_nesterov</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span> <span class="o">-</span> <span class="n">eps</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="adaptive-optimizers">Adaptive Optimizers</h2>
+
+<h2 id="adagrad">AdaGrad</h2>
+
+<p>$$\begin{align}
+r_{t+1} &amp;\leftarrow r_{t} + (g(\theta_{t}))^2 \\
+v_{t+1} &amp;\leftarrow -\frac{\epsilon g(\theta_{t})}{\sqrt{r_{t+1} + \delta}} \\
+\theta_{t+1} &amp;\leftarrow \theta_{t} + v_{t+1}
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">AdaGrad</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="rmsprop">RMSProp</h2>
+
+<p>$$\begin{align}
+r_{t+1} &amp;\leftarrow \rho r_{t} + (1-\rho)(g(\theta_{t}))^2 \\
+v_{t+1} &amp;\leftarrow -\frac{\epsilon g(\theta_{t})}{\sqrt{r_{t+1} + \delta}} \\
+\theta_{t+1} &amp;\leftarrow \theta_{t} + v_{t+1}
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">RMSProp</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">decay</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">decay</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">))</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="rmsprop-with-nesterov-momentum">RMSProp with Nesterov Momentum</h2>
+
+<p>$$\begin{align}
+r_{t+1} &amp;\leftarrow \rho r_{t} + (1-\rho)(g(\theta_{t} + \alpha v_{t}))^2 \\
+v_{t+1} &amp;\leftarrow \alpha v_{t} - \frac{\epsilon g(\theta_{t})}{\sqrt{r_{t+1} + \delta}} \\
+\theta_{t+1} &amp;\leftarrow \theta_{t} + v_{t+1}
+\end{align}$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">RMSProp_nesterov</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">decay</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">decay</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span> <span class="o">-</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">))</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="adam">Adam</h2>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">Adam</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">b1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">b2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">b1</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="p">)</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">sh</span> <span class="o">=</span> <span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">rh</span> <span class="o">=</span> <span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rh</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">))</span><span class="o">*</span><span class="n">sh</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="nadam-nesterov-adam">NAdam (Nesterov Adam)</h2>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">NAdam</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">b1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">b2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">b1</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="p">)</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">sh</span> <span class="o">=</span> <span class="n">b1</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="c1"># nesterov step</span>
+        <span class="n">rh</span> <span class="o">=</span> <span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rh</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">))</span><span class="o">*</span><span class="n">sh</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="adamw">AdamW</h2>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">AdamW</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">b1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">b2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5e-2</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">G</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">b1</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="p">)</span><span class="o">*</span><span class="n">g</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">sh</span> <span class="o">=</span> <span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b1</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">rh</span> <span class="o">=</span> <span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b2</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span> <span class="p">((</span><span class="n">eps</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rh</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">))</span><span class="o">*</span><span class="n">sh</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">p</span> <span class="p">)</span> <span class="c1"># adamW step</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">v</span>
+</code></pre></div>
+
+<h2 id="amsgrad">AMSGrad</h2>
+
+<h2 id="adabound">AdaBound</h2>
+
+<h2 id="adabelief">AdaBelief</h2>
+
+<h1 id="second-order-optimizers">Second Order Optimizers</h1>
+
+<h2 id="newton">Newton</h2>
+
+<h2 id="conjugate-gradients">Conjugate Gradients</h2>
+
+<h3 id="fletcher-reeves">Fletcher-Reeves</h3>
+
+<h3 id="polak-ribiere">Polak-Ribiere</h3>
+
+<h2 id="bfgs">BFGS</h2>
+
+<h2 id="l-bfgs">L-BFGS</h2>
+
+<h1 id="refs-and-footnotes">References and Footnotes</h1>
+
+<hr>
+<p><sup id="footnote-1">1</sup></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>
+      <a href="https://aniruddhadeb.com/tag/machine-learning.html">Machine Learning</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Aniruddha Deb ",
+  "url" : "https://aniruddhadeb.com",
+  "image": "/extras/sitelogo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
