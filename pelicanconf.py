@@ -10,9 +10,10 @@ THEME = 'themes/Flex'
 SITELOGO = '/extras/sitelogo.png'
 
 PATH = 'content'
-STATIC_PATHS = ['pages', 'articles/2022/res', 'articles/2021/styles', 'articles/2021/res', 'articles/2020/res', 'extras']
+STATIC_PATHS = ['pages', 'articles/2023/res', 'articles/2022/res', 'articles/2021/styles', 'articles/2021/res', 'articles/2020/res', 'extras']
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Posts'
+ARTICLE_EXCLUDES = ['articles/2023/res']
 ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = 'articles/{date:%Y}/{slug}.html'
 ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
@@ -57,7 +58,7 @@ SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),
           ('stack-exchange', 'https://stackexchange.com/users/12827944/aniruddha-deb'),
 		  ('goodreads-g', 'https://www.goodreads.com/aniruddhadeb'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 20
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
