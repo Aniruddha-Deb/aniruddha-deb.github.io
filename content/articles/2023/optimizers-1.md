@@ -1,14 +1,17 @@
-Title: Optimizers
-Date: 2023-01-01 15:00
+Title: Optimizers, Part 1
+Date: 2023-01-02 12:25
 Category: Programming
-Tags: Programming, Machine Learning
-Slug: optimizers
-Status: draft
+Tags: Programming, Machine Learning, Deep Learning
+Slug: optimizers-1
 
-Happy New Year! This is going to be a long one, so sit back and grab a 
-chocolate (and preferably view this on your laptop)
+Happy New Year! This <strike>is going to</strike> was supposed to be a long
+one, so sit back and grab a chocolate (and preferably view this on your laptop)
 
-<iframe src="/articles/2023/res/optim_intro.html" style="width: 100%; height: 650px; border: 0"></iframe>
+<center>
+<iframe src="/articles/2023/res/intro_plot.html" style="width: 100%; height: 650px; border: 0"></iframe>
+
+Some optimization algorithms. Click on a colour in the legend to hide/show it
+</center>
 
 # Table of Contents
 
@@ -19,6 +22,9 @@ chocolate (and preferably view this on your laptop)
     * <a href="#stochastic-gradient-descent">Stochastic Gradient Descent</a>
     * <a href="#sgd-with-momentum">SGD with Momentum</a>
     * <a href="#sgd-with-nesterov-momentum">SGD with Nesterov Momentum</a>
+    * <a href="#gradient-descent-comparision">Putting it all together</a>
+3. <a href="#refs-and-footnotes">References and Footnotes</a>
+<!--
 3. <a href="#adaptive-optimizers">Adaptive Optimizers</a>
     * <a href="#adagrad">AdaGrad</a>
     * <a href="#rmsprop">RMSProp</a>
@@ -35,8 +41,7 @@ chocolate (and preferably view this on your laptop)
         * <a href="#fletcher-reeves">Fletcher-Reeves</a>
         * <a href="#polak-ribiere">Polak-Ribiere</a>
     * <a href="#bfgs">BFGS</a>
-    * <a href="#l-bfgs">L-BFGS</a>
-5. <a href="#refs-and-footnotes">References and Footnotes</a>
+    * <a href="#l-bfgs">L-BFGS</a>-->
 
 
 <h1 id="introduction">Introduction</h1>
@@ -96,6 +101,22 @@ Both of these are in our favour, and show us that reaching a local minima in
 high-dimensional space should be sufficient to fit the network. We'll now take 
 a look at some algorithms which do this.
 
+As for visualizing the loss landscape, this is significantly trickier to do.
+This work by [Goldstein et al](https://arxiv.org/pdf/1712.09913v3.pdf) does a
+good job of it, but visualizing and comparing the paths taken by optimization 
+algorithms on this landscape is very difficult: because what we're seeing is a
+projection onto two dimensions, the direction taken by the path need not
+correspond to the direction of maximum descent. This repository by [Logan Yang](https://github.com/logancyang/loss-landscape-anim)
+had a good implementation of this paper, along with traces of the paths taken
+by various optimization algorithms showing why we can't use this to
+qualitatively compare different optimization algorithms with each other 
+
+<center>
+<img src="/articles/2023/res/loss_landscape_goldstein.png" width=800px></img>
+
+The loss landscape of ResNet-56 (source: Goldstein et al)
+</center>
+
 <h2 id="structure">How this guide is structured</h2>
 
 While most deep learning problems use a super high-dimensional loss function, 
@@ -140,16 +161,36 @@ beautiful, interactive article on momentum.
 Gradient Descent optimizers converge to a local minimum by simply following the
 gradient: there's no adaptiveness here, and it's akin to feeling the area 
 around your feet and just taking a small step in the steepest direction, and 
-repeating that till you get to the minima
+repeating that till you get to the minima. There are a few tricks here and we 
+take hints from Physics to speed up the convergence, but most of the algorithm
+relies on the gradient, and the speed with which we're already going.
 
 <h2 id="stochastic-gradient-descent">Stochastic Gradient Descent</h2>
+
+SGD is probably the first optimization algorithm one thinks of. It's
+deceptively simple: Look around and take a step in the direction where the
+gradient decreases the most. Once you've taken the step, **Stop**, look around
+again, and repeat until you're at the minima (the gradient is sufficiently 
+small or you come back to a point you've visited).
+
+Th *S* in SGD comes from the fact that the gradient that the algorithm obtains
+in practice is not perfect: it's an approximation of the actual gradient of the
+loss function, based on the batch of examples that are sampled. However, this
+approximates the gradient reasonably well, and in the long run, the expected
+path taken by this algorithm comes out to be the same as the path taken when we
+can perfectly obtain the gradient.
+
+The update rule for SGD is fairly simple:
 
 $$\begin{align}
 \theta_{t+1} &\leftarrow \theta_{t} - \epsilon g(\theta_{t})
 \end{align}$$
 
+Combining this with a convergence criterion gives us the algorithm (implemented
+in python here)
+
 ```python
-def SGD(L, G, p0, eps=1e-2):
+def SGD(L, G, p0, eps=5e-2):
     p = p0
     g = np.inf
     while norm(g) > 5e-2:
@@ -159,13 +200,49 @@ def SGD(L, G, p0, eps=1e-2):
 
 <h2 id="sgd-with-momentum">SGD with Momentum</h2>
 
+While SGD is simple, it is slow to converge, taking several more steps than
+required. This is because we come to a stop once we take a step, and the size
+of the next step is solely determined by the gradient at that point. This means
+that if we're in a long stretch where the gradient is small, we can only 
+descend at the speed $\epsilon g$, even though we know that the stretch is
+reasonably long. This slows down our algorithm and makes it take a longer time
+to converge.
+
+Momentum counters this by providing some inertia to the process. Intuitively,
+if SGD is a person stopping and taking a step in the direction of maximum 
+descent, momentum is equivalent to throwing a ball down the incline of a given
+mass and seeing where it settles. If you take a look at the path momentum
+follows in the introduction plot, you can see that it doesn't immediately stop
+when it comes to a point with a zero (or very small) gradient; instead, it
+oscillates until it loses all it's velocity.
+
+How do we simulate adding 'mass' to the update steps? We claim that the ball
+moves at a velocity $v$, and model $v$ as an exponential moving average of the
+current velocity and the gradient at the current point. The update equations
+are as follows:
+
 $$\begin{align}
 v_{t+1} &\leftarrow \alpha v_{t} - \epsilon g(\theta_{t}) \\\\
 \theta_{t+1} &\leftarrow \theta_{t} + v_{t+1}
 \end{align}$$
 
+What's the maximum velocity we can move at? If all the gradients are in the
+same direction for an infinite (practically a very large) period of time, then
+this velocity is equal to
+
+$$v_{\text{max}} = \frac{\epsilon g}{1-\alpha}$$
+
+This can be derived by expanding out the recurrence in the update step, to
+obtain an infinite GP. This GP converges when $\alpha < 1$ to $1/(1-\alpha)$.
+We can think of $1-\alpha$ as the 'mass' of the ball: the smaller this quantity
+is, the faster the ball will move.
+
+Generally (and in this simulation as well), $\alpha = 0.9$, so $1-\alpha = 0.1$.
+This means that we can move atmost ten times faster than the step size at a
+point, and this is what causes momentum to converge faster!
+
 ```python
-def SGD_momentum(L, G, p0, v0=0, eps=1e-2, a=0.9):
+def SGD_momentum(L, G, p0, v0=0, eps=5e-2, a=0.9):
     p = p0
     v = v0
     g = np.inf
@@ -175,7 +252,37 @@ def SGD_momentum(L, G, p0, v0=0, eps=1e-2, a=0.9):
         p = p + v
 ```
 
+What do these gradient updates look like in practice? For starters, all changes
+in the direction of the path are caused due to changes in the gradient. Where
+the path takes a turn, the gradient is normal or antiparallel to the current
+velocity, and at places where the path is straight, both the gradient and the
+velocity are parallel. We can draw out the update vectors at two points in the
+path above to see how this works.
+
+<iframe src="/articles/2023/res/momentum_vectors.html" style="width: 100%; height: 650px; border: 0"></iframe>
+
 <h2 id="sgd-with-nesterov-momentum">SGD with Nesterov Momentum</h2>
+
+If you've seen the path that momentum takes, there is one issue: _Momentum
+doesn't stop very soon_. It's easy to get the ball rolling, but harder to stop
+it. This happens because the gradient that's added to the path is the gradient
+_at the current point_, not the gradient _at the point at which we would have 
+been, if we took the step_. In a continuous, real-world scenario, this 
+difference is infinitesimal, but in a numerical scenario, it becomes 
+significant if our step size is not small enough. This is also not an issue if 
+our gradients at consecutive points are similar, but becomes an issue if we
+'jump' across a local minima: momentum would push us even further forward, 
+because the gradient at the current point is downward. 
+
+This 'bug' was discovered by Nesterov, and the fix was to compute the gradient
+at $\theta_{t} + \alpha v_{t}$ (the position we will be at, if the gradient is 
+zero) rather than at $\theta_{t}$ (our current position). This 'pulls' the
+gradient back if we jump across a minima
+
+<iframe src="/articles/2023/res/nesterov_comparision.html" style="width: 100%; height: 650px; border: 0"></iframe>
+
+The implementation and update are quite similar, with just a minor update to
+the gradient calculation.
 
 $$\begin{align}
 v_{t+1} &\leftarrow \alpha v_{t} - \epsilon g(\theta_{t} + \alpha v_{t}) \\\\
@@ -193,6 +300,22 @@ def SGD_nesterov(L, G, p0, v0=0, eps=1e-2, a=0.9):
         p = p + v
 ```
 
+<h2 id="gradient-descent-comparision">Putting it all together</h2>
+
+Here's an interactive demo, showing the paths taken by SGD, SGD with Momentum
+and SGD with Nesterov Updates. The arrows have the same colour scheme as
+before, and show the directions in which the path is pulled (their sum is the
+next resultant step). Playing around with this should give you an idea of how
+these algorithms update themselves
+
+<iframe src="/articles/2023/res/comparision_plot.html" style="width: 100%; height: 650px; border: 0"></iframe>
+
+Even though there are a large number of new algorithms for optimization, SGD
+with Nesterov momentum (along with Adam) remains the algorithm of choice for
+training very large neural networks: it's stable, explainable and converges
+nicely.
+
+<!--
 <h2 id="adaptive-optimizers">Adaptive Optimizers</h2>
 
 
@@ -205,7 +328,7 @@ v_{t+1} &\leftarrow -\frac{\epsilon g(\theta_{t})}{\sqrt{r_{t+1} + \delta}} \\\\
 \end{align}$$
 
 ```python
-def AdaGrad(L, G, p0, eps=1e-2):
+def AdaGrad(L, G, p0, eps=5e-2):
     r = np.zeros(2)
     p = p0
     v = 0
@@ -349,12 +472,30 @@ def AdamW(L, G, p0, eps=1e-3, b1=0.9, b2=0.999, l=1):
 <h2 id="bfgs">BFGS</h2>
 
 
-<h2 id="l-bfgs">L-BFGS</h2>
+<h2 id="l-bfgs">L-BFGS</h2>-->
 
 
 <h1 id="refs-and-footnotes">References and Footnotes</h1>
 
+1. Goh, "Why Momentum Really Works", Distill, 2017. 
+   [http://doi.org/10.23915/distill.00006](http://doi.org/10.23915/distill.00006)
+2. Goodfellow, Ian, Bengio, Yoshua and Courville, Aaron. Deep Learning. : MIT 
+   Press, 2016. 
+3. Melville, James. Nesterov Accelerated Gradient and Momentum. 
+   [https://jlmelville.github.io/mize/nesterov.html](https://jlmelville.github.io/mize/nesterov.html)
 
 ---
 
-<sup id="footnote-1">1</sup>
+This was supposed to also feature adaptive optimizers (AMSGrad, RMSProp, Adam 
+and friends), but due to CCIC happening in the last week of December, I didn't
+get the time to do this properly, and the second semester starts <strike>in a
+couple days</strike> tomorrow, so hard deadline :/ I'll try to get part 2 out
+as soon as possible, but it might be a while. In the meantime, exploring the
+source might help for the impatient.
+
+For the complete code, and to play around and implement your own optimizers, 
+check out the repository here
+
+<center>
+<a href="https://github.com/Aniruddha-Deb/optimizers"><img src="https://gh-card.dev/repos/Aniruddha-Deb/optimizers.svg"></a>
+</center>
