@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sun, 22 Jan 2023 10:20:00 +0530</lastBuildDate><item><title>L2 regularization intuition</title><link>https://aniruddhadeb.com/articles/2023/l2-regularization.html</link><description>&lt;p&gt;A nice intuition for L2 regularization comes from having a prior on the
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sun, 22 Jan 2023 10:15:00 +0530</lastBuildDate><item><title>L2 regularization intuition</title><link>https://aniruddhadeb.com/articles/2023/l2-regularization.html</link><description>&lt;p&gt;A nice intuition for L2 regularization comes from having a prior on the
 distribution of parameters: the prior assumes that the parameters are close to
 zero. Let's assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate
 of the parameters would then be&lt;/p&gt;
@@ -26,7 +26,7 @@ matrix (if it is a diagonal covariance matrix). We'd then get&lt;/p&gt;
 &lt;p&gt;I got this from one of the &lt;a href="https://www.cse.iitd.ac.in/~parags/teaching/col775/"&gt;Deep
 Learning&lt;/a&gt; lectures; it's a
 nice treatment which I couldn't find in other places (maybe because I haven't
-looked hard enough). Goodfellow certainly doesn't feature it though.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 22 Jan 2023 10:20:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-01-22:/articles/2023/l2-regularization.html</guid><category>Mathematics</category><category>Mathematics</category><category>Machine Learning</category><category>Deep Learning</category></item><item><title>Optimizers, Part 1</title><link>https://aniruddhadeb.com/articles/2023/optimizers-1.html</link><description>&lt;p&gt;Happy New Year! This &lt;strike&gt;is going to&lt;/strike&gt; was supposed to be a long
+looked hard enough). Goodfellow certainly doesn't feature it though.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 22 Jan 2023 10:15:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-01-22:/articles/2023/l2-regularization.html</guid><category>Mathematics</category><category>Mathematics</category><category>Machine Learning</category><category>Deep Learning</category></item><item><title>Optimizers, Part 1</title><link>https://aniruddhadeb.com/articles/2023/optimizers-1.html</link><description>&lt;p&gt;Happy New Year! This &lt;strike&gt;is going to&lt;/strike&gt; was supposed to be a long
 one, so sit back and grab a chocolate (and preferably view this on your laptop)&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;/p&gt;
 &lt;iframe src="/articles/2023/res/intro_plot.html" style="width: 100%; height: 650px; border: 0"&gt;&lt;/iframe&gt;
