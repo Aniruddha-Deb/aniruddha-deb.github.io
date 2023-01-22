@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2022-11-28T03:00:00+05:30</updated><entry><title>Filtrations</title><link href="https://aniruddhadeb.com/articles/2022/filtrations.html" rel="alternate"></link><published>2022-11-28T03:00:00+05:30</published><updated>2022-11-28T03:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-28:/articles/2022/filtrations.html</id><summary type="html">&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Mathematics</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/mathematics.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2023-01-22T10:20:00+05:30</updated><entry><title>L2 regularization intuition</title><link href="https://aniruddhadeb.com/articles/2023/l2-regularization.html" rel="alternate"></link><published>2023-01-22T10:20:00+05:30</published><updated>2023-01-22T10:20:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-01-22:/articles/2023/l2-regularization.html</id><summary type="html">&lt;p&gt;A nice intuition for L2 regularization comes from having a prior on the
+distribution of parameters: the prior assumes that the parameters are close to
+zero. Let's assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate
+of the parameters would then be&lt;/p&gt;
+&lt;p&gt;$$\begin{align}
+\theta_{\text{MAP …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A nice intuition for L2 regularization comes from having a prior on the
+distribution of parameters: the prior assumes that the parameters are close to
+zero. Let's assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate
+of the parameters would then be&lt;/p&gt;
+&lt;p&gt;$$\begin{align}
+\theta_{\text{MAP}} &amp;amp;= \text{argmax}_{\theta} \; P(\theta | D) \\
+    &amp;amp;= \text{argmax}_{\theta} \; P(D | \theta) P(\theta) \\
+    &amp;amp;= \text{argmax}_{\theta} \; \log P(D | \theta) + \log P(\theta)
+\end{align}$$&lt;/p&gt;
+&lt;p&gt;$\log P(D | \theta)$ is simply the log-likelihood of the model, and optimizing
+that would give you the MLE parameters. However, incorporating $\log P(\theta)$
+gives us the L2 regularization parameter&lt;/p&gt;
+&lt;p&gt;$$\log P(\theta) = -\log((2\pi)^{n/2}|\Sigma|^{1/2}) - \frac{\theta^T \Sigma^{-1} \theta}{2}$$&lt;/p&gt;
+&lt;p&gt;The constant at the start goes out of the argmax, and we're left with the L2
+regularization term. Taking a negative on both sides would give us the 
+negative log-likelihood, which is the unregularized loss function. We'd then
+minimize $\theta$. The net expression would look something like this:&lt;/p&gt;
+&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$&lt;/p&gt;
+&lt;p&gt;Regularization generally features a strength term $\lambda$: We can think of
+$\lambda$ as being the inverse of every term in the diagonal of the covariance 
+matrix (if it is a diagonal covariance matrix). We'd then get&lt;/p&gt;
+&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \lambda\theta^T\theta$$&lt;/p&gt;
+&lt;p&gt;And this is the familiar L2 reglarized loss function.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I got this from one of the &lt;a href="https://www.cse.iitd.ac.in/~parags/teaching/col775/"&gt;Deep
+Learning&lt;/a&gt; lectures; it's a
+nice treatment which I couldn't find in other places (maybe because I haven't
+looked hard enough). Goodfellow certainly doesn't feature it though.&lt;/p&gt;</content><category term="Mathematics"></category><category term="Mathematics"></category><category term="Machine Learning"></category><category term="Deep Learning"></category></entry><entry><title>Filtrations</title><link href="https://aniruddhadeb.com/articles/2022/filtrations.html" rel="alternate"></link><published>2022-11-28T03:00:00+05:30</published><updated>2022-11-28T03:00:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2022-11-28:/articles/2022/filtrations.html</id><summary type="html">&lt;p&gt;$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$&lt;/p&gt;
 &lt;h2&gt;Recap&lt;/h2&gt;
 &lt;p&gt;If you remember the &lt;a href="https://aniruddhadeb.com/articles/2021/note-on-random-variables.md"&gt;note on random variables&lt;/a&gt;, then this picks up exactly where that left off.&lt;/p&gt;
 &lt;blockquote&gt;

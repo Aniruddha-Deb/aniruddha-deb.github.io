@@ -44,18 +44,26 @@ MathJax = {
 </script>
 <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' type='text/javascript'></script>  
 
-    <meta name="author" content="Aniruddha Deb" />
-    <meta name="description" content="" />
+<meta name="author" content="Aniruddha Deb" />
+<meta name="description" content="A nice intuition for L2 regularization comes from having a prior on the distribution of parameters: the prior assumes that the parameters are close to zero. Let&#39;s assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate of the parameters would then be $$\begin{align} \theta_{\text{MAP …" />
+<meta name="keywords" content="Mathematics, Machine Learning, Deep Learning">
+
 <meta property="og:site_name" content="Aniruddha Deb"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Aniruddha Deb"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="L2 regularization intuition"/>
+<meta property="og:description" content="A nice intuition for L2 regularization comes from having a prior on the distribution of parameters: the prior assumes that the parameters are close to zero. Let&#39;s assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate of the parameters would then be $$\begin{align} \theta_{\text{MAP …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://aniruddhadeb.com"/>
+<meta property="og:url" content="https://aniruddhadeb.com/articles/2023/l2-regularization.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2023-01-22 10:20:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://aniruddhadeb.com/author/aniruddha-deb.html">
+<meta property="article:section" content="Mathematics"/>
+<meta property="article:tag" content="Mathematics"/>
+<meta property="article:tag" content="Machine Learning"/>
+<meta property="article:tag" content="Deep Learning"/>
 <meta property="og:image" content="/extras/sitelogo.png">
 
-  <title>Aniruddha Deb &ndash;     Tag Deep Learning
-</title>
+  <title>Aniruddha Deb &ndash; L2 regularization intuition</title>
 
 </head>
 <body>
@@ -92,96 +100,76 @@ MathJax = {
   <main>
 
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://aniruddhadeb.com/articles/2023/l2-regularization.html#l2-regularization">L2 regularization intuition</a></h2>
+      
+    <h1 id="l2-regularization">L2 regularization intuition</h1>
     <p>
           Posted on Sun 22 January 2023 in <a href="https://aniruddhadeb.com/category/mathematics.html">Mathematics</a>
 
 
-          &#8226;     Tagged with
-
-              <a href="https://aniruddhadeb.com/tag/mathematics.html">Mathematics</a>,              <a href="https://aniruddhadeb.com/tag/machine-learning.html">Machine Learning</a>,              <a href="https://aniruddhadeb.com/tag/deep-learning.html">Deep Learning</a>
     </p>
   </header>
+
+
   <div>
-      <p>A nice intuition for L2 regularization comes from having a prior on the
+    <p>A nice intuition for L2 regularization comes from having a prior on the
 distribution of parameters: the prior assumes that the parameters are close to
 zero. Let's assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate
 of the parameters would then be</p>
 <p>$$\begin{align}
-\theta_{\text{MAP …</p>
-      <br>
-      <a class="btn" href="https://aniruddhadeb.com/articles/2023/l2-regularization.html#l2-regularization">    Continue reading
-</a>
+\theta_{\text{MAP}} &amp;= \text{argmax}_{\theta} \; P(\theta | D) \\
+    &amp;= \text{argmax}_{\theta} \; P(D | \theta) P(\theta) \\
+    &amp;= \text{argmax}_{\theta} \; \log P(D | \theta) + \log P(\theta)
+\end{align}$$</p>
+<p>$\log P(D | \theta)$ is simply the log-likelihood of the model, and optimizing
+that would give you the MLE parameters. However, incorporating $\log P(\theta)$
+gives us the L2 regularization parameter</p>
+<p>$$\log P(\theta) = -\log((2\pi)^{n/2}|\Sigma|^{1/2}) - \frac{\theta^T \Sigma^{-1} \theta}{2}$$</p>
+<p>The constant at the start goes out of the argmax, and we're left with the L2
+regularization term. Taking a negative on both sides would give us the 
+negative log-likelihood, which is the unregularized loss function. We'd then
+minimize $\theta$. The net expression would look something like this:</p>
+<p>$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$</p>
+<p>Regularization generally features a strength term $\lambda$: We can think of
+$\lambda$ as being the inverse of every term in the diagonal of the covariance 
+matrix (if it is a diagonal covariance matrix). We'd then get</p>
+<p>$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \lambda\theta^T\theta$$</p>
+<p>And this is the familiar L2 reglarized loss function.</p>
+<hr>
+<p>I got this from one of the <a href="https://www.cse.iitd.ac.in/~parags/teaching/col775/">Deep
+Learning</a> lectures; it's a
+nice treatment which I couldn't find in other places (maybe because I haven't
+looked hard enough). Goodfellow certainly doesn't feature it though.</p>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://aniruddhadeb.com/articles/2023/optimizers-1.html#optimizers-1">Optimizers, Part 1</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on Mon 02 January 2023 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>,              <a href="https://aniruddhadeb.com/tag/machine-learning.html">Machine Learning</a>,              <a href="https://aniruddhadeb.com/tag/deep-learning.html">Deep Learning</a>
+      <a href="https://aniruddhadeb.com/tag/mathematics.html">Mathematics</a>
+      <a href="https://aniruddhadeb.com/tag/machine-learning.html">Machine Learning</a>
+      <a href="https://aniruddhadeb.com/tag/deep-learning.html">Deep Learning</a>
     </p>
-  </header>
-  <div>
-      <p>Happy New Year! This <strike>is going to</strike> was supposed to be a long
-one, so sit back and grab a chocolate (and preferably view this on your laptop)</p>
-<p><center></p>
-<iframe src="/articles/2023/res/intro_plot.html" style="width: 100%; height: 650px; border: 0"></iframe>
-
-<p>Some optimization algorithms. Click on a colour in the legend to hide/show it
-</center></p>
-<h1>Table of Contents</h1>
-<ol>
-<li><a href="#introduction">Introduction</a><ul>
-<li><a href="#solution-existence">Do Solutions Even Exist …</a></li></ul></li></ol>
-      <br>
-      <a class="btn" href="https://aniruddhadeb.com/articles/2023/optimizers-1.html#optimizers-1">    Continue reading
-</a>
   </div>
-  <hr />
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'aniruddha-deb';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
-<article>
-  <header>
-    <h2><a href="https://aniruddhadeb.com/articles/2022/dl-workflow-2023.html#dl-workflow-2023">My DL workflow for 2023</a></h2>
-    <p>
-          Posted on Thu 29 December 2022 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>,              <a href="https://aniruddhadeb.com/tag/machine-learning.html">Machine Learning</a>,              <a href="https://aniruddhadeb.com/tag/deep-learning.html">Deep Learning</a>
-    </p>
-  </header>
-  <div>
-      <p>I've kind of zeroed down on Deep Learning at this point, and putting my money
-where my mouth is, will be taking both COL772 (Natural Language Processing) and
-COL775 (Deep Learning) next semester.</p>
-<p>Along with Operating Systems, Parallel Programming and Theory of Computation.</p>
-<p><center>
-<img width="600px" src="/articles/2022/res/cs_degree.png">
-</center></p>
-<h2>Why a workflow?</h2>
-<p>I'll need to train …</p>
-      <br>
-      <a class="btn" href="https://aniruddhadeb.com/articles/2022/dl-workflow-2023.html#dl-workflow-2023">    Continue reading
-</a>
-  </div>
-</article>
-
-  <div class="pagination">
-  </div>
-
-
-
 
     <footer>
 <p>&copy;  </p>
