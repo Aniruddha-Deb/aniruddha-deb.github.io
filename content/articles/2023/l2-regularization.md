@@ -1,5 +1,5 @@
 Title: L2 regularization intuition
-Date: 2023-01-22 10:20
+Date: 2023-01-22 10:15
 Category: Mathematics
 Tags: Mathematics, Machine Learning, Deep Learning
 Slug: l2-regularization
