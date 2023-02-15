@@ -21,11 +21,11 @@ gives us the L2 regularization parameter&lt;/p&gt;
 regularization term. Taking a negative on both sides would give us the 
 negative log-likelihood, which is the unregularized loss function. We'd then
 minimize $\theta$. The net expression would look something like this:&lt;/p&gt;
-&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$&lt;/p&gt;
+&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(D | \theta) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$&lt;/p&gt;
 &lt;p&gt;Regularization generally features a strength term $\lambda$: We can think of
 $\lambda$ as being the inverse of every term in the diagonal of the covariance 
 matrix (if it is a diagonal covariance matrix). We'd then get&lt;/p&gt;
-&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(\theta | D) + \frac{1}{2} \lambda\theta^T\theta$$&lt;/p&gt;
+&lt;p&gt;$$\theta_{\text{MAP}} = \text{argmin}_{\theta} \; - P(D | \theta) + \frac{1}{2} \lambda\theta^T\theta$$&lt;/p&gt;
 &lt;p&gt;And this is the familiar L2 reglarized loss function.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;I got this from one of the &lt;a href="https://www.cse.iitd.ac.in/~parags/teaching/col775/"&gt;Deep
