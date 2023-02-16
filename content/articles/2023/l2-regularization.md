@@ -26,13 +26,13 @@ regularization term. Taking a negative on both sides would give us the
 negative log-likelihood, which is the unregularized loss function. We'd then
 minimize $\theta$. The net expression would look something like this:
 
-$$\theta_{\text{MAP}} = \text{argmin}\_{\theta} \; - P(\theta | D) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$
+$$\theta_{\text{MAP}} = \text{argmin}\_{\theta} \; - P(D | \theta) + \frac{1}{2} \theta^T \Sigma^{-1} \theta$$
 
 Regularization generally features a strength term $\lambda$: We can think of
 $\lambda$ as being the inverse of every term in the diagonal of the covariance 
 matrix (if it is a diagonal covariance matrix). We'd then get
 
-$$\theta_{\text{MAP}} = \text{argmin}\_{\theta} \; - P(\theta | D) + \frac{1}{2} \lambda\theta^T\theta$$
+$$\theta_{\text{MAP}} = \text{argmin}\_{\theta} \; - P(D | \theta) + \frac{1}{2} \lambda\theta^T\theta$$
 
 And this is the familiar L2 reglarized loss function.
 
