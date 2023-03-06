@@ -1,5 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Thu, 16 Feb 2023 16:00:00 +0530</lastBuildDate><item><title>Batch Normalization</title><link>https://aniruddhadeb.com/articles/2023/batch-normalization.html</link><description>&lt;p&gt;$$
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Mon, 06 Mar 2023 12:00:00 +0530</lastBuildDate><item><title>Mac Setup v2</title><link>https://aniruddhadeb.com/articles/2023/mac-setup-2.html</link><description>&lt;p&gt;My 2015 MBP 13" was giving me some pain over this entire semester, lagging a lot
+and being very slow overall. I recently upgraded to a 16" MBP, and there have
+been no complaints so far :) the notch is simply not there if you have a black
+desktop background, so +1 to apple for that. Although face ID would have been
+nice to have.&lt;/p&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Basic intro Screen&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dark Mode&lt;br&gt;
+&lt;img alt="dark side meme" src="/articles/2020/res/darkside.jpeg"&gt;&lt;/li&gt;
+&lt;li&gt;Don't set up Siri, or Stage Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Home Directory and Username renaming&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MacOS uses a lowercase first letter, even if you've input an uppercase
+one while making your username. The way to change this is a bit complicated,
+but follow the instructions &lt;a href="https://support.apple.com/en-in/HT201548"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;System &lt;strike&gt;Preferences&lt;/strike&gt; Settings&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Turn off autocorrect&lt;/li&gt;
+&lt;li&gt;Function keys are function keys, and not 'do weird stuff' keys&lt;/li&gt;
+&lt;li&gt;Don't switch to a workspace which has an open window of the application&lt;/li&gt;
+&lt;li&gt;Make 10 workspaces and activate all the ^(n) hotkeys to switch to them&lt;/li&gt;
+&lt;li&gt;Change the date/time format to &lt;code&gt;Day HH:MM:SS&lt;/code&gt; in control center&lt;/li&gt;
+&lt;li&gt;Remove some stuff from control center, put keyboard brightness there&lt;/li&gt;
+&lt;li&gt;Turn off the 'quick note' bottom right hot corner&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Accounts&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bsw.iitd.ac.in/email.php"&gt;IITD&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Applications&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;XCode CLT&lt;/li&gt;
+&lt;li&gt;Firefox&lt;/li&gt;
+&lt;li&gt;VS Code (don't use this much)&lt;/li&gt;
+&lt;li&gt;Kitty (with the &lt;a href="https://github.com/DinkDonk/kitty-icon/blob/main/kitty-dark.icns"&gt;cuter icon&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Calibre&lt;/li&gt;
+&lt;li&gt;TG Pro&lt;/li&gt;
+&lt;li&gt;The Unarchiver&lt;/li&gt;
+&lt;li&gt;Shottr&lt;/li&gt;
+&lt;li&gt;Hidden Bar&lt;/li&gt;
+&lt;li&gt;TinkerTool&lt;ul&gt;
+&lt;li&gt;Hide dock, and delay in showing it&lt;/li&gt;
+&lt;li&gt;Remove 'recent apps' section in Dock&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Rectangle&lt;/li&gt;
+&lt;li&gt;Bandwidth+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://brew.sh/"&gt;Brew&lt;/a&gt; Packages&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Neovim&lt;/li&gt;
+&lt;li&gt;htop&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;li&gt;openmpi&lt;/li&gt;
+&lt;li&gt;miniforge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kitty Setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the &lt;a href="https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.3"&gt;Meslo&lt;/a&gt;
+zipfile from here, and install all the fonts.&lt;/li&gt;
+&lt;li&gt;Copy over the &lt;code&gt;kitty.conf&lt;/code&gt; from my previous machine. Works out of the box
+(just darkened the background a bit more, as the new mac has a brighter
+ display)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/ohmyzsh/ohmyzsh"&gt;Oh my zsh&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a href="https://github.com/romkatv/powerlevel10k"&gt;Powerlevel10k&lt;/a&gt; after this&lt;/li&gt;
+&lt;li&gt;Follow the setup guide for Powerlevel10k according to liking. I use a one-
+line prompt, with no repeats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Firefox setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Default browser&lt;/li&gt;
+&lt;li&gt;Login to firefox account to sync plugins&lt;ul&gt;
+&lt;li&gt;TabbyCat&lt;/li&gt;
+&lt;li&gt;uBlock Origin&lt;/li&gt;
+&lt;li&gt;Tampermonkey&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Get &lt;a href="https://github.com/Aniruddha-Deb/UserScripts"&gt;UserScripts&lt;/a&gt; and load
+into Tampermonkey&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spaces Renamer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Probably the hardest part of the setup. &lt;/li&gt;
+&lt;li&gt;TL;DR follow the procedure &lt;a href="https://github.com/dado3212/spaces-renamer/issues/75#issuecomment-1201511482"&gt;here&lt;/a&gt;.
+Requires &lt;a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection"&gt;disabling SIP&lt;/a&gt;
+and library validation, and then loading in spaces renamer. You'll be asked
+to download rosetta at this point as well.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Neovim setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a href="https://nodejs.org/en/download/"&gt;node&lt;/a&gt; for CoC&lt;/li&gt;
+&lt;li&gt;Lift and Shift nvim config directory from previous machine&lt;/li&gt;
+&lt;li&gt;Install &lt;a href="https://github.com/wbthomason/packer.nvim"&gt;packer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Do &lt;code&gt;:PackerInstall&lt;/code&gt; to install plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Blog Setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clone the blog git repo&lt;/li&gt;
+&lt;li&gt;Instead of using a &lt;code&gt;venv&lt;/code&gt;, I used a conda-managed environment this time.
+Worked out better. Created an &lt;code&gt;environment.yml&lt;/code&gt; for the blog.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ML Setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a Conda environment for ML stuff&lt;/li&gt;
+&lt;li&gt;Install:&lt;ul&gt;
+&lt;li&gt;torch, torchvision, torchaudio&lt;/li&gt;
+&lt;li&gt;numpy, pandas, scikit-learn, xgboost&lt;/li&gt;
+&lt;li&gt;matplotlib, bokeh&lt;/li&gt;
+&lt;li&gt;jupyterlab, ipywidgets&lt;/li&gt;
+&lt;li&gt;jupyterlab-vim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At this point, you should have a stable system. Move over data from the previous
+machine (Documents, Pictures, Videos etc.)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Set Desktop Background&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step back and enjoy :)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="hehe" src="res/desktop.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nvim+kitty" src="res/blog.png"&gt;&lt;/p&gt;
+&lt;h2&gt;One More Thing&lt;/h2&gt;
+&lt;p&gt;There's a difference between &lt;code&gt;.zshenv&lt;/code&gt;, &lt;code&gt;.zprofile&lt;/code&gt;, &lt;code&gt;.zshrc&lt;/code&gt; and other flavours
+of zsh conf files, details of which I learnt from &lt;a href="https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout"&gt;here&lt;/a&gt;.
+You'd want to alias &lt;code&gt;gcc&lt;/code&gt; to &lt;code&gt;gcc-12&lt;/code&gt; and &lt;code&gt;g++&lt;/code&gt; to &lt;code&gt;g++-12&lt;/code&gt; (they dubiously
+use clang), and &lt;code&gt;vim&lt;/code&gt; to &lt;code&gt;nvim&lt;/code&gt; in &lt;code&gt;.zshenv&lt;/code&gt; (otherwise makefiles won't pick up
+on the change. Also, uncomment the lines in .zshrc which export &lt;code&gt;$EDITOR&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Also, name your programming folder &lt;code&gt;Developer&lt;/code&gt; to get a nice directory icon.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 06 Mar 2023 12:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-03-06:/articles/2023/mac-setup-2.html</guid><category>Programming</category><category>Programming</category></item><item><title>Batch Normalization</title><link>https://aniruddhadeb.com/articles/2023/batch-normalization.html</link><description>&lt;p&gt;$$
 \require{physics}
 \newcommand{B}{\mathcal{B}}$$&lt;/p&gt;
 &lt;p&gt;Batch Normalization was proposed by &lt;a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43442.pdf"&gt;Ioffe and Szegedy&lt;/a&gt;
