@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Mon, 06 Mar 2023 12:00:00 +0530</lastBuildDate><item><title>Mac Setup v2</title><link>https://aniruddhadeb.com/articles/2023/mac-setup-2.html</link><description>&lt;p&gt;My 2015 MBP 13" was giving me some pain over this entire semester, lagging a lot
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Wed, 08 Mar 2023 00:12:00 +0530</lastBuildDate><item><title>The Properly Illustrated Transformer</title><link>https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer.html</link><description>&lt;p&gt;&lt;img alt="That's a f@!#ton of dropouts" src="/articles/2023/res/transformer_no_ws.svg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The title is (obviously) a shout out to &lt;a href="https://jalammar.github.io/illustrated-transformer/"&gt;Jay Alammar's Blog&lt;/a&gt;,
+which is probably the best source to learn about transformers, followed by
+&lt;a href="http://nlp.seas.harvard.edu/annotated-transformer/"&gt;The Annotated Transformer&lt;/a&gt;.
+Both of them are unclear about the nuances though (where the dropouts are mostly),
+     and so I made this to clear that up.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Wed, 08 Mar 2023 00:12:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-03-08:/articles/2023/properly-illustrated-transformer.html</guid><category>Machine Learning</category><category>Machine Learning</category><category>Transformers</category></item><item><title>Mac Setup v2</title><link>https://aniruddhadeb.com/articles/2023/mac-setup-2.html</link><description>&lt;p&gt;My 2015 MBP 13" was giving me some pain over this entire semester, lagging a lot
 and being very slow overall. I recently upgraded to a 16" MBP, and there have
 been no complaints so far :) the notch is simply not there if you have a black
 desktop background, so +1 to apple for that. Although face ID would have been
