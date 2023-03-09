@@ -13,3 +13,6 @@ which is probably the best source to learn about transformers, followed by
 [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/).
 Both of them are unclear about the nuances though (where the dropouts are mostly),
      and so I made this to clear that up.
+
+PS: Yes, this is just the encoder stack. I'll probably make the decoder stack
+in a part 2?

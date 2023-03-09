@@ -126,3 +126,9 @@ use clang), and `vim` to `nvim` in `.zshenv` (otherwise makefiles won't pick up
 on the change. Also, uncomment the lines in .zshrc which export `$EDITOR`.
 
 Also, name your programming folder `Developer` to get a nice directory icon.
+
+------
+
+EDIT (9 Mar): Moved from CoC to `nvim-lspconfig` and `cmp-nvim`, and to 
+treesitter-based syntax highlighting. Feels marginally better, and got the
+chance to hack at my vim config after a long time.
