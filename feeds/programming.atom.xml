@@ -167,7 +167,11 @@ of zsh conf files, details of which I learnt from &lt;a href="https://unix.stack
 You'd want to alias &lt;code&gt;gcc&lt;/code&gt; to &lt;code&gt;gcc-12&lt;/code&gt; and &lt;code&gt;g++&lt;/code&gt; to &lt;code&gt;g++-12&lt;/code&gt; (they dubiously
 use clang), and &lt;code&gt;vim&lt;/code&gt; to &lt;code&gt;nvim&lt;/code&gt; in &lt;code&gt;.zshenv&lt;/code&gt; (otherwise makefiles won't pick up
 on the change. Also, uncomment the lines in .zshrc which export &lt;code&gt;$EDITOR&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Also, name your programming folder &lt;code&gt;Developer&lt;/code&gt; to get a nice directory icon.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Optimizers, Part 1</title><link href="https://aniruddhadeb.com/articles/2023/optimizers-1.html" rel="alternate"></link><published>2023-01-02T12:25:00+05:30</published><updated>2023-01-02T12:25:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-01-02:/articles/2023/optimizers-1.html</id><summary type="html">&lt;p&gt;Happy New Year! This &lt;strike&gt;is going to&lt;/strike&gt; was supposed to be a long
+&lt;p&gt;Also, name your programming folder &lt;code&gt;Developer&lt;/code&gt; to get a nice directory icon.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;EDIT (9 Mar): Moved from CoC to &lt;code&gt;nvim-lspconfig&lt;/code&gt; and &lt;code&gt;cmp-nvim&lt;/code&gt;, and to 
+treesitter-based syntax highlighting. Feels marginally better, and got the
+chance to hack at my vim config after a long time.&lt;/p&gt;</content><category term="Programming"></category><category term="Programming"></category></entry><entry><title>Optimizers, Part 1</title><link href="https://aniruddhadeb.com/articles/2023/optimizers-1.html" rel="alternate"></link><published>2023-01-02T12:25:00+05:30</published><updated>2023-01-02T12:25:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-01-02:/articles/2023/optimizers-1.html</id><summary type="html">&lt;p&gt;Happy New Year! This &lt;strike&gt;is going to&lt;/strike&gt; was supposed to be a long
 one, so sit back and grab a chocolate (and preferably view this on your laptop)&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;/p&gt;
 &lt;iframe src="/articles/2023/res/intro_plot.html" style="width: 100%; height: 650px; border: 0"&gt;&lt;/iframe&gt;

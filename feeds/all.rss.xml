@@ -172,7 +172,11 @@ of zsh conf files, details of which I learnt from &lt;a href="https://unix.stack
 You'd want to alias &lt;code&gt;gcc&lt;/code&gt; to &lt;code&gt;gcc-12&lt;/code&gt; and &lt;code&gt;g++&lt;/code&gt; to &lt;code&gt;g++-12&lt;/code&gt; (they dubiously
 use clang), and &lt;code&gt;vim&lt;/code&gt; to &lt;code&gt;nvim&lt;/code&gt; in &lt;code&gt;.zshenv&lt;/code&gt; (otherwise makefiles won't pick up
 on the change. Also, uncomment the lines in .zshrc which export &lt;code&gt;$EDITOR&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Also, name your programming folder &lt;code&gt;Developer&lt;/code&gt; to get a nice directory icon.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 06 Mar 2023 12:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-03-06:/articles/2023/mac-setup-2.html</guid><category>Programming</category><category>Programming</category></item><item><title>Batch Normalization</title><link>https://aniruddhadeb.com/articles/2023/batch-normalization.html</link><description>&lt;p&gt;$$
+&lt;p&gt;Also, name your programming folder &lt;code&gt;Developer&lt;/code&gt; to get a nice directory icon.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;EDIT (9 Mar): Moved from CoC to &lt;code&gt;nvim-lspconfig&lt;/code&gt; and &lt;code&gt;cmp-nvim&lt;/code&gt;, and to 
+treesitter-based syntax highlighting. Feels marginally better, and got the
+chance to hack at my vim config after a long time.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Mon, 06 Mar 2023 12:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-03-06:/articles/2023/mac-setup-2.html</guid><category>Programming</category><category>Programming</category></item><item><title>Batch Normalization</title><link>https://aniruddhadeb.com/articles/2023/batch-normalization.html</link><description>&lt;p&gt;$$
 \require{physics}
 \newcommand{B}{\mathcal{B}}$$&lt;/p&gt;
 &lt;p&gt;Batch Normalization was proposed by &lt;a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43442.pdf"&gt;Ioffe and Szegedy&lt;/a&gt;
