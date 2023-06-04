@@ -117,6 +117,9 @@ download the appimage from &lt;a href="https://github.com/neovim/neovim/releases
 and move the files to the right locations. Once that was done, I installed packer
 to the right place, and copied my config over. Everything worked as expected 
 after that.&lt;/p&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/Neovim?ref_src=twsrc%5Etfw"&gt;@neovim&lt;/a&gt; is goated. &lt;a href="https://twitter.com/code?ref_src=twsrc%5Etfw"&gt;@code&lt;/a&gt; is bloated.&lt;/p&gt;&amp;mdash; Aniruddha Deb (@hairband_dude) &lt;a href="https://twitter.com/hairband_dude/status/1665143467079507968?ref_src=twsrc%5Etfw"&gt;June 3, 2023&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
 &lt;p&gt;After that, I made an environment for PyTorch 2. It's a bit too late now to
 test out &lt;code&gt;torch.compile&lt;/code&gt;, but I will tomorrow on a couple of models. I also 
 wanted to develop &lt;a href="https://github.com/Aniruddha-Deb/pajamas"&gt;pajamas&lt;/a&gt; further,
