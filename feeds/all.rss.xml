@@ -1,5 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sun, 19 Mar 2023 23:30:00 +0530</lastBuildDate><item><title>MRCU comic</title><link>https://aniruddhadeb.com/articles/2023/rcu-comic.html</link><description>&lt;p&gt;&lt;img alt="From my notes" src="/articles/2023/res/RCU.jpeg"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sun, 04 Jun 2023 01:00:00 +0530</lastBuildDate><item><title>My (updated) DL workflow for 2023</title><link>https://aniruddhadeb.com/articles/2023/updated-dl-workflow-2023.html</link><description>&lt;p&gt;Remember last semester, where I said this?&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img width="600px" src="/articles/2022/res/cs_degree.png"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;That went pretty well. Much better than I expected it to go :) I also used the 
+HPC DL environment a lot, across 4 courses that I did (COL380, COL772, COL775 
+and COD310). It was so used that at a point I had four different GPU's allocated
+just for running tasks for these different courses.&lt;/p&gt;
+&lt;p&gt;A lot could be done better, though. Since I have my summer ahead of me, I
+decided to clean house for the next semester&lt;/p&gt;
+&lt;h2&gt;The secret life of software&lt;/h2&gt;
+&lt;p&gt;After an OS course that delved deep into the linux kernel, I'm qualified to 
+talk about this. For software-specific stuff, the relevant linux directories
+are structured as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/ &lt;span class="c1"&gt;# Root - primary hierarchy&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- bin &lt;span class="c1"&gt;# where your executables go&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- include &lt;span class="c1"&gt;# where header files go&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- lib &lt;span class="c1"&gt;# where libraries go&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- home &lt;span class="c1"&gt;# home directories of users&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- aniruddha &lt;span class="c1"&gt;# home directories of users&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- .local &lt;span class="c1"&gt;# User-specific tertiary hierarchy&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- bin
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- include
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- lib
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- .conda
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- envs
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- dl &lt;span class="c1"&gt;# a single environment folder&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;        &lt;span class="sb"&gt;`&lt;/span&gt;- bin
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;        &lt;span class="sb"&gt;`&lt;/span&gt;- include
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="p"&gt;|&lt;/span&gt;        &lt;span class="sb"&gt;`&lt;/span&gt;- lib
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- .config &lt;span class="c1"&gt;# directory containing config files&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- .bashrc &lt;span class="c1"&gt;# sourced on every login shell&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;     &lt;span class="sb"&gt;`&lt;/span&gt;- scratch -&amp;gt; /scratch/aniruddha &lt;span class="c1"&gt;# HPC specific scratch directory&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- usr &lt;span class="c1"&gt;# Unix System Resources - Secondary Hierarchy, read only stuff for users&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- bin
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- include
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- lib
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- &lt;span class="nb"&gt;local&lt;/span&gt; &lt;span class="c1"&gt;# Tertiary hierarchy - has it&amp;#39;s own bin, include, lib, etc&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="sb"&gt;`&lt;/span&gt;- share &lt;span class="c1"&gt;# Architecture Independent (shared) data&lt;/span&gt;
+&lt;span class="sb"&gt;`&lt;/span&gt;- opt &lt;span class="c1"&gt;# Optional software&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;PATH&lt;/code&gt; variable's contents now make a lot more sense. An &lt;code&gt;echo $PATH&lt;/code&gt; on a
+unix box will usually have all the &lt;code&gt;bin&lt;/code&gt; directories shown above, and doing a
+&lt;code&gt;echo $LD_LIBRARY_PATH&lt;/code&gt; will have all the &lt;code&gt;lib&lt;/code&gt; directories above. It's simple,
+intuitive and has been working for half a century now. More details can be found
+&lt;a href="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let's say that we don't have super-user privileges. This brings two challenges:
+- &lt;strong&gt;The only directory above that we can write to is our home directory&lt;/strong&gt;.
+  That's it. Any software/libraries/headers that we need to install need to be
+  installed in &lt;code&gt;.local&lt;/code&gt; and added to path/symlinked through
+- If a binary already exists in &lt;code&gt;/bin&lt;/code&gt; or &lt;code&gt;/usr/bin&lt;/code&gt;, that would be registered
+  by the system, especially if it needed an older version. This is visible
+  in HPC, which has super-old versions of &lt;code&gt;git&lt;/code&gt; (1.8x) and &lt;code&gt;conda&lt;/code&gt; (5.x).&lt;/p&gt;
+&lt;p&gt;Even when it comes to modules, HPC doesn't have the latest &lt;code&gt;gcc&lt;/code&gt; (stuck at 9)
+or modern build tools, such as &lt;code&gt;cmake&lt;/code&gt; or &lt;code&gt;ninja&lt;/code&gt;. There is no clean way to 
+even install these. The &lt;a href="https://supercomputing.iitd.ac.in/?soft"&gt;HPC website&lt;/a&gt; 
+mentions two options that you can take in this event:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install the software in your own account (&lt;code&gt;$HOME&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Request installation, via your supervisor.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2 would be a good option if it didn't have a turnaround time of over a month,
+so the only sane thing to do is 1.&lt;/p&gt;
+&lt;h2&gt;Install software locally&lt;/h2&gt;
+&lt;p&gt;This is easier than it sounds. HPC runs CentOS 7, which uses &lt;code&gt;yum&lt;/code&gt; as it's 
+package manager, so installing software should be as easy as doing &lt;code&gt;yum install 
+&amp;lt;packagename&amp;gt; --local&lt;/code&gt;, right?&lt;/p&gt;
+&lt;p&gt;Nope.&lt;/p&gt;
+&lt;p&gt;yum doesn't support doing this natively. &lt;a href="https://stackoverflow.com/questions/36651091/how-to-install-packages-in-linux-centos-without-root-user-with-automatic-depen"&gt;After some research&lt;/a&gt;, 
+you can get yum to install things locally, but it's not worth the effort. &lt;code&gt;dnf&lt;/code&gt;
+isn't installed, neither is any other package manager, so this turns up a dead
+end.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h4&gt;Aside: Package Managers&lt;/h4&gt;
+&lt;p&gt;What I had been doing so far was to build software from source if needed, and
+then pass the installation directory using a flag in the &lt;code&gt;make install&lt;/code&gt; step.
+This is &lt;em&gt;(a)&lt;/em&gt; super hard and &lt;em&gt;(b)&lt;/em&gt; unsustainable. (a) because you'd need to 
+take into account all of the package's dependencies, and (b) because you'd 
+need to update the package if a newer version came around. &lt;/p&gt;
+&lt;p&gt;Package managers take away all of this pain by handling the dependency 
+management and updates on their own. So what we're really looking for is &lt;strong&gt;a 
+package manager that manages it's repository of packages in .local and, ipso 
+facto, can be run without superuser privileges.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;(Mini)Conda to the rescue&lt;/h2&gt;
+&lt;p&gt;The second answer in the StackExchange thread linked above recommended using
+&lt;code&gt;conda&lt;/code&gt; as a package manager, and that's what was finally done. However, the 
+&lt;code&gt;conda&lt;/code&gt; version as mentioned above is outdated, and since we want to use the
+most up to date versions of packages, that would defeat the purpose.&lt;/p&gt;
+&lt;p&gt;To fix this, I installed miniconda locally in &lt;code&gt;$HOME/.local/opt/miniconda3&lt;/code&gt;, 
+following the good directory structure above. &lt;code&gt;miniconda3&lt;/code&gt; is an open-source 
+conda variant and picks up right where &lt;code&gt;conda&lt;/code&gt; left off: it has access to all 
+my old environments, and also uses the preferences in my &lt;code&gt;.condarc&lt;/code&gt; to make
+new environments in &lt;code&gt;scratch/conda_data/envs&lt;/code&gt;, so that others can also use 
+them.&lt;/p&gt;
+&lt;p&gt;What about keeping miniconda up to date? &lt;em&gt;Miniconda updates itself, so we don't 
+need to do anything!&lt;/em&gt; conda also launches the &lt;code&gt;base&lt;/code&gt; environment by default, so 
+all we need to do is prepend the base conda environment's &lt;code&gt;bin&lt;/code&gt; to our &lt;code&gt;PATH&lt;/code&gt;,
+and we can use &lt;code&gt;conda&lt;/code&gt; to manage our executables!&lt;/p&gt;
+&lt;h2&gt;What now?&lt;/h2&gt;
+&lt;p&gt;Let's update git, gcc, g++ and get cmake and node&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;conda install -c conda-forge git gcc gxx cmake &lt;span class="nv"&gt;nodejs&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;18&lt;/span&gt;.5.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Let's also install neovim. Unfortunately there isn't a conda package for this
+(there was one, but that was for neovim python bindings), so I had to manually
+download the appimage from &lt;a href="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"&gt;here&lt;/a&gt; 
+and move the files to the right locations. Once that was done, I installed packer
+to the right place, and copied my config over. Everything worked as expected 
+after that.&lt;/p&gt;
+&lt;p&gt;After that, I made an environment for PyTorch 2. It's a bit too late now to
+test out &lt;code&gt;torch.compile&lt;/code&gt;, but I will tomorrow on a couple of models. I also 
+wanted to develop &lt;a href="https://github.com/Aniruddha-Deb/pajamas"&gt;pajamas&lt;/a&gt; further,
+which I'll probably do sooner or later.&lt;/p&gt;
+&lt;p&gt;And with that, I'm ready to become a researcher for the next two semesters :)&lt;/p&gt;
+&lt;h2&gt;Other things&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://aniruddhadeb.com/articles/2022/intern-inferno.html#intern-inferno"&gt;Amsterdam is Beautiful&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="random bridge sunset" src="res/amsterdam.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;So is Rotterdam&lt;/p&gt;
+&lt;p&gt;&lt;img alt="erasmus bridge" src="res/rotterdam.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;So is Antwerp&lt;/p&gt;
+&lt;p&gt;&lt;img alt="grote markt" src="res/antwerp.jpg"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 04 Jun 2023 01:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-06-04:/articles/2023/updated-dl-workflow-2023.html</guid><category>Programming</category><category>Programming</category><category>Machine Learning</category><category>Deep Learning</category></item><item><title>MRCU comic</title><link>https://aniruddhadeb.com/articles/2023/rcu-comic.html</link><description>&lt;p&gt;&lt;img alt="From my notes" src="/articles/2023/res/RCU.jpeg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Drawn from &lt;a href="https://en.wikipedia.org/wiki/Read-copy-update"&gt;Wikipedia's&lt;/a&gt; amazing RCU explanation.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sun, 19 Mar 2023 23:30:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-03-19:/articles/2023/rcu-comic.html</guid><category>Programming</category><category>Programming</category><category>Operating Systems</category></item><item><title>The Properly Illustrated Transformer</title><link>https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer.html</link><description>&lt;p&gt;&lt;img alt="That's a f@!#ton of dropouts" src="/articles/2023/res/transformer_no_ws.svg"&gt;&lt;/p&gt;
 &lt;hr&gt;
