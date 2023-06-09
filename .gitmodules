@@ -1,0 +1,3 @@
+[submodule "plugins/pelican-encrypt-content"]
+	path = plugins/pelican-encrypt-content
+	url = https://github.com/mindcruzer/pelican-encrypt-content

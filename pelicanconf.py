@@ -20,6 +20,10 @@ ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
 DEFAULT_METADATA = {
     'status': 'published',
 }
+ENCRYPT_CONTENT = {
+    'title_prefix': '[Encrypted]',
+    'summary': 'This content is encrypted.'
+}
 
 EXTRA_PATH_METADATA = {
 	'extras/favicon/favicon.ico': {'path': 'favicon.ico'},
