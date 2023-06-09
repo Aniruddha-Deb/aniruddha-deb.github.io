@@ -122,43 +122,43 @@ MathJax = {
 
 <h2>Footnotes</h2>
 <p>Pelican is an amazing CMS: powerful enough to do anything, while being simple and flexible enough to be extensible when needed. The spoiler tags were generated using the following CSS:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">spoiler-prompt</span> <span class="p">{</span>
-    <span class="k">color</span><span class="p">:</span> <span class="kc">gray</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">spoiler-prompt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">gray</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler-text</span> <span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler-text</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">spoiler-text</span> <span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">.</span><span class="nc">spoiler-text</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">active</span> <span class="p">.</span><span class="nc">spoiler-text</span> <span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">active</span><span class="w"> </span><span class="p">.</span><span class="nc">spoiler-text</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">spoiler-prompt</span> <span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">.</span><span class="nc">spoiler-prompt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">active</span> <span class="p">.</span><span class="nc">spoiler-prompt</span> <span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">active</span><span class="w"> </span><span class="p">.</span><span class="nc">spoiler-prompt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
-    <span class="k">overflow-y</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">.</span><span class="nc">spoiler</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">overflow-y</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>To create a spoiler, simply include the following <code>&lt;link&gt;</code> after the title block:</p>
-<div class="highlight"><pre><span></span><code><span class="err">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;res/spoiler.css&quot;&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nx">link</span><span class="w"> </span><span class="nx">rel</span><span class="p">=</span><span class="s">&quot;stylesheet&quot;</span><span class="w"> </span><span class="k">type</span><span class="p">=</span><span class="s">&quot;text/css&quot;</span><span class="w"> </span><span class="nx">href</span><span class="p">=</span><span class="s">&quot;res/spoiler.css&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <p>and use a blockquote element with class <code>spoiler</code>, with a spoiler prompt and text to create one</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">&#39;spoiler&#39;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;spoiler-prompt&#39;</span><span class="nt">&gt;</span> <span class="nt">&lt;b&gt;</span>SPOILER<span class="nt">&lt;/b&gt;</span>: mouseover/tap to view<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;spoiler-text&#39;</span><span class="nt">&gt;</span>Spoiler text goes here<span class="nt">&lt;/div&gt;&lt;/blockquote&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;blockquote</span><span class="w"> </span><span class="na">class=</span><span class="s">&#39;spoiler&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span><span class="w"> </span><span class="na">class=</span><span class="s">&#39;spoiler-prompt&#39;</span><span class="nt">&gt;</span><span class="w"> </span><span class="nt">&lt;b&gt;</span>SPOILER<span class="nt">&lt;/b&gt;</span>:<span class="w"> </span>mouseover/tap<span class="w"> </span>to<span class="w"> </span>view<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span><span class="w"> </span><span class="na">class=</span><span class="s">&#39;spoiler-text&#39;</span><span class="nt">&gt;</span>Spoiler<span class="w"> </span>text<span class="w"> </span>goes<span class="w"> </span>here<span class="nt">&lt;/div&gt;&lt;/blockquote&gt;</span>
 </code></pre></div>
 
 <p>Most importantly, there are no issues with math in the spoiler-text tag :)</p>

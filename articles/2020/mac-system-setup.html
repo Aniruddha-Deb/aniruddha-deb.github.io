@@ -138,10 +138,10 @@ done it properly :)</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo scutil --set HostName MacBook-Pro  
-sudo scutil --set LocalHostName MacBook-Pro  
-sudo scutil --set ComputerName MacBook-Pro  
-dscacheutil -flushcache  
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>scutil<span class="w"> </span>--set<span class="w"> </span>HostName<span class="w"> </span>MacBook-Pro<span class="w">  </span>
+sudo<span class="w"> </span>scutil<span class="w"> </span>--set<span class="w"> </span>LocalHostName<span class="w"> </span>MacBook-Pro<span class="w">  </span>
+sudo<span class="w"> </span>scutil<span class="w"> </span>--set<span class="w"> </span>ComputerName<span class="w"> </span>MacBook-Pro<span class="w">  </span>
+dscacheutil<span class="w"> </span>-flushcache<span class="w">  </span>
 &lt;restart&gt;
 </code></pre></div>
 
@@ -204,7 +204,7 @@ we'll get to that in a minute.</p>
 </ul>
 </li>
 </ul>
-<p>\&lt;DON'T DO THIS!></p>
+<p>\&lt;DON'T DO THIS!&gt;</p>
 <ul>
 <li>Python<ul>
 <li>Download latest stable installer from web</li>
@@ -218,7 +218,7 @@ we'll get to that in a minute.</p>
 </ul>
 </li>
 </ul>
-<p>\&lt;/DON'T DO THIS!></p>
+<p>\&lt;/DON'T DO THIS!&gt;</p>
 <ul>
 <li>
 <p>XCode Command Line Tools</p>
@@ -245,11 +245,11 @@ we'll get to that in a minute.</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>brew install pyenv
-pyenv install <span class="m">3</span>.9.0 <span class="c1"># replace with latest python version</span>
-pyenv global <span class="m">3</span>.9.0 <span class="c1"># set 3.9.0 as global version</span>
-pyenv version <span class="c1"># double check version</span>
-<span class="nb">echo</span> -e <span class="s1">&#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &quot;$(pyenv init -)&quot;\nfi&#39;</span> &gt;&gt; ~/.zshrc <span class="c1"># voodoo magic that allows pyenv to work</span>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>pyenv
+pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.9.0<span class="w"> </span><span class="c1"># replace with latest python version</span>
+pyenv<span class="w"> </span>global<span class="w"> </span><span class="m">3</span>.9.0<span class="w"> </span><span class="c1"># set 3.9.0 as global version</span>
+pyenv<span class="w"> </span>version<span class="w"> </span><span class="c1"># double check version</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &quot;$(pyenv init -)&quot;\nfi&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc<span class="w"> </span><span class="c1"># voodoo magic that allows pyenv to work</span>
 <span class="nb">exit</span>
 </code></pre></div>
 
@@ -292,13 +292,13 @@ pyenv version <span class="c1"># double check version</span>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>git clone --select-branch --branch <span class="nb">source</span> https://github.com/Aniruddha-Deb/aniruddha-deb.github.io 
-mv aniruddha-deb.github.io blog
-<span class="nb">cd</span> blog
-virtualenv venv
-<span class="nb">source</span> venv/bin/activate
-<span class="nb">echo</span> <span class="s2">&quot;venv&quot;</span> &gt; .gitignore
-pip install -r requirements.txt
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--select-branch<span class="w"> </span>--branch<span class="w"> </span><span class="nb">source</span><span class="w"> </span>https://github.com/Aniruddha-Deb/aniruddha-deb.github.io<span class="w"> </span>
+mv<span class="w"> </span>aniruddha-deb.github.io<span class="w"> </span>blog
+<span class="nb">cd</span><span class="w"> </span>blog
+virtualenv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 
 <p>then whip up this article. I ran into a small hiccup while using <code>make html</code>: 

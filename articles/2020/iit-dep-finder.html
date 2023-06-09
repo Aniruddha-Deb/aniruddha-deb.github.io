@@ -153,16 +153,16 @@ snippet of code:</p>
 <p>The CSV file was then cleaned up a bit manually, such as removing commas at the
 end of the line and changing a few typos and values. After this, I created the 
 SQLite database and added a table, whose schema was as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="ss">&quot;orcr_2020_r1&quot;</span><span class="p">(</span>
-    <span class="n">institute</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-    <span class="n">department</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-    <span class="n">quota</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
-    <span class="n">category</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
-    <span class="n">gender</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
-    <span class="n">OPR</span> <span class="nb">integer</span><span class="p">,</span>
-    <span class="n">OPR_prep</span> <span class="nb">integer</span><span class="p">,</span>
-    <span class="n">CPR</span> <span class="nb">integer</span><span class="p">,</span>
-    <span class="n">CPR_prep</span> <span class="nb">integer</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="ss">&quot;orcr_2020_r1&quot;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">institute</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="w">    </span><span class="n">department</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="w">    </span><span class="n">quota</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">    </span><span class="n">category</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+<span class="w">    </span><span class="n">gender</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+<span class="w">    </span><span class="n">OPR</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OPR_prep</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CPR</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CPR_prep</span><span class="w"> </span><span class="nb">integer</span>
 <span class="p">);</span>
 </code></pre></div>
 
@@ -256,11 +256,11 @@ my server in under 2 hours. Not bad for a n00b like me.</p>
 <p>The following day, I read more about DNS records, what A, CNAME and TXT records
 are. I then went ahead and created a small sitemap for my website, since I 
 would also host my blog on the website</p>
-<div class="highlight"><pre><span></span><code><span class="n">www</span><span class="p">.</span><span class="n">aniruddhadeb</span><span class="p">.</span><span class="n">com</span> <span class="o">-</span> <span class="n">Blog</span> <span class="n">linked</span> <span class="k">to</span> <span class="n">GitHub</span> <span class="n">pages</span>
-    <span class="o">-</span> <span class="o">/&lt;</span><span class="n">Project</span><span class="o">&gt;</span> <span class="o">-</span> <span class="n">Project</span> <span class="n">websites</span> <span class="k">from</span> <span class="n">GitHub</span>
+<div class="highlight"><pre><span></span><code>www.aniruddhadeb.com - Blog linked to GitHub pages
+    - /&lt;Project&gt; - Project websites from GitHub
 
-<span class="n">apps</span><span class="p">.</span><span class="n">aniruddhadeb</span><span class="p">.</span><span class="n">com</span> <span class="o">-</span> <span class="n">My</span> <span class="n">webapps</span>
-    <span class="o">-</span> <span class="o">/&lt;</span><span class="n">App</span><span class="o">&gt;</span> <span class="o">-</span> <span class="n">single</span> <span class="n">webapp</span> <span class="n">page</span> <span class="p">(</span><span class="k">in</span> <span class="n">this</span> <span class="k">case</span><span class="p">,</span> <span class="n">IIT_dep_finder</span><span class="p">)</span>
+apps.aniruddhadeb.com - My webapps
+    - /&lt;App&gt; - single webapp page (in this case, IIT_dep_finder)
 </code></pre></div>
 
 <p>The URL for this project would then be <code>http://apps.aniruddhadeb.com/IIT_dep_finder</code>. 

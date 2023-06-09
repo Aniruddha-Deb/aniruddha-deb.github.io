@@ -127,12 +127,12 @@ MathJax = {
 <p>I've wanted to do this from a long time, but never had the expertise or the effort to see this through. I've had some experience scraping PDF-Tabulated data using Tabula (my <a href="https://www.kaggle.com/aniruddhadeb/jee-2019-data">JEE 2019 dataset</a>), but never really gotten farther and analysed the data<sup>1</sup>.</p>
 <p>The first course of action was to scrape as many courses out as I could from CoS, because that contains course overlap/prerequisite information. The general course description across departments is given from page 156 onwards of CoS, and the way of scraping this was interesting: since the data was unstructured, all I did was copy and paste all the text into sublime text, then use macros to filter out the data and get it into a nice XML format. This took me around two-three hours. I was then able to parse it down using BeautifulSoup into a pandas dataframe, so mission accomplished there. The schema is pretty simple, and here's an example of what a course looks like</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;course&gt;</span>
-  <span class="nt">&lt;code&gt;</span>APL100<span class="nt">&lt;/code&gt;</span>
-  <span class="nt">&lt;name&gt;</span>Engineering Mechanics<span class="nt">&lt;/name&gt;</span>
-  <span class="nt">&lt;credits&gt;</span>4<span class="nt">&lt;/credits&gt;</span>
-  <span class="nt">&lt;credit-structure&gt;</span>3-1-0<span class="nt">&lt;/credit-structure&gt;</span>
-  <span class="nt">&lt;description&gt;</span>Kinematics, Statics, Equations of Motion, Rigid body dynamics, 
-  Introduction to variational mechanics.<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;code&gt;</span>APL100<span class="nt">&lt;/code&gt;</span>
+<span class="w">  </span><span class="nt">&lt;name&gt;</span>Engineering<span class="w"> </span>Mechanics<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;credits&gt;</span>4<span class="nt">&lt;/credits&gt;</span>
+<span class="w">  </span><span class="nt">&lt;credit-structure&gt;</span>3-1-0<span class="nt">&lt;/credit-structure&gt;</span>
+<span class="w">  </span><span class="nt">&lt;description&gt;</span>Kinematics,<span class="w"> </span>Statics,<span class="w"> </span>Equations<span class="w"> </span>of<span class="w"> </span>Motion,<span class="w"> </span>Rigid<span class="w"> </span>body<span class="w"> </span>dynamics,<span class="w"> </span>
+<span class="w">  </span>Introduction<span class="w"> </span>to<span class="w"> </span>variational<span class="w"> </span>mechanics.<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;/course&gt;</span>
 </code></pre></div>
 

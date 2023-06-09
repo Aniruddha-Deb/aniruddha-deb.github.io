@@ -139,37 +139,37 @@ use for larger projects; there are a few reasons behind this, which are:</p>
 </ol>
 <p>all of these (except Terminal) required no setup; I just hit ⌘⇧P -&gt; install packages -&gt; type the package name in, hit enter and done. Terminal required that I specify that I have iTerm2 </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;terminal&quot;</span><span class="p">:</span> <span class="s2">&quot;iTerm2-v3.sh&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;--open-in-tab&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;terminal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iTerm2-v3.sh&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--open-in-tab&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>Installing the larger autocomplete plugins</h3>
 <p>I mainly code in C/C++/Python nowadays, so I needed a Python autocomplete, as well as a C/C++ autocompleter. Jedi is what I used to use for python a long time back, and surprisingly it's still quite well maintained and documented. I installed Jedi via the package control. Jedi has some interesting settings regarding projects and virtual environments; I didn't get to try any of those out, but I did set it up on the default python interpreter on my system. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;python_interpreter&quot;</span><span class="p">:</span> <span class="s2">&quot;/Users/Sensei/.pyenv/versions/3.9.0/bin/python&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;python_package_paths&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;/Users/Sensei/.pyenv/versions/3.9.0/lib/python3.9/site-packages&quot;</span>
-    <span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;python_interpreter&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Users/Sensei/.pyenv/versions/3.9.0/bin/python&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python_package_paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;/Users/Sensei/.pyenv/versions/3.9.0/lib/python3.9/site-packages&quot;</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>and that's it! Jedi now autocompletes both normal python and all packages that I install with pip (numpy, scipy etc). Great!</p>
 <p>I was left with setting up a C++ autocompleter, and this was a bit tricky. The first recommendation that I encountered was for ClangAutoComplete, but after downloading it, it stated that the plugin is still maintained, but not very actively. ClangAutoComplete instead recommended EasyClangComplete, so I uninstalled it and downloaded ECC. ECC had a few setup issues; everything is hunky-dory if you use CMake, but since I don't, I had to tweak the preferences a bit. I had already ranted about <a href="https://aniruddhadeb.com/articles/2021/c-mac.html">How the C header locations on mac are screwed</a>, and fortunately the ECC folks were kind enough to provide a recommended path list for mac.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;common_flags&quot;</span> <span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;-I/usr/include/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;-I/usr/local/include&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;-I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;-I/Library/Developer/CommandLineTools/usr/include/c++/v1&quot;</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;lang_flags&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-std=c99&quot;</span><span class="p">],</span>
-        <span class="nt">&quot;CPP&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-std=c++14&quot;</span><span class="p">],</span>
-        <span class="nt">&quot;OBJECTIVE_C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-std=c11&quot;</span><span class="p">],</span>
-        <span class="nt">&quot;OBJECTIVE_CPP&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-std=c++14&quot;</span><span class="p">],</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;libclang_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Library/Developer/CommandLineTools/usr/lib/&quot;</span>
+<span class="w">    </span><span class="nt">&quot;common_flags&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;-I/usr/include/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-I/usr/local/include&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-I/Library/Developer/CommandLineTools/usr/include/c++/v1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;lang_flags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;C&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-std=c99&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;CPP&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-std=c++14&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;OBJECTIVE_C&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-std=c11&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;OBJECTIVE_CPP&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-std=c++14&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;libclang_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Library/Developer/CommandLineTools/usr/lib/&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 

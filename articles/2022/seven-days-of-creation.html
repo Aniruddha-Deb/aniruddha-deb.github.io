@@ -141,38 +141,38 @@ MathJax = {
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="c1">// some code here</span>
-<span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
 
-<span class="kt">uintptr_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
+<span class="kt">uintptr_t</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
 
-<span class="k">const</span> <span class="kt">int</span> <span class="n">reuse</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">SOL_SOCKET</span><span class="p">,</span><span class="w"> </span><span class="n">SO_REUSEADDR</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
 
-<span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
-<span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">O_NONBLOCK</span><span class="p">);</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
+<span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">F_SETFL</span><span class="p">,</span><span class="w"> </span><span class="n">O_NONBLOCK</span><span class="p">);</span>
 <span class="n">freeaddrinfo</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
 <span class="c1">// more code here</span>
 </code></pre></div>
 
 <p>Do you see the error? Exactly. You'll never see the error, until it blows up in your face 500 lines later. Your server needs to fail fast while debugging. There's no shame in throwing assert statements around like confetti.</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">errstr</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">msg</span> <span class="o">+</span> <span class="s">&quot; (errno &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">errstr</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (errno &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// ...</span>
 
-<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
-<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not get address information&quot;</span><span class="p">));</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getaddrinfo</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not get address information&quot;</span><span class="p">));</span>
 
-<span class="kt">uintptr_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
-<span class="n">assert</span> <span class="p">(</span><span class="n">fd</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not create socket&quot;</span><span class="p">));</span>
+<span class="kt">uintptr_t</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">socket</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">);</span>
+<span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not create socket&quot;</span><span class="p">));</span>
 
-<span class="k">const</span> <span class="kt">int</span> <span class="n">reuse</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
-<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not set SO_REUSEADDR option&quot;</span><span class="p">));</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setsockopt</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">SOL_SOCKET</span><span class="p">,</span><span class="w"> </span><span class="n">SO_REUSEADDR</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reuse</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">reuse</span><span class="p">));</span>
+<span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not set SO_REUSEADDR option&quot;</span><span class="p">));</span>
 
-<span class="n">ret</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
-<span class="n">assert</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">-1</span> <span class="n">and</span> <span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not bind socket to port&quot;</span><span class="p">));</span>
+<span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bind</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">);</span>
+<span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">errstr</span><span class="p">(</span><span class="s">&quot;Could not bind socket to port&quot;</span><span class="p">));</span>
 
 <span class="c1">// ...</span>
 </code></pre></div>
@@ -188,50 +188,50 @@ MathJax = {
 <li>An event queue allows us to register this file descriptor with the queue, such that we are alerted when we can read/write from this file.</li>
 </ul>
 <p>What does an event queue look like? Here's a (rough) abstraction from my code:</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">event_t</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">filter</span><span class="p">;</span>
-    <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">event_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">filter</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">class</span> <span class="nc">EventQueue</span> <span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EventQueue</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-    <span class="n">EventQueue</span><span class="p">();</span>
-    <span class="kt">void</span> <span class="nf">add_event</span><span class="p">(</span><span class="k">const</span> <span class="n">event_t</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">);</span>
-    <span class="kt">void</span> <span class="nf">delete_event</span><span class="p">(</span><span class="k">const</span> <span class="n">event_t</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">event_t</span><span class="o">&gt;</span> <span class="n">get_events</span><span class="p">();</span>
-    <span class="kt">void</span> <span class="nf">close</span><span class="p">();</span>
+<span class="w">    </span><span class="n">EventQueue</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">event_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">event_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">event_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_events</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>simple enough. Where does the event loop come in? The loop is responsible for polling the event queue and processing the events that occur</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">EventQueue</span> <span class="n">evtq</span><span class="p">;</span>
-    <span class="c1">// add events here</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">auto</span> <span class="n">evts</span> <span class="o">=</span> <span class="n">evtq</span><span class="p">.</span><span class="n">get_events</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">evts</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// process e;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">EventQueue</span><span class="w"> </span><span class="n">evtq</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// add events here</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">evts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evtq</span><span class="p">.</span><span class="n">get_events</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">evts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// process e;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>Generally, a callback-like structure is employed within the event loop</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;&gt;</span> <span class="n">read_callbacks</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">read_callbacks</span><span class="p">;</span>
 
 <span class="c1">//...</span>
 
-<span class="kt">void</span> <span class="nf">register_read_callback</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">read_callbacks</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">register_read_callback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">read_callbacks</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// inside the event loop</span>
-        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">evts</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">filter</span> <span class="o">==</span> <span class="n">EV_READ</span><span class="p">)</span> <span class="n">read_callbacks</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">fd</span><span class="p">]();</span>
-            <span class="c1">// ...</span>
-        <span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">evts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">filter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EV_READ</span><span class="p">)</span><span class="w"> </span><span class="n">read_callbacks</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">fd</span><span class="p">]();</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="p">}</span>
 </code></pre></div>
 
 <p>Short and sweet, add more callbacks as needed.</p>
@@ -242,11 +242,11 @@ MathJax = {
 </blockquote>
 <p>The client was basically a mini-server, with a TCP and UDP port, that used the same event-loop based architecture to simultaneously transmit messages and receive file chunks. Once the protocol is implemented and the server is created, implementing a client is a relatively simple exercise, and was easy to do.</p>
 <p>One additional feature of kevent that I used were timers: if a request packet (over UDP) drops, then we won't receive a chunk in response to it. The way I solved this is to have a timer event every second, and a map that stores which chunk ID's are currently requested, and when those requests were sent out. Every second, when the timer event triggers, we check if there are any requests sent to which we haven't received a response in 5 seconds, and we resend these requests. Adding timer events to kqueue is relatively straightforward, just that the documentation doesn't make it clear whether we have to pass the time (in milliseconds) or a pointer to the time. The former works, but not the latter (even though <code>struct kevent</code> has the type of data as <code>intptr_t</code>)</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">kevent</span> <span class="n">evt</span><span class="p">;</span>
-<span class="kt">uint32_t</span> <span class="n">fd</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">;</span>
-<span class="kt">uint32_t</span> <span class="n">period_in_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
-<span class="n">EV_SET</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">EVFILT_TIMER</span><span class="p">,</span> <span class="n">EV_ADD</span><span class="o">|</span><span class="n">EV_ENABLE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">period_in_ms</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-<span class="n">kevent</span><span class="p">(</span><span class="n">_kq</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">kevent</span><span class="w"> </span><span class="n">evt</span><span class="p">;</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6000</span><span class="p">;</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="n">period_in_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="n">EV_SET</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">EVFILT_TIMER</span><span class="p">,</span><span class="w"> </span><span class="n">EV_ADD</span><span class="o">|</span><span class="n">EV_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">period_in_ms</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">kevent</span><span class="p">(</span><span class="n">_kq</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">evt</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 </code></pre></div>
 
 <p><code>fd</code> was chosen as 6000 as this is large enough to not clash with anything else. I couldn't think of a better way to choose a descriptor for a timer. If you do know of one (allocating a file descriptor which won't clash with other file descriptors), do let me know in the comments :)</p>
@@ -258,15 +258,15 @@ MathJax = {
 <p>I set about redesigning the server. Fortunately, a full rewrite wasn't needed, and a lot of the components could just be reused directly. For changing the protocol, I defined the interfaces in a header file, and implementation-specific versions in a source file. This allows me to change the implementation at compile time rather than in source (which would need me to subclass Server and override these methods). All I need to do now to change the protocol is <code>make proto=TCP</code> instead of normal <code>make</code>. </p>
 <p>The makefile flags to do something like this are:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">ifeq ($(PROTO), TCP)</span>
-    <span class="nv">SRC_SERVER</span> <span class="o">+=</span> &lt;tcp implementation files&gt;
-    ...
-    SERVER :<span class="o">=</span> bin/server_tcp
-    ...
+<span class="w">    </span><span class="nv">SRC_SERVER</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>&lt;tcp<span class="w"> </span>implementation<span class="w"> </span>files&gt;
+<span class="w">    </span>...
+<span class="w">    </span>SERVER<span class="w"> </span>:<span class="o">=</span><span class="w"> </span>bin/server_tcp
+<span class="w">    </span>...
 <span class="cp">else</span>
-    <span class="nv">SRC_SERVER</span> <span class="o">+=</span> &lt;udp implementation files&gt;
-    ...
-    SERVER :<span class="o">=</span> bin/server_udp
-    ...
+<span class="w">    </span><span class="nv">SRC_SERVER</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>&lt;udp<span class="w"> </span>implementation<span class="w"> </span>files&gt;
+<span class="w">    </span>...
+<span class="w">    </span>SERVER<span class="w"> </span>:<span class="o">=</span><span class="w"> </span>bin/server_udp
+<span class="w">    </span>...
 <span class="cp">endif</span>
 </code></pre></div>
 
@@ -293,10 +293,10 @@ MathJax = {
 <p>I really didn't want to do (2), but it looked like there was no choice. I decided to give libkqueue a final chance on linux, and since it was not available on manjaro default repositories, I downloaded and compiled from source.</p>
 <p>And it worked! I had to link the library with <code>-lkqueue</code> and <code>-lpthread</code>, so made some linux-specific flags for that. I can now see why <code>cmake</code> is such a popular build tool, as this os-dependent complexity would only increase with more modules</p>
 <div class="highlight"><pre><span></span><code><span class="cp">ifneq ($(OS),Windows_NT)</span>
-    uname_os :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
+<span class="w">    </span>uname_os<span class="w"> </span>:<span class="o">=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>uname<span class="k">)</span>
 <span class="cp">    ifneq ($(uname_os),Darwin)</span>
-        <span class="nv">CPPFLAGS</span> <span class="o">+=</span> -I/usr/include/kqueue
-        <span class="nv">LFLAGS</span> <span class="o">+=</span> -lkqueue -lpthread
+<span class="w">        </span><span class="nv">CPPFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-I/usr/include/kqueue
+<span class="w">        </span><span class="nv">LFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-lkqueue<span class="w"> </span>-lpthread
 <span class="cp">    endif</span>
 <span class="cp">endif</span>
 </code></pre></div>

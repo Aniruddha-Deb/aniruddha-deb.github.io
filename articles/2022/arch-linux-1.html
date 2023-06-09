@@ -144,13 +144,13 @@ MathJax = {
 <li>Plug in your Pi to ethernet, and use your WiFi router settings page to see all connected devices. From there, note down your pi's IP and ssh on to it. </li>
 <li>use <code>timedatectl</code> to see if the system clock is accurate:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="err">timedatectl set-ntp true</span>
+<div class="highlight"><pre><span></span><code>timedatectl set-ntp true
 </code></pre></div>
 
 <p>use <code>timedatectl status</code> for information.
 - Set up the timezone:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</span>
-<span class="err">hwclock --systohc</span>
+<div class="highlight"><pre><span></span><code>ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+hwclock --systohc
 </code></pre></div>
 
 <ul>
@@ -160,21 +160,21 @@ MathJax = {
 <h3>Setting up <code>pacman</code> and certificates</h3>
 <p>Now that you're on the pi with a connection, the first thing to do is to setup <code>pacman</code>. This needs certificates: since Arch is a rolling distro, there's a very rigorous signature process in place for packages, and the system by default won't install packages which are not signed by trusted certificates in the keychain. </p>
 <p>Setting this up on ARM is slightly different compared to a normal arch system (or so I found):</p>
-<div class="highlight"><pre><span></span><code><span class="err">pacman-key --init</span>
-<span class="err">pacman-key --populate archlinuxarm</span>
-<span class="err">pacman-key --refresh-keys</span>
+<div class="highlight"><pre><span></span><code>pacman-key --init
+pacman-key --populate archlinuxarm
+pacman-key --refresh-keys
 </code></pre></div>
 
 <p>After that, <code>pacman -Syy</code> and <code>pacman -S archlinux-keyring</code>. Will install a couple dependencies as well.</p>
 <p>You're now ready to run</p>
-<div class="highlight"><pre><span></span><code><span class="err">pacman -Syu</span>
+<div class="highlight"><pre><span></span><code>pacman -Syu
 </code></pre></div>
 
 <p>to update and upgrade everything on your system.</p>
 <h3>Wifi setup</h3>
 <p>Just use <code>wifi-menu</code>, don't bother with anything more complicated. You'll also need to create a service to start wifi automatically on boot, by doing:</p>
-<div class="highlight"><pre><span></span><code><span class="err">systemctl enable wpa_supplicant@wlan0</span>
-<span class="err">systemctl start wpa_supplicant@wlan0</span>
+<div class="highlight"><pre><span></span><code><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">wpa_supplicant</span><span class="nv">@wlan0</span>
+<span class="n">systemctl</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="n">wpa_supplicant</span><span class="nv">@wlan0</span>
 </code></pre></div>
 
 <p>After this and rebooting, I was able to ssh onto my pi, by connecting it to my mobile hotspot. This is still my primary means of using my Pi. One important thing to note: <strong>Don't try switching to NetworkManager without a working display and ethernet connection</strong>. I tried doing this, only to blow the network setup on my Pi, because once you set up the NetworkManager service, it would take over <code>wlan0</code> on boot and because it didn't know the wifi configuration, it would never connect to the network, so I couldn't SSH/VNC onto it. After a lot of repeated tries, <code>wpa_supplicant</code> finally launched before NetworkManager on one boot, allowing me to ssh on and disable NetworkManager for good.</p>

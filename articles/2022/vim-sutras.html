@@ -142,7 +142,7 @@ MathJax = {
 </blockquote>
 <p>The <code>!</code> command allows you to run any shell command via Vi. </p>
 <p>Suppose you have a list of files in a directory <code>d</code> and you want to load in the names of only the ones starting with <code>en</code> into your file. Simply do</p>
-<div class="highlight"><pre><span></span><code><span class="err">:r !ls d/en* -1</span>
+<div class="highlight"><pre><span></span><code>:r !ls d/en* -1
 </code></pre></div>
 
 <p>The <a href="https://blog.sanctum.geek.nz/vim-koans/">Vim koans</a> also have a nice example of this, where they convert Markdown to HTML</p>
@@ -151,11 +151,11 @@ MathJax = {
 <p>Shepherd your lines with ex</p>
 </blockquote>
 <p>ex mode is useful when line-based tasks have to be done in a non-visual manner. If I want to duplicate a method that is 5 lines above me and 3 lines long to my current position, I'd do</p>
-<div class="highlight"><pre><span></span><code><span class="p">:-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="s s-Atom">co</span><span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="o">:-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="s s-Atom">co</span><span class="p">.</span>
 </code></pre></div>
 
 <p>Same with motions: If I want to move that method here, I'd do</p>
-<div class="highlight"><pre><span></span><code><span class="p">:-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="s s-Atom">mo</span><span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="o">:-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="s s-Atom">mo</span><span class="p">.</span>
 </code></pre></div>
 
 <p>This is also where relative line numbers shine: if you're in a file with a lot of lines, you'd need to type the entire line number (which may be 3/4 digits) twice. Instead, relative line numbers are easier to type.</p>
@@ -168,7 +168,7 @@ MathJax = {
 <blockquote>
 <p>When in doubt, refer to the user manual</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="err">:h user-manual</span>
+<div class="highlight"><pre><span></span><code>:h user-manual
 </code></pre></div>
 
 <p>And use <code>gf</code> to navigate the various subfiles in it. </p>

@@ -127,33 +127,33 @@ decided to clean house for the next semester</p>
 <p>After an OS course that delved deep into the linux kernel, I'm qualified to 
 talk about this. For software-specific stuff, the relevant linux directories
 are structured as follows:</p>
-<div class="highlight"><pre><span></span><code>/ <span class="c1"># Root - primary hierarchy</span>
-<span class="sb">`</span>- bin <span class="c1"># where your executables go</span>
-<span class="sb">`</span>- include <span class="c1"># where header files go</span>
-<span class="sb">`</span>- lib <span class="c1"># where libraries go</span>
-<span class="sb">`</span>- home <span class="c1"># home directories of users</span>
-<span class="p">|</span>  <span class="sb">`</span>- aniruddha <span class="c1"># home directories of users</span>
-<span class="p">|</span>     <span class="sb">`</span>- .local <span class="c1"># User-specific tertiary hierarchy</span>
-<span class="p">|</span>     <span class="p">|</span>  <span class="sb">`</span>- bin
-<span class="p">|</span>     <span class="p">|</span>  <span class="sb">`</span>- include
-<span class="p">|</span>     <span class="p">|</span>  <span class="sb">`</span>- lib
-<span class="p">|</span>     <span class="sb">`</span>- .conda
-<span class="p">|</span>     <span class="p">|</span>  <span class="sb">`</span>- envs
-<span class="p">|</span>     <span class="p">|</span>     <span class="sb">`</span>- dl <span class="c1"># a single environment folder</span>
-<span class="p">|</span>     <span class="p">|</span>        <span class="sb">`</span>- bin
-<span class="p">|</span>     <span class="p">|</span>        <span class="sb">`</span>- include
-<span class="p">|</span>     <span class="p">|</span>        <span class="sb">`</span>- lib
-<span class="p">|</span>     <span class="sb">`</span>- .config <span class="c1"># directory containing config files</span>
-<span class="p">|</span>     <span class="sb">`</span>- .bashrc <span class="c1"># sourced on every login shell</span>
-<span class="p">|</span>     <span class="sb">`</span>- scratch -&gt; /scratch/aniruddha <span class="c1"># HPC specific scratch directory</span>
+<div class="highlight"><pre><span></span><code>/<span class="w"> </span><span class="c1"># Root - primary hierarchy</span>
+<span class="sb">`</span>-<span class="w"> </span>bin<span class="w"> </span><span class="c1"># where your executables go</span>
+<span class="sb">`</span>-<span class="w"> </span>include<span class="w"> </span><span class="c1"># where header files go</span>
+<span class="sb">`</span>-<span class="w"> </span>lib<span class="w"> </span><span class="c1"># where libraries go</span>
+<span class="sb">`</span>-<span class="w"> </span>home<span class="w"> </span><span class="c1"># home directories of users</span>
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>aniruddha<span class="w"> </span><span class="c1"># home directories of users</span>
+<span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>.local<span class="w"> </span><span class="c1"># User-specific tertiary hierarchy</span>
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>bin
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>include
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>lib
+<span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>.conda
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>envs
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>dl<span class="w"> </span><span class="c1"># a single environment folder</span>
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">        </span><span class="sb">`</span>-<span class="w"> </span>bin
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">        </span><span class="sb">`</span>-<span class="w"> </span>include
+<span class="p">|</span><span class="w">     </span><span class="p">|</span><span class="w">        </span><span class="sb">`</span>-<span class="w"> </span>lib
+<span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>.config<span class="w"> </span><span class="c1"># directory containing config files</span>
+<span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>.bashrc<span class="w"> </span><span class="c1"># sourced on every login shell</span>
+<span class="p">|</span><span class="w">     </span><span class="sb">`</span>-<span class="w"> </span>scratch<span class="w"> </span>-&gt;<span class="w"> </span>/scratch/aniruddha<span class="w"> </span><span class="c1"># HPC specific scratch directory</span>
 <span class="p">|</span>
-<span class="sb">`</span>- usr <span class="c1"># Unix System Resources - Secondary Hierarchy, read only stuff for users</span>
-<span class="p">|</span>  <span class="sb">`</span>- bin
-<span class="p">|</span>  <span class="sb">`</span>- include
-<span class="p">|</span>  <span class="sb">`</span>- lib
-<span class="p">|</span>  <span class="sb">`</span>- <span class="nb">local</span> <span class="c1"># Tertiary hierarchy - has it&#39;s own bin, include, lib, etc</span>
-<span class="p">|</span>  <span class="sb">`</span>- share <span class="c1"># Architecture Independent (shared) data</span>
-<span class="sb">`</span>- opt <span class="c1"># Optional software</span>
+<span class="sb">`</span>-<span class="w"> </span>usr<span class="w"> </span><span class="c1"># Unix System Resources - Secondary Hierarchy, read only stuff for users</span>
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>bin
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>include
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>lib
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="c1"># Tertiary hierarchy - has it&#39;s own bin, include, lib, etc</span>
+<span class="p">|</span><span class="w">  </span><span class="sb">`</span>-<span class="w"> </span>share<span class="w"> </span><span class="c1"># Architecture Independent (shared) data</span>
+<span class="sb">`</span>-<span class="w"> </span>opt<span class="w"> </span><span class="c1"># Optional software</span>
 </code></pre></div>
 
 <p>The <code>PATH</code> variable's contents now make a lot more sense. An <code>echo $PATH</code> on a
@@ -216,7 +216,7 @@ all we need to do is prepend the base conda environment's <code>bin</code> to ou
 and we can use <code>conda</code> to manage our executables!</p>
 <h2>What now?</h2>
 <p>Let's update git, gcc, g++ and get cmake and node</p>
-<div class="highlight"><pre><span></span><code>conda install -c conda-forge git gcc gxx cmake <span class="nv">nodejs</span><span class="o">==</span><span class="m">18</span>.5.0
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>gxx<span class="w"> </span>cmake<span class="w"> </span><span class="nv">nodejs</span><span class="o">==</span><span class="m">18</span>.5.0
 </code></pre></div>
 
 <p>Let's also install neovim. Unfortunately there isn't a conda package for this

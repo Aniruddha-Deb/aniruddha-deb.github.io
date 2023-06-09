@@ -122,22 +122,22 @@ magic bytes <code>0x55</code> and <code>0xaa</code> at offsets 511 and 512 from 
 is called the <em>boot block</em> or <em>master boot record</em> (MBR), and this is what
 kicks off the boot process. </p>
 <p>The MBR looks something like this: </p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>sensei@manjaro-vm temp<span class="o">]</span>$ sudo dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>mbr.bin <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">count</span><span class="o">=</span><span class="m">1</span>
-<span class="m">1</span>+0 records in
-<span class="m">1</span>+0 records out
-<span class="m">512</span> bytes copied, <span class="m">0</span>.00493179 s, <span class="m">104</span> kB/s
-<span class="o">[</span>sensei@manjaro-vm temp<span class="o">]</span>$ hexdump mbr.bin 
-<span class="m">0000000</span> 63eb <span class="m">0090</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span>
-<span class="m">0000010</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>sensei@manjaro-vm<span class="w"> </span>temp<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sda<span class="w"> </span><span class="nv">of</span><span class="o">=</span>mbr.bin<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+<span class="m">1</span>+0<span class="w"> </span>records<span class="w"> </span><span class="k">in</span>
+<span class="m">1</span>+0<span class="w"> </span>records<span class="w"> </span>out
+<span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>copied,<span class="w"> </span><span class="m">0</span>.00493179<span class="w"> </span>s,<span class="w"> </span><span class="m">104</span><span class="w"> </span>kB/s
+<span class="o">[</span>sensei@manjaro-vm<span class="w"> </span>temp<span class="o">]</span>$<span class="w"> </span>hexdump<span class="w"> </span>mbr.bin<span class="w"> </span>
+<span class="m">0000000</span><span class="w"> </span>63eb<span class="w"> </span><span class="m">0090</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span>
+<span class="m">0000010</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span>
 *
-<span class="m">0000050</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">8000</span> <span class="m">0001</span> <span class="m">0000</span>
-<span class="m">0000060</span> <span class="m">0000</span> <span class="m">0000</span> faff <span class="m">9090</span> c2f6 <span class="m">7480</span> f605 70c2
+<span class="m">0000050</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">8000</span><span class="w"> </span><span class="m">0001</span><span class="w"> </span><span class="m">0000</span>
+<span class="m">0000060</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span>faff<span class="w"> </span><span class="m">9090</span><span class="w"> </span>c2f6<span class="w"> </span><span class="m">7480</span><span class="w"> </span>f605<span class="w"> </span>70c2
 ...
 ...
-00001c0 <span class="m">0021</span> fe83 ffff <span class="m">0800</span> <span class="m">0000</span> f026 01df <span class="m">0000</span>
-00001d0 <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span>
+00001c0<span class="w"> </span><span class="m">0021</span><span class="w"> </span>fe83<span class="w"> </span>ffff<span class="w"> </span><span class="m">0800</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span>f026<span class="w"> </span>01df<span class="w"> </span><span class="m">0000</span>
+00001d0<span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span>
 *
-00001f0 <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> aa55
+00001f0<span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span><span class="m">0000</span><span class="w"> </span>aa55
 </code></pre></div>
 
 <p><code>dd</code> copies the first 512 bytes of my disk to a binary called <code>mbr.bin</code>, and 
@@ -150,41 +150,41 @@ GRUB does is create a basic runtime, initializes the ramdisk and finally loads
 the kernel in. GRUB is launched by those 512 bytes that we saw above. The
 actual GRUB files are stored in <code>/boot/grub</code>, and they look like this:</p>
 <div class="highlight"><pre><span></span><code>/boot/grub
-├── fonts
-│   └── unicode.pf2
-├── grub.cfg
-├── grubenv
-├── i386-pc
-│   ├── acpi.mod
-│   ├── adler32.mod
-│   │   ...
-│   │   ...
-│   └── zstd.mod
-├── locale
-│   ├── ast.mo
-│   ├── ca.mo
-│   │   ...
-│   │   ...
-│   └── zh_TW.mo
-└── themes
-    └── starfield
-        ├── blob_w.png
-        │   ...
-        │   ...
-        └── theme.txt
+├──<span class="w"> </span>fonts
+│<span class="w">   </span>└──<span class="w"> </span>unicode.pf2
+├──<span class="w"> </span>grub.cfg
+├──<span class="w"> </span>grubenv
+├──<span class="w"> </span>i386-pc
+│<span class="w">   </span>├──<span class="w"> </span>acpi.mod
+│<span class="w">   </span>├──<span class="w"> </span>adler32.mod
+│<span class="w">   </span>│<span class="w">   </span>...
+│<span class="w">   </span>│<span class="w">   </span>...
+│<span class="w">   </span>└──<span class="w"> </span>zstd.mod
+├──<span class="w"> </span>locale
+│<span class="w">   </span>├──<span class="w"> </span>ast.mo
+│<span class="w">   </span>├──<span class="w"> </span>ca.mo
+│<span class="w">   </span>│<span class="w">   </span>...
+│<span class="w">   </span>│<span class="w">   </span>...
+│<span class="w">   </span>└──<span class="w"> </span>zh_TW.mo
+└──<span class="w"> </span>themes
+<span class="w">    </span>└──<span class="w"> </span>starfield
+<span class="w">        </span>├──<span class="w"> </span>blob_w.png
+<span class="w">        </span>│<span class="w">   </span>...
+<span class="w">        </span>│<span class="w">   </span>...
+<span class="w">        </span>└──<span class="w"> </span>theme.txt
 </code></pre></div>
 
 <p>What GRUB does is essentially create a 'mini 32-bit linux OS', with debug
 environments, a shell, and a lot of creature comforts, but beyond all that, it 
 creates the RAMFS and loads the kernel and points it to the RAMFS. This can be 
 seen in the <code>grub.cfg</code> file:</p>
-<div class="highlight"><pre><span></span><code>menuentry <span class="s1">&#39;Manjaro Linux&#39;</span> --class manjaro --class gnu-linux --class gnu --class os <span class="nv">$menuentry_id_option</span> <span class="s1">&#39;gnulinux-simple-ffd2d1d7-a3e5-4e24-816d-d83f13c56708&#39;</span> <span class="o">{</span>
-    savedefault
-    load_video
-    ...
-    ...
-    linux   /boot/vmlinuz-5.15-x86_64 <span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>ffd2d1d7-a3e5-4e24-816d-d83f13c56708 rw  quiet udev.log_priority<span class="o">=</span><span class="m">3</span>
-    initrd  /boot/intel-ucode.img /boot/initramfs-5.15-x86_64.img
+<div class="highlight"><pre><span></span><code>menuentry<span class="w"> </span><span class="s1">&#39;Manjaro Linux&#39;</span><span class="w"> </span>--class<span class="w"> </span>manjaro<span class="w"> </span>--class<span class="w"> </span>gnu-linux<span class="w"> </span>--class<span class="w"> </span>gnu<span class="w"> </span>--class<span class="w"> </span>os<span class="w"> </span><span class="nv">$menuentry_id_option</span><span class="w"> </span><span class="s1">&#39;gnulinux-simple-ffd2d1d7-a3e5-4e24-816d-d83f13c56708&#39;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>savedefault
+<span class="w">    </span>load_video
+<span class="w">    </span>...
+<span class="w">    </span>...
+<span class="w">    </span>linux<span class="w">   </span>/boot/vmlinuz-5.15-x86_64<span class="w"> </span><span class="nv">root</span><span class="o">=</span><span class="nv">UUID</span><span class="o">=</span>ffd2d1d7-a3e5-4e24-816d-d83f13c56708<span class="w"> </span>rw<span class="w">  </span>quiet<span class="w"> </span>udev.log_priority<span class="o">=</span><span class="m">3</span>
+<span class="w">    </span>initrd<span class="w">  </span>/boot/intel-ucode.img<span class="w"> </span>/boot/initramfs-5.15-x86_64.img
 <span class="o">}</span>
 </code></pre></div>
 

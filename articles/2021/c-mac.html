@@ -138,8 +138,8 @@ InstalledDir: /Library/Developer/CommandLineTools/usr/bin
 <p>This is quite misleading, as <code>gcc</code> and <code>clang</code> are fundamentally different 
 compilers. <a href="https://stackoverflow.com/questions/25745759/clang-vs-gcc-vs-msvc-template-conversion-operator-which-compiler-is-right/25758367#25758367">Here's one example of that</a>.
 A more accessible example would be this:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">/++</span><span class="n">x</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">/++</span><span class="n">x</span><span class="p">;</span>
 </code></pre></div>
 
 <p>try compiling this with <code>gcc</code> and <code>clang</code>, and be surprised*.</p>
@@ -172,8 +172,8 @@ it's slow or for other reasons), and you decide to switch to the <code>gcc</code
 Installing the tools are quite easy, and they just happen with 
 <code>brew install gcc gdb</code>. However, <code>gcc</code> and <code>g++</code> are already taken by <code>clang</code>,
 so you'll have to export them in your <code>.zshrc</code> again</p>
-<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">gcc</span><span class="o">=</span>/usr/local/bin/gcc-10
-<span class="nb">alias</span> g++<span class="o">=</span>/usr/local/bin/g++-10
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span><span class="w"> </span><span class="nv">gcc</span><span class="o">=</span>/usr/local/bin/gcc-10
+<span class="nb">alias</span><span class="w"> </span>g++<span class="o">=</span>/usr/local/bin/g++-10
 </code></pre></div>
 
 <p>GDB, however, is <em>very</em> tricky to get working right; MacOS due to SIP and 

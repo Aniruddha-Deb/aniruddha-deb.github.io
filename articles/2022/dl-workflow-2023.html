@@ -197,15 +197,15 @@ how the HPC works is more important. For starters, all relevant software that
 you need is loaded in at runtime via <a href="https://modules.readthedocs.io/en/latest/">Environment
 modules</a>. These use modulefiles, 
 which look something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="n">module</span><span class="o">-</span><span class="n">whatis</span> <span class="s2">&quot;what this module does&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">module</span><span class="o">-</span><span class="n">whatis</span><span class="w"> </span><span class="s2">&quot;what this module does&quot;</span>
 
-<span class="n">module</span> <span class="nb">load</span> <span class="o">&lt;</span><span class="n">modules_this_module_depends_on</span><span class="o">&gt;</span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="o">&lt;</span><span class="n">modules_this_module_depends_on</span><span class="o">&gt;</span>
 <span class="o">...</span>
 
-<span class="n">prepend</span><span class="o">-</span><span class="n">path</span> <span class="o">&lt;</span><span class="n">PATH_VAR</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">path_to_append</span><span class="o">&gt;</span>
+<span class="n">prepend</span><span class="o">-</span><span class="n">path</span><span class="w"> </span><span class="o">&lt;</span><span class="n">PATH_VAR</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path_to_append</span><span class="o">&gt;</span>
 <span class="o">...</span>
 
-<span class="n">setenv</span> <span class="o">&lt;</span><span class="n">ENV_FLAGS</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">args</span><span class="o">&gt;</span>
+<span class="n">setenv</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ENV_FLAGS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">args</span><span class="o">&gt;</span>
 <span class="o">...</span>
 </code></pre></div>
 
@@ -234,20 +234,20 @@ and conda, as said previously, throws tantrums when it's not configured in your
 <code>.bashrc</code></p>
 <p>The way we work around this is to create your conda environment AFTER activating
 your proxy</p>
-<div class="highlight"><pre><span></span><code><span class="n">module</span> <span class="nb">load</span> <span class="n">apps</span><span class="o">/</span><span class="n">anaconda</span><span class="o">/</span><span class="mi">3</span><span class="n">EnvCreation</span>
-<span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">dl_35</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
-<span class="n">module</span> <span class="n">unload</span> <span class="n">apps</span><span class="o">/</span><span class="n">anaconda</span><span class="o">/</span><span class="mi">3</span><span class="n">EnvCreation</span>
+<div class="highlight"><pre><span></span><code><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">apps</span><span class="o">/</span><span class="n">anaconda</span><span class="o">/</span><span class="mi">3</span><span class="n">EnvCreation</span>
+<span class="n">conda</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="n">dl_35</span><span class="w"> </span><span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
+<span class="n">module</span><span class="w"> </span><span class="n">unload</span><span class="w"> </span><span class="n">apps</span><span class="o">/</span><span class="n">anaconda</span><span class="o">/</span><span class="mi">3</span><span class="n">EnvCreation</span>
 </code></pre></div>
 
 <p>Then pick up the <code>activate</code> script in <code>/home/apps/anaconda3/5.2.0/gnu/bin</code> 
 (<code>/home/apps/anaconda3_2018/4.6.9/bin</code> if you made your env while using 
  <code>apps/anaconda/3</code>), and place that in your home folder, or somewhere 
 accessible. To activate your environment, you can now directly call </p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span> path/to/activate path/to/env
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>path/to/activate<span class="w"> </span>path/to/env
 </code></pre></div>
 
 <p>for example, I have <code>activate</code> in my <code>scripts</code> directory, so I'll run</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span> scripts/activate .conda/envs/dl_35
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>scripts/activate<span class="w"> </span>.conda/envs/dl_35
 </code></pre></div>
 
 <p>and it'll work, without loading any modules or without throwing errors that
@@ -272,7 +272,7 @@ which is also what Kaggle uses to run their notebooks.</p>
 <h2>Any Good?</h2>
 <p>I would be working on GAN's next semseter, so let's see if we can get StyleGAN2
 up and running on our setup</p>
-<div class="highlight"><pre><span></span><code>qsub scripts/nbserver.sh
+<div class="highlight"><pre><span></span><code>qsub<span class="w"> </span>scripts/nbserver.sh
 </code></pre></div>
 
 <p>This runs a jupyter server with 4 CPU's, 1 GPU and 16G of memory for 2 hours; 
