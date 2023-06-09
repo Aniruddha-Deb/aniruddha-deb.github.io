@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Posts</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/posts.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2020-07-13T03:44:00+05:30</updated><entry><title>Testing</title><link href="https://aniruddhadeb.com/articles/2020/subdir-test.html" rel="alternate"></link><published>2020-07-13T03:44:00+05:30</published><updated>2020-07-13T03:44:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-07-13:/articles/2020/subdir-test.html</id><summary type="html">&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Aniruddha Deb - Posts</title><link href="https://aniruddhadeb.com/" rel="alternate"></link><link href="https://aniruddhadeb.com/feeds/posts.atom.xml" rel="self"></link><id>https://aniruddhadeb.com/</id><updated>2023-06-09T23:51:00+05:30</updated><entry><title>[Encrypted] Testing Encrypted Posts</title><link href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html" rel="alternate"></link><published>2023-06-09T23:51:00+05:30</published><updated>2023-06-09T23:51:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-06-09:/articles/2023/testing-encrypted-posts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;HK57YkSO0u/0BYddNB+EWg==;O1FHW8Xl0lJ8M2JHVpPGTehAZQ9SPZ7vZFxyFH00tzqm7yk3+dQ/jpv4QmRkIVKZzM+7WZioP8TnI9gvGLusY7HiD4tgs1xGVsMa2+9jevKXKQ5UIy3NZraLx2hp/EdHQQaDD2CqlN+U1MQDS79gIiJjqAVoZX7BtEr/v/H+F+UMz6RqAbgdBAfsgJmrsxNDYqq/4gi05x7YAObsn5P6AVpKzWGYD5uQilJPOpYrCLDQSkLRRMbcnlQH9abpa7Eo5P8Fy/i89kKcU/pgDz0LjHMhED9TJ7X4nXst2mxZKIM=;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return …&lt;/script&gt;</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;HK57YkSO0u/0BYddNB+EWg==;O1FHW8Xl0lJ8M2JHVpPGTehAZQ9SPZ7vZFxyFH00tzqm7yk3+dQ/jpv4QmRkIVKZzM+7WZioP8TnI9gvGLusY7HiD4tgs1xGVsMa2+9jevKXKQ5UIy3NZraLx2hp/EdHQQaDD2CqlN+U1MQDS79gIiJjqAVoZX7BtEr/v/H+F+UMz6RqAbgdBAfsgJmrsxNDYqq/4gi05x7YAObsn5P6AVpKzWGYD5uQilJPOpYrCLDQSkLRRMbcnlQH9abpa7Eo5P8Fy/i89kKcU/pgDz0LjHMhED9TJ7X4nXst2mxZKIM=;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            var decrypt_document = function (event) {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+                event.preventDefault();
+                return false;
+            }
+            
+            decrypt_btn.addEventListener('click', decrypt_document);
+            decrypt_form.addEventListener('submit', decrypt_document);
+        });
+    })();
+&lt;/script&gt;</content><category term="Posts"></category><category term="test"></category></entry><entry><title>Testing</title><link href="https://aniruddhadeb.com/articles/2020/subdir-test.html" rel="alternate"></link><published>2020-07-13T03:44:00+05:30</published><updated>2020-07-13T03:44:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2020-07-13:/articles/2020/subdir-test.html</id><summary type="html">&lt;p&gt;This is a scratchpad of sorts to test the capabilities of Pelican.&lt;/p&gt;
 &lt;p&gt;Let's start with an Image:
 &lt;img alt="Test Image" src="https://aniruddhadeb.com/articles/2020/res/test_post/big_buck_bunny.png"&gt;
 Big buck bunny looking real handsome ;) Some tweaks have to be made to expand 

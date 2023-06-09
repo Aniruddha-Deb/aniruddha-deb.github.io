@@ -95,6 +95,59 @@ MathJax = {
 
 <article>
   <header>
+    <h2><a href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html#testing-encrypted-posts">[Encrypted] Testing Encrypted Posts</a></h2>
+    <p>
+          Posted on Fri 09 June 2023 in <a href="https://aniruddhadeb.com/category/posts.html">Posts</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://aniruddhadeb.com/tag/test.html">test</a>
+    </p>
+  </header>
+  <div>
+      <div id="pec-encrypted-content" style="display:none">HK57YkSO0u/0BYddNB+EWg==;O1FHW8Xl0lJ8M2JHVpPGTehAZQ9SPZ7vZFxyFH00tzqm7yk3+dQ/jpv4QmRkIVKZzM+7WZioP8TnI9gvGLusY7HiD4tgs1xGVsMa2+9jevKXKQ5UIy3NZraLx2hp/EdHQQaDD2CqlN+U1MQDS79gIiJjqAVoZX7BtEr/v/H+F+UMz6RqAbgdBAfsgJmrsxNDYqq/4gi05x7YAObsn5P6AVpKzWGYD5uQilJPOpYrCLDQSkLRRMbcnlQH9abpa7Eo5P8Fy/i89kKcU/pgDz0LjHMhED9TJ7X4nXst2mxZKIM=;^</div>
+<div id="pec-decrypted-content">
+    <h4><i>This content is encrypted.</i></h4>
+</div>
+
+<form id="pec-decrypt-form">
+    <label for="pec-content-password">Password</label>
+    <input type="password" id="pec-content-password" placeholder="Password" />
+    <button type="button" id="pec-decrypt-content">Decrypt</button>
+</form>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return …</script>
+      <br>
+      <a class="btn" href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html#testing-encrypted-posts">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="https://aniruddhadeb.com/articles/2023/updated-dl-workflow-2023.html#updated-dl-workflow-2023">My (updated) DL workflow for 2023</a></h2>
     <p>
           Posted on Sun 04 June 2023 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
@@ -563,26 +616,6 @@ as a cold shower does.</p>
 <p>Welp, this will be a short …</p>
       <br>
       <a class="btn" href="https://aniruddhadeb.com/articles/2022/jee-2022-problem.html#jee-2022-problem">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html#seven-days-of-creation">Seven Days of Creation</a></h2>
-    <p>
-          Posted on Sun 18 September 2022 in <a href="https://aniruddhadeb.com/category/programming.html">Programming</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://aniruddhadeb.com/tag/programming.html">Programming</a>,              <a href="https://aniruddhadeb.com/tag/systems.html">Systems</a>
-    </p>
-  </header>
-  <div>
-      <p>When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week.</p>
-      <br>
-      <a class="btn" href="https://aniruddhadeb.com/articles/2022/seven-days-of-creation.html#seven-days-of-creation">    Continue reading
 </a>
   </div>
 </article>
