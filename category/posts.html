@@ -107,7 +107,7 @@ MathJax = {
     </p>
   </header>
   <div>
-      <div id="pec-encrypted-content" style="display:none">HK57YkSO0u/0BYddNB+EWg==;O1FHW8Xl0lJ8M2JHVpPGTehAZQ9SPZ7vZFxyFH00tzqm7yk3+dQ/jpv4QmRkIVKZzM+7WZioP8TnI9gvGLusY7HiD4tgs1xGVsMa2+9jevKXKQ5UIy3NZraLx2hp/EdHQQaDD2CqlN+U1MQDS79gIiJjqAVoZX7BtEr/v/H+F+UMz6RqAbgdBAfsgJmrsxNDYqq/4gi05x7YAObsn5P6AVpKzWGYD5uQilJPOpYrCLDQSkLRRMbcnlQH9abpa7Eo5P8Fy/i89kKcU/pgDz0LjHMhED9TJ7X4nXst2mxZKIM=;^</div>
+      <div id="pec-encrypted-content" style="display:none">ZtqEE9mNKzvvWof1zVK7IA==;Ruj8UwOOSJQAL5alEFMcy9frtpYAR1IHsQp5xyfqLodd4Hl9lNbL7og92iAuSF66ZGVJTieO4Ian9md2d9J8lmMVS84eqmfcs9Ue5iKsQLgnOzipIABiv9sFvFlNZIf6K2HYlQNdvzBQsSRrRCShxvHLTXN0TiwjZ4D1e4us9yyVLtMyBnh7tTOYS4I5b7BFFE6Cw9pWhF3wCffhgpVwumlMdL2FroWhSEfyrvpG70MFUxWAI0TSx4gL8PeABCs018eVWJ5M2m7Ip+4j7+3iyvwUVLnl1t4ARA9mRHdYIRmt8IYnn6aWwNhP3T6VVae4XJH8kqG6yeY9F982c2wPGg==;^</div>
 <div id="pec-decrypted-content">
     <h4><i>This content is encrypted.</i></h4>
 </div>
@@ -140,7 +140,14 @@ MathJax = {
              */
             for (var i = padded_content.length; i > 0; i--) {
                 if (padded_content[i - 1] !== padding_char) {
-                    return …</script>
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the …</script>
       <br>
       <a class="btn" href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html#testing-encrypted-posts">    Continue reading
 </a>
