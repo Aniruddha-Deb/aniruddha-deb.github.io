@@ -26,3 +26,5 @@ DELETE_OUTPUT_DIRECTORY = True
 
 DISQUS_SITENAME = "aniruddha-deb"
 GOOGLE_ANALYTICS = "UA-79245932-2"
+GITHUB_URL = "https://github.com/Aniruddha-Deb"
+TWITTER_USERNAME = "hairband_dude"

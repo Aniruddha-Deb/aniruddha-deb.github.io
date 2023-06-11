@@ -20,10 +20,6 @@ ARTICLE_URL = 'articles/{date:%Y}/{slug}.html'
 DEFAULT_METADATA = {
     'status': 'published',
 }
-ENCRYPT_CONTENT = {
-    'title_prefix': '[Encrypted]',
-    'summary': 'This content is encrypted.'
-}
 
 EXTRA_PATH_METADATA = {
 	'extras/favicon/favicon.ico': {'path': 'favicon.ico'},
@@ -60,7 +56,7 @@ LINKS = [('archives', '/archives.html'), ('categories', '/categories'), ('tags',
 # Social widget
 SOCIAL = (('github', 'https://www.github.com/Aniruddha-Deb'),
           ('stack-exchange', 'https://stackexchange.com/users/12827944/aniruddha-deb'),
-		  ('goodreads-g', 'https://www.goodreads.com/aniruddhadeb'),)
+		  ('twitter', 'https://www.twitter.com/hairband_dude'),)
 
 DEFAULT_PAGINATION = 20
 

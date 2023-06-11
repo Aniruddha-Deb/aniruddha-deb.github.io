@@ -6,6 +6,7 @@ Password: secret
 ![yay](/articles/2023/res/secrets.jpg)
 
 Couple caveats:
+
  - Only the text is encrypted: comments, images are out in the open
  - You cannot decrypt the text in the preview of the page in home.
 
