@@ -5,73 +5,268 @@ Tags: Intern
 Slug: intern-ashes
 Status: draft
 
-<!-- hook cover photo -->
+![Gardens of Versailles](/articles/2023/res/versailles.jpg)
 
 [If you haven't read the previous article in this series, check out 
 [Intern Ignition](https://aniruddhadeb.com/articles/2023/intern-ignition.html)]
 
 In the weekends of my internship, and in the days that followed, I got to tour 
 Europe a bit. What follows is a small travelogue of my experiences in these
-two months
+two months<sup><a href='#footnote-1'>1</a></sup>, 
+
+<link rel="stylesheet" type="text/css" href="/articles/2023/res/center_captions.css">
 
 ## Stroopwaffel
 
 Optiver gave us a goodie bag when we arrived, and among other things, it 
 contained a box of Stroopwaffel!
 
-<!-- stroopwaffel pic -->
+![Gardens of Versailles](/articles/2023/res/stroopwaffel.jpg)
 
 Stroopwaffel are really thin waffles filled with caramel, and they taste
 amazing! The bag was also filled with other things to see and do in Amsterdam, 
-and in typical college student fashion, I did none of those.
+and in typical college student fashion, I did none of those. 
+
+### No Tulips
+
+All but one of my IITD batchmates got away to see the Tulips when they landed,
+and for good reason: Sunday was the last day Keukenhof would be open! 
+Unfortunately my flight was delayed by an hour and even ignoring the jetlag and 
+fatigue, it was not something I wanted to do after a 9-hour flight.
+
+The first thing that hits you is that Amsterdam is windy. I don't mean 'stiff breeze'
+windy, I mean upturn-your-umbrella windy. And chilly. The only way to stay warm 
+is to have a good jacket or stay in the sunlight. Which there's a lot of, 
+considering sunset happens at 9:30-10:00 PM in the summers.
+
+The first thing I did was walk down for lunch. Europe is beautiful as long as
+your eyes don't look at the ground: beautiful trees, lot of greenery, very
+walkable roads with wide sidewalks for both cycles and people and large
+well-marked crosswalks. Looking down, you're greeted with the umpteen butts of
+cigarettes people stamp out. It's truly a luxury to be able to smoke: if
+breathing the air doesn't eventually kill you, why don't you do it a favour and
+speeden up the process?
+
+Another beautiful thing about Europe is the road rules. The first three crossings
+I waited at all had the cars come to a stop and gesture me to cross. It was only
+at the fourth crossing, a small cycle-lane that this sweet old grandma slowed 
+down and said in English, "You have the way!". Wow, I didn't know that! Thank
+you, kind granny!
+
+Only after getting back to my room and googling did I realize that pedestrians
+have the way everywhere: pedestrians > cycles > cars in Amsterdam. Amazing. The
+only bad thing about this is that I would have to unlearn this in India, and not
+doing so would be fatal. Quite literally.
+
+But enough about rules. Let's go somewhere!
 
 ### Den Haag
 
 The first weekend getaway was The Hague (_Den Haag_ in Dutch), and it seemed
-like a quieter, less crowded version of Amsterdam.
+like a quieter, less crowded version of Amsterdam. The Netherlands is a tiny 
+country, and insanely well-connected by rail: you can go from one end to
+another in less than 2 hours, and the trains themselves are incredible. 
 
-- Madurodam
-- Beach
-- Escher in het Paleis
-- Lunch
+After arriving, We grabbed an early-morning sausage roll from the Albert Heijn
+at the station and strolled aimlessly through the streets early in the morning,
+deciding where to go. The first stop was Madurodam. How tourist-y!
+
+![madurodam](/articles/2023/res/madurodam.jpeg)
+
+I would have assumed Madurodam is an amusement park, if not for the infographic
+about it being a war memorial at the start. It was made in memory of [George
+Maduro](https://en.wikipedia.org/wiki/George_Maduro), a Dutch war hero. It's an 
+amazing park, and even at 9 AM in the morning, it was overrun by Gujarati 
+tourists. An interesting distinction I noticed was that the Gujarati
+tourists would take pictures of anything and everything, including themselves
+while the European tourists were just chilling with their partners and children.
+
+Madurodam also reminded me of the Doraemon episode where Suneo went to Holland
+on a tour, and boasted about it to everyone. He also unfortunately lost his
+camcorder there. Nobita goes to Doraemon and says that he wants a Holland tour
+too. Doraemon comes up with a gadget that shows them scenes of any place in the
+world live, and he invites all his friends to his home. As Doraemon shows them
+the scenes in Holland (Madurodam, canals etc), Suniyo sulks while Nobita is
+very happy. Soon, they come across a bench with a camcorder on it and they zoom
+in, and it turns out it's Suneo's camcorder. Suneo leaps at the camcorder, only
+to punch a hole through Nobita's sliding door and break the gadget, and not get
+his camcorder back. <strike>If you know this episode's name and have a link to it, 
+please let me know; Google is clueless and ChatGPT hallucinates</strike>
+
+EDIT: This is Season 6, Episode 34 (No. 778), [The Sight Seeing Window](https://anime.stackexchange.com/questions/68178/doraemon-episode-where-suneo-goes-to-holland-on-tour).
+The original Japanese version is [here](https://archive.org/details/doraemon-1979-994-stories/Doraemon+(1979)+-+JP+RAW/TV+Anime/Doraemon+(1979)+-+Story+0778+(EX-CS2).mp4), 
+while a dubbed Hindi version can be found [here](https://www.dailymotion.com/video/x8mau7o) :)
+
+The next stop after Madurodam was the Beach! We didn't step into the water because
+it was super cold for May, and the beach was mostly empty as well. We walked 
+around (under?) the pier, took some pictures and enjoyed the breeze. 
+
+![beach](/articles/2023/res/hague_beach.jpg)
+*Cold water, colder wind*
+
+Next stop after that was Escher in het Paleis (Escher in the Palace). An 
+interesting thing about European culture is that they believe you when you tell 
+them you're students: I wasn't asked to prove this explicitly (ok, maybe at the
+Antwerp museum and the Vatican Museum). Everywhere else, it was basically a free
+pass. Back on topic: Escher in the Palace was definetly the highlight of this
+trip, and probably the best museum experience I've had. It was slow-moving, 
+you could take your time with the portraits, get as close as you wanted to and
+most of them were originals! My first brush with Escher was on the screensavers
+of the nook I used to own back when I was a kid, and it was amazing to finally
+see all of his work up close.
+
+![eye](/articles/2023/res/escher_eye.jpg)
+*Eye (M.C. Escher, 1946)*
+
+![ants](/articles/2023/res/escher_ants.jpg)
+*Mobius strip II (M.C. Escher, 1963)*
+
+![ants](/articles/2023/res/escher_fishes.jpg)
+*Circle limit III (M.C. Escher, 1959). Inspired by the structure of [Coxeter Groups](https://personal.math.ubc.ca/~cass/coxeter/r.html)*
+
+Soon after, we dropped down to the city center for lunch and took the train to 
+our next stop that evening
 
 ### Rotterdam
 
 Rotterdam is the more modern cousin of Amsterdam, who always wears trackpants
-and mirrored sunglasses. Rotterdam is filled with skyscrapers, even more than Amsterdam,
-and with amazing bridges
+and mirrored sunglasses. Rotterdam is filled with skyscrapers that you need to 
+crane your neck to look at, and amazing bridges. It's a shame, then, that their
+metro system doesn't support using credit cards, and that you need to buy a 
+ticket using WiFi. Since we had exhausted our mobile data and my battery was 
+near-dead, we totally did not travel on that tram without a ticket. Believe me.
 
-- Erasmusburg
+<!-- Erasmusburg -->
+![erasmus bridge](/articles/2023/res/rotterdam.jpg)
+*Erasmus bridge*
 
-Erasmus bridge was the first bridge we saw, made popular 
+![euromast](/articles/2023/res/euromast.jpg)
+*Euromast*
+<!-- Euromast -->
 
-- Euromast
+The only places we got a chance to visit here were Erasmusburg and Euromast. We 
+dropped down to a bar just below Erasmusburg and asked them for a glass of tap 
+water, and they obliged :) refreshed, we then walked across Erasmusburg and 
+back. There was a small section of the bridge that was filled with locks: couples
+would add a lock to a rung to signify their love wouldn't break until the lock
+did. Cute concept <3
+
+After walking back, we took the tram to Euromast. There were two tickets: one 
+that took you to the observation deck, and one that would seat you in a torus and 
+take you all the way up the mast. Going up to the observation deck is good enough,
+because there's a huge line that loops all the way around for going up.
+
+![rotterdam](/articles/2023/res/euromast_view.jpg)
+*The view from the observation deck*
+
+After Euromast, since everything was closing down, we sat in the park next to 
+it in the setting sun for 30 minutes, enjoying the breeze and nature. Soon after,
+we boarded the train back to Amsterdam.
 
 ### Zandvoort
 
-- Beach
-- Classic car GP sneak in
+After the Belgium weekend, sometime in June when the sun was more abundant with 
+it's gifts, we visited Zandvoort beach to surf. With high hopes, we entered the
+surf shack to rent some equipment, only to find out that their instructor had
+just come out of the water because of no waves. We were advised to pass till 
+there were more waves or come back on a later day :(
+
+So we did the next best thing: went and waded in the water :) after half an 
+hour of wading in the waves (the water was too shallow to swim), we came out 
+and lay on the beach, soaking in the sun<sup><a href='#footnote-2'>2</a></sup>.
+Then we had some ice-cream, dried up and set off for the circuit. The circuit 
+had a Classic Car Grand Prix underway, and the roars of the engines could be 
+heard all the way from the beach. Since it was almost over, we managed to get
+in without tickets (like the amateur backpackers we were), and when we reached,
+it was truly a sight to see and hear. What followed was ten minutes of our
+ears being ripped off our head. Classic cars = Big roaring V12's and V10's = 
+Lots of sound. It was pure petrolhead bliss to sit there and hear those beasts
+roar around the circuit.
+
+The post-race podium featured a procession of the cars that participated, and 
+there were also some classic beauties parked around the paddock.
+
+![Lancia](/articles/2023/res/lancia.jpg)
+*Henri Toivonen's Lancia 037*
+
+![Ferrari](/articles/2023/res/wolfgang_trips_ferrari.jpg)
+*Wolfgang von Trips' Ferrari 156 'sharknose'*
+
+We then took the train back to Haarlem, then the bus from Haarlem back to 
+Amsterdam. I had marinated some Chicken with the hopes of making Tandoori, and
+the other folks bought some pizza/pasta from the nearby store. We then chilled
+in my room, watching F1 Qualifying and cooking / eating Tandoori Chicken.
+
+![Tandoori](/articles/2023/res/tandoori_chicken.jpg)
 
 ### Amsterdam
 
-- Canal stroll
-- Centraal comic book shopping
-- Mokumboot
-- Park walk
+![Amsterdam](/articles/2023/res/amsterdam.jpg)
 
+Amsterdam itself is an amazing city, and like every city-dweller, I didn't visit
+the tourist spots in the city itself. I've heard that the Rijksmuseum is very
+good, as is the Van Gogh Museum. Several other interns also went to the Heineken
+Experience, but I don't drink so that was off the cards.
+
+My routine in Amsterdam mostly boiled down to cycling to work, working, cycling
+back and then going for a stroll along the canal nearby. I stayed at 
+Wibautstraat, and I would walk a kilometre or two along the canal most days, 
+enjoying the breeze and the scenic beauty.
+
+The parks are also great places to visit, and most weekends were 
+spent either staying in and working on something fun, cooking and enjoying
+the sun in the park nearby. We also took a Mokumboot on the canals one day with
+a bunch of snacks for a couple of hours, and it was great.
 
 ## Waffles
 
-<!--waffles vedang-->
+![waffles](/articles/2023/res/waffles.jpg)
 
-The next stop on one of the weekends was Belgium
+We visited Belgium on one of the weekends: the plan was to stay over at Antwerp
+for a night, but our BnB host had a water infiltration and we got to know of
+this only after we had already boarded the bus to Antwerp. In typical undergrad
+fashion, we decided to take things as they come and deal with this later.
 
-- Booking cancelled
-- Antwerp Museum
-- Zaha Hadidplein
-- Grotemarkt and Cathedral
-- Lunch
-- Back
+The Bus dropped us off close to the city center, and the first thing we did 
+was grab some waffles and stroll along the coast. We came across a small fort 
+on the coast. Then realizing the Museum Aan de Stroom was close by, we continued
+to walk along that street, reaching MAS in 10 minutes. 
+
+![mas](/articles/2023/res/mas.jpg)
+*Museum aan de Stroom*
+
+The MAS is beautifully constructed; the windows are along the staircase / floors
+internally that take you up the building, and every floor is dedicated to one 
+aspect of Antwerp: the port, the people, Belgium, and so on. It feels very much
+like a classical museum, but this also makes it a bit boring to be inside of. 
+The MAS is capped off with an observation deck, which gives you a 360-degree 
+view of Antwerp.
+
+![antwerp](/articles/2023/res/antwerp.jpg)
+*Antwerp from the top of MAS*
+
+We left MAS and then decided to visit the Port authority building. Not 
+realizing that it's huge, and that it's farther than it looks, our strategy of
+walking in the direction of the building was a) exhausting, and b) frusturating. 
+We finally opened Google maps to see that it was a decently long walk (~3 km) 
+to the building. Not giving up, we started walking and finally made it!
+
+Only to find out that it's closed on Saturdays. It's anyway a government
+building, so they wouldn't have let us in. Sour grapes.
+
+![Port Authority Building](/articles/2023/res/zaha_hadidplein.jpg)
+*Port Authority Building. Designed by Zaha Hadid.*
+
+After this walk, we had little time to spend, and the prospects of rooming up
+with the other group visiting Brussels were also growing slim, so we decided to
+take the afternoon bus back to Amsterdam. We then came back to the city centre
+and looked around the Cathedral and Grotemarkt.
+
+![grotemarkt](/articles/2023/res/grotemarkt.jpg)
+*Grotemarkt*
+
+This was followed by Lunch and some Belgian chocolate shopping, after which we
+took the subway to the bus stop and took the bus back to Amsterdam.
 
 # Post Internship
 
@@ -88,7 +283,7 @@ do was board the night bus to Paris!
 
 ## Crepes
 
-<!--crepes vedang-->
+![crepe](/articles/2023/res/crepe.jpg)
 
 Paris smells sweetly smoky. It's the same smell as the scented cigarettes
 everyone smokes so fashionably, just softer. Paris Bercy-Seine bus stop, 
@@ -98,23 +293,47 @@ to wait there for an hour and twenty minutes for a friend to arrive was _the
 most romantic introduction to the city of romance a romantic could dream about_.
 
 After regrouping, we went to the Metro. I won't launch into a full-fledged rant 
-about the metro station (have saved that for later), but 
+about the metro (have saved that for later), but Paris uses these arcane ticket-
+checking machines that won't accept your card. We took a day-pass for the metro,
+and then had breakfast at McDonalds (the quantity wasn't great).
 
-The night bus took us to 
+Since it was still drizzling, the first plan of action was to get out at Charles
+de Gaulle and roam around Central Paris a bit. We visited the Tuilleries Gardens
+first, then since the Louvre was close by, we saw it from the outside.
 
-- Tuilleries
-- Louvre (from outside)
-- Palais Garnier
-- Tour Eiffel
-- Pantheon
-- Japanese food
-- Crepes
+![Louvre](/articles/2023/res/louvre.jpg)
+*Louvre from outside. The line to go in had a one hour delay, and needed tickets.*
+
+I don't remember what the plan after that was, but our bags were too heavy and 
+the rain was as well, so we went to the nearest metro station and checked in 
+our luggage at the hotel. The hotel was in a nice spot, so we left and strolled
+through the streets of Paris. They were quite narrow, and uphill at times. With
+the help of Google maps, we finally managed to come to this beautiful building
+
+![Pantheon](/articles/2023/res/pantheon.jpg)
+*Pantheon*
+
+After that we dropped down to a Japanese place nearby for lunch, and then 
+went back to strolling. We walked across some bridges on the Seine, and then 
+past the Notre-Dame, which was still being reconstructed. Then we went to the 
+Palais Garnier via metro.
+
+![Garnier Palace](/articles/2023/res/palais_garnier.jpg)
+*Palais Garnier*
 
 ### Ver-sai
 
-The Japanese Lunch was followed by a stroll down to the train station. After
-much googling (and going to the wrong station and asking around), we finally 
-found the train to Versailles.
+The first thing we had done after arriving was book tickets to the Palace of 
+Versailles for 4:30 PM, and after getting out of the Palais Garnier and going to 
+the station in a rush, we scrambled to find and board the train to Versailles.
+Surprisingly it wasn't very crowded, and we made it in time.
+
+Upon reaching the train station at versailles, the palace itself isn't very far.
+It's about a 10-minute walk. Going in was seamless, although the crowds are 
+very thick. What followed was a slightly rushed walkthrough of the palace which 
+was completed in around half an hour, followed by a 
+
+The Palace 
 
 - Palace of mirrors
 - Garden
@@ -133,12 +352,12 @@ populace decided to use the metro on Saturday Night. It was breathtaking, as in
 my breath was literally taken away after being squeezed among people. Peak
 Delhi Metro rush has got nothing on this.
 
-There was a woman who had married the Eiffel 
-Tower<sup><a href='#footnote-1'>1</a></sup>, and it's easy to see why.
-It's truly a thing of beauty, especially at night when it's lit up. It lights
-up slowly at sunset, going from a dull red to a bright yellow, almost as if 
-the cast iron beams were put in an induction furnace. And if it couldn't get any
-better, It burst into sparkles at 11 PM in the night,
+We finally made it to the Eiffel Tower in one piece. There was a woman who had
+married the Eiffel Tower<sup><a href='#footnote-3'>3</a></sup>, and it's easy
+to see why. It's truly a thing of beauty, especially at night when it's lit up.
+It lights up slowly at sunset, going from a dull red to a bright yellow, almost
+as if the cast iron beams were put in an induction furnace. And if it couldn't
+get any better, It bursts into sparkles at 11 PM in the night,
 
 The Eiffel tower viewing was followed by Crepes at a store nearby: The crepe
 maker took his time with the crepes, pouring the dough only when they were 
@@ -153,7 +372,7 @@ eaten in my life. It was super soft, and the pastry was not flaky at all. It was
 also very hollow on the inside, so you could tear it in half and stuff it with 
 butter and jam. It's a shame I realized on the last day just how good Parisian
 Croissants are, and I would've loved to try out a _boulangerie_ if I had more 
-time <sub>and if they spoke English</sub>
+time<sup><a href='#footnote-4'>4</a></sup>.
 
 ### To Paris, with Love
 
@@ -165,40 +384,140 @@ that every single person selling Eiffel tower souvenirs was black and every
 single cart-owner was Turkish, things look a bit darker (no pun intended). It's 
 the sort of thing that won't strike you, until you have friends and family tell 
 you that Paris was being rocked by the most violent riots since 2005, after 
-a policeman shot a boy of color dead for a traffic offence. Then, the invisible
+a policeman shot dead a boy of color for a traffic offence. Then, the invisible
 walls between people become all too clear, and the homogenity breaks down. I 
 was fortunately unaffected by the riots, but I pray that things change for the 
 better as soon as possible, and that the people of the city of love learn 
-to love each other for what they are rather than how they look.
-
+to love each other for who they are rather than how they look.
 
 ## Pasta
 
 <!--pasta image-->
+![pasta](/articles/2023/res/pasta.jpg)
+
+Soon after Paris, we flew down to Napoli. We had booked a room here for three
+nights, and I was looking forward to warmer climates and more beaches.
 
 ### Napoli
 
-- Graffiti
-- Garbage Mafia
+The area around Napoli Centrale is very well-maintained. It's only when you
+walk down a few steps do you come to the suburbs, and find the dumpsters piled 
+full of trash, plaster peeling off buildings and both the police and the army 
+stationed opposite the bus stop across the street. Yikes.
+
+Napoli reminded me of North Delhi. Kind people, not-so-great infra, and
+crossing roads by waving your hand in front of cars (A skill I've mastered). 
+There's a little spark of life behind every street corner: the children playing,
+the old men and women sitting at the cafe, the wives drying clothes on the 
+small balconies. It almost felt like I was transported back.
+
+Public transportation in Napoli is a mess, the steets are wide, car-centric and
+prone to traffic jams, so we walked 2.5 kilometers to get to the bay. We then
+dropped down to a pizza joint nearby to grab some Pizza, and this was the best
+pizza I've ever eaten, no question. It felt homely, lively, not overloaded with
+cheese or toppings and with just enough crunch on the base. I finished that
+pizza entirely, having skipped lunch.
 
 ### Pompeii
 
-- Roman Ruins
-- Fleecing
-- Ozymandias
-- Messy, Dirty
-- Roman Seggs
+The plan for the next day was to head to Pompeii in the morning, and the beach
+in the afternoon. We took the train to Pompeii from Napoli, and after a short 
+walk reached the ruins. Do book your tickets in advance, as there are a lot of 
+tour guides asking for high prices. And don't buy any hats or trinkets; they're 
+very overpriced. 
+
+![Pompeii](/articles/2023/res/pompeii_bath.jpg)
+*Pompeii. I guess people... bathed here?*
+
+Walking through the ruins reminded me of Ozymandias: Here stood a nation, once 
+the ruler of most of Europe, and all that remains around are ruins. Ruins that
+were buried as a consequence of the wrath of nature, not even ruins that fell
+into ruin via conquest. Sure, I guess people bathed here and slept there 2000 
+years ago, but there was no sense of grandeur looking at them. Or maybe I'm 
+not an archaeology / history buff. There were very pretty flowers at a few spots
+though, and there was a lovely courtyard garden in one of the uptown villas.
+Roman rulers did have amazing cribs.
 
 ### Meta
 
-- Amazing Pasta, Beautiful Hospitality
-- Cute, small town
+After Pompeii, the plan was to hop down to Sorrento and take the bus that 
+goes along the Amalfi coast, covering all the coastal towns. After getting on 
+the train, Vedang said that if we got off at Meta, had lunch and then took 
+the bus from Meta itself to Positano rather than going all the way to Sorrento,
+we'd be good.
+
+So we got off at Meta, and started looking for a place to eat. Google Maps led 
+us to a supermarket, and we wanted to eat at a proper place. The only issue 
+is that in a small sleepy hill-town, most of the places are not open for lunch.
+Walking along, we came across a futsal-bar which had a bunch of kids inside,
+probably celebrating someone's birthday.
+
+> _Us:_ Are you open for Lunch?<br>
+> _Person:_ I don't think so<br>
+> <br>
+> _awkward silence_<br>
+> <br>
+> _Person:_ Hold on I'll call the owner
+> <br>
+> _more waiting in awkward silence_<br>
+> <br>
+> _Grandpa:_ O come-a in! come-a in!
+
+We were ushered in by Grandpa (who probably owned the place) and asked to make 
+ourselves comfortable. He informed us that they only had pasta for lunch, as the 
+oven was off. Soon, Granddaughter (I assume) came to take our orders, and we 
+ordered two pastas. We were given some bread and breadsticks to start, and soon 
+the drinks (two coca-colas) arrived too, so we weren't left hungry for long.
+They even offered to let us take the bread on the way!
+
+What followed though was the best pasta I've eaten in my life. Undoubtedly.
+Perfectly cooked and perfectly seasoned. In the middle of a small town, when
+they're supposed to be closed, they invited us in and served lunch. I come from
+a land that believes in _Athithi Devo Bhava_, but even our restaurants wouldn't
+go this far. Truly amazing, and if you do visit Meta ever, check out 
+[Covent Garden Pub](https://www.coventgardenpub.net/). 
 
 ### Sorrento
 
-- Lift
-- Bagni regina giovanna
-- 
+After paying for the meal and taking the train down to Sorrento, we finally 
+arrived around 2 PM. We then had two options: visit Bagni Regina Giovanna 
+(The secret bathing place of Queen Joanna I of Naples, basically a natural
+cove) which would take up to three hours, or we wait an hour for the bus that
+takes us to Positano. The bus that would take us up to Regina Giovanna would
+also take 45 minutes, so we decided to walk.
+
+And so we set off uphill. The views were breathtaking and many a photo was taken,
+but after walking uphill for 1.5 km, we were drenched in sweat. The walk after 
+that point went something like this
+
+> _Vedang:_ 👍<br>
+> _Me:_ 🚶<br>
+> _Vedang:_ 👍👍<br>
+> _Me:_ 🚶<br>
+> _Vedang:_ 👍👍👍<br>
+> _Me:_ What are you doing<br>
+> _Vedang:_ Asking for a lift<br>
+> _Me:_ lmao do you think someone will give us a lift here? It's all tourist
+> buses and cars<br>
+> _Vedang:_ Yeah if I get one you can walk *chuckles*<br>
+> _Me:_ *chuckles*<br>
+> <br>
+> _Us:_ 🚶🚶<br>
+> <br>
+> _A car pulls up_<br>
+> _Stranger:_ Do you want a lift?<br>
+> _Us:_ :o :o
+
+Long story short: Someone gave us a lift to Bagni Regina Giovanna. The second 
+example of goodwill, in the same day. I have no words to describe what happened
+after. A twisting series of steps led to a place which truly took my breath
+away. I'll let the pictures do the talking.
+
+![rg1](/articles/2023/res/regina_giovanna_adjacent.jpg)
+
+![rg2](/articles/2023/res/regina_giovanna_cove.jpg)
+
+![rg3](/articles/2023/res/regina_giovanna_outside.jpg)
 
 ### Positano
 
@@ -207,8 +526,23 @@ to love each other for what they are rather than how they look.
 - Beach
 - Ferry to Sorrento
 
+The water in Positano is blue. Blue. I would provide a hex code being a programmer, 
+but no hex code can come close to expressing how blue the water really is. It's 
+something you'd have to see for yourself. Hopefully some of these pictures 
+capture it.
+
+![rg2](/articles/2023/res/positano_water.jpg)
+
+![positano](/articles/2023/res/positano.jpg)
+
+![rg3](/articles/2023/res/positano_2.jpg)
+
 ### Roma
 
+![Rome](/articles/2023/res/rome.jpg)
+The next day was to be spent in Rome. We travelled down to Rome quite early
+
+![sistine chapel](/articles/2023/res/sistine_chapel_streets.jpg)
 - St Peter's Square
 - Roman Fortress 
 - Vatican Museum
@@ -216,26 +550,95 @@ to love each other for what they are rather than how they look.
 
 ### Back to Napoli
 
-- Horrible flight
+Just like that, the vacation was over, and we had our flight scheduled to
+Netherlands the following day. We packed up, left the keys to the room on the 
+table and went out to the airport.
+
+Only to be greeted with a [red alert warning for the Netherlands](https://www.reuters.com/business/environment/storm-disrupts-air-train-traffic-netherlands-2023-07-05/)
+because of Storm Poly.
+
+I'd like to dock points from Napoli Airport here: our flight timings came and 
+went, without any information about what was happening to our flight. The flight
+crew came to the gate, and then were told that the flight was delayed. Resigned
+to the fate of nature, they sat some distance from us and ordered their lunch.
+It was both hilarious and sad to see. Fortunately, looking at the Schiphol app,
+all the AirFrance-KLM flights were postponed to after 5 PM, and all other flights 
+(including EasyJet and other budget carries) were cancelled. Guess which airplane
+a backpacking college student was flying on?
+
+KLM. Not EasyJet.
+
+Thank god. I bought the expensive ticket on the advice of Vedang (after his 
+EasyJet out of Geneva was cancelled), and I have never been happier to buy a
+more expensive ticket than I was once we touched down at Schiphol safe and
+sound, as my flight back to India was scheduled just the following day.
 
 ## The Last Supper
 
-- Correndon dinner
+After landing in the Netherlands and hauling my luggage down to the room (which 
+was tiny), my roomie went to Centraal. I had decided that I'd stuff myself full
+after the long morning and skipping lunch. There weren't many good options to
+eat living near the airport, but there was a Correndon hotel down the road from
+where I put up near Schiphol, with very decent reviews on Google, and a quoted
+price of €10-€20. I decided to walk down in my jeans and black hoodie. This
+place had a 747 before the entrance, and after giving it a good look I swaggered
+through the revolving doors, super hungry. 
+
+> _Me:_ Hi, I'd like a table for one<br>
+> _Desk:_ Sure, would you like me to bill it to your room<br>
+> _Me, living in the Ibis down the road:_ No, I'd pay by card<br>
+> _Desk:_ Okay, that would come to €33.98<br>
+> <br>
+> <br>
+> <br>
+> _Me:_ _Gulps_ Sure, here you go
+
+And just like that, I spent >60% of what I spent to live for a night here, on
+food. Surrounded by all these fancy business execs whose companies were paying
+for their food and lodging, and me in my hoodie and jeans :P You're only young
+once, I guess.
+
+But hey, atleast the food was good. And it was an all-you-can-eat. I'd like to 
+say no regrets, but that was the most money I've ever spent for a single meal
+on myself.
+
+![correndon chocolate fountain](/articles/2023/res/correndon.jpg)
 
 ## Chicken Curry
 
+My flight back was uneventful, but the drive from Mumbai to Pune in the lashing
+rain at 3 AM in the night was something to remember. The comforts of home are
+so numerous so as to be unenumerable, and I enjoyed the two and a half weeks at
+home doing absolutely nothing but waking up late and having good food. Oh, and
+trekking to Visapur fort with my friends!
+
+## Epilogue
+
 That's been it. I know this is not the latest edition of Conde Nast Traveller,
 so I'll refrain from writing a cheesy editor's note, but I'm quite pleased with
-how this article turned out. Travelling and seeing the world is a good
-way to break assumptions (A lot of mine did break), curb your impulsivity and
-increase your tolerance (dealing with delayed flights and staying in shady
-places does teach you that). As an added bonus, here's a short animation of my
-trip, Indiana Jones style.
+how this article turned out. This is one of, if not the biggest article I've 
+written. After reconsidering fleshing out the different sections multiple
+times, I'm glad I took the effort to finally do so. The final result is 
+something I can remember and be transported back to for a long time, like my
+very own personal time machine :)
 
-<!-- plot out itinerary and show on map, Indiana Jones Style -->
+Travelling and seeing the world is a good way to break your assumptions, curb
+your impulsivity and increase your tolerance. Also, the world is not as
+everyone's Instagram stories tell you: there's a lot more to it than pretty
+lights and beautiful sights. It's very liberating to realize that you now have
+the rest of your life, and now the means as well to go out and explore it.
+
+Happy travelling!
 
 ## Footnotes
 
-<sup id='footnote-1'>1</sup> Apparently she divorced them (it?) and is now [happily married to a fence](link.pls)
+<sup id='footnote-1'>1</sup> Because I'm a Luddite from the 90's who doesn't 
+post his whereabouts 24/7 on Instagram
 
-<sup id='footnote-2'>2</sup> No, I did not ChatGPT the above disclaimer. I started writing out a prompt to do so though, then realized the prompt itself is good enough.
+<sup id='footnote-2'>2</sup> We did some other things as well, but I'll omit
+them for now. Those who know, know ;)
+
+<sup id='footnote-3'>3</sup> Apparently she divorced them (it?) and is now
+[happily married to a fence](https://www.snopes.com/news/2023/07/15/woman-married-eiffel-tower/)
+
+<sup id='footnote-4'>4</sup> And if they spoke English.
