@@ -3,7 +3,6 @@ Date: 2023-07-07 15:30
 Category: General
 Tags: Intern
 Slug: intern-ashes
-Status: draft
 
 ![Gardens of Versailles](/articles/2023/res/versailles.jpg)
 
@@ -136,17 +135,15 @@ metro system doesn't support using credit cards, and that you need to buy a
 ticket using WiFi. Since we had exhausted our mobile data and my battery was 
 near-dead, we totally did not travel on that tram without a ticket. Believe me.
 
-<!-- Erasmusburg -->
 ![erasmus bridge](/articles/2023/res/rotterdam.jpg)
 *Erasmus bridge*
 
 ![euromast](/articles/2023/res/euromast.jpg)
 *Euromast*
-<!-- Euromast -->
 
-The only places we got a chance to visit here were Erasmusburg and Euromast. We 
-dropped down to a bar just below Erasmusburg and asked them for a glass of tap 
-water, and they obliged :) refreshed, we then walked across Erasmusburg and 
+The only places we got a chance to visit here were Erasmusbrug and Euromast. We 
+dropped down to a bar just below Erasmusbrug and asked them for a glass of tap 
+water, and they obliged :) refreshed, we then walked across Erasmusbrug and 
 back. There was a small section of the bridge that was filled with locks: couples
 would add a lock to a rung to signify their love wouldn't break until the lock
 did. Cute concept <3
