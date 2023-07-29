@@ -135,7 +135,7 @@ two months<sup><a href='#footnote-1'>1</a></sup>, </p>
     </p>
   </header>
   <div>
-      <div id="pec-encrypted-content" style="display:none">AVHbTq3K58Z2k0pvLeDrog==;xVUWi0DUEnKvgUOt28NEr7n4en9l8+pHS6yPYBkS5S8RCF6x+x5Lj0o9310AazFAbncsqF35NTS8H0JYPv9P5xOGj6v8Sjw2BOf0Lr/kN3bvsc4qEsgm54n/XJ1QoVlVFj6wlqApVHEbi3ryUplacR04XG6eoVN2osDe9WN+bOClP3HVNRvbHvxU+TVXLvPtOUn/Ln4FUjOU/loxglQpPCzLsY519J7bvvb7RGPGruoL9gFDB54u6mvcaSBrs7EjO+M5Y3/al+Ae3Ks8By/rcjBvUsJX/ZOS7wT8c2H+H04JraNcPj/z6TSipgJi9mxQ3A8TFJn44yoL4cb24gqNdvpu+PthCNuelyPReO36EHnFxk73+Mbsiqr5qL78qMlUzQp13+mOpeOCpwmg0hqChUpThyCkihRG0VaSAhEURkbdW3DRlzGfs46J7Yn8e1gt8fu60lx4m5IZdm0JznYSaA==;^</div>
+      <div id="pec-encrypted-content" style="display:none">WYBo9H33azujC5KDque5bw==;oAP9jqk2WU4pAqNmKRUNabWRWnhSa7NnDXU1jyEGOFeIV6MuRUxQCNMsVJOxUwcWAEtpGaBsAgCmwL4prRKBgOWQlNM/LP79cL49dqjrUXGbG/SniduZHgPSreKP561AZOEdY2cyVWtfSRsLJ9b5d8Y5RTHWGbvMJF+JdWtO3mrwumXbDBh5ajEG2Z15tyNQbPwOlk/aORqkS+ByTStgTyrWWCk6XsPOBdGzUxGGN7FS7m37o0d3ldpxkBsFxPqdwE3hpKkusDFEVwKFbc13HQ4lisaVnoQxXjvC5CW46eVz28MV9moyxYkfOcT8RrdVh+moMfnc7O3TJg6nqd41/Fbo+B2N4bZrFACpA8a8swGb5hht8qmqPj+iXGdG4baOs6TDNk+1wdgtavwNROOv+1pXulkaT3l26JGk1tfcg9LhnM3r1gCjMN7RxClYTCZCx+D0kiHZcHEZDYnHD2QC9Q==;^</div>
 <div id="pec-decrypted-content">
     <h4><i></i></h4>
 </div>
@@ -168,7 +168,12 @@ two months<sup><a href='#footnote-1'>1</a></sup>, </p>
              */
             for (var i = padded_content.length; i > 0; i--) {
                 if (padded_content[i - 1] !== padding_char) {
-                    return padded_content …</script>
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function …</script>
       <br>
       <a class="btn" href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html#testing-encrypted-posts">    Continue reading
 </a>
