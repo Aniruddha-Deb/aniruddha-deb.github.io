@@ -319,7 +319,13 @@ past the Notre-Dame, which was still being reconstructed. Then we went to the
 Palais Garnier via metro.
 
 ![Garnier Palace](/articles/2023/res/palais_garnier.jpg)
-*Palais Garnier*
+*Palais Garnier, Ballroom*
+
+The Palais Garnier was... Palatial, for lack of a better adjective. It adjoined
+the Opera, and had these amazing balconies where people were mostly clicking
+pictures. There was also an Opera Exhibit nearby, where they showed costumes 
+that the actors at the Opera wore. It's a very short trip around the palace,
+and well worth the time we spent.
 
 ### Ver-sai
 
@@ -328,20 +334,45 @@ Versailles for 4:30 PM, and after getting out of the Palais Garnier and going to
 the station in a rush, we scrambled to find and board the train to Versailles.
 Surprisingly it wasn't very crowded, and we made it in time.
 
-Upon reaching the train station at versailles, the palace itself isn't very far.
+Upon reaching the train station at Versailles, the palace itself isn't very far.
 It's about a 10-minute walk. Going in was seamless, although the crowds are 
-very thick. What followed was a slightly rushed walkthrough of the palace which 
-was completed in around half an hour, followed by a 
+quite thick. What followed was a walkthrough of the palace which was completed
+in around half an hour. People were also shuffling forward at a decently fast
+pace, not stopping for too long to examine the art, but I did manage to get some 
+pictures of the ceilings.
 
-The Palace 
+![mural](/articles/2023/res/versailles_ceiling.jpg)
+*Mural on the ceiling*
 
-- Palace of mirrors
-- Garden
-- KFC
+The hall of mirrors was probably the only thing I really remember. Not only 
+because of the historical significance of the room, but also because the 
+mirrors seemed slightly oxidized and not too bright.
+
+![mirrors](/articles/2023/res/mirrors.jpg)
+*Can confirm, the hall of mirrors does have mirrors*
+
+We soon got out, and wanted to see the Gardens of Versailles. First of all, the
+ticket to the palace does not give you entry to the gardens: those need a 
+separate €10 ticket. Secondly, we came out around 5:05 PM, and when we got in 
+the queue, the attendant repeately told us that the gardens close at 5:30, and 
+that taking the ticket was not worth it. Quite a few people left the queue at 
+that point, but we stuck around because we weren't going to come back.
+
+Was it worth it?
+
+![gardens](/articles/2023/res/gardens.jpg)
+
+Hell yes. We speedran the gardens, which were probably more impressive than the
+palace itself. They're absolutely enormous, occupying about twice or thrice the 
+area of the palace (if you couldn't make out from the picture above). They're
+also immaculately maintained. There was also a fountain show, but it ended soon 
+after we reached. After taking some more pictures, we left for the station, 
+making it out of the gardens on time. A short dinner at the KFC near the station 
+followed, after which we took the train back to Paris.
 
 ### Pah-ree at night
 
-After coming back, we got off the train and had to take a metro with a 
+We soon got off the train at Paris and had to take a metro with a 
 switch-over to reach our hotel. Paris has the worst metro system of any city I
 have been to. It's a bunch of matchboxes on tyres (yes, rubber tyres) hurtling
 at insane speeds through metre-wide tracks strewn across the city like a kitty
@@ -392,7 +423,6 @@ to love each other for who they are rather than how they look.
 
 ## Pasta
 
-<!--pasta image-->
 ![pasta](/articles/2023/res/pasta.jpg)
 
 Soon after Paris, we flew down to Napoli. We had booked a room here for three
@@ -436,7 +466,10 @@ into ruin via conquest. Sure, I guess people bathed here and slept there 2000
 years ago, but there was no sense of grandeur looking at them. Or maybe I'm 
 not an archaeology / history buff. There were very pretty flowers at a few spots
 though, and there was a lovely courtyard garden in one of the uptown villas.
-Roman rulers did have amazing cribs.
+Roman homies had amazing cribs.
+
+![pano](/articles/2023/res/roman_crib.jpg)
+*One of the cleaner panos, if you can ignore my finger*
 
 ### Meta
 
@@ -508,10 +541,10 @@ that point went something like this
 > _Stranger:_ Do you want a lift?<br>
 > _Us:_ :o :o
 
-Long story short: Someone gave us a lift to Bagni Regina Giovanna. The second 
-example of goodwill, in the same day. I have no words to describe what happened
-after. A twisting series of steps led to a place which truly took my breath
-away. I'll let the pictures do the talking.
+Long story short: Someone gave us a lift to Bagni Regina Giovanna. Goodwill,
+unlike lightning, struck the same spot twice in the span of 24 hours. I have no
+words to describe what happened after. A twisting series of steps led to a
+beach which truly took my breath away. I'll let the pictures do the talking.
 
 ![rg1](/articles/2023/res/regina_giovanna_adjacent.jpg)
 
@@ -521,17 +554,51 @@ away. I'll let the pictures do the talking.
 
 ### Positano
 
-- Bus clutch
-- Staircase down
-- Beach
-- Ferry to Sorrento
+> Positano bites deep. It is a dream place that isn't quite real when you are 
+> there and becomes beckoningly real after you have gone.
+>
+> _~ John Steinbeck_
 
-The water in Positano is blue. Blue. I would provide a hex code being a programmer, 
-but no hex code can come close to expressing how blue the water really is. It's 
-something you'd have to see for yourself. Hopefully some of these pictures 
-capture it.
+After getting out of Bagni Regina Giovanna at around 4, we had two options: 
+Go to Positano, or go back to Naples. Going to Positano was what we wanted 
+to do, but the bus and train schedules were not in our favour. Dejected, we 
+went to a shop near the beach and got some energy drinks to rehydrate.
+
+Until a bus dropped by, and we hurriedly rushed on to it. The bus took us back 
+down to the station, and we had reached just in time to make the bus to 
+Positano. The only issue was that there were 5 buses all around. Walking around
+and asking the bus drivers which one went to Positano, one of them said 
+'This one'. We hurriedly hopped on, and this dream place suddenly became all 
+too real.
+
+![positano_towns](/articles/2023/res/positano_towns.jpg)
+
+There are no roads in Positano. It is a mishmash of small buildings tied 
+together by steps, cobbled paths and the millions of dollars of the super-rich 
+who come to vacation here. We did see a superyacht or two around the bay, and 
+a huge number of people. Very few backpackers. It seems like the vacation spot 
+of choice for those who own a private yacht, or those who are in their 
+mid-thirties and are going on a moderately affluent vacation. Places to live 
+are quite expensive, as is food. In spite of the prices, the beach here is as 
+crowded as it gets. Surprising.
+
+The scarcity and remoteness does ensure one thing: The water in Positano is
+clear blue. Clear, like freshly-made crystal glass. I would provide a hex code
+being a programmer, but no hex code can come close to expressing how blue the
+water really is. It's something you'd have to see for yourself. Hopefully some
+of these pictures capture it.
 
 ![rg2](/articles/2023/res/positano_water.jpg)
+
+After frolicking on the beach, we had to get back. Taking the bus would mean 
+that we would have to wait for thirty minutes, and also climb all the way back 
+up the hill. Instead, we took the ferry. And that completes the gauntlet of 
+<strike>infinity stones</strike> means of travel, all in the span of a week: 
+car, bus, train, boat, plane. The ferry ride was well worth it, even though we 
+reached Sorrento by around 7:30 PM and had to take the train that was a bit 
+late. The seas were as blue as the water on the beach, and with the wind 
+running through your hair and the sun shining on your face, there is little else
+that can make you as relaxed and happy as a ferry ride.
 
 ![positano](/articles/2023/res/positano.jpg)
 
@@ -540,21 +607,114 @@ capture it.
 ### Roma
 
 ![Rome](/articles/2023/res/rome.jpg)
-The next day was to be spent in Rome. We travelled down to Rome quite early
+*Sistine Chapel, as seen from Castel Sant'Angelo*
+
+The next day was to be spent in Rome, with plans of seeing the Vatican and 
+other things nearby. We travelled down to Rome quite early with one of the
+Italo high-speed trains, zipping through the Roman countryside at 300 km/h.
+
+![countryside](/articles/2023/res/countryside.jpg)
+*Roman countryside*
+
+The first thing we did was have breakfast at Roma Termini, and regroup with a 
+friend who was at Rome. We then took the metro down to Vatican. After
+bargaining with a tour guide for only skip-the-queue entry tickets to the
+museum and sistine chapel (the ones on the website were all sold out), we
+finally got some for a decent price with a student discount. The tickets were
+for 1:30, and we had to regroup at their office for entry.
+
+After that, St. Peter's square was a short hop away. It's much bigger than what
+_Angels and Demons_ would lead you to believe, and it took a long time to 
+circumnavigate the entire square. The catacombs are adjacent to the square and 
+after asking two very serious swiss guards about them, we were told it was 
+invite-only. 
+
+Soon after making some more plans, we hopped out of the Vatican, and decided to 
+walk down to Castel Sant'Angelo. There was a Gelato store near the Vatican, and
+for €3 we got the most gigantic two scoops of Gelato I've ever had. It was so
+comically big that the cone almost disappeared under it, and I had to
+constantly lick the edges to keep the melting Gelato from dripping down.
+Mmmmmmmm.
+
+Castel Sant'Angelo was a proper Renaissance castle, originally made as a tomb 
+for Emperor Hadrian. Also made famous by Angels and Demons, and the path to 
+Illumination. The castle itself was okay, but the real takeaways were the memories
+we made with our friends roaming the place :) It had an observation deck from
+where you could see most of Rome, and also get very good views of the Sistine
+Chapel (see the title picture)
+
+After Castel Sant'Angelo, we went for Lunch. I don't know if we ate in the 
+Vatican or in Rome, but we were stuck with a huge tax overhead and a very large
+bill, so we probably ate in the Vatican. Also, word of advice from a friend: an
+_Aperol Spritz_ sucks. It looks and tastes like cough syrup.
+
+**EDIT**: There are no restaurants in the Vatican, so we did eat in Rome.
 
 ![sistine chapel](/articles/2023/res/sistine_chapel_streets.jpg)
-- St Peter's Square
-- Roman Fortress 
-- Vatican Museum
-- Sistine Chapel
 
-### Back to Napoli
+I don't have many pictures of the inside of the Vatican Museum, but what I saw
+truly moved me. Every single surface was either gilded, marbled or intricately
+painted. Marble statues from thousands of years ago were strewn across the entire
+museum like pots and plates in a kitchen. It was not the detail in the art there 
+that took my breath away (It was the most detailed, intricate art I've seen), 
+but rather the sheer magnitude of art. Room after room, Chamber after Chamber 
+filled with priceless artifacts and wall-to-wall frescoes and paintings. It is 
+said that the Holy See was the most powerful entity in the middle ages, and 
+I wouldn't doubt it. No wonder the western world fought crusades for Jerusalem
+and conquered more than half of the planet. If the sheer opulence and the
+magnitude of wealth here wouldn't convince Christians that their religion is
+better than others, it would definetly convince a heathen that the Christian
+god is wealthier than their god. 
+
+![milvian bridge](/articles/2023/res/milvian_bridge.jpg)
+*Battle of the Milvian Bridge*
+
+![ceiling](/articles/2023/res/ceiling.jpg)
+*If you told me this was Gold, I'd believe you*
+
+I doubt the tacky paragraph and pictures above capture the essence of the
+Vatican. It's something that has to be seen to be believed. Each of the
+ceilings would have taken atleast a thousand man-hours to construct, and after
+a point my neck would hurt from continuously staring up. There was so much
+sensory overload that even the extraordinary became commonplace. So much that I
+stopped taking pictures after the first few frescoes, and just shuffled through
+the halls, agape at the scenes surrounding me. Versailles looked like a summer
+fair in comparision to the Vatican Museum.
+
+Finally, after going through the myriad chambers and ensemble of museums, we
+made it to the Sistine Chapel. No photography was allowed, but everyone knows
+what The Agony and The Ecstasy looks like. My only misconception was that I 
+thought it would fill up the entire ceiling. Not so. It was this tiny painting
+right in the centre amidst this huge ceiling filled with other paintings, so 
+it was a bit underwhelming to see. Religious significance aside, The chapel
+felt a bit overhyped to me, mostly because of the poor lighting and the huge
+throng inside. I think some of the museums were more ornate and more intricate 
+than the Chapel, but I may be wrong.
+
+After this whirlwind experience, we were back where we started. There wasn't 
+enough time to visit another place, so we decided to take a bus to a park 
+that was near Termini. We ambled in the park for around half an hour, wondering
+about where life was to take us after the internship and what awaited us when 
+we returned back to College for our final year. The time passed quicker than I 
+wanted it to, and in the blink of an eye, we were seated in the train back to
+Napoli.
+
+### Warm weather, warmer people
 
 Just like that, the vacation was over, and we had our flight scheduled to
-Netherlands the following day. We packed up, left the keys to the room on the 
-table and went out to the airport.
+Netherlands the following day. The stay was quite comfortable: our BnB had an 
+amazing shower, was very well-stocked with neccessities and nothing really felt
+lacking. It's the spark of life that sets Italy apart: people care. Even if
+they don't, people exist. The occasional broken turnstile was replaced by a
+Guard, the checkout at the cornerstore was operated by a Granny, the shops are
+run by people who see tourists daily and speak English, and an attendant would
+help you if you couldn't book tickets at the kiosk. There is just enough chaos
+to make life interesting, but not uncomfortable. Again, I've not stayed there
+at length so this may be the idealistic tourist in me speaking, but I would if
+given the chance.
 
-Only to be greeted with a [red alert warning for the Netherlands](https://www.reuters.com/business/environment/storm-disrupts-air-train-traffic-netherlands-2023-07-05/)
+Since we had an early flight, we packed up, left the keys to the room on the 
+table and went out to the airport. Only to be greeted with a [red alert warning for the Netherlands](https://www.reuters.com/business/environment/storm-disrupts-air-train-traffic-netherlands-2023-07-05/)
 because of Storm Poly.
 
 I'd like to dock points from Napoli Airport here: our flight timings came and 
@@ -573,6 +733,11 @@ EasyJet out of Geneva was cancelled), and I have never been happier to buy a
 more expensive ticket than I was once we touched down at Schiphol safe and
 sound, as my flight back to India was scheduled just the following day.
 
+All was still not well, as we were made to stand in queues for multiple hours 
+and once we boarded the flight, we sat on the runway for a good forty-five 
+minutes before going airborne. Missed out on a proper lunch, and had to make do 
+with the snacks onboard the flight.
+
 ## The Last Supper
 
 After landing in the Netherlands and hauling my luggage down to the room (which 
@@ -589,14 +754,14 @@ through the revolving doors, super hungry.
 > _Me, living in the Ibis down the road:_ No, I'd pay by card<br>
 > _Desk:_ Okay, that would come to €33.98<br>
 > <br>
-> <br>
+> _Me, in my mind:_ OMGWTFML can't back down now<br>
 > <br>
 > _Me:_ _Gulps_ Sure, here you go
 
 And just like that, I spent >60% of what I spent to live for a night here, on
-food. Surrounded by all these fancy business execs whose companies were paying
-for their food and lodging, and me in my hoodie and jeans :P You're only young
-once, I guess.
+food. Surrounded by all these old, fancy business execs whose companies were
+paying for their food and lodging, and me in my hoodie and jeans :P You're only
+young and dumb once, I guess.
 
 But hey, atleast the food was good. And it was an all-you-can-eat. I'd like to 
 say no regrets, but that was the most money I've ever spent for a single meal
@@ -612,23 +777,38 @@ so numerous so as to be unenumerable, and I enjoyed the two and a half weeks at
 home doing absolutely nothing but waking up late and having good food. Oh, and
 trekking to Visapur fort with my friends!
 
-## Epilogue
+## Conclusion
 
 That's been it. I know this is not the latest edition of Conde Nast Traveller,
 so I'll refrain from writing a cheesy editor's note, but I'm quite pleased with
 how this article turned out. This is one of, if not the biggest article I've 
-written. After reconsidering fleshing out the different sections multiple
-times, I'm glad I took the effort to finally do so. The final result is 
-something I can remember and be transported back to for a long time, like my
-very own personal time machine :)
+written (6000+ words!). After reconsidering fleshing out the different sections multiple
+times, I'm glad I took the effort to finally do so. However, this will be my 
+first and last travelogue, because it takes a disproportionate amount of effort
+to both recollect and document every single minutiae of your trip
+[Sam Kapasi style](https://www.team-bhp.com/forum/travelogues/87398-yetiblog-weddings-drivings-france-germany-italy-croatia-slovenia-2.html),
+and I don't want to do this while on the trip.
 
-Travelling and seeing the world is a good way to break your assumptions, curb
-your impulsivity and increase your tolerance. Also, the world is not as
+Touring the world while young is a good way to break your assumptions, curb
+your impulsivity and increase your tolerance. And travelling doesn't imply
+zipping around town in an air-conditioned bus, stopping at only the tourist
+attractions. Travelling implies using the public transport, drinking water from
+the public fountains and finding your own path amongst the crowds thronging the
+streets. If you do this, you'll soon realize that the world around is not as
 everyone's Instagram stories tell you: there's a lot more to it than pretty
-lights and beautiful sights. It's very liberating to realize that you now have
-the rest of your life, and now the means as well to go out and explore it.
+lights and beautiful sights. 
 
-Happy travelling!
+Bon Voyage!
+
+## Epilogue
+
+The previous article is private for good reasons: I'm not
+allowed to speak much about my work during the internship due to various IP
+clauses, but if you want a general vibe, or want to know about the kind of 
+work we did, you can check out [Chinmay's Official Interview](https://optiver.com/working-at-optiver/career-hub/chinmays-journey-as-a-tech-intern/).
+
+If you really want to give the previous article a read, please reach out to me.
+No guarantees on providing access though!
 
 ## Footnotes
 
