@@ -55,7 +55,7 @@ another in less than 2 hours, and the trains themselves are incredible. &lt;/p&g
 &lt;p&gt;After arriving, We grabbed an early-morning sausage roll from the Albert Heijn
 at the station and strolled aimlessly through the streets early in the morning,
 deciding where to go. The first stop was Madurodam. How tourist-y!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="madurodam" src="/articles/2023/res/madurodam.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="madurodam" src="/articles/2023/res/madurodam.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;I would have assumed Madurodam is an amusement park, if not for the infographic
 about it being a war memorial at the start. It was made in memory of &lt;a href="https://en.wikipedia.org/wiki/George_Maduro"&gt;George
 Maduro&lt;/a&gt;, a Dutch war hero. It's an 
@@ -654,7 +654,7 @@ post his whereabouts 24/7 on Instagram&lt;/p&gt;
 them for now. Those who know, know ;)&lt;/p&gt;
 &lt;p&gt;&lt;sup id='footnote-3'&gt;3&lt;/sup&gt; Apparently she divorced them (it?) and is now
 &lt;a href="https://www.snopes.com/news/2023/07/15/woman-married-eiffel-tower/"&gt;happily married to a fence&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</content><category term="General"></category><category term="Intern"></category></entry><entry><title>Testing Encrypted Posts</title><link href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html" rel="alternate"></link><published>2023-06-09T23:51:00+05:30</published><updated>2023-06-09T23:51:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-06-09:/articles/2023/testing-encrypted-posts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;WYBo9H33azujC5KDque5bw==;oAP9jqk2WU4pAqNmKRUNabWRWnhSa7NnDXU1jyEGOFeIV6MuRUxQCNMsVJOxUwcWAEtpGaBsAgCmwL4prRKBgOWQlNM/LP79cL49dqjrUXGbG/SniduZHgPSreKP561AZOEdY2cyVWtfSRsLJ9b5d8Y5RTHWGbvMJF+JdWtO3mrwumXbDBh5ajEG2Z15tyNQbPwOlk/aORqkS+ByTStgTyrWWCk6XsPOBdGzUxGGN7FS7m37o0d3ldpxkBsFxPqdwE3hpKkusDFEVwKFbc13HQ4lisaVnoQxXjvC5CW46eVz28MV9moyxYkfOcT8RrdVh+moMfnc7O3TJg6nqd41/Fbo+B2N4bZrFACpA8a8swGb5hht8qmqPj+iXGdG4baOs6TDNk+1wdgtavwNROOv+1pXulkaT3l26JGk1tfcg9LhnM3r1gCjMN7RxClYTCZCx+D0kiHZcHEZDYnHD2QC9Q==;^&lt;/div&gt;
+&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</content><category term="General"></category><category term="Intern"></category></entry><entry><title>Testing Encrypted Posts</title><link href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html" rel="alternate"></link><published>2023-06-09T23:51:00+05:30</published><updated>2023-06-09T23:51:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-06-09:/articles/2023/testing-encrypted-posts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;XLdcRwnoJeuZn1hiwnBrJA==;fZjECmMXdiyHk9x8QYKgl+lvMASQV2JUUgDwpk3lWc4rHdldkbGDlC7rpfwn2ZvHwhG0SJ0HWcCmWf6+jhppt/lL3q/QYS9ur+7lfoq6aNGbGaNuepGbGhitM76PQ2+Dhg3aIPXGTLvcDt04DpAUlTDxtdpUJGlhnkvmI2aPWcaB/8WeaarpTLFN3Jmp8WmCrSAObr/egqMjEVxLP6W/VvnSZdoa/vUC2hCaXn+9eYVfidtQo9kcRpdvpAFt5l+MO7PvL0IhMEWkvTXUAOqL5jsZSB+Yzmnk2KXEJDiZOLGwyu5h58MVwgvWz0qjpaFlJy5vD/lBTt+lS++ofeXo9dXOnyRJHF03q9tq7p4sIYPhEizkLKGY82mRZnIh4S8s8XqZ0L3WIk4OsZU1F1cZ8s2LSxDBVXcs8tjIyViE6z1e79TagKadkokGjrAM0KCtW+QbYbAOQFkzF8XtTv5BRw==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -687,12 +687,7 @@ them for now. Those who know, know ;)&lt;/p&gt;
              */
             for (var i = padded_content.length; i &gt; 0; i--) {
                 if (padded_content[i - 1] !== padding_char) {
-                    return padded_content.slice(0, i);
-                }
-            }
-        };
-
-        var decrypt_content = function …&lt;/script&gt;</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;WYBo9H33azujC5KDque5bw==;oAP9jqk2WU4pAqNmKRUNabWRWnhSa7NnDXU1jyEGOFeIV6MuRUxQCNMsVJOxUwcWAEtpGaBsAgCmwL4prRKBgOWQlNM/LP79cL49dqjrUXGbG/SniduZHgPSreKP561AZOEdY2cyVWtfSRsLJ9b5d8Y5RTHWGbvMJF+JdWtO3mrwumXbDBh5ajEG2Z15tyNQbPwOlk/aORqkS+ByTStgTyrWWCk6XsPOBdGzUxGGN7FS7m37o0d3ldpxkBsFxPqdwE3hpKkusDFEVwKFbc13HQ4lisaVnoQxXjvC5CW46eVz28MV9moyxYkfOcT8RrdVh+moMfnc7O3TJg6nqd41/Fbo+B2N4bZrFACpA8a8swGb5hht8qmqPj+iXGdG4baOs6TDNk+1wdgtavwNROOv+1pXulkaT3l26JGk1tfcg9LhnM3r1gCjMN7RxClYTCZCx+D0kiHZcHEZDYnHD2QC9Q==;^&lt;/div&gt;
+                    return padded_content.slice …&lt;/script&gt;</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;XLdcRwnoJeuZn1hiwnBrJA==;fZjECmMXdiyHk9x8QYKgl+lvMASQV2JUUgDwpk3lWc4rHdldkbGDlC7rpfwn2ZvHwhG0SJ0HWcCmWf6+jhppt/lL3q/QYS9ur+7lfoq6aNGbGaNuepGbGhitM76PQ2+Dhg3aIPXGTLvcDt04DpAUlTDxtdpUJGlhnkvmI2aPWcaB/8WeaarpTLFN3Jmp8WmCrSAObr/egqMjEVxLP6W/VvnSZdoa/vUC2hCaXn+9eYVfidtQo9kcRpdvpAFt5l+MO7PvL0IhMEWkvTXUAOqL5jsZSB+Yzmnk2KXEJDiZOLGwyu5h58MVwgvWz0qjpaFlJy5vD/lBTt+lS++ofeXo9dXOnyRJHF03q9tq7p4sIYPhEizkLKGY82mRZnIh4S8s8XqZ0L3WIk4OsZU1F1cZ8s2LSxDBVXcs8tjIyViE6z1e79TagKadkokGjrAM0KCtW+QbYbAOQFkzF8XtTv5BRw==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
