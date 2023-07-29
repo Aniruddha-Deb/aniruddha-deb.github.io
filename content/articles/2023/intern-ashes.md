@@ -1,5 +1,5 @@
 Title: Intern Ashes
-Date: 2023-07-07 15:30
+Date: 2023-07-29 19:50
 Category: General
 Tags: Intern
 Slug: intern-ashes
@@ -70,7 +70,7 @@ After arriving, We grabbed an early-morning sausage roll from the Albert Heijn
 at the station and strolled aimlessly through the streets early in the morning,
 deciding where to go. The first stop was Madurodam. How tourist-y!
 
-![madurodam](/articles/2023/res/madurodam.jpeg)
+![madurodam](/articles/2023/res/madurodam.jpg)
 
 I would have assumed Madurodam is an amusement park, if not for the infographic
 about it being a war memorial at the start. It was made in memory of [George
