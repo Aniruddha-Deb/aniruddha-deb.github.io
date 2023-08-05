@@ -40,7 +40,7 @@ their final year when they've landed a Pre-Placement offer already?&lt;/p&gt;
 we're only human. In times like these, when your self-confidence is tested for
 taking the difficult route, Kipling comes to mind.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;And so hold on when there is nothing in you
+&lt;p&gt;And so hold on when there is nothing in you&lt;br&gt;
 Except the Will which says to them: ‘Hold on!’&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Is there light at the end of the tunnel? I think so. Have a strong support 
@@ -711,7 +711,7 @@ post his whereabouts 24/7 on Instagram&lt;/p&gt;
 them for now. Those who know, know ;)&lt;/p&gt;
 &lt;p&gt;&lt;sup id='footnote-3'&gt;3&lt;/sup&gt; Apparently she divorced them (it?) and is now
 &lt;a href="https://www.snopes.com/news/2023/07/15/woman-married-eiffel-tower/"&gt;happily married to a fence&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</content><category term="General"></category><category term="Intern"></category></entry><entry><title>Testing Encrypted Posts</title><link href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html" rel="alternate"></link><published>2023-06-09T23:51:00+05:30</published><updated>2023-06-09T23:51:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-06-09:/articles/2023/testing-encrypted-posts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;IM4lAqgWrqRW0hYU+ut/mQ==;BM4nK0yZBzmZR5QAt3d8L//VzfdJ7vOUUadZ+/pvFCQDybC5oYmy+uEHcwPw1X9nTyRAchZpglrgJVK2IgTLwRUJ91B7ppKJTVwbj10WEi0b/4o44EbNanf1M0q7T866VRrKDmF2oTT2mHzYsri5GpxvGwBEj6RWSTLolcqy9waNh1EO5Y3z203kfQJvrW3joADzEy1KCPZHarP9kJDDdLT489T3wXXiWClkHm1laJUQrVuwaErfR6/513F9LYgZSbOYilP21oO1bUAL0Y2WBqGbb9WAjq9vrOi5+6LxpwSBEXvZtjpCItEym/fpifa7m5DJiFzxIb40bjuWqVVwRccspOSLxTm9v80AsF3GUoz5zcyMQ8uQcyd2Nyzc+9/DxL/QqSdJ4BJS5jszYr/T6nUed94QgcstAvtro9YfUfjMs44whSNqi6TSUg8e/7Oi6FUSq7AteouvH4DTeZHSkw==;^&lt;/div&gt;
+&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</content><category term="General"></category><category term="Intern"></category></entry><entry><title>Testing Encrypted Posts</title><link href="https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html" rel="alternate"></link><published>2023-06-09T23:51:00+05:30</published><updated>2023-06-09T23:51:00+05:30</updated><author><name>Aniruddha Deb</name></author><id>tag:aniruddhadeb.com,2023-06-09:/articles/2023/testing-encrypted-posts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;g9ztJKP9WmXVPhc5cBKgcg==;H4TBcBy3DUkj/1U10r1RLeqmCifr7YwsHc7N+DmexOmBOSVbh9H7zqCEHKaNLnYBoqXGVosCbCJ/bNP1E3iLoO7NvZJbmokm+bQFI+MUL9ICXt/BP3XTLUS08rbxceM15LRLcnb6Eg2Caxmtflr83vJL+yRIRgL5h56pXMgkzFhJsNV5JRiDsbGSzovb5Xb7VJ++PsnHwgmlxSfR5lhBorIi8cHPGiXOtgFfG/2O5tvd9qTURRE2OTax5ioghqXT4Pk2GcDzwYOBrs9n0wCIIMWRo41KDfplwNtVUVM6GWYlOfFKvPqv16eSq4vQM+n1dIp8x/507tooOlAXGqYkPgK9yYg918pQoQ29QtFmicZ7DayawPd5tC/SZoCw4fe0sR0HcTYEhwjivuX8KXadBVXGVEzvhT+j+TW4J0TZjf8rJcLziRlYYO2qH62zPtm/r9aWWYGqI9BDgr4OqOXapQ==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -744,12 +744,7 @@ them for now. Those who know, know ;)&lt;/p&gt;
              */
             for (var i = padded_content.length; i &gt; 0; i--) {
                 if (padded_content[i - 1] !== padding_char) {
-                    return padded_content.slice(0, i);
-                }
-            }
-        };
-
-        var …&lt;/script&gt;</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;IM4lAqgWrqRW0hYU+ut/mQ==;BM4nK0yZBzmZR5QAt3d8L//VzfdJ7vOUUadZ+/pvFCQDybC5oYmy+uEHcwPw1X9nTyRAchZpglrgJVK2IgTLwRUJ91B7ppKJTVwbj10WEi0b/4o44EbNanf1M0q7T866VRrKDmF2oTT2mHzYsri5GpxvGwBEj6RWSTLolcqy9waNh1EO5Y3z203kfQJvrW3joADzEy1KCPZHarP9kJDDdLT489T3wXXiWClkHm1laJUQrVuwaErfR6/513F9LYgZSbOYilP21oO1bUAL0Y2WBqGbb9WAjq9vrOi5+6LxpwSBEXvZtjpCItEym/fpifa7m5DJiFzxIb40bjuWqVVwRccspOSLxTm9v80AsF3GUoz5zcyMQ8uQcyd2Nyzc+9/DxL/QqSdJ4BJS5jszYr/T6nUed94QgcstAvtro9YfUfjMs44whSNqi6TSUg8e/7Oi6FUSq7AteouvH4DTeZHSkw==;^&lt;/div&gt;
+                    return padded_content.slice(0, i …&lt;/script&gt;</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;g9ztJKP9WmXVPhc5cBKgcg==;H4TBcBy3DUkj/1U10r1RLeqmCifr7YwsHc7N+DmexOmBOSVbh9H7zqCEHKaNLnYBoqXGVosCbCJ/bNP1E3iLoO7NvZJbmokm+bQFI+MUL9ICXt/BP3XTLUS08rbxceM15LRLcnb6Eg2Caxmtflr83vJL+yRIRgL5h56pXMgkzFhJsNV5JRiDsbGSzovb5Xb7VJ++PsnHwgmlxSfR5lhBorIi8cHPGiXOtgFfG/2O5tvd9qTURRE2OTax5ioghqXT4Pk2GcDzwYOBrs9n0wCIIMWRo41KDfplwNtVUVM6GWYlOfFKvPqv16eSq4vQM+n1dIp8x/507tooOlAXGqYkPgK9yYg918pQoQ29QtFmicZ7DayawPd5tC/SZoCw4fe0sR0HcTYEhwjivuX8KXadBVXGVEzvhT+j+TW4J0TZjf8rJcLziRlYYO2qH62zPtm/r9aWWYGqI9BDgr4OqOXapQ==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
