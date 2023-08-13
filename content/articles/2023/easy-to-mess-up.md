@@ -48,7 +48,7 @@ Resisting the temptations of life is tricky. It's only natural to give in, and
 we're only human. In times like these, when your self-confidence is tested for
 taking the difficult route, Kipling comes to mind.
 
-> And so hold on when there is nothing in you
+> And so hold on when there is nothing in you<br>
 > Except the Will which says to them: ‘Hold on!’
 
 Is there light at the end of the tunnel? I think so. Have a strong support 
