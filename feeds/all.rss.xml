@@ -1,5 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Sat, 05 Aug 2023 18:40:00 +0530</lastBuildDate><item><title>It's easy to mess up</title><link>https://aniruddhadeb.com/articles/2023/easy-to-mess-up.html</link><description>&lt;p&gt;It's easy to mess up.&lt;/p&gt;
+<rss version="2.0"><channel><title>Aniruddha Deb</title><link>https://aniruddhadeb.com/</link><description></description><lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0530</lastBuildDate><item><title>Luck, Skill or Both: Department Change at IITs</title><link>https://aniruddhadeb.com/articles/2023/luck-skill-both.html</link><description>&lt;p&gt;A friend recently asked me to provide some advice on department change to some
+freshers. The usual &lt;em&gt;fundaebaazi&lt;/em&gt; is something I didn't want to do; it's not 
+impressionable, and won't motivate any fresher to study for a department change.
+Instead, I chose to show and not tell&lt;/p&gt;
+&lt;h2&gt;So is it luck or skill?&lt;/h2&gt;
+&lt;p&gt;Short answer: Both.&lt;/p&gt;
+&lt;p&gt;Let's look at how first year courses are graded. For most theory courses 
+(3 lecture hours + 1 tutorial hour / 2 lab hours), there's a normal distribution
+of marks, and the top 7% of people on this distribution get an A. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="normal distribution" src="res/normal_grades.png"&gt;&lt;/p&gt;
+&lt;p&gt;(Well, the actual grade distribution is discrete, but the marks are 
+approximately normally distributed).&lt;/p&gt;
+&lt;p&gt;If we assume that everyone is equally skilled, then the probability of a person
+obtaining an A grade in one course is $0.07$. The probability of the same 
+person obtaining an A grade across all the seven theory courses then is $0.07^{7}$.
+This seems theoretically okay, but there are only around 1300 people in a batch,
+give or take a few hundred. If this is true, the number of people who get a 10 
+in every theory course should come out to be $1300 \times 0.07^{7} \approx 10^{-5}$.
+Which is practically zero. However, we know for a fact that there are people
+who obtain tens across all the seven theory courses, and across the labs as well.
+There are people who graduate with a perfect ten, so the above calculation is 
+wrong somewhere. This brings us to the first fallacy:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Not everyone is equally skilled.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is talent, and there is genius. Talent hits a target no one else can hit.
+Genius hits a target no one else can see. &lt;/p&gt;
+&lt;h2&gt;How much skill?&lt;/h2&gt;
+&lt;p&gt;Let's condition on the students instead rather than on the gradecard. I would
+give a candidate DepC student a probability of $0.8$ to obtain an $A$ in a
+theory course, and a probability of $0.5$ to obtain an A in a lab course.
+Because lab courses are super random and everyone gets either a 10, 9 or an 8
+(CMP and PYP, I'm looking at you). &lt;/p&gt;
+&lt;p&gt;With these probabilities, let's reasonably assume that $7$ students get a 
+straight ten in all seven theory courses. The number of people with these 
+odds would then be $7 / (0.8)^{7} = 33.37 \approx 30$. &lt;/p&gt;
+&lt;h2&gt;What about luck?&lt;/h2&gt;
+&lt;p&gt;This is super hard to quantify in words, but I'll give it a shot. Given our 
+30 geniuses and taking all permutations and combinations of grades into
+account, the set of possible CGPAs one could obtain after their first year is
+finite. So what happens if two people obtain the same CGPA and they are in line
+for a Department Change into a higher branch?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In case more than one student applying for programme change have the same
+CGPA, the tie shall be resolved on the basis of JEE ranks of such applicants.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So how likely is it that two people obtain the same CGPA and are required to 
+tiebreak on the basis of their JEE rank? Let's run a simulation and find out!
+I'll simulate grades across 5 lab courses, 4 of which are worth 2 credits each 
+and the last one is worth one credit. I'll also simulate the seven four-credit
+theory courses. Also assume that if the genius doesn't get a 10, they get a 9.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cgs" src="res/cgs.png"&gt;&lt;/p&gt;
+&lt;p&gt;We see that nobody gets a 10, and five people get a CG of 9.82. Five! And 
+multiple people have the same CG. Even though we assume CGPAs lie on a
+continuous scale, the spectrum doesn't become as dense as one would expect 
+at the end of first year. &lt;/p&gt;
+&lt;p&gt;However, all this shows us is that there are chances of a tiebreak. It still
+doesn't put things into perspective. Let's make a fake DepC list, so that the
+point really hits home. I'll allocate 7 seats in the 4-year CSE programme, 
+2 in 5-year CSE Dual, 6 in Mathematics and Computing, 2 in MathComp Dual and 
+assume a similar distribution across others. The final list looks like this:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: right;"&gt;&lt;/th&gt;
+&lt;th style="text-align: left;"&gt;name&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;cg&lt;/th&gt;
+&lt;th style="text-align: left;"&gt;from&lt;/th&gt;
+&lt;th style="text-align: left;"&gt;to&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;0&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Anay Shanker&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.97&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Nirvaan Choudhury&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.94&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ES1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;2&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Sara Behl&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.94&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME2&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;3&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Kiara Kakar&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.88&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;4&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Aniruddh Batra&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.88&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MS1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;5&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Mehul Krishnan&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.85&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT6&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;6&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Jhanvi Chaudhary&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.85&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CH1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;7&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Madhup Kapur&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.82&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT6&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;8&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Zoya Virk&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.82&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT6&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CS5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;9&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Tara Swaminathan&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.82&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;AM1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;10&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Rasha Kakar&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.82&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MS1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;11&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Ranbir Brahmbhatt&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.82&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MS1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;12&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Tarini Ganguly&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.79&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME2&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;13&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Divij Gupta&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.79&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;14&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Taimur Vaidya&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.76&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;15&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Lavanya Deo&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.76&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;16&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Samiha Karpe&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.76&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CE1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MT6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;17&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Uthkarsh Baral&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.73&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CH1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;18&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Mishti Ranganathan&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.73&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CE1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;19&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Kashvi Char&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.7&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;20&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Azad Sahota&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.7&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;AM1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;21&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Trisha Dhillon&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.67&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MS1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;22&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Mehul Verma&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.64&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;BB1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;23&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Vaibhav Dewan&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.61&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;MS1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;24&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Myra Tiwari&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.58&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME2&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;25&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Ishaan Goyal&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.58&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CH7&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;26&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Lakshay Sampath&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.55&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CE1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;27&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Rati Sanghvi&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.48&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;ME2&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;28&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Mahika Ravi&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.48&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;CH1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;EE3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: right;"&gt;29&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Hazel Sethi&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;9.39&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;BB1&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;AM1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;My heart goes out to Tara, Rasha, Ranbir, Lavanya, Samiha and Ishaan. The boys
+and girls played well, but in the end it came down to luck. And having a better
+JEE rank.&lt;/p&gt;
+&lt;h2&gt;What next?&lt;/h2&gt;
+&lt;p&gt;Making this minigame taught me two things: one, just how incredibly lucky I got
+with my own department change, and two, how huge of a factor luck plays. All 
+the &lt;em&gt;fundae&lt;/em&gt; my seniors gave me about luck and randomness are sort of true. &lt;/p&gt;
+&lt;p&gt;My advice to any juniors reading this would be to not worry about the outcome.
+The driving force behind most people seeking a DepC is better job prospects 
+and possibly the associated social status and prestige that comes with it (which 
+is a very freshie thing; nobody cares about which department you're from once
+you're a bit more senior). If this is your primary driving goal behind the DepC,
+you'll neither gain the skill, nor have the luck. The best course of action 
+is to truly enjoy (or atleast make an effort to enjoy) what you're studying,
+becaues most of it is an extension of the JEE syllabus anyway, and keep your
+CGPA as high as possible. Expect nothing else from the system, and you won't 
+be disappointed.&lt;/p&gt;
+&lt;h2&gt;Appendix: Code for the luck simulation&lt;/h2&gt;
+&lt;script src="https://gist.github.com/Aniruddha-Deb/774da08070d45f5d050c76673523c3b6.js"&gt;&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Fri, 01 Sep 2023 17:00:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-09-01:/articles/2023/luck-skill-both.html</guid><category>Programming</category><category>Programming</category><category>Mathematics</category><category>General</category></item><item><title>It's easy to mess up</title><link>https://aniruddhadeb.com/articles/2023/easy-to-mess-up.html</link><description>&lt;p&gt;It's easy to mess up.&lt;/p&gt;
 &lt;p&gt;Of course. That's what the title says. It seems like general advice, and making
 mistakes is part of life. You should "pick yourself up, brush yourself off and
 continue on your way!"&lt;/p&gt;
@@ -698,7 +1000,7 @@ post his whereabouts 24/7 on Instagram&lt;/p&gt;
 them for now. Those who know, know ;)&lt;/p&gt;
 &lt;p&gt;&lt;sup id='footnote-3'&gt;3&lt;/sup&gt; Apparently she divorced them (it?) and is now
 &lt;a href="https://www.snopes.com/news/2023/07/15/woman-married-eiffel-tower/"&gt;happily married to a fence&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 29 Jul 2023 19:50:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-07-29:/articles/2023/intern-ashes.html</guid><category>General</category><category>Intern</category></item><item><title>Testing Encrypted Posts</title><link>https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html</link><description>&lt;div id="pec-encrypted-content" style="display:none"&gt;M+i3Kr2wCXpz0EKeZGWknw==;OuUaFfySjz/wHMOS91skQiFEn43T8ZQXjbSw9gmTsH9GE2Xtoj6mNgxVGoRo5x6P6SezYvy2GxhSkusduZVwqDs+hg3HU65NFxIGxuOrZsEJ9sIBuFOqoPeXJFxRuAkKXN5NWimJQEI1yC6ezK9Bd7SIcFJLrrAF9eft7y/uZcihG2/9h8XQ7SFc0gEexUBmGKSblu+EWCnNAbYpq0fBwikQAu0zZ1D3/Q/QEQK/BL115dRSf+4KFF7SkRbbf2rN7YWKzhY/Mb8ozzX9eqQxPNM+FP7D+mZtOL554RMVQrtVFrG51rV+lFa8C7sjfanIo/Bncc+9SBsSIc5QRlQTgBqXipkQu4B8CeikP2NS/nYZM6ZWEJlQv/S+8Fo+P7C3j5WsT4qjU8nbm278OS1hpV7NpLwrOpr0X+SeMHB/1Kmaq3X6fJvWQ/O3X4M14mZiNr8CubLDvP/apQZb2F/GZg==;^&lt;/div&gt;
+&lt;p&gt;&lt;sup id='footnote-4'&gt;4&lt;/sup&gt; And if they spoke English.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Aniruddha Deb</dc:creator><pubDate>Sat, 29 Jul 2023 19:50:00 +0530</pubDate><guid isPermaLink="false">tag:aniruddhadeb.com,2023-07-29:/articles/2023/intern-ashes.html</guid><category>General</category><category>Intern</category></item><item><title>Testing Encrypted Posts</title><link>https://aniruddhadeb.com/articles/2023/testing-encrypted-posts.html</link><description>&lt;div id="pec-encrypted-content" style="display:none"&gt;QBRkz5dKdnMBNRGulpVZKA==;mm71F1fI1AWbd9uaxZH0ML7GJ9WgyGNaoiJjG3wIkOkaM9h0DIStJKhMh/D03sDUbTQC1mBdlgoJMf3y7dufW5VPa2Kz2SlP5CdxJ5uKEHm98+ZNLWyApwE3wFonCDJWitDu/nxhIG6B4MnmkMHZsal/6UK6tou0NgDlDCSDublj0GD7CXXj2mSMFCs3x0JGd+4BjyE+FlWsM8b46QG++q+ZBpz5sjYI5U0515Hw1frZNbNpggC4P0UcMgsOY5iwx4dlAfqoPhgGlNjWb7Uz4bXavtqV4jYfKYkcZsbvlad+Bt+6rbUWFdFkEqL1nBw5fOB06aXTKWvkK51mGy0MMeYAGOU4hqeTaFR0ePw+OdJ0oQbwEkcg9TkzzXTn7GVRgqDguiP0eUWXwvzjpXOQPA9R5F7pnS4uLjHzpnQ1vUG59p/H+o7U2tQ15YK2bVtCYJp7dfAR07o6PK4aXmH8gQ==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
