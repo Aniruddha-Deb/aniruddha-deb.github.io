@@ -52,5 +52,5 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   math = true                               # enable KaTeX math typesetting globally
 
 [permalinks]
-  posts = '/:year/:title'
+  posts = '/:year/:slug'
 

@@ -37,13 +37,14 @@ tgts = [y for x in os.walk(sys.argv[1]) for y in glob(os.path.join(x[0], '*.md')
 # yaml = YAML(typ='rt')
 
 for file in tgts:
-    file_parts = file.split('/')
-    file_prefix = '/'.join(file_parts[1:3])
-    file_lines = open(file, 'r').readlines()
-    with open(file, 'w') as outfile:
-        for l in file_lines:
-            t = l.replace('(res', f'(/{file_prefix}/res')
-            outfile.write(t)
+    print(file)
+    # file_parts = file.split('/')
+    # file_prefix = '/'.join(file_parts[1:3])
+    # file_lines = open(file, 'r').readlines()
+    # with open(file, 'w') as outfile:
+    #     for l in file_lines:
+    #         t = l.replace('(res', f'(/{file_prefix}/res')
+    #         outfile.write(t)
 
     # header_line_idx = file_lines.index('\n')
     # header_lines = open(file, 'r').readlines()[:header_line_idx]
