@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/python/</link>
+    <description>Recent content in Python on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Jun 2022 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing the MLZoo</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</link>
+      <pubDate>Thu, 16 Jun 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</guid>
+      <description>After a few days of reading and furious coding, I&amp;rsquo;m happy to announce the creation of MLZoo: a set of ML algorithms in their natural habitat
+MLZoo is a set of jupyter notebooks which would contain implementations of several ML algorithms on real world datasets: so far, I&amp;rsquo;ve implemented different flavours of regression, and plan to add quite a few more algorithms over the summer.
+Do star, fork and contribute in any way possible!</description>
+    </item>
+    
+    <item>
+      <title>IIT Department Finder Launch (plus personal website domain)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</link>
+      <pubDate>Wed, 28 Oct 2020 20:39:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</guid>
+      <description>For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&amp;rsquo;t noticed :).</description>
+    </item>
+    
+  </channel>
+</rss>

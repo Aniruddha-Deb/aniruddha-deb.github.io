@@ -1,0 +1,573 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Seven Days of Creation - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Seven Days of Creation">
+<meta itemprop="description" content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week."><meta itemprop="datePublished" content="2022-09-18T12:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-18T12:00:00+00:00" />
+<meta itemprop="wordCount" content="2745">
+<meta itemprop="keywords" content="Programming,Systems," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Seven Days of Creation"/>
+<meta name="twitter:description" content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Seven Days of Creation</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 18, 2022</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>Our networks course required us to construct a peer-server-peer file transfer protocol, wherein once chunks of the file are evenly distributed to different clients, the clients contact the server for chunks they don&rsquo;t have, and the server in turn queries all other clients if they have the chunk. If they do, they send it back to the server, which in turn relays it back to the client. This continues until all connected parties have the complete file.</p>
+<p>A thread-based implementation in Python was suggested, but given the requirements, I decided to go one level deeper: make a C++-based implementation with non-blocking sockets and asynchronous IO.</p>
+<h2 id="day-one">Day One</h2>
+<blockquote>
+<p>In the beginning, God created sockets. Now the sockets were isolated, unable to connect to anything on the system. And God said, <strong>&ldquo;Let there be syscalls&rdquo;</strong>, and there were syscalls.</p>
+</blockquote>
+<p>Having decided to go as close to the metal as I could for performance reasons (the assignment requirements stated that we&rsquo;d have to transfer a 100 MB file to 100 clients simultaneously, in a reasonable amount of time), I decided to cut no corners. Fortunately, socket programming is very well documented, and is actually one of the more reasonable subsystems of the Linux/BSD kernel (POSIX sockets API FTW!).</p>
+<p>There are a lot of guides online for this, but the best one is <a href="https://beej.us/guide/bgnet/pdf/bgnet_a4_c_1.pdf">Beej&rsquo;s network programming guide</a>, now updated for IPv6 ^_^. This goes through the basics of a lot of what is needed, namely the socket syscalls (<code>socket</code>, <code>bind</code>, <code>connect</code>, <code>accept</code>, <code>send</code>, <code>recv</code>, <code>sendto</code>, <code>recvfrom</code>, <code>close</code>) and a lot of other things, such as getting address information, setting socket options with <code>setsockopt</code> (and the various options available), making sockets nonblocking, as well as a small tutorial on <code>select</code> for asynchronous IO<sup><a href="#footnote-1">1</a></sup>.</p>
+<p>I won&rsquo;t be repeating whatever was mentioned there, but a few things that tripped me up were:</p>
+<ol>
+<li>
+<p><code>SO_REUSEADDR</code>. Yep. The first time <a href="https://stackoverflow.com/questions/14388706/how-do-so-reuseaddr-and-so-reuseport-differ">I read about this flag</a>, I understood nothing. It was only after I could not reconnect to my server immediately after shutting it down did I realize that something&rsquo;s up. TCP&rsquo;s TIME_WAIT state persists <em>after</em> the application has shut down, which is why if you close and restart a socket at the same port, it won&rsquo;t immediately rebind, as there may still be a FIN/ACK message out on the network, bound for this port. If that hits the second application, it would cause that application&rsquo;s port to shut down, which is why TIME_WAIT waits for 2 maximum segment lifetimes (approx. 30 to 120 seconds). Here&rsquo;s a TCP state diagram to help out, if the above didn&rsquo;t make sense</p>
+ <center>
+ <img src="res/tcp-state-diagram-v2.svg" width="400px">
+ </center>
+</li>
+<li>
+<p><code>SO_RCVLOWAT</code>. TCP is a stream protocol, and not a datagram protocol, and I think nobody makes it obvious what the differences are between them.</p>
+<ul>
+<li>Reading from a SOCK_STREAM port (TCP) is like sucking bits from a straw on the network. <code>recv(fd, buf, len, flags)</code> will read<sup><a href="#footnote-2">2</a></sup> atmost <code>len</code> bytes from <code>fd</code>&rsquo;s read buffer to <code>buf</code>. It doesn&rsquo;t care whether the bytes were part of a previous message, or if it&rsquo;s two messages, it will just read that many bytes in. If the entire message hasn&rsquo;t reached, it will read less than <code>len</code> bytes, and return the number of bytes read (basically reading partial messages).</li>
+<li>Reading from a SOCK_DGRAM port (UDP) is like eating potato chips from a pringles tube, one at a time. <code>recv(fd, buf, len, flags)</code> on a UDP port will read <em>min(len,size of one datagram)</em> into buf. This means that you only get single datagrams. The port will read an incomplete datagram <strong>only if len is less than the size of one datagram</strong>, otherwise you&rsquo;re guaranteed to read the complete datagram in, notwithstanding system/network errors.</li>
+</ul>
+<p>So, how do we emulate UDP&rsquo;s &lsquo;chunking&rsquo; in TCP? The <code>SO_RCVLOWAT</code> parameter sets a low water mark for the socket read buffer: we are only alerted of a read if the number of bytes in the read buffer are more than those set by this flag (a blocking read will wait until the number of bytes is more than this, or the socket has closed). By setting the low water mark and our buffer length to the size of one &lsquo;packet&rsquo; of information that we are expected to receive, we can read only one packet at a time, cleanly separated from the rest of the byte stream. Neat!</p>
+</li>
+<li>
+<p><strong>Respect the error message!</strong> I cannot stress on this enough. Always, <strong>ALWAYS</strong> check what these syscalls are returning. You&rsquo;ll save yourself a lot of pain. An example: this is terrible code</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// some code here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>getaddrinfo(<span style="color:#66d9ef">nullptr</span>, std<span style="color:#f92672">::</span>to_string(port).c_str(), <span style="color:#f92672">&amp;</span>hints, <span style="color:#f92672">&amp;</span>res);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> reuse <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, <span style="color:#f92672">&amp;</span>reuse, <span style="color:#66d9ef">sizeof</span>(reuse));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bind(fd, res<span style="color:#f92672">-&gt;</span>ai_addr, res<span style="color:#f92672">-&gt;</span>ai_addrlen);
+</span></span><span style="display:flex;"><span>fcntl(fd, F_SETFL, O_NONBLOCK);
+</span></span><span style="display:flex;"><span>freeaddrinfo(res);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// more code here
+</span></span></span></code></pre></div><p>Do you see the error? Exactly. You&rsquo;ll never see the error, until it blows up in your face 500 lines later. Your server needs to fail fast while debugging. There&rsquo;s no shame in throwing assert statements around like confetti.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>string errstr(std<span style="color:#f92672">::</span>string msg) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> msg <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; (errno &#34;</span> <span style="color:#f92672">+</span> std<span style="color:#f92672">::</span>to_string(errno) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;)&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> getaddrinfo(<span style="color:#66d9ef">nullptr</span>, std<span style="color:#f92672">::</span>to_string(port).c_str(), <span style="color:#f92672">&amp;</span>hints, <span style="color:#f92672">&amp;</span>res);
+</span></span><span style="display:flex;"><span>assert (ret <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not get address information&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
+</span></span><span style="display:flex;"><span>assert (fd <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not create socket&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> reuse <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, <span style="color:#f92672">&amp;</span>reuse, <span style="color:#66d9ef">sizeof</span>(reuse));
+</span></span><span style="display:flex;"><span>assert (ret <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not set SO_REUSEADDR option&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> bind(fd, res<span style="color:#f92672">-&gt;</span>ai_addr, res<span style="color:#f92672">-&gt;</span>ai_addrlen);
+</span></span><span style="display:flex;"><span>assert (ret <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not bind socket to port&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
+</span></span></span></code></pre></div><h2 id="day-two">Day Two</h2>
+<blockquote>
+<p>And God said, <strong>&ldquo;Let there be an event loop so that sockets can know when they have to read and write&rdquo;</strong>, So God made an event loop and registered his sockets to it.</p>
+</blockquote>
+<p>Possibly the most fun part of this entire exercise. Event loops allow you to write superfast single-threaded concurrent servers, simply because the OS doesn&rsquo;t need to schedule a bunch of threads waiting for their clients to reply to them. In macOS (and other BSD distros), the kernel uses <code>kevent</code> for the event queue, but if you&rsquo;re looking to port to linux, <a href="https://github.com/mheily/libkqueue"><code>libkqueue</code></a> works like a charm (just make sure to build and install the latest version: the ones on the default package repositories are outdated and have bugs).</p>
+<p>Event loops and the reactor pattern are not-so-easy to understand, so <a href="https://dzone.com/articles/understanding-reactor-pattern-thread-based-and-eve">here</a> and <a href="http://www.dre.vanderbilt.edu/~schmidt/PDF/reactor-siemens.pdf">here</a> were some good resources I referred to. A broad overview (when applied to sockets) is:</p>
+<ul>
+<li>Each socket has a file descriptor, along with a read/write buffer (in the kernel).</li>
+<li>An event queue allows us to register this file descriptor with the queue, such that we are alerted when we can read/write from this file.</li>
+</ul>
+<p>What does an event queue look like? Here&rsquo;s a (rough) abstraction from my code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">event_t</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> filter;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> data;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EventQueue</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    EventQueue();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add_event</span>(<span style="color:#66d9ef">const</span> event_t<span style="color:#f92672">&amp;</span> e);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete_event</span>(<span style="color:#66d9ef">const</span> event_t<span style="color:#f92672">&amp;</span> e);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>event_t<span style="color:#f92672">&gt;</span> get_events();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>simple enough. Where does the event loop come in? The loop is responsible for polling the event queue and processing the events that occur</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>    EventQueue evtq;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add events here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (running) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> evts <span style="color:#f92672">=</span> evtq.get_events();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> e : evts) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// process e;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Generally, a callback-like structure is employed within the event loop</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span>()<span style="color:#f92672">&gt;&gt;</span> read_callbacks;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">register_read_callback</span>(<span style="color:#66d9ef">int</span> fd, std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span>()<span style="color:#f92672">&gt;</span> f) {
+</span></span><span style="display:flex;"><span>    read_callbacks[fd] <span style="color:#f92672">=</span> f;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// inside the event loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> e : evts) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (e.filter <span style="color:#f92672">==</span> EV_READ) read_callbacks[e.fd]();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span></code></pre></div><p>Short and sweet, add more callbacks as needed.</p>
+<p>There&rsquo;s a very nice <a href="https://wiki.netbsd.org/tutorials/kqueue_tutorial/">kqueue tutorial</a> here, which goes into more specifics; stuff such as timers and one-shot events, but read/write events on sockets should be enough to scale.</p>
+<h2 id="day-three">Day Three</h2>
+<blockquote>
+<p>And God said, <strong>&ldquo;Let there be a client to keep the server company&rdquo;</strong>, and it was so. God made a client using the same principles as the server, and God saw that it was good.</p>
+</blockquote>
+<p>The client was basically a mini-server, with a TCP and UDP port, that used the same event-loop based architecture to simultaneously transmit messages and receive file chunks. Once the protocol is implemented and the server is created, implementing a client is a relatively simple exercise, and was easy to do.</p>
+<p>One additional feature of kevent that I used were timers: if a request packet (over UDP) drops, then we won&rsquo;t receive a chunk in response to it. The way I solved this is to have a timer event every second, and a map that stores which chunk ID&rsquo;s are currently requested, and when those requests were sent out. Every second, when the timer event triggers, we check if there are any requests sent to which we haven&rsquo;t received a response in 5 seconds, and we resend these requests. Adding timer events to kqueue is relatively straightforward, just that the documentation doesn&rsquo;t make it clear whether we have to pass the time (in milliseconds) or a pointer to the time. The former works, but not the latter (even though <code>struct kevent</code> has the type of data as <code>intptr_t</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">kevent</span> evt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> fd <span style="color:#f92672">=</span> <span style="color:#ae81ff">6000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> period_in_ms <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>EV_SET(<span style="color:#f92672">&amp;</span>evt, fd, EVFILT_TIMER, EV_ADD<span style="color:#f92672">|</span>EV_ENABLE, <span style="color:#ae81ff">0</span>, period_in_ms, NULL);
+</span></span><span style="display:flex;"><span>kevent(_kq, <span style="color:#f92672">&amp;</span>evt, <span style="color:#ae81ff">1</span>, NULL, <span style="color:#ae81ff">0</span>, NULL);
+</span></span></code></pre></div><p><code>fd</code> was chosen as 6000 as this is large enough to not clash with anything else. I couldn&rsquo;t think of a better way to choose a descriptor for a timer. If you do know of one (allocating a file descriptor which won&rsquo;t clash with other file descriptors), do let me know in the comments :)</p>
+<h2 id="day-four">Day Four</h2>
+<blockquote>
+<p>And God said, <strong>&ldquo;Let there be two implementations of the protocol, for testing purposes&rdquo;</strong>, and it was so. God set about refactoring the codebase, abstracting the interfaces and implementation out, and when he was done, he saw that it was good.</p>
+</blockquote>
+<p>This was probably the most frustrating part: after three straight days of programming, I realized that to switch protocols, I&rsquo;d have to do it all over again. This is where effective design comes into picture: rather than making a hacky proof-of-concept server, abstracting out the various things that would have separate implementations from the start would&rsquo;ve made this exercise very easy.</p>
+<p>I set about redesigning the server. Fortunately, a full rewrite wasn&rsquo;t needed, and a lot of the components could just be reused directly. For changing the protocol, I defined the interfaces in a header file, and implementation-specific versions in a source file. This allows me to change the implementation at compile time rather than in source (which would need me to subclass Server and override these methods). All I need to do now to change the protocol is <code>make proto=TCP</code> instead of normal <code>make</code>.</p>
+<p>The makefile flags to do something like this are:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>PROTO<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">TCP)</span>
+</span></span><span style="display:flex;"><span>    SRC_SERVER <span style="color:#f92672">+=</span> &lt;tcp implementation files&gt;
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    SERVER :<span style="color:#f92672">=</span> bin/server_tcp
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else</span>
+</span></span><span style="display:flex;"><span>    SRC_SERVER <span style="color:#f92672">+=</span> &lt;udp implementation files&gt;
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    SERVER :<span style="color:#f92672">=</span> bin/server_udp
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span>
+</span></span></code></pre></div><p>The final source design looked like this (leaving out other non-relevant items)</p>
+<center>
+![protocol](res/protocol.svg)
+</center>
+<h2 id="day-five">Day Five</h2>
+<blockquote>
+<p>And God said, <strong>&ldquo;Let this bounty be available to the users of Linux as well&rdquo;</strong>, and it was so. God did not have a working Linux machine, so he created a QEMU VM to run Manjaro and to compile the code, and when he was done, he saw that it was good.</p>
+</blockquote>
+<p>The Linux machine I&rsquo;d gotten from home had a broken keyboard, and my Raspberry Pi was not connecting to the cellular network (apparently my cellphone provider switched from an ipv4 to an ipv6 network, so arp-scan and everything was a mess; I couldn&rsquo;t locate my pi&rsquo;s IP, and an iPhone being an iPhone, doesn&rsquo;t let you see the IP of the devices connected to it&rsquo;s WiFi hotspot.)</p>
+<p>After messing around with an ethernet cable, a friend&rsquo;s laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that <a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image">it doesn&rsquo;t have a default password</a>, and an ISO containing login credentials had to be booted with the image to allow you to login, <em>and that too only via SSH</em>.</p>
+<p>Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly.</p>
+<center>
+![qemu](res/qemu_vm_2.png)
+</center>
+<p>QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that&rsquo;s for another post :)</p>
+<p>With access to a linux machine, there were two choices:</p>
+<ol>
+<li>Use a compatiability layer to get kqueue functionality: libkqueue, as previously mentioned, hadn&rsquo;t worked on an ubuntu machine because of an old version (a fact I didn&rsquo;t know till then)</li>
+<li>Write an epoll implementation of my abstracted event queue</li>
+</ol>
+<p>I really didn&rsquo;t want to do (2), but it looked like there was no choice. I decided to give libkqueue a final chance on linux, and since it was not available on manjaro default repositories, I downloaded and compiled from source.</p>
+<p>And it worked! I had to link the library with <code>-lkqueue</code> and <code>-lpthread</code>, so made some linux-specific flags for that. I can now see why <code>cmake</code> is such a popular build tool, as this os-dependent complexity would only increase with more modules</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">ifneq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>OS<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,Windows_NT)</span>
+</span></span><span style="display:flex;"><span>    uname_os <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell uname<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    ifneq <span style="color:#f92672">(</span><span style="color:#66d9ef">$(</span>uname_os<span style="color:#66d9ef">)</span>,Darwin<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        CPPFLAGS <span style="color:#f92672">+=</span> -I/usr/include/kqueue
+</span></span><span style="display:flex;"><span>        LFLAGS <span style="color:#f92672">+=</span> -lkqueue -lpthread
+</span></span><span style="display:flex;"><span>    endif
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span>
+</span></span></code></pre></div><h2 id="day-six">Day Six</h2>
+<blockquote>
+<p>And God said, <strong>&ldquo;Let there be a client manager to spawn clients, so that I may be absolved of the burden of testing&rdquo;</strong>, and it was so. God crafted a client manager using threads, and did the server benchmarks, and he saw that they were good.</p>
+</blockquote>
+<p>This (and benchmarking) were boring but rewarding. For starters, a few changes had to be made in the protocol to make it a bit more reliable, and then some bookkeeping code had to be written for clients so that they could save their packet request round trip times to files, and also be called independently and run on separate threads. Once that was done, I created a client manager that took care of spawning a bunch of clients and making requests to the server</p>
+<p>The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.</p>
+<p>Here are some numbers. For context, A2_small_file.txt is a 100kB text file.</p>
+<center>
+![times](res/time_clients.svg)
+</center>
+<h2 id="day-seven">Day Seven</h2>
+<blockquote>
+<p>Thus, the clients and server were completed in all their vast array, so on the seventh day, God rested from all his work. Then God <strike>Blessed the seventh day and made it holy</strike> <em>Cursed himself for having spent so much time on one assignment, when there were four more to do, and minors would begin in a week</em></p>
+</blockquote>
+<p>If you felt like this article was too fast, or too poorly written, you now know why :&rsquo;)</p>
+<p><strike>Since the assignment deadline is still not over, I&rsquo;ve consciously not divulged many specifics. Will probably release a follow-up on the protocol and client-server design itself later on.</strike> Update: you can play with the code <a href="https://github.com/Aniruddha-Deb/trickle">here</a></p>
+<h2 id="footnotes">Footnotes</h2>
+<p><sup id="footnote-1">1</sup> <code>select</code> can handle only 1024 events, and is linear in time, which makes it a very bad choice. More modern implementations use kqueue(BSD/macOS), epoll(Linux) or IOCP(Windows). A cross-platform option is to use <a href="https://libevent.org/">libevent</a>.</p>
+<p><sup id="footnote-2">2</sup> <code>recv</code> will block (wait until there are nonzero bytes in the read buffer) if the socket is blocking, and will read atmost <code>len</code> bytes to <code>buf</code> (the number of bytes read are returned by the syscall). If the socket is non-blocking, <code>recv</code> may return 0 if there&rsquo;s nothing in the buffer to read. Note that if a blocking <code>recv</code> returns 0, it means that the connection has been disconnected (why? Don&rsquo;t really know, but I guess it&rsquo;s because there&rsquo;s an EOF residing in the buffer, sent by the other party, up to which <code>recv</code> reads, and then there&rsquo;s nothing left to read but the EOF).</p>
+<p><sup id="footnote-3">3</sup> Tired of all the *buntu distros, and had experience with arch (loved the rolling distro functionality), so needed an arch experience with minimal effort.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/systems"
+      >Systems</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

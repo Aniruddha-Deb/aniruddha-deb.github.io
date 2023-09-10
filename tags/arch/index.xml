@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arch on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/arch/</link>
+    <description>Recent content in Arch on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Aug 2022 15:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/arch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Arch Linux Journey</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</link>
+      <pubDate>Sun, 07 Aug 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</guid>
+      <description>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&amp;rsquo;s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu.</description>
+    </item>
+    
+  </channel>
+</rss>

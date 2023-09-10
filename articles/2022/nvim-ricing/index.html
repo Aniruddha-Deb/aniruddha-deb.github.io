@@ -51,7 +51,7 @@
   />
 
   
-  <title>Aniruddha Deb</title>
+  <title>Neovim Ricing - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -59,11 +59,10 @@
   
   
   
-  
-  <meta
-    name="description"
-    content="A personal blog"
-  />
+  <meta name="description" content="While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
+Right?
+Nope. Let&rsquo;s install Neovim on Mac instead and try moving to it!
+Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?" />
   <meta name="author" content="Aniruddha Deb" />
   
 
@@ -149,25 +148,27 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://aniruddhadeb.com/blog-port/index.xml"
-    title="Aniruddha Deb"
-  />
-  
 
   
   
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Neovim Ricing">
+<meta itemprop="description" content="While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
+Right?
+Nope. Let&rsquo;s install Neovim on Mac instead and try moving to it!
+Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?"><meta itemprop="datePublished" content="2022-09-25T17:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-25T17:00:00+00:00" />
+<meta itemprop="wordCount" content="390">
+<meta itemprop="keywords" content="Programming,Systems," />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Neovim Ricing"/>
+<meta name="twitter:description" content="While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
+Right?
+Nope. Let&rsquo;s install Neovim on Mac instead and try moving to it!
+Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?"/>
 
   
   
@@ -306,186 +307,92 @@
     >
       
 
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Neovim Ricing</h1>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-<div class="-mt-2 mb-16 flex items-center">
-  
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
-      src="/pic.png"
-      alt="Aniruddha Deb"
-    />
-  </div>
-  
-  
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
-    <div class="break-words">
-      CSE Senior at IIT Delhi
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 25, 2022</time>
+      
+      
+      
+      
     </div>
-  </div>
-  
-</div>
+    
+  </header>
 
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+  <section><p>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.</p>
+<p>Right?</p>
+<p>Nope. Let&rsquo;s install Neovim on Mac instead and try moving to it!</p>
+<p><img src="/articles/2022/res/neovim.png" alt="neovim"></p>
+<h2 id="sprucing-up-neovim">Sprucing up Neovim</h2>
+<p>Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?). The only difference I see between Neovim and good ol&rsquo; vim is that Neovim supports all the old vim plugins, but also supports Lua plugins as well (and is asynchronous, but I don&rsquo;t notice that in practice).</p>
+<p>It also has Language Server Protocol support and tree-sitter and a bunch of other useful stuff which I&rsquo;ll get around to eventually using, but are just magic for now.</p>
+<h2 id="plugins-used">Plugins used</h2>
+<ul>
+<li><code>preservim/nerdtree</code></li>
+<li><code>vim-airline/vim-airline</code></li>
+<li><code>tanvirtin/monokai.nvim</code></li>
+<li><code>airblade/vim-gitgutter</code></li>
+<li><code>ryanoasis/vim-devicons</code></li>
+<li><code>Xuyuanp/nerdtree-git-plugin</code></li>
+</ul>
+<p>And <code>vim-plug</code> for installing all of them. Note that <code>vim-devicons</code> needs the nerdicons patched font. I use Meslo LG S, because it&rsquo;s basically Open-Source Menlo, and I&rsquo;m too used to Menlo by this point to quit. Interestingly, my kitty config doesn&rsquo;t use this parameter anywhere, but still manages to pick up the glyphs from the right font&hellip; Omoshiroi.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>I still need to work on LSP integration (installed <code>ccls</code> today), but will do that at a later time. There are still a lot of things to move over (If I do choose to move over), some of them are:</p>
+<ul>
+<li>LSP&rsquo;s for C,C++,Python,Rust</li>
+<li>Learn the buffer vs tabs philosophy (I used tabs extensively previously in vim)</li>
+<li>Multi cursor vs macros&hellip; Get used to macros</li>
+<li>Port my Competitive Programming setup over</li>
+<li>VimLaTeX installation</li>
+</ul>
+<p>And that&rsquo;s it, I guess. Terminals are probably why I&rsquo;d switch over (Sublime terminals just seem half-baked, and it&rsquo;s much nicer using nvim+kitty than ctrl-tabbing with sublime), and nicer keyboard integration in nvim. Most of my original reasons for <a href="https://aniruddhadeb.com/articles/2021/sublime-text-setup">switching to sublime</a> are now mitigated, and I do have the skill to improve my vim-jutsu.</p>
+<h2 id="footnotes">Footnotes</h2>
+<p>Short and sweet blog post, because it&rsquo;s Minors week!</p>
+<p>Also, I might start posting these on Hacker News and Reddit</p>
+<p>Aaaand debating whether to create a twitter as well for that added publicity. Devs with it seem to do a lot better than those without it. Even John Carmack has a twitter :^</p>
 </section>
 
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
   
   
-  <a class="btn ml-auto" href="/blog-port/page/2/"
-    >Next Page →</a
-  >
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/systems"
+      >Systems</a
+    >
+    
+  </footer>
   
-</nav>
 
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
 
 
     </main>

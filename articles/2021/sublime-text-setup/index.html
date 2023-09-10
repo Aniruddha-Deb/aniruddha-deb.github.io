@@ -1,0 +1,445 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Setting up (and shifting to) Sublime Text 4 - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
+Hard to set up and use autocomplete: I&rsquo;ve tried omnicomplete, but it just didn&rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&rsquo;t great at this stuff." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Setting up (and shifting to) Sublime Text 4">
+<meta itemprop="description" content="After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
+Hard to set up and use autocomplete: I&rsquo;ve tried omnicomplete, but it just didn&rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&rsquo;t great at this stuff."><meta itemprop="datePublished" content="2021-06-01T08:03:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-01T08:03:00+00:00" />
+<meta itemprop="wordCount" content="991">
+<meta itemprop="keywords" content="Programming,Text Editor," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting up (and shifting to) Sublime Text 4"/>
+<meta name="twitter:description" content="After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
+Hard to set up and use autocomplete: I&rsquo;ve tried omnicomplete, but it just didn&rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&rsquo;t great at this stuff."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Setting up (and shifting to) Sublime Text 4</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 1, 2021</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>After using vim for a <em>long</em> time, I realized that vim would be very tricky to
+use for larger projects; there are a few reasons behind this, which are:</p>
+<ol>
+<li>
+<p><strong>Hard to set up and use autocomplete</strong>: I&rsquo;ve tried omnicomplete, but it just didn&rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&rsquo;t great at this stuff. I had used VSCode once, and the only thing I really took away was how great intellisense is. I really didn&rsquo;t want to go back to VSCode, so sublime seemed like a good alternative</p>
+</li>
+<li>
+<p><strong>Where are the directories?</strong> There is no way to view folders in vim unless you have a folder viewing plugin. Once you have a good grip on the way of the keyboard, Vim is kind of pointless until you start adding plugins. You even need a plugin to add auto-completing brackets! I finally realized that vim would be hard to use realistically if I have to tackle a larger programming project, where I would need to see the folders and files and have autocomplete on hand.</p>
+</li>
+<li>
+<p><strong>Neovim? Do I have to set that up?</strong> NeoVim is the &lsquo;better&rsquo; version of vim that everyone uses, because it&rsquo;s multithreaded and more of a community effort. however that has another bunch of setup for making it usable, and coc.nvim is the completion tool of choice there. Though I could have gone the nvim way, I decided that setting up sublime text would be effort better spent, since it&rsquo;s already usable and fast.</p>
+</li>
+</ol>
+<p>So here&rsquo;s the way I made sublime my own over a tuesday evening:</p>
+<h3 id="update-update-update">Update, Update, Update!</h3>
+<p>Everytime I opened up Sublime, I was greeted with the annoying update window<sup>1</sup></p>
+<center>![Yes I didn't screenshot it on my mac, which is why it's a windows SS, thanks to Colonel Panic at StackOverflow for the image](res/sublime_update.png)</center>
+<p>I finally went ahead and updated it. Sublime text had come up with version 4 recently, and the only change was <em>drumrolls</em> A new default color scheme! How original.<sup>2</sup>. Well, it&rsquo;s still a great color scheme, even I was getting bored of monokai.</p>
+<h3 id="installing-the-smaller-plugins">Installing the smaller plugins</h3>
+<p>There are 3 &lsquo;small&rsquo; plugins I installed (plugins that require minimal work to setup):</p>
+<ol>
+<li>A file Icon - cool file icons in the sublime text sidebar</li>
+<li>Terminal - open a terminal with the current file with one keystroke (⌘⇧T)</li>
+<li>NeoVintageous - <em>much</em> improved vim plugin; vintageous pales in comparision</li>
+</ol>
+<p>all of these (except Terminal) required no setup; I just hit ⌘⇧P -&gt; install packages -&gt; type the package name in, hit enter and done. Terminal required that I specify that I have iTerm2</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;terminal&#34;</span>: <span style="color:#e6db74">&#34;iTerm2-v3.sh&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;parameters&#34;</span>: [<span style="color:#e6db74">&#34;--open-in-tab&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="installing-the-larger-autocomplete-plugins">Installing the larger autocomplete plugins</h3>
+<p>I mainly code in C/C++/Python nowadays, so I needed a Python autocomplete, as well as a C/C++ autocompleter. Jedi is what I used to use for python a long time back, and surprisingly it&rsquo;s still quite well maintained and documented. I installed Jedi via the package control. Jedi has some interesting settings regarding projects and virtual environments; I didn&rsquo;t get to try any of those out, but I did set it up on the default python interpreter on my system.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;python_interpreter&#34;</span>: <span style="color:#e6db74">&#34;/Users/Sensei/.pyenv/versions/3.9.0/bin/python&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;python_package_paths&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;/Users/Sensei/.pyenv/versions/3.9.0/lib/python3.9/site-packages&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>and that&rsquo;s it! Jedi now autocompletes both normal python and all packages that I install with pip (numpy, scipy etc). Great!</p>
+<p>I was left with setting up a C++ autocompleter, and this was a bit tricky. The first recommendation that I encountered was for ClangAutoComplete, but after downloading it, it stated that the plugin is still maintained, but not very actively. ClangAutoComplete instead recommended EasyClangComplete, so I uninstalled it and downloaded ECC. ECC had a few setup issues; everything is hunky-dory if you use CMake, but since I don&rsquo;t, I had to tweak the preferences a bit. I had already ranted about <a href="https://aniruddhadeb.com/articles/2021/c-mac.html">How the C header locations on mac are screwed</a>, and fortunately the ECC folks were kind enough to provide a recommended path list for mac.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;common_flags&#34;</span> : [
+</span></span><span style="display:flex;"><span>	    <span style="color:#e6db74">&#34;-I/usr/include/&#34;</span>,
+</span></span><span style="display:flex;"><span>	    <span style="color:#e6db74">&#34;-I/usr/local/include&#34;</span>,
+</span></span><span style="display:flex;"><span>	    <span style="color:#e6db74">&#34;-I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>	    <span style="color:#e6db74">&#34;-I/Library/Developer/CommandLineTools/usr/include/c++/v1&#34;</span>,
+</span></span><span style="display:flex;"><span>	],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;lang_flags&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;C&#34;</span>: [<span style="color:#e6db74">&#34;-std=c99&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;CPP&#34;</span>: [<span style="color:#e6db74">&#34;-std=c++14&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;OBJECTIVE_C&#34;</span>: [<span style="color:#e6db74">&#34;-std=c11&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;OBJECTIVE_CPP&#34;</span>: [<span style="color:#e6db74">&#34;-std=c++14&#34;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;libclang_path&#34;</span>: <span style="color:#e6db74">&#34;/Library/Developer/CommandLineTools/usr/lib/&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="further-updates">Further updates</h3>
+<p>The next day, I went ahead and realized that terminal wouldn&rsquo;t cut it, and I needed a terminal integrated into sublime text. I went ahead and installed the Terminus plugin for that. Terminus by default hides some of it&rsquo;s keybindings, so I had to go and change the keybinding user preferences. Now <code>alt+`</code> opens up a terminal where the default sublime terminal goes, and <code>ctrl+alt+T</code> opens up a terminal in place of a text pane. The default user theme was too dark for my taste, so I changed it with the 3024-dark theme that terminus ships with. This config works perfectly: no need to split sublime into two with a terminal, or open iTerm every time I use sublime! Here&rsquo;s a screenshot (the project in question is <a href="https://github.com/Aniruddha-Deb/PyGameOfLife">PyGameOfLife</a>)</p>
+<p><img src="res/sublime_ss.png" alt="Current sublime setup"></p>
+<p>That&rsquo;s about it; everything now works and works well! NeoVintageous is probably the thing that is the best; it is miles ahead of vintageous, and it works brilliantly here. I don&rsquo;t feel like I&rsquo;ve left vim, until sublime writes methods for me, closes braces/tags for me and also autocompletes my 3 dimensional vector definition. Which is great. I&rsquo;ll post more updates here if I do install/delete some plugins, but I have a feeling sublime is here to stay.</p>
+<hr>
+<p><sup>1</sup>Yes I didn&rsquo;t screenshot it on my mac, which is why it&rsquo;s a windows SS, thanks to Colonel Panic at StackOverflow for the image</p>
+<p><sup>2</sup>They did change a lot of stuff; the rendering is now faster on newer devices, and a lot of updates would have gone into it behind the scenes, so this is just a joke :P gg @SublimeHQ, Sublime text 4 does look amazing :)</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/text-editor"
+      >Text Editor</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

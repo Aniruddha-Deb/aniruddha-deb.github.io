@@ -1,0 +1,553 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Mac Setup v2 - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="My 2015 MBP 13&quot; was giving me some pain over this entire semester, lagging a lot and being very slow overall. I recently upgraded to a 16&quot; MBP, and there have been no complaints so far :) the notch is simply not there if you have a black desktop background, so &#43;1 to apple for that. Although face ID would have been nice to have.
+Setup Basic intro Screen
+Dark Mode" />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Mac Setup v2">
+<meta itemprop="description" content="My 2015 MBP 13&quot; was giving me some pain over this entire semester, lagging a lot and being very slow overall. I recently upgraded to a 16&quot; MBP, and there have been no complaints so far :) the notch is simply not there if you have a black desktop background, so &#43;1 to apple for that. Although face ID would have been nice to have.
+Setup Basic intro Screen
+Dark Mode"><meta itemprop="datePublished" content="2023-03-06T12:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-06T12:00:00+00:00" />
+<meta itemprop="wordCount" content="565">
+<meta itemprop="keywords" content="Programming," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mac Setup v2"/>
+<meta name="twitter:description" content="My 2015 MBP 13&quot; was giving me some pain over this entire semester, lagging a lot and being very slow overall. I recently upgraded to a 16&quot; MBP, and there have been no complaints so far :) the notch is simply not there if you have a black desktop background, so &#43;1 to apple for that. Although face ID would have been nice to have.
+Setup Basic intro Screen
+Dark Mode"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Mac Setup v2</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Mar 6, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>My 2015 MBP 13&quot; was giving me some pain over this entire semester, lagging a lot
+and being very slow overall. I recently upgraded to a 16&quot; MBP, and there have
+been no complaints so far :) the notch is simply not there if you have a black
+desktop background, so +1 to apple for that. Although face ID would have been
+nice to have.</p>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p>Basic intro Screen</p>
+<ul>
+<li>Dark Mode<br>
+<img src="/articles/2020/res/darkside.jpeg" alt="dark side meme"></li>
+<li>Don&rsquo;t set up Siri, or Stage Manager</li>
+</ul>
+</li>
+<li>
+<p>Home Directory and Username renaming</p>
+<ul>
+<li>MacOS uses a lowercase first letter, even if you&rsquo;ve input an uppercase
+one while making your username. The way to change this is a bit complicated,
+but follow the instructions <a href="https://support.apple.com/en-in/HT201548">here</a></li>
+</ul>
+</li>
+<li>
+<p>System <strike>Preferences</strike> Settings</p>
+<ul>
+<li>Turn off autocorrect</li>
+<li>Function keys are function keys, and not &lsquo;do weird stuff&rsquo; keys</li>
+<li>Don&rsquo;t switch to a workspace which has an open window of the application</li>
+<li>Make 10 workspaces and activate all the ^(n) hotkeys to switch to them</li>
+<li>Change the date/time format to <code>Day HH:MM:SS</code> in control center</li>
+<li>Remove some stuff from control center, put keyboard brightness there</li>
+<li>Turn off the &lsquo;quick note&rsquo; bottom right hot corner</li>
+</ul>
+</li>
+<li>
+<p>Accounts</p>
+<ul>
+<li>Google</li>
+<li><a href="https://bsw.iitd.ac.in/email.php">IITD</a></li>
+</ul>
+</li>
+<li>
+<p>Applications</p>
+<ul>
+<li>XCode CLT</li>
+<li>Firefox</li>
+<li>VS Code (don&rsquo;t use this much)</li>
+<li>Kitty (with the <a href="https://github.com/DinkDonk/kitty-icon/blob/main/kitty-dark.icns">cuter icon</a>)</li>
+<li>Calibre</li>
+<li>TG Pro</li>
+<li>The Unarchiver</li>
+<li>Shottr</li>
+<li>Hidden Bar</li>
+<li>TinkerTool
+<ul>
+<li>Hide dock, and delay in showing it</li>
+<li>Remove &lsquo;recent apps&rsquo; section in Dock</li>
+</ul>
+</li>
+<li>Rectangle</li>
+<li>Bandwidth+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://brew.sh/">Brew</a> Packages</p>
+<ul>
+<li>Neovim</li>
+<li>htop</li>
+<li>gcc</li>
+<li>openmpi</li>
+<li>miniforge</li>
+</ul>
+</li>
+<li>
+<p>Kitty Setup</p>
+<ul>
+<li>Download the <a href="https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.3">Meslo</a>
+zipfile from here, and install all the fonts.</li>
+<li>Copy over the <code>kitty.conf</code> from my previous machine. Works out of the box
+(just darkened the background a bit more, as the new mac has a brighter
+display)</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh">Oh my zsh</a></p>
+<ul>
+<li>Install <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> after this</li>
+<li>Follow the setup guide for Powerlevel10k according to liking. I use a one-
+line prompt, with no repeats</li>
+</ul>
+</li>
+<li>
+<p>Firefox setup</p>
+<ul>
+<li>Default browser</li>
+<li>Login to firefox account to sync plugins
+<ul>
+<li>TabbyCat</li>
+<li>uBlock Origin</li>
+<li>Tampermonkey</li>
+</ul>
+</li>
+<li>Get <a href="https://github.com/Aniruddha-Deb/UserScripts">UserScripts</a> and load
+into Tampermonkey</li>
+</ul>
+</li>
+<li>
+<p>Spaces Renamer</p>
+<ul>
+<li>Probably the hardest part of the setup.</li>
+<li>TL;DR follow the procedure <a href="https://github.com/dado3212/spaces-renamer/issues/75#issuecomment-1201511482">here</a>.
+Requires <a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection">disabling SIP</a>
+and library validation, and then loading in spaces renamer. You&rsquo;ll be asked
+to download rosetta at this point as well.</li>
+</ul>
+</li>
+<li>
+<p>Neovim setup</p>
+<ul>
+<li>Install <a href="https://nodejs.org/en/download/">node</a> for CoC</li>
+<li>Lift and Shift nvim config directory from previous machine</li>
+<li>Install <a href="https://github.com/wbthomason/packer.nvim">packer</a></li>
+<li>Do <code>:PackerInstall</code> to install plugins</li>
+</ul>
+</li>
+<li>
+<p>Blog Setup</p>
+<ul>
+<li>Clone the blog git repo</li>
+<li>Instead of using a <code>venv</code>, I used a conda-managed environment this time.
+Worked out better. Created an <code>environment.yml</code> for the blog.</li>
+</ul>
+</li>
+<li>
+<p>ML Setup</p>
+<ul>
+<li>Create a Conda environment for ML stuff</li>
+<li>Install:
+<ul>
+<li>torch, torchvision, torchaudio</li>
+<li>numpy, pandas, scikit-learn, xgboost</li>
+<li>matplotlib, bokeh</li>
+<li>jupyterlab, ipywidgets</li>
+<li>jupyterlab-vim</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>At this point, you should have a stable system. Move over data from the previous
+machine (Documents, Pictures, Videos etc.)</p>
+<ol start="14">
+<li>
+<p>Set Desktop Background</p>
+</li>
+<li>
+<p>Step back and enjoy :)</p>
+</li>
+</ol>
+<p><img src="res/desktop.png" alt="hehe"></p>
+<p><img src="res/blog.png" alt="nvim+kitty"></p>
+<h2 id="one-more-thing">One More Thing</h2>
+<p>There&rsquo;s a difference between <code>.zshenv</code>, <code>.zprofile</code>, <code>.zshrc</code> and other flavours
+of zsh conf files, details of which I learnt from <a href="https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout">here</a>.
+You&rsquo;d want to alias <code>gcc</code> to <code>gcc-12</code> and <code>g++</code> to <code>g++-12</code> (they dubiously
+use clang), and <code>vim</code> to <code>nvim</code> in <code>.zshenv</code> (otherwise makefiles won&rsquo;t pick up
+on the change. Also, uncomment the lines in .zshrc which export <code>$EDITOR</code>.</p>
+<p>Also, name your programming folder <code>Developer</code> to get a nice directory icon.</p>
+<hr>
+<p>EDIT (9 Mar): Moved from CoC to <code>nvim-lspconfig</code> and <code>cmp-nvim</code>, and to
+treesitter-based syntax highlighting. Feels marginally better, and got the
+chance to hack at my vim config after a long time.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

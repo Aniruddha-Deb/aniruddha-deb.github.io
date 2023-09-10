@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/mathematics/</link>
+    <description>Recent content in Mathematics on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Luck, Skill or Both: Department Change at IITs</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</link>
+      <pubDate>Fri, 01 Sep 2023 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</guid>
+      <description>A friend recently asked me to provide some advice on department change to some freshers. The usual fundaebaazi is something I didn&amp;rsquo;t want to do; it&amp;rsquo;s not impressionable, and won&amp;rsquo;t motivate any fresher to study for a department change. Instead, I chose to show and not tell
+So is it luck or skill? Short answer: Both.
+Let&amp;rsquo;s look at how first year courses are graded. For most theory courses (3 lecture hours + 1 tutorial hour / 2 lab hours), there&amp;rsquo;s a normal distribution of marks, and the top 7% of people on this distribution get an A.</description>
+    </item>
+    
+    <item>
+      <title>Batch Normalization</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/</link>
+      <pubDate>Thu, 16 Feb 2023 16:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/</guid>
+      <description>$$ \require{physics} \newcommand{B}{\mathcal{B}}$$
+Batch Normalization was proposed by Ioffe and Szegedy in 2015, and it spawned several normalization techniques that are used in SOTA models today (layer norm, weight norm, etc). Batch normalization normalizes the output of each layer based on the mean and variance of the examples in the current batch. Formally, if $\B = {x_1, \ldots, x_m}$ is our batch, then batch norm does the following transformation:
+$$\begin{align} \mu_{\B} &amp;amp;= \frac{1}{m} \sum_i x_i \\ \sigma_{\B}^2 &amp;amp;= \left( \frac{1}{m} \sum_i x_i^2 \right) - \mu_{\B}^2 \\ \hat{x}_i &amp;amp;= \frac{x_i - \mu_{\B}}{\sqrt{\sigma^2_{\B} + \epsilon}} \\ y_i &amp;amp;= \gamma \hat{x}_i + \beta \end{align}$$</description>
+    </item>
+    
+    <item>
+      <title>L2 regularization intuition</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/</link>
+      <pubDate>Sun, 22 Jan 2023 10:15:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/</guid>
+      <description>A nice intuition for L2 regularization comes from having a prior on the distribution of parameters: the prior assumes that the parameters are close to zero. Let&amp;rsquo;s assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate of the parameters would then be
+$$\begin{align} \theta_{\text{MAP}} &amp;amp;= \text{argmax}_{\theta} ; P(\theta | D) \\ &amp;amp;= \text{argmax}_{\theta} ; P(D | \theta) P(\theta) \\ &amp;amp;= \text{argmax}_{\theta} ; \log P(D | \theta) + \log P(\theta) \end{align}$$</description>
+    </item>
+    
+    <item>
+      <title>Filtrations</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/filtrations/</link>
+      <pubDate>Mon, 28 Nov 2022 03:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/filtrations/</guid>
+      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
+Recap If you remember the note on random variables, then this picks up exactly where that left off.
+Definition 1.1: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.
+Recall that a $\sigma$-algebra is simply a collection of subsets over $X$ that is closed over unions, intersections and complements.
+Definition 1.2: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a sub $\sigma$-algebra of $\mathcal{A}$</description>
+    </item>
+    
+    <item>
+      <title>The JEE never fails to amaze</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</link>
+      <pubDate>Mon, 19 Sep 2022 17:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</guid>
+      <description>I promised I wouldn&amp;rsquo;t look at the JEE 2022 paper, but couldn&amp;rsquo;t help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India&amp;rsquo;s students difficult, and they never cease to amaze.
+Welp, this will be a short one. Let&amp;rsquo;s cut to the chase!
+The greatest integer less than or equal to $$\int_1^2 \log_2(x^3 + 1) dx + \int_1^{\log_2 9} (2^x - 1)^{1/3} dx$$ is _______</description>
+    </item>
+    
+    <item>
+      <title>A Note on Conditional Probability</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/note-on-conditional-probability/</link>
+      <pubDate>Sat, 25 Dec 2021 15:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/note-on-conditional-probability/</guid>
+      <description>$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following problem:
+Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &amp;gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?
+At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2.</description>
+    </item>
+    
+    <item>
+      <title>A Note on Random Variables</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/note-on-random-variables/</link>
+      <pubDate>Fri, 03 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/note-on-random-variables/</guid>
+      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$ This note on random variables follows as a result of confusing notation in several math textbooks. I&amp;rsquo;ll explain random variables (in measure theoretic terms) as verbosely as I can, and then prove some results. This article assumes that the reader is familiar with probability triples $\triple$, as well as a basic idea of what random variables are, in non-measure theory terms.
+1. Random Variable Prerequisites We start with defining measurable spaces and measurable functions</description>
+    </item>
+    
+    <item>
+      <title>LaTeX primer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</link>
+      <pubDate>Sun, 21 Mar 2021 21:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</guid>
+      <description>This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&amp;rsquo;s working.
+Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&amp;rsquo;s core, is merely a text formatting system. One of the main differences between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM (What you see is what you mean) system, as compared to WYSIWYG (What you see is what you get) systems.</description>
+    </item>
+    
+    <item>
+      <title>Understanding Jacobians</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/understanding-jacobians/</link>
+      <pubDate>Fri, 29 Jan 2021 15:11:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/understanding-jacobians/</guid>
+      <description>$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$ $\newcommand{\ah}{\pmb{a} + \pmb{h}}$ $\newcommand{\a}{\pmb{a}}$ $\newcommand{\h}{\pmb{h}}$
+The Jacobian Matrix Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear approximation of this function is given by $$f(a+h) \approx f(a) + hf&amp;rsquo;(a)$$ This is pretty simple to do, and follows from taylor&amp;rsquo;s expansion upto the first order.
+Let&amp;rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$, it&amp;rsquo;s linear approximation is given by $$f(\pmb{a} + \pmb{h}) \approx f(\pmb{a}) + \pmb{h}\cdot\nabla{f}(\a)$$ (bold type indicates vectors).</description>
+    </item>
+    
+    <item>
+      <title>Setting up MathNotes - an online math repository</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</link>
+      <pubDate>Fri, 16 Oct 2020 12:54:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</guid>
+      <description>Just after 10th and as I was beginning my JEE Preparation, I felt the need for an extensible note-taking apparatus. Online notes would be too much trouble and would keep me hooked to the computer. Notebooks were also difficult, as I wanted my notes to be extensible; adding pages in the middle of a notebook is extremely difficult. I finally settled on using Binders; you can add/remove pages quite easily and they&amp;rsquo;re decently sized to accommodate all the notes you could ever need.</description>
+    </item>
+    
+    <item>
+      <title>A Good JEE Main (September) problem</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</link>
+      <pubDate>Fri, 11 Sep 2020 09:01:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</guid>
+      <description>This beauty came in the 2nd September shift 2 paper:
+Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where $$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;-1 \end{array}\right]$$ then the set A:
+is a singleton is an empty set contains exactly two elements contains more than two elements This is a great problem, one that should have featured in advanced rather than main.</description>
+    </item>
+    
+    <item>
+      <title>Math Notes: Lagrange interpolation</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</link>
+      <pubDate>Fri, 14 Aug 2020 17:37:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</guid>
+      <description>This is a small set of posts that come into the category of &amp;ldquo;notes&amp;rdquo;: self-explanations of concepts that I have recently picked up and found interesting.
+Lagrange Interpolation Lagrange Interpolation is a concept that allows us to find a polynomial of least degree passing through a given set of points. Specifically:
+If $S = {(x_i, y_i) : x_i, y_i \in R, 1 \lt i \le n}$, then the polynomial of least degree passing through all the points in $S$ is given by $$P(x) = \sum_{i=1}^n L_i(x) \cdot y_i$$ where $$L_i(x) = \frac{(x-x_1)(x-x_2)&amp;hellip;(x-x_{i-1})(x-x_{i+1})&amp;hellip;(x-x_n)} {(x_i-x_1)(x_i-x_2)&amp;hellip;(x_i-x_{i-1})(x_i-x_{i+1})&amp;hellip;(x_i-x_n)}$$ or simply, $$P(x) = \sum_{i=1}^n \frac{\prod_{r \ne i}(x-x_r)}{\prod_{r \ne i}{(x_i-x_r)}} \cdot y_i$$ note that the degree of polynomial $P &amp;lt; n$.</description>
+    </item>
+    
+    <item>
+      <title>Is the shortest solution to a problem the best?</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/shortest-solution-best-or-not/</link>
+      <pubDate>Sun, 26 Jul 2020 21:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/shortest-solution-best-or-not/</guid>
+      <description>My old man always used to say that there are two ways to solve a problem: there&amp;rsquo;s the horse way, and there&amp;rsquo;s the donkey way. The donkey way involves tedious calculations, whereas the horse way &amp;lsquo;cuts&amp;rsquo; through the problem. Take this problem as an example:
+For each positive integer $n$, let $$y_n = ((n+1)(n+2)&amp;hellip;(n+n))^\frac1n$$ for $x \in \mathbb{R}$. Let $[x]$ be the greatest integer less than or equal to $x$. If $\lim_{n \to \infty} y_n = L$, then the value of $[L]$ is ______ ?</description>
+    </item>
+    
+    <item>
+      <title>ISC 2020 Analysis: An application of Data Science and Statistics</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</link>
+      <pubDate>Sat, 11 Jul 2020 16:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</guid>
+      <description>The ISC Exam results were released on 10th June, 3 PM IST. In this article, I&amp;rsquo;ll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I&amp;rsquo;ll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.
+###Index:
+Elementary inferences: How have people fared overall? Frequency Distribution of Marks: How many people got the same marks in a subject?</description>
+    </item>
+    
+    <item>
+      <title>Solving the African Integral (from YG file cover)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/african-integral/</link>
+      <pubDate>Thu, 09 Jul 2020 20:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/african-integral/</guid>
+      <description>A long time ago, I gave my friend (Let&amp;rsquo;s call him C) an integral to solve. He came back to me a few days later and the conversation went something like this:
+C: Debu, I couldn&amp;rsquo;t solve that African integral you gave me.
+Me: Ok, but why are you calling it African?
+C: Because Africa is a really big continent, y&amp;rsquo;know?
+Me: Ok, but isn&amp;rsquo;t Asia bigger?
+C: Debu, please stop making me feel dumb</description>
+    </item>
+    
+    <item>
+      <title>A Compilation of hard limits</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/hard-limits/</link>
+      <pubDate>Fri, 05 Jun 2020 11:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/hard-limits/</guid>
+      <description>This list consists of the limits that I found most challenging.
+$$\lim_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$ $$\lim_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{\ln(x+1)} \right)$$ $$\lim_{n \to \infty} \frac{n + n^2 + n^3 + &amp;hellip; + n^n}{1^n + 2^n + 3^n + &amp;hellip; + n^n}$$ $$\lim_{n \to \infty} \left( \frac{n^n(x+n)\left(x+\frac n2\right)&amp;hellip;\left(x+\frac nn\right)}{n!(x^2+n^2)\left(x^2+\frac {n^2}{4}\right)&amp;hellip;\left( x^2 + \frac{n^2}{n^2}\right)}\right)^{\frac x n}$$ $$\lim_{x \to 0} \left( 1^{\sin^{-2}x} + 2^{\sin^{-2}x} + &amp;hellip; + n^{\sin^{-2}x}\right)^{\sin^2 x}$$ $$\lim_{n \to \infty} \sqrt[\leftroot{-2}\uproot{2}n+1]{(n+1)!</description>
+    </item>
+    
+    <item>
+      <title>Limit involving higher order infinitesimals</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/limit-higher-order-infinitesimals/</link>
+      <pubDate>Fri, 05 Jun 2020 07:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/limit-higher-order-infinitesimals/</guid>
+      <description>Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L&amp;rsquo;Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3.</description>
+    </item>
+    
+    <item>
+      <title>COVID-19 USA Analysis: effects of the lack of lockdown</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</link>
+      <pubDate>Fri, 29 May 2020 20:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</guid>
+      <description>The USA currently stands at 1.76 million COVID-19 cases. That&amp;rsquo;s more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here&amp;rsquo;s a graph showing the daily number of cases of COVID-19 in the USA.
+![Daily covid cases]({static}res/covid-19-usa/covid-cases-daily.png)
+Source: Google
+Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour.</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 Regression analysis Update</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</link>
+      <pubDate>Tue, 19 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</guid>
+      <description>The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.
+Y-axis: number of new cases per day. X-axis: number of days since first case.
+Here&amp;rsquo;s an animated view:
+The relevant files can be found in this GitHub repo.</description>
+    </item>
+    
+    <item>
+      <title>No square ends in 3</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/no-square-ends-in-3/</link>
+      <pubDate>Fri, 15 May 2020 11:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/no-square-ends-in-3/</guid>
+      <description>This is an interesting number theory fact that seems strange when taken at face value. Here&amp;rsquo;s a small proof of it:</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 regression analysis</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</link>
+      <pubDate>Wed, 06 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</guid>
+      <description>This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&amp;rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division.</description>
+    </item>
+    
+    <item>
+      <title>Function transforms (providing a broader picture of Laplace Transforms)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/function-transforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/function-transforms/</guid>
+      <description>I&amp;rsquo;ll begin this article by brushing up a few definitions:
+A function is a mapping between two sets: the domain D and the codomain C.
+It&amp;rsquo;s very important to note here that the function is the mapping itself, and not an element in the codomain or the domain. The function operates on an element in the domain to give an element in the codomain. Formally, we would write this function as $f:D \to C$</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,449 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>A Note on Conditional Probability - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following problem:
+Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?
+At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="A Note on Conditional Probability">
+<meta itemprop="description" content="$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following problem:
+Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?
+At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2."><meta itemprop="datePublished" content="2021-12-25T15:20:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-25T15:20:00+00:00" />
+<meta itemprop="wordCount" content="1288">
+<meta itemprop="keywords" content="Mathematics," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Note on Conditional Probability"/>
+<meta name="twitter:description" content="$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following problem:
+Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?
+At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">A Note on Conditional Probability</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Dec 25, 2021</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$
+To motivate this note, I’ll pose the following problem:</p>
+<blockquote>
+<p>Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?</p>
+</blockquote>
+<p>At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2.</p>
+<h2 id="redefining-conditional-probability">Redefining Conditional Probability</h2>
+<p>To account for events of measure zero, we must first redefine $\cP{A}{B}$. So far, we&rsquo;ve defined this as $\cP{A}{B} = \P{A \cap B}\ /\ \P{B}$, $\P{B} \ne 0$. We overcome the case where $\P{B} = 0$ by defining <strong>conditional probability as a random variable that satisfies some properties</strong>. The intuition behind this is that if the conditional probability doesn&rsquo;t exist by the previous definition, we can use expectation to say that it &lsquo;might&rsquo; exist and be equal to some expected value. This also nicely sets us up for conditional expectation and variance, and the law of total expectation and law of total variance. Before formally defining conditional probability, Recall the following definitions first:</p>
+<blockquote>
+<p><strong>Definition</strong>: A Sub-$\sigma$ algebra of $\F$ is a $\sigma$ algebra $\G$ such that $\G \subset \F$</p>
+</blockquote>
+<blockquote>
+<p><strong>Definition</strong>: A Measurable Function $f: (X,\Sigma) \to (Y,\Gamma)$ between two measurable spaces is a function such that for every $E \in \Gamma$, $\{x \in X\ |\ f(x) \in E\} \in \Sigma$. If $(Y, \Gamma) = (\mathbb{R}, \mathcal{B}(\mathbb{R}))$, then $f$ is said to be $\Sigma$-measurable</p>
+</blockquote>
+<blockquote>
+<p><strong>Definition</strong>: The $\sigma$-algebra generated by a function $f: (X,\Sigma) \to (Y, \Gamma)$ is the collection of all inverse images $f^{-1}(S),\ S \in \Gamma$.
+$$\sigma(f) := \{ f^{-1}(S) : S \in \Gamma \}$$</p>
+</blockquote>
+<p>With these three definitions, we define the conditional probability function on a sub-$\sigma$ algebra $\G$ as follows:</p>
+<blockquote>
+<p><strong>Definition</strong>: The conditional probability $\cP{\cdot}{\G}$ is a $\G$-measurable random variable such that $$\E{\cP{A}{\G}\ind{G}} = \P{A \cap G} \quad \forall\ G \in \G$$ In terms of integrals, we can rewrite this as $$\int_G \cP{A}{\G} d\mathbf{P} = \P{A \cap G}$$</p>
+</blockquote>
+<p>Defining the conditioning on a sub-$\sigma$ algebra rather than an event or another random variable has the following benefits:</p>
+<ul>
+<li>If we want to condition on a random variable $X$, then $\G = \sigma(X)$</li>
+<li>If we want to condition on multiple random variables $X_1, X_2, \ldots$, then $\G = \sigma(X_1, X_2, \ldots)$ where $\sigma(X_1, X_2) = \{ \{X_1 \le a\} \cap \{X_2 \le b\}\ |\ a,b \in \mathbb{R}\}$ (can be extended to a countable sequence of random variables)</li>
+</ul>
+<p>Therefore, this definition of conditional probability is the most general definition.</p>
+<h2 id="existence-and-uniqueness-of-conditional-probability">Existence and Uniqueness of Conditional Probability</h2>
+<p>From the integral definition, it may be obvious that <strong>conditional probability is unique up to a set of measure zero</strong>, that is, if $\P{A} = 0$, then $\cP{A}{\G}$ can take any value. This leads to the problem of <em>regularized conditional probability</em>. Essentially, we define values for sets whose measure is zero such that the resulting conditional probability function is &rsquo;nice&rsquo;, ie measurable. This would need us to set up constructs such as a <a href="https://en.wikipedia.org/wiki/Radon_space">Polish Space</a> and then use some functional analysis results, but we&rsquo;ll not get into that in this article.</p>
+<p>Existence can be proved in many ways: here, we use the Radon-Nikodym theorem. I won&rsquo;t be proving the theorem, but I&rsquo;ll quote it, along with some exposition, which should be sufficient.</p>
+<blockquote>
+<p><strong>Definition</strong>: A measure $\mu$ is said to be <em>absolutely continuous</em> with respect to another measure $\lambda$ (both defined on the same $\sigma$-algebra) if for every measurable set $A$, $\lambda(A) = 0 \implies \mu(A) = 0$. We denote this as $\mu \ll \lambda$, and we say that $\lambda$ <em>dominates</em> $\mu$</p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem (Radon-Nikodym):</strong> if $\mu$ and $\lambda$ are defined on $(X,\Sigma)$ such that $mu \ll \lambda$, then there exists a $\Sigma$-measurable function $f$ such that for any $A \in \Sigma$, $$\mu(A) = \int_A f\ d\lambda$$
+The function $f$ is called the <em>radon-nikodym</em> derivative of $\mu$ and is denoted as $d\mu/d\lambda$.</p>
+</blockquote>
+<p>We now prove our claim</p>
+<blockquote>
+<p><strong>Claim:</strong> $\cP{A}{\G}$ exists and is unique upto a set of probability 0</p>
+</blockquote>
+<p><strong>Proof:</strong> Define $\cP{A}{\G}$ to simply be $d\nu/d\mathbf{P}_\G$, where $\mathbf{P}_\G$ is simply $\mathbf{P}$ restricted to $\G$, and $$\nu(E) = \P{A \cap E}$$ Note $\nu \ll \mathbf{P}_\G$ and by the radon-nikodym theorem, $\cP{A}{\G}$ exists and is unique upto a set of probability 0. Note that defining $\cP{A}{\G}$ like so also takes care of the definition, as $$\E{\cP{A}{\G}\ind{G}} = \int_G \frac{d\nu}{d\mathbf{P}_\G}\ d\mathbf{P}_\G = \nu(G) = \P{A \cap G}$$</p>
+<h2 id="conditional-expectation-and-deriving-conditional-probability-from-conditional-expectation">Conditional Expectation, and deriving Conditional Probability from Conditional Expectation</h2>
+<p>Conditional expectation is defined in much the same way: as a random variable satisfying the property $\E{\cE{Y}{\G}\ind{G}} = \E{Y \ind{G}}$. In a handwavy sense, conditional expectation is &rsquo;the best approximation&rsquo; of the specified quantity, given the information we have from $\G$. There&rsquo;s a very nice functional analysis proof of this which treats random variables as vectors in a functional space and then approximates them using expectation, but I&rsquo;ll leave that out for now.</p>
+<p>Most of the same properties as conditional probability apply to conditional expectation as well, just that in the proof of existence, since expectation can be negative and we need a positive value for it to be a measure, we define $\cE{A}{\G}$ as $d\E{A^+ \ind{G}}/d\mathbf{P}_\G - d\E{A^- \ind{G}}/d\mathbf{P}_\G$ and proceed similarly.</p>
+<p>In several textbooks, conditional expectation is derived first, and conditional probability follows. This is because $\cP{A}{\G} = \cE{\ind{A}}{\G}$. Also, a neat proof involving functional analysis is used to prove the existence of conditional expectation: $\cE{Y}{\G}$ is the orthogonal projection of $Y$ onto the closed subspace $\mathbb{L}^2(\G)$, and from results about hilbert space, we can prove this.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Now that we have this definition, how do we apply it? Sadly, we can&rsquo;t directly obtain the conditional probability from it (unless we evaluate the radon-nikodym derivative), and the best we can do is assume that the conditional probability is a reasonable random variable, and then verify that it satisfies the definition.</p>
+<p>For the given problem, $\G = \sigma(\mathbb{Q})$. This is because for $\cP{\{X &gt; x\}}{\G}$ to be $\G$-measurable, $G$ must have all the information we&rsquo;re given, namely whether $X$ is rational or not, hence the specification of the sub-$\sigma$ algebra as mentioned. You can also think of it from the best approximation perspective: we&rsquo;re only given information about whether X is rational or not and about X&rsquo;s magnitude, and both those quantities are expressed in this sub-$\sigma$ algebra. Now, let $\cP{\{X &gt; x\}}{\G} = 1-x$. This is $\G$-measurable (the preimage of any borel set lies in $\G$). Verifying the two integrals gives us
+$$\begin{align}
+\P{\{X &gt; x\} \cup G} &amp;= \int_G \int_x^1 1\ d\mathbf{P}\ d\mathbf{P_0}\\
+&amp;= \int_G 1-x\ d\mathbf{P_0}
+\end{align}$$
+$$\E{\cP{\{X &gt; x\}}{\G}\ind{G}} = \int_G 1-x\ d\mathbf{P_0}$$
+Since both these integrals are equal for all $G \in \G$, we have $\cP{X &gt; \frac{1}{2}}{X \in \mathbb{Q}} = 1/2$.</p>
+<h3 id="references">References:</h3>
+<ol>
+<li>Rosenthal, Jeffrey S. <em>A First Look at Rigorous Probability Theory</em>. 2nd ed, World Scientific, 2006.</li>
+<li><a href="https://math.stackexchange.com/questions/2306986/uniqueness-of-conditional-expectation">https://math.stackexchange.com/questions/2306986/uniqueness-of-conditional-expectation</a></li>
+<li><a href="https://stats.stackexchange.com/questions/395310/what-does-conditioning-on-a-random-variable-mean">https://stats.stackexchange.com/questions/395310/what-does-conditioning-on-a-random-variable-mean</a></li>
+<li><a href="https://www.stat.berkeley.edu/users/pitman/s205f02/lecture15.pdf">https://www.stat.berkeley.edu/users/pitman/s205f02/lecture15.pdf</a> (this contains the projection proof)</li>
+<li><a href="http://www.stat.cmu.edu/~arinaldo/Teaching/36752/S18/Notes/lec_notes_6.pdf">http://www.stat.cmu.edu/~arinaldo/Teaching/36752/S18/Notes/lec_notes_6.pdf</a> (this too has the projection proof)</li>
+<li>Billingsley, Patrick. Probability and Measure. 3rd ed, Wiley, 1995.</li>
+</ol>
+<h3 id="ps">PS</h3>
+<p>Merry christmas to you if you&rsquo;re reading this! A junior emailed me a while back, stating that he read my blog and couldn&rsquo;t grasp at times why there are <em>random mathematical stuffs</em>. In my reply, the blog was supposed to be a math/programming blog with the occasional <em>random personal stuff</em>, but the tables seem to have turned :P</p>
+<p>I think a good new year&rsquo;s resolution would be to learn one new math topic every week and then blog about it. Technical blogging as of now takes a lot of time for me (this article took the good part of a day), and I think as I write and learn more, that time should go down.</p>
+<p>Here&rsquo;s to a more mathematical 2022!</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/mathematics"
+      >Mathematics</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

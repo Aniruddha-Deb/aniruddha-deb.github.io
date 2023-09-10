@@ -1,0 +1,479 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Function transforms (providing a broader picture of Laplace Transforms) - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="I&rsquo;ll begin this article by brushing up a few definitions:
+A function is a mapping between two sets: the domain D and the codomain C.
+It&rsquo;s very important to note here that the function is the mapping itself, and not an element in the codomain or the domain. The function operates on an element in the domain to give an element in the codomain. Formally, we would write this function as $f:D \to C$" />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Function transforms (providing a broader picture of Laplace Transforms)">
+<meta itemprop="description" content="I&rsquo;ll begin this article by brushing up a few definitions:
+A function is a mapping between two sets: the domain D and the codomain C.
+It&rsquo;s very important to note here that the function is the mapping itself, and not an element in the codomain or the domain. The function operates on an element in the domain to give an element in the codomain. Formally, we would write this function as $f:D \to C$">
+
+<meta itemprop="wordCount" content="1112">
+<meta itemprop="keywords" content="Mathematics," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Function transforms (providing a broader picture of Laplace Transforms)"/>
+<meta name="twitter:description" content="I&rsquo;ll begin this article by brushing up a few definitions:
+A function is a mapping between two sets: the domain D and the codomain C.
+It&rsquo;s very important to note here that the function is the mapping itself, and not an element in the codomain or the domain. The function operates on an element in the domain to give an element in the codomain. Formally, we would write this function as $f:D \to C$"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Function transforms (providing a broader picture of Laplace Transforms)</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>I&rsquo;ll begin this article by brushing up a few definitions:</p>
+<p>A <strong>function</strong> is a <strong>mapping</strong> between two sets: the domain D and the codomain C.</p>
+<p><img src="/articles/2021/res/function.png" alt="function definition"></p>
+<p>It&rsquo;s very important to note here that the function is <strong>the mapping itself</strong>, and
+not an element in the codomain or the domain. The function operates on an element
+in the domain to give an element in the codomain. Formally, we would write this
+function as $f:D \to C$</p>
+<p>I&rsquo;ll also brush up on what a <strong>Vector Space</strong> is: a vector space $V$ is a set of
+vectors over a given field $F$ on which two operations (functions) are defined:</p>
+<ul>
+<li>$+:V \times V \to V$ - this is called Addition</li>
+<li>$\cdot : V \times F \to V$ - this is called Scalar Multiplication.</li>
+</ul>
+<p>There are some other requisites of a vector space, such as the existence of
+an additive inverse and identity elements, but I won&rsquo;t get into the nitty-gritties
+of those. Just keep in mind that <strong>addition and scalar multiplication over a
+vector space are closed.</strong></p>
+<h2 id="function-spaces">Function Spaces</h2>
+<p>Suppose for a function $f:X \to V$, the codomain of a function is a vector space
+$V$ over $F$ ($X$ is the domain, which can be any set). Then, by definition, for any two elements $\vec{a}, \vec{b} \in V$
+and a scalar $k \in F$, $\vec{a} + \vec{b} \in V$ and $k \cdot \vec{a} \in V$.</p>
+<p>Consider another function $g: X \to V$. Suppose now that for any $x \in X$,
+$f(x) = \vec{a}$ and $g(x) = \vec{b}$ for some $\vec{a}, \vec{b} \in V$. Therefore,
+$\vec{a} + \vec{b} = f(x) + g(x) \in V$. We can define another function
+$(f+g)$ such that $(f+g)(x) = f(x) + g(x)$. Note that <strong>this is valid
+because V is a vector space, and because addition is closed under a vector space</strong>.
+The sum of two functions from $X \to V$ is also a function from $X \to V$!</p>
+<p>Let&rsquo;s try proving the same for scalar multiplication. For any $c \in F$, we have
+$c\cdot\vec{a} = c\cdot f(x) \in V$. Define $(c \cdot f)$ such that
+$(c \cdot f)(x) = c \cdot f(x)$. This is also a function from $X \to V$.</p>
+<p>From the above two statements, we can see that the <em>maps themselves are linear</em>:
+that is, they can be added and scalarly multiplied, with the resulting map
+preserving the domain and codomain. We can thus say that <strong>the functions thus
+defined form a vector space themselves, which we call a function space</strong>.
+Note that there are a few more details involved, such as the existence
+of an identity function and an additive inverse. Similar to the additive/multiplicative
+proofs, these follow from the properties of the vector space. One interesting question to note
+is <em>what if there is no function in the space that maps an element of $X$ to the identity element
+$\vec{0}$ of $V$?</em> Would the resulting function space still be a vector space?<sup>1</sup></p>
+<h2 id="function-transformations">Function transformations</h2>
+<p>If function spaces behave like vector spaces, this begs the question: what&rsquo;s the
+equivalent of linear transformations for function spaces? The equivalent is called
+a <strong>function transformation</strong>, and it converts a function $f:X \to V$ to another
+function $T(f) = F:Y \to W$. Note that if $f$ lies in a function space $\mathcal{S}_f$, then
+$F$ need not lie in a function space! Consider the counterexample $P(f)$ on $f:X \to V$, which maps
+all $x \in X$ to $1$. This is not a function space, as $F(x_1) + F(x_2) = 2 \not\in {1}$.
+We would need to prove the linearity of $F$ independently of $f$ being a function
+space. Note also that this particular transform doesn&rsquo;t have an inverse. Transforms
+that are linear in nature generally have an inverse transform associated with them.</p>
+<p>Some examples of function transformations include $Df = \frac{df}{dx}$ (the
+differential transform), as well as $I(f) = \int_a^b f dx$, the integral transform.
+Note that these are both simple examples of transforms which preserve mapping, that is
+if $f:\Bbb{R} \to \Bbb{R}$ and f is differentiable on $\Bbb{R}$, then $Df:\Bbb{R} \to \Bbb{R}$ as well. An example
+of something that doesn&rsquo;t preserve mapping would be the parameterization
+transform for a multivariate function: if we have $f:\Bbb{R^3} \to \Bbb{R}$, then
+the parameterization transform $P(f(x,y,z)) = F(x(t), y(t), z(t)) = F(t)$ gives
+$F: \Bbb{R} \to \Bbb{R}$.</p>
+<h2 id="integral-transformations">Integral transformations</h2>
+<p>Integral transformations are just one type of functional transform, but they&rsquo;re
+the most used type of transform due to their usefulness. A general integral
+transform takes the form</p>
+<p>$$I(f) = \int_{x_1}^{x_2} K(s,x)f(x)dx$$</p>
+<p>$K(s,x)$ is called the <em>kernel</em> of the integral transform, and the transform
+has different intuitive meanings depending on the kernel and the limits used.
+A full list of common kernels can be found at the <a href="https://en.wikipedia.org/wiki/Integral_transform">Wikipedia page</a> of
+Integral transforms. A few key things to note however are:</p>
+<ol>
+<li>The integral transform exists only if the integral <strong>converges</strong>.</li>
+<li><strong>All integral transforms are linear</strong>: this stems from the linearity property
+of the integral itself. Therefore, for a given function space, applying an
+integral transform on every member of that function space would also give
+us a function space.</li>
+</ol>
+<h2 id="the-laplace-transform">The Laplace transform</h2>
+<p>We finally come to the <a href="https://en.wikipedia.org/wiki/Laplace_transform">Laplace transform</a>: for the laplace transform, the kernel
+is $K(s,x) = e^{-px}$ and the limits are $x_1 = 0$ and $x_2 = \infty$.
+Plugging this into the general integral transform gives us the laplace transform:</p>
+<p>$$\boxed{\mathcal{L}(f(x)) = F(p) = \int_0^\infty e^{-px}f(x)dx}$$</p>
+<p>Another bit of intuition regarding the laplace series comes from thinking about it
+as a <em>continuous version of a power series</em>. If we consider the power series</p>
+<p>$$F(x) = \sum_{n=0}^\infty f(n)x^n$$</p>
+<p>The continuous analogue of this power series is the integral</p>
+<p>$$F(x) = \int_0^\infty f(t)x^t\ dt = \int_0^\infty f(t)\left(e^{\ln x}\right)^t\ dt$$</p>
+<p>For this integral to converge, $\ln x &lt; 0$. Let $p = -\ln x, p &gt; 0$. The transform
+then becomes</p>
+<p>$$F(p) = \int_0^\infty f(t)e^{-pt}\ dt$$</p>
+<p>Therefore, the laplace transform is like a continuous analogue of the power series.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>I haven&rsquo;t covered the several properties of the laplace transform: those specific
+details can be found on the <a href="https://en.wikipedia.org/wiki/Laplace_transform#Properties_and_theorems">Wikipedia page</a>.
+This was mainly to give an overview of the mathematical backbone that goes into
+transformations such as the laplace and fourier transforms.</p>
+<p>For further reading on function spaces, see <a href="https://files.vipulnaik.com/exposition/functionspaces.pdf">Vipul Naik&rsquo;s notes</a> and
+<a href="https://terrytao.files.wordpress.com/2008/03/function_spaces1.pdf">Terry Tao&rsquo;s notes</a> on the same.
+More on laplace transforms (including problems) are given in George Simmons&rsquo;
+<em>Differential Equations with Applications and Historical Notes</em>, chapter 9.</p>
+<hr>
+<p><sup>1</sup>No, it wouldn&rsquo;t. This is analogous to having $\vec{0}$ as an element
+of a vector space: if a vector space doesn&rsquo;t have $\vec{0}$, then it&rsquo;s not a
+vector space as there is no element $k \in V$ such that for every element $v \in V$,
+$k + v = v$.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/mathematics"
+      >Mathematics</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

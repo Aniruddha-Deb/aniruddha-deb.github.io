@@ -1,0 +1,495 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Intro to FreeCAD - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="MCP100 is a course that all first year undergrads in IITD have to go through. It consists of two parts: the first part is engineering drawing, using rulers and pencils, and CAD. After a disastrous drawing minor, the next phase involved getting to terms with CAD. The CAD package our course instructor decided on was FreeCAD, and since the minor ended, I&rsquo;ve done nothing but create FreeCAD models.
+I&rsquo;m not a pero1 at it though, (there&rsquo;s still plenty to learn), and once that is done, there are plenty of bugs to fix :P." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Intro to FreeCAD">
+<meta itemprop="description" content="MCP100 is a course that all first year undergrads in IITD have to go through. It consists of two parts: the first part is engineering drawing, using rulers and pencils, and CAD. After a disastrous drawing minor, the next phase involved getting to terms with CAD. The CAD package our course instructor decided on was FreeCAD, and since the minor ended, I&rsquo;ve done nothing but create FreeCAD models.
+I&rsquo;m not a pero1 at it though, (there&rsquo;s still plenty to learn), and once that is done, there are plenty of bugs to fix :P."><meta itemprop="datePublished" content="2020-12-31T18:41:00+00:00" />
+<meta itemprop="dateModified" content="2020-12-31T18:41:00+00:00" />
+<meta itemprop="wordCount" content="1216">
+<meta itemprop="keywords" content="CAD," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro to FreeCAD"/>
+<meta name="twitter:description" content="MCP100 is a course that all first year undergrads in IITD have to go through. It consists of two parts: the first part is engineering drawing, using rulers and pencils, and CAD. After a disastrous drawing minor, the next phase involved getting to terms with CAD. The CAD package our course instructor decided on was FreeCAD, and since the minor ended, I&rsquo;ve done nothing but create FreeCAD models.
+I&rsquo;m not a pero1 at it though, (there&rsquo;s still plenty to learn), and once that is done, there are plenty of bugs to fix :P."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Intro to FreeCAD</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Dec 31, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>MCP100 is a course that all first year undergrads in IITD have to go through.
+It consists of two parts: the first part is engineering drawing, using rulers
+and pencils, and CAD. After a disastrous drawing minor, the next phase involved
+getting to terms with CAD. The CAD package our course instructor decided on was
+FreeCAD, and since the minor ended, I&rsquo;ve done nothing but create FreeCAD models.</p>
+<p>I&rsquo;m not a <em>pero</em><sup>1</sup> at it though, (there&rsquo;s still plenty to learn), and
+once that is done, there are plenty of bugs to fix :P. I do think I&rsquo;ve got a
+decently good footing in it, and I&rsquo;ll be sharing my experiences here.</p>
+<h2 id="parametric-modelling">Parametric Modelling</h2>
+<p>While the basic concepts of Drafting are pretty easy to pick up (parallel lines,
+projections, isometric view etc), the concepts of 3D CAD are a bit different.
+Most 3D CAD packages you&rsquo;ll encounter will belong to a family of softwares
+called <strong>Parametric Modellers</strong>: Fusion 360, Inventor, SolidWorks, Siemens NX are
+all parametric modellers. What &lsquo;Parametric&rsquo; means is that the geometry of your
+part is determined by parameters, and changing the parameters changes the
+geometry. Here&rsquo;s a small example:</p>
+<p><img src="res/parametric_modelling.gif" alt="Parametric Modeling"></p>
+<p>Notice how changing the parameters of the sketch change the values of the model
+as well. As opposed to this <strong>Direct Modelling</strong> is a method of modelling which
+is more like molding clay: once the hole is made, changing it&rsquo;s parameters are
+trickier. This is used more in the art industry, and softwares such as Blender
+Maya and 3DSMax are direct modellers.</p>
+<p>Parametric modeling has it&rsquo;s benefits in manufacturing; it is very easy to
+translate exact dimensions to the part when using this methodology as opposed
+to direct modelling. One downside is that modelling curves and free-form surfaces
+is notoriously difficult. There are many more articles on parametric vs direct
+modelling on the internet <a href="https://www.ptc.com/en/blogs/cad/parametric-vs-direct-modeling-which-side-are-you-on">here</a>,
+<a href="https://www.designworldonline.com/what-is-parametric-modeling/">here</a> and
+<a href="https://www.engineering.com/DesignSoftware/DesignSoftwareArticles/ArticleID/16587/Whats-the-Difference-Between-Parametric-and-Direct-Modeling.aspx">here</a>,
+so I won&rsquo;t go further in this article.</p>
+<h2 id="freecad-3d-parametric-modelling-for-free">FreeCAD: 3D Parametric Modelling for Free</h2>
+<p>Notice something common in all the aforementioned softwares? <em>Their prices</em>. All
+of them, with the exception of Blender, cost over $1000 for a single license. The
+ones that don&rsquo;t come with a license, generally tie you to their platform with
+a notorious subscription-based model (Autodesk, I&rsquo;m looking at you). FreeCAD
+in this manner is pretty good, but you get what you pay for. I was expecting it
+to be like Blender<sup>2</sup>, but became pretty disappointed when I saw that it&rsquo;s pretty
+buggy and not as fully featured as other packages.</p>
+<p>I&rsquo;m not a n00b to parametric modelling, having done it multiple times in Fusion
+360 for several projects, so jumping into FreeCAD was relatively painless. Much
+of the workflow is the same; create a sketch, extrude (they call it &lsquo;pad&rsquo; here),
+create another sketch, push (they call it &lsquo;pocket&rsquo; here), rinse and repeat.</p>
+<p>In a few hours time, I was done with the assignment that was uploaded.</p>
+<p><img src="res/assignment.png" alt="Yes I know this was done by Sir, do you really think I&rsquo;ll post snaps of the others so that you can copy them? ;)"></p>
+<p>Here are some observations I picked up while doing the assignment:</p>
+<ol>
+<li>Change the line drawing to 4xMSAA for smoother lines</li>
+<li>Change navigation style to Blender (More intuitive for me, as I have prior
+experience with Blender)</li>
+<li>Change orbit style to &lsquo;Turntable&rsquo;. Trackball is a nightmare</li>
+<li>Change to a dark theme <strong>If you&rsquo;re on Windows or Linux</strong>. Any theme is
+horribly glitchy on Mac</li>
+<li>Background color for the viewport can be changed in settings as well, if you&rsquo;re more used to AutoCAD/Blender dark backgrounds</li>
+<li>The Cube is the best way to navigate; try to spend most of your time in
+isometric views and front/side/back views. Panning/rotating is not too
+smooth here compared to the other packages.</li>
+<li>If you&rsquo;ve zoomed in too much or too little, use the &lsquo;fit contents to viewport&rsquo;
+button or just hit V and F</li>
+</ol>
+<h2 id="more-complex-models">More Complex models</h2>
+<p>I then decided to do something a bit more complex: create and assemble an entire
+product using FreeCAD. I have done this with Fusion 360 twice, and since FreeCAD
+is not very different, it should handle this workload fine as well.</p>
+<p>Wrong.</p>
+<p><strong>There are so many features that other CAD packages have, which have no analogue
+in FreeCAD, or a very half-baked implementation</strong>.</p>
+<ol>
+<li>You created a sketch with multiple faces in it and want to extrude only a
+select few of those? Nope, sorry, can&rsquo;t do that</li>
+<li>You created all your parts and want to assemble them? Nope, FreeCAD doesn&rsquo;t
+ship with an assembly workbench. You need to install another assembly
+workbench. By &lsquo;Other&rsquo;, there is only one assembly workbench for v18.x (A2Plus),
+and Assembly3 and Assembly4 are for v19+ only.</li>
+<li>Now you want to install this workbench? Well, good luck if you&rsquo;re on Mac, because
+the addon manager seems to be broken. Here&rsquo;s what it looks like on the FreeCAD
+wiki, and here&rsquo;s what it looks like on my machine</li>
+</ol>
+<p><img src="res/addonmgr.png" alt="On Windows"> <img src="res/addonmgr_mac.png" alt="On Mac"></p>
+<p>So much for platform independence. I had to install the addon manually which,
+thankfully, was painless enough. No proprietrary formats involved, just clone
+the git repo into the <code>Mod</code> directory</p>
+<p>Once the assembly was imported, using A2Plus, <strong>I had to manually import
+all the parts in one file separately</strong>. A2Plus didn&rsquo;t pick them up automatically
+and add the parts as different parts: if you open the file normally, it just
+mushes all the parts up as one big &lsquo;blob&rsquo;, which is then inserted.</p>
+<p>After some frustration, the Assembly was finally complete.</p>
+<p><img src="res/assembly.png" alt="Assembly"></p>
+<p>I now had to generate a top view and a cross-sectional view. The procedure for
+this was pretty simple: go into TechDraw, insert a top view, then insert a
+sectional view. This would be great and smooth, <strong>if only the section view
+wasn&rsquo;t so glitchy</strong>. I couldn&rsquo;t find options to change hatching patterns for
+individual parts, and the handle for the vice glitched out and wasn&rsquo;t shaded.
+Instead, there were these two long, parallel lines that I couldn&rsquo;t delete.
+<strong>And how do you scale views in TechDraw!?</strong> Everything I tried didn&rsquo;t work,
+and finally I had to increase the paper size to fit the diagram in 1:1.
+This was ok for a vice, but could you imagine designing your next aeroplane
+in this software?</p>
+<p><img src="res/A2.png" alt="1:1 Projection on an A2 sheet"></p>
+<h2 id="concluding-remarks">Concluding remarks</h2>
+<p>I do have mixed feelings for this software: on one side, it represents that
+large softwares with multimillion dollar licenses can also have open-source
+alternatives. On the other hand, it&rsquo;s bugginess, glitchiness and lack of
+industry-grade features truly disappoint me. Of course, since it&rsquo;s open source,
+sitting on the sidelines and pointing fingers won&rsquo;t help. The only way to
+fix the software is to wade into the muck yourself and help with reporting and
+fixing bugs. This is a double-edged sword, because in one way it gives you
+freedom and absolute control, but on the other hand, for a student looking to
+use a glitch-free software on his computer to pass a course, well&hellip;</p>
+<p>I would like to point out that even though I&rsquo;ve bashed FreeCAD quite a bit for
+bugs, do note that <a href="https://www.cadalyst.com/cad/product-design/what-grounded-airbus-a380-10903">even using the most premier CAD packages don&rsquo;t save you
+from bugs</a>.</p>
+<hr>
+<p><sup>1</sup> IITD lingo for Pro :P</p>
+<p><sup>2</sup> Blender was initially started as an in-house creation tool and
+had significant corporate backing from the start, which explains it&rsquo;s superiority
+in overall fit, finish and polish to other kludgy open-source softwares. The
+Blender community (Both developers and artists) have also done an awesome job
+keeping the software relevant and up-to-date. More on this <a href="https://www.blender.org/foundation/history/">here</a></p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/cad"
+      >CAD</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

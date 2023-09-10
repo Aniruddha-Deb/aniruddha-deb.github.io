@@ -1,0 +1,463 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>A Simple Sudoku Solver - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="The Problem The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.
+The Solution These problems, in general, are called Constraint Satisfaction Problems. Given a set of constraints, find a valid solution which satisfies all the constraints.
+A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="A Simple Sudoku Solver">
+<meta itemprop="description" content="The Problem The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.
+The Solution These problems, in general, are called Constraint Satisfaction Problems. Given a set of constraints, find a valid solution which satisfies all the constraints.
+A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge."><meta itemprop="datePublished" content="2022-09-03T17:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-03T17:00:00+00:00" />
+<meta itemprop="wordCount" content="701">
+<meta itemprop="keywords" content="Programming," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Simple Sudoku Solver"/>
+<meta name="twitter:description" content="The Problem The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.
+The Solution These problems, in general, are called Constraint Satisfaction Problems. Given a set of constraints, find a valid solution which satisfies all the constraints.
+A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">A Simple Sudoku Solver</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 3, 2022</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="the-problem">The Problem</h2>
+<p>The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>These problems, in general, are called <a href="https://en.wikipedia.org/wiki/Constraint_satisfaction_problem">Constraint Satisfaction Problems</a>. Given a set of constraints, find a valid solution which satisfies all the constraints.</p>
+<p>A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge. <a href="https://en.wikipedia.org/wiki/Sudoku_graph">Sudoku Graphs</a> are well-studied, and here&rsquo;s an example of a 9x9 one (courtesy <a href="https://www.researchgate.net/figure/b-Graph-coloring-of-Sudoku_fig9_311668725">Artacho and Campoy</a>)</p>
+<p><img src="https://www.researchgate.net/profile/Ruben-Campoy/publication/311668725/figure/fig9/AS:439849451823105@1481879689246/b-Graph-coloring-of-Sudoku.png" alt="sudoku_graph"></p>
+<p>This gives us a nice formulation, and allows us to search for a solution on this graph using backtracking search (Pseudocode courtesy <a href="https://www.cse.iitd.ac.in/~rohanpaul/teaching/data/2022-COL333/L06-Constraint-Satisfaction.pdf">Rohan Paul&rsquo;s Slides</a>)</p>
+<p><img src="res/backtracking_search_pseudocode.png" alt="csp_bts"></p>
+<p>The two key algorithmic decisions to make here are:</p>
+<ol>
+<li>In what order do we select unassigned variables</li>
+<li>In what order do we assign values to the unassigned variable chosen?</li>
+</ol>
+<p>This is the crux of the functions <code>select-unassigned-variable</code> and <code>order-domain-values</code>. Thinking about it a bit more:</p>
+<ol>
+<li>We want to first fill the variables whose values we already know: the ones which have only one possible value ie are fully constrained. This is designed to fail fast, and will make the search go quicker. Hence, the ordering here should be <strong>choose the most constrained variable</strong>.
+<ul>
+<li>Note that among variables with the same number of constraints, to break ties, we&rsquo;d choose the variable <strong>with the greatest degree</strong>, however for sudoku all the vertices have the same degree so it doesn&rsquo;t really matter.</li>
+</ul>
+</li>
+<li>We want to fill the values that are the least used in the board first, that is, the most likely values (that would rule out the fewest values in the remaining variables). We want to fail last while making this assignment, so we choose <strong>The most likely variable</strong>.</li>
+</ol>
+<p>There are a few more optimizations, such as forward checking, but for a simple sudoku solver, these should be sufficient.</p>
+<h2 id="the-implementation">The Implementation</h2>
+<p>With the algorithm in mind, I cooked up a quick implementation in C++. I used the following bitboard structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Sudoku bitboard:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">board_t</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> data[<span style="color:#ae81ff">324</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> gs[<span style="color:#ae81ff">90</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> rs[<span style="color:#ae81ff">90</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> cs[<span style="color:#ae81ff">90</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> ns[<span style="color:#ae81ff">10</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> n_set;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    board_t()<span style="color:#f92672">:</span> data{<span style="color:#ae81ff">0</span>}, gs{<span style="color:#ae81ff">0</span>}, rs{<span style="color:#ae81ff">0</span>}, cs{<span style="color:#ae81ff">0</span>}, ns{<span style="color:#ae81ff">0</span>}, n_set{<span style="color:#ae81ff">0</span>} {}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>This structure makes checks constant time, and since we&rsquo;re having a mutable bitboard, size isn&rsquo;t really an issue (this clocks in at ~600 bytes).</p>
+<p>The core backtracking algorithm itself looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">solve</span>(board_t<span style="color:#f92672">&amp;</span> b) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (b.n_set <span style="color:#f92672">==</span> <span style="color:#ae81ff">81</span>) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//std::cout &lt;&lt; (int)b.n_set &lt;&lt; std::endl;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// choose the most constrained cell c in b
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> mcc <span style="color:#f92672">=</span> get_mcc(b); <span style="color:#75715e">// I think this takes the most time now...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                          <span style="color:#75715e">// atleast 729 ops.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> mcc<span style="color:#f92672">/</span><span style="color:#ae81ff">9</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> mcc<span style="color:#f92672">%</span><span style="color:#ae81ff">9</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> moves;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; k<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">9</span>; k<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        board<span style="color:#f92672">::</span>set(b,j,i,k);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (board<span style="color:#f92672">::</span>check(b,j,i)) moves.push_back(k);
+</span></span><span style="display:flex;"><span>        board<span style="color:#f92672">::</span>unset(b,j,i);        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// move ordering... fail last
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sort(moves.begin(), moves.end(), [b](<span style="color:#66d9ef">int</span> m1, <span style="color:#66d9ef">int</span> m2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> b.ns[m1] <span style="color:#f92672">&gt;</span> b.ns[m2];
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> m : moves) {
+</span></span><span style="display:flex;"><span>        board<span style="color:#f92672">::</span>set(b,j,i,m);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> solved <span style="color:#f92672">=</span> solve(b);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (solved) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> board<span style="color:#f92672">::</span>unset(b,j,i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The only issue? It&rsquo;s <em>slow</em></p>
+<h2 id="the-performance">The Performance</h2>
+<p>Initially, I was mighty pleased with myself for creating such a nice solver: it solved <a href="https://www.sudokuwiki.org/sudoku.htm?bd=800000000003600000070090200050007000000045700000100030001000068008500010090000400">Arto Inkala&rsquo;s Unsolvable Sudoku</a> in less than a second, as well as <a href="https://www.sudokuwiki.org/Weekly_Sudoku.asp?puz=28">#28</a> of the unsolveable sudoku puzzles in less than two seconds.</p>
+<p>Then I saw how sudoku solver benchmarks are actually done</p>
+<h2 id="state-of-the-art">State of the art</h2>
+<p>Currently, this is <a href="https://t-dillon.github.io/tdoku/">tdoku</a>. Beautifully written and explained, tdoku takes <strong>41.7 us</strong> on average for very difficult puzzles with Sudoku Explainer ratings of 11 or higher</p>
+<p>And mine?</p>
+<p>300,000 us</p>
+<p>Yep.</p>
+<p>From an instant to an eternity. Well, atleast there&rsquo;s still a long way to go! I had to limit my solver to solve only a hundred puzzles from the same dataset, otherwise it wouldn&rsquo;t terminate.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This is by no means a conclusive solver: there are still a lot of optimizations I can make, such as faster move generation and some SIMD stuff to make checks faster, but I think I&rsquo;ll get to those later. Now, the tree search would need to be optimized first.</p>
+<p>This was hacked up in ~3 hours, and you can find the entire code <a href="https://gist.github.com/Aniruddha-Deb/45055de874701009525de9d04e044382">here</a></p>
+<p>Happy sudoku solving!</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

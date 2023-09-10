@@ -1,0 +1,569 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>My DL workflow for 2023 - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="I&rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money where my mouth is, will be taking both COL772 (Natural Language Processing) and COL775 (Deep Learning) next semester.
+Along with Operating Systems, Parallel Programming and Theory of Computation.
+Why a workflow? I&rsquo;ll need to train a lot of models, and while Kaggle and Colab are great at this, 30 hours a week won&rsquo;t cut it. So I&rsquo;ll need to move to using the IITD HPC to train some (most?" />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="My DL workflow for 2023">
+<meta itemprop="description" content="I&rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money where my mouth is, will be taking both COL772 (Natural Language Processing) and COL775 (Deep Learning) next semester.
+Along with Operating Systems, Parallel Programming and Theory of Computation.
+Why a workflow? I&rsquo;ll need to train a lot of models, and while Kaggle and Colab are great at this, 30 hours a week won&rsquo;t cut it. So I&rsquo;ll need to move to using the IITD HPC to train some (most?"><meta itemprop="datePublished" content="2022-12-29T23:40:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-29T23:40:00+00:00" />
+<meta itemprop="wordCount" content="1281">
+<meta itemprop="keywords" content="Programming,Machine Learning,Deep Learning," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My DL workflow for 2023"/>
+<meta name="twitter:description" content="I&rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money where my mouth is, will be taking both COL772 (Natural Language Processing) and COL775 (Deep Learning) next semester.
+Along with Operating Systems, Parallel Programming and Theory of Computation.
+Why a workflow? I&rsquo;ll need to train a lot of models, and while Kaggle and Colab are great at this, 30 hours a week won&rsquo;t cut it. So I&rsquo;ll need to move to using the IITD HPC to train some (most?"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">My DL workflow for 2023</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Dec 29, 2022</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>I&rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money
+where my mouth is, will be taking both COL772 (Natural Language Processing) and
+COL775 (Deep Learning) next semester.</p>
+<p>Along with Operating Systems, Parallel Programming and Theory of Computation.</p>
+<center>
+<img width="600px" src="/articles/2022/res/cs_degree.png">
+</center>
+<h2 id="why-a-workflow">Why a workflow?</h2>
+<p>I&rsquo;ll need to train a lot of models, and while <a href="https://kaggle.com">Kaggle</a> and
+<a href="https://colab.research.google.com">Colab</a> are great at this, 30 hours a week
+won&rsquo;t cut it. So I&rsquo;ll need to move to using the
+<a href="https://supercomputing.iitd.ac.in">IITD HPC</a> to train some (most?) of my
+models.</p>
+<p>Most of this article will be very HPC-specific: the libraries, environment and
+everything else involved in the setup probably (and thankfully) won&rsquo;t need to
+be replicated anywhere else, but the entire environment is something I&rsquo;ll
+probably use throughout next semester.</p>
+<p>If you&rsquo;re reading this as a HPC getting started guide, this is not it. Ruturaj
+has published a great guide for that <a href="https://github.com/kanha95/HPC-IIT-Delhi">here</a>,
+and you should check that out as an introduction. This is a tad bit more
+advanced.</p>
+<h2 id="mission-statement">Mission Statement</h2>
+<p>I need an environment that will let me train the same model on both kaggle and
+the HPC. Preferably do my initial EDA/debug runs on kaggle and then finetune/do
+production runs on the HPC.</p>
+<p>Let&rsquo;s look at a Pro/Con matrix for both platforms:</p>
+<table>
+<tr>
+  <th></th>
+  <th>Kaggle</th>
+  <th>HPC</th>
+</tr>
+<tr style="background-color: #bae3b399;">
+  <td style="vertical-align: middle;"> <b>Pro</b> </td>
+  <td><ul>
+    <li>Easy to use! Versioning, running and working with data is super easy</li>
+    <li>Good GPU's (T4 x2, P100)</li>
+    <li>Large, Common datasets already there</li>
+  </ul></td>
+  <td><ul>
+    <li>No 12h limit, so run really long jobs!</li>
+    <li>Allocate as much hardware as you need (8 GPU rig go brr)</li>
+    <li>Get Skylake nodes if you're lucky or have funding (with 32GB V100 cards)</li>
+  </ul></td>
+</tr>
+<tr style="background-color: #f0b9b499;">
+  <td style="vertical-align: middle;"> <b>Con</b> </td>
+  <td><ul>
+    <li>Only 30 hours a week</li>
+    <li>Working with notebooks/datasets without a proper filesystem may get 
+        tedious for larger models</li>
+  </ul></td>
+  <td><ul>
+    <li>Slow, outdated GPU on haswell nodes (K40)</li>
+    <li>Super complicated versioning and environment management</li>
+    <li>System versions of software/libraries are antiquated and unreliable</li>
+  </ul></td>
+</tr>
+</table>
+<p>So, if we&rsquo;re shifting to HPC, we need:</p>
+<ul>
+<li><strong>A Live Notebook environment</strong>: JupyterLab running on HPC would be great to
+test/debug stuff: no ML model runs at the first go, and it&rsquo;s foolish to
+assume that every model we run will just be some python script that we&rsquo;ll
+need to train. Exploring and interacting with models is part of the job
+description</li>
+<li><strong>Seamless Kaggle Integration</strong>: This is quite important, as we should be
+directly able to jump from kaggle to HPC if needed, and the way this is
+finally implemented is via GitHub integration with Kaggle, and Papermill+Git
+on HPC to run notebooks (some config stuff, such as input/output directories
+are involved, which I&rsquo;ll get to later)</li>
+<li><strong>A Proper Installable Environment</strong>: This was initially set up with Conda,
+but because conda throws tantrums if the bashrc is not set according to it&rsquo;s
+tastes, all I used conda for was to setup the initial virtual environment.
+From there, it&rsquo;s easier to directly activate the virtual environment yourself
+and use pip.</li>
+</ul>
+<h2 id="the-setup-process">The Setup Process</h2>
+<p>This section started out as being very procedural, but I think a good grasp of
+how the HPC works is more important. For starters, all relevant software that
+you need is loaded in at runtime via <a href="https://modules.readthedocs.io/en/latest/">Environment
+modules</a>. These use modulefiles,
+which look something like this:</p>
+<pre tabindex="0"><code>module-whatis &#34;what this module does&#34;
+
+module load &lt;modules_this_module_depends_on&gt;
+...
+
+prepend-path &lt;PATH_VAR&gt; &lt;path_to_append&gt;
+...
+
+setenv &lt;ENV_FLAGS&gt; &lt;args&gt;
+...
+</code></pre><p>This is great, but it&rsquo;s also super complicated to make a module and load a
+module by yourself. You can only install software to your home directory, not
+being admin, and modules are loaded from <code>MODULEPATH</code> (which is
+<code>/home/soft/modules</code> on HPC). You could append <code>~/.local/modules</code> to
+<code>MODULEPATH</code> on login, and then define your own modules, but that&rsquo;s still
+fairly complicated.</p>
+<p>Since we&rsquo;re only going to be working with Python, using a virtual environment
+is a better option. The python on HPC, however, has some hidden hacks.
+Examining the module file for <code>apps/anaconda/3</code> gives us the following two
+lines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>set             TOP                     /home/apps/anaconda3_2018/4.6.9
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>setenv          PYTHON_ROOT             $TOP          
+</span></span><span style="display:flex;"><span>prepend-path 	PYTHONPATH		$TOP/lib/python3.6/site-packages
+</span></span></code></pre></div><p>This is an issue, because after activating this module, <code>python2</code> stops working
+because the <code>PYTHONPATH</code> has been changed. This means that your python proxy
+script won&rsquo;t run! (3EnvCreation also does the same, although that sets <code>TOP</code> as
+<code>/home/apps/anaconda3/5.2.0/gnu</code>). Activating an environment also causes issues
+when you&rsquo;re doing it on a job, as <code>.bashrc</code> is not called while running a job,
+and conda, as said previously, throws tantrums when it&rsquo;s not configured in your
+<code>.bashrc</code></p>
+<p>The way we work around this is to create your conda environment AFTER activating
+your proxy</p>
+<pre tabindex="0"><code>module load apps/anaconda/3EnvCreation
+conda create --name dl_35 python=3.7
+module unload apps/anaconda/3EnvCreation
+</code></pre><p>Then pick up the <code>activate</code> script in <code>/home/apps/anaconda3/5.2.0/gnu/bin</code>
+(<code>/home/apps/anaconda3_2018/4.6.9/bin</code> if you made your env while using
+<code>apps/anaconda/3</code>), and place that in your home folder, or somewhere
+accessible. To activate your environment, you can now directly call</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source path/to/activate path/to/env
+</span></span></code></pre></div><p>for example, I have <code>activate</code> in my <code>scripts</code> directory, so I&rsquo;ll run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source scripts/activate .conda/envs/dl_35
+</span></span></code></pre></div><p>and it&rsquo;ll work, without loading any modules or without throwing errors that
+conda isn&rsquo;t configured for your shell. Great!</p>
+<p>The next task we come to is actually installing libraries on there. Most stuff
+is simple to install, and can be done via pip, except PyTorch. One major issue
+on HPC are the dated GPU&rsquo;s: they have CUDA compute capability 3.5, and that&rsquo;s
+not compatible with PyTorch, even though cudatoolkit 10 supports this CUDA
+compute version! The reason is that compiling PyTorch to so many platforms
+would increase the size of the resulting binary, and they wouldn&rsquo;t be able to
+push the binaries to conda and pip archives.</p>
+<p>To work around this, you&rsquo;ll have to install a version of PyTorch compiled for
+CUDA 3.5; <a href="https://github.com/nelson-liu/pytorch-manylinux-binaries/releases">Nelson Liu</a>
+has fortunately compiled some binaries, and they&rsquo;re great for getting PyTorch
+to work. Follow the instructions and download and install the binary for your
+python version only. The download itself is a bit large, so make sure you have
+enough bandwidth left on your proxy.</p>
+<p>That covers most of what I did. I installed Jupyter, pandas, numpy, matplotlib,
+plotly, scikit-learn and the usual suspects on my virtual environment, along
+with some JupyterLab plugins and <a href="https://papermill.readthedocs.io/en/latest/index.html">papermill</a>,
+which is also what Kaggle uses to run their notebooks.</p>
+<h2 id="any-good">Any Good?</h2>
+<p>I would be working on GAN&rsquo;s next semseter, so let&rsquo;s see if we can get StyleGAN2
+up and running on our setup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qsub scripts/nbserver.sh
+</span></span></code></pre></div><p>This runs a jupyter server with 4 CPU&rsquo;s, 1 GPU and 16G of memory for 2 hours;
+you can modify the parameters and runtime by downloading and customizing the
+script from <a href="https://gist.github.com/Aniruddha-Deb/2d48ba5ef8fcb853024a994b7cc73531">here</a>,
+but for now let&rsquo;s continue. Once our server is up and running, we&rsquo;ll get an
+email and we can check the output logs to get the URL for the server, and we&rsquo;re
+good to go</p>
+<p><img src="res/jupyter_hpc.png" alt="jupyter on HPC"></p>
+<p>I&rsquo;ve cloned the <a href="https://github.com/NVlabs/stylegan2-ada-pytorch">StyleGAN2</a>
+PyTorch implemenation, and downloaded the weights trained on FFHQ from
+<a href="https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/">here</a>. Then made a
+notebook in the same directory and followed the examples</p>
+<p>Let&rsquo;s generate one image!</p>
+<p><img src="res/one_stylegan_image.png" alt="One image"></p>
+<p>Not too bad. Let&rsquo;s do 10 now</p>
+<p><img src="res/ten_faces.png" alt="Ten faces"></p>
+<h2 id="what-next">What Next?</h2>
+<p>I still haven&rsquo;t gotten around to synergising kaggle with HPC, but it looks very
+doable. Kaggle integrates with GitHub well: you can link your notebooks and
+commit to GitHub with each kaggle commit. Papermill can pass parameters to a
+cell that&rsquo;s been tagged as &lsquo;parameters&rsquo; using Jupyter. All I&rsquo;ll have to do is
+commit to GitHub from Kaggle, open up the notebook on HPC and mark the cell
+as parameters (I&rsquo;ll have the input and output directories here, along with some
+hyperparameters, and I can standardize this across all my scripts), and then
+run the notebook with Papermill.</p>
+<h2 id="footnotes">Footnotes</h2>
+<p>I&rsquo;ve been at home for the past three weeks and have been prepping for a large(ish)
+article to start 2023 with: an optimizer playground, with some interactive
+charts. Stay tuned for that!</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/machine-learning"
+      >Machine Learning</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/deep-learning"
+      >Deep Learning</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

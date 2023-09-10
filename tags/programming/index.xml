@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/programming/</link>
+    <description>Recent content in Programming on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Luck, Skill or Both: Department Change at IITs</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</link>
+      <pubDate>Fri, 01 Sep 2023 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</guid>
+      <description>A friend recently asked me to provide some advice on department change to some freshers. The usual fundaebaazi is something I didn&amp;rsquo;t want to do; it&amp;rsquo;s not impressionable, and won&amp;rsquo;t motivate any fresher to study for a department change. Instead, I chose to show and not tell
+So is it luck or skill? Short answer: Both.
+Let&amp;rsquo;s look at how first year courses are graded. For most theory courses (3 lecture hours + 1 tutorial hour / 2 lab hours), there&amp;rsquo;s a normal distribution of marks, and the top 7% of people on this distribution get an A.</description>
+    </item>
+    
+    <item>
+      <title>My (updated) DL workflow for 2023</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/</link>
+      <pubDate>Sun, 04 Jun 2023 01:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/</guid>
+      <description>Remember last semester, where I said this?
+That went pretty well. Much better than I expected it to go :) I also used the HPC DL environment a lot, across 4 courses that I did (COL380, COL772, COL775 and COD310). It was so used that at a point I had four different GPU&amp;rsquo;s allocated just for running tasks for these different courses.
+A lot could be done better, though. Since I have my summer ahead of me, I decided to clean house for the next semester</description>
+    </item>
+    
+    <item>
+      <title>&lt;strike&gt;M&lt;/strike&gt;RCU comic</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</link>
+      <pubDate>Sun, 19 Mar 2023 23:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</guid>
+      <description>Drawn from Wikipedia&amp;rsquo;s amazing RCU explanation.</description>
+    </item>
+    
+    <item>
+      <title>Mac Setup v2</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/</link>
+      <pubDate>Mon, 06 Mar 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/</guid>
+      <description>My 2015 MBP 13&amp;quot; was giving me some pain over this entire semester, lagging a lot and being very slow overall. I recently upgraded to a 16&amp;quot; MBP, and there have been no complaints so far :) the notch is simply not there if you have a black desktop background, so +1 to apple for that. Although face ID would have been nice to have.
+Setup Basic intro Screen
+Dark Mode</description>
+    </item>
+    
+    <item>
+      <title>Optimizers, Part 1</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/</link>
+      <pubDate>Mon, 02 Jan 2023 12:25:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/</guid>
+      <description>Happy New Year! This is going to was supposed to be a long one, so sit back and grab a chocolate (and preferably view this on your laptop)
+Some optimization algorithms. Click on a colour in the legend to hide/show it
+Table of Contents Introduction Do Solutions Even Exist? How this guide is structured Gradient Descent Optimizers Stochastic Gradient Descent SGD with Momentum SGD with Nesterov Momentum Putting it all together References and Footnotes Introduction Most supervised learning tasks involve optimizing a loss function, in order to fit the model to the given training data.</description>
+    </item>
+    
+    <item>
+      <title>My DL workflow for 2023</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/dl-workflow-2023/</link>
+      <pubDate>Thu, 29 Dec 2022 23:40:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/dl-workflow-2023/</guid>
+      <description>I&amp;rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money where my mouth is, will be taking both COL772 (Natural Language Processing) and COL775 (Deep Learning) next semester.
+Along with Operating Systems, Parallel Programming and Theory of Computation.
+Why a workflow? I&amp;rsquo;ll need to train a lot of models, and while Kaggle and Colab are great at this, 30 hours a week won&amp;rsquo;t cut it. So I&amp;rsquo;ll need to move to using the IITD HPC to train some (most?</description>
+    </item>
+    
+    <item>
+      <title>HackerFX v2</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/hackerfx-v2/</link>
+      <pubDate>Thu, 08 Dec 2022 01:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/hackerfx-v2/</guid>
+      <description>Some of you might have come across HackerFX, an image binarizer. This was written a long time back, when the only language I knew was Java, and when I was still in school.
+An update was on the cards for a while, because I wanted to change my desktop background (which still looks surprisingly pretty for something made so long ago). I started playing around with PIL today evening to update this, and the end result is HackerFX v2, a python rewrite that supports multicoloured input images, hex, file dumps, variable colors and a manual 5x5 font for the output charactes (so the aspect ratio doesn&amp;rsquo;t have to be manually tweaked).</description>
+    </item>
+    
+    <item>
+      <title>Bootloader Deep Dive</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/boot-deep-dive/</link>
+      <pubDate>Sat, 03 Dec 2022 05:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/boot-deep-dive/</guid>
+      <description>The Basics The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS first detects the CPU/RAM, then initializes the remainder of the hardware, and then begins the boot sequence. The boot sequence basically consists of finding a bootable device, loading the boot program in that bootable device into the processor cache and letting the processor do it&amp;rsquo;s thing.
+How is a bootable device found? A device is considered bootable if it has the magic bytes 0x55 and 0xaa at offsets 511 and 512 from the start.</description>
+    </item>
+    
+    <item>
+      <title>Vim Sutras</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</link>
+      <pubDate>Sat, 22 Oct 2022 09:45:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</guid>
+      <description>When in Neovim, Do as the Luans do
+Unless you&amp;rsquo;re just starting out with Neovim or are extremely used to vim, it&amp;rsquo;s a good idea to set up Neovim using neovim-exclusive plugins. Most of them are written in lua, and integrate more nicely with the Neovim environment (async, faster startup, support for LSP and treesitter, etc).
+My initial neovim setup was just a clone of my vim setup, but when I noticed NERDTree wasn&amp;rsquo;t loading large directories quickly, I searched for a lighter, async file tree plugin for Neovim and came across NvimTree, and not long after, all my vim plugins were replaced with their neovim equivalents.</description>
+    </item>
+    
+    <item>
+      <title>Installing ns3: What worked</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/ns3-installation/</link>
+      <pubDate>Thu, 06 Oct 2022 18:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/ns3-installation/</guid>
+      <description>Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&amp;rsquo;ll need to pass a different qmake, and brew won&amp;rsquo;t link this to your system. Brew will inform you of this, and you&amp;rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&amp;rsquo;t pick it up.</description>
+    </item>
+    
+    <item>
+      <title>Manjaro Rice</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/manjaro-rice/</link>
+      <pubDate>Tue, 04 Oct 2022 19:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/manjaro-rice/</guid>
+      <description>ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing.
+Wallpaper: Pick and Place.
+nvim theme: tokyodark.nvim, supporting transparency.</description>
+    </item>
+    
+    <item>
+      <title>Neovim Ricing</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/nvim-ricing/</link>
+      <pubDate>Sun, 25 Sep 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/nvim-ricing/</guid>
+      <description>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&amp;rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
+Right?
+Nope. Let&amp;rsquo;s install Neovim on Mac instead and try moving to it!
+Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?</description>
+    </item>
+    
+    <item>
+      <title>Seven Days of Creation</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/seven-days-of-creation/</link>
+      <pubDate>Sun, 18 Sep 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/seven-days-of-creation/</guid>
+      <description>When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week.</description>
+    </item>
+    
+    <item>
+      <title>A Simple Sudoku Solver</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/simple-sudoku-solver/</link>
+      <pubDate>Sat, 03 Sep 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/simple-sudoku-solver/</guid>
+      <description>The Problem The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.
+The Solution These problems, in general, are called Constraint Satisfaction Problems. Given a set of constraints, find a valid solution which satisfies all the constraints.
+A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge.</description>
+    </item>
+    
+    <item>
+      <title>Variance Estimation in Heteroscedastic Regression</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/heteroscedastic-variance-estimation/</link>
+      <pubDate>Mon, 29 Aug 2022 18:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/heteroscedastic-variance-estimation/</guid>
+      <description>Most of the times, the regression models we need to fit don&amp;rsquo;t have a constant standard deviation, but rather one that is some function of $x$. In this article, I try to learn a model with variance varying linearly as a function of x: kind of like a &lt;em&gt;regression on variance&lt;/em&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Rise of the Codefluencer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/rise-of-codefluencer/</link>
+      <pubDate>Sat, 20 Aug 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/rise-of-codefluencer/</guid>
+      <description>My Thoughts on Web Development, Programming Influencers/tutors and the portrayal of programming as a lavish dream rather than providing a careful solution to complex problems, bit by bit.</description>
+    </item>
+    
+    <item>
+      <title>Intern Inferno</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/intern-inferno/</link>
+      <pubDate>Sun, 14 Aug 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/intern-inferno/</guid>
+      <description>Not everything goes exactly as planned. That&amp;rsquo;s why it&amp;rsquo;s a plan, not a certainty.
+Aiming in Before this entire joomla started, I asked myself: What is it I want from an intern?
+I wanted to tour: I didn&amp;rsquo;t pick up a foreign research intern this summer, and was tired of hearing/seeing how others were roaming the world while I was scooping shuttles off the floor of my room. I wanted something that paid well: Apart from the feel-good factor, a good paying intern would put money for my masters&amp;rsquo; in the bank Above both of these:</description>
+    </item>
+    
+    <item>
+      <title>The Arch Linux Journey</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</link>
+      <pubDate>Sun, 07 Aug 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</guid>
+      <description>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&amp;rsquo;s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu.</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</link>
+      <pubDate>Wed, 02 Mar 2022 01:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</guid>
+      <description>I seldom get time to do anything other than course related activities nowadays, but in this midsem break, I did nothing other than roam around campus and laze in bed. And publish the first release of the IIT Delhi Course Planner Dataset (Also available on GitHub). This is a scraping of the IIT Delhi Courses of Study 2020-21, a behemoth 373-page PDF, which contains the course structure and information of all the Undergraduate and Postgraduate courses offered at IIT Delhi, and then some more.</description>
+    </item>
+    
+    <item>
+      <title>Setting up (and shifting to) Sublime Text 4</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/sublime-text-setup/</link>
+      <pubDate>Tue, 01 Jun 2021 08:03:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/sublime-text-setup/</guid>
+      <description>After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
+Hard to set up and use autocomplete: I&amp;rsquo;ve tried omnicomplete, but it just didn&amp;rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&amp;rsquo;t great at this stuff.</description>
+    </item>
+    
+    <item>
+      <title>LaTeX primer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</link>
+      <pubDate>Sun, 21 Mar 2021 21:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</guid>
+      <description>This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&amp;rsquo;s working.
+Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&amp;rsquo;s core, is merely a text formatting system. One of the main differences between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM (What you see is what you mean) system, as compared to WYSIWYG (What you see is what you get) systems.</description>
+    </item>
+    
+    <item>
+      <title>C development on a Mac</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</link>
+      <pubDate>Thu, 18 Mar 2021 11:46:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</guid>
+      <description>C development on a Mac has it&amp;rsquo;s fair share of traps and pitfalls, even though Mac is supposed to be POSIX compliant. I&amp;rsquo;ll cover a few of them here, with the hope that nobody repeats the same mistakes :)
+XCode CLT Pitfalls The first thing one does while starting out with C development is to install a compiler. This is slightly more complicated than it looks on Mac: the simple way is to go the way of installing XCode command line tools, but there&amp;rsquo;s a few things here to note:</description>
+    </item>
+    
+    <item>
+      <title>Sorting Testbench in C</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</link>
+      <pubDate>Wed, 11 Nov 2020 19:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</guid>
+      <description>I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&amp;rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
+It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array.</description>
+    </item>
+    
+    <item>
+      <title>IIT Department Finder Launch (plus personal website domain)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</link>
+      <pubDate>Wed, 28 Oct 2020 20:39:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</guid>
+      <description>For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&amp;rsquo;t noticed :).</description>
+    </item>
+    
+    <item>
+      <title>Setting up MathNotes - an online math repository</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</link>
+      <pubDate>Fri, 16 Oct 2020 12:54:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</guid>
+      <description>Just after 10th and as I was beginning my JEE Preparation, I felt the need for an extensible note-taking apparatus. Online notes would be too much trouble and would keep me hooked to the computer. Notebooks were also difficult, as I wanted my notes to be extensible; adding pages in the middle of a notebook is extremely difficult. I finally settled on using Binders; you can add/remove pages quite easily and they&amp;rsquo;re decently sized to accommodate all the notes you could ever need.</description>
+    </item>
+    
+    <item>
+      <title>Setting up my Mac (again)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mac-system-setup/</link>
+      <pubDate>Wed, 14 Oct 2020 22:48:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mac-system-setup/</guid>
+      <description>This was also published on GitHub. The GitHub version is more up-to-date, and I won&amp;rsquo;t be updating this one as frequently.
+System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk.</description>
+    </item>
+    
+  </channel>
+</rss>

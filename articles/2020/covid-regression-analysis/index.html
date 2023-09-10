@@ -51,7 +51,7 @@
   />
 
   
-  <title>Aniruddha Deb</title>
+  <title>COVID 19 regression analysis - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -59,11 +59,8 @@
   
   
   
-  
-  <meta
-    name="description"
-    content="A personal blog"
-  />
+  <meta name="description" content="This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division." />
   <meta name="author" content="Aniruddha Deb" />
   
 
@@ -149,25 +146,23 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://aniruddhadeb.com/blog-port/index.xml"
-    title="Aniruddha Deb"
-  />
-  
 
   
   
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="COVID 19 regression analysis">
+<meta itemprop="description" content="This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division."><meta itemprop="datePublished" content="2020-05-06T21:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-06T21:30:00+00:00" />
+<meta itemprop="wordCount" content="187">
+<meta itemprop="keywords" content="Mathematics,COVID 19," />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="COVID 19 regression analysis"/>
+<meta name="twitter:description" content="This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division."/>
 
   
   
@@ -306,186 +301,65 @@
     >
       
 
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">COVID 19 regression analysis</h1>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-<div class="-mt-2 mb-16 flex items-center">
-  
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
-      src="/pic.png"
-      alt="Aniruddha Deb"
-    />
-  </div>
-  
-  
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
-    <div class="break-words">
-      CSE Senior at IIT Delhi
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>May 6, 2020</time>
+      
+      
+      
+      
     </div>
-  </div>
-  
-</div>
+    
+  </header>
 
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+  <section><p><img src="%7Bstatic%7Dres/covid-regression-analysis.png" alt="regression">
+This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&rsquo;t fit the USA data very well though)</p>
+<p>The y-axis scale is 5000 cases/large division and 1000 cases/small division. Currently, 50 represents today&rsquo;s date for India i.e. May 6. Looking at a predicted worst case curve, we see it peaking somewhere around May 20 ($\pm$ 5 days). It should go down post that point. The total number of cases is the integral under the curve. For a gaussian distribution, it comes out to be $a\sqrt{\frac \pi b}$. Taking half of this (before the peak), we end up with $\approx 130,000$ cases. India can expect to see this number $\pm$ 10% of cases by May end and a overall of $\approx 200,000 \pm 10%$ cases by June end, worst case.</p>
+<p>Let&rsquo;s hope I&rsquo;m wrong here and we can flatten the curve sooner than expected.</p>
 </section>
 
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
   
   
-  <a class="btn ml-auto" href="/blog-port/page/2/"
-    >Next Page →</a
-  >
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/mathematics"
+      >Mathematics</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/covid-19"
+      >COVID 19</a
+    >
+    
+  </footer>
   
-</nav>
 
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
 
 
     </main>

@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/</link>
+    <description>Recent content on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Luck, Skill or Both: Department Change at IITs</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</link>
+      <pubDate>Fri, 01 Sep 2023 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/</guid>
+      <description>A friend recently asked me to provide some advice on department change to some freshers. The usual fundaebaazi is something I didn&amp;rsquo;t want to do; it&amp;rsquo;s not impressionable, and won&amp;rsquo;t motivate any fresher to study for a department change. Instead, I chose to show and not tell
+So is it luck or skill? Short answer: Both.
+Let&amp;rsquo;s look at how first year courses are graded. For most theory courses (3 lecture hours + 1 tutorial hour / 2 lab hours), there&amp;rsquo;s a normal distribution of marks, and the top 7% of people on this distribution get an A.</description>
+    </item>
+    
+    <item>
+      <title>It&#39;s easy to mess up</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/</link>
+      <pubDate>Sat, 05 Aug 2023 18:40:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/</guid>
+      <description>It&amp;rsquo;s easy to mess up.
+Of course. That&amp;rsquo;s what the title says. It seems like general advice, and making mistakes is part of life. You should &amp;ldquo;pick yourself up, brush yourself off and continue on your way!&amp;rdquo;
+Not always.
+Stubbing your toe on the couch is okay. Taking a major life decision on an impulse is not. Not choosing to back out of said decision even after multiple months have passed and the negative effects of that decision are evident in your life seems absurd, until you look around and realize that most people are doing this.</description>
+    </item>
+    
+    <item>
+      <title>Intern Ashes</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/</link>
+      <pubDate>Sat, 29 Jul 2023 19:50:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/</guid>
+      <description>[If you haven&amp;rsquo;t read the previous article in this series, check out Intern Ignition]
+In the weekends of my internship, and in the days that followed, I got to tour Europe a bit. What follows is a small travelogue of my experiences in these two months1,
+Stroopwaffel Optiver gave us a goodie bag when we arrived, and among other things, it contained a box of Stroopwaffel!
+Stroopwaffel are really thin waffles filled with caramel, and they taste amazing!</description>
+    </item>
+    
+    <item>
+      <title>My (updated) DL workflow for 2023</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/</link>
+      <pubDate>Sun, 04 Jun 2023 01:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/</guid>
+      <description>Remember last semester, where I said this?
+That went pretty well. Much better than I expected it to go :) I also used the HPC DL environment a lot, across 4 courses that I did (COL380, COL772, COL775 and COD310). It was so used that at a point I had four different GPU&amp;rsquo;s allocated just for running tasks for these different courses.
+A lot could be done better, though. Since I have my summer ahead of me, I decided to clean house for the next semester</description>
+    </item>
+    
+    <item>
+      <title>&lt;strike&gt;M&lt;/strike&gt;RCU comic</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</link>
+      <pubDate>Sun, 19 Mar 2023 23:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</guid>
+      <description>Drawn from Wikipedia&amp;rsquo;s amazing RCU explanation.</description>
+    </item>
+    
+    <item>
+      <title>The Properly Illustrated Transformer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/</link>
+      <pubDate>Wed, 08 Mar 2023 00:12:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/</guid>
+      <description>The title is (obviously) a shout out to Jay Alammar&amp;rsquo;s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
+PS: Yes, this is just the encoder stack. I&amp;rsquo;ll probably make the decoder stack in a part 2?</description>
+    </item>
+    
+    <item>
+      <title>Mac Setup v2</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/</link>
+      <pubDate>Mon, 06 Mar 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/</guid>
+      <description>My 2015 MBP 13&amp;quot; was giving me some pain over this entire semester, lagging a lot and being very slow overall. I recently upgraded to a 16&amp;quot; MBP, and there have been no complaints so far :) the notch is simply not there if you have a black desktop background, so +1 to apple for that. Although face ID would have been nice to have.
+Setup Basic intro Screen
+Dark Mode</description>
+    </item>
+    
+    <item>
+      <title>Batch Normalization</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/</link>
+      <pubDate>Thu, 16 Feb 2023 16:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/</guid>
+      <description>$$ \require{physics} \newcommand{B}{\mathcal{B}}$$
+Batch Normalization was proposed by Ioffe and Szegedy in 2015, and it spawned several normalization techniques that are used in SOTA models today (layer norm, weight norm, etc). Batch normalization normalizes the output of each layer based on the mean and variance of the examples in the current batch. Formally, if $\B = {x_1, \ldots, x_m}$ is our batch, then batch norm does the following transformation:
+$$\begin{align} \mu_{\B} &amp;amp;= \frac{1}{m} \sum_i x_i \\ \sigma_{\B}^2 &amp;amp;= \left( \frac{1}{m} \sum_i x_i^2 \right) - \mu_{\B}^2 \\ \hat{x}_i &amp;amp;= \frac{x_i - \mu_{\B}}{\sqrt{\sigma^2_{\B} + \epsilon}} \\ y_i &amp;amp;= \gamma \hat{x}_i + \beta \end{align}$$</description>
+    </item>
+    
+    <item>
+      <title>L2 regularization intuition</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/</link>
+      <pubDate>Sun, 22 Jan 2023 10:15:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/</guid>
+      <description>A nice intuition for L2 regularization comes from having a prior on the distribution of parameters: the prior assumes that the parameters are close to zero. Let&amp;rsquo;s assume that the prior is $\mathcal{N}(0, \Sigma)$. The MAP estimate of the parameters would then be
+$$\begin{align} \theta_{\text{MAP}} &amp;amp;= \text{argmax}_{\theta} ; P(\theta | D) \\ &amp;amp;= \text{argmax}_{\theta} ; P(D | \theta) P(\theta) \\ &amp;amp;= \text{argmax}_{\theta} ; \log P(D | \theta) + \log P(\theta) \end{align}$$</description>
+    </item>
+    
+    <item>
+      <title>Optimizers, Part 1</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/</link>
+      <pubDate>Mon, 02 Jan 2023 12:25:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/</guid>
+      <description>Happy New Year! This is going to was supposed to be a long one, so sit back and grab a chocolate (and preferably view this on your laptop)
+Some optimization algorithms. Click on a colour in the legend to hide/show it
+Table of Contents Introduction Do Solutions Even Exist? How this guide is structured Gradient Descent Optimizers Stochastic Gradient Descent SGD with Momentum SGD with Nesterov Momentum Putting it all together References and Footnotes Introduction Most supervised learning tasks involve optimizing a loss function, in order to fit the model to the given training data.</description>
+    </item>
+    
+    <item>
+      <title>My DL workflow for 2023</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/dl-workflow-2023/</link>
+      <pubDate>Thu, 29 Dec 2022 23:40:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/dl-workflow-2023/</guid>
+      <description>I&amp;rsquo;ve kind of zeroed down on Deep Learning at this point, and putting my money where my mouth is, will be taking both COL772 (Natural Language Processing) and COL775 (Deep Learning) next semester.
+Along with Operating Systems, Parallel Programming and Theory of Computation.
+Why a workflow? I&amp;rsquo;ll need to train a lot of models, and while Kaggle and Colab are great at this, 30 hours a week won&amp;rsquo;t cut it. So I&amp;rsquo;ll need to move to using the IITD HPC to train some (most?</description>
+    </item>
+    
+    <item>
+      <title>Daft Punk and Interstella 5555</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/daft-punk-interstella/</link>
+      <pubDate>Sun, 11 Dec 2022 12:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/daft-punk-interstella/</guid>
+      <description>In 2001, Daft Punk were nowhere near the mask-rocking superstars they are today. The only album they had to their credit was their debut, Homework, and their robot masks hadn&amp;rsquo;t even materialized yet. In 2001, they came out with Discovery, Which in many ways has defined their music style and approach for the 21st century.
+The Importance of Discovery Daft Punk didn&amp;rsquo;t have their helmets before discovery.
+Let that sink in.</description>
+    </item>
+    
+    <item>
+      <title>HackerFX v2</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/hackerfx-v2/</link>
+      <pubDate>Thu, 08 Dec 2022 01:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/hackerfx-v2/</guid>
+      <description>Some of you might have come across HackerFX, an image binarizer. This was written a long time back, when the only language I knew was Java, and when I was still in school.
+An update was on the cards for a while, because I wanted to change my desktop background (which still looks surprisingly pretty for something made so long ago). I started playing around with PIL today evening to update this, and the end result is HackerFX v2, a python rewrite that supports multicoloured input images, hex, file dumps, variable colors and a manual 5x5 font for the output charactes (so the aspect ratio doesn&amp;rsquo;t have to be manually tweaked).</description>
+    </item>
+    
+    <item>
+      <title>Bootloader Deep Dive</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/boot-deep-dive/</link>
+      <pubDate>Sat, 03 Dec 2022 05:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/boot-deep-dive/</guid>
+      <description>The Basics The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS first detects the CPU/RAM, then initializes the remainder of the hardware, and then begins the boot sequence. The boot sequence basically consists of finding a bootable device, loading the boot program in that bootable device into the processor cache and letting the processor do it&amp;rsquo;s thing.
+How is a bootable device found? A device is considered bootable if it has the magic bytes 0x55 and 0xaa at offsets 511 and 512 from the start.</description>
+    </item>
+    
+    <item>
+      <title>Filtrations</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/filtrations/</link>
+      <pubDate>Mon, 28 Nov 2022 03:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/filtrations/</guid>
+      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
+Recap If you remember the note on random variables, then this picks up exactly where that left off.
+Definition 1.1: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.
+Recall that a $\sigma$-algebra is simply a collection of subsets over $X$ that is closed over unions, intersections and complements.
+Definition 1.2: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a sub $\sigma$-algebra of $\mathcal{A}$</description>
+    </item>
+    
+    <item>
+      <title>The Man Who Sold The World</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/man-who-sold-the-world/</link>
+      <pubDate>Fri, 25 Nov 2022 21:05:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/man-who-sold-the-world/</guid>
+      <description>We passed upon the stair
+We spoke of was and when
+Although I wasn&amp;rsquo;t there
+He said I was his friend
+Which came as a surprise
+I spoke into his eyes
+&amp;ldquo;I thought you died alone,
+A long long time ago&amp;rdquo;
+&amp;ldquo;Oh no, not me
+I never lost control
+You&amp;rsquo;re face to face
+With the man who sold the world&amp;rdquo;
+I laughed and shook his hand
+And made my way back home</description>
+    </item>
+    
+    <item>
+      <title>Cold Showers, Adulting and More</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/cold-showers/</link>
+      <pubDate>Tue, 22 Nov 2022 09:45:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/cold-showers/</guid>
+      <description>Day 249 of taking a cold shower. It&amp;rsquo;s something I&amp;rsquo;ve been doing since April, and although the temperature has fallen and the geyser in my bathroom has been fixed come winter, it&amp;rsquo;s a habit I want to keep. Nothing makes you feel as alive as a cold shower does.
+Speaking of durations, it&amp;rsquo;s also been exactly a month since my last post. A lot has happened since, and I&amp;rsquo;ve been too wrapped up in the happenings to get time to post here once a week.</description>
+    </item>
+    
+    <item>
+      <title>Vim Sutras</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</link>
+      <pubDate>Sat, 22 Oct 2022 09:45:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</guid>
+      <description>When in Neovim, Do as the Luans do
+Unless you&amp;rsquo;re just starting out with Neovim or are extremely used to vim, it&amp;rsquo;s a good idea to set up Neovim using neovim-exclusive plugins. Most of them are written in lua, and integrate more nicely with the Neovim environment (async, faster startup, support for LSP and treesitter, etc).
+My initial neovim setup was just a clone of my vim setup, but when I noticed NERDTree wasn&amp;rsquo;t loading large directories quickly, I searched for a lighter, async file tree plugin for Neovim and came across NvimTree, and not long after, all my vim plugins were replaced with their neovim equivalents.</description>
+    </item>
+    
+    <item>
+      <title>Installing ns3: What worked</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/ns3-installation/</link>
+      <pubDate>Thu, 06 Oct 2022 18:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/ns3-installation/</guid>
+      <description>Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&amp;rsquo;ll need to pass a different qmake, and brew won&amp;rsquo;t link this to your system. Brew will inform you of this, and you&amp;rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&amp;rsquo;t pick it up.</description>
+    </item>
+    
+    <item>
+      <title>Manjaro Rice</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/manjaro-rice/</link>
+      <pubDate>Tue, 04 Oct 2022 19:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/manjaro-rice/</guid>
+      <description>ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing.
+Wallpaper: Pick and Place.
+nvim theme: tokyodark.nvim, supporting transparency.</description>
+    </item>
+    
+    <item>
+      <title>Neovim Ricing</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/nvim-ricing/</link>
+      <pubDate>Sun, 25 Sep 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/nvim-ricing/</guid>
+      <description>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&amp;rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
+Right?
+Nope. Let&amp;rsquo;s install Neovim on Mac instead and try moving to it!
+Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?</description>
+    </item>
+    
+    <item>
+      <title>The JEE never fails to amaze</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</link>
+      <pubDate>Mon, 19 Sep 2022 17:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</guid>
+      <description>I promised I wouldn&amp;rsquo;t look at the JEE 2022 paper, but couldn&amp;rsquo;t help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India&amp;rsquo;s students difficult, and they never cease to amaze.
+Welp, this will be a short one. Let&amp;rsquo;s cut to the chase!
+The greatest integer less than or equal to $$\int_1^2 \log_2(x^3 + 1) dx + \int_1^{\log_2 9} (2^x - 1)^{1/3} dx$$ is _______</description>
+    </item>
+    
+    <item>
+      <title>Seven Days of Creation</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/seven-days-of-creation/</link>
+      <pubDate>Sun, 18 Sep 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/seven-days-of-creation/</guid>
+      <description>When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week.</description>
+    </item>
+    
+    <item>
+      <title>A Simple Sudoku Solver</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/simple-sudoku-solver/</link>
+      <pubDate>Sat, 03 Sep 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/simple-sudoku-solver/</guid>
+      <description>The Problem The problem is a simple search problem: given a partially filled sudoku board, return a fully filled sudoku board with the initial numbers in place such that each digit features only once in every row, column and 3x3 subgrid.
+The Solution These problems, in general, are called Constraint Satisfaction Problems. Given a set of constraints, find a valid solution which satisfies all the constraints.
+A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge.</description>
+    </item>
+    
+    <item>
+      <title>Variance Estimation in Heteroscedastic Regression</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/heteroscedastic-variance-estimation/</link>
+      <pubDate>Mon, 29 Aug 2022 18:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/heteroscedastic-variance-estimation/</guid>
+      <description>Most of the times, the regression models we need to fit don&amp;rsquo;t have a constant standard deviation, but rather one that is some function of $x$. In this article, I try to learn a model with variance varying linearly as a function of x: kind of like a &lt;em&gt;regression on variance&lt;/em&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Rise of the Codefluencer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/rise-of-codefluencer/</link>
+      <pubDate>Sat, 20 Aug 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/rise-of-codefluencer/</guid>
+      <description>My Thoughts on Web Development, Programming Influencers/tutors and the portrayal of programming as a lavish dream rather than providing a careful solution to complex problems, bit by bit.</description>
+    </item>
+    
+    <item>
+      <title>Intern Inferno</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/intern-inferno/</link>
+      <pubDate>Sun, 14 Aug 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/intern-inferno/</guid>
+      <description>Not everything goes exactly as planned. That&amp;rsquo;s why it&amp;rsquo;s a plan, not a certainty.
+Aiming in Before this entire joomla started, I asked myself: What is it I want from an intern?
+I wanted to tour: I didn&amp;rsquo;t pick up a foreign research intern this summer, and was tired of hearing/seeing how others were roaming the world while I was scooping shuttles off the floor of my room. I wanted something that paid well: Apart from the feel-good factor, a good paying intern would put money for my masters&amp;rsquo; in the bank Above both of these:</description>
+    </item>
+    
+    <item>
+      <title>The Arch Linux Journey</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</link>
+      <pubDate>Sun, 07 Aug 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/arch-linux-1/</guid>
+      <description>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&amp;rsquo;s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu.</description>
+    </item>
+    
+    <item>
+      <title>Orbital Maneuvers and the Oberth Effect</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/orbital-oberth/</link>
+      <pubDate>Tue, 05 Jul 2022 15:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/orbital-oberth/</guid>
+      <description>Once a rocket is in orbit, if it needs to change it&amp;rsquo;s orbit (either from a lower to a higher orbit, or from a circular to an elliptical orbit), it needs to execute an Orbital Maneuver. This is accomplished by using a small impulse from thrusters to change the tangential velocity, and hence slip into a different orbit as a consequence.
+Types of Orbital Maneuvers There are two types of orbital maneuvers: the Hohmann transfer orbit and the Bi-elliptic transfer.</description>
+    </item>
+    
+    <item>
+      <title>Leadership, among many other things</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/leadership/</link>
+      <pubDate>Sun, 26 Jun 2022 23:15:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/leadership/</guid>
+      <description>Gazettale, BSP&amp;rsquo;s premier interhostel competition, for which our team worked day and night, recently released the final standings.
+And we&amp;rsquo;re fifth.
+Pop the champagne and dance, team, for we&amp;rsquo;re fifth!
+Jokes aside, I&amp;rsquo;m lukewarm about the result. Proud of what a ragtag bunch of people came together and assembled in the span of around two weeks, but simultaneously disappointed for not reaching the lofty expectations we set of ourselves. Hindsight is 20/20 and often very saddening, for there is seldom joy in finding out what you couldn&amp;rsquo;t see earlier.</description>
+    </item>
+    
+    <item>
+      <title>Introducing the MLZoo</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</link>
+      <pubDate>Thu, 16 Jun 2022 17:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</guid>
+      <description>After a few days of reading and furious coding, I&amp;rsquo;m happy to announce the creation of MLZoo: a set of ML algorithms in their natural habitat
+MLZoo is a set of jupyter notebooks which would contain implementations of several ML algorithms on real world datasets: so far, I&amp;rsquo;ve implemented different flavours of regression, and plan to add quite a few more algorithms over the summer.
+Do star, fork and contribute in any way possible!</description>
+    </item>
+    
+    <item>
+      <title>Atomic Habits and Badminton</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/badminton-habits/</link>
+      <pubDate>Mon, 13 Jun 2022 21:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/badminton-habits/</guid>
+      <description>Atomic Habits probably needs no introduction, and neither will I bore you with one. All I&amp;rsquo;ll say is that I found a friend in hostel with a copy of the book, and when I went home, I found a physical copy on my Dad&amp;rsquo;s bookshelf (all of us have kindles, and only buy hardcopies of books that we really want a hardcopy of).
+So What&amp;rsquo;s the fuss about Like it&amp;rsquo;s predecessors, Atomic Habits preaches more of the same old myelination tricks</description>
+    </item>
+    
+    <item>
+      <title>Of Knights and Knaves</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/knights-and-knaves/</link>
+      <pubDate>Wed, 01 Jun 2022 21:15:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/knights-and-knaves/</guid>
+      <description>Once every year, when the sun beats down
+Students here become clowns
+They think on their command, people will fall
+But truly, they&amp;rsquo;re just bricks in the wall
+Misled by the mirage of power
+Led astray till they flounder
+&amp;ldquo;You&amp;rsquo;re barely 20! What do you think will change
+When you become Secretary, like others who&amp;rsquo;ve aged&amp;rdquo;
+&amp;ldquo;I&amp;rsquo;ll tell you! Here&amp;rsquo;s my manifesto:
+It says I&amp;rsquo;m great with a budget
+I&amp;rsquo;m smart, hardworking, and totally not a puppet</description>
+    </item>
+    
+    <item>
+      <title>Freedom, Recaptured.</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/freedom/</link>
+      <pubDate>Mon, 30 May 2022 17:10:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/freedom/</guid>
+      <description>With the creation of my official website (safari butchers the CSS :/), I&amp;rsquo;ve now got more creative liberty and artistic freedom on the content I post here.
+When I first made this blog, it used to be my own little corner of the internet. That changed once more people got to know about it, and I subconsciously put more pressure on myself to keep a strong technical background to whatever I post.</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</link>
+      <pubDate>Wed, 02 Mar 2022 01:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</guid>
+      <description>I seldom get time to do anything other than course related activities nowadays, but in this midsem break, I did nothing other than roam around campus and laze in bed. And publish the first release of the IIT Delhi Course Planner Dataset (Also available on GitHub). This is a scraping of the IIT Delhi Courses of Study 2020-21, a behemoth 373-page PDF, which contains the course structure and information of all the Undergraduate and Postgraduate courses offered at IIT Delhi, and then some more.</description>
+    </item>
+    
+    <item>
+      <title>A Note on Conditional Probability</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/note-on-conditional-probability/</link>
+      <pubDate>Sat, 25 Dec 2021 15:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/note-on-conditional-probability/</guid>
+      <description>$\newcommand{\cE}[2]{\mathbf{E}(#1\ |\ #2)}$$\newcommand{\cP}[2]{\mathbf{P}(#1\ |\ #2)}$$\renewcommand{\P}[1]{\mathbf{P}(#1)}$$\newcommand{\E}[1]{\mathbf{E}(#1)}$$\newcommand{\F}{\mathcal{F}}$$\newcommand{\G}{\mathcal{G}}$$\newcommand{\ind}[1]{\mathbf{1}_{#1}}$ To motivate this note, I’ll pose the following problem:
+Consider $X \sim \text{Uniform}([0,1])$. What is $\cP{X &amp;gt; \frac{1}{2}}{X \in \mathbb{Q}}$ ?
+At first glance, the answer seems simple: it’s 1/2! Closer inspection reveals that the event $X \in \mathbb{Q}$ is not measurable: the rationals have measure zero, hence from our high-school (perhaps even undergraduate) definition of conditional probability, the given probability should be undefined. However, the conditional probability does exist, and it equals 1/2.</description>
+    </item>
+    
+    <item>
+      <title>A Note on Random Variables</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/note-on-random-variables/</link>
+      <pubDate>Fri, 03 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/note-on-random-variables/</guid>
+      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$ This note on random variables follows as a result of confusing notation in several math textbooks. I&amp;rsquo;ll explain random variables (in measure theoretic terms) as verbosely as I can, and then prove some results. This article assumes that the reader is familiar with probability triples $\triple$, as well as a basic idea of what random variables are, in non-measure theory terms.
+1. Random Variable Prerequisites We start with defining measurable spaces and measurable functions</description>
+    </item>
+    
+    <item>
+      <title>Updates on Life in general</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/updates-on-life/</link>
+      <pubDate>Sat, 14 Aug 2021 21:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/updates-on-life/</guid>
+      <description>I haven&amp;rsquo;t done one of these in a year or so (this was the previous one), and neither have I written content exclusively for my blog for atleast a few months now, so it&amp;rsquo;s a good time to do one of these because a lot has changed in the past one year.
+Let&amp;rsquo;s start with summer The past two months have been amazing.
+That doesn&amp;rsquo;t even sum up just how great they&amp;rsquo;ve been.</description>
+    </item>
+    
+    <item>
+      <title>How it Happened</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/how-it-happened/</link>
+      <pubDate>Mon, 02 Aug 2021 13:11:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/how-it-happened/</guid>
+      <description>&amp;ldquo;Baba, I got Mathematics and Computing Dual at IITD&amp;rdquo;, I told my father excitedly on the day the first round allocations were over. &amp;ldquo;It probably won&amp;rsquo;t change now&amp;rdquo;. Certain of this, I returned back to whatever I was doing, excitedly waiting for the seat allocations to get over (while simultaneously crossing my fingers for the slightest hope of a branch upgrade, as we all do). Even though the campus was not opening and the semester was planned to be conducted online, I hoped to truly enjoy my first year of college life.</description>
+    </item>
+    
+    <item>
+      <title>This summer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/this-summer/</link>
+      <pubDate>Wed, 16 Jun 2021 20:18:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/this-summer/</guid>
+      <description>What is a dream? all of us think of dreams as abstract ideals, far removed from reality, that we should chase with all the effort we can muster every day.
+Meditating on this a bit more, does this make sense? What is achieved by chasing an ideal when you can never reach it? also, what would you do if you reached the ideal? Would you just stop? Life would lose all it&amp;rsquo;s meaning, and the only place to go then would be out of a tall window.</description>
+    </item>
+    
+    <item>
+      <title>Setting up (and shifting to) Sublime Text 4</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/sublime-text-setup/</link>
+      <pubDate>Tue, 01 Jun 2021 08:03:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/sublime-text-setup/</guid>
+      <description>After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
+Hard to set up and use autocomplete: I&amp;rsquo;ve tried omnicomplete, but it just didn&amp;rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&amp;rsquo;t great at this stuff.</description>
+    </item>
+    
+    <item>
+      <title>The Last Time</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/last-time/</link>
+      <pubDate>Sat, 29 May 2021 14:43:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/last-time/</guid>
+      <description>Soft sunlight streaked in through the curtains, illuminating the room in a warm glow. Of course, I noticed none of that. The only thing I was aware of was my phone&amp;rsquo;s alarm clock ringing. After drowsily hitting the snooze button, I realized that I had done this twice already, so I started scrolling through the notifications. It was 8:30, and my friends were abuzz with excitement. &amp;ldquo;Oh! The JEE Advanced results are coming out today!</description>
+    </item>
+    
+    <item>
+      <title>LaTeX primer</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</link>
+      <pubDate>Sun, 21 Mar 2021 21:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/latex-primer/</guid>
+      <description>This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&amp;rsquo;s working.
+Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&amp;rsquo;s core, is merely a text formatting system. One of the main differences between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM (What you see is what you mean) system, as compared to WYSIWYG (What you see is what you get) systems.</description>
+    </item>
+    
+    <item>
+      <title>C development on a Mac</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</link>
+      <pubDate>Thu, 18 Mar 2021 11:46:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</guid>
+      <description>C development on a Mac has it&amp;rsquo;s fair share of traps and pitfalls, even though Mac is supposed to be POSIX compliant. I&amp;rsquo;ll cover a few of them here, with the hope that nobody repeats the same mistakes :)
+XCode CLT Pitfalls The first thing one does while starting out with C development is to install a compiler. This is slightly more complicated than it looks on Mac: the simple way is to go the way of installing XCode command line tools, but there&amp;rsquo;s a few things here to note:</description>
+    </item>
+    
+    <item>
+      <title>Understanding Jacobians</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/understanding-jacobians/</link>
+      <pubDate>Fri, 29 Jan 2021 15:11:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/understanding-jacobians/</guid>
+      <description>$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$ $\newcommand{\ah}{\pmb{a} + \pmb{h}}$ $\newcommand{\a}{\pmb{a}}$ $\newcommand{\h}{\pmb{h}}$
+The Jacobian Matrix Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear approximation of this function is given by $$f(a+h) \approx f(a) + hf&amp;rsquo;(a)$$ This is pretty simple to do, and follows from taylor&amp;rsquo;s expansion upto the first order.
+Let&amp;rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$, it&amp;rsquo;s linear approximation is given by $$f(\pmb{a} + \pmb{h}) \approx f(\pmb{a}) + \pmb{h}\cdot\nabla{f}(\a)$$ (bold type indicates vectors).</description>
+    </item>
+    
+    <item>
+      <title>Intro to FreeCAD</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/freecad-intro/</link>
+      <pubDate>Thu, 31 Dec 2020 18:41:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/freecad-intro/</guid>
+      <description>MCP100 is a course that all first year undergrads in IITD have to go through. It consists of two parts: the first part is engineering drawing, using rulers and pencils, and CAD. After a disastrous drawing minor, the next phase involved getting to terms with CAD. The CAD package our course instructor decided on was FreeCAD, and since the minor ended, I&amp;rsquo;ve done nothing but create FreeCAD models.
+I&amp;rsquo;m not a pero1 at it though, (there&amp;rsquo;s still plenty to learn), and once that is done, there are plenty of bugs to fix :P.</description>
+    </item>
+    
+    <item>
+      <title>Sorting Testbench in C</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</link>
+      <pubDate>Wed, 11 Nov 2020 19:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</guid>
+      <description>I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&amp;rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
+It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array.</description>
+    </item>
+    
+    <item>
+      <title>IIT Department Finder Launch (plus personal website domain)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</link>
+      <pubDate>Wed, 28 Oct 2020 20:39:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</guid>
+      <description>For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&amp;rsquo;t noticed :).</description>
+    </item>
+    
+    <item>
+      <title>To IIT Delhi and beyond</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-delhi-mnc/</link>
+      <pubDate>Mon, 19 Oct 2020 14:23:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-delhi-mnc/</guid>
+      <description>I think an update on the JEE Situation has been due for a long time, and I&amp;rsquo;ll try to compress the past few months into this single post. Long story short, my JEE(M) was held on 2nd September, in the evening shift. After giving my best and getting a 260/300, I was disappointed (putting it mildly) to see the CRL of 1861 on my screen. AITS JEE(A) Mocks followed, and after giving three of them, I had to give my BITSAT.</description>
+    </item>
+    
+    <item>
+      <title>Setting up MathNotes - an online math repository</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</link>
+      <pubDate>Fri, 16 Oct 2020 12:54:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mathnotes-launch.md/</guid>
+      <description>Just after 10th and as I was beginning my JEE Preparation, I felt the need for an extensible note-taking apparatus. Online notes would be too much trouble and would keep me hooked to the computer. Notebooks were also difficult, as I wanted my notes to be extensible; adding pages in the middle of a notebook is extremely difficult. I finally settled on using Binders; you can add/remove pages quite easily and they&amp;rsquo;re decently sized to accommodate all the notes you could ever need.</description>
+    </item>
+    
+    <item>
+      <title>Setting up my Mac (again)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mac-system-setup/</link>
+      <pubDate>Wed, 14 Oct 2020 22:48:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mac-system-setup/</guid>
+      <description>This was also published on GitHub. The GitHub version is more up-to-date, and I won&amp;rsquo;t be updating this one as frequently.
+System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk.</description>
+    </item>
+    
+    <item>
+      <title>A Good JEE Main (September) problem</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</link>
+      <pubDate>Fri, 11 Sep 2020 09:01:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</guid>
+      <description>This beauty came in the 2nd September shift 2 paper:
+Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where $$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;-1 \end{array}\right]$$ then the set A:
+is a singleton is an empty set contains exactly two elements contains more than two elements This is a great problem, one that should have featured in advanced rather than main.</description>
+    </item>
+    
+    <item>
+      <title>Math Notes: Lagrange interpolation</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</link>
+      <pubDate>Fri, 14 Aug 2020 17:37:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</guid>
+      <description>This is a small set of posts that come into the category of &amp;ldquo;notes&amp;rdquo;: self-explanations of concepts that I have recently picked up and found interesting.
+Lagrange Interpolation Lagrange Interpolation is a concept that allows us to find a polynomial of least degree passing through a given set of points. Specifically:
+If $S = {(x_i, y_i) : x_i, y_i \in R, 1 \lt i \le n}$, then the polynomial of least degree passing through all the points in $S$ is given by $$P(x) = \sum_{i=1}^n L_i(x) \cdot y_i$$ where $$L_i(x) = \frac{(x-x_1)(x-x_2)&amp;hellip;(x-x_{i-1})(x-x_{i+1})&amp;hellip;(x-x_n)} {(x_i-x_1)(x_i-x_2)&amp;hellip;(x_i-x_{i-1})(x_i-x_{i+1})&amp;hellip;(x_i-x_n)}$$ or simply, $$P(x) = \sum_{i=1}^n \frac{\prod_{r \ne i}(x-x_r)}{\prod_{r \ne i}{(x_i-x_r)}} \cdot y_i$$ note that the degree of polynomial $P &amp;lt; n$.</description>
+    </item>
+    
+    <item>
+      <title>Is the shortest solution to a problem the best?</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/shortest-solution-best-or-not/</link>
+      <pubDate>Sun, 26 Jul 2020 21:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/shortest-solution-best-or-not/</guid>
+      <description>My old man always used to say that there are two ways to solve a problem: there&amp;rsquo;s the horse way, and there&amp;rsquo;s the donkey way. The donkey way involves tedious calculations, whereas the horse way &amp;lsquo;cuts&amp;rsquo; through the problem. Take this problem as an example:
+For each positive integer $n$, let $$y_n = ((n+1)(n+2)&amp;hellip;(n+n))^\frac1n$$ for $x \in \mathbb{R}$. Let $[x]$ be the greatest integer less than or equal to $x$. If $\lim_{n \to \infty} y_n = L$, then the value of $[L]$ is ______ ?</description>
+    </item>
+    
+    <item>
+      <title>ISC 2020 Analysis: An application of Data Science and Statistics</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</link>
+      <pubDate>Sat, 11 Jul 2020 16:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</guid>
+      <description>The ISC Exam results were released on 10th June, 3 PM IST. In this article, I&amp;rsquo;ll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I&amp;rsquo;ll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.
+###Index:
+Elementary inferences: How have people fared overall? Frequency Distribution of Marks: How many people got the same marks in a subject?</description>
+    </item>
+    
+    <item>
+      <title>Solving the African Integral (from YG file cover)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/african-integral/</link>
+      <pubDate>Thu, 09 Jul 2020 20:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/african-integral/</guid>
+      <description>A long time ago, I gave my friend (Let&amp;rsquo;s call him C) an integral to solve. He came back to me a few days later and the conversation went something like this:
+C: Debu, I couldn&amp;rsquo;t solve that African integral you gave me.
+Me: Ok, but why are you calling it African?
+C: Because Africa is a really big continent, y&amp;rsquo;know?
+Me: Ok, but isn&amp;rsquo;t Asia bigger?
+C: Debu, please stop making me feel dumb</description>
+    </item>
+    
+    <item>
+      <title>Debunking Concepts of Physics, and why you should NOT use this book.</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/debunking-concepts-of-physics/</link>
+      <pubDate>Mon, 22 Jun 2020 11:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/debunking-concepts-of-physics/</guid>
+      <description>I generally don&amp;rsquo;t post stuff that is extremely specific to JEE, but this time I&amp;rsquo;m willing to make an exception.
+A lot has been said about Concepts of Physics by Dr. H. C.Verma and it&amp;rsquo;s usefulness for JEE Preparation. The website itself claims that
+Students from the past twenty years of JEE preparation used this book and have successfully cleared JEE. So, you cannot neglect this book. A common problem that was observed with many JEE aspirants is that they follow multiple books in parallel, thereby ending up in confusion.</description>
+    </item>
+    
+    <item>
+      <title>Icosahedron Resistor Network</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</link>
+      <pubDate>Tue, 09 Jun 2020 12:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</guid>
+      <description>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:
+![icosahedron]({static}res/icosa_res_net/icosa_1.png)
+A) The resistance between points A and B is $\frac{r}{2}$
+B) The resistance between points A and B is $\frac{r}{3}$
+C) The resistance between any two adjacent vertices is $\frac{11r}{30}$
+D) The resistance between any two adjacent vertices is $\frac{11r}{20}$
+This question looks really tricky.</description>
+    </item>
+    
+    <item>
+      <title>A Compilation of hard limits</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/hard-limits/</link>
+      <pubDate>Fri, 05 Jun 2020 11:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/hard-limits/</guid>
+      <description>This list consists of the limits that I found most challenging.
+$$\lim_{n \to \infty} \left( \frac{n!}{n^n} \right) ^\frac 1n$$ $$\lim_{x \to 0} \left( \frac{1}{\ln(x + \sqrt{x^2+1})} - \frac 1{\ln(x+1)} \right)$$ $$\lim_{n \to \infty} \frac{n + n^2 + n^3 + &amp;hellip; + n^n}{1^n + 2^n + 3^n + &amp;hellip; + n^n}$$ $$\lim_{n \to \infty} \left( \frac{n^n(x+n)\left(x+\frac n2\right)&amp;hellip;\left(x+\frac nn\right)}{n!(x^2+n^2)\left(x^2+\frac {n^2}{4}\right)&amp;hellip;\left( x^2 + \frac{n^2}{n^2}\right)}\right)^{\frac x n}$$ $$\lim_{x \to 0} \left( 1^{\sin^{-2}x} + 2^{\sin^{-2}x} + &amp;hellip; + n^{\sin^{-2}x}\right)^{\sin^2 x}$$ $$\lim_{n \to \infty} \sqrt[\leftroot{-2}\uproot{2}n+1]{(n+1)!</description>
+    </item>
+    
+    <item>
+      <title>Limit involving higher order infinitesimals</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/limit-higher-order-infinitesimals/</link>
+      <pubDate>Fri, 05 Jun 2020 07:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/limit-higher-order-infinitesimals/</guid>
+      <description>Simple limit problems consist of the form $\lim_{x \to 0}\frac{O_1(x)O_2(x)..}{O_a(x)O_b(x)..}$, such as $\lim_{x \to 0} \frac{\sin 3x \tan 2x \tan^{-1} 5x}{x^2 \ln(1+x)}$. Here, the infinitesimals are well defined and cancel out easily. Some trickier limit problems involve the difference of two infinitesimals. A good example is $\lim_{t \to 0} \frac{\sin t - \tan t}{t^3}$. These kind of problems require expansions to solve them cleanly. L&amp;rsquo;Hopital rule is tedious as it will need to be repeated atleast thrice for this given limit, which involves infinitesimals of order 3.</description>
+    </item>
+    
+    <item>
+      <title>COVID-19 USA Analysis: effects of the lack of lockdown</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</link>
+      <pubDate>Fri, 29 May 2020 20:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</guid>
+      <description>The USA currently stands at 1.76 million COVID-19 cases. That&amp;rsquo;s more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here&amp;rsquo;s a graph showing the daily number of cases of COVID-19 in the USA.
+![Daily covid cases]({static}res/covid-19-usa/covid-cases-daily.png)
+Source: Google
+Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour.</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 Regression analysis Update</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</link>
+      <pubDate>Tue, 19 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</guid>
+      <description>The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.
+Y-axis: number of new cases per day. X-axis: number of days since first case.
+Here&amp;rsquo;s an animated view:
+The relevant files can be found in this GitHub repo.</description>
+    </item>
+    
+    <item>
+      <title>No square ends in 3</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/no-square-ends-in-3/</link>
+      <pubDate>Fri, 15 May 2020 11:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/no-square-ends-in-3/</guid>
+      <description>This is an interesting number theory fact that seems strange when taken at face value. Here&amp;rsquo;s a small proof of it:</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 regression analysis</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</link>
+      <pubDate>Wed, 06 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</guid>
+      <description>This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&amp;rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division.</description>
+    </item>
+    
+    <item>
+      <title>Inorganic Heterocyclic compounds</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/inorganic-heterocycles/</link>
+      <pubDate>Sun, 03 May 2020 10:40:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/inorganic-heterocycles/</guid>
+      <description>The 45th IChO preparatory problem list had this as it&amp;rsquo;s fifth problem:
+5.1 The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals X, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of X and give the reaction equation.
+5.2 Draw two stereoisomers of X.
+5.3 A colorless liquid Y was prepared by a reaction between X and antimony(III) fluoride. Addition of 1.</description>
+    </item>
+    
+    <item>
+      <title>Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/roots-of-fffx/</link>
+      <pubDate>Thu, 30 Apr 2020 20:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/roots-of-fffx/</guid>
+      <description>Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&amp;gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
+This seems like a complicated problem. Let&amp;rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots.</description>
+    </item>
+    
+    <item>
+      <title>An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/zeta-2-integral/</link>
+      <pubDate>Wed, 29 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/zeta-2-integral/</guid>
+      <description>Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$
+There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \): $$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ $$I = \int_0^1 \frac 1x \left( x + \frac{x^2}{2} + \frac{x^3}{3} + &amp;hellip; \right) $$
+This expression nicely integrates to give $$I = 1 + \frac{1}{2^2} + \frac{1}{3^2} + &amp;hellip; = \boxed{\frac{\pi^2}{6}}$$
+The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\).</description>
+    </item>
+    
+    <item>
+      <title>An Interesting Electronics Problem</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/interesting-electronics-problem/</link>
+      <pubDate>Wed, 29 Apr 2020 22:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/interesting-electronics-problem/</guid>
+      <description>An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network
+This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we&amp;rsquo;ll use the concept of symmetry and a few tricks. Let&amp;rsquo;s start by connecting a battery to the circuit and labeling the currents and loops</description>
+    </item>
+    
+    <item>
+      <title>MathJax Test</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/mathjax-test/</link>
+      <pubDate>Wed, 29 Apr 2020 10:20:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mathjax-test/</guid>
+      <description>This is a test to see if MathJax works on blogger.
+For \(\alpha, \beta \gt -1\), find the value of \(\lim_{n \to \infty} n^{\beta - \alpha} \frac{1^\alpha + 2^\alpha + 3^\alpha + &amp;hellip; + n^\alpha}{1^\beta + 2^\beta + 3^\beta + &amp;hellip; + n^\beta}\)
+So we have
+$$L = \lim_{n \to \infty} \frac{n^\beta}{n^\alpha} \times \frac{\sum_{r=0}^n r^\alpha}{\sum_{r=0}^n r^\beta}\ = \lim_{n \to \infty} \frac{\sum_{r=0}^n (\frac rn)^\alpha}{\sum_{r=0}^n (\frac rn)^\beta}$$
+The summations can now be evaluated as Riemann sums by multiplying numerator and denominator by (\frac 1n)</description>
+    </item>
+    
+    <item>
+      <title>Electronic Clock II - Generating the Clock Signal pt. 2</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-ii/</link>
+      <pubDate>Sat, 16 Jun 2018 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-ii/</guid>
+      <description>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
+###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+The truth table of this device looks somewhat like this:
+Note that the flip flop toggles only on the rising edge of the clock.</description>
+    </item>
+    
+    <item>
+      <title>Electronic Clock II - Generating the Clock Signal pt.1</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-i/</link>
+      <pubDate>Thu, 14 Jun 2018 22:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-i/</guid>
+      <description>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&amp;rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
+###Importance of the Signal in a clock Every clock is only as accurate as it&amp;rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&amp;rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&amp;rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks).</description>
+    </item>
+    
+    <item>
+      <title>Electronic Clock I - Getting Started</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-1/</link>
+      <pubDate>Thu, 14 Jun 2018 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-1/</guid>
+      <description>This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&amp;rsquo;re subscribed to the RSS feed so that you don&amp;rsquo;t miss out on anything!
+###Getting Started An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
+The first task is enumerating the requirements of the clock. A humble requirement list looks like this:</description>
+    </item>
+    
+    <item>
+      <title>Cleared OCAJP with 94% - My Experience</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2018/ocajp/</link>
+      <pubDate>Wed, 06 Jun 2018 22:05:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2018/ocajp/</guid>
+      <description>How I prepared and cleared the OCA examination in my summer holidays</description>
+    </item>
+    
+    <item>
+      <title>ICSE Mathematics - Last 23 years analysis and 2018 forecast</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2018/icse-mathematics-analysis/</link>
+      <pubDate>Tue, 09 Jan 2018 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2018/icse-mathematics-analysis/</guid>
+      <description>A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years. &lt;img src=&#34;https://aniruddhadeb.com/blog-port/articles/2018/res/icse_math_analysis.png&#34; alt=&#34;Analysis results&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python Crash Course</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2017/python-crash-course/</link>
+      <pubDate>Fri, 22 Dec 2017 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2017/python-crash-course/</guid>
+      <description>My initial experience with learning Python and using it to create a GTD app</description>
+    </item>
+    
+    <item>
+      <title>TCS IT Wiz - an Experience</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2017/tcsitwiz-experience/</link>
+      <pubDate>Thu, 14 Dec 2017 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2017/tcsitwiz-experience/</guid>
+      <description>A Firsthand account of the TCS IT Wiz 2017 Journey</description>
+    </item>
+    
+    <item>
+      <title>National Safety Science Quiz - an Experience</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2017/nssq-experience/</link>
+      <pubDate>Sat, 09 Dec 2017 10:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2017/nssq-experience/</guid>
+      <description>A Firsthand account of NSSQ 2017</description>
+    </item>
+    
+    <item>
+      <title>Function transforms (providing a broader picture of Laplace Transforms)</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2021/function-transforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2021/function-transforms/</guid>
+      <description>I&amp;rsquo;ll begin this article by brushing up a few definitions:
+A function is a mapping between two sets: the domain D and the codomain C.
+It&amp;rsquo;s very important to note here that the function is the mapping itself, and not an element in the codomain or the domain. The function operates on an element in the domain to give an element in the codomain. Formally, we would write this function as $f:D \to C$</description>
+    </item>
+    
+  </channel>
+</rss>

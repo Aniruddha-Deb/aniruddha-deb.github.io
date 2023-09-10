@@ -1,0 +1,583 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>IIT Department Finder Launch (plus personal website domain) - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&rsquo;t noticed :)." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="IIT Department Finder Launch (plus personal website domain)">
+<meta itemprop="description" content="For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&rsquo;t noticed :)."><meta itemprop="datePublished" content="2020-10-28T20:39:00+00:00" />
+<meta itemprop="dateModified" content="2020-10-28T20:39:00+00:00" />
+<meta itemprop="wordCount" content="1933">
+<meta itemprop="keywords" content="Programming,Python,Web Development," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IIT Department Finder Launch (plus personal website domain)"/>
+<meta name="twitter:description" content="For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&rsquo;t noticed :)."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">IIT Department Finder Launch (plus personal website domain)</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 28, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>For IIT admissions, I had created a small command line tool called <code>iit_dep_finder.py</code>
+to check the departments I would get, given a particular rank. Once the round
+one allocation results came out, I decided to create a web version, for others
+to use as well. This article chronicles the steps I took, and while I did get
+the department finder up and running, I also did a lot of other stuff in the
+process (including changing the domain name, in case you haven&rsquo;t noticed :).
+It&rsquo;s a long and uncensored article, so be warned.</p>
+<h2 id="index">Index:</h2>
+<ol>
+<li>Flask Backend app Development</li>
+<li>Frontend Development</li>
+<li>NGINX and GUnicorn local setup</li>
+<li>Lightsail (VPS) setup and deployment</li>
+<li>Domain acquisition and Setup</li>
+<li>Enabling SSL and Security</li>
+</ol>
+<h2 id="flask-app-development">Flask App Development</h2>
+<p>Developing the Flask app was probably the most rewarding part of the process,
+considering that the rest of it was DevOps, which is not exactly my cup of
+tea. I started out by downloading the data from
+<a href="https://josaa.nic.in/Result/Result/currentorcr.aspx">https://josaa.nic.in/Result/Result/currentorcr.aspx</a>
+as a set of HTML files, to retain their tabular format. The data was then
+scraped with BeautifulSoup and LXML into a CSV intermediate using the following
+snippet of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>main_table <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;table&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>:<span style="color:#e6db74">&#34;border_table_at&#34;</span>})
+</span></span><span style="display:flex;"><span>table_rows <span style="color:#f92672">=</span> main_table<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;tr&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> table_rows:
+</span></span><span style="display:flex;"><span>	cells <span style="color:#f92672">=</span> row<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;td&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> cell <span style="color:#f92672">in</span> cells:
+</span></span><span style="display:flex;"><span>		field <span style="color:#f92672">=</span> cell<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> field <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Female-only (including Supernumerary)&#34;</span>:
+</span></span><span style="display:flex;"><span>			field <span style="color:#f92672">=</span> field<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34; (including Supernumerary)&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>		outfile<span style="color:#f92672">.</span>write(field<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;,&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>	outfile<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>The CSV file was then cleaned up a bit manually, such as removing commas at the
+end of the line and changing a few typos and values. After this, I created the
+SQLite database and added a table, whose schema was as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#e6db74">&#34;orcr_2020_r1&#34;</span>(
+</span></span><span style="display:flex;"><span>	institute varchar(<span style="color:#ae81ff">256</span>),
+</span></span><span style="display:flex;"><span>	department varchar(<span style="color:#ae81ff">256</span>),
+</span></span><span style="display:flex;"><span>	quota varchar(<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>	category varchar(<span style="color:#ae81ff">32</span>),
+</span></span><span style="display:flex;"><span>	gender varchar(<span style="color:#ae81ff">32</span>),
+</span></span><span style="display:flex;"><span>	OPR integer,
+</span></span><span style="display:flex;"><span>	OPR_prep integer,
+</span></span><span style="display:flex;"><span>	CPR integer,
+</span></span><span style="display:flex;"><span>	CPR_prep integer
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>This was enough to store the required data. Notice the <code>OPR\_prep</code> and <code>CPR\_prep</code>
+fields, which are there for <a href="https://www.iitism.ac.in/assets/pdfs/rules/pcr.pdf">Preparatory Course ranklists</a>.
+The ranks for these ranklists have a &lsquo;P&rsquo; appended to the number. Since we want
+to store the number as an integer for sorting purposes, the &lsquo;P&rsquo; needs to be
+abstracted into this boolean-esque field. After the table was created, it was
+a matter of inserting all the records in the CSV file into the table. The CSV
+file was used as a sort of &lsquo;staging location&rsquo; for easily editing any errors in
+the data or tweaking formatting.</p>
+<p>Once the data creation methodology and tools were done, I moved on to developing
+the flask backend. There&rsquo;s nothing spectacular here, it was just querying the
+database based on the JSON data it received from the frontend and returning
+the results as a JSON encoded string. This part was probably the simplest,
+because the rest was pretty tricky.</p>
+<h2 id="frontend-development">Frontend Development</h2>
+<p>I&rsquo;m finally able to understand why Javascript developers use such humongous
+frontend development frameworks like Angular and React: Frontend development
+without those is a huge pain in the ass</p>
+<p><img src="https://www.commitstrip.com/wp-content/uploads/2018/01/Strip-Les-bonnes-r%C3%A9solutions-650-finalenglish.jpg" alt="Commitstrip comic"></p>
+<p>This is a close second for the most disliked part of this entire development
+cycle: writing HTML and CSS gets extremely repetitive. Since I was not using
+any framework, all the CSS (including the little dropdown transitions for
+advanced options) were written by hand. The JavaScript backend was slightly
+better, but JS does indeed feel like a hacky kludge of a language rather than
+something you can write an entire frontend app with (like google sheets), or
+maybe that&rsquo;s because I&rsquo;m an amateur at the language.</p>
+<p>Once the frontend was done, it didn&rsquo;t look too nasty. I still have to optimize
+the frontend for mobile devices, but since I used <code>div</code>&rsquo;s for the layout, I don&rsquo;t
+think there&rsquo;s going to be much to do.</p>
+<p><img src="res/iit_dep_finder_frontend.gif" alt="Frontend preview"></p>
+<h2 id="nginx-and-gunicorn-local-setup">NGINX and GUnicorn local setup</h2>
+<p>This is where the &lsquo;Flask 101&rsquo; tutorials generally stop. Flask uses Werkzeug to
+serve it&rsquo;s files in the development stage, and you cannot carry that forward
+to production. Flask is merely a microframework to do the routing and keep
+the application logic in the backend. You need an application server to act as
+an interface for Flask and a web server to serve the static files, because
+the application server is not optimized to do that. I went with NGINX because
+it&rsquo;s light and smaller than apache, and GUnicorn because it&rsquo;s pretty well
+documented.</p>
+<p>Before deploying the app on a VPS, I had to setup the same environment on my
+local machine. I was following this brilliant <a href="https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04">DigitalOcean tutorial</a>
+but it proved to be tedious, because I&rsquo;m using a mac, and UNIX-y
+stuff like <code>systemctl</code> and <code>launchd</code> don&rsquo;t play well (actually they don&rsquo;t play
+at all) on a mac. I then had to switch gears a bit and follow some part of
+<a href="http://cheng.logdown.com/posts/2015/01/27/deploy-django-nginx-gunicorn-on-mac-osx">Cheng&rsquo;s blog</a>
+on setting up a similar development setup on Mac OS X. The long and short of it
+is that NGINX on Mac doesn&rsquo;t ship with the <code>sites-available</code> and <code>sites-enabled</code>
+folders, so you will have to create them manually and add the <code>sites-enabled</code> one
+to <code>nginx.conf</code>. Once that is done, I made the <code>iit_dep_finder.conf</code> config
+file in <code>sites-available</code> and linked it to <code>sites-enabled</code>. One point of difference
+is the redirection of the API commands to the server; on the Mac machine,
+GUnicorn runs on port 9000, whereas on the Ubuntu server, I can create a service
+which has it&rsquo;s own socket, with the <code>unix:</code> prefix. This difference is
+reflected in the server, where I made a custom <code>gunicorn_prod.conf.py</code>.</p>
+<p>I had a lot of troubles with routing: the NGINX config files are not exactly
+very intuititve, and finally going to the docs and learning the difference
+between <code>root</code> and <code>alias</code> fixed it. <code>root</code> appends everything in the location
+to the specified path, whereas <code>alias</code> appends only the content after the
+location to the specified path.</p>
+<p>Once routing was fixed on the Mac, I did a test deployment to a Ubuntu machine
+I had hooked up to my local network, which was a success. I was then ready to
+move to the next part</p>
+<h2 id="lightsail-vps-setup-and-deployment">Lightsail (VPS) Setup and Deployment</h2>
+<p>This part ran in parallel with the development for a few days: turns out that
+Amazon needs you to fill in your payment details along with doing a phone
+number verification before your account setup is complete and you can use any
+of their services. This is really misleading, when they advertise a &lsquo;free month&rsquo;.
+It&rsquo;s free only in the sense that they&rsquo;re not drawing any blood, but the needle
+will be firmly inserted and kept in your flesh, ready to draw blood once the
+month is over. Amazon is not the only provider to use this strategy: all SaaS/PaaS/Services
+companies are doing this now. This will turn into a full fledged rant if I
+continue, so more on this in a later blog post maybe.</p>
+<p>After going back and forth with Amazon support over a couple days, my account
+was finally given a stamp of approval and allowed to partake in the holy services
+of AWS. I created the cheapest LightSail instance (with a free month :P) and
+<strong>assigned a static IP to it</strong>. This step is important, and Amazon does not
+do it automatically. After that, download the default SSH key and use it to
+SSH into the server from your terminal. You can now proceed to start installing
+stuff: <code>apt</code> works here, so does <code>snap</code>. The setup was pretty similar to the
+stuff I did on the local ubuntu machine, and once it was done, I could access
+the site by entering the static IP in my web browser.</p>
+<h2 id="domain-acquisition-and-setup">Domain Acquisition and Setup</h2>
+<p>This was decently tricky for me, as I knew nothing about DNS and domain routing
+and related concepts. I purchased a domain off GoDaddy, and it was not a good
+experience. GoDaddy provides pretty cheap domains compared to the competition,
+and they try to poke money out of you in every other way. Still, the domain
+setup and update times were pretty good, and I had linked my primary domain to
+my server in under 2 hours. Not bad for a n00b like me.</p>
+<p>The following day, I read more about DNS records, what A, CNAME and TXT records
+are. I then went ahead and created a small sitemap for my website, since I
+would also host my blog on the website</p>
+<pre tabindex="0"><code>www.aniruddhadeb.com - Blog linked to GitHub pages
+	- /&lt;Project&gt; - Project websites from GitHub
+
+apps.aniruddhadeb.com - My webapps
+	- /&lt;App&gt; - single webapp page (in this case, IIT_dep_finder)
+</code></pre><p>The URL for this project would then be <code>http://apps.aniruddhadeb.com/IIT_dep_finder</code>.
+I then had to add a CNAME to my DNS record with the <code>apps</code> prefix and redirect
+it to the LightSail static IP. Following this, I linked up a custom domain with
+GitHub Pages, the process for which is well documented <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site">here</a>.
+This was all on the domain side of things, and I had to configure my NGINX server
+to serve from <code>/IIT_dep_finder</code> instead of from the root, which was frustruating
+because I&rsquo;m not that good with the NGINX config. Practice makes perfect, as they
+say, and I&rsquo;m a greenfoot when it comes to full stack development.</p>
+<p>When all was said and done, I had a running website, with my blog on the main
+page and IIT dep finder on the URL above. All was good! or was it?</p>
+<h2 id="enabling-ssl-and-security">Enabling SSL and Security</h2>
+<p>This takes the cake for the most frustruating part of development. Not because
+acquiring and setting up an SSL certificate was hard (Thank you to <code>certbot</code>!),
+but because <strong>Amazon has their own fucking firewall in front of the LightSail
+instance</strong>, and it took me 3 hours to figure that out. Important disclaimer for
+all out there on LightSail: <strong>If you create a default ubuntu instance, ONLY
+ports <code>22</code> and <code>80</code> are enabled by default, which is why my server was getting
+NO HTTPS requests on <code>443</code></strong>. Setting up certbot was easy, as shown in the
+DigitalOcean tutorial above. CertBot takes your domain and hooks you up with an
+SSL certificate, which you have to renew every 90 days by typing in <code>certbot renew</code>.
+Certbot also takes care of adding the certificate to your NGINX config automatically
+so you don&rsquo;t have to do anything. However, when I tried hitting the link via
+<code>https://</code> instead of <code>http://</code>, the web browser would time out. I tried all
+of the follwing, in order after that:</p>
+<ul>
+<li>Chrome inspector, to see if the request is going through. Request was going through</li>
+<li>Change NGINX config to listen on port 80 and serve pages. Worked on port 80</li>
+<li>Duplicated the NGINX config and ripped the SSL stuff, to go back to normal. Worked</li>
+<li>Tried restoring the SSL config lines one line at a time. Did not work</li>
+<li>Tailed the logs. Nothing coming in.</li>
+<li>Realized that there might be a firewall. Checked <code>sudo ufw status</code>. Firewall
+was inactive</li>
+<li>Created a firewall and allowed selective ports through. No change, https://
+requests still timed out</li>
+<li>Realized that LightSail might have it&rsquo;s own firewall. Logged in to lightsail
+and saw the firewall settings.</li>
+</ul>
+<p><img src="https://i.gifer.com/2Jc.gif" alt="motherfucker"></p>
+<p>Needless to say, I took the rest of the day off after that.</p>
+<h2 id="conclusion-and-next-steps">Conclusion and next steps</h2>
+<p>While I have a website that is fortunately up and running well, there are still
+a lot of things left to do. Some of those include:</p>
+<ul>
+<li>Registering on search engines</li>
+<li>SEO with sitemaps and <code>robots.txt</code></li>
+<li>Adding Google Analytics</li>
+<li>Adding some ads?</li>
+<li>Improvements on the app itself: more cutoff data and smarter suggestions</li>
+</ul>
+<p>All of these things will be tackled one by one, but developing and setting up
+my first full stack app was a challenging experience and certainly one of the
+trickier projects I have undertaken so far.</p>
+<p>The WebApp is live at <a href="https://apps.aniruddhadeb.com/IIT_dep_finder">https://apps.aniruddhadeb.com/IIT_dep_finder</a>.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/python"
+      >Python</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/web-development"
+      >Web Development</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

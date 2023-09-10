@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math Notes on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/math-notes/</link>
+    <description>Recent content in Math Notes on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Aug 2020 17:37:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/math-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Math Notes: Lagrange interpolation</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</link>
+      <pubDate>Fri, 14 Aug 2020 17:37:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/math-notes-1/</guid>
+      <description>This is a small set of posts that come into the category of &amp;ldquo;notes&amp;rdquo;: self-explanations of concepts that I have recently picked up and found interesting.
+Lagrange Interpolation Lagrange Interpolation is a concept that allows us to find a polynomial of least degree passing through a given set of points. Specifically:
+If $S = {(x_i, y_i) : x_i, y_i \in R, 1 \lt i \le n}$, then the polynomial of least degree passing through all the points in $S$ is given by $$P(x) = \sum_{i=1}^n L_i(x) \cdot y_i$$ where $$L_i(x) = \frac{(x-x_1)(x-x_2)&amp;hellip;(x-x_{i-1})(x-x_{i+1})&amp;hellip;(x-x_n)} {(x_i-x_1)(x_i-x_2)&amp;hellip;(x_i-x_{i-1})(x_i-x_{i+1})&amp;hellip;(x_i-x_n)}$$ or simply, $$P(x) = \sum_{i=1}^n \frac{\prod_{r \ne i}(x-x_r)}{\prod_{r \ne i}{(x_i-x_r)}} \cdot y_i$$ note that the degree of polynomial $P &amp;lt; n$.</description>
+    </item>
+    
+  </channel>
+</rss>

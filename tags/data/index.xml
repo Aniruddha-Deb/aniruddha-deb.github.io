@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/data/</link>
+    <description>Recent content in Data on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Mar 2022 01:36:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</link>
+      <pubDate>Wed, 02 Mar 2022 01:36:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/iit-course-planner-1/</guid>
+      <description>I seldom get time to do anything other than course related activities nowadays, but in this midsem break, I did nothing other than roam around campus and laze in bed. And publish the first release of the IIT Delhi Course Planner Dataset (Also available on GitHub). This is a scraping of the IIT Delhi Courses of Study 2020-21, a behemoth 373-page PDF, which contains the course structure and information of all the Undergraduate and Postgraduate courses offered at IIT Delhi, and then some more.</description>
+    </item>
+    
+  </channel>
+</rss>

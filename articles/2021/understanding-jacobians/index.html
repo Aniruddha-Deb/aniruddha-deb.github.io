@@ -1,0 +1,476 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Understanding Jacobians - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$ $\newcommand{\ah}{\pmb{a} &#43; \pmb{h}}$ $\newcommand{\a}{\pmb{a}}$ $\newcommand{\h}{\pmb{h}}$
+The Jacobian Matrix Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear approximation of this function is given by $$f(a&#43;h) \approx f(a) &#43; hf&rsquo;(a)$$ This is pretty simple to do, and follows from taylor&rsquo;s expansion upto the first order.
+Let&rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$, it&rsquo;s linear approximation is given by $$f(\pmb{a} &#43; \pmb{h}) \approx f(\pmb{a}) &#43; \pmb{h}\cdot\nabla{f}(\a)$$ (bold type indicates vectors)." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Understanding Jacobians">
+<meta itemprop="description" content="$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$ $\newcommand{\ah}{\pmb{a} &#43; \pmb{h}}$ $\newcommand{\a}{\pmb{a}}$ $\newcommand{\h}{\pmb{h}}$
+The Jacobian Matrix Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear approximation of this function is given by $$f(a&#43;h) \approx f(a) &#43; hf&rsquo;(a)$$ This is pretty simple to do, and follows from taylor&rsquo;s expansion upto the first order.
+Let&rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$, it&rsquo;s linear approximation is given by $$f(\pmb{a} &#43; \pmb{h}) \approx f(\pmb{a}) &#43; \pmb{h}\cdot\nabla{f}(\a)$$ (bold type indicates vectors)."><meta itemprop="datePublished" content="2021-01-29T15:11:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-29T15:11:00+00:00" />
+<meta itemprop="wordCount" content="962">
+<meta itemprop="keywords" content="Mathematics," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Understanding Jacobians"/>
+<meta name="twitter:description" content="$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$ $\newcommand{\ah}{\pmb{a} &#43; \pmb{h}}$ $\newcommand{\a}{\pmb{a}}$ $\newcommand{\h}{\pmb{h}}$
+The Jacobian Matrix Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear approximation of this function is given by $$f(a&#43;h) \approx f(a) &#43; hf&rsquo;(a)$$ This is pretty simple to do, and follows from taylor&rsquo;s expansion upto the first order.
+Let&rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$, it&rsquo;s linear approximation is given by $$f(\pmb{a} &#43; \pmb{h}) \approx f(\pmb{a}) &#43; \pmb{h}\cdot\nabla{f}(\a)$$ (bold type indicates vectors)."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Understanding Jacobians</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jan 29, 2021</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>$\newcommand{\pdv}[2]{\frac{\partial{#1}}{\partial{#2}}}$
+$\newcommand{\ah}{\pmb{a} + \pmb{h}}$
+$\newcommand{\a}{\pmb{a}}$
+$\newcommand{\h}{\pmb{h}}$</p>
+<h2 id="the-jacobian-matrix">The Jacobian Matrix</h2>
+<p>Consider a function that maps reals to reals, $f:\Bbb{R} \to \Bbb{R}$. The linear
+approximation of this function is given by
+$$f(a+h) \approx f(a) + hf&rsquo;(a)$$
+This is pretty simple to do, and follows from taylor&rsquo;s expansion upto the first order.</p>
+<p>Let&rsquo;s try expanding this concept to vector spaces. For a function $f:\Bbb{R}^n \to \Bbb{R}$,
+it&rsquo;s linear approximation is given by
+$$f(\pmb{a} + \pmb{h}) \approx f(\pmb{a}) + \pmb{h}\cdot\nabla{f}(\a)$$
+(bold type indicates vectors). This also follows from the taylor theorem for
+multivariable functions.</p>
+<p>What do we do when we have a function mapping vector spaces to vector spaces?
+Consider the function $f:\Bbb{R}^n \to \Bbb{R}^m$. What would be the approximation
+term here?
+$$f(\pmb{a} + \pmb{h}) \approx f(\pmb{a})\ +\ ???$$</p>
+<p>Let&rsquo;s try to solve this by decomposing the function $f:\Bbb{R}^n \to \Bbb{R}^m$
+into $f_i:\Bbb{R}^n \to \Bbb{R}$, $i = 1, 2, \cdots ,m$. For each $f_i$, we get
+$$f_i(\pmb{a} + \pmb{h}) \approx f_i(\pmb{a}) + \pmb{h}\cdot\nabla{f_i}(\a)$$</p>
+<p>If we collect all these approximations into a vector by representing the term
+$\pmb{h}\cdot\nabla f_i(\a)$ as a matrix product, we get our approximation for $f$:</p>
+<p>$$\begin{bmatrix} f_1(\ah) \\ f_2(\ah) \\ \vdots \\ f_m(\ah) \end{bmatrix}
+\approx
+\begin{bmatrix} f_1(\a) \\ f_2(\a) \\ \vdots \\ f_m(\a) \end{bmatrix} +
+\begin{bmatrix} \nabla^T f_1(\a) \\ \nabla^T f_2(\a) \\ \vdots \\ \nabla^T f_m(\a) \end{bmatrix}
+\begin{bmatrix} h_1 \\ h_2 \\ \vdots \\ h_n \end{bmatrix}$$</p>
+<p>I&rsquo;ve written the functions out in matrix form for clarity. $\nabla^T$ denotes
+the transpose of the gradient vector. In simpler terms, we can rewrite this as
+$$f(\a + \h) \approx f(\a) + \pmb{\mathrm{J}}_f(\a)\h$$</p>
+<p>Here, $\pmb{\mathrm{J}}_f(\a)$ is called the <strong>Jacobian matrix</strong>, and when expanded, it looks
+something like this:</p>
+<p>$$\pmb{\mathrm{J}} = \begin{bmatrix} \pdv{f_1}{x_1} &amp; \cdots &amp; \pdv{f_1}{x_n} \\
+\vdots &amp; \ddots &amp; \vdots \\ \pdv{f_m}{x_1} &amp; \cdots &amp; \pdv{f_m}{x_n}\end{bmatrix}$$</p>
+<p>The Jacobian Matrix thus, is an analog of the gradient vector for functions that
+map vector spaces to vector spaces. Everything that we can do using gradients
+can be done in a more general form using the Jacobian Matrix. Consider the
+condition for differentiability of a multivariate scalar function $f:\Bbb{R}^n \to \Bbb{R}$:
+for $f$ to be differentiable at $\a$, we have the condition
+$$\lim_{||\h|| \to 0} \frac{f(\ah) - f(\a) - \h \cdot \nabla f(\a)}{||\h||} = 0$$
+For a function $f:\Bbb{R}^n \to \Bbb{R}^m$, the condition would be:
+$$\lim_{||\h|| \to 0} \frac{||f(\ah) - f(\a) - \pmb{\mathrm{J}}_f(\a)\h||}{||\h||} = 0$$</p>
+<p>here, $||\cdot||$ is the euclidean norm of the vector.</p>
+<h2 id="relating-jacobian-matrices-and-transformation-matrices">Relating Jacobian Matrices and Transformation Matrices</h2>
+<p>If you notice, the Jacobian Matrix need not be square; for the special case
+$n = m$, that is for $f:\Bbb{R}^n \to \Bbb{R}^n$, the Jacobian matrix is square
+and acts as a linear transformation between the two n-dimensional vector spaces,
+as shown below:
+$$\begin{bmatrix} df_1 \\ \vdots \\ df_n \end{bmatrix} =
+\begin{bmatrix} \pdv{f_1}{x_1} &amp; \cdots &amp; \pdv{f_1}{x_n} \\
+\vdots &amp; \ddots &amp; \vdots \\ \pdv{f_n}{x_1} &amp; \cdots &amp; \pdv{f_n}{x_n}\end{bmatrix}
+\begin{bmatrix} dx_1 \\ \vdots \\ dx_n \end{bmatrix}$$</p>
+<p>Therefore, this acts like a linear transformation between the infinitesimal
+elements in the space of $f$ and in the space of $x$. One more proof of scaling
+is involved before the use of jacobian matrices in integrals becomes clear.</p>
+<h2 id="scaling-factor-and-the-jacobian-determinant">Scaling factor and the Jacobian Determinant</h2>
+<p>Recall that for any linear transformation, <strong>the determinant of the transformation
+gives us the scaling factor</strong>, that is the ratio of the change in &lsquo;volume&rsquo; occupied
+by the vector. This is also known as a dilation transformation (because just the
+size is involved, without worrying about orientation).</p>
+<p>I&rsquo;ll provide a proof for the statement highlighted above in $\Bbb{R}^3$, but
+extending it to $\Bbb{R}^n$ is easy enough (an exercise for the reader, as they
+say in math textbooks :)). Consider the unit cube centered at origin, ie
+having it&rsquo;s 3 vectors as $(1,0,0), (0,1,0)$ and $(0,0,1)$. On applying a transformation
+to this cube, we get the vertices as the transformation matrix itself. Here&rsquo;s
+an image that speaks a thousand words (taken from <a href="http://hopsblog-hop.blogspot.com/2017/02/">Hop&rsquo;s Blog</a>):</p>
+<p><img src="res/cube_transform.jpg" alt="scaling"></p>
+<p>In algebra terms, we get</p>
+<p>$$\begin{bmatrix} a &amp; x &amp; l \\ b &amp; y &amp; m \\ c &amp; z &amp; n \end{bmatrix} \begin{bmatrix} 1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1 \end{bmatrix} =
+\begin{bmatrix} a &amp; x &amp; l \\ b &amp; y &amp; m \\ c &amp; z &amp; n \end{bmatrix}$$</p>
+<p>The volume of a parallelepiped is given by the determinants of the 3 edge vectors,
+and hence the volume of the transformed cube is
+$$V = \left| \begin{array}{c c c} a &amp; x &amp; l \\ b &amp; y &amp; m \\ c &amp; z &amp; n \end{array}\right|$$
+Which is the determinant of the linear transform that we started with. $\blacksquare$</p>
+<p><strong>This is the main principle that allows us to use the Jacobian in multiple
+integrals while changing variables</strong>: it scales up or down the size of the
+area or volume element we are using proportionately to the change of variables.</p>
+<h2 id="references">References:</h2>
+<ol>
+<li><a href="https://math.stackexchange.com/questions/14952/what-is-the-jacobian-matrix">What is the Jacobian Matrix</a>, a good MSE thread
+on the Jacobian Matrix</li>
+<li><a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian Matrix and Determinant Wikipedia page</a>, of course</li>
+<li><a href="https://www.quora.com/What-is-the-Jacobian-how-does-it-work-and-what-is-an-intuitive-explanation-of-the-Jacobian-and-a-change-of-basis#">A Quora question on Jacobian matrices</a> with another very nice answer</li>
+</ol>
+<h2 id="personal-comments">Personal comments:</h2>
+<p>I thoroughly enjoyed writing so much &lsquo;hard&rsquo; mathematics on this blog after a
+long time (last proper math post was on 11th September of Last year, and other
+math notes in the interim were published on the <a href="https://aniruddhadeb.com/MathNotes">MathNotes site</a>).
+A lot of calc textbooks don&rsquo;t go into detail on Jacobians, instead just using
+them like a gift of god that fell out of the sky. The bare minimum they would
+provide would be a diagram of domain transformation, and the cliched example of
+converting to polar integrals (the disc is transformed into a rectangle), but that
+would still not make intuitive sense: <strong>why the determinant? And why this
+weird matrix?</strong> were the questions that popped up in my head, and I hope I&rsquo;ve done
+justice to those questions in this article.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/mathematics"
+      >Mathematics</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

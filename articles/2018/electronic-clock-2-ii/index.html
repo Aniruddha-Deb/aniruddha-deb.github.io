@@ -51,7 +51,7 @@
   />
 
   
-  <title>Aniruddha Deb</title>
+  <title>Electronic Clock II - Generating the Clock Signal pt. 2 - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -59,11 +59,10 @@
   
   
   
-  
-  <meta
-    name="description"
-    content="A personal blog"
-  />
+  <meta name="description" content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
+###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+The truth table of this device looks somewhat like this:
+Note that the flip flop toggles only on the rising edge of the clock." />
   <meta name="author" content="Aniruddha Deb" />
   
 
@@ -149,25 +148,27 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://aniruddhadeb.com/blog-port/index.xml"
-    title="Aniruddha Deb"
-  />
-  
 
   
   
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Electronic Clock II - Generating the Clock Signal pt. 2">
+<meta itemprop="description" content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
+###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+The truth table of this device looks somewhat like this:
+Note that the flip flop toggles only on the rising edge of the clock."><meta itemprop="datePublished" content="2018-06-16T10:30:00+00:00" />
+<meta itemprop="dateModified" content="2018-06-16T10:30:00+00:00" />
+<meta itemprop="wordCount" content="187">
+<meta itemprop="keywords" content="" />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Electronic Clock II - Generating the Clock Signal pt. 2"/>
+<meta name="twitter:description" content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
+###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+The truth table of this device looks somewhat like this:
+Note that the flip flop toggles only on the rising edge of the clock."/>
 
   
   
@@ -306,186 +307,59 @@
     >
       
 
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Electronic Clock II - Generating the Clock Signal pt. 2</h1>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-<div class="-mt-2 mb-16 flex items-center">
-  
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
-      src="/pic.png"
-      alt="Aniruddha Deb"
-    />
-  </div>
-  
-  
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
-    <div class="break-words">
-      CSE Senior at IIT Delhi
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 16, 2018</time>
+      
+      
+      
+      
     </div>
-  </div>
-  
-</div>
+    
+  </header>
 
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+  <section><p>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:</p>
+<p>###Flip-Flop: Concept
+A Flip flop is a one-bit storage device which looks somewhat like this:</p>
+<p><img src="%7Bstatic%7Dres/flip_flop.png" alt="flip flop"></p>
+<p>The truth table of this device looks somewhat like this:</p>
+<p><img src="%7Bstatic%7Dres/jk-flip-flop-truth-table.jpg" alt="truth table"></p>
+<p>Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin.</p>
+<p>###Adding the flip-flop to our circuit:
+On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):</p>
+<p><img src="%7Bstatic%7Dres/1hz_schematic.png" alt="1hz schematic"></p>
+<p>As calculated, this gives us a frequency of 1 Hz on the Q pin</p>
+<p><img src="%7Bstatic%7Dres/pic.png" alt="oscilloscope output"></p>
+<p>This concludes our clock signal source. In the next post, we will have a look at counting seconds with the clock signal.</p>
+<p>- Deb</p>
 </section>
 
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
   
   
-  <a class="btn ml-auto" href="/blog-port/page/2/"
-    >Next Page →</a
-  >
-  
-</nav>
 
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
 
 
     </main>

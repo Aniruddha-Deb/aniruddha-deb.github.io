@@ -1,0 +1,409 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem) - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$
+There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \): $$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ $$I = \int_0^1 \frac 1x \left( x &#43; \frac{x^2}{2} &#43; \frac{x^3}{3} &#43; &hellip; \right) $$
+This expression nicely integrates to give $$I = 1 &#43; \frac{1}{2^2} &#43; \frac{1}{3^2} &#43; &hellip; = \boxed{\frac{\pi^2}{6}}$$
+The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\)." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)">
+<meta itemprop="description" content="Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$
+There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \): $$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ $$I = \int_0^1 \frac 1x \left( x &#43; \frac{x^2}{2} &#43; \frac{x^3}{3} &#43; &hellip; \right) $$
+This expression nicely integrates to give $$I = 1 &#43; \frac{1}{2^2} &#43; \frac{1}{3^2} &#43; &hellip; = \boxed{\frac{\pi^2}{6}}$$
+The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\)."><meta itemprop="datePublished" content="2020-04-29T22:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-29T22:30:00+00:00" />
+<meta itemprop="wordCount" content="698">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)"/>
+<meta name="twitter:description" content="Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$
+There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \): $$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$ $$I = \int_0^1 \frac 1x \left( x &#43; \frac{x^2}{2} &#43; \frac{x^3}{3} &#43; &hellip; \right) $$
+This expression nicely integrates to give $$I = 1 &#43; \frac{1}{2^2} &#43; \frac{1}{3^2} &#43; &hellip; = \boxed{\frac{\pi^2}{6}}$$
+The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\)."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Apr 29, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>Evaluate the integral $$\int_0^1 \frac{\log(x)}{x-1}dx$$</p>
+</blockquote>
+<p>There are a few methods of doing this: the first one uses the taylor series expansion of \( \log(1-x) \):
+$$I = -\int_0^1 \frac{\log(1-x)}{x}dx$$
+$$I = \int_0^1 \frac 1x \left( x + \frac{x^2}{2} + \frac{x^3}{3} + &hellip; \right) $$</p>
+<p>This expression nicely integrates to give
+$$I = 1 + \frac{1}{2^2} + \frac{1}{3^2} + &hellip; = \boxed{\frac{\pi^2}{6}}$$</p>
+<p>The last step here involves the summation \( \zeta(2) = \sum_{k=1}^{\infty} \frac 1 {k^2} = \frac{\pi^2}{6}\). This summation is known as the <a href="https://en.wikipedia.org/wiki/Basel_problem">Basel Problem</a> (more on this later). For now, we&rsquo;ll use this as a fact and move forward.</p>
+<p>Another solution that does not involve the taylor series requires some substitutions and limit evaluation.</p>
+<p>$$\begin{gather}
+I = \int_0^1\frac{\log x}{x-1} dx= -\int_0^1\log x(1+x+x^2+&hellip;)dx \\
+= -\int_0^1 \log x \sum_{r=0}^\infty x^r dx \\
+= -\sum_{r=0}^\infty\int_0^1x^r \log x dx
+\end{gather}$$</p>
+<p>let \(\log x = t \implies dx = e^t dt\):
+$$\begin{gather}I = -\sum_{r=0}^\infty \int_{-\infty}^0te^{(r+1)t}dt \\
+=-\sum_{r=0}^\infty \left[\frac{te^{(r+1)t}}{(r+1)} - \frac{e^{(r+1)t}}{(r+1)^2}\right]_{-\infty}^0\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} + \lim_{t \to -\infty} \frac{(t(r+1)-1)e^{(r+1)t}}{(r+1)^2} \right]\\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{(t(r+1)+1)}{e^{(r+1)t}(r+1)^2} \right] \\
+= \sum_{r=0}^\infty \left[\frac{1}{(r+1)^2} - \lim_{t \to \infty} \frac{r+1}{e^{(r+1)t}(r+1)^3} \right] \\
+= \sum_{r=0}^\infty \frac{1}{(r+1)^2}\\
+= \sum_{k=1}^\infty \frac{1}{k^2}\\
+\boxed{I = \frac{\pi^2}{6}}
+\end{gather}$$</p>
+<p>This solution also involves the same summation. There is, however, a solution that does not involve the summation: The general form of this integral is known as <a href="https://en.wikipedia.org/wiki/Spence%27s_function">Spence&rsquo;s Function</a> or Dilogarithm. It&rsquo;s a transcendental function which has the values \( Li_2(0) = 1 \) and \( Li_2(1) = \zeta(2) = \frac{\pi^2}{6} \). If you know these values beforehand, you can cut out the lengthy calculation.</p>
+<p>Back to the Basel Problem, and a bit of a primer first. The <a href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann-Zeta</a> function is a mathematical function that is defined as \( \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} \). Thus, a convenient way of referring to the sum \( \sum_{k=1}^{\infty} \frac{1}{k^2} \) would be \( \zeta(2) \), which I will use hereon. The quest for the value of \( \zeta(2) \) far predates the Riemann-zeta function (and Bernhard Riemann himself for that matter). This problem was first posed by Pietro Mengoli, an Italian mathematician who had proved that the harmonic series \( \left( \sum_{n=1}^{\infty} \frac 1n \right) \) diverges and also found the value of the sum \( \sum_{r=1}^\infty (-1)^{r-1} \frac 1r \) to be \( \log(2) \). The problem is called the Basel problem as Basel in Switzerland is the hometown of Euler, who solved the problem and the Bernoulli family, who unsuccessfully attacked the problem.</p>
+<p>The story goes that the first proof Euler gave was not accepted as it involved an unproven factorization of \( \sin(x) \). Euler being Euler, gave a second proof and a third proof as well, which were accepted. The initial proof is as follows: From the taylor series expansion of \( \sin(x) \), we have
+$$\sin(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + &hellip; $$</p>
+<p>\( \sin(x) \) can also be written as a function of it&rsquo;s roots, according to the <a href="https://en.wikipedia.org/wiki/Weierstrass_factorization_theorem">Weierstrass Factorization Theorem</a>. Note that this theorem was published a 100 years after Euler&rsquo;s proof, which is why Euler&rsquo;s proof was initially not accepted. Euler factorized \( \sin(x) \) as follows:
+$$\sin(x) = x(1 - \frac x\pi)(1 + \frac x\pi)(1 - \frac{x}{2\pi})(1+\frac{x}{2\pi})&hellip;$$ $$\sin(x) = x(1-\frac{x^2}{\pi^2})(1-\frac{x^2}{4\pi^2})&hellip; \tag{1}$$</p>
+<p>Why did Euler choose to factorize \( \sin(x) \) as such? He could also have chosen the function \(x(x-\pi)(x+\pi)(x-2\pi)(x+2\pi)&hellip;\). A simple trick I used to explain this is that the function chosen by Euler is bounded and also converges to a common limit. Dividing both sides by \( x \) and evaluating the limit \(lim_{x \to 0} \frac{\sin(x)}{x}\) in equation \( (1) \), we see that both sides converge to 1.</p>
+<p>Back to the proof, since we have two equivalent representations of \( \sin(x) \), all we have to do is compare the coefficients of \( x^3 \) in both of them to find the value of \( \zeta(2) \)
+$$\frac{1}{3!} = \frac{1}{\pi^2} \sum_{k=1}^{\infty} \frac{1}{k^2}$$
+$$\boxed{\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}}$$</p>
+<p>This completes the proof. A really beautiful and simple proof, this was the one of the two proofs (Along with <a href="https://en.wikipedia.org/wiki/Basel_problem#Cauchy's_proof">Cauchy&rsquo;s proof</a>) that I was able to understand. For more proofs involving higher order mathematics, you can check out the links <a href="http://math.cmu.edu/~bwsulliv/basel-problem.pdf">here</a> and <a href="https://math.stackexchange.com/questions/8337/different-methods-to-compute-sum-limits-k-1-infty-frac1k2-basel-pro">here</a>.</p>
+</section>
+
+  
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

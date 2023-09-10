@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COVID 19 on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/covid-19/</link>
+    <description>Recent content in COVID 19 on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2020 20:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>COVID-19 USA Analysis: effects of the lack of lockdown</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</link>
+      <pubDate>Fri, 29 May 2020 20:00:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-19-usa/</guid>
+      <description>The USA currently stands at 1.76 million COVID-19 cases. That&amp;rsquo;s more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here&amp;rsquo;s a graph showing the daily number of cases of COVID-19 in the USA.
+![Daily covid cases]({static}res/covid-19-usa/covid-cases-daily.png)
+Source: Google
+Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour.</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 Regression analysis Update</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</link>
+      <pubDate>Tue, 19 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis-update/</guid>
+      <description>The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.
+Y-axis: number of new cases per day. X-axis: number of days since first case.
+Here&amp;rsquo;s an animated view:
+The relevant files can be found in this GitHub repo.</description>
+    </item>
+    
+    <item>
+      <title>COVID 19 regression analysis</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</link>
+      <pubDate>Wed, 06 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/covid-regression-analysis/</guid>
+      <description>This is a regression analysis attempt for the COVID-19 spread data. The graphs represent total cases per day. The Orange graph is USA, the smaller graph on the left is China and the graph on the right is India. A Standard gaussian curve of the form $Ae^{-b(x-c)^2}$ is fitted on the data manually (They don&amp;rsquo;t fit the USA data very well though)
+The y-axis scale is 5000 cases/large division and 1000 cases/small division.</description>
+    </item>
+    
+  </channel>
+</rss>

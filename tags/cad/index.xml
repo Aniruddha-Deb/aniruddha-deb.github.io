@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CAD on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/cad/</link>
+    <description>Recent content in CAD on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Dec 2020 18:41:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/cad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intro to FreeCAD</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2020/freecad-intro/</link>
+      <pubDate>Thu, 31 Dec 2020 18:41:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2020/freecad-intro/</guid>
+      <description>MCP100 is a course that all first year undergrads in IITD have to go through. It consists of two parts: the first part is engineering drawing, using rulers and pencils, and CAD. After a disastrous drawing minor, the next phase involved getting to terms with CAD. The CAD package our course instructor decided on was FreeCAD, and since the minor ended, I&amp;rsquo;ve done nothing but create FreeCAD models.
+I&amp;rsquo;m not a pero1 at it though, (there&amp;rsquo;s still plenty to learn), and once that is done, there are plenty of bugs to fix :P.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,574 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Setting up my Mac (again) - Aniruddha Deb</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="This was also published on GitHub. The GitHub version is more up-to-date, and I won&rsquo;t be updating this one as frequently.
+System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk." />
+  <meta name="author" content="Aniruddha Deb" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/blog-port/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/theme.svg" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/pic.png" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/github.svg" />
+  
+  <link rel="preload" as="image" href="https://aniruddhadeb.com/blog-port/rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          
+          throwOnError : false
+        })
+    );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://aniruddhadeb.com/blog-port/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/blog-port/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/blog-port/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/blog-port/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://aniruddhadeb.com/blog-port/favicon/site.webmanifest">
+
+  
+  <meta name="generator" content="Hugo 0.115.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Setting up my Mac (again)">
+<meta itemprop="description" content="This was also published on GitHub. The GitHub version is more up-to-date, and I won&rsquo;t be updating this one as frequently.
+System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk."><meta itemprop="datePublished" content="2020-10-14T22:48:00+00:00" />
+<meta itemprop="dateModified" content="2020-10-14T22:48:00+00:00" />
+<meta itemprop="wordCount" content="817">
+<meta itemprop="keywords" content="Programming," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting up my Mac (again)"/>
+<meta name="twitter:description" content="This was also published on GitHub. The GitHub version is more up-to-date, and I won&rsquo;t be updating this one as frequently.
+System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://aniruddhadeb.com/blog-port"
+      >Aniruddha Deb</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/blog-port/articles/"
+        >Articles</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/hairband_dude"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Aniruddha-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="https://aniruddhadeb.com/blog-port/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Setting up my Mac (again)</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 14, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>This was also published on <a href="https://github.com/Aniruddha-Deb/SystemSetup">GitHub</a>.
+The GitHub version is more up-to-date, and I won&rsquo;t be updating this one as
+frequently.</p>
+<h1 id="system-setup-log">System Setup Log</h1>
+<p>My MacBook battery started to swell around a year back, and the machine
+became unusable 6 months ago and was put into temporary hibernation. Post my
+exams, I did a battery replacement and the computer was out of the hospital
+today, with a fresh operating system and a formatted disk. The last time I set
+this machine up, I did a halfhearted job of logging the process. This time, I&rsquo;ve
+done it properly :)</p>
+<h2 id="the-procedure">The Procedure</h2>
+<ul>
+<li>User Settings
+<ul>
+<li>System came with my home directory set as &lsquo;aniruddadeb&rsquo; and User name as
+&lsquo;Anirudda Deb&rsquo;</li>
+<li>Create a new admin account, log out of current account and into admin account</li>
+<li>In admin account, rename home directory to &lsquo;Sensei&rsquo; (or whatever name),
+and then in Preferences-&gt;Users and Groups, unlock and ctrl-click on your
+account for &lsquo;advanced settings&rsquo;</li>
+<li>In advanced settings, change the name to your name and name of the home
+directory to the name of your home directory. Make sure user name is same
+as that of home directory.</li>
+<li>Restart, log back in and delete admin account.</li>
+<li>Set the computer HostName, LocalHostName and ComputerName to MacBook-Pro:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo scutil --set HostName MacBook-Pro  
+</span></span><span style="display:flex;"><span>sudo scutil --set LocalHostName MacBook-Pro  
+</span></span><span style="display:flex;"><span>sudo scutil --set ComputerName MacBook-Pro  
+</span></span><span style="display:flex;"><span>dscacheutil -flushcache  
+</span></span><span style="display:flex;"><span>&lt;restart&gt;
+</span></span></code></pre></div><ul>
+<li>
+<p>System Prefs</p>
+<ul>
+<li>Resolution of 1440x900 (Displays)</li>
+<li>Uncheck natural scroll direction (Trackpad-&gt;Scroll and Zoom)</li>
+<li>Use F1, F2 as function keys (Keyboard)</li>
+<li>Don&rsquo;t show input menu in menu bar (Keyboard-&gt;Input Sources)</li>
+<li>Dark Mode<br>
+<img src="res/darkside.jpeg" alt="dark side meme"></li>
+<li>Change computer name to MacBook-Pro (Sharing)</li>
+</ul>
+</li>
+<li>
+<p>Google Chrome:</p>
+<ul>
+<li>Download, drag and drop</li>
+<li>Sign in and sync stuff</li>
+</ul>
+</li>
+<li>
+<p>Sublime Text</p>
+<ul>
+<li>Download, drag and drop</li>
+</ul>
+</li>
+<li>
+<p>Content</p>
+<ul>
+<li>Transfer personal files from HDD</li>
+<li>Screen background to <code>hackerfx_img.jpg</code></li>
+</ul>
+</li>
+<li>
+<p>Things 3</p>
+<ul>
+<li>Install from Mac App Store</li>
+<li>Sign in and sync tasks</li>
+</ul>
+</li>
+<li>
+<p>iTerm 2</p>
+<ul>
+<li>Download, drag and drop</li>
+</ul>
+</li>
+</ul>
+<p>By now, the system should be looking pretty good. Catalina uses <code>zsh</code> rather than
+bash, and clang rather than gcc, so porting some stuff over will be tricky, but
+we&rsquo;ll get to that in a minute.</p>
+<ul>
+<li>Git
+<ul>
+<li>download mac installer from <code>git-scm.com</code></li>
+<li>ctrl-click and click &lsquo;open&rsquo; (security won&rsquo;t let you click to open)</li>
+<li>follow installer guidelines
+? Will xcode command line tools eat this up?</li>
+</ul>
+</li>
+</ul>
+<p>&lt;DON&rsquo;T DO THIS!&gt;</p>
+<ul>
+<li>Python
+<ul>
+<li>Download latest stable installer from web</li>
+<li>Double click and install <br>
+! Don&rsquo;t do this because this does not install python properly; you have to
+hack around it and do a ton of exports and stuff. I had to uninstall
+python after this, using instructions from <a href="https://stackoverflow.com/questions/3819449/how-to-uninstall-python-2-7-on-a-mac-os-x-10-6-4/3819829#381982">here</a>9
+and <a href="https://superuser.com/questions/276840/uninstalling-python-3-on-a-mac">here</a>.
+Best way to install is to use <code>brew</code> (this keeps the python updated) and
+<code>pyenv</code>, so first install <code>brew</code>.</li>
+</ul>
+</li>
+</ul>
+<p>&lt;/DON&rsquo;T DO THIS!&gt;</p>
+<ul>
+<li>
+<p>XCode Command Line Tools</p>
+<ul>
+<li>GCC, <code>clang</code>, <code>make</code> etc etc</li>
+<li>Download from developer.apple.com, mount, use .pkg installer</li>
+<li>It&rsquo;s a 400 MB download and takes 2.54 GB of space on the system.</li>
+</ul>
+<ul>
+<li>This doesn&rsquo;t eat up git (<code>git --version</code> still gives git 2.27, so yay!)</li>
+</ul>
+</li>
+<li>
+<p>Homebrew</p>
+<ul>
+<li>Needed for practically everything :P</li>
+<li>visit brew.sh and copy-paste the installation command</li>
+<li>Again, a huge download here (350 MB)</li>
+</ul>
+</li>
+<li>
+<p>Python</p>
+<ul>
+<li>Use <code>pyenv</code> to download and install python, as shown in the article <a href="https://opensource.com/article/19/5/python-3-default-mac">https://opensource.com/article/19/5/python-3-default-mac</a></li>
+<li>In short, do the following:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install pyenv
+</span></span><span style="display:flex;"><span>pyenv install 3.9.0 <span style="color:#75715e"># replace with latest python version</span>
+</span></span><span style="display:flex;"><span>pyenv global 3.9.0 <span style="color:#75715e"># set 3.9.0 as global version</span>
+</span></span><span style="display:flex;"><span>pyenv version <span style="color:#75715e"># double check version</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &#34;$(pyenv init -)&#34;\nfi&#39;</span> &gt;&gt; ~/.zshrc <span style="color:#75715e"># voodoo magic that allows pyenv to work</span>
+</span></span><span style="display:flex;"><span>exit
+</span></span></code></pre></div><p>and now do <code>python -V</code> and <code>pip -V</code> to verify that python 3.9.0 is loaded</p>
+<ul>
+<li>
+<p>Vim</p>
+<ul>
+<li>Copy <code>.vim</code> and <code>.vimrc</code> from previous system</li>
+<li>check if clipboard copy/paste is enabled: <code>vim --version | grep clipboard</code>,
+a + sign appears if clipboard is enabled</li>
+</ul>
+</li>
+<li>
+<p>ZSH</p>
+<ul>
+<li>edit <code>.zprofile</code> and add <code>export CLICOLOR=1</code> for coloured output from commands</li>
+<li>add prompt tweaks <code>PS1='%F{green}%n@%m:%f %F{blue}%~%f %% '</code></li>
+</ul>
+</li>
+<li>
+<p>iTerm2</p>
+<ul>
+<li>Tweak profile; first, create a new profile</li>
+<li>Change background color to <code>333333</code>, foreground to <code>dddddd</code> and other colors
+to pastel colours</li>
+</ul>
+</li>
+<li>
+<p>Mail</p>
+<ul>
+<li>Log in to google</li>
+<li>Configure signatures, calendars, mail folders etc</li>
+</ul>
+</li>
+<li>
+<p>Projects</p>
+<ul>
+<li>This is the meaty part. Start with the blog:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --select-branch --branch source https://github.com/Aniruddha-Deb/aniruddha-deb.github.io 
+</span></span><span style="display:flex;"><span>mv aniruddha-deb.github.io blog
+</span></span><span style="display:flex;"><span>cd blog
+</span></span><span style="display:flex;"><span>virtualenv venv
+</span></span><span style="display:flex;"><span>source venv/bin/activate
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;venv&#34;</span> &gt; .gitignore
+</span></span><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span></code></pre></div><p>then whip up this article. I ran into a small hiccup while using <code>make html</code>:
+the version of Pelican that <code>pip</code> installed was 4.5.0, and that broke with the
+old Flex theme. I had made some modifications to the theme (MathJax) and didn&rsquo;t
+want to lose them by upgrading. So, I downgraded pelican to 4.2.0 and then made
+the files. Takeaway is use <code>make html DEBUG=1</code> for debugger output. Do a <code>make serve</code>
+to check out formatting, after which do <code>make github</code> to push to github pages, which is what
+you&rsquo;re reading now (this article has been made from the mac :)</p>
+<p>for further updates, refer to the repository linked above.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://aniruddhadeb.com/blog-port">Aniruddha Deb</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

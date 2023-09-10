@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/blog-port/tags/vim/</link>
+    <description>Recent content in Vim on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Oct 2022 09:45:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim Sutras</title>
+      <link>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</link>
+      <pubDate>Sat, 22 Oct 2022 09:45:00 +0000</pubDate>
+      
+      <guid>https://aniruddhadeb.com/blog-port/articles/2022/vim-sutras/</guid>
+      <description>When in Neovim, Do as the Luans do
+Unless you&amp;rsquo;re just starting out with Neovim or are extremely used to vim, it&amp;rsquo;s a good idea to set up Neovim using neovim-exclusive plugins. Most of them are written in lua, and integrate more nicely with the Neovim environment (async, faster startup, support for LSP and treesitter, etc).
+My initial neovim setup was just a clone of my vim setup, but when I noticed NERDTree wasn&amp;rsquo;t loading large directories quickly, I searched for a lighter, async file tree plugin for Neovim and came across NvimTree, and not long after, all my vim plugins were replaced with their neovim equivalents.</description>
+    </item>
+    
+  </channel>
+</rss>

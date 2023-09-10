@@ -51,7 +51,7 @@
   />
 
   
-  <title>Aniruddha Deb</title>
+  <title>Installing ns3: What worked - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -59,11 +59,7 @@
   
   
   
-  
-  <meta
-    name="description"
-    content="A personal blog"
-  />
+  <meta name="description" content="Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&rsquo;ll need to pass a different qmake, and brew won&rsquo;t link this to your system. Brew will inform you of this, and you&rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&rsquo;t pick it up." />
   <meta name="author" content="Aniruddha Deb" />
   
 
@@ -149,25 +145,21 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://aniruddhadeb.com/blog-port/index.xml"
-    title="Aniruddha Deb"
-  />
-  
 
   
   
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Installing ns3: What worked">
+<meta itemprop="description" content="Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&rsquo;ll need to pass a different qmake, and brew won&rsquo;t link this to your system. Brew will inform you of this, and you&rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&rsquo;t pick it up."><meta itemprop="datePublished" content="2022-10-06T18:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-06T18:00:00+00:00" />
+<meta itemprop="wordCount" content="226">
+<meta itemprop="keywords" content="Programming,Networks," />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Installing ns3: What worked"/>
+<meta name="twitter:description" content="Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&rsquo;ll need to pass a different qmake, and brew won&rsquo;t link this to your system. Brew will inform you of this, and you&rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&rsquo;t pick it up."/>
 
   
   
@@ -306,186 +298,75 @@
     >
       
 
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Installing ns3: What worked</h1>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-<div class="-mt-2 mb-16 flex items-center">
-  
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
-      src="/pic.png"
-      alt="Aniruddha Deb"
-    />
-  </div>
-  
-  
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
-    <div class="break-words">
-      CSE Senior at IIT Delhi
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 6, 2022</time>
+      
+      
+      
+      
     </div>
-  </div>
-  
-</div>
+    
+  </header>
 
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+  <section><h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>XCode CLT (which you should have)</li>
+<li>QT 5. Install via <code>brew install qt5</code>. NOTE: if you already have an updated version of Qt, you&rsquo;ll need to pass a different <code>qmake</code>, and brew won&rsquo;t link this to your system. Brew will inform you of this, and you&rsquo;ll manually need to pass the path to <code>qmake</code> while building. More on this later.</li>
+<li>Python</li>
+<li>? PyBindGen - I installed this via <code>pip install pybindgen</code>, but <code>waf</code> didn&rsquo;t pick it up. If anyone else succeeds, let me know in the comments.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Download the source code, unzip with <code>tar -xvf</code> and <code>cd</code> into the directory</li>
+<li>Use the following command to build: <code>./build.py [--qmake-path=/usr/local/opt/qt@5/bin/qmake] --enable-examples --enable-tests -- --build-profile=optimized --disable-werror</code> (Without the stuff in the square brackets, if you don&rsquo;t have a newer version of Qt preinstalled, and with the stuff but excluding the square brackets if you do have a newer version).</li>
+</ul>
+<p>Aaaand you&rsquo;re good! To test, change into the <code>ns-3.29</code> directory and do <code>./waf --run hello-simulator</code>. You should see <code>Hello Simulator</code> printed. To test NetAnim, go to the <code>netanim-3.108</code> folder and do <code>./NetAnim</code>, and you should see the NetAnim GUI pop up.</p>
+<p><strong>Update</strong>: The python bindings are generated when you run <code>waf</code> using python2 (no idea why not with python3). To generate them, go to <code>ns-3.29</code> and run <code>python2 waf configure --build-profile=optimized --enable-examples --enable-tests --disable-werror</code> and then <code>./waf build</code>.</p>
 </section>
 
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
   
   
-  <a class="btn ml-auto" href="/blog-port/page/2/"
-    >Next Page →</a
-  >
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/networks"
+      >Networks</a
+    >
+    
+  </footer>
   
-</nav>
 
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
 
 
     </main>

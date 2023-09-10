@@ -51,7 +51,7 @@
   />
 
   
-  <title>Aniruddha Deb</title>
+  <title>Variance Estimation in Heteroscedastic Regression - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -59,11 +59,7 @@
   
   
   
-  
-  <meta
-    name="description"
-    content="A personal blog"
-  />
+  <meta name="description" content="Most of the times, the regression models we need to fit don&rsquo;t have a constant standard deviation, but rather one that is some function of $x$. In this article, I try to learn a model with variance varying linearly as a function of x: kind of like a regression on variance" />
   <meta name="author" content="Aniruddha Deb" />
   
 
@@ -149,25 +145,21 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://aniruddhadeb.com/blog-port/index.xml"
-    title="Aniruddha Deb"
-  />
-  
 
   
   
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Variance Estimation in Heteroscedastic Regression">
+<meta itemprop="description" content="Most of the times, the regression models we need to fit don&rsquo;t have a constant standard deviation, but rather one that is some function of $x$. In this article, I try to learn a model with variance varying linearly as a function of x: kind of like a regression on variance"><meta itemprop="datePublished" content="2022-08-29T18:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-29T18:00:00+00:00" />
+<meta itemprop="wordCount" content="337">
+<meta itemprop="keywords" content="Programming,Machine Learning," />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Variance Estimation in Heteroscedastic Regression"/>
+<meta name="twitter:description" content="Most of the times, the regression models we need to fit don&rsquo;t have a constant standard deviation, but rather one that is some function of $x$. In this article, I try to learn a model with variance varying linearly as a function of x: kind of like a regression on variance"/>
 
   
   
@@ -306,186 +298,83 @@
     >
       
 
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Variance Estimation in Heteroscedastic Regression</h1>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-<div class="-mt-2 mb-16 flex items-center">
-  
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
-      src="/pic.png"
-      alt="Aniruddha Deb"
-    />
-  </div>
-  
-  
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
-    <div class="break-words">
-      CSE Senior at IIT Delhi
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Aug 29, 2022</time>
+      
+      
+      
+      
     </div>
-  </div>
-  
-</div>
+    
+  </header>
 
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+  <section><h2 id="motivation">Motivation</h2>
+<p>Most linear regression models assume</p>
+<p>$$y^{i} \approx \mathcal{N}(\theta^T x^{i}, \sigma^2)$$</p>
+<p>The standard closed form for this, obtained via finding the MLE estimate, gives $(X^T X)^{-1} X^T Y$, where $X$ is the example matrix of shape $(m,n)$ and $Y$ is the label vector of shape $(n,1)$. Note that $m$ is the number of training examples and $n$ is the number of features.</p>
+<p>However, the variance need not always be constant. Consider a model where the variance is varying linearly (or rather just increasing) with $x$: an example would be the <a href="https://www.kaggle.com/code/chanakyavivekkapoor/house-price-prediction">House prices dataset</a></p>
+<p><img src="res/house_prices.png" alt="img"></p>
+<p>While there are feature transformations that would make this less heteroscedastic, this article focuses on learning the variance parameters, so along with our regression estimate, we can provide a variance estimate as well</p>
+<h2 id="the-model">The Model</h2>
+<p>We assume that the <strong>standard deviation</strong> (not variance) is a linear function of $x$</p>
+<p>$$y^{i} \approx \mathcal{N}(\theta_m^T x^{i}, (\theta_v^T x^{i})^2)$$</p>
+<p>The log-likelihood function is hence</p>
+<p>$$\mathcal{LL}(\theta_m, \theta_v) = -\frac{m}{2} \log 2\pi - \sum_{i=1}^m \log \theta_v^T x^{i} - \frac{1}{2} \sum_{i=1}^m \frac{(y^{i} - \theta_m^T x^{i})^2}{(\theta_v^T x^{i})^2}$$</p>
+<p>Differentiating with respect to $\theta_v$ gives us the gradient for $\theta_v$:</p>
+<p>$$\frac{\partial \mathcal{LL}}{\partial \theta_v} = - \sum_{i=1}^m \frac{x^{i}}{\theta_v^T x^{i}} + \sum_{i=1}^m x^{i} \frac{(y^{i} - \theta_m^T x^{i})^2}{(\theta_v^T x^{i})^3}$$</p>
+<p>Rearranging this gives us, in a matrix form,</p>
+<p>$$\frac{\partial \mathcal{LL}}{\partial \theta_v}= X^T \left( \frac{E^2 - S^2}{S^3} \right)$$</p>
+<p>Where $X$ is our example matrix, $E$ is the sum of squared error vector and $S$ is the standard deviation vector. This is a nice, concise form that we can use in our code. However, because of the $V$ term in the denominator, <strong>I couldn&rsquo;t obtain a closed form for this, and had to do gradient descent on the parameters</strong>. Even getting into second derivative methods was getting a bit tedious. If you do find a closed form, let me know :)</p>
+<p>The derivative with respect to $\theta_m$ is pretty standard: we get</p>
+<p>$$\frac{\partial \mathcal{LL}}{\partial \theta_m} = \sum_{i=1}^m x^{i} \frac{(y^{i} - \theta_m^T x^{i})}{(\theta_v^T x^{i})^2}$$</p>
+<h2 id="an-implementation">An Implementation</h2>
+<p>Implementation was fairly straightforward, using gradient descent, and it converged nicely to some generated data</p>
+<p><img src="res/hetero_sd_model.png" alt="hetero_model"></p>
 </section>
 
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/blog-port/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
   
   
-  <a class="btn ml-auto" href="/blog-port/page/2/"
-    >Next Page →</a
-  >
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/programming"
+      >Programming</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://aniruddhadeb.com/blog-port/tags/machine-learning"
+      >Machine Learning</a
+    >
+    
+  </footer>
   
-</nav>
 
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+</article>
 
 
     </main>
