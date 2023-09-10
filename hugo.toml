@@ -1,4 +1,4 @@
-baseURL = 'https://aniruddhadeb.com/blog-port'
+baseURL = 'https://aniruddhadeb.com'
 languageCode = 'en-us'
 title = 'Aniruddha Deb'
 theme = 'paper'
