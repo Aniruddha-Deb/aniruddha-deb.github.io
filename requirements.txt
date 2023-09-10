@@ -1,3 +1,0 @@
-pelican==4.2.0
-markdown
-ghp-import
