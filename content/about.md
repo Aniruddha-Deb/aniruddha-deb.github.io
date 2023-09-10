@@ -1,5 +1,6 @@
 ---
 title: About 
+comments: false
 ---
 
 I'm a Senior Undergraduate in the Computer Science and Engineering Department
