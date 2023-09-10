@@ -340,11 +340,11 @@
 <p>This dataset is what is currently used in <a href="https://github.com/as1605/IITD-Bot">IITD-Bot&rsquo;s <code>info</code> command</a>, and it&rsquo;s nice to see it being used on the server :)</p>
 <h2 id="the-trickier-bits">The Trickier Bits</h2>
 <p>We now come to the problem of scraping and formatting the individual course plans themselves: <a href="https://tabula.technology/">Tabula</a> (specifically <a href="https://tabula-py.readthedocs.io/en/latest/">TabulaPy</a>) is the best fit for stuff like this, but the problem here is that <strong>The table boundaries and dimensions across courses are not the same!</strong> Here&rsquo;s an example, showing two programmes overlapping each other and how the content dimensions/boundaries are not the same across programmes (CS1 and MT1)</p>
-<p><img src="res/overlap_cs1_mt1.png" alt="CS1xMT1"></p>
+<p><img src="/articles/2022/res/overlap_cs1_mt1.png" alt="CS1xMT1"></p>
 <p>Even for courses where there is significant overlap, the structures need not be same (consider EE1 and MT1, the first section lines up perfectly, but further sections are a mess: EE1 ends in half the page, while MT fills it up with it&rsquo;s electives)</p>
-<p><img src="res/overlap_mt1_ee1.png" alt="MT1xEE1"></p>
+<p><img src="/articles/2022/res/overlap_mt1_ee1.png" alt="MT1xEE1"></p>
 <p>Another issue was that as previously mentioned, Dual Degree course structures have two parts to them: a B.Tech part and an M.Tech part, and scraping them along with the Bachelor degrees would lead to major issues</p>
-<p><img src="res/cs5.png" alt="CS5 example"></p>
+<p><img src="/articles/2022/res/cs5.png" alt="CS5 example"></p>
 <p>As a result, the best option I could come up with was to simply use some python code to generate most of the course structure. The Institute core is common across all courses: the only things that change across courses are PL,DC,DE,credit structure and recommended structure. Out of these, credit structure and recommended structure can be scraped without much pain. PL,DC,DE need to be manually scraped using good &lsquo;ol <code>Cmd-C Cmd-V</code> and edited and pasted using sublime text (multi cursors ftw here). I couldn&rsquo;t come up with a faster way than this due to the nonuniformity of the structure across pages, but it works.</p>
 <p>For dual degrees, I simply duplicated the corresponding single degree and used some helper code to generate the recommended structure, pasted that in and entered the rest using the same sublime ninja techniques as before</p>
 <h2 id="course-sem-mapping-and-anonymizing-data">Course-Sem Mapping and Anonymizing Data</h2>
@@ -364,9 +364,9 @@
 <h2 id="final-analysis-and-dependency-graph-generation">Final Analysis and Dependency Graph Generation</h2>
 <p>We are now ready to combine the course-offered slotting, the courses of study data (gives us prerequisites), and the course structure (gives us the courses to consider), and create a basic dependency graph.</p>
 <p>The first order of action is to load the CoS course data into XML, and generate a few extra colums so that we know which semster the course is offered in (here, a 3 implies offered in both semesters, a 2 in the even semester only, and a 1 in the odd semester only. 0 implies that it was not offered in either semster in this academic year)</p>
-<p><img src="res/cos_df_head.png" alt="sems"></p>
+<p><img src="/articles/2022/res/cos_df_head.png" alt="sems"></p>
 <p>After this, we read in the course dependency XML files, and generate the dependency graphs using NetworkX and the data in the course dataframe. A generic NetworkX graph does not space the nodes out properly, which is why we use NetworkX and pydot (a python GraphViz API) to generate the final PNG files. The final result, is indeed quite pretty</p>
-<p><img src="res/graphs/CS1.png" alt="CS1"></p>
+<p><img src="/articles/2022/res/graphs/CS1.png" alt="CS1"></p>
 <h2 id="what-next">What Next?</h2>
 <p>Right now, there are two major gripes relating to conditional support:</p>
 <ol>
@@ -383,22 +383,22 @@
 <p>I will keep making more blogs as I (or others) continute to contribute and work towards making a concrete portal out of this. Let&rsquo;s see where this journey leads!</p>
 <h2 id="appendix-course-dependency-graphs">Appendix: Course Dependency Graphs</h2>
 <p>(Orange =&gt; offered in both sems, green =&gt; even sem only, blue =&gt; odd sem only, gray =&gt; no sem slotting info available)</p>
-<p>AM1: <img src="res/graphs/AM1.png" alt="AM1"></p>
-<p>BB1: <img src="res/graphs/BB1.png" alt="BB1"></p>
-<p>CE1: <img src="res/graphs/CE1.png" alt="CE1"></p>
-<p>CH1: <img src="res/graphs/CH1.png" alt="CH1"></p>
-<p>CH7: <img src="res/graphs/CH7.png" alt="CH7"></p>
-<p>CS1: <img src="res/graphs/CS1.png" alt="CS1"></p>
-<p>CS5: <img src="res/graphs/CS5.png" alt="CS5"></p>
-<p>EE1: <img src="res/graphs/EE1.png" alt="EE1"></p>
-<p>EE3: <img src="res/graphs/EE3.png" alt="EE3"></p>
-<p>ME1: <img src="res/graphs/ME1.png" alt="ME1"></p>
-<p>ME2: <img src="res/graphs/ME2.png" alt="ME2"></p>
-<p>MS1: <img src="res/graphs/MS1.png" alt="MS1"></p>
-<p>MT1: <img src="res/graphs/MT1.png" alt="MT1"></p>
-<p>MT6: <img src="res/graphs/MT6.png" alt="MT6"></p>
-<p>PH1: <img src="res/graphs/PH1.png" alt="PH1"></p>
-<p>TT1: <img src="res/graphs/TT1.png" alt="TT1"></p>
+<p>AM1: <img src="/articles/2022/res/graphs/AM1.png" alt="AM1"></p>
+<p>BB1: <img src="/articles/2022/res/graphs/BB1.png" alt="BB1"></p>
+<p>CE1: <img src="/articles/2022/res/graphs/CE1.png" alt="CE1"></p>
+<p>CH1: <img src="/articles/2022/res/graphs/CH1.png" alt="CH1"></p>
+<p>CH7: <img src="/articles/2022/res/graphs/CH7.png" alt="CH7"></p>
+<p>CS1: <img src="/articles/2022/res/graphs/CS1.png" alt="CS1"></p>
+<p>CS5: <img src="/articles/2022/res/graphs/CS5.png" alt="CS5"></p>
+<p>EE1: <img src="/articles/2022/res/graphs/EE1.png" alt="EE1"></p>
+<p>EE3: <img src="/articles/2022/res/graphs/EE3.png" alt="EE3"></p>
+<p>ME1: <img src="/articles/2022/res/graphs/ME1.png" alt="ME1"></p>
+<p>ME2: <img src="/articles/2022/res/graphs/ME2.png" alt="ME2"></p>
+<p>MS1: <img src="/articles/2022/res/graphs/MS1.png" alt="MS1"></p>
+<p>MT1: <img src="/articles/2022/res/graphs/MT1.png" alt="MT1"></p>
+<p>MT6: <img src="/articles/2022/res/graphs/MT6.png" alt="MT6"></p>
+<p>PH1: <img src="/articles/2022/res/graphs/PH1.png" alt="PH1"></p>
+<p>TT1: <img src="/articles/2022/res/graphs/TT1.png" alt="TT1"></p>
 <hr>
 <p><em>This is Part 1 of a series documenting the development of IIT Course Planner: a set of tools and utilities to help plan your course at IIT Delhi</em></p>
 <p><sup>1</sup>The analysis I had in mind was to make a ranking of the various departments on offer, then use a standard matching algorithm to match users to departments (basically offer the highest-ranked course available to the user). The simpler first idea was to use a multiparametric regression model to fit ranks to courses. Neither of these ideas flew, because a) <a href="https://arxiv.org/pdf/1904.06698.pdf">The JoSAA allocation algorithm is amazingly sophisticated</a>, and b) the data does not map sex/caste to roll number, which would break any regression/ranking model I could think of. Still looking for a clever workaround for this one.</p>

@@ -339,10 +339,10 @@ a language that was closer to the system, and that language was C.</p>
 <p>Before that, here are some graphs from the Java version. This graph shows the
 time taken in nanos (y axis) vs array size (x axis). The $O(n^2)$ characteristic is
 clearly visible.</p>
-<p><img src="res/javasort_svt.png" alt="time taken vs array size"></p>
+<p><img src="/articles/2020/res/javasort_svt.png" alt="time taken vs array size"></p>
 <p>Here&rsquo;s one more, showing the time taken vs array entropy, which is linear in
 nature.</p>
-<p><img src="res/javasort_tve.png" alt="time taken vs array entropy"></p>
+<p><img src="/articles/2020/res/javasort_tve.png" alt="time taken vs array entropy"></p>
 <h2 id="moving-to-c">Moving to C</h2>
 <p>Moving to C was difficult. The things I had to implement manually were:</p>
 <ol>
@@ -520,9 +520,9 @@ go over a single point multiple times. This raises problems if your alpha is
 less than 1. To counter this, you only draw lines when the x (or the y) changes
 and if x is not equal to y. Here&rsquo;s what the result would look like if you went
 over lines multiple times:</p>
-<p><img src="res/circle_fill_mult.png" alt="multiple rendering"></p>
+<p><img src="/articles/2020/res/circle_fill_mult.png" alt="multiple rendering"></p>
 <p>Here&rsquo;s what it looks like if you go over each pixel once</p>
-<p><img src="res/circle_fill_sing.png" alt="single rendering"></p>
+<p><img src="/articles/2020/res/circle_fill_sing.png" alt="single rendering"></p>
 <p>Much better!</p>
 <h3 id="dashed-line-drawing-algorithm">Dashed Line Drawing Algorithm</h3>
 <p>This is an implementation of the Bresenham algorithm for drawing lines. I needed
@@ -596,7 +596,7 @@ where and when.</p>
 </span></span></code></pre></div><p>This produces some pretty good results, and I can live with the distances not
 exactly adhering to Pythagoras theorem, as highlighted by the rectangular rather
 than radial boundaries for the dashes.</p>
-<p><img src="res/dotted_line.png" alt="dashed line"></p>
+<p><img src="/articles/2020/res/dotted_line.png" alt="dashed line"></p>
 <h3 id="graph-scale-derivation-algorithm">Graph Scale Derivation Algorithm</h3>
 <p>After making the primitive drawing algorithms, we can move on to drawing the
 graph. Determining the scale of the graph is the only mathematical and challenging
@@ -723,7 +723,7 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This didn&rsquo;t work the first time and threw a segfault in my face :_( How typical
 of C. I did debug it, and I&rsquo;m pretty pleased with the results.</p>
-<p><img src="res/plotter_example.png" alt="Plotter example"></p>
+<p><img src="/articles/2020/res/plotter_example.png" alt="Plotter example"></p>
 <h3 id="conclusion">Conclusion</h3>
 <p>There are a lot of things that I have to improve here, some of which include</p>
 <ol>

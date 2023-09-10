@@ -345,14 +345,14 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// some code here
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>getaddrinfo(<span style="color:#66d9ef">nullptr</span>, std<span style="color:#f92672">::</span>to_string(port).c_str(), <span style="color:#f92672">&amp;</span>hints, <span style="color:#f92672">&amp;</span>res);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
+</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(<span style="color:#f92672">/</span>articles<span style="color:#f92672">/</span><span style="color:#ae81ff">2022</span><span style="color:#f92672">/</span>res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> reuse <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, <span style="color:#f92672">&amp;</span>reuse, <span style="color:#66d9ef">sizeof</span>(reuse));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>bind(fd, res<span style="color:#f92672">-&gt;</span>ai_addr, res<span style="color:#f92672">-&gt;</span>ai_addrlen);
 </span></span><span style="display:flex;"><span>fcntl(fd, F_SETFL, O_NONBLOCK);
-</span></span><span style="display:flex;"><span>freeaddrinfo(res);
+</span></span><span style="display:flex;"><span>freeaddrinfo(<span style="color:#f92672">/</span>articles<span style="color:#f92672">/</span><span style="color:#ae81ff">2022</span><span style="color:#f92672">/</span>res);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// more code here
 </span></span></span></code></pre></div><p>Do you see the error? Exactly. You&rsquo;ll never see the error, until it blows up in your face 500 lines later. Your server needs to fail fast while debugging. There&rsquo;s no shame in throwing assert statements around like confetti.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>string errstr(std<span style="color:#f92672">::</span>string msg) {
@@ -364,7 +364,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> getaddrinfo(<span style="color:#66d9ef">nullptr</span>, std<span style="color:#f92672">::</span>to_string(port).c_str(), <span style="color:#f92672">&amp;</span>hints, <span style="color:#f92672">&amp;</span>res);
 </span></span><span style="display:flex;"><span>assert (ret <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not get address information&#34;</span>));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
+</span></span><span style="display:flex;"><span>uintptr_t fd <span style="color:#f92672">=</span> socket(<span style="color:#f92672">/</span>articles<span style="color:#f92672">/</span><span style="color:#ae81ff">2022</span><span style="color:#f92672">/</span>res<span style="color:#f92672">-&gt;</span>ai_family, res<span style="color:#f92672">-&gt;</span>ai_socktype, res<span style="color:#f92672">-&gt;</span>ai_protocol);
 </span></span><span style="display:flex;"><span>assert (fd <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> and errstr(<span style="color:#e6db74">&#34;Could not create socket&#34;</span>));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> reuse <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
@@ -460,7 +460,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span>
 </span></span></code></pre></div><p>The final source design looked like this (leaving out other non-relevant items)</p>
 <center>
-![protocol](res/protocol.svg)
+![protocol](/articles/2022/res/protocol.svg)
 </center>
 <h2 id="day-five">Day Five</h2>
 <blockquote>
@@ -470,7 +470,7 @@
 <p>After messing around with an ethernet cable, a friend&rsquo;s laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that <a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image">it doesn&rsquo;t have a default password</a>, and an ISO containing login credentials had to be booted with the image to allow you to login, <em>and that too only via SSH</em>.</p>
 <p>Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly.</p>
 <center>
-![qemu](res/qemu_vm_2.png)
+![qemu](/articles/2022/res/qemu_vm_2.png)
 </center>
 <p>QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that&rsquo;s for another post :)</p>
 <p>With access to a linux machine, there were two choices:</p>
@@ -495,7 +495,7 @@
 <p>The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.</p>
 <p>Here are some numbers. For context, A2_small_file.txt is a 100kB text file.</p>
 <center>
-![times](res/time_clients.svg)
+![times](/articles/2022/res/time_clients.svg)
 </center>
 <h2 id="day-seven">Day Seven</h2>
 <blockquote>

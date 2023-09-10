@@ -327,7 +327,7 @@ A CSP is generally represented as a graph, with each variable as a node and a co
 <p>A CSP is generally represented as a graph, with each variable as a node and a constraint between two variables as an edge. <a href="https://en.wikipedia.org/wiki/Sudoku_graph">Sudoku Graphs</a> are well-studied, and here&rsquo;s an example of a 9x9 one (courtesy <a href="https://www.researchgate.net/figure/b-Graph-coloring-of-Sudoku_fig9_311668725">Artacho and Campoy</a>)</p>
 <p><img src="https://www.researchgate.net/profile/Ruben-Campoy/publication/311668725/figure/fig9/AS:439849451823105@1481879689246/b-Graph-coloring-of-Sudoku.png" alt="sudoku_graph"></p>
 <p>This gives us a nice formulation, and allows us to search for a solution on this graph using backtracking search (Pseudocode courtesy <a href="https://www.cse.iitd.ac.in/~rohanpaul/teaching/data/2022-COL333/L06-Constraint-Satisfaction.pdf">Rohan Paul&rsquo;s Slides</a>)</p>
-<p><img src="res/backtracking_search_pseudocode.png" alt="csp_bts"></p>
+<p><img src="/articles/2022/res/backtracking_search_pseudocode.png" alt="csp_bts"></p>
 <p>The two key algorithmic decisions to make here are:</p>
 <ol>
 <li>In what order do we select unassigned variables</li>
