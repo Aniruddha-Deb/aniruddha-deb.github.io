@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Electronics on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/categories/electronics/</link>
+    <link>https://aniruddhadeb.com/categories/electronics/</link>
     <description>Recent content in Electronics on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2020 12:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/categories/electronics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jun 2020 12:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/categories/electronics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Icosahedron Resistor Network</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</link>
+      <link>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</link>
       <pubDate>Tue, 09 Jun 2020 12:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</guid>
       <description>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:
 ![icosahedron]({static}res/icosa_res_net/icosa_1.png)
 A) The resistance between points A and B is $\frac{r}{2}$
@@ -24,20 +24,20 @@ This question looks really tricky.</description>
     
     <item>
       <title>An Interesting Electronics Problem</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/interesting-electronics-problem/</link>
+      <link>https://aniruddhadeb.com/articles/2020/interesting-electronics-problem/</link>
       <pubDate>Wed, 29 Apr 2020 22:20:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/interesting-electronics-problem/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/interesting-electronics-problem/</guid>
       <description>An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network
 This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we&amp;rsquo;ll use the concept of symmetry and a few tricks. Let&amp;rsquo;s start by connecting a battery to the circuit and labeling the currents and loops</description>
     </item>
     
     <item>
       <title>Electronic Clock II - Generating the Clock Signal pt. 2</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-ii/</link>
+      <link>https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii/</link>
       <pubDate>Sat, 16 Jun 2018 10:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-ii/</guid>
+      <guid>https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii/</guid>
       <description>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
 ###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
 The truth table of this device looks somewhat like this:
@@ -46,20 +46,20 @@ Note that the flip flop toggles only on the rising edge of the clock.</descripti
     
     <item>
       <title>Electronic Clock II - Generating the Clock Signal pt.1</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-i/</link>
+      <link>https://aniruddhadeb.com/articles/2018/electronic-clock-2-i/</link>
       <pubDate>Thu, 14 Jun 2018 22:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-2-i/</guid>
+      <guid>https://aniruddhadeb.com/articles/2018/electronic-clock-2-i/</guid>
       <description>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&amp;rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
 ###Importance of the Signal in a clock Every clock is only as accurate as it&amp;rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&amp;rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&amp;rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks).</description>
     </item>
     
     <item>
       <title>Electronic Clock I - Getting Started</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-1/</link>
+      <link>https://aniruddhadeb.com/articles/2018/electronic-clock-1/</link>
       <pubDate>Thu, 14 Jun 2018 10:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2018/electronic-clock-1/</guid>
+      <guid>https://aniruddhadeb.com/articles/2018/electronic-clock-1/</guid>
       <description>This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&amp;rsquo;re subscribed to the RSS feed so that you don&amp;rsquo;t miss out on anything!
 ###Getting Started An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
 The first task is enumerating the requirements of the clock. A humble requirement list looks like this:</description>

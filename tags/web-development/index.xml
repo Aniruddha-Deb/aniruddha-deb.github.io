@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web Development on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/web-development/</link>
+    <link>https://aniruddhadeb.com/tags/web-development/</link>
     <description>Recent content in Web Development on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Oct 2020 20:39:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2020 20:39:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IIT Department Finder Launch (plus personal website domain)</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</link>
+      <link>https://aniruddhadeb.com/articles/2020/iit-dep-finder/</link>
       <pubDate>Wed, 28 Oct 2020 20:39:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-dep-finder/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/iit-dep-finder/</guid>
       <description>For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&amp;rsquo;t noticed :).</description>
     </item>
     

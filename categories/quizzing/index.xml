@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Quizzing on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/categories/quizzing/</link>
+    <link>https://aniruddhadeb.com/categories/quizzing/</link>
     <description>Recent content in Quizzing on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Dec 2017 10:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/categories/quizzing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Dec 2017 10:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/categories/quizzing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCS IT Wiz - an Experience</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2017/tcsitwiz-experience/</link>
+      <link>https://aniruddhadeb.com/articles/2017/tcsitwiz-experience/</link>
       <pubDate>Thu, 14 Dec 2017 10:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2017/tcsitwiz-experience/</guid>
+      <guid>https://aniruddhadeb.com/articles/2017/tcsitwiz-experience/</guid>
       <description>A Firsthand account of the TCS IT Wiz 2017 Journey</description>
     </item>
     
     <item>
       <title>National Safety Science Quiz - an Experience</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2017/nssq-experience/</link>
+      <link>https://aniruddhadeb.com/articles/2017/nssq-experience/</link>
       <pubDate>Sat, 09 Dec 2017 10:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2017/nssq-experience/</guid>
+      <guid>https://aniruddhadeb.com/articles/2017/nssq-experience/</guid>
       <description>A Firsthand account of NSSQ 2017</description>
     </item>
     

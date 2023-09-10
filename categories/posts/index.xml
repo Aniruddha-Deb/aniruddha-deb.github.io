@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/categories/posts/</link>
+    <link>https://aniruddhadeb.com/categories/posts/</link>
     <description>Recent content in Posts on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Apr 2020 10:20:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/categories/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Apr 2020 10:20:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/categories/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MathJax Test</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/mathjax-test/</link>
+      <link>https://aniruddhadeb.com/articles/2020/mathjax-test/</link>
       <pubDate>Wed, 29 Apr 2020 10:20:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/mathjax-test/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/mathjax-test/</guid>
       <description>This is a test to see if MathJax works on blogger.
 For \(\alpha, \beta \gt -1\), find the value of \(\lim_{n \to \infty} n^{\beta - \alpha} \frac{1^\alpha + 2^\alpha + 3^\alpha + &amp;hellip; + n^\alpha}{1^\beta + 2^\beta + 3^\beta + &amp;hellip; + n^\beta}\)
 So we have

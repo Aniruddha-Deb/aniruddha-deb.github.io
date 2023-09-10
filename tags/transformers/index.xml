@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Transformers on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/transformers/</link>
+    <link>https://aniruddhadeb.com/tags/transformers/</link>
     <description>Recent content in Transformers on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Mar 2023 00:12:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Mar 2023 00:12:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Properly Illustrated Transformer</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/</link>
+      <link>https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer/</link>
       <pubDate>Wed, 08 Mar 2023 00:12:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2023/properly-illustrated-transformer/</guid>
+      <guid>https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer/</guid>
       <description>The title is (obviously) a shout out to Jay Alammar&amp;rsquo;s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
 PS: Yes, this is just the encoder stack. I&amp;rsquo;ll probably make the decoder stack in a part 2?</description>
     </item>

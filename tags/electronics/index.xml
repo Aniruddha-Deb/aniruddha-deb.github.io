@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Electronics on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/electronics/</link>
+    <link>https://aniruddhadeb.com/tags/electronics/</link>
     <description>Recent content in Electronics on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2020 12:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/electronics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jun 2020 12:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/electronics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Icosahedron Resistor Network</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</link>
+      <link>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</link>
       <pubDate>Tue, 09 Jun 2020 12:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/icosahedron-resistor-network/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</guid>
       <description>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:
 ![icosahedron]({static}res/icosa_res_net/icosa_1.png)
 A) The resistance between points A and B is $\frac{r}{2}$

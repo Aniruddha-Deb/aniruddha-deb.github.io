@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Operating Systems on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/operating-systems/</link>
+    <link>https://aniruddhadeb.com/tags/operating-systems/</link>
     <description>Recent content in Operating Systems on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Mar 2023 23:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/operating-systems/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Mar 2023 23:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/operating-systems/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>&lt;strike&gt;M&lt;/strike&gt;RCU comic</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</link>
+      <link>https://aniruddhadeb.com/articles/2023/rcu-comic/</link>
       <pubDate>Sun, 19 Mar 2023 23:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2023/rcu-comic/</guid>
+      <guid>https://aniruddhadeb.com/articles/2023/rcu-comic/</guid>
       <description>Drawn from Wikipedia&amp;rsquo;s amazing RCU explanation.</description>
     </item>
     

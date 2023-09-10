@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JEE on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/jee/</link>
+    <link>https://aniruddhadeb.com/tags/jee/</link>
     <description>Recent content in JEE on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Sep 2022 17:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/jee/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Sep 2022 17:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/jee/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The JEE never fails to amaze</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</link>
+      <link>https://aniruddhadeb.com/articles/2022/jee-2022-problem/</link>
       <pubDate>Mon, 19 Sep 2022 17:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2022/jee-2022-problem/</guid>
+      <guid>https://aniruddhadeb.com/articles/2022/jee-2022-problem/</guid>
       <description>I promised I wouldn&amp;rsquo;t look at the JEE 2022 paper, but couldn&amp;rsquo;t help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India&amp;rsquo;s students difficult, and they never cease to amaze.
 Welp, this will be a short one. Let&amp;rsquo;s cut to the chase!
 The greatest integer less than or equal to $$\int_1^2 \log_2(x^3 + 1) dx + \int_1^{\log_2 9} (2^x - 1)^{1/3} dx$$ is _______</description>
@@ -20,19 +20,19 @@ The greatest integer less than or equal to $$\int_1^2 \log_2(x^3 + 1) dx + \int_
     
     <item>
       <title>To IIT Delhi and beyond</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/iit-delhi-mnc/</link>
+      <link>https://aniruddhadeb.com/articles/2020/iit-delhi-mnc/</link>
       <pubDate>Mon, 19 Oct 2020 14:23:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/iit-delhi-mnc/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/iit-delhi-mnc/</guid>
       <description>I think an update on the JEE Situation has been due for a long time, and I&amp;rsquo;ll try to compress the past few months into this single post. Long story short, my JEE(M) was held on 2nd September, in the evening shift. After giving my best and getting a 260/300, I was disappointed (putting it mildly) to see the CRL of 1861 on my screen. AITS JEE(A) Mocks followed, and after giving three of them, I had to give my BITSAT.</description>
     </item>
     
     <item>
       <title>A Good JEE Main (September) problem</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</link>
+      <link>https://aniruddhadeb.com/articles/2020/good-jee-main-problem/</link>
       <pubDate>Fri, 11 Sep 2020 09:01:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/good-jee-main-problem/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/good-jee-main-problem/</guid>
       <description>This beauty came in the 2nd September shift 2 paper:
 Let $A = \{ X = (x, y, z)^T : PX = 0 \text{ and } x^2+y^2+z^2=1 \}$, where $$P = \left[ \begin{array}{l l l}1&amp;amp;2&amp;amp;1 \\ -2&amp;amp;3&amp;amp;-4 \\ 1&amp;amp;9&amp;amp;-1 \end{array}\right]$$ then the set A:
 is a singleton is an empty set contains exactly two elements contains more than two elements This is a great problem, one that should have featured in advanced rather than main.</description>
@@ -40,10 +40,10 @@ is a singleton is an empty set contains exactly two elements contains more than 
     
     <item>
       <title>Debunking Concepts of Physics, and why you should NOT use this book.</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/debunking-concepts-of-physics/</link>
+      <link>https://aniruddhadeb.com/articles/2020/debunking-concepts-of-physics/</link>
       <pubDate>Mon, 22 Jun 2020 11:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/debunking-concepts-of-physics/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/debunking-concepts-of-physics/</guid>
       <description>I generally don&amp;rsquo;t post stuff that is extremely specific to JEE, but this time I&amp;rsquo;m willing to make an exception.
 A lot has been said about Concepts of Physics by Dr. H. C.Verma and it&amp;rsquo;s usefulness for JEE Preparation. The website itself claims that
 Students from the past twenty years of JEE preparation used this book and have successfully cleared JEE. So, you cannot neglect this book. A common problem that was observed with many JEE aspirants is that they follow multiple books in parallel, thereby ending up in confusion.</description>

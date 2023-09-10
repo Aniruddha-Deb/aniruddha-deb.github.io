@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/categories/</link>
+    <link>https://aniruddhadeb.com/categories/</link>
     <description>Recent content in Categories on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Sep 2023 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

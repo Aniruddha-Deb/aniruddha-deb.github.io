@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ISC on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/isc/</link>
+    <link>https://aniruddhadeb.com/tags/isc/</link>
     <description>Recent content in ISC on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jul 2020 16:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/isc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Jul 2020 16:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/isc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ISC 2020 Analysis: An application of Data Science and Statistics</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</link>
+      <link>https://aniruddhadeb.com/articles/2020/isc-2020-analysis/</link>
       <pubDate>Sat, 11 Jul 2020 16:30:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/isc-2020-analysis/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/isc-2020-analysis/</guid>
       <description>The ISC Exam results were released on 10th June, 3 PM IST. In this article, I&amp;rsquo;ll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I&amp;rsquo;ll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.
 ###Index:
 Elementary inferences: How have people fared overall? Frequency Distribution of Marks: How many people got the same marks in a subject?</description>

@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/c/</link>
+    <link>https://aniruddhadeb.com/tags/c/</link>
     <description>Recent content in C on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 11:46:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 11:46:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C development on a Mac</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</link>
+      <link>https://aniruddhadeb.com/articles/2021/c-mac/</link>
       <pubDate>Thu, 18 Mar 2021 11:46:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2021/c-mac/</guid>
+      <guid>https://aniruddhadeb.com/articles/2021/c-mac/</guid>
       <description>C development on a Mac has it&amp;rsquo;s fair share of traps and pitfalls, even though Mac is supposed to be POSIX compliant. I&amp;rsquo;ll cover a few of them here, with the hope that nobody repeats the same mistakes :)
 XCode CLT Pitfalls The first thing one does while starting out with C development is to install a compiler. This is slightly more complicated than it looks on Mac: the simple way is to go the way of installing XCode command line tools, but there&amp;rsquo;s a few things here to note:</description>
     </item>
     
     <item>
       <title>Sorting Testbench in C</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</link>
+      <link>https://aniruddhadeb.com/articles/2020/algorithms-in-c/</link>
       <pubDate>Wed, 11 Nov 2020 19:20:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/algorithms-in-c/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/algorithms-in-c/</guid>
       <description>I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&amp;rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
 It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array.</description>
     </item>

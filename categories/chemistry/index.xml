@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chemistry on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/categories/chemistry/</link>
+    <link>https://aniruddhadeb.com/categories/chemistry/</link>
     <description>Recent content in Chemistry on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 May 2020 10:40:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/categories/chemistry/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 May 2020 10:40:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/categories/chemistry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inorganic Heterocyclic compounds</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2020/inorganic-heterocycles/</link>
+      <link>https://aniruddhadeb.com/articles/2020/inorganic-heterocycles/</link>
       <pubDate>Sun, 03 May 2020 10:40:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2020/inorganic-heterocycles/</guid>
+      <guid>https://aniruddhadeb.com/articles/2020/inorganic-heterocycles/</guid>
       <description>The 45th IChO preparatory problem list had this as it&amp;rsquo;s fifth problem:
 5.1 The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals X, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of X and give the reaction equation.
 5.2 Draw two stereoisomers of X.

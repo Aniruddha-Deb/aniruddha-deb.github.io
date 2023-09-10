@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ML on Aniruddha Deb</title>
-    <link>https://aniruddhadeb.com/blog-port/tags/ml/</link>
+    <link>https://aniruddhadeb.com/tags/ml/</link>
     <description>Recent content in ML on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jun 2022 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/blog-port/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jun 2022 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing the MLZoo</title>
-      <link>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</link>
+      <link>https://aniruddhadeb.com/articles/2022/ml-zoo/</link>
       <pubDate>Thu, 16 Jun 2022 17:00:00 +0000</pubDate>
       
-      <guid>https://aniruddhadeb.com/blog-port/articles/2022/ml-zoo/</guid>
+      <guid>https://aniruddhadeb.com/articles/2022/ml-zoo/</guid>
       <description>After a few days of reading and furious coding, I&amp;rsquo;m happy to announce the creation of MLZoo: a set of ML algorithms in their natural habitat
 MLZoo is a set of jupyter notebooks which would contain implementations of several ML algorithms on real world datasets: so far, I&amp;rsquo;ve implemented different flavours of regression, and plan to add quite a few more algorithms over the summer.
 Do star, fork and contribute in any way possible!</description>
