@@ -52,7 +52,7 @@ reason; vim's path searches `/usr/include` and not this weird obscure path.
 Once I manually included it, it <strike>looked horrible and I needed to symlink it
 to /usr/include</strike> worked okayish.
 
-![image](res/vim_autocomp.png)
+![image](/articles/2021/res/vim_autocomp.png)
 
 One note is that you could also use the path `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include`,
 as `MacOSX.sdk` is linked to the latest version of SDK installed. This does not

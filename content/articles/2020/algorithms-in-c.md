@@ -33,12 +33,12 @@ Before that, here are some graphs from the Java version. This graph shows the
 time taken in nanos (y axis) vs array size (x axis). The $O(n^2)$ characteristic is 
 clearly visible.
 
-![time taken vs array size](res/javasort_svt.png)
+![time taken vs array size](/articles/2020/res/javasort_svt.png)
 
 Here's one more, showing the time taken vs array entropy, which is linear in 
 nature.
 
-![time taken vs array entropy](res/javasort_tve.png)
+![time taken vs array entropy](/articles/2020/res/javasort_tve.png)
 
 ## Moving to C
 
@@ -240,11 +240,11 @@ less than 1. To counter this, you only draw lines when the x (or the y) changes
 and if x is not equal to y. Here's what the result would look like if you went 
 over lines multiple times:
 
-![multiple rendering](res/circle_fill_mult.png)
+![multiple rendering](/articles/2020/res/circle_fill_mult.png)
 
 Here's what it looks like if you go over each pixel once
 
-![single rendering](res/circle_fill_sing.png)
+![single rendering](/articles/2020/res/circle_fill_sing.png)
 
 Much better!
 
@@ -326,7 +326,7 @@ This produces some pretty good results, and I can live with the distances not
 exactly adhering to Pythagoras theorem, as highlighted by the rectangular rather 
 than radial boundaries for the dashes.
 
-![dashed line](res/dotted_line.png)
+![dashed line](/articles/2020/res/dotted_line.png)
 
 ### Graph Scale Derivation Algorithm
 
@@ -467,7 +467,7 @@ int main(int argc, char **argv) {
 This didn't work the first time and threw a segfault in my face :\_( How typical 
 of C. I did debug it, and I'm pretty pleased with the results.
 
-![Plotter example](res/plotter_example.png)
+![Plotter example](/articles/2020/res/plotter_example.png)
 
 ### Conclusion
 

@@ -66,49 +66,49 @@ coherence.
 I've just watched this once: more trivia always pops up when I see something 
 multiple times, but what's immediately noticeable is [The 2001 effect](https://www.vulture.com/2018/04/how-2001-a-space-odyssey-has-influenced-pop-culture.html)
 
-![anime](res/space_odyssey_1.png)
+![anime](/articles/2022/res/space_odyssey_1.png)
 
-![odyssey](res/space-odyssey-red.jpg)
+![odyssey](/articles/2022/res/space-odyssey-red.jpg)
 
-![anime](res/space_odyssey_2.png)
+![anime](/articles/2022/res/space_odyssey_2.png)
 
-![odyssey](res/space_odyssey_light_tunnel.jpg)
+![odyssey](/articles/2022/res/space_odyssey_light_tunnel.jpg)
 
 Another bit of trivia: even though Daft Punk makes a cameo in the awards scene 
 (Of course they do, they're _Daft Punk_!), This scene is filled with tributes 
 to people whose music Daft Punk have sampled for Discovery.
 
-![Daft Punk cameo](res/daft_punk.png)
+![Daft Punk cameo](/articles/2022/res/daft_punk.png)
 
 Here's Sister Sledge. [IL Macquilage Lady](https://www.youtube.com/watch?v=7qyL2yN88pI) was sampled for [Aerodynamic](https://www.youtube.com/watch?v=L93-7vRfxNs)
 
-![sister sledge](res/sister_sledge.png)
+![sister sledge](/articles/2022/res/sister_sledge.png)
 
 And this is Eddie Johns (?), from whom [More Spell on You](https://www.youtube.com/watch?v=JYya05epoZ8&feature=youtu.be) was sampled for One More Time
 
-![eddie johns](res/eddie_johns.png)
+![eddie johns](/articles/2022/res/eddie_johns.png)
 
 These are the Spice Girls?
 
-![spice girls](res/spice_girls.png)
+![spice girls](/articles/2022/res/spice_girls.png)
 
 I'm pretty sure this one is Mozart? (This comes later in the movie)
 
-![mozart](res/mozart.png)
+![mozart](/articles/2022/res/mozart.png)
 
 And this is Bob Marley?
 
-![marley](res/bob_marley.png)
+![marley](/articles/2022/res/bob_marley.png)
 
 And this is Robert Plant?
 
-![rob plant](res/robert_plant.png)
+![rob plant](/articles/2022/res/robert_plant.png)
 
 I have zero clue who these two are, although they should be famous. Let me know 
 in the comments!
 
-![no idea](res/no_idea_1.png)
-![no idea](res/no_idea_2.png)
+![no idea](/articles/2022/res/no_idea_1.png)
+![no idea](/articles/2022/res/no_idea_2.png)
 
 ## Conclusion 
 

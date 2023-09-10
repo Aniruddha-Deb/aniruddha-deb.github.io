@@ -22,7 +22,7 @@ The standard closed form for this, obtained via finding the MLE estimate, gives 
 
 However, the variance need not always be constant. Consider a model where the variance is varying linearly (or rather just increasing) with $x$: an example would be the [House prices dataset](https://www.kaggle.com/code/chanakyavivekkapoor/house-price-prediction)
 
-![img](res/house_prices.png)
+![img](/articles/2022/res/house_prices.png)
 
 While there are feature transformations that would make this less heteroscedastic, this article focuses on learning the variance parameters, so along with our regression estimate, we can provide a variance estimate as well
 
@@ -54,4 +54,4 @@ $$\frac{\partial \mathcal{LL}}{\partial \theta_m} = \sum_{i=1}^m x^{i} \frac{(y^
 
 Implementation was fairly straightforward, using gradient descent, and it converged nicely to some generated data
 
-![hetero_model](res/hetero_sd_model.png)
+![hetero_model](/articles/2022/res/hetero_sd_model.png)

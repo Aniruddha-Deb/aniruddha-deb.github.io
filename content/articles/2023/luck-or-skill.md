@@ -22,7 +22,7 @@ Let's look at how first year courses are graded. For most theory courses
 (3 lecture hours + 1 tutorial hour / 2 lab hours), there's a normal distribution
 of marks, and the top 7% of people on this distribution get an A. 
 
-![normal distribution](res/normal_grades.png)
+![normal distribution](/articles/2023/res/normal_grades.png)
 
 (Well, the actual grade distribution is discrete, but the marks are 
 approximately normally distributed).
@@ -72,7 +72,7 @@ I'll simulate grades across 5 lab courses, 4 of which are worth 2 credits each
 and the last one is worth one credit. I'll also simulate the seven four-credit
 theory courses. Also assume that if the genius doesn't get a 10, they get a 9.
 
-![cgs](res/cgs.png)
+![cgs](/articles/2023/res/cgs.png)
 
 We see that nobody gets a 10, and five people get a CG of 9.82. Five! And 
 multiple people have the same CG. Even though we assume CGPAs lie on a

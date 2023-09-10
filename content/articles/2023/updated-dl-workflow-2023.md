@@ -156,12 +156,12 @@ And with that, I'm ready to become a researcher for the next two semesters :)
 
 [Amsterdam is Beautiful](https://aniruddhadeb.com/articles/2022/intern-inferno.html#intern-inferno)
 
-![random bridge sunset](res/amsterdam.jpg)
+![random bridge sunset](/articles/2023/res/amsterdam.jpg)
 
 So is Rotterdam
 
-![erasmus bridge](res/rotterdam.jpg)
+![erasmus bridge](/articles/2023/res/rotterdam.jpg)
 
 So is Antwerp
 
-![grote markt](res/antwerp.jpg)
+![grote markt](/articles/2023/res/antwerp.jpg)

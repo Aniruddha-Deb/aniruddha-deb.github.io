@@ -92,7 +92,7 @@ having it's 3 vectors as $(1,0,0), (0,1,0)$ and $(0,0,1)$. On applying a transfo
 to this cube, we get the vertices as the transformation matrix itself. Here's 
 an image that speaks a thousand words (taken from [Hop's Blog](http://hopsblog-hop.blogspot.com/2017/02/)):
 
-![scaling](res/cube_transform.jpg)
+![scaling](/articles/2021/res/cube_transform.jpg)
 
 In algebra terms, we get 
 

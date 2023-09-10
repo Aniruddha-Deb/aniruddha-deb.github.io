@@ -42,7 +42,7 @@ In it's simplest terms, A random variable is simply a function from $\Omega \to 
 
 Consider $$\begin{align}\Omega &= \\{1,2,3\\}\\\\ \mathcal{F} &= 2^{\Omega} \\\\ \mathbf{P}&:\mathcal{F} \to [0,1]\end{align}$$ such that $\mathbf{P}\\{1\\} = \mathbf{P}\\{2\\} = \mathbf{P}\\{3\\}$ (This is the discrete uniform probability space on $\\{1,2,3\\}$). Let our random variable $X: \Omega \to \mathbb{R}$ map $\\{i\\}$ to $i$, $i \in \\{1,2,3\\}$. A graphical depiction of this would look something like this:
 
-![X](res/rv_x.jpeg)
+![X](/articles/2021/res/rv_x.jpeg)
 
 Now, suppose we had to calculate the probability that the random variable $X$ would be less than or equal to $2.5$. The probability of this event occuring is given by $\P\\{\omega \in \Omega\ :\ X(\omega) \le 2.5\\}$. From the inverse notation we developed in $\S$1.4, We can also write this as $\P(X^{-1}((-\infty, 2.5]))$. From the graph, we clearly see that $1$ and $2$ are the only elements in $\Omega$ that would be in this set, hence $\P\\{1,2\\} = 2/3$. This is how random variables and probability measures go hand in hand.
 

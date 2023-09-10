@@ -27,7 +27,7 @@ all parametric modellers. What 'Parametric' means is that the geometry of your
 part is determined by parameters, and changing the parameters changes the 
 geometry. Here's a small example: 
 
-![Parametric Modeling](res/parametric_modelling.gif)
+![Parametric Modeling](/articles/2020/res/parametric_modelling.gif)
 
 Notice how changing the parameters of the sketch change the values of the model
 as well. As opposed to this **Direct Modelling** is a method of modelling which
@@ -61,7 +61,7 @@ create another sketch, push (they call it 'pocket' here), rinse and repeat.
 
 In a few hours time, I was done with the assignment that was uploaded.
 
-![Yes I know this was done by Sir, do you really think I'll post snaps of the others so that you can copy them? ;)](res/assignment.png)
+![Yes I know this was done by Sir, do you really think I'll post snaps of the others so that you can copy them? ;)](/articles/2020/res/assignment.png)
 
 Here are some observations I picked up while doing the assignment:
 
@@ -99,7 +99,7 @@ in FreeCAD, or a very half-baked implementation**.
    the addon manager seems to be broken. Here's what it looks like on the FreeCAD
    wiki, and here's what it looks like on my machine
 
-![On Windows](res/addonmgr.png) ![On Mac](res/addonmgr_mac.png)
+![On Windows](/articles/2020/res/addonmgr.png) ![On Mac](/articles/2020/res/addonmgr_mac.png)
 
 So much for platform independence. I had to install the addon manually which, 
 thankfully, was painless enough. No proprietrary formats involved, just clone 
@@ -112,7 +112,7 @@ mushes all the parts up as one big 'blob', which is then inserted.
 
 After some frustration, the Assembly was finally complete.
 
-![Assembly](res/assembly.png)
+![Assembly](/articles/2020/res/assembly.png)
 
 I now had to generate a top view and a cross-sectional view. The procedure for
 this was pretty simple: go into TechDraw, insert a top view, then insert a 
@@ -125,7 +125,7 @@ and finally I had to increase the paper size to fit the diagram in 1:1.
 This was ok for a vice, but could you imagine designing your next aeroplane
 in this software?
 
-![1:1 Projection on an A2 sheet](res/A2.png)
+![1:1 Projection on an A2 sheet](/articles/2020/res/A2.png)
 
 ## Concluding remarks
 

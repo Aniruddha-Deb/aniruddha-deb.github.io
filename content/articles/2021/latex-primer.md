@@ -178,7 +178,7 @@ lines in an array can be done using `\hline`.
    This is a great way of learning LaTeX. You could [skim through some of the
    math-heavy content in this blog to get a taste of that](https://aniruddhadeb.com/articles/2020/hard-limits.html)
    <small></self-promotion\></small>
-   ![img](res/math_disp.png)
+   ![img](/articles/2021/res/math_disp.png)
 3. Brackets are not auto-resizing in latex. Say you want to write the product 
    of two integrals, such as `(\int x\ dx)(\int x^2\ dx)`.This gives
    us very puny brackets: $$(\int x\ dx)(\int x^2\ dx)$$ If we have to remedy

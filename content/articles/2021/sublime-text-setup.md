@@ -23,7 +23,7 @@ So here's the way I made sublime my own over a tuesday evening:
 
 Everytime I opened up Sublime, I was greeted with the annoying update window<sup>1</sup>
 
-<center>![Yes I didn't screenshot it on my mac, which is why it's a windows SS, thanks to Colonel Panic at StackOverflow for the image](res/sublime_update.png)</center>
+<center>![Yes I didn't screenshot it on my mac, which is why it's a windows SS, thanks to Colonel Panic at StackOverflow for the image](/articles/2021/res/sublime_update.png)</center>
 
 I finally went ahead and updated it. Sublime text had come up with version 4 recently, and the only change was *drumrolls* A new default color scheme! How original.<sup>2</sup>. Well, it's still a great color scheme, even I was getting bored of monokai.
 
@@ -83,7 +83,7 @@ I was left with setting up a C++ autocompleter, and this was a bit tricky. The f
 
 The next day, I went ahead and realized that terminal wouldn't cut it, and I needed a terminal integrated into sublime text. I went ahead and installed the Terminus plugin for that. Terminus by default hides some of it's keybindings, so I had to go and change the keybinding user preferences. Now `` alt+` `` opens up a terminal where the default sublime terminal goes, and `ctrl+alt+T` opens up a terminal in place of a text pane. The default user theme was too dark for my taste, so I changed it with the 3024-dark theme that terminus ships with. This config works perfectly: no need to split sublime into two with a terminal, or open iTerm every time I use sublime! Here's a screenshot (the project in question is [PyGameOfLife](https://github.com/Aniruddha-Deb/PyGameOfLife))
 
-![Current sublime setup](res/sublime_ss.png)
+![Current sublime setup](/articles/2021/res/sublime_ss.png)
 
 That's about it; everything now works and works well! NeoVintageous is probably the thing that is the best; it is miles ahead of vintageous, and it works brilliantly here. I don't feel like I've left vim, until sublime writes methods for me, closes braces/tags for me and also autocompletes my 3 dimensional vector definition. Which is great. I'll post more updates here if I do install/delete some plugins, but I have a feeling sublime is here to stay.
 

@@ -49,7 +49,7 @@ dscacheutil -flushcache
 	- Use F1, F2 as function keys (Keyboard)
 	- Don't show input menu in menu bar (Keyboard->Input Sources)
 	- Dark Mode  
-	![dark side meme](res/darkside.jpeg)
+	![dark side meme](/articles/2020/res/darkside.jpeg)
 	- Change computer name to MacBook-Pro (Sharing)
 
 - Google Chrome:

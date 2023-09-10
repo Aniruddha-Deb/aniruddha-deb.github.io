@@ -205,7 +205,7 @@ but for now let's continue. Once our server is up and running, we'll get an
 email and we can check the output logs to get the URL for the server, and we're
 good to go
 
-![jupyter on HPC](res/jupyter_hpc.png)
+![jupyter on HPC](/articles/2022/res/jupyter_hpc.png)
 
 I've cloned the [StyleGAN2](https://github.com/NVlabs/stylegan2-ada-pytorch) 
 PyTorch implemenation, and downloaded the weights trained on FFHQ from 
@@ -214,11 +214,11 @@ notebook in the same directory and followed the examples
 
 Let's generate one image!
 
-![One image](res/one_stylegan_image.png)
+![One image](/articles/2022/res/one_stylegan_image.png)
 
 Not too bad. Let's do 10 now
 
-![Ten faces](res/ten_faces.png)
+![Ten faces](/articles/2022/res/ten_faces.png)
 
 ## What Next?
 

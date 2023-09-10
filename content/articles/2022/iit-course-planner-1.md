@@ -51,15 +51,15 @@ This dataset is what is currently used in [IITD-Bot's `info` command](https://gi
 
 We now come to the problem of scraping and formatting the individual course plans themselves: [Tabula](https://tabula.technology/) (specifically [TabulaPy](https://tabula-py.readthedocs.io/en/latest/)) is the best fit for stuff like this, but the problem here is that **The table boundaries and dimensions across courses are not the same!** Here's an example, showing two programmes overlapping each other and how the content dimensions/boundaries are not the same across programmes (CS1 and MT1)
 
-![CS1xMT1](res/overlap_cs1_mt1.png)
+![CS1xMT1](/articles/2022/res/overlap_cs1_mt1.png)
 
 Even for courses where there is significant overlap, the structures need not be same (consider EE1 and MT1, the first section lines up perfectly, but further sections are a mess: EE1 ends in half the page, while MT fills it up with it's electives)
 
-![MT1xEE1](res/overlap_mt1_ee1.png)
+![MT1xEE1](/articles/2022/res/overlap_mt1_ee1.png)
 
 Another issue was that as previously mentioned, Dual Degree course structures have two parts to them: a B.Tech part and an M.Tech part, and scraping them along with the Bachelor degrees would lead to major issues 
 
-![CS5 example](res/cs5.png)
+![CS5 example](/articles/2022/res/cs5.png)
 
 As a result, the best option I could come up with was to simply use some python code to generate most of the course structure. The Institute core is common across all courses: the only things that change across courses are PL,DC,DE,credit structure and recommended structure. Out of these, credit structure and recommended structure can be scraped without much pain. PL,DC,DE need to be manually scraped using good 'ol `Cmd-C Cmd-V` and edited and pasted using sublime text (multi cursors ftw here). I couldn't come up with a faster way than this due to the nonuniformity of the structure across pages, but it works.
 
@@ -88,11 +88,11 @@ We are now ready to combine the course-offered slotting, the courses of study da
 
 The first order of action is to load the CoS course data into XML, and generate a few extra colums so that we know which semster the course is offered in (here, a 3 implies offered in both semesters, a 2 in the even semester only, and a 1 in the odd semester only. 0 implies that it was not offered in either semster in this academic year)
 
-![sems](res/cos_df_head.png)
+![sems](/articles/2022/res/cos_df_head.png)
 
 After this, we read in the course dependency XML files, and generate the dependency graphs using NetworkX and the data in the course dataframe. A generic NetworkX graph does not space the nodes out properly, which is why we use NetworkX and pydot (a python GraphViz API) to generate the final PNG files. The final result, is indeed quite pretty
 
-![CS1](res/graphs/CS1.png)
+![CS1](/articles/2022/res/graphs/CS1.png)
 
 ## What Next?
 
@@ -116,37 +116,37 @@ I will keep making more blogs as I (or others) continute to contribute and work 
 
 (Orange => offered in both sems, green => even sem only, blue => odd sem only, gray => no sem slotting info available)
 
-AM1: ![AM1](res/graphs/AM1.png)
+AM1: ![AM1](/articles/2022/res/graphs/AM1.png)
 
-BB1: ![BB1](res/graphs/BB1.png)
+BB1: ![BB1](/articles/2022/res/graphs/BB1.png)
 
-CE1: ![CE1](res/graphs/CE1.png)
+CE1: ![CE1](/articles/2022/res/graphs/CE1.png)
 
-CH1: ![CH1](res/graphs/CH1.png)
+CH1: ![CH1](/articles/2022/res/graphs/CH1.png)
 
-CH7: ![CH7](res/graphs/CH7.png)
+CH7: ![CH7](/articles/2022/res/graphs/CH7.png)
 
-CS1: ![CS1](res/graphs/CS1.png)
+CS1: ![CS1](/articles/2022/res/graphs/CS1.png)
 
-CS5: ![CS5](res/graphs/CS5.png)
+CS5: ![CS5](/articles/2022/res/graphs/CS5.png)
 
-EE1: ![EE1](res/graphs/EE1.png)
+EE1: ![EE1](/articles/2022/res/graphs/EE1.png)
 
-EE3: ![EE3](res/graphs/EE3.png)
+EE3: ![EE3](/articles/2022/res/graphs/EE3.png)
 
-ME1: ![ME1](res/graphs/ME1.png)
+ME1: ![ME1](/articles/2022/res/graphs/ME1.png)
 
-ME2: ![ME2](res/graphs/ME2.png)
+ME2: ![ME2](/articles/2022/res/graphs/ME2.png)
 
-MS1: ![MS1](res/graphs/MS1.png)
+MS1: ![MS1](/articles/2022/res/graphs/MS1.png)
 
-MT1: ![MT1](res/graphs/MT1.png)
+MT1: ![MT1](/articles/2022/res/graphs/MT1.png)
 
-MT6: ![MT6](res/graphs/MT6.png)
+MT6: ![MT6](/articles/2022/res/graphs/MT6.png)
 
-PH1: ![PH1](res/graphs/PH1.png)
+PH1: ![PH1](/articles/2022/res/graphs/PH1.png)
 
-TT1: ![TT1](res/graphs/TT1.png)
+TT1: ![TT1](/articles/2022/res/graphs/TT1.png)
 
 -------
 

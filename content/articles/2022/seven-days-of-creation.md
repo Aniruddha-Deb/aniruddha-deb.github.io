@@ -46,14 +46,14 @@ I won't be repeating whatever was mentioned there, but a few things that tripped
 // some code here
 getaddrinfo(nullptr, std::to_string(port).c_str(), &hints, &res);
 
-uintptr_t fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+uintptr_t fd = socket(/articles/2022/res->ai_family, res->ai_socktype, res->ai_protocol);
 
 const int reuse = 1;
 setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));
 
 bind(fd, res->ai_addr, res->ai_addrlen);
 fcntl(fd, F_SETFL, O_NONBLOCK);
-freeaddrinfo(res);
+freeaddrinfo(/articles/2022/res);
 // more code here
 ```
 
@@ -69,7 +69,7 @@ std::string errstr(std::string msg) {
 int ret = getaddrinfo(nullptr, std::to_string(port).c_str(), &hints, &res);
 assert (ret != -1 and errstr("Could not get address information"));
 
-uintptr_t fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+uintptr_t fd = socket(/articles/2022/res->ai_family, res->ai_socktype, res->ai_protocol);
 assert (fd != -1 and errstr("Could not create socket"));
 
 const int reuse = 1;
@@ -196,7 +196,7 @@ endif
 The final source design looked like this (leaving out other non-relevant items)
 
 <center>
-![protocol](res/protocol.svg)
+![protocol](/articles/2022/res/protocol.svg)
 </center>
 
 ## Day Five
@@ -210,7 +210,7 @@ After messing around with an ethernet cable, a friend's laptop and computer-to-c
 Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly. 
 
 <center>
-![qemu](res/qemu_vm_2.png)
+![qemu](/articles/2022/res/qemu_vm_2.png)
 </center>
 
 QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that's for another post :)
@@ -245,7 +245,7 @@ The load benchmarks were great, for small files. For large files, I was transfer
 Here are some numbers. For context, A2_small_file.txt is a 100kB text file.
 
 <center>
-![times](res/time_clients.svg)
+![times](/articles/2022/res/time_clients.svg)
 </center>
 
 ## Day Seven

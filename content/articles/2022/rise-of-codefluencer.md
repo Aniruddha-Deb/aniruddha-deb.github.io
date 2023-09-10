@@ -18,7 +18,7 @@ I recently had to develop a small platform to keep track of my investments. As l
 
 _sigh. You can probably tell where this is going._
 
-![aaaaaaaa](res/frontend-spaghetti-monster.png)
+![aaaaaaaa](/articles/2022/res/frontend-spaghetti-monster.png)
 
 Yep. We're finally doing WebDev. 
 
@@ -81,7 +81,7 @@ And this is just the tip of the iceberg! WebDev today is a hodgepodge of differe
 
 This gives rise to an entire army of touts whose livelihood is based on writing articles such as [Why React is better than Vue](https://blog.cloudboost.io/why-react-is-better-than-vue-js-and-when-9545049652d8)<sup><a href="#footnote-5">5</a></sup>, or [Why Frontend Development is a Mess](https://aniruddhadeb.com/articles/2022/rise-of-codefluencer.html)<sup><a href="#footnote-6">6</a></sup>. Every single article of theirs must include the obligatory Google Search Trends snap, showing how _Oh, the framework we're touting is the best!_ or how _Oh, look at this mess! Deplorable!_
 
-![search_trends](res/trends.png)
+![search_trends](/articles/2022/res/trends.png)
 
 Jokes aside, let's talk about NPM. Oh, NPM!
 

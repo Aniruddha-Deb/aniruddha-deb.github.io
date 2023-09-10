@@ -19,7 +19,7 @@ Before you pick up your pitchforks, yes, RPi is ARM based: I know this is a comp
 
 ## Baby Steps
 
-![arch\_baby](res/bcd.jpeg)
+![arch\_baby](/articles/2022/res/bcd.jpeg)
 
 So why arch?<sup>2</sup> Well, the biggest reason is **learning**: learning to setup arch and use it would teach me more about UNIX fundamentals than using a prebuilt OS. And in the span of less than half a day, I've used atleast 6 utilities I've never seen or heard of before. So yeah, if you enjoy the hike a steep learning curve gives you, arch is perfect.
 
@@ -134,7 +134,7 @@ After this and rebooting, I was able to ssh onto my pi, by connecting it to my m
 
 Congratulations: if you don't have a working system by now, atleasy you would have enough confidence to take your system in the direction you want to take it now. Here's a snap of how mine looks like after I was done with setup:
 
-![arch_setup](res/arch_setup.png)
+![arch_setup](/articles/2022/res/arch_setup.png)
 
 ## References
 

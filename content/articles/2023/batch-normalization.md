@@ -51,7 +51,7 @@ and variance it chooses to learn by updating $\gamma$ and $\beta$.)
 
 Before manually doing the backprop, a computation graph really helps here.
 
-![comp_graph](res/batch_norm_graph.jpg)
+![comp_graph](/articles/2023/res/batch_norm_graph.jpg)
 
 This is a small computation graph that uses just three examples, but it's
 sufficient to show which variables are dependent on each other, and how. This
@@ -115,7 +115,7 @@ of, by synthetically injecting noise _after_ BatchNorm layers. The result was
 that the network doesn't do as poorly as expected, but it still outperforms 
 the standard network.
 
-![batch norm graphs](res/batch_norm_noisy_graphs.png)
+![batch norm graphs](/articles/2023/res/batch_norm_noisy_graphs.png)
 
 The explanation that they gave was that Batch norm assists the optimizer by
 making the loss landscape smoother. Formally, the magnitude of the gradient of
@@ -123,7 +123,7 @@ the loss $||\grad_{y_j}\mathcal{L}||$ captures the smoothness of the loss.
 Batch norm reduces the bound on the gradient relative to an un-batch normed 
 network significantly.
 
-![batch norm inequality](res/batch_norm_ineq.png)
+![batch norm inequality](/articles/2023/res/batch_norm_ineq.png)
 
 Batch norm also imposes some second-order constraints on the hessian, which can
 intuitively be summarized as saying that the step we take in the direction

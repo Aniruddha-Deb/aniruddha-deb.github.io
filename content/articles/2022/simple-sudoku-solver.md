@@ -21,7 +21,7 @@ A CSP is generally represented as a graph, with each variable as a node and a co
 
 This gives us a nice formulation, and allows us to search for a solution on this graph using backtracking search (Pseudocode courtesy [Rohan Paul's Slides](https://www.cse.iitd.ac.in/~rohanpaul/teaching/data/2022-COL333/L06-Constraint-Satisfaction.pdf))
 
-![csp_bts](res/backtracking_search_pseudocode.png)
+![csp_bts](/articles/2022/res/backtracking_search_pseudocode.png)
 
 The two key algorithmic decisions to make here are:
 

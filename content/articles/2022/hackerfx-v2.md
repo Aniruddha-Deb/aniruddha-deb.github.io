@@ -20,15 +20,15 @@ variable colors and a manual 5x5 font for the output charactes (so the aspect
 ratio doesn't have to be manually tweaked). It's a step jump in every way, and 
 the images it generates are super pretty
 
-![jojo](res/jojo.jpg)
-![jojo_out](res/jojo_out.png)
+![jojo](/articles/2022/res/jojo.jpg)
+![jojo_out](/articles/2022/res/jojo_out.png)
 
 Especially with hi-res shots, you have to zoom in to tell the difference. The 
 performance is also very cool, given that you're iterating over millions of 
 pixels. This does it all in less than 10 seconds.
 
-![input](res/hallway.jpeg)
-![output](res/hallway_out.png)
+![input](/articles/2022/res/hallway.jpeg)
+![output](/articles/2022/res/hallway_out.png)
 
 More examples are there in the github repo, and I haven't played around with 
 the options much to generate prettier ones (it's getting kind of late, should sleep).

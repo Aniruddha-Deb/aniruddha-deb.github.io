@@ -116,9 +116,9 @@ machine (Documents, Pictures, Videos etc.)
 
 15. Step back and enjoy :)
 
-![hehe](res/desktop.png)
+![hehe](/articles/2023/res/desktop.png)
 
-![nvim+kitty](res/blog.png)
+![nvim+kitty](/articles/2023/res/blog.png)
 
 ## One More Thing
 

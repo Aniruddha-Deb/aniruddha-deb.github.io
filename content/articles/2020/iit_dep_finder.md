@@ -102,7 +102,7 @@ Once the frontend was done, it didn't look too nasty. I still have to optimize
 the frontend for mobile devices, but since I used `div`'s for the layout, I don't 
 think there's going to be much to do.
 
-![Frontend preview](res/iit_dep_finder_frontend.gif)
+![Frontend preview](/articles/2020/res/iit_dep_finder_frontend.gif)
 
 ## NGINX and GUnicorn local setup
 

@@ -20,15 +20,15 @@ I took out two old binders; they had ~120 pages each and used one for math and
 one for physics. Soon enough, I had to get more pages and by the end of my 
 JEE Journey, the binders had somewhere around 200 pages, each filled with notes
 
-![Binders](res/mathnotes/binders.jpg)
+![Binders](/articles/2020/res/mathnotes/binders.jpg)
 
 <sup>Left one is maths, right one is physics</sup>
 
-![monotonicity](res/mathnotes/monotonicity.jpg)
+![monotonicity](/articles/2020/res/mathnotes/monotonicity.jpg)
 
-![PnC](res/mathnotes/PnC.jpg)
+![PnC](/articles/2020/res/mathnotes/PnC.jpg)
 
-![MI](res/mathnotes/MI.jpg)
+![MI](/articles/2020/res/mathnotes/MI.jpg)
 
 These tend to follow a very hierarchical format, and also tend to be extremely 
 diverse with symbols and diagrams (I did all the notes in pencil, so that if 

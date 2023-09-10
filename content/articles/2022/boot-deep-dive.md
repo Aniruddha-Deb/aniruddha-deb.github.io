@@ -134,7 +134,7 @@ as PID 1 and spawns all relevant processes on the system. `systemd` will then
 start LightDM (On Manjaro, you might have a different Desktop Manager), which 
 displays your login prompt, and you can now finally login!
 
-![image of a login screen](res/manjaro_cinnamon.png)
+![image of a login screen](/articles/2022/res/manjaro_cinnamon.png)
 
 Unless, of course, you've locked yourself out with too many failed password 
 attempts
