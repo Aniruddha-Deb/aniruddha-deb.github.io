@@ -14,9 +14,17 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   url = "/about/"
   weight = 1
 [[menu.main]]
-  name = "Articles"
+  name = "Blog"
   url = "/articles/"
   weight = 2
+[[menu.main]]
+  name = "Publications"
+  url = "/publications/"
+  weight = 3
+[[menu.main]]
+  name = "CV"
+  url = "/files/cv.pdf"
+  weight = 4
 
 [markup]
   [markup.goldmark]
@@ -41,11 +49,11 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   # home page profile
   avatar = '/pic.png'                 # gravatar email or image url
   name = 'Aniruddha Deb'
-  bio = "CSE Senior at IIT Delhi"
+  bio = "The Truth is Out There"
 
   # misc
   disableHLJS = true                        # disable highlight.js
-  disablePostNavigation = true              # disable post navigation
+  disablePostNavigation = false              # disable post navigation
   monoDarkIcon = true                       # show monochrome dark mode icon
 # gravatarCdn = 'GRAVATAR_CDN_LINK'                      # e.g. 'https://cdn.v2ex.com/gravatar/'
 # graphCommentId = "GRAPH_COMMENT_ID" # use graph comment (disqus alternative)
