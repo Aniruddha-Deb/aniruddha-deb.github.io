@@ -30,7 +30,7 @@ I won't be repeating whatever was mentioned there, but a few things that tripped
 1. `SO_REUSEADDR`. Yep. The first time [I read about this flag](https://stackoverflow.com/questions/14388706/how-do-so-reuseaddr-and-so-reuseport-differ), I understood nothing. It was only after I could not reconnect to my server immediately after shutting it down did I realize that something's up. TCP's TIME_WAIT state persists _after_ the application has shut down, which is why if you close and restart a socket at the same port, it won't immediately rebind, as there may still be a FIN/ACK message out on the network, bound for this port. If that hits the second application, it would cause that application's port to shut down, which is why TIME_WAIT waits for 2 maximum segment lifetimes (approx. 30 to 120 seconds). Here's a TCP state diagram to help out, if the above didn't make sense
 
     <center>
-    <img src="res/tcp-state-diagram-v2.svg" width="400px">
+    <img src="/articles/2022/res/tcp-state-diagram-v2.svg" width="400px">
     </center>
 
 2. `SO_RCVLOWAT`. TCP is a stream protocol, and not a datagram protocol, and I think nobody makes it obvious what the differences are between them.

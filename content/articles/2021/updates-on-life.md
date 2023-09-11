@@ -33,7 +33,7 @@ In terms of academic things, I attended the IBM [Qiskit Global Summer School in 
 
 There weren't many of these that I can remember now, but I designed the Quizzing Club Introductory poster this time.
 
-<center><img src="res/repteam_final_2.png" style="width: 100%; height: auto; max-width: 35vw;"></center>
+<center><img src="/articles/2021/res/repteam_final_2.png" style="width: 100%; height: auto; max-width: 35vw;"></center>
 
 I also applied for the Board of Student Publications, the press arm of IIT Delhi, and they had a very interesting google form that we needed to fill to be shortlisted for an interview. I will be uploading my responses to that form soon enough, but I filled that out in the first week of August, and it was a fun exercise filling that in, because I hadn't written anything original in a long time.
 

@@ -21,8 +21,8 @@ Each programme has a number of courses that you NEED to do to graduate: these ar
 Here's a relevant snap from the Courses of Study (henceforth referred to as CoS), showing how the courses shape up for MT1 (B.Tech in Mathematics and Computing) and MT6 (Dual Degree in Mathematics and Computing)
 
 <center>
-<img src="res/creds_mt1.png" style="width: 45%; vertical-align: text-top;"></img>
-<img src="res/creds_mt6.png" style="width: 45%; vertical-align: text-top;"></img>
+<img src="/articles/2022/res/creds_mt1.png" style="width: 45%; vertical-align: text-top;"></img>
+<img src="/articles/2022/res/creds_mt6.png" style="width: 45%; vertical-align: text-top;"></img>
 </center>
 
 We'll be using these abbreviations very commonly across the article (`bs`,`eas`,`huss`,`dc`,`de`,`oc`,`pc`,`pe`), so this is a good point to mark and come back to. If a lot of this is still unclear, the CoS makes it much clearer than I do. Do give the first few pages of it a read. It's not as boring as expected. Promise. 

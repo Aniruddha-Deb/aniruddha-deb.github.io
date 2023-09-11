@@ -1,0 +1,11 @@
+<div class="project">
+  <div class="project-header">
+    {{ if .Get "link" }}
+      <span class="project-title"><a href='{{ .Get "link" }}'>{{ .Get "title" }}</a></span>
+    {{ else }}
+      <span class="project-title">{{ .Get "title" }}</span>
+    {{ end }}
+    <span class="project-duration">{{ .Get "date" }}</span>
+  </div>
+  {{ .Inner | markdownify }}
+</div>
