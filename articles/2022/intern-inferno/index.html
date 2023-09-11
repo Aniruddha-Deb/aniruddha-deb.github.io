@@ -97,38 +97,19 @@ I wanted to tour: I didn&rsquo;t pick up a foreign research intern this summer, 
 
   
   
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () =>
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          
-          throwOnError : false
-        })
-    );
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
 </script>
 
   
@@ -245,14 +226,20 @@ I wanted to tour: I didn&rsquo;t pick up a foreign research intern this summer, 
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/about/"
-        >About</a
+        href="/articles/"
+        >Blog</a
       >
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Articles</a
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/files/cv.pdf"
+        >CV</a
       >
       
     </nav>
@@ -380,11 +367,15 @@ I wanted to tour: I didn&rsquo;t pick up a foreign research intern this summer, 
 <h2 id="what-now">What now?</h2>
 <p>So your interviews are over, and you&rsquo;re waiting at your hostel room, playing cards and biding time till your offer comes in. Several others have received on-the-spot offers, and you&rsquo;ve been told by all your interviewers that you&rsquo;ll &ldquo;get to know via your placement cell&rdquo;. Someone pings you asking if you got the offer, because XYZ got it now, and you run to your laptop and load the portal. What does your next LinkedIn post say?</p>
 <p><em>drumrolls</em></p>
-<link rel="stylesheet" type="text/css" href="res/spoiler.css">
 <blockquote class='spoiler'>
-<div class='spoiler-prompt'> I'm pleased to announce that I'll be joining ... </div>
-<div class='spoiler-text'> I'm pleased to announce that I'll be joining <a href="https://www.optiver.com">Optiver</a> at their Amsterdam office next summer as a <b>Software Engineering Intern</b>. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.
-</div></blockquote>
+
+  <div class="spoiler-prompt">I&#39;m pleased to announce that I&#39;ll be joining ...</div>
+
+<div class='spoiler-text'> 
+I'm pleased to announce that I'll be joining <a href="https://www.optiver.com">Optiver</a> at their Amsterdam office next summer as a <b>Software Engineering Intern</b>. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.
+</div>
+</blockquote>
+
 <p><code>&lt;/linkedin post&gt;</code></p>
 <p>Truth be told, it&rsquo;s not as simple as this. Never is. Here&rsquo;s a small sankey diagram I made of how the entire process unfolded</p>
 <p><img src="/articles/2022/res/intern_sankey.svg" alt=""></p>
@@ -415,6 +406,26 @@ I wanted to tour: I didn&rsquo;t pick up a foreign research intern this summer, 
   </footer>
   
 
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2022/rise-of-codefluencer/"
+      ><span class="mr-1.5">←</span><span>The Rise of the Codefluencer</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2022/arch-linux-1/"
+      ><span>The Arch Linux Journey</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
   
   
 

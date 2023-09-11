@@ -213,7 +213,7 @@ The y-axis scale is 5000 cases/large division and 1000 cases/small division.</de
     </item>
     
     <item>
-      <title>Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $</title>
+      <title>Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c</title>
       <link>https://aniruddhadeb.com/articles/2020/roots-of-fffx/</link>
       <pubDate>Thu, 30 Apr 2020 20:30:00 +0000</pubDate>
       

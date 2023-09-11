@@ -51,7 +51,7 @@
   />
 
   
-  <title>Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $ - Aniruddha Deb</title>
+  <title>Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c - Aniruddha Deb</title>
 
   
   <meta name="theme-color" />
@@ -96,38 +96,19 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
 
   
   
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () =>
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          
-          throwOnError : false
-        })
-    );
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
 </script>
 
   
@@ -152,7 +133,7 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
   
   
   
-  <meta itemprop="name" content="Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $">
+  <meta itemprop="name" content="Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c">
 <meta itemprop="description" content="Define $ f(x) = ax^2 &#43; bx &#43; c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
 This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots."><meta itemprop="datePublished" content="2020-04-30T20:30:00+00:00" />
 <meta itemprop="dateModified" content="2020-04-30T20:30:00+00:00" />
@@ -160,7 +141,7 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
 <meta itemprop="keywords" content="" />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $"/>
+<meta name="twitter:title" content="Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c"/>
 <meta name="twitter:description" content="Define $ f(x) = ax^2 &#43; bx &#43; c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
 This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots."/>
 
@@ -242,14 +223,20 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/about/"
-        >About</a
+        href="/articles/"
+        >Blog</a
       >
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Articles</a
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/files/cv.pdf"
+        >CV</a
       >
       
     </nav>
@@ -303,7 +290,7 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
 
 <article>
   <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 &#43; bx &#43; c $, are symmetric about $ \frac{-b}{2a} $</h1>
+    <h1 class="!my-0 pb-2.5">Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c</h1>
 
     
     <div class="text-sm antialiased opacity-60">
@@ -336,6 +323,26 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
   
   
 
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2020/inorganic-heterocycles/"
+      ><span class="mr-1.5">←</span><span>Inorganic Heterocyclic compounds</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2020/zeta-2-integral/"
+      ><span>An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
   
   
 

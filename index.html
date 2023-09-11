@@ -99,38 +99,19 @@
 
   
   
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () =>
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          
-          throwOnError : false
-        })
-    );
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
 </script>
 
   
@@ -162,11 +143,11 @@
   
   
   
-  <meta itemprop="name" content="Aniruddha Deb">
+  <meta itemprop="name" content="">
 <meta itemprop="description" content="">
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Aniruddha Deb"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
   
@@ -247,14 +228,20 @@
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/about/"
-        >About</a
+        href="/articles/"
+        >Blog</a
       >
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Articles</a
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/files/cv.pdf"
+        >CV</a
       >
       
     </nav>
@@ -309,27 +296,13 @@
 
 
 
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
 <div class="-mt-2 mb-16 flex items-center">
   
   <div
     class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
   >
     <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
+      class="my-0 aspect-square w-24 rounded-full !bg-black/5 dark:!bg-black/80"
       src="/pic.png"
       alt="Aniruddha Deb"
     />
@@ -339,153 +312,103 @@
   <div>
     <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">Aniruddha Deb</h1>
     <div class="break-words">
-      CSE Senior at IIT Delhi
+      The Truth is Out There
     </div>
   </div>
   
 </div>
 
 
+<article>
+<section><p>I&rsquo;m a Senior Undergraduate in the Computer Science and Engineering Department
+at IIT Delhi, advised by <a href="https://www.cse.iitd.ac.in/~parags/">Prof. Parag
+Singla</a> and <a href="https://www.cse.iitd.ac.in/~mausam">Prof.
+Mausam</a>. I am also a <a href="https://www.scholarships.reliancefoundation.org/">Reliance Foundation
+Scholar</a> in Artificial
+Intelligence and Computer Sciences. I was an SWE intern at
+<a href="https://www.optiver.com/">Optiver</a> last summer, and an Undergraduate Research
+Assistant at the Neuroimaging Lab the summer before that.</p>
+<p>Apart from this, I&rsquo;ve been a volunteer teacher for NSS, an Academic Mentor for
+MTL100, a runner-up in <a href="http://mimamsa.iiserpune.ac.in/">Mimamsa 2021</a>, a
+journalist at <a href="https://www.bspiitd.com/">Board for Student Publications</a>, a
+Representative for the <a href="https://qciitdelhi.netlify.app/">Quizzing Club</a>, and
+a BSW Student Mentor for freshers.</p>
+<h2 id="research-interests">Research Interests</h2>
+<p>My current research interests can be broadly divided into two:</p>
+<p><strong>Reasoning in LLMs</strong>: Constrained reasoning, guided decoding and mathematical
+reasoning for large-language models.</p>
+<p><strong>Neurosymbolic Reasoning</strong>: Applying learning algorithms over object-centric representations of scenes rather than raw input, and extending this to unseen environments or improving reasoning of the environment as a consequence of this representation.</p>
+<p>Apart from this, I&rsquo;m also personally interested in the intersection of ML and
+Systems: with the explosion of open-source LLMs and techniques for running them
+locally on mobile devices, I hack around quite frequently with running
+inference using them, or finetuning them.</p>
+<p><strong>I would be applying for PhD/MS (Research) positions in the 2023-24 cycle</strong>.
+If you are accepting students and believe I would be a good fit, please do
+reach out.</p>
+<h2 id="quizzing-at-iit-delhi">Quizzing at IIT Delhi</h2>
+<p>Here are some links to sets that I&rsquo;ve (co)hosted/conducted. Will be updated as I host more sets.</p>
+<div class="project">
+  <div class="project-header">
+    
+      <span class="project-title"><a href='https://docs.google.com/presentation/d/1XUalDKMKswDNpj_mNbCHVfvIo9vbPt1iH0701RXrxN4/edit?usp=sharing'>Moonman</a></span>
+    
+    <span class="project-duration">October 2022</span>
+  </div>
+  A Music Video Quiz. I was bored of SciTech and wanted something different,
+hence this quiz. First offline informal, which happened in the FACC room on a
+rainy October night (don&rsquo;t ask why), and with cookies for most creative
+incorrect answers :)
+</div>
 
+<div class="project">
+  <div class="project-header">
+    
+      <span class="project-title">Rubik&#39;s Cube</span>
+    
+    <span class="project-duration">October 2021</span>
+  </div>
+  <a href="https://docs.google.com/presentation/d/1rIlleNRHvl8Z24uw3gTFsqTQmoUvMOrDNA84sRUteWc/edit?usp=sharing">Prelims</a> | <a href="https://drive.google.com/file/d/1sd7JER8gDjK0jucvQCDSxBv5VkaCIZNg/view?usp=sharing">Finals</a><br>
+The first league quiz of the 2021-22 Season: Prelims are a standard slideshow,
+whereas finals are the rendered slides from the final run of the program
+(as such, they have two tiebreaker questions in orange and red)
+</div>
 
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Luck, Skill or Both: Department Change at IITs</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Sep 1, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/luck-skill-both/">Luck, Skill or Both: Department Change at IITs</a>
+<div class="project">
+  <div class="project-header">
+    
+      <span class="project-title"><a href='https://docs.google.com/presentation/d/1OsX6UVhS4xcFVlPO4STaz1ZcmBbOMPjGTA4PlqCzJqA/edit?usp=sharing'>Introduction to QC</a></span>
+    
+    <span class="project-duration">January 2022</span>
+  </div>
+  The usual pounce/bounce introduction to quizzing, complete with google traps.
+The initial setup/team asssignment/rule explanation took around an hour, after
+which the other questions (mostly taken from entropy) were run for people who
+stayed late
+</div>
+
+<div class="project">
+  <div class="project-header">
+    
+      <span class="project-title"><a href='https://docs.google.com/presentation/d/1wZRMVul2y-17sAJJZraRxc9889y0ytnzBsj1DKDUXw8/edit?usp=sharing'>Entropy: A Random Quiz</a></span>
+    
+    <span class="project-duration">March 2021</span>
+  </div>
+  Entropy was the first quiz I conducted after entering IITD, and the only
+fresher-hosted quiz in that year. We planned to host a prelims as well, but
+didn&rsquo;t make it in time. Was a great experience, even though we hosted it
+online.
+</div>
+
+<h2 id="other-stuff">Other Stuff</h2>
+<p>Some useful browser plugins to make the online sem easier: <a href="https://github.com/Aniruddha-Deb/MoodleSidebarPlugin">Moodle Sidebar Plugin</a>, <a href="https://github.com/Aniruddha-Deb/ImpartusAdBlocker">Impartus Ad Blocker</a>, <a href="https://github.com/Aniruddha-Deb/ImpartusParticipantStats">Impartus Participant Stats</a>, <a href="https://github.com/Aniruddha-Deb/MoodleCaptchaSolver">Moodle Captcha Solver</a> (<strong>EDIT</strong>: Chrome is outlawing Manifest v2 to much furore, and I&rsquo;ve officially migrated to using Firefox, along with all my plugins and scripts. You can find my UserScripts <a href="https://github.com/Aniruddha-Deb/UserScripts">here</a>)</p>
+<p><a href="http://localhost:1313/articles/2022/iit-course-planner-1/">Course dependency graphs</a> for various programmes (I&rsquo;ve been told this is what most people come here for :))</p>
+<p>Fresher sem resources (IITD internal): <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/Ej36n4LcTVFGnrAKpOw7i4AB1VrRvthe-TX8R4BNNRDRjw?e=Z0Edww">Sem 1</a> | <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/EksZ_k43MuVOukNV7MAdnycBz_FINOik-uv_BC1uYP_t5Q?e=kdHDw4">Sem 2</a></p>
+<p>Other CS Sem Resources (IITD internal): <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/EunTAZNCCG1DhPdfsdmwstoBxZ43PJOCP651mt3sKfKW7Q">Sem 3</a> | <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/Er2_3xS_GX1Klx4pJde90awBJ8KfZ8RG7KvgYqk8-oQaPA?e=HuiIVS">Sem 4</a> | <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/EngbL4fqiOFEmilT3Pu_EVEBxI2uWn657GCJJTRSZz9GQQ?e=aO0NpE">Sem 5</a> | <a href="https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/EjHHwCa9tE9Enyg_ocwAkmIBRJnRD0SXNQU-LyCEf1SfWw?e=Ny8BgB">Sem 6</a></p>
+<p>For other useful IITD Websites, check out <a href="https://as1605.github.io/privateweb">Aditya Singh&rsquo;s Webpage</a>.</p>
+<p>MTL106 Tutorial Solutions by Rishabh <a href="https://fricai.github.io/mtl106/tutorial-solutions.pdf">here</a></p>
+<p>A few talks I&rsquo;ve given: <a href="https://drive.google.com/file/d/1YvKM1ka1iktR0DxHXXzZ23IacFJ7gV5h/view?usp=drive_link">Intro to Quant Finance</a>, <a href="https://github.com/Aniruddha-Deb/back_to_normal">T distributions</a>, <a href="https://github.com/Aniruddha-Deb/automata-talk">Cellular Automata</a></p>
 </section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">It&#39;s easy to mess up</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Aug 5, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/easy-to-mess-up/">It&#39;s easy to mess up</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Intern Ashes</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jul 29, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/intern-ashes/">Intern Ashes</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My (updated) DL workflow for 2023</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jun 4, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/updated-dl-workflow-2023/">My (updated) DL workflow for 2023</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">&lt;strike&gt;M&lt;/strike&gt;RCU comic</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 19, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/rcu-comic/">&lt;strike&gt;M&lt;/strike&gt;RCU comic</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">The Properly Illustrated Transformer</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 8, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer/">The Properly Illustrated Transformer</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Mac Setup v2</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Mar 6, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/mac-setup-2/">Mac Setup v2</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Batch Normalization</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Feb 16, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/batch-normalization/">Batch Normalization</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">L2 regularization intuition</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 22, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/l2-regularization/">L2 regularization intuition</a>
-</section>
-
-
-
-
-
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
-  
-  <h2 class="!my-0 pb-1 font-bold !leading-none">Optimizers, Part 1</h2>
-  <time class="text-sm antialiased opacity-60"
-    >Jan 2, 2023</time
-  >
-  <a class="absolute inset-0 text-[0]" href="https://aniruddhadeb.com/articles/2023/optimizers-1/">Optimizers, Part 1</a>
-</section>
-
-
-
-
-<nav class="mt-16 flex">
-  
-  
-  <a class="btn ml-auto" href="/page/2/"
-    >Next Page →</a
-  >
-  
-</nav>
-
+</article>
 
 
     </main>

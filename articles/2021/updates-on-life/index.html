@@ -97,38 +97,19 @@ That doesn&rsquo;t even sum up just how great they&rsquo;ve been." />
 
   
   
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () =>
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          
-          throwOnError : false
-        })
-    );
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
 </script>
 
   
@@ -245,14 +226,20 @@ That doesn&rsquo;t even sum up just how great they&rsquo;ve been."/>
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/about/"
-        >About</a
+        href="/articles/"
+        >Blog</a
       >
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Articles</a
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/files/cv.pdf"
+        >CV</a
       >
       
     </nav>
@@ -335,7 +322,7 @@ That doesn&rsquo;t even sum up just how great they&rsquo;ve been."/>
 <p>In terms of academic things, I attended the IBM <a href="https://qiskit.org/events/summer-school/">Qiskit Global Summer School in Quantum Computing</a> for two weeks in July, which was also a great experience. We received a crash course in quantum computing and quantum machine learning, supplemented by five amazing labs, all of which I really enjoyed doing. I am also pleased to be a <a href="https://scholarships.reliancefoundation.org/">Reliance Foundation Scholar in Artificial Intelligence and Computer Sciences</a>, the onboarding event for which is scheduled on the 19th of August. Finally, it was great attending the events and camps organized by those at IITD: The Summer of Competitive Programming by ANCC and the Summer of Machine Learning by AIMLC. Both of them were great learning opportunities; the latter giving rise to <a href="https://apps.aniruddhadeb.com/MathSolver">MathSolver</a> (Article on that soon too, I promise).</p>
 <h2 id="the-little-things">The little things</h2>
 <p>There weren&rsquo;t many of these that I can remember now, but I designed the Quizzing Club Introductory poster this time.</p>
-<center><img src="res/repteam_final_2.png" style="width: 100%; height: auto; max-width: 35vw;"></center>
+<center><img src="/articles/2021/res/repteam_final_2.png" style="width: 100%; height: auto; max-width: 35vw;"></center>
 <p>I also applied for the Board of Student Publications, the press arm of IIT Delhi, and they had a very interesting google form that we needed to fill to be shortlisted for an interview. I will be uploading my responses to that form soon enough, but I filled that out in the first week of August, and it was a fun exercise filling that in, because I hadn&rsquo;t written anything original in a long time.</p>
 <p>As for Quizzing and Debating, I quizzed a lot and won nothing :P (best fresher, yes but that&rsquo;s a club award and not a quiz). the same goes for debating, except that I managed to break in my first external debate. The external debate was fun, albeit a bit exhausting. I need to get used to those :)</p>
 <p>I did a bit of number theory and cryptography as well in the summers, learning what AES, RSA and all of those were. Some competitive programming was also on the list (<a id="codeforces" href="" style="font-family: helvetica neue,Helvetica,Arial,sans-serif; font-weight: 700; font-size: 12pt">aniruddha_deb</a> on CodeForces, <a href="https://atcoder.jp/users/aniruddha_deb">aniruddha_deb</a> on AtCoder), and I learnt a few more algorithms there.</p>
@@ -423,6 +410,26 @@ getCFLink();
   </footer>
   
 
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2021/note-on-random-variables/"
+      ><span class="mr-1.5">←</span><span>A Note on Random Variables</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2021/how-it-happened/"
+      ><span>How it Happened</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
   
   
 

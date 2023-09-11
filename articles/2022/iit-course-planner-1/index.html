@@ -95,38 +95,19 @@
 
   
   
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () =>
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          
-          throwOnError : false
-        })
-    );
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
 </script>
 
   
@@ -239,14 +220,20 @@
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/about/"
-        >About</a
+        href="/articles/"
+        >Blog</a
       >
       
       <a
         class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Articles</a
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/files/cv.pdf"
+        >CV</a
       >
       
     </nav>
@@ -321,8 +308,8 @@
 <p>Each programme has a number of courses that you NEED to do to graduate: these are referred to as your core courses. They&rsquo;re divided into two: institute core and department core. Institute core is a common set of courses people from every department do, mostly in their first year (exception CVL100 and SBL100), and department core is what makes up the bulk of the remaining three (two?) years of your degree. The rest of your degree is comprised of Humanities and Social Sciences (yes, sad), which you need to do 15 credits worth, and Electives, both departmental (picking electives from your department), and open (picking electives from any department<sup>2</sup>). If you&rsquo;re in a Dual Degree, your M.Tech degree would have it&rsquo;s own program core (some extra high-level courses and a M.Tech Project) and program electives.</p>
 <p>Here&rsquo;s a relevant snap from the Courses of Study (henceforth referred to as CoS), showing how the courses shape up for MT1 (B.Tech in Mathematics and Computing) and MT6 (Dual Degree in Mathematics and Computing)</p>
 <center>
-<img src="res/creds_mt1.png" style="width: 45%; vertical-align: text-top;"></img>
-<img src="res/creds_mt6.png" style="width: 45%; vertical-align: text-top;"></img>
+<img src="/articles/2022/res/creds_mt1.png" style="width: 45%; vertical-align: text-top;"></img>
+<img src="/articles/2022/res/creds_mt6.png" style="width: 45%; vertical-align: text-top;"></img>
 </center>
 <p>We&rsquo;ll be using these abbreviations very commonly across the article (<code>bs</code>,<code>eas</code>,<code>huss</code>,<code>dc</code>,<code>de</code>,<code>oc</code>,<code>pc</code>,<code>pe</code>), so this is a good point to mark and come back to. If a lot of this is still unclear, the CoS makes it much clearer than I do. Do give the first few pages of it a read. It&rsquo;s not as boring as expected. Promise.</p>
 <h2 id="getting-started">Getting Started</h2>
@@ -424,6 +411,26 @@
   </footer>
   
 
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2022/freedom/"
+      ><span class="mr-1.5">←</span><span>Freedom, Recaptured.</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://aniruddhadeb.com/articles/2021/note-on-conditional-probability/"
+      ><span>A Note on Conditional Probability</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
   
   
 
