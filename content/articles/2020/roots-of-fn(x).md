@@ -1,6 +1,5 @@
 ---
-title: Roots of $f(f(..f(x)..))$, where $ f(x) = ax^2 + bx + c $, are symmetric about
-  $ \frac{-b}{2a} $
+title: Roots of f(f(..f(x)..)), f(x) = ax² + bx + c
 publishDate: '2020-04-30T20:30:00'
 categories: Mathematics
 slug: roots-of-fffx

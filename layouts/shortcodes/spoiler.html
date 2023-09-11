@@ -1,0 +1,8 @@
+<blockquote class='spoiler'>
+{{ with .Get "prompt" }}
+  <div class="spoiler-prompt">{{ . }}</div>
+{{ else }}
+  <div class="spoiler-prompt">Mouseover/tap to reveal</div>
+{{ end }}
+<div class='spoiler-text'>{{ .Inner | safeHTML }}</div>
+</blockquote>

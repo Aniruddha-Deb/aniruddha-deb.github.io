@@ -91,11 +91,9 @@ So your interviews are over, and you're waiting at your hostel room, playing car
 
 _drumrolls_
 
-<link rel="stylesheet" type="text/css" href="res/spoiler.css">
-<blockquote class='spoiler'>
-<div class='spoiler-prompt'> I'm pleased to announce that I'll be joining ... </div>
-<div class='spoiler-text'> I'm pleased to announce that I'll be joining <a href="https://www.optiver.com">Optiver</a> at their Amsterdam office next summer as a <b>Software Engineering Intern</b>. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.
-</div></blockquote>
+{{< spoiler prompt="I'm pleased to announce that I'll be joining ..." >}} 
+I'm pleased to announce that I'll be joining <a href="https://www.optiver.com">Optiver</a> at their Amsterdam office next summer as a <b>Software Engineering Intern</b>. I'll be working on optimizing their low-latency systems and finding out what goes into the tech that makes one of the world's leading market makers tick.
+{{</ spoiler >}} 
 
 `</linkedin post>`
 

@@ -30,14 +30,12 @@ $$\int_a^b f(x) dx + \int_{f^{-1}(a)}^{f^{-1}(b)} f^{-1}(x) dx$$
 
 See a pattern? Try graphing out what these functions will look like. 
 
-<link rel="stylesheet" type="text/css" href="res/spoiler.css">
-<blockquote class='spoiler'>
-<div class='spoiler-prompt'> Mouseover/tap for the answer</div>
-<div class='spoiler-text'> Since they're perfect inverses, and the inverse domains also match, these functions will form a rectangle on the cartesian plane, and the integration will be a 'cutout' of this rectangle. 
+{{< spoiler >}}
+Since they're perfect inverses, and the inverse domains also match, these functions will form a rectangle on the cartesian plane, and the integration will be a 'cutout' of this rectangle. 
 
-<img src="res/integration.jpeg">
+<img src="/articles/2022/res/integration.jpeg">
 
 Therefore, the answer is $4\log_2(3) - 1 \approx 5.3 > 5$.
-</div></blockquote>
+{{</ spoiler >}}
 
 Hint: Integrate without integrating :)
