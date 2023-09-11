@@ -86,7 +86,7 @@ online.
 
 Some useful browser plugins to make the online sem easier: [Moodle Sidebar Plugin](https://github.com/Aniruddha-Deb/MoodleSidebarPlugin), [Impartus Ad Blocker](https://github.com/Aniruddha-Deb/ImpartusAdBlocker), [Impartus Participant Stats](https://github.com/Aniruddha-Deb/ImpartusParticipantStats), [Moodle Captcha Solver](https://github.com/Aniruddha-Deb/MoodleCaptchaSolver) (**EDIT**: Chrome is outlawing Manifest v2 to much furore, and I've officially migrated to using Firefox, along with all my plugins and scripts. You can find my UserScripts [here](https://github.com/Aniruddha-Deb/UserScripts))
 
-[Course dependency graphs](http://localhost:1313/articles/2022/iit-course-planner-1/) for various programmes (I've been told this is what most people come here for :))
+[Course dependency graphs](http://aniruddhadeb.com/articles/2022/iit-course-planner-1/) for various programmes (I've been told this is what most people come here for :))
 
 Fresher sem resources (IITD internal): [Sem 1](https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/Ej36n4LcTVFGnrAKpOw7i4AB1VrRvthe-TX8R4BNNRDRjw?e=Z0Edww) | [Sem 2](https://csciitd-my.sharepoint.com/:f:/g/personal/cs1200869_iitd_ac_in/EksZ_k43MuVOukNV7MAdnycBz_FINOik-uv_BC1uYP_t5Q?e=kdHDw4)
 
