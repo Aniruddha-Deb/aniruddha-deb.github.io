@@ -27,9 +27,11 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
     [markup.goldmark.renderer]
       unsafe = true
 
+
 [params]
   # color style
   color = 'linen'                           # linen, wheat, gray, light
+  paginate = 100
 
   dateFormat = '2006-01-02 15:04'
   publishDateFormat = '2006-01-02 15:04'
