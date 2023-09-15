@@ -5,6 +5,7 @@ categories: Writing
 tags:
 - Writing
 slug: this-summer
+draft: true
 ---
 
 What is a dream? all of us think of dreams as abstract ideals, far removed from reality, that we should chase with all the effort we can muster every day. 

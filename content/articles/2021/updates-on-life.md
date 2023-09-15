@@ -5,6 +5,7 @@ categories: Writing
 tags:
 - Writing
 slug: updates-on-life
+draft: true
 ---
 
 I haven't done one of these in a year or so ([this was the previous one][1]), and neither have I written content exclusively for my blog for atleast a few months now, so it's a good time to do one of these because _a lot has changed in the past one year_. 

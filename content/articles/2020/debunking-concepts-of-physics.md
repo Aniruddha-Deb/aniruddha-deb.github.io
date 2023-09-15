@@ -6,6 +6,7 @@ tags:
 - JEE
 - Physics
 slug: debunking-concepts-of-physics
+draft: true
 ---
 
 I generally don't post stuff that is extremely specific to JEE, but this time I'm willing to make an exception.
@@ -20,7 +21,7 @@ Thankfully, this website is not endorsed by Dr. H. C. Verma himself. It seems to
 Everyone starts out a learner. It's fine to use a book like this when you're learning. However, this book has almost zero applicability when it comes to preparing for JEE(A). It might get you through JEE(M), but it's extremely risky to refer to ONLY this book and accept it's word as the word of god. Here are a few reasons not to use Concepts of Physics for long term preparation:
 
 1. **It's not exam-oriented!** This has to be the biggest gripe of mine. The book's content has not kept up with the demands of the exam, but that is not it's purpose. However, people still believe that it has kept up and is still as relevant as it was 20 years ago. The Single Correct and Multiple Correct questions (Objective I and Objective II) are mainly concept oriented, with no numericals. Even the subjective questions suck big time, compared to Irodov or Krotov. Here's a snap of Chapter 18, Geometrical Optics:<br>
-<center>![chapter 18]({static}res/chp18_optics.png)</center><br>
+<center>![chapter 18](/articles/2020/res/chp18_optics.png)</center><br>
  Notice that questions 61-66 are exactly the same with the only difference being the type of lens and mirror in the situation and the parameter being asked. 
 
 2. **It covers irrelevant concepts!** TVF made a point of this in their skit "A Day with H C Verma". Chapter 47, Relativity, is not included in syllabus. A lot of other concepts, such as Peltier effect, Zeeman effect, measuring speed of light etc are irrelevant from an exam point of view. 

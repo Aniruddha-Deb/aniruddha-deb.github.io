@@ -4,6 +4,7 @@ publishDate: '2017-12-09T10:30:00'
 categories: Quizzing
 slug: nssq-experience
 summary: A Firsthand account of NSSQ 2017
+draft: true
 ---
 
 'Safety science' is a novel term. Googling it up reveals a few obscure links. It doesn't even have a Wikipedia page of it's own! Safety science is a new term that refers to the science of keeping oneself safe from dangers at home, at work, on the streets and so on. This concept of safety science is spearheaded in India by Underwriters Laboratories (*whispers* marketing) in association with NDTV (*whispers* TRP.).

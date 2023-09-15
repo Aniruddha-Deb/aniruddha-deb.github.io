@@ -4,6 +4,7 @@ publishDate: '2018-06-06T22:05:00'
 categories: Programming
 slug: ocajp
 summary: How I prepared and cleared the OCA examination in my summer holidays
+draft: true
 ---
 
 This was originally posted on [CodeRanch](https://coderanch.com/t/695020/certification/Cleared-OCAJP-Experience):

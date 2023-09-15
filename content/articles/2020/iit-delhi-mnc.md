@@ -57,10 +57,6 @@ is no change in the top 100 and very little (couple seats) in the top 500, so
 this is it. The fat lady has sung, and I'll be packing my bags for Delhi whenever 
 the pandemic blows over.
 
-I thought about offering some pearls of advice to others by penning down the 
-story of the past two years; I wrote a draft, but it was too lengthy, too 
-egocentric and too offensive. Unfortunately, I'm not very good at talking or 
-writing about myself, and the story would piss off more people than I can count. 
 I would like to thank those who have been on this journey with me, starting with
 my Parents: suffice it to say that I wouldn't have made it this far in life without 
 them, and any attempts to thank them in words will not do their efforts justice.
@@ -70,7 +66,6 @@ Sri Balaji texts), so kudos to the authors of those. My Notebooks were amazing
 scribbles without complaint when I couldn't solve problems. Thank you as well 
 to all nonliving things and articles I used in this journey. 
 
-I did not take a classroom coaching course, so no teachers to be thanked there. 
 I would like to thank FIITJEE for AITS: the hardest test series 
 out there. The problems from here were great (note that not all of them were 
 original; quite a few were lifted from IPhO, IChO, INPhO, IMO, HMMT etc) and 

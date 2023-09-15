@@ -5,6 +5,7 @@ categories: General
 tags:
 - General
 slug: freedom
+draft: true
 ---
 
 With the creation of my [official website](https://www.cse.iitd.ac.in/~cs1200869) (safari butchers the CSS :/), I've now got more creative liberty and artistic freedom on the content I post here. 

@@ -11,7 +11,7 @@ slug: isc-2020-analysis
 
 The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll be analyzing the results of the 117 students in the science stream of my school and showing how they performed. I'll also weave a story with the data and point out things that could have been improved, which would be helpful for future students.
 
-###Index:
+### Index:
 
 1. Elementary inferences: How have people fared overall?
 2. Frequency Distribution of Marks: How many people got the same marks in a subject?
@@ -20,7 +20,8 @@ The ISC Exam results were released on 10th June, 3 PM IST. In this article, I'll
 5. Using other datapoints: Do girls perform better than boys? Are back-benchers doing poorly?
 6. Conclusion
 
-###Elementary Inferences
+### Elementary Inferences
+
 The Science Stream consists of 117 Students, with 80 boys and 37 girls, all of whom passed.
 
 $$\begin{array}{|c|c|}
@@ -65,51 +66,51 @@ EDIT: Turns out that quite a few people who have taken Computer Science and scor
 
 In the following sections, I won't be focusing too much on Arts, EVS and Biology: Arts and EVS make up a very small dataset, whose results may not be reliable. The marks obtained in Biology are not representative of the students' potential: due to the exams being cancelled, the marks for Biology were derived via this averaging algorithm.
 
-###Frequency Distribution of Marks
+### Frequency Distribution of Marks
 I'll be plotting a few Histograms in this section and doing an overview of the 'spread' of marks across the spectrum. This helps visualize the data presented in the previous section. The data for most subjects fits into a bell curve, with the exception of Physics, Chemistry and Mathematics
 
 As a small primer: A histogram plots the frequency of a particular element in a data set. If 5 people scored 95 marks, then a bar 5 units tall would be placed at the 95th element. The graphs would make this clearer.
 
 Let's start with the small subjects: Arts, EVS and Biology
 
-![histogram]({static}res/results/histogram/Art.png)
-![histogram]({static}res/results/histogram/EVS.png)
-![histogram]({static}res/results/histogram/Biology.png)
+![histogram](/articles/2020/res/results/histogram/Art.png)
+![histogram](/articles/2020/res/results/histogram/EVS.png)
+![histogram](/articles/2020/res/results/histogram/Biology.png)
 
 There's not too much to see here, because of the sparsity of these graphs. Let's move on to English:
 
-![histogram]({static}res/results/histogram/English.png)
+![histogram](/articles/2020/res/results/histogram/English.png)
 
 The graph for English nicely highlights the bell curve distribution; a majority of people have scored 89, and almost all students have obtained marks in the $79-94$ range. Computer Science also shows a similar trend
 
-![histogram]({static}res/results/histogram/CS.png)
+![histogram](/articles/2020/res/results/histogram/CS.png)
 
 Apart from a few outliers on the lower end of the spectrum, most people have obtained above $85$ here, with 91 being the most common score. 17 people obtained a score of 95 and above. One person obtained a solid $100$. This is a good result in a not-so-easy subject.
 
 Moving on to Physics:
 
-![histogram]({static}res/results/histogram/Physics.png)
+![histogram](/articles/2020/res/results/histogram/Physics.png)
 
 The Median for Physics was much higher than that of Maths and Chemistry (In part maybe because the paper was easy). We see that around 29 people have scored less than 70 here. 92 is the mode for this dataset, which is a good score. Again, one person has scored $100$, which is not an impossible feat in any of the sciences. 
 
 What immediately pops out in the Physics graph is that there is no well-defined 'peak' or 'cluster' in the data as there was for the previous subjects. This becomes even more apparent in Chemistry:
 
-![histogram]({static}res/results/histogram/Chemistry.png)
+![histogram](/articles/2020/res/results/histogram/Chemistry.png)
 
 Mark segmentation is heavily apparent in chemistry, with four clearly defined segments: those scoring above 95, those in the 80-95 range, those in the 60-80 range and those who obtained below 60. The segmentation explains the high standard deviation as well as the low mean (a large number of people are centered around 70 and 85). The number of people scoring above 90 drops heavily here, with only 10 people crossing the barrier. Amazingly, nobody obtained a 100 or a 99 in this paper, with 98 being the highest. 
 
 Finally, Maths teaches us a lot of lessons:
 
-![histogram]({static}res/results/histogram/Mathematics.png)
+![histogram](/articles/2020/res/results/histogram/Mathematics.png)
 
 Marks in math resemble a bag of dropped marbles: there seems to be a slight pattern here, but one that is heavily tinged by apparent randomness. Heavy segmentation and sparse distribution show why the standard deviation is around 20 here. Inequality is also highly apparent here: those who do well at maths do exceptionally well (3 people scored a 100) and those who do poorly do extremely poorly. Part of this is due to the high-stakes nature of the math paper: the marking pattern has a tendency to be ruthless here, while the other part boils down to imparting math education to the people who don't have a knack for math. There are two lessons here: for the people who are yet to give their exams, Study math and Study math hard. For those who have already given their exams, If you have done poorly in Math, take comfort in the fact that you are not alone. Math (and Chemistry) was tricky this time and if you are taking a math-heavy field, you will have several opportunities in life to do better in this subject later.
 
 Finally, Here's the histograms for Best of 4 percentage and Overall percentage:
 
-![histogram]({static}res/results/histogram/Bo4Pct.png)
-![histogram]({static}res/results/histogram/TotPct.png)
+![histogram](/articles/2020/res/results/histogram/Bo4Pct.png)
+![histogram](/articles/2020/res/results/histogram/TotPct.png)
 
-###Quartiles
+### Quartiles
 What score is a good score? The same set of marks, when viewed by different people, can have different interpretations. While your parents may think you have done poorly, compared to your friends, you may have done pretty well! Quartiles take care of this: they convert your percentage to percentile (A concept we're all familiar with, after JEE Main) and tell you into which 'bucket' you fit:
 
 1. 1st quartile or Lower quartile: below 25th percentile
@@ -137,7 +138,7 @@ $$\begin{array}{|c|c|}
 
 As an example, if you obtained a best of 4 percentage of $85\%$, you would fit in the Third Quartile. This is because you broke through the first (0), second (78) and third (84.75) quartile entry limits but could not break into the fourth quartile (89.75). Hence, your quartile is detemined by the entry marks just below/equal to your own marks.
 
-###Corellation Analysis
+### Corellation Analysis
 Subjects are not disjoint sets: there is quite a bit of overlap between two subjects. As an example, Atomic Structure is a topic we study both in Physics and Chemistry. For a broader example, a firm understanding of Mathematics is required to do well in Physics and Physical Chemistry. 
 
 ![On the other hand, physicists like to say physics is to math as sex is to masturbation.](https://imgs.xkcd.com/comics/purity.png)
@@ -148,18 +149,18 @@ In this analysis, I'll treat Mathematics as the 'glue' subject and analyze how P
 
 First up, Mathematics-Physics and Mathematics-Chemistry corellations:
 
-![correlation]({static}res/results/correlation/MP_correlation.png)
-![correlation]({static}res/results/correlation/MC_correlation.png)
+![correlation](/articles/2020/res/results/correlation/MP_correlation.png)
+![correlation](/articles/2020/res/results/correlation/MC_correlation.png)
 
 Notice that $r > 0.8$ for both of these correlations: this means that those who did well in math automatically did well in Physics and Chemistry, which reiterates a key point to upcoming students: learn to love Math. Also notice that $r\_{MP} > r\_{MC}$. This also validates the fact that Maths is more important for Physics than it is for Chemistry (which is kind of obvious, since Physical chemistry has around 30-40% weightage only). 
 
 Physics-Chemistry yields an interesting graph:
 
-![correlation]({static}res/results/correlation/PC_correlation.png)
+![correlation](/articles/2020/res/results/correlation/PC_correlation.png)
 
 Amazingly, there is an even higher degree of correlation here than there is between Math-Physics and Math-Chemistry. This stumped me. If any of the readers have an idea as to why Physics and Chemistry are so interlinked (only the 12th syllabus), then feel free to drop a comment down below. The only theory I have for now is that there are 9 students who have not taken math but have taken Physics and Chemistry (or a similar permutation). These 9 extra data points are contributing the extra $0.04$ to the correlation coefficient.
 
-###Using Other Datapoints
+### Using Other Datapoints
 Remember this table from the first section?
 
 $$\begin{array}{|c|c|}
@@ -177,37 +178,37 @@ I'll be expanding on this to display separate statistics for Boys and Girls in a
 
 As we did previously, Let's start with Art, EVS and Biology, three subjects from which there are minimal inferences to be drawn:
 
-![BvG]({static}res/results/BvG/Art_BvG.png)
-![BvG]({static}res/results/BvG/EVS_BvG.png)
-![BvG]({static}res/results/BvG/Biology_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Art_BvG.png)
+![BvG](/articles/2020/res/results/BvG/EVS_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Biology_BvG.png)
 
 Not too many inferences to be drawn here: EVS and Art have a very small sample size and Biology was calculated based on averages. Let's move on to English and Computer Science
 
-![BvG]({static}res/results/BvG/English_BvG.png)
-![BvG]({static}res/results/BvG/Computers_BvG.png)
+![BvG](/articles/2020/res/results/BvG/English_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Computers_BvG.png)
 
 Girls and Boys are pretty much on par with each other in Computer Science, whereas for English, Girls do better than Boys.
 
 The Sciences, however, have a different story to tell. Here's Physics:
 
-![BvG]({static}res/results/BvG/Physics_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Physics_BvG.png)
 
 We clearly see that the boys are doing better than girls in Physics. A large number of girls have score in the $72-75$ mark range, as well as in the $46-53$ mark range. Girls lead boys in the $88-92$ mark range, however, the $95-100$ mark range is completely occupied by boys. Chemistry paints a similar picture:
 
-![BvG]({static}res/results/BvG/Chemistry_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Chemistry_BvG.png)
 
 Again, the frequency of girls in the $<60$ mark range is high and the $95-100$ mark range is again occupied by boys. Girls do outperform boys in the $82-93$ mark range here.
 
-![BvG]({static}res/results/BvG/Mathematics_BvG.png)
+![BvG](/articles/2020/res/results/BvG/Mathematics_BvG.png)
 
 Mathematics too is similar. There are no girls in the $97-100$ range and an abundance of them in the $<40$ mark range.
 
-###Conclusion
+### Conclusion
 This analysis is by no means exhaustive: many other stories can also be told with exactly the same data set. However, the most important lesson that stands out is to Focus on Math. I cannot stress this enough. Math is required for Physics, Chemistry and to a small extent, Computer Science as well. Having a firm grounding in math is essential for all science students. Math is also a 'precise' subject, which means that the probability of scoring better marks in Math is higher than it is 'soft' subjects such as English.
 
 For the ones who have already given their papers, I hope that this analysis shows you how well you have done and also points out places where you could have improved. The real value of this analysis lies for the students who are yet to give their papers. I would have benefited immensely had such an analysis been available for me to read before my exams. I hope that upcoming students can use this wisdom to shape their own preparation strategy for the exams.
 
-###Behind the scenes
+### Behind the scenes
 The data was analysed with Python. Matplotlib was used for drawing the beautiful graphs and numpy, along with python's inbuilt statistics library was used for doing the calculations. This is the first time I've ventured into data science, and I'm really enjoying it :)  R was a candidate for doing most of this processing (I really like R's ggplot2 library: it's built on solid concepts), but I already had my python development environment set up on my machine and wanted to do this in a language I'm comfortable with.
 
 Further reading (for those interested in Data Science):

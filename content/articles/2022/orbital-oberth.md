@@ -5,6 +5,7 @@ categories: General
 tags:
 - Writing
 slug: orbital-oberth
+draft: true
 ---
 
 Once a rocket is in orbit, if it needs to change it's orbit (either from a lower to a higher orbit, or from a circular to an elliptical orbit), it needs to execute an [Orbital Maneuver](https://en.wikipedia.org/wiki/Orbital_maneuver). This is accomplished by using a small impulse from thrusters to change the tangential velocity, and hence slip into a different orbit as a consequence.

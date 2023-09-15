@@ -6,6 +6,7 @@ tags:
 - Programming
 - Linux
 slug: manjaro-rice
+draft: true
 ---
 
 ![rice 1](/articles/2022/res/manjaro_rice_1.png)

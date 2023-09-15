@@ -5,6 +5,7 @@ categories: Engineering
 tags:
 - CAD
 slug: freecad-intro
+draft: true
 ---
 
 MCP100 is a course that all first year undergrads in IITD have to go through. 

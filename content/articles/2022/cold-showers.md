@@ -5,6 +5,7 @@ categories: General
 tags:
 - General
 slug: cold-showers
+draft: true
 ---
 
 Day 249 of taking a cold shower. It's something I've been doing since April, 

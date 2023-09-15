@@ -6,6 +6,7 @@ tags:
 - Mathematics
 - JEE
 slug: jee-2022-problem
+draft: true
 ---
 
 I promised I wouldn't look at the JEE 2022 paper, but couldn't help sneaking a peek. As always, the professors currently making life difficult occasionally get a chance to make the life of all of India's students difficult, and they never cease to amaze.

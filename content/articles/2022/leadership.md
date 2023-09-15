@@ -5,6 +5,7 @@ categories: General
 tags:
 - Writing
 slug: leadership
+draft: true
 ---
 
 Gazettale, BSP's premier interhostel competition, for which our team worked day and night, recently released the final standings.

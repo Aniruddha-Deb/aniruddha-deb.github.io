@@ -33,17 +33,17 @@ This perfectly matches what we are looking for. Thus, the formula of the compoun
 
 Drawing the structure is a bit trickier. A possible stable trimeric structure is
 
-![Initial guess]({static}res/X_1.png)
+![Initial guess](/articles/2020/res/X_1.png)
 
 However, this is not the experimentally verified structure of sulphanuric chloride. Hazell et al. states that the structure (originally proposed by Kirsanov(1952)) has the $\ce{Cl}$ atoms attached to the $\ce{S}$ atom, with a formal charge of +1 on the $\ce{S}$ and -1 on the $\ce{N}$ atom. This structure has been proposed keeping in mind the physical properties of the compound.
 
-![fig. showing (I) $\alpha$ and (II) $\beta$ forms]({static}res/X_2.png)
+![fig. showing (I) $\alpha$ and (II) $\beta$ forms](/articles/2020/res/X_2.png)
 
 <del>Without knowing about these findings, drawing the correct structure is nigh impossible. This is what makes this a very hard question, as the first guess is to draw the structure that I have drawn above.</del> See edit
 
 Once the structure is known, 5.2, 5.3 and 5.4 are very easy. 5.2 involves drawing the two stereoisomers, which consist of an all cis $\ce{Cl}$ isomer and a trans $\ce{Cl}$ isomer, both of which are shown below.
 
-![stereoisomers]({static}res/X_3.png)
+![stereoisomers](/articles/2020/res/X_3.png)
 
 5.3 involves a simple halogen substitution reaction with Fluorine, giving us $\ce{(NSOF)3}$. This is isostructural with $\ce{(NSOCl)3}$. 5.4 involves a substitution reaction with methylamine, giving us $$\ce{(NSOF)3 + 3CH3NH2 -> (NSO(NHCH3))3 + 3HF}$$
 
@@ -55,15 +55,15 @@ A very good problem, well above the regular inorganic standard. Breaking through
 
 There is a better, mechanism-based way of solving this question, as pointed out by [Yusuf Hasan](https://chemistry.stackexchange.com/users/54655/yusuf-hasan) over at Chemistry StackExchange. Thionyl Chloride reacts with organic molecules via this reaction pathway:
 
-![SNi pathway]({static}res/SNi.png)
+![SNi pathway](/articles/2020/res/SNi.png)
 
 To solve this problem, we need to formulate a similar reaction pathway, but with the Azide anion as the substrate instead of pentan-2-ol. Here's the proposed pathway:
 
-![Monomer formation]({static}res/monomer.png)
+![Monomer formation](/articles/2020/res/monomer.png)
 
 Trimerization occurs through a pericyclic mechanism similar to the trimerization of $\ce{SO3}$. Note that the $\ce{Cl-}$ atoms shift from $\ce{N}$ to $\ce{S}$ in a concerted manner, similar to the mechanism proposed by [Okajima and Imafuku](https://www.researchgate.net/publication/11505683_Theoretical_Study_on_Chlorine_and_Hydrogen_Shift_in_Cycloheptatriene_and_Cyclopentadiene_Derivatives). 
 
-![Trimer formation]({static}res/trimer.png)
+![Trimer formation](/articles/2020/res/trimer.png)
 
 This is a more concrete way to get to the answer and one that does not involve guesswork or hit and trial.
 

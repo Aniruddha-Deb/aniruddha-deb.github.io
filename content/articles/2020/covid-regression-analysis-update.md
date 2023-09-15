@@ -6,16 +6,17 @@ tags:
 - Mathematics
 - COVID 19
 slug: covid-regression-analysis-update
+draft: true
 ---
 
 The Previous COVID regression analysis was fairly accurate. However, the opening of lockdown offset the statistics a bit and now there are more number of projected cases. Here is a recomputation of the statistics, which projects an average of 172,000 cases by June 1 and 520,000 cases overall by August end.
 
-![covid static]({static}res/covid_update/covid_static.png)<br>
+![covid static](/articles/2020/res/covid_update/covid_static.png)<br>
 <sup>Y-axis: number of new cases per day. X-axis: number of days since first case.</sup>
 
 Here's an animated view:
 
-![covid dynamic]({static}res/covid_update/covid_dynamic.gif)
+![covid dynamic](/articles/2020/res/covid_update/covid_dynamic.gif)
 
 The relevant files can be found in [this GitHub repo](https://github.com/Aniruddha-Deb/COVID_19_regression).
 

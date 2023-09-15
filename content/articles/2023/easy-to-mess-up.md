@@ -5,6 +5,7 @@ categories: General
 tags:
 - Philosophy
 - Advice
+draft: true
 slug: easy-to-mess-up
 ---
 

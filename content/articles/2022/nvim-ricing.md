@@ -6,6 +6,7 @@ tags:
 - Programming
 - Systems
 slug: nvim-ricing
+draft: true
 ---
 
 While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I'd installed Neovim, so the rational step would be to install Sublime and forget about neovim.

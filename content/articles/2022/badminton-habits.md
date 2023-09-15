@@ -6,6 +6,7 @@ tags:
 - Writing
 - Badminton
 slug: badminton-habits
+draft: true
 ---
 
 Atomic Habits probably needs no introduction, and neither will I bore you with one. All I'll say is that I found a friend in hostel with a copy of the book, and when I went home, I found a physical copy on my Dad's bookshelf (all of us have kindles, and only buy hardcopies of books that we really want a hardcopy of). 

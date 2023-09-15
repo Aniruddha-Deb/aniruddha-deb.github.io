@@ -6,6 +6,7 @@ tags:
 - Programming
 - Networks
 slug: ns3-installation
+draft: true
 ---
 
 ## Prerequisites

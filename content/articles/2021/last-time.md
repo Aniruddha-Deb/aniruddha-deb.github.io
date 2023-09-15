@@ -5,6 +5,7 @@ categories: Writing
 tags:
 - Writing
 slug: last-time
+draft: true
 ---
 
 Soft sunlight streaked in through the curtains, illuminating the room in a warm glow. Of course, I noticed none of that. The only thing I was aware of was my phone's alarm clock ringing. After drowsily hitting the snooze button, I realized that I had done this twice already, so I started scrolling through the notifications. It was 8:30, and my friends were abuzz with excitement. "Oh! The JEE Advanced results are coming out today!", I suddenly recalled while jumping out of bed, almost falling over in the process.

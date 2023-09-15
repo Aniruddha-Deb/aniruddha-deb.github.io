@@ -5,6 +5,7 @@ categories: General
 tags:
 - General
 slug: daft-punk-interstella
+draft: true
 ---
 
 In 2001, Daft Punk were nowhere near the mask-rocking superstars they are today. 

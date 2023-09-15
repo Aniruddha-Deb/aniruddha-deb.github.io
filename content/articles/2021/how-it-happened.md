@@ -5,6 +5,7 @@ categories: Writing
 tags:
 - Writing
 slug: how-it-happened
+draft: true
 ---
 
 "Baba, I got Mathematics and Computing Dual at IITD", I told my father excitedly on the day the first round allocations were over. "It probably won't change now". Certain of this, I returned back to whatever I was doing, excitedly waiting for the seat allocations to get over (while simultaneously crossing my fingers for the slightest hope of a branch upgrade, as we all do). Even though the campus was not opening and the semester was planned to be conducted online, I hoped to truly enjoy my first year of college life.

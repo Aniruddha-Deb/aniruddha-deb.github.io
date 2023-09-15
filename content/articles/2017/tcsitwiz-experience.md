@@ -20,7 +20,7 @@ Right after the quiz was over, the very next day, we drew up a schedule of prepa
 
 The quiz finals are held on 10th December every year, at Taj Lands End in Mumbai. This was the first time I was in a TCS National final, up against stiff competition from last time's winners. Due to hasty decisions, we were knocked out of the quiz during the semifinal stage, getting a +1 and then a -1, bringing our score to 0. Delhi and Ahmedabad got 4 or 5 and Kochi got 1. The finals were a close contested battle between Delhi and Ahmedabad up till the fifth round. In the fifth round, Delhi built up an unassailable 30 point lead and went on to win the quiz again, with a score of 80 to Ahmedabad's 40. 
 
-Tata Consultancy Services are very generous with prizes. All national finalists got 35,000 rupees in Amazon gift vouchers, whereas the runner up got 1,00,000 and the winners received 1,50,000. Even though I lost, the experience in Mumbai will be unforgettable. Hope to come back next year and give Pranav from DPS Noida some stiff competition!
+Tata Consultancy Services are very generous with prizes. All national finalists got 35,000 rupees in Amazon gift vouchers, whereas the runner up got 1,00,000 and the winners received 1,50,000. Even though I lost, the experience in Mumbai will be unforgettable. Hope to come back next year and give the contestants some stiff competition!
 
 Watch the 2017 national finals [here](https://www.youtube.com/watch?v=3VsvX1Ateys)
 

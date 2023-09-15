@@ -4,6 +4,7 @@ publishDate: '2017-12-22T10:30:00'
 categories: Programming
 slug: python-crash-course
 summary: My initial experience with learning Python and using it to create a GTD app
+draft: true
 ---
 
 Recently, I felt the need of creating a to-do app based on the getting things done principle (link here). I had been using MyLifeOrganized in a virtual machine on my mac, but it just wasn't cutting it. Things 3 and OmniFocus for Mac were too pricey and other web-based todo apps like Trello and Todoist didn't suit me very much. As a result, I decided to jump into some code and create a custom to-do mac app.

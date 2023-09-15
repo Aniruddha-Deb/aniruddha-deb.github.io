@@ -13,15 +13,15 @@ This problem can be recursively broken down until we arrive at finding the roots
 
 A graphical proof for this is as follows: consider any arbitary quadratic with two real roots (this can also be proven with a quadratic with no real roots, but that requires mapping the complex plane on the z-axis, which I don't want to do).
 
-![Quadratic f(x)]({static}res/roots_1.png)
+![Quadratic f(x)](/articles/2020/res/roots_1.png)
 
 Here the roots are A and B. Reflecting them onto the Y-axis and drawing two parallel lines through them gives us the following graph:
 
-![Quadratic with roots on y-axis]({static}res/roots_2.png)
+![Quadratic with roots on y-axis](/articles/2020/res/roots_2.png)
 
 The two lines represent the roots and the points of intersection of the parabola with the line (That's C,D,E and F) represent the roots of the equation $f^2(x)$. This can be verified by plotting $ f(f(x)) $ in the same graph
 
-![Quadratic f(f(x))]({static}res/roots_3.png)
+![Quadratic f(f(x))](/articles/2020/res/roots_3.png)
 
 This provides a more intuitive approach to the above proof. As is clearly visible, $ f^2(x) $ has all it's roots symmetrical. This procedure can be repeated $n$ times, giving us the requisite proof.
 

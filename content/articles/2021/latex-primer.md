@@ -6,6 +6,7 @@ tags:
 - Programming
 - Mathematics
 slug: latex-primer
+draft: true
 ---
 
 This is a short *getting started* article on LaTeX; Recently, one of our courses

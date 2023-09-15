@@ -5,6 +5,7 @@ categories: General
 tags:
 - General
 slug: man-who-sold-the-world
+draft: true
 ---
 
 > We passed upon the stair<br>

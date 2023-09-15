@@ -17,7 +17,7 @@ A long time ago, I gave my friend (Let's call him C) an integral to solve. He ca
 
  The integral in question appears prominently on the YG file cover as well, and is also featured in Advanced Problems in Mathematics for JEE(A) by Vikas Gupta (Question 24 chapter 7, for those following along)
 
-![YG File cover]({static}res/yg_file.jpg)
+![YG File cover](/articles/2020/res/yg_file.jpg)
 
 > Evaluate $$\int e^{x\sin x + \cos x} \left( \frac{x^4\cos^3x - x\sin x + \cos x}{x^2 \cos^2x}\right) dx$$
 

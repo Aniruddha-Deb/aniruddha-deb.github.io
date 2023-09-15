@@ -7,7 +7,7 @@ summary: A speculative format for the 2018 ICSE Mathematics paper, created by an
   of the mathematics question papers of the past 23 years. ![Analysis results](/articles/2018/res/icse_math_analysis.png)
 ---
 
-![Analysis results]({static}res/icse_math_analysis.png)
+![Analysis results](/articles/2018/res/icse_math_analysis.png)
 
 A speculative format for the 2018 ICSE Mathematics paper, created by analysis of the mathematics question papers of the past 23 years. The boards are fast approaching and hope this helps out those in need.
 

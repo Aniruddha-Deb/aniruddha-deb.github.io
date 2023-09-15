@@ -1,5 +1,5 @@
 ---
-title: <strike>M</strike>RCU comic
+title: RCU comic
 publishDate: '2023-03-19T23:30:00'
 categories: Programming
 tags:

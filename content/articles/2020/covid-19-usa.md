@@ -6,19 +6,20 @@ tags:
 - Mathematics
 - COVID 19
 slug: covid-19-usa
+draft: true
 ---
 
 The USA currently stands at 1.76 million COVID-19 cases. That's more than the next 5 nations combined. A large number of these cases are due to government inaction against the virus. The lack of a concerted lockdown across the country is also to blame. Here's a graph showing the daily number of cases of COVID-19 in the USA.
 
-<center>![Daily covid cases]({static}res/covid-19-usa/covid-cases-daily.png)</center><br>
+<center>![Daily covid cases](/articles/2020/res/covid-19-usa/covid-cases-daily.png)</center><br>
 <center><sup>Source: Google</sup></center><br>
 Notice something strange? After reaching saturation, the curve shows a weird oscillatory behaviour. Is there a pattern to this? Let's overlay some week markers on the data to get a better feel of it.
 
-<center>![covid weekly]({static}res/covid-19-usa/covid-weekly.png)</center><br>
+<center>![covid weekly](/articles/2020/res/covid-19-usa/covid-weekly.png)</center><br>
 <center><sup>Source: Our World in data\*</sup></center><br>
 The pattern is much more obvious now. It is clearly visible that reported cases are at their lowest on the first few days of the week and they are at their highest during the weekends. Summing up the data proves this (quite dramatically)
 
-<center>![covid sum]({static}res/covid-19-usa/covid-sum.png)</center><br>
+<center>![covid sum](/articles/2020/res/covid-19-usa/covid-sum.png)</center><br>
 <center><sup>Sum of cases/day from 1 Mar to today</sup></center><br>
 This data now allows us to paint a picture. The mean time of incubation of Coronavirus is 5.1 days<sup>[1]</sup>. One inference is that more people are going out on Sunday night and getting tested on Friday morning. This is not very probable as most of the hospitality business (malls, hotels etc) is shut. The more likely reason is that *people are going to work on a Monday and Tuesday, displaying symptoms in a week and then getting tested at the end of the week*. **This situation would not arise if a nationwide lockdown was implemented**. This is the key reason behind the large number of cases and also behind the recurring patterns of occurence of new cases.
 

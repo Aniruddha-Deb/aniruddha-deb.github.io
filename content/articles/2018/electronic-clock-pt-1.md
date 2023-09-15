@@ -7,7 +7,8 @@ categories: Electronics
 
 This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you're subscribed to the RSS feed so that you don't miss out on anything!
 
-###Getting Started
+### Getting Started
+
 An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
 
 The first task is enumerating the requirements of the clock. A humble requirement list looks like this:
@@ -30,7 +31,7 @@ I decided to go with the second option as I had already written code for a micro
 
 Within a few minutes, I drew a basic block diagram for the main components in the circuit.
 
-![]({static}res/disp.png)
+![](/articles/2018/res/disp.png)
 
 The circuit mainly consists of a 1Hz signal generator, a few counters/dividers and the display logic. 
 

@@ -6,6 +6,7 @@ tags:
 - Mathematics
 - Programming
 slug: mathnotes-launch.md
+draft: true
 ---
 
 Just after 10th and as I was beginning my JEE Preparation, I felt the need for 

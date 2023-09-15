@@ -6,6 +6,7 @@ tags:
 - Programming
 - Text Editor
 slug: sublime-text-setup
+draft: true
 ---
 
 After using vim for a _long_ time, I realized that vim would be very tricky to

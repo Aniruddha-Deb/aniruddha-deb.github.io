@@ -5,6 +5,7 @@ categories: Writing
 tags:
 - Writing
 slug: knights-and-knaves
+draft: true
 ---
 
 Once every year, when the sun beats down  

@@ -1,6 +1,6 @@
 ---
 title: Function transforms (providing a broader picture of Laplace Transforms)
-publishDate: 2021-05-12:00
+publishDate: 2021-05-12T18:00:00
 categories: Mathematics
 tags:
 - Mathematics

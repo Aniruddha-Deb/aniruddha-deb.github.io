@@ -6,6 +6,7 @@ tags:
 - Programming
 - Vim
 slug: vim-sutras
+draft: true
 ---
 
 ![vim setup screenshot](/articles/2022/res/vim-1.png)

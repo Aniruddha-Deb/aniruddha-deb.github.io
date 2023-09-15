@@ -6,6 +6,7 @@ tags:
 - Mathematics
 - JEE
 slug: good-jee-main-problem
+draft: true
 ---
 
 This beauty came in the 2nd September shift 2 paper:
