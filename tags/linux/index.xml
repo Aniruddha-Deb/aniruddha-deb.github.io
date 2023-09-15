@@ -6,18 +6,7 @@
     <description>Recent content in Linux on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Oct 2022 19:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Manjaro Rice</title>
-      <link>https://aniruddhadeb.com/articles/2022/manjaro-rice/</link>
-      <pubDate>Tue, 04 Oct 2022 19:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/manjaro-rice/</guid>
-      <description>ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing.
-Wallpaper: Pick and Place.
-nvim theme: tokyodark.nvim, supporting transparency.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 07 Aug 2022 15:30:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Arch Linux Journey</title>
       <link>https://aniruddhadeb.com/articles/2022/arch-linux-1/</link>

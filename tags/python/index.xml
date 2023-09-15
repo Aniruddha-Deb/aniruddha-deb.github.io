@@ -6,18 +6,7 @@
     <description>Recent content in Python on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jun 2022 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Introducing the MLZoo</title>
-      <link>https://aniruddhadeb.com/articles/2022/ml-zoo/</link>
-      <pubDate>Thu, 16 Jun 2022 17:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/ml-zoo/</guid>
-      <description>After a few days of reading and furious coding, I&amp;rsquo;m happy to announce the creation of MLZoo: a set of ML algorithms in their natural habitat
-MLZoo is a set of jupyter notebooks which would contain implementations of several ML algorithms on real world datasets: so far, I&amp;rsquo;ve implemented different flavours of regression, and plan to add quite a few more algorithms over the summer.
-Do star, fork and contribute in any way possible!</description>
-    </item>
-    
+    <lastBuildDate>Wed, 28 Oct 2020 20:39:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IIT Department Finder Launch (plus personal website domain)</title>
       <link>https://aniruddhadeb.com/articles/2020/iit-dep-finder/</link>

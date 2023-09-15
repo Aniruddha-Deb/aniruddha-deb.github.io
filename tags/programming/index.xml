@@ -30,7 +30,7 @@ A lot could be done better, though. Since I have my summer ahead of me, I decide
     </item>
     
     <item>
-      <title>&lt;strike&gt;M&lt;/strike&gt;RCU comic</title>
+      <title>RCU comic</title>
       <link>https://aniruddhadeb.com/articles/2023/rcu-comic/</link>
       <pubDate>Sun, 19 Mar 2023 23:30:00 +0000</pubDate>
       
@@ -89,49 +89,6 @@ An update was on the cards for a while, because I wanted to change my desktop ba
       <guid>https://aniruddhadeb.com/articles/2022/boot-deep-dive/</guid>
       <description>The Basics The most basic boot process is BIOS on a standard i386/x86-64 device. The BIOS first detects the CPU/RAM, then initializes the remainder of the hardware, and then begins the boot sequence. The boot sequence basically consists of finding a bootable device, loading the boot program in that bootable device into the processor cache and letting the processor do it&amp;rsquo;s thing.
 How is a bootable device found? A device is considered bootable if it has the magic bytes 0x55 and 0xaa at offsets 511 and 512 from the start.</description>
-    </item>
-    
-    <item>
-      <title>Vim Sutras</title>
-      <link>https://aniruddhadeb.com/articles/2022/vim-sutras/</link>
-      <pubDate>Sat, 22 Oct 2022 09:45:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/vim-sutras/</guid>
-      <description>When in Neovim, Do as the Luans do
-Unless you&amp;rsquo;re just starting out with Neovim or are extremely used to vim, it&amp;rsquo;s a good idea to set up Neovim using neovim-exclusive plugins. Most of them are written in lua, and integrate more nicely with the Neovim environment (async, faster startup, support for LSP and treesitter, etc).
-My initial neovim setup was just a clone of my vim setup, but when I noticed NERDTree wasn&amp;rsquo;t loading large directories quickly, I searched for a lighter, async file tree plugin for Neovim and came across NvimTree, and not long after, all my vim plugins were replaced with their neovim equivalents.</description>
-    </item>
-    
-    <item>
-      <title>Installing ns3: What worked</title>
-      <link>https://aniruddhadeb.com/articles/2022/ns3-installation/</link>
-      <pubDate>Thu, 06 Oct 2022 18:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/ns3-installation/</guid>
-      <description>Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&amp;rsquo;ll need to pass a different qmake, and brew won&amp;rsquo;t link this to your system. Brew will inform you of this, and you&amp;rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&amp;rsquo;t pick it up.</description>
-    </item>
-    
-    <item>
-      <title>Manjaro Rice</title>
-      <link>https://aniruddhadeb.com/articles/2022/manjaro-rice/</link>
-      <pubDate>Tue, 04 Oct 2022 19:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/manjaro-rice/</guid>
-      <description>ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing.
-Wallpaper: Pick and Place.
-nvim theme: tokyodark.nvim, supporting transparency.</description>
-    </item>
-    
-    <item>
-      <title>Neovim Ricing</title>
-      <link>https://aniruddhadeb.com/articles/2022/nvim-ricing/</link>
-      <pubDate>Sun, 25 Sep 2022 17:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/nvim-ricing/</guid>
-      <description>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&amp;rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
-Right?
-Nope. Let&amp;rsquo;s install Neovim on Mac instead and try moving to it!
-Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?</description>
     </item>
     
     <item>
@@ -203,26 +160,6 @@ Context For starters, I already use linux/unix systems quite a bit. The real nee
     </item>
     
     <item>
-      <title>Setting up (and shifting to) Sublime Text 4</title>
-      <link>https://aniruddhadeb.com/articles/2021/sublime-text-setup/</link>
-      <pubDate>Tue, 01 Jun 2021 08:03:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2021/sublime-text-setup/</guid>
-      <description>After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
-Hard to set up and use autocomplete: I&amp;rsquo;ve tried omnicomplete, but it just didn&amp;rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&amp;rsquo;t great at this stuff.</description>
-    </item>
-    
-    <item>
-      <title>LaTeX primer</title>
-      <link>https://aniruddhadeb.com/articles/2021/latex-primer/</link>
-      <pubDate>Sun, 21 Mar 2021 21:36:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2021/latex-primer/</guid>
-      <description>This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&amp;rsquo;s working.
-Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&amp;rsquo;s core, is merely a text formatting system. One of the main differences between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM (What you see is what you mean) system, as compared to WYSIWYG (What you see is what you get) systems.</description>
-    </item>
-    
-    <item>
       <title>C development on a Mac</title>
       <link>https://aniruddhadeb.com/articles/2021/c-mac/</link>
       <pubDate>Thu, 18 Mar 2021 11:46:00 +0000</pubDate>
@@ -249,15 +186,6 @@ It should be able to generate arrays of a given entropy: the entropy of an array
       
       <guid>https://aniruddhadeb.com/articles/2020/iit-dep-finder/</guid>
       <description>For IIT admissions, I had created a small command line tool called iit_dep_finder.py to check the departments I would get, given a particular rank. Once the round one allocation results came out, I decided to create a web version, for others to use as well. This article chronicles the steps I took, and while I did get the department finder up and running, I also did a lot of other stuff in the process (including changing the domain name, in case you haven&amp;rsquo;t noticed :).</description>
-    </item>
-    
-    <item>
-      <title>Setting up MathNotes - an online math repository</title>
-      <link>https://aniruddhadeb.com/articles/2020/mathnotes-launch.md/</link>
-      <pubDate>Fri, 16 Oct 2020 12:54:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2020/mathnotes-launch.md/</guid>
-      <description>Just after 10th and as I was beginning my JEE Preparation, I felt the need for an extensible note-taking apparatus. Online notes would be too much trouble and would keep me hooked to the computer. Notebooks were also difficult, as I wanted my notes to be extensible; adding pages in the middle of a notebook is extremely difficult. I finally settled on using Binders; you can add/remove pages quite easily and they&amp;rsquo;re decently sized to accommodate all the notes you could ever need.</description>
     </item>
     
     <item>

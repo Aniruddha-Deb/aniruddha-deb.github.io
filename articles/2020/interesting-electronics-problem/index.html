@@ -305,20 +305,21 @@ This looks like a simple wheatstone bridge problem, but note that the top right 
   </header>
 
   <section><p>An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network</p>
-<p><img src="%7Bstatic%7Dres/iep_1.png" alt="resistor network"></p>
+<p><img src="/articles/2020/res/iep_1.png" alt="resistor network"></p>
 <p>This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we&rsquo;ll use the concept of symmetry and a few tricks. Let&rsquo;s start by connecting a battery to the circuit and labeling the currents and loops</p>
-<p><img src="%7Bstatic%7Dres/iep_2.png" alt="tweaked resistor network"></p>
+<p><img src="/articles/2020/res/iep_2.png" alt="tweaked resistor network"></p>
 <p>We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.</p>
-<p><img src="%7Bstatic%7Dres/iep_3.png" alt="currents"></p>
+<p><img src="/articles/2020/res/iep_3.png" alt="currents"></p>
 <p>The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.</p>
-<p><img src="%7Bstatic%7Dres/iep_4.png" alt="loops"></p>
-<h2 id="boxedr_n--fracr3rr4rrendgather">Solving the loops gives us the equations
-$$\begin{align} &amp; V = Ri_3 + ri_1 \tag{2} \\ &amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$
-Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$
-The net current through the cell is \( i = i_1 + i_3 = \frac{R+3r}{R+r}i_1 \). Therefore, the net resistance \(R_p = \frac Vi = \frac{r(3R+r)}{3r+R} \)
-We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \)
-$$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\
-\boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$</h2>
+<p><img src="/articles/2020/res/iep_4.png" alt="loops"></p>
+<p>Solving the loops gives us the equations</p>
+<p>$$\begin{align} &amp; V = Ri_3 + ri_1 \tag{2} \\ &amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$</p>
+<p>Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$</p>
+<p>The net current through the cell is \( i = i_1 + i_3 = \frac{R+3r}{R+r}i_1 \). Therefore, the net resistance \(R_p = \frac Vi = \frac{r(3R+r)}{3r+R} \)</p>
+<p>We can now get \(R_n\) by substituting \( R_p \) in equation \( (1) \)</p>
+<p>$$\begin{gather}\frac 1 {R_n} = \frac 1r + \frac {3r+R}{r(3R+r)} \\
+\boxed{R_n = \frac{r(3R+r)}{4(R+r)}}\end{gather}$$</p>
+<hr>
 <p><sup>p.s: The <code>\eqref</code> or <code>\ref</code> commands don&rsquo;t work for some reason. I&rsquo;ll have to figure out why.</sup></p>
 </section>
 

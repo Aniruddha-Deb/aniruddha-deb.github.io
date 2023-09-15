@@ -6,19 +6,7 @@
     <description>Recent content in Systems on Aniruddha Deb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Sep 2022 17:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/systems/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Neovim Ricing</title>
-      <link>https://aniruddhadeb.com/articles/2022/nvim-ricing/</link>
-      <pubDate>Sun, 25 Sep 2022 17:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/nvim-ricing/</guid>
-      <description>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&amp;rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
-Right?
-Nope. Let&amp;rsquo;s install Neovim on Mac instead and try moving to it!
-Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?</description>
-    </item>
-    
+    <lastBuildDate>Sun, 18 Sep 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/systems/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Seven Days of Creation</title>
       <link>https://aniruddhadeb.com/articles/2022/seven-days-of-creation/</link>

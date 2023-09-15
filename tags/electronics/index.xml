@@ -14,7 +14,7 @@
       
       <guid>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</guid>
       <description>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:
-![icosahedron]({static}res/icosa_res_net/icosa_1.png)
+![icosahedron](/articles/2020/res/icosa_res_net/icosa_1.png)
 A) The resistance between points A and B is $\frac{r}{2}$
 B) The resistance between points A and B is $\frac{r}{3}$
 C) The resistance between any two adjacent vertices is $\frac{11r}{30}$

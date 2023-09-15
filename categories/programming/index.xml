@@ -30,7 +30,7 @@ A lot could be done better, though. Since I have my summer ahead of me, I decide
     </item>
     
     <item>
-      <title>&lt;strike&gt;M&lt;/strike&gt;RCU comic</title>
+      <title>RCU comic</title>
       <link>https://aniruddhadeb.com/articles/2023/rcu-comic/</link>
       <pubDate>Sun, 19 Mar 2023 23:30:00 +0000</pubDate>
       
@@ -92,49 +92,6 @@ How is a bootable device found? A device is considered bootable if it has the ma
     </item>
     
     <item>
-      <title>Vim Sutras</title>
-      <link>https://aniruddhadeb.com/articles/2022/vim-sutras/</link>
-      <pubDate>Sat, 22 Oct 2022 09:45:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/vim-sutras/</guid>
-      <description>When in Neovim, Do as the Luans do
-Unless you&amp;rsquo;re just starting out with Neovim or are extremely used to vim, it&amp;rsquo;s a good idea to set up Neovim using neovim-exclusive plugins. Most of them are written in lua, and integrate more nicely with the Neovim environment (async, faster startup, support for LSP and treesitter, etc).
-My initial neovim setup was just a clone of my vim setup, but when I noticed NERDTree wasn&amp;rsquo;t loading large directories quickly, I searched for a lighter, async file tree plugin for Neovim and came across NvimTree, and not long after, all my vim plugins were replaced with their neovim equivalents.</description>
-    </item>
-    
-    <item>
-      <title>Installing ns3: What worked</title>
-      <link>https://aniruddhadeb.com/articles/2022/ns3-installation/</link>
-      <pubDate>Thu, 06 Oct 2022 18:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/ns3-installation/</guid>
-      <description>Prerequisites XCode CLT (which you should have) QT 5. Install via brew install qt5. NOTE: if you already have an updated version of Qt, you&amp;rsquo;ll need to pass a different qmake, and brew won&amp;rsquo;t link this to your system. Brew will inform you of this, and you&amp;rsquo;ll manually need to pass the path to qmake while building. More on this later. Python ? PyBindGen - I installed this via pip install pybindgen, but waf didn&amp;rsquo;t pick it up.</description>
-    </item>
-    
-    <item>
-      <title>Manjaro Rice</title>
-      <link>https://aniruddhadeb.com/articles/2022/manjaro-rice/</link>
-      <pubDate>Tue, 04 Oct 2022 19:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/manjaro-rice/</guid>
-      <description>ft. nvim, neofetch and htop. WM: i3-gaps, with compton for compositing.
-Wallpaper: Pick and Place.
-nvim theme: tokyodark.nvim, supporting transparency.</description>
-    </item>
-    
-    <item>
-      <title>Neovim Ricing</title>
-      <link>https://aniruddhadeb.com/articles/2022/nvim-ricing/</link>
-      <pubDate>Sun, 25 Sep 2022 17:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/nvim-ricing/</guid>
-      <description>While pruning a bug in my server, I had to debug my code on Manjaro, which was getting tedious. I&amp;rsquo;d installed Neovim, so the rational step would be to install Sublime and forget about neovim.
-Right?
-Nope. Let&amp;rsquo;s install Neovim on Mac instead and try moving to it!
-Sprucing up Neovim Neovim is actually a nice editor, once you install a bunch of plugins via arcane terminal magic (what else gives people feelings of power, amirite?</description>
-    </item>
-    
-    <item>
       <title>Seven Days of Creation</title>
       <link>https://aniruddhadeb.com/articles/2022/seven-days-of-creation/</link>
       <pubDate>Sun, 18 Sep 2022 12:00:00 +0000</pubDate>
@@ -183,43 +140,12 @@ Context For starters, I already use linux/unix systems quite a bit. The real nee
     </item>
     
     <item>
-      <title>Introducing the MLZoo</title>
-      <link>https://aniruddhadeb.com/articles/2022/ml-zoo/</link>
-      <pubDate>Thu, 16 Jun 2022 17:00:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2022/ml-zoo/</guid>
-      <description>After a few days of reading and furious coding, I&amp;rsquo;m happy to announce the creation of MLZoo: a set of ML algorithms in their natural habitat
-MLZoo is a set of jupyter notebooks which would contain implementations of several ML algorithms on real world datasets: so far, I&amp;rsquo;ve implemented different flavours of regression, and plan to add quite a few more algorithms over the summer.
-Do star, fork and contribute in any way possible!</description>
-    </item>
-    
-    <item>
       <title>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</title>
       <link>https://aniruddhadeb.com/articles/2022/iit-course-planner-1/</link>
       <pubDate>Wed, 02 Mar 2022 01:36:00 +0000</pubDate>
       
       <guid>https://aniruddhadeb.com/articles/2022/iit-course-planner-1/</guid>
       <description>I seldom get time to do anything other than course related activities nowadays, but in this midsem break, I did nothing other than roam around campus and laze in bed. And publish the first release of the IIT Delhi Course Planner Dataset (Also available on GitHub). This is a scraping of the IIT Delhi Courses of Study 2020-21, a behemoth 373-page PDF, which contains the course structure and information of all the Undergraduate and Postgraduate courses offered at IIT Delhi, and then some more.</description>
-    </item>
-    
-    <item>
-      <title>Setting up (and shifting to) Sublime Text 4</title>
-      <link>https://aniruddhadeb.com/articles/2021/sublime-text-setup/</link>
-      <pubDate>Tue, 01 Jun 2021 08:03:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2021/sublime-text-setup/</guid>
-      <description>After using vim for a long time, I realized that vim would be very tricky to use for larger projects; there are a few reasons behind this, which are:
-Hard to set up and use autocomplete: I&amp;rsquo;ve tried omnicomplete, but it just didn&amp;rsquo;t cut the mustard. I very seldom need something like whole line completion and all the other gimmicky stuff that was in it. I heard that setting up other autocompletes on vim were really tricky, and that vim by virtue of being single-threaded wasn&amp;rsquo;t great at this stuff.</description>
-    </item>
-    
-    <item>
-      <title>LaTeX primer</title>
-      <link>https://aniruddhadeb.com/articles/2021/latex-primer/</link>
-      <pubDate>Sun, 21 Mar 2021 21:36:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2021/latex-primer/</guid>
-      <description>This is a short getting started article on LaTeX; Recently, one of our courses involved a bit of LaTeX work, and this is meant to be a short introduction on how to use LaTeX to explain one&amp;rsquo;s working.
-Getting Started LaTeX (Pronounced lay-tech, stylized $\LaTeX$), at it&amp;rsquo;s core, is merely a text formatting system. One of the main differences between LaTeX and other programs such as MS word is that LaTeX is a WYSIWYM (What you see is what you mean) system, as compared to WYSIWYG (What you see is what you get) systems.</description>
     </item>
     
     <item>
@@ -259,24 +185,6 @@ It should be able to generate arrays of a given entropy: the entropy of an array
       <guid>https://aniruddhadeb.com/articles/2020/mac-system-setup/</guid>
       <description>This was also published on GitHub. The GitHub version is more up-to-date, and I won&amp;rsquo;t be updating this one as frequently.
 System Setup Log My MacBook battery started to swell around a year back, and the machine became unusable 6 months ago and was put into temporary hibernation. Post my exams, I did a battery replacement and the computer was out of the hospital today, with a fresh operating system and a formatted disk.</description>
-    </item>
-    
-    <item>
-      <title>Cleared OCAJP with 94% - My Experience</title>
-      <link>https://aniruddhadeb.com/articles/2018/ocajp/</link>
-      <pubDate>Wed, 06 Jun 2018 22:05:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2018/ocajp/</guid>
-      <description>How I prepared and cleared the OCA examination in my summer holidays</description>
-    </item>
-    
-    <item>
-      <title>Python Crash Course</title>
-      <link>https://aniruddhadeb.com/articles/2017/python-crash-course/</link>
-      <pubDate>Fri, 22 Dec 2017 10:30:00 +0000</pubDate>
-      
-      <guid>https://aniruddhadeb.com/articles/2017/python-crash-course/</guid>
-      <description>My initial experience with learning Python and using it to create a GTD app</description>
     </item>
     
   </channel>
