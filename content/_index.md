@@ -1,6 +1,6 @@
 I'm a Senior Undergraduate in the Computer Science and Engineering Department
-at IIT Delhi, advised by [Prof. Parag
-Singla](https://www.cse.iitd.ac.in/~parags/) and [Prof.
+at IIT Delhi, advised by [Parag
+Singla](https://www.cse.iitd.ac.in/~parags/) and [
 Mausam](https://www.cse.iitd.ac.in/~mausam). I am also a [Reliance Foundation
 Scholar](https://www.scholarships.reliancefoundation.org/) in Artificial
 Intelligence and Computer Sciences. I was an SWE intern at
@@ -11,21 +11,33 @@ Apart from this, I've been a volunteer teacher for NSS, an Academic Mentor for
 MTL100, a runner-up in [Mimamsa 2021](http://mimamsa.iiserpune.ac.in/), a
 journalist at [Board for Student Publications](https://www.bspiitd.com/), a
 Representative for the [Quizzing Club](https://qciitdelhi.netlify.app/), and 
-a BSW Student Mentor for freshers.
+a [Board of Student Welfare](https://bsw.iitd.ac.in/) Mentor for freshers.
 
 ## Research Interests
 
 My current research interests can be broadly divided into two:
 
-**Reasoning in LLMs**: Constrained reasoning, guided decoding and mathematical
-reasoning for large-language models.
+1. **Reasoning in LLMs**, including but not limited to constrained reasoning,
+   guided decoding and ensembling. LLMs are still unable to reason
+   as effectively as humans, and I'm intereted in looking for ways to augment
+   or improve their reasoning abilities.
+2. **Multilingual NLP**, primarily for low-resource languages. Since the
+   majority of LLM training data is in high-resource languages, I'm looking for
+   ways to use high-resource languages to improve performance on tasks that are
+   in low-resource languages.
 
-**Neurosymbolic Reasoning**: Applying learning algorithms over object-centric representations of scenes rather than raw input, and extending this to unseen environments or improving reasoning of the environment as a consequence of this representation.
+Some other things I've worked on/tried out/dabbled with :
 
-Apart from this, I'm also personally interested in the intersection of ML and
-Systems: with the explosion of open-source LLMs and techniques for running them
-locally on mobile devices, I hack around quite frequently with running
-inference using them, or finetuning them.
+- ML and Systems: Speculative Decoding, model quantization, Low-Rank
+  Adaptation, mixture of experts
+- Reinforcement Learning: DQN, Policy Gradients: TRPO, PPO
+- AI Safety: Alignment, Robustness (Prompt Hacking, Adversarial Attacks),
+  Reward Specification, Instrumental Convergence
+- Explaining ML: [[Optimizers](https://aniruddhadeb.com/articles/2023/optimizers-1/)], 
+  [[Batch Normalization](https://aniruddhadeb.com/articles/2023/batch-normalization/)],
+  [[L2 Regularization](https://aniruddhadeb.com/articles/2023/l2-regularization/)],
+  [[Variance Estimators for Regression](https://aniruddhadeb.com/articles/2022/heteroscedastic-variance-estimation/)],
+  [[Transformers](https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer/)]
 
 **I would be applying for PhD/MS (Research) positions in the 2023-24 cycle**.
 If you are accepting students and believe I would be a good fit, please do
