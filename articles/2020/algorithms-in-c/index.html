@@ -1,102 +1,21 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>Sorting Testbench in C - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
-It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array." />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>Sorting Testbench in C - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I’ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
+It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,71 +26,33 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="Sorting Testbench in C">
-<meta itemprop="description" content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
-It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array."><meta itemprop="datePublished" content="2020-11-11T19:20:00+00:00" />
-<meta itemprop="dateModified" content="2020-11-11T19:20:00+00:00" />
-<meta itemprop="wordCount" content="2552">
-<meta itemprop="keywords" content="Programming,C,Algorithms," />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Sorting Testbench in C"/>
-<meta name="twitter:description" content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I&rsquo;ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
-It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array."/>
-
-  
-  
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="Sorting Testbench in C" itemprop="name"/>
+<meta content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I’ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
+It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array." itemprop="description"/><meta content="2020-11-11T19:20:00+00:00" itemprop="datePublished"/>
+<meta content="2020-11-11T19:20:00+00:00" itemprop="dateModified"/>
+<meta content="2552" itemprop="wordCount"/>
+<meta content="Programming,C,Algorithms," itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Sorting Testbench in C" name="twitter:title"/>
+<meta content="I started reading CS theory in anticipation of my upcoming curriculum and I found that CLRS starts the reader off with sort algorithms (technically they start with math and basic CS, but I’ve already covered that). I decided to make a Sorting testbench, whose requirements were pretty simple:
+It should be able to generate arrays of a given entropy: the entropy of an array is defined as the number of swaps required to sort the array." name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -213,100 +94,36 @@ It should be able to generate arrays of a given entropy: the entropy of an array
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Sorting Testbench in C</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Nov 11, 2020</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><p>I started reading CS theory in anticipation of my upcoming curriculum and I found
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">Sorting Testbench in C</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Nov 11, 2020</time>
+</div>
+</header>
+<section><p>I started reading CS theory in anticipation of my upcoming curriculum and I found
 that CLRS starts the reader off with sort algorithms (technically they start with
-math and basic CS, but I&rsquo;ve already covered that). I decided to make a Sorting
+math and basic CS, but I’ve already covered that). I decided to make a Sorting
 testbench, whose requirements were pretty simple:</p>
 <ul>
 <li>It should be able to generate arrays of a given entropy: the entropy of an
@@ -320,16 +137,16 @@ JavaFX with Java 15 is a pain in the ass, but more on that in a later blog).
 The results were not too shabby, and I was able to accomplish a lot with
 very little code. However, I was unhappy with the performance: I believed that
 running the sorts on a JVM were not the way to go, and there were a lot of
-outliers in the data, where I believed the JVM paused for it&rsquo;s GC cycle and that
+outliers in the data, where I believed the JVM paused for it’s GC cycle and that
 got recorded by the benchmarker. This was the reason I decided to switch to
 a language that was closer to the system, and that language was C.</p>
 <p>Before that, here are some graphs from the Java version. This graph shows the
 time taken in nanos (y axis) vs array size (x axis). The $O(n^2)$ characteristic is
 clearly visible.</p>
-<p><img src="/articles/2020/res/javasort_svt.png" alt="time taken vs array size"></p>
-<p>Here&rsquo;s one more, showing the time taken vs array entropy, which is linear in
+<p><img alt="time taken vs array size" src="/articles/2020/res/javasort_svt.png"/></p>
+<p>Here’s one more, showing the time taken vs array entropy, which is linear in
 nature.</p>
-<p><img src="/articles/2020/res/javasort_tve.png" alt="time taken vs array entropy"></p>
+<p><img alt="time taken vs array entropy" src="/articles/2020/res/javasort_tve.png"/></p>
 <h2 id="moving-to-c">Moving to C</h2>
 <p>Moving to C was difficult. The things I had to implement manually were:</p>
 <ol>
@@ -346,7 +163,7 @@ nature.</p>
 <h3 id="arraylist">ArrayList</h3>
 <p>Implementing an ArrayList was quite easy. The only tricky parts were resizing the
 ArrayList if the index overshot the current size.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">_ArrayList_expand</span>(ArrayList <span style="color:#f92672">*</span>list) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">_ArrayList_expand</span>(ArrayList <span style="color:#f92672">*</span>list) {
 </span></span><span style="display:flex;"><span>	list<span style="color:#f92672">-&gt;</span>capacity <span style="color:#f92672">*=</span> MULTIPLIER;
 </span></span><span style="display:flex;"><span>	list<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> <span style="color:#a6e22e">realloc</span>(list<span style="color:#f92672">-&gt;</span>data, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)<span style="color:#f92672">*</span>list<span style="color:#f92672">-&gt;</span>capacity);
 </span></span><span style="display:flex;"><span>}
@@ -357,7 +174,7 @@ ArrayList if the index overshot the current size.</p>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (list<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">==</span> NULL) <span style="color:#66d9ef">return</span> ERR;
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>	list<span style="color:#f92672">-&gt;</span>data[list<span style="color:#f92672">-&gt;</span>head<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> elem;
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;Added element at %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">int</span>)list<span style="color:#f92672">-&gt;</span>head<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"Added element at %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>, (<span style="color:#66d9ef">int</span>)list<span style="color:#f92672">-&gt;</span>head<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> OK;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="priorityqueue">PriorityQueue</h3>
@@ -367,9 +184,9 @@ are the same as that of a heap: data is stored in a binary tree represented as a
 array, where the parent node of node $n$ is $\lfloor n/2 \rfloor$. This binary
 heap has an $O(\log n)$ access and removal time. The elements are inserted in
 any order and when they are removed, they are removed in sorted order. The link
-does a better job of explaining it than I do, but here&rsquo;s how I implemented the
+does a better job of explaining it than I do, but here’s how I implemented the
 primary methods in C</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">IntPQ_insert</span>(IntPQ <span style="color:#f92672">*</span>ipq, <span style="color:#66d9ef">int</span> element) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">IntPQ_insert</span>(IntPQ <span style="color:#f92672">*</span>ipq, <span style="color:#66d9ef">int</span> element) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (ipq<span style="color:#f92672">-&gt;</span>head<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> ipq<span style="color:#f92672">-&gt;</span>size) {
 </span></span><span style="display:flex;"><span>		ipq<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">*=</span> MULTIPLIER;
 </span></span><span style="display:flex;"><span>		ipq<span style="color:#f92672">-&gt;</span>arr <span style="color:#f92672">=</span> <span style="color:#a6e22e">realloc</span>(ipq<span style="color:#f92672">-&gt;</span>arr, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>ipq<span style="color:#f92672">-&gt;</span>size);
@@ -388,7 +205,7 @@ primary methods in C</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">IntPQ_remove</span>(IntPQ <span style="color:#f92672">*</span>ipq) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (ipq<span style="color:#f92672">-&gt;</span>head <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;Stack is empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"Stack is empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>);
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> min <span style="color:#f92672">=</span> ipq<span style="color:#f92672">-&gt;</span>arr[<span style="color:#ae81ff">1</span>];
@@ -407,24 +224,24 @@ primary methods in C</p>
 </span></span></code></pre></div><h3 id="bitset">BitSet</h3>
 <p>The <code>set_bit</code> function in the previous code sample must have raised some questions.
 The PriorityQueue has a Bitset that facilitates $O(1)$ checking for elements in the array. Generally, a
-HashTable would be better suited, but I didn&rsquo;t get around to implementing one
+HashTable would be better suited, but I didn’t get around to implementing one
 of those. A BitSet implementation is well described
 <a href="https://stackoverflow.com/questions/4372515/how-to-implement-a-bitset-in-c">here</a>
-and I did something similar here, so no worries there. It&rsquo;s not very memory efficient,
-but it&rsquo;s good enough for the range of integers I generate.</p>
+and I did something similar here, so no worries there. It’s not very memory efficient,
+but it’s good enough for the range of integers I generate.</p>
 <h3 id="random-number-generator">Random Number Generator</h3>
 <p>C comes with a built-in random number generator, implemented with the <code>rand()</code>
 and <code>srand()</code> functions. However, the implementation of those functions varies
 wildly from platform to platform, which I documented in
 <a href="https://stackoverflow.com/questions/64619808/clang-poor-rand-implementation">this question</a>
 and the algorithm is also well documented in <a href="https://medium.com/macoclock/are-random-number-on-mac-truly-random-c70e65630ce">this medium post</a>.
-<code>rand()</code> on mac is taken from BSD, which says in it&rsquo;s own documentation that
-it&rsquo;s a bad random number generator. The solution is to use <code>random()</code> and <code>srandom()</code>
+<code>rand()</code> on mac is taken from BSD, which says in it’s own documentation that
+it’s a bad random number generator. The solution is to use <code>random()</code> and <code>srandom()</code>
 on mac, which is comparatively better. The maximum value of the random number
 generated using this method is $2^{31} - 1$. Using this, generating random
 number within a given range is simple, and can be done using the following
 snippet:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gen_int</span>(<span style="color:#66d9ef">int</span> lb, <span style="color:#66d9ef">int</span> ub) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gen_int</span>(<span style="color:#66d9ef">int</span> lb, <span style="color:#66d9ef">int</span> ub) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">int</span>)(((<span style="color:#66d9ef">double</span>)<span style="color:#a6e22e">random</span>())<span style="color:#f92672">/</span>RANDOM_MAX<span style="color:#f92672">*</span>(ub<span style="color:#f92672">-</span>lb) <span style="color:#f92672">+</span> lb);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Using this along with the PriorityQueue, we can generate an array of sorted
@@ -435,7 +252,7 @@ such that $i &lt; j$ and $A[i] &gt; A[j]$, assuming the array is to be sorted in
 ascending order. An array of length $n$ sorted in descending order has $\frac{n(n-1)}{2}$
 inversions. If we have to insert $k$ inversions into a sorted array, take the
 first $m$ integers such that $m(m-1)/2 &lt; k$. Reverse the order of these first
-$m$ integers so that they&rsquo;re in descending order. We now have to insert
+$m$ integers so that they’re in descending order. We now have to insert
 $k - m(m-1)/2$ swaps in the leftover array. To do this, take the last element
 in the array (which is the largest) and move it back by $k - m(m-1)/2$ steps,
 thereby inserting those many number of swaps.</p>
@@ -446,7 +263,7 @@ does not have a <code>SDL_RenderDrawCircle</code> or <code>SDL_RenderFillCircle<
 circles are a must have primitive, I implemented my own circle drawing and
 filling algorithm. This is based on the <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">midpoint circle algorithm</a> and draws
 (and fills) non-antialiased circles.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">render_circ_pts</span>(SDL_Renderer <span style="color:#f92672">*</span>renderer, <span style="color:#66d9ef">int</span> x0, <span style="color:#66d9ef">int</span> y0, <span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">render_circ_pts</span>(SDL_Renderer <span style="color:#f92672">*</span>renderer, <span style="color:#66d9ef">int</span> x0, <span style="color:#66d9ef">int</span> y0, <span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">SDL_RenderDrawPoint</span>(renderer, x0<span style="color:#f92672">+</span>x, y0<span style="color:#f92672">+</span>y);
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">SDL_RenderDrawPoint</span>(renderer, x0<span style="color:#f92672">-</span>x, y0<span style="color:#f92672">+</span>y);
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">SDL_RenderDrawPoint</span>(renderer, x0<span style="color:#f92672">+</span>x, y0<span style="color:#f92672">-</span>y);
@@ -501,22 +318,22 @@ filling algorithm. This is based on the <a href="https://en.wikipedia.org/wiki/M
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">render_circle</span>(renderer, cx, cy, r, true);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This is the entire algorithm, capable of drawing both filled and unfilled circles.
-it&rsquo;s easy to draw filled circles as shown by the algorithm here as well as in
-Wikipedia, but drawing filled circles is trickier, because you don&rsquo;t want to
+it’s easy to draw filled circles as shown by the algorithm here as well as in
+Wikipedia, but drawing filled circles is trickier, because you don’t want to
 go over a single point multiple times. This raises problems if your alpha is
 less than 1. To counter this, you only draw lines when the x (or the y) changes
-and if x is not equal to y. Here&rsquo;s what the result would look like if you went
+and if x is not equal to y. Here’s what the result would look like if you went
 over lines multiple times:</p>
-<p><img src="/articles/2020/res/circle_fill_mult.png" alt="multiple rendering"></p>
-<p>Here&rsquo;s what it looks like if you go over each pixel once</p>
-<p><img src="/articles/2020/res/circle_fill_sing.png" alt="single rendering"></p>
+<p><img alt="multiple rendering" src="/articles/2020/res/circle_fill_mult.png"/></p>
+<p>Here’s what it looks like if you go over each pixel once</p>
+<p><img alt="single rendering" src="/articles/2020/res/circle_fill_sing.png"/></p>
 <p>Much better!</p>
 <h3 id="dashed-line-drawing-algorithm">Dashed Line Drawing Algorithm</h3>
 <p>This is an implementation of the Bresenham algorithm for drawing lines. I needed
 to draw only horizontal and vertical dashed lines to make the graph gridlines,
-but I decided to make a full-fledged implementation of Bresenham&rsquo;s algorithm
+but I decided to make a full-fledged implementation of Bresenham’s algorithm
 to draw dashed lines. Again, this is an algorithm that SDL does not ship with; it
-can only make solid lines and I had to implement this myself. Bresenham&rsquo;s
+can only make solid lines and I had to implement this myself. Bresenham’s
 algorithm is decently simple and can be found in any graphics programming book.
 The main concept behind the algorithm is making a choice between plotting
 $(x+1, y+1)$ or $(x+1, y)$ for a line with a slope between 0 and 1. Mirroring /
@@ -526,9 +343,9 @@ most of the algorithms online used to work only in the first quadrant, or they
 had different algorithms for other quadrants with repeated code, which was
 messy. The key here is to realize that the increment can be either positive
 or negative, but the error term will always be positive. The comments should
-clarify this algorithm, as I wrote them to help me understand what&rsquo;s happening
+clarify this algorithm, as I wrote them to help me understand what’s happening
 where and when.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Bresenham line algorithm
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Bresenham line algorithm
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// similar to SDL_RenderDrawLine: draws x0, y0 and does not draw x1, y1 (x0 &lt;= L &lt; x1)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SDL_RenderDrawDashedLine</span>(SDL_Renderer <span style="color:#f92672">*</span>renderer, <span style="color:#66d9ef">int</span> x0, <span style="color:#66d9ef">int</span> y0, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> dashlen, <span style="color:#66d9ef">int</span> blanklen) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> Dx <span style="color:#f92672">=</span> x1 <span style="color:#f92672">-</span> x0;
@@ -545,7 +362,7 @@ where and when.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> longest <span style="color:#f92672">=</span> <span style="color:#a6e22e">abs</span>(Dx);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> shortest <span style="color:#f92672">=</span> <span style="color:#a6e22e">abs</span>(Dy);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (longest <span style="color:#f92672">&lt;</span> shortest) {
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// We&#39;ll iterate over y, so swap longest and shortest and then set dir* 
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// We'll iterate over y, so swap longest and shortest and then set dir* 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// and inc* appropriately
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">swap</span>(<span style="color:#f92672">&amp;</span>longest, <span style="color:#f92672">&amp;</span>shortest);
 </span></span><span style="display:flex;"><span>		dirx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -583,7 +400,7 @@ where and when.</p>
 </span></span></code></pre></div><p>This produces some pretty good results, and I can live with the distances not
 exactly adhering to Pythagoras theorem, as highlighted by the rectangular rather
 than radial boundaries for the dashes.</p>
-<p><img src="/articles/2020/res/dotted_line.png" alt="dashed line"></p>
+<p><img alt="dashed line" src="/articles/2020/res/dotted_line.png"/></p>
 <h3 id="graph-scale-derivation-algorithm">Graph Scale Derivation Algorithm</h3>
 <p>After making the primitive drawing algorithms, we can move on to drawing the
 graph. Determining the scale of the graph is the only mathematical and challenging
@@ -592,7 +409,7 @@ part of drawing the graph, because the rest is mostly drudgework. I used
 as a base and developed my algorithm using that. The only difference is that
 I floor the value while calculating lower bound rather than rounding it. The
 following code should make the algorithm clear</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">round_tr</span>(<span style="color:#66d9ef">double</span> tr) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">round_tr</span>(<span style="color:#66d9ef">double</span> tr) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> nd <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>)(<span style="color:#a6e22e">log10</span>(tr))<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> exp <span style="color:#f92672">=</span> <span style="color:#a6e22e">pow</span>(<span style="color:#ae81ff">10</span>, nd);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> str <span style="color:#f92672">=</span> tr<span style="color:#f92672">/</span>exp;
@@ -620,7 +437,7 @@ trivial and easy. I just implemented some $O(n^2)$ algorithms to start off
 with: Selection sort, bubble sort and insertion sort. I also created a <code>Sort</code>
 structure containing a function pointer and a string, which I would use to
 link the sort with a name. Here are the sorts I started off with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">selection_sort</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>A) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">selection_sort</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>A) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>n; i<span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> i;
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; j<span style="color:#f92672">&lt;</span>n; j<span style="color:#f92672">++</span>) {
@@ -652,14 +469,14 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>		A[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> k;
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Here&rsquo;s the timing and plotting main function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) {
+</span></span></code></pre></div><p>Here’s the timing and plotting main function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">srandom</span>(<span style="color:#a6e22e">time</span>(NULL));
 </span></span><span style="display:flex;"><span>	ArrayList <span style="color:#f92672">*</span>sortList <span style="color:#f92672">=</span> <span style="color:#a6e22e">new_ArrayList</span>();
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">&#34;Selection Sort&#34;</span>, <span style="color:#f92672">&amp;</span>selection_sort));
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">&#34;Insertion Sort&#34;</span>, <span style="color:#f92672">&amp;</span>insertion_sort));
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">&#34;Bubble Sort&#34;</span>, <span style="color:#f92672">&amp;</span>bubble_sort));
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">&#34;Merge Sort&#34;</span>, <span style="color:#f92672">&amp;</span>merge_sort));
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">"Selection Sort"</span>, <span style="color:#f92672">&amp;</span>selection_sort));
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">"Insertion Sort"</span>, <span style="color:#f92672">&amp;</span>insertion_sort));
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">"Bubble Sort"</span>, <span style="color:#f92672">&amp;</span>bubble_sort));
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ArrayList_add</span>(sortList, <span style="color:#a6e22e">new_Sort</span>(<span style="color:#e6db74">"Merge Sort"</span>, <span style="color:#f92672">&amp;</span>merge_sort));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	ArrayList <span style="color:#f92672">*</span>dataList <span style="color:#f92672">=</span> <span style="color:#a6e22e">new_ArrayList</span>();
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>sortList<span style="color:#f92672">-&gt;</span>head; i<span style="color:#f92672">++</span>) {
@@ -669,10 +486,10 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> err <span style="color:#f92672">=</span> false;
 </span></span><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>; c<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5000</span>; c<span style="color:#f92672">+=</span><span style="color:#ae81ff">50</span>) {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;Creating random array of size %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, c);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"Creating random array of size %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>, c);
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>ranarr <span style="color:#f92672">=</span> <span style="color:#a6e22e">gen_ints</span>(c, LBOUND, UBOUND, <span style="color:#ae81ff">0.8</span>);
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>sortList<span style="color:#f92672">-&gt;</span>head; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;allocating array of size %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, c);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"allocating array of size %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>, c);
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>arr <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>c);
 </span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">memcpy</span>(arr, ranarr, c);
 </span></span><span style="display:flex;"><span>			Sort <span style="color:#f92672">*</span>s <span style="color:#f92672">=</span> <span style="color:#a6e22e">ArrayList_get</span>(sortList, i);
@@ -683,12 +500,12 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> time_spent <span style="color:#f92672">=</span> <span style="color:#a6e22e">round</span>(<span style="color:#ae81ff">1000000.0</span><span style="color:#f92672">*</span>(end<span style="color:#f92672">-</span>begin)<span style="color:#f92672">/</span>CLOCKS_PER_SEC);
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">is_sorted_asc</span>(c, arr)) {
 </span></span><span style="display:flex;"><span>				err <span style="color:#f92672">=</span> true;
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;Sort %d failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"Sort %d failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>, i);
 </span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">free</span>(arr);
 </span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>			}
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">&#34;Sort %d passed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i);
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">log_debug</span>(<span style="color:#e6db74">"Sort %d passed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">"</span>, i);
 </span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">DataSet_add</span>(dataList<span style="color:#f92672">-&gt;</span>data[i], <span style="color:#a6e22e">new_Point</span>(c, time_spent));
 </span></span><span style="display:flex;"><span>			}
 </span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">free</span>(arr);
@@ -697,7 +514,7 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (err) <span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>err) {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">plotAll</span>(dataList<span style="color:#f92672">-&gt;</span>head, (DataSet<span style="color:#f92672">**</span>)dataList<span style="color:#f92672">-&gt;</span>data, <span style="color:#e6db74">&#34;Sorts - Time (us) vs Array Size&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">plotAll</span>(dataList<span style="color:#f92672">-&gt;</span>head, (DataSet<span style="color:#f92672">**</span>)dataList<span style="color:#f92672">-&gt;</span>data, <span style="color:#e6db74">"Sorts - Time (us) vs Array Size"</span>);
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>sortList<span style="color:#f92672">-&gt;</span>head; i<span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">destroy_Sort</span>(sortList<span style="color:#f92672">-&gt;</span>data[i]);
@@ -708,9 +525,9 @@ link the sort with a name. Here are the sorts I started off with:</p>
 </span></span><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>This didn&rsquo;t work the first time and threw a segfault in my face :_( How typical
-of C. I did debug it, and I&rsquo;m pretty pleased with the results.</p>
-<p><img src="/articles/2020/res/plotter_example.png" alt="Plotter example"></p>
+</span></span></code></pre></div><p>This didn’t work the first time and threw a segfault in my face :_( How typical
+of C. I did debug it, and I’m pretty pleased with the results.</p>
+<p><img alt="Plotter example" src="/articles/2020/res/plotter_example.png"/></p>
 <h3 id="conclusion">Conclusion</h3>
 <p>There are a lot of things that I have to improve here, some of which include</p>
 <ol>
@@ -721,96 +538,36 @@ of C. I did debug it, and I&rsquo;m pretty pleased with the results.</p>
 <li>More flexible graphing - lines, histograms etc.</li>
 </ol>
 <p>I could have left the graphing to R or Python and just exported a CSV, but
-where&rsquo;s the fun in that.</p>
+where’s the fun in that.</p>
 <p>This project taught me more about graphics than it did about sorts and will continue to teach me more
 as I keep working on it. For more updates, check out the repository <a href="https://github.com/Aniruddha-Deb/Algorithms">here</a>.</p>
 </section>
-
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/programming"
-      >Programming</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/c"
-      >C</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/algorithms"
-      >Algorithms</a
-    >
-    
-  </footer>
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2021/understanding-jacobians/"
-      ><span class="mr-1.5">←</span><span>Understanding Jacobians</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2020/iit-dep-finder/"
-      ><span>IIT Department Finder Launch (plus personal website domain)</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<footer class="mt-12 flex flex-wrap">
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/programming">Programming</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/c">C</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/algorithms">Algorithms</a>
+</footer>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2021/understanding-jacobians/"><span class="mr-1.5">←</span><span>Understanding Jacobians</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2020/iit-dep-finder/"><span>IIT Department Finder Launch (plus personal website domain)</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>

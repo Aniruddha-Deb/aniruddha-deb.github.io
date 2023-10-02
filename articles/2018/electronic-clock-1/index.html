@@ -1,103 +1,22 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>Electronic Clock I - Getting Started - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&rsquo;re subscribed to the RSS feed so that you don&rsquo;t miss out on anything!
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>Electronic Clock I - Getting Started - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you’re subscribed to the RSS feed so that you don’t miss out on anything!
 Getting Started An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
-The first task is enumerating the requirements of the clock. A humble requirement list looks like this:" />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+The first task is enumerating the requirements of the clock. A humble requirement list looks like this:" name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -108,73 +27,35 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="Electronic Clock I - Getting Started">
-<meta itemprop="description" content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&rsquo;re subscribed to the RSS feed so that you don&rsquo;t miss out on anything!
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="Electronic Clock I - Getting Started" itemprop="name"/>
+<meta content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you’re subscribed to the RSS feed so that you don’t miss out on anything!
 Getting Started An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
-The first task is enumerating the requirements of the clock. A humble requirement list looks like this:"><meta itemprop="datePublished" content="2018-06-14T10:30:00+00:00" />
-<meta itemprop="dateModified" content="2018-06-14T10:30:00+00:00" />
-<meta itemprop="wordCount" content="335">
-<meta itemprop="keywords" content="" />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Electronic Clock I - Getting Started"/>
-<meta name="twitter:description" content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&rsquo;re subscribed to the RSS feed so that you don&rsquo;t miss out on anything!
+The first task is enumerating the requirements of the clock. A humble requirement list looks like this:" itemprop="description"/><meta content="2018-06-14T10:30:00+00:00" itemprop="datePublished"/>
+<meta content="2018-06-14T10:30:00+00:00" itemprop="dateModified"/>
+<meta content="335" itemprop="wordCount"/>
+<meta content="" itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Electronic Clock I - Getting Started" name="twitter:title"/>
+<meta content="This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you’re subscribed to the RSS feed so that you don’t miss out on anything!
 Getting Started An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.
-The first task is enumerating the requirements of the clock. A humble requirement list looks like this:"/>
-
-  
-  
+The first task is enumerating the requirements of the clock. A humble requirement list looks like this:" name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -216,98 +97,34 @@ The first task is enumerating the requirements of the clock. A humble requiremen
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Electronic Clock I - Getting Started</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Jun 14, 2018</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><p>This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you&rsquo;re subscribed to the RSS feed so that you don&rsquo;t miss out on anything!</p>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">Electronic Clock I - Getting Started</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Jun 14, 2018</time>
+</div>
+</header>
+<section><p>This is a new series in which I will describe all the steps I went through while creating an electronic clock. Make sure you’re subscribed to the RSS feed so that you don’t miss out on anything!</p>
 <h3 id="getting-started">Getting Started</h3>
 <p>An electronic clock is a good project for intermediate to advanced electronic hobbyists, which is why I decided to build one.</p>
 <p>The first task is enumerating the requirements of the clock. A humble requirement list looks like this:</p>
@@ -315,7 +132,7 @@ The first task is enumerating the requirements of the clock. A humble requiremen
 <li>Clock should run on a few AA cells</li>
 <li>It should have a 24 hour display</li>
 <li>It should display seconds, minutes and hours</li>
-<li>It should have two LED&rsquo;s each to separate the hours, minutes and seconds</li>
+<li>It should have two LED’s each to separate the hours, minutes and seconds</li>
 <li>It should be moderately compact</li>
 <li>It should be challenging to engineer and design</li>
 </ul>
@@ -327,79 +144,36 @@ The first task is enumerating the requirements of the clock. A humble requiremen
 <li>Write your own code for a real-time clock in the microcontroller and use an external clock crystal (already done this here)</li>
 </ul>
 </li>
-<li>Use CMOS/TTL Logic IC&rsquo;s</li>
+<li>Use CMOS/TTL Logic IC’s</li>
 </ul>
 <p>I decided to go with the second option as I had already written code for a microcontroller clock and gone halfway through the implementation when I realized that it was too easy and did not provide a challenge. If you are a beginner, you should take the microcontroller route, as in case of bugs, they are easily rectifiable via your code, whereas debugging a hardware circuit (especially a large CMOS/TTL one) is decently hard for beginners.</p>
 <p>Within a few minutes, I drew a basic block diagram for the main components in the circuit.</p>
-<p><img src="/articles/2018/res/disp.png" alt=""></p>
+<p><img alt="" src="/articles/2018/res/disp.png"/></p>
 <p>The circuit mainly consists of a 1Hz signal generator, a few counters/dividers and the display logic.</p>
-<p>In the next segment, I&rsquo;m going to build the signal generator and produce an accurate 2Hz signal that can be used by the other counters.</p>
+<p>In the next segment, I’m going to build the signal generator and produce an accurate 2Hz signal that can be used by the other counters.</p>
 <p>- Deb</p>
 </section>
-
-  
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-i/"
-      ><span class="mr-1.5">←</span><span>Electronic Clock II - Generating the Clock Signal pt.1</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2018/icse-mathematics-analysis/"
-      ><span>ICSE Mathematics - Last 23 years analysis and 2018 forecast</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-i/"><span class="mr-1.5">←</span><span>Electronic Clock II - Generating the Clock Signal pt.1</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2018/icse-mathematics-analysis/"><span>ICSE Mathematics - Last 23 years analysis and 2018 forecast</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>

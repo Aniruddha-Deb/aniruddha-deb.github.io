@@ -1,102 +1,21 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>The Properly Illustrated Transformer - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="The title is (obviously) a shout out to Jay Alammar&rsquo;s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
-PS: Yes, this is just the encoder stack. I&rsquo;ll probably make the decoder stack in a part 2?" />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>The Properly Illustrated Transformer - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="The title is (obviously) a shout out to Jay Alammar’s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
+PS: Yes, this is just the encoder stack. I’ll probably make the decoder stack in a part 2?" name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,71 +26,33 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="The Properly Illustrated Transformer">
-<meta itemprop="description" content="The title is (obviously) a shout out to Jay Alammar&rsquo;s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
-PS: Yes, this is just the encoder stack. I&rsquo;ll probably make the decoder stack in a part 2?"><meta itemprop="datePublished" content="2023-03-08T00:12:00+00:00" />
-<meta itemprop="dateModified" content="2023-03-08T00:12:00+00:00" />
-<meta itemprop="wordCount" content="67">
-<meta itemprop="keywords" content="Machine Learning,Transformers," />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="The Properly Illustrated Transformer"/>
-<meta name="twitter:description" content="The title is (obviously) a shout out to Jay Alammar&rsquo;s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
-PS: Yes, this is just the encoder stack. I&rsquo;ll probably make the decoder stack in a part 2?"/>
-
-  
-  
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="The Properly Illustrated Transformer" itemprop="name"/>
+<meta content="The title is (obviously) a shout out to Jay Alammar’s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
+PS: Yes, this is just the encoder stack. I’ll probably make the decoder stack in a part 2?" itemprop="description"/><meta content="2023-03-08T00:12:00+00:00" itemprop="datePublished"/>
+<meta content="2023-03-08T00:12:00+00:00" itemprop="dateModified"/>
+<meta content="67" itemprop="wordCount"/>
+<meta content="Machine Learning,Transformers," itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="The Properly Illustrated Transformer" name="twitter:title"/>
+<meta content="The title is (obviously) a shout out to Jay Alammar’s Blog, which is probably the best source to learn about transformers, followed by The Annotated Transformer. Both of them are unclear about the nuances though (where the dropouts are mostly), and so I made this to clear that up.
+PS: Yes, this is just the encoder stack. I’ll probably make the decoder stack in a part 2?" name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -213,187 +94,68 @@ PS: Yes, this is just the encoder stack. I&rsquo;ll probably make the decoder st
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">The Properly Illustrated Transformer</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Mar 8, 2023</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><p><img src="/articles/2023/res/transformer_no_ws.svg" alt="That&rsquo;s a f@!#ton of dropouts"></p>
-<hr>
-<p>The title is (obviously) a shout out to <a href="https://jalammar.github.io/illustrated-transformer/">Jay Alammar&rsquo;s Blog</a>,
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">The Properly Illustrated Transformer</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Mar 8, 2023</time>
+</div>
+</header>
+<section><p><img alt="That’s a f@!#ton of dropouts" src="/articles/2023/res/transformer_no_ws.svg"/></p>
+<hr/>
+<p>The title is (obviously) a shout out to <a href="https://jalammar.github.io/illustrated-transformer/">Jay Alammar’s Blog</a>,
 which is probably the best source to learn about transformers, followed by
 <a href="http://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a>.
 Both of them are unclear about the nuances though (where the dropouts are mostly),
 and so I made this to clear that up.</p>
-<p>PS: Yes, this is just the encoder stack. I&rsquo;ll probably make the decoder stack
+<p>PS: Yes, this is just the encoder stack. I’ll probably make the decoder stack
 in a part 2?</p>
 </section>
-
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/machine-learning"
-      >Machine Learning</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/transformers"
-      >Transformers</a
-    >
-    
-  </footer>
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2023/rcu-comic/"
-      ><span class="mr-1.5">←</span><span>RCU comic</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2023/mac-setup-2/"
-      ><span>Mac Setup v2</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<footer class="mt-12 flex flex-wrap">
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/machine-learning">Machine Learning</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/transformers">Transformers</a>
+</footer>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2023/rcu-comic/"><span class="mr-1.5">←</span><span>RCU comic</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2023/mac-setup-2/"><span>Mac Setup v2</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>

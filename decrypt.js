@@ -11,7 +11,7 @@ const _do_decrypt = function (encrypted, password) {
 };
 
 const _click_handler = function (element) {
-    let parent = element.parentNode.parentNode;
+    let parent = element.parentNode.parentNode
     let encrypted = parent.querySelector(
         ".hugo-encryptor-cipher-text").innerText;
     let password = parent.querySelector(
@@ -44,6 +44,7 @@ const _click_handler = function (element) {
     let storage = localStorage;
 
     let key = location.pathname + ".password." + index;
+    console.log("Saving password " + password);
     storage.setItem(key, password);
     parent.innerHTML = decrypted;
 }
@@ -64,6 +65,7 @@ window.onload = () => {
 
         } else {
             console.log("Found password for part " + index);
+            console.log("Passowrd hash = " + password);
 
             let parent = elements[index];
             let encrypted = parent.querySelector(".hugo-encryptor-cipher-text").innerText;

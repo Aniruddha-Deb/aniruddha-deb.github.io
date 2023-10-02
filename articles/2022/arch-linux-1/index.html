@@ -1,102 +1,21 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>The Arch Linux Journey - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&rsquo;s how I did it.
-Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu." />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>The Arch Linux Journey - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here’s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,71 +26,33 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="The Arch Linux Journey">
-<meta itemprop="description" content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&rsquo;s how I did it.
-Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu."><meta itemprop="datePublished" content="2022-08-07T15:30:00+00:00" />
-<meta itemprop="dateModified" content="2022-08-07T15:30:00+00:00" />
-<meta itemprop="wordCount" content="1197">
-<meta itemprop="keywords" content="Arch,Programming,Linux," />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="The Arch Linux Journey"/>
-<meta name="twitter:description" content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here&rsquo;s how I did it.
-Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu."/>
-
-  
-  
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="The Arch Linux Journey" itemprop="name"/>
+<meta content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here’s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu." itemprop="description"/><meta content="2022-08-07T15:30:00+00:00" itemprop="datePublished"/>
+<meta content="2022-08-07T15:30:00+00:00" itemprop="dateModified"/>
+<meta content="1197" itemprop="wordCount"/>
+<meta content="Arch,Programming,Linux," itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="The Arch Linux Journey" name="twitter:title"/>
+<meta content="For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi1: Here’s how I did it.
+Context For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu." name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -213,108 +94,44 @@ Context For starters, I already use linux/unix systems quite a bit. The real nee
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">The Arch Linux Journey</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Aug 7, 2022</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><p>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi<sup>1</sup>: Here&rsquo;s how I did it.</p>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">The Arch Linux Journey</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Aug 7, 2022</time>
+</div>
+</header>
+<section><p>For the upcoming semesters, we have a ton of systems courses. So, I needed a linux box that I could hack around, preferably at the kernel level. I finally got around to installing Arch Linux on a Raspberry Pi<sup>1</sup>: Here’s how I did it.</p>
 <h2 id="context">Context</h2>
 <p>For starters, I already use linux/unix systems quite a bit. The real need for a linux system became apparent last semester, when one of our courses needed a program that would run only on Windows/Ubuntu. I got around this by running a VM on my 6 year old, 128GB mac <em>sobs</em>. While definetly a suboptimal solution, for the upcoming courses (networks, parallel programming, OS), a core linux machine would be a neccessity.</p>
-<p>Before you pick up your pitchforks, yes, RPi is ARM based: I know this is a completely different ballgame from CISC i386/x86-64 processors, which is also partly the reason I wanted linux on an ARM machine: we did ARM assembly in the previous course, so that&rsquo;ll make this easier? <sub>idk I&rsquo;m bad at CS</sub></p>
+<p>Before you pick up your pitchforks, yes, RPi is ARM based: I know this is a completely different ballgame from CISC i386/x86-64 processors, which is also partly the reason I wanted linux on an ARM machine: we did ARM assembly in the previous course, so that’ll make this easier? <sub>idk I’m bad at CS</sub></p>
 <h2 id="baby-steps">Baby Steps</h2>
-<p><img src="/articles/2022/res/bcd.jpeg" alt="arch\_baby"></p>
-<p>So why arch?<sup>2</sup> Well, the biggest reason is <strong>learning</strong>: learning to setup arch and use it would teach me more about UNIX fundamentals than using a prebuilt OS. And in the span of less than half a day, I&rsquo;ve used atleast 6 utilities I&rsquo;ve never seen or heard of before. So yeah, if you enjoy the hike a steep learning curve gives you, arch is perfect.</p>
+<p><img alt="arch\_baby" src="/articles/2022/res/bcd.jpeg"/></p>
+<p>So why arch?<sup>2</sup> Well, the biggest reason is <strong>learning</strong>: learning to setup arch and use it would teach me more about UNIX fundamentals than using a prebuilt OS. And in the span of less than half a day, I’ve used atleast 6 utilities I’ve never seen or heard of before. So yeah, if you enjoy the hike a steep learning curve gives you, arch is perfect.</p>
 <h3 id="installation">Installation</h3>
-<p>Installation was fairly straightforward: NOOBS doesn&rsquo;t ship with an option to get arch, so <a href="https://github.com/procount/pinn">PINN</a> was used. Remember to download it from GitHub rather than from SourceForge: SourceForge mirrors are garbage, while the GitHub one downloads in under a minute.</p>
+<p>Installation was fairly straightforward: NOOBS doesn’t ship with an option to get arch, so <a href="https://github.com/procount/pinn">PINN</a> was used. Remember to download it from GitHub rather than from SourceForge: SourceForge mirrors are garbage, while the GitHub one downloads in under a minute.</p>
 <p>After getting PINN, just point-and-click to install arch.</p>
-<p>And that&rsquo;s it!</p>
+<p>And that’s it!</p>
 <h2 id="btw-i-use-arch">Btw I use arch</h2>
 <p>Ok, I lied. Arch ships with nothing, and I mean <em>nothing</em></p>
 <ul>
@@ -332,7 +149,7 @@ Context For starters, I already use linux/unix systems quite a bit. The real nee
 <p>Fortunately, the ARM arch ships with a few more things: <code>netctl</code>, <code>X11</code>, and wifi drivers. And a SSH server running by default. The best way of setting up is to connect to your router via ethernet, then do an <code>arp-scan --localnet</code> (on mac, install with <code>brew install arp-scan</code>) to find the ip, ssh on, and get rolling (default user <code>alarm</code>, password <code>alarm</code> and root password is just <code>root</code>)</p>
 <h3 id="connecting-and-basics">Connecting and basics</h3>
 <ul>
-<li>Plug in your Pi to ethernet, and use your WiFi router settings page to see all connected devices. From there, note down your pi&rsquo;s IP and ssh on to it.</li>
+<li>Plug in your Pi to ethernet, and use your WiFi router settings page to see all connected devices. From there, note down your pi’s IP and ssh on to it.</li>
 <li>use <code>timedatectl</code> to see if the system clock is accurate:</li>
 </ul>
 <pre tabindex="0"><code>timedatectl set-ntp true
@@ -347,20 +164,20 @@ hwclock --systohc
 <li>Edit the hostname from <code>alarmpi</code> to something better, like <code>senseipi</code> :)</li>
 </ul>
 <h3 id="setting-up-pacman-and-certificates">Setting up <code>pacman</code> and certificates</h3>
-<p>Now that you&rsquo;re on the pi with a connection, the first thing to do is to setup <code>pacman</code>. This needs certificates: since Arch is a rolling distro, there&rsquo;s a very rigorous signature process in place for packages, and the system by default won&rsquo;t install packages which are not signed by trusted certificates in the keychain.</p>
+<p>Now that you’re on the pi with a connection, the first thing to do is to setup <code>pacman</code>. This needs certificates: since Arch is a rolling distro, there’s a very rigorous signature process in place for packages, and the system by default won’t install packages which are not signed by trusted certificates in the keychain.</p>
 <p>Setting this up on ARM is slightly different compared to a normal arch system (or so I found):</p>
 <pre tabindex="0"><code>pacman-key --init
 pacman-key --populate archlinuxarm
 pacman-key --refresh-keys
 </code></pre><p>After that, <code>pacman -Syy</code> and <code>pacman -S archlinux-keyring</code>. Will install a couple dependencies as well.</p>
-<p>You&rsquo;re now ready to run</p>
+<p>You’re now ready to run</p>
 <pre tabindex="0"><code>pacman -Syu
 </code></pre><p>to update and upgrade everything on your system.</p>
 <h3 id="wifi-setup">Wifi setup</h3>
-<p>Just use <code>wifi-menu</code>, don&rsquo;t bother with anything more complicated. You&rsquo;ll also need to create a service to start wifi automatically on boot, by doing:</p>
+<p>Just use <code>wifi-menu</code>, don’t bother with anything more complicated. You’ll also need to create a service to start wifi automatically on boot, by doing:</p>
 <pre tabindex="0"><code>systemctl enable wpa_supplicant@wlan0
 systemctl start wpa_supplicant@wlan0
-</code></pre><p>After this and rebooting, I was able to ssh onto my pi, by connecting it to my mobile hotspot. This is still my primary means of using my Pi. One important thing to note: <strong>Don&rsquo;t try switching to NetworkManager without a working display and ethernet connection</strong>. I tried doing this, only to blow the network setup on my Pi, because once you set up the NetworkManager service, it would take over <code>wlan0</code> on boot and because it didn&rsquo;t know the wifi configuration, it would never connect to the network, so I couldn&rsquo;t SSH/VNC onto it. After a lot of repeated tries, <code>wpa_supplicant</code> finally launched before NetworkManager on one boot, allowing me to ssh on and disable NetworkManager for good.</p>
+</code></pre><p>After this and rebooting, I was able to ssh onto my pi, by connecting it to my mobile hotspot. This is still my primary means of using my Pi. One important thing to note: <strong>Don’t try switching to NetworkManager without a working display and ethernet connection</strong>. I tried doing this, only to blow the network setup on my Pi, because once you set up the NetworkManager service, it would take over <code>wlan0</code> on boot and because it didn’t know the wifi configuration, it would never connect to the network, so I couldn’t SSH/VNC onto it. After a lot of repeated tries, <code>wpa_supplicant</code> finally launched before NetworkManager on one boot, allowing me to ssh on and disable NetworkManager for good.</p>
 <h3 id="users-sudo-and-user-groups">Users, <code>sudo</code> and User Groups</h3>
 <ul>
 <li>Create your new user</li>
@@ -369,7 +186,7 @@ systemctl start wpa_supplicant@wlan0
 <li>install sudo: <code>pacman -S sudo</code></li>
 <li><code>visudo</code> the sudoers file to give the wheel group access to sudo</li>
 <li>add your user to the wheel group</li>
-<li>run <code>id &lt;username&gt;</code> to verify you&rsquo;re added to the right groups</li>
+<li>run <code>id &lt;username&gt;</code> to verify you’re added to the right groups</li>
 </ul>
 <h3 id="other-software">Other software</h3>
 <ul>
@@ -385,14 +202,14 @@ systemctl start wpa_supplicant@wlan0
 <li>go to /opt</li>
 <li>clone <a href="https://aur.archlinux.org/yay.git">https://aur.archlinux.org/yay.git</a> there
 <ul>
-<li>needed to set a proxy for this: <code>git config --global http.proxy &quot;&quot;</code></li>
+<li>needed to set a proxy for this: <code>git config --global http.proxy ""</code></li>
 </ul>
 </li>
 <li>chown to our user</li>
 <li>make the package with <code>makepkg -si</code></li>
 <li>had to install base-devel for this: <code>sudo pacman -S base-devel</code> (install everything, most of them are useful)
 <ul>
-<li>go was not installing, surprisingly go-2:1.19-1 was updated on Aug 3 itself and I hadn&rsquo;t done <code>pacman -Syy</code>Reiterated the importance of keeping my package lists updated in a rolling release distro.</li>
+<li>go was not installing, surprisingly go-2:1.19-1 was updated on Aug 3 itself and I hadn’t done <code>pacman -Syy</code>Reiterated the importance of keeping my package lists updated in a rolling release distro.</li>
 <li><code>makepkg</code> was surprisingly straightforward thereafter</li>
 </ul>
 </li>
@@ -429,8 +246,8 @@ systemctl start wpa_supplicant@wlan0
 </li>
 </ul>
 <h2 id="to-come">To come</h2>
-<p>Congratulations: if you don&rsquo;t have a working system by now, atleasy you would have enough confidence to take your system in the direction you want to take it now. Here&rsquo;s a snap of how mine looks like after I was done with setup:</p>
-<p><img src="/articles/2022/res/arch_setup.png" alt="arch_setup"></p>
+<p>Congratulations: if you don’t have a working system by now, atleasy you would have enough confidence to take your system in the direction you want to take it now. Here’s a snap of how mine looks like after I was done with setup:</p>
+<p><img alt="arch_setup" src="/articles/2022/res/arch_setup.png"/></p>
 <h2 id="references">References</h2>
 <ol>
 <li><a href="https://wiki.archlinux.org/title/installation_guide">Arch Linux Installation guide</a></li>
@@ -440,95 +257,35 @@ systemctl start wpa_supplicant@wlan0
 <li>Too many arch linux forums threads to count.</li>
 </ol>
 <h2 id="footnotes">Footnotes</h2>
-<p><sup>1</sup> Finally, a tech article! Reading the previous articles, it personally seemed a bit sad that what started out as a STEM blog is now basically me masquerading as Kalpit Veerwal or some armchair IITian celebrity, sans the obnoxious YouTube channel (the most viewed article on this blog is my JEE journey :&rsquo;( ) This sucks, but is easily changeable. Since I write about what I do, the solution is to just do more tech :P</p>
+<p><sup>1</sup> Finally, a tech article! Reading the previous articles, it personally seemed a bit sad that what started out as a STEM blog is now basically me masquerading as Kalpit Veerwal or some armchair IITian celebrity, sans the obnoxious YouTube channel (the most viewed article on this blog is my JEE journey :’( ) This sucks, but is easily changeable. Since I write about what I do, the solution is to just do more tech :P</p>
 <p><sup>2</sup> In the middle of intern interview season and wrapping up my SURA, only a masochist would do this to himself</p>
 </section>
-
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/arch"
-      >Arch</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/programming"
-      >Programming</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="https://aniruddhadeb.com/tags/linux"
-      >Linux</a
-    >
-    
-  </footer>
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2022/intern-inferno/"
-      ><span class="mr-1.5">←</span><span>Intern Inferno</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2022/iit-course-planner-1/"
-      ><span>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<footer class="mt-12 flex flex-wrap">
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/arch">Arch</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/programming">Programming</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/linux">Linux</a>
+</footer>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2022/intern-inferno/"><span class="mr-1.5">←</span><span>Intern Inferno</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2022/iit-course-planner-1/"><span>Data Wrangling in Practice: Dataset Creation from Poorly Structured Sources</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>

@@ -1,102 +1,21 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="Define $ f(x) = ax^2 &#43; bx &#43; c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
-This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots." />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>Roots of f(f(..f(x)..)), f(x) = ax² + bx + c - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
+This seems like a complicated problem. Let’s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,71 +26,33 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c">
-<meta itemprop="description" content="Define $ f(x) = ax^2 &#43; bx &#43; c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
-This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots."><meta itemprop="datePublished" content="2020-04-30T20:30:00+00:00" />
-<meta itemprop="dateModified" content="2020-04-30T20:30:00+00:00" />
-<meta itemprop="wordCount" content="612">
-<meta itemprop="keywords" content="" />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c"/>
-<meta name="twitter:description" content="Define $ f(x) = ax^2 &#43; bx &#43; c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
-This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots."/>
-
-  
-  
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="Roots of f(f(..f(x)..)), f(x) = ax² + bx + c" itemprop="name"/>
+<meta content="Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
+This seems like a complicated problem. Let’s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots." itemprop="description"/><meta content="2020-04-30T20:30:00+00:00" itemprop="datePublished"/>
+<meta content="2020-04-30T20:30:00+00:00" itemprop="dateModified"/>
+<meta content="612" itemprop="wordCount"/>
+<meta content="" itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Roots of f(f(..f(x)..)), f(x) = ax² + bx + c" name="twitter:title"/>
+<meta content="Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $
+This seems like a complicated problem. Let’s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots." name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -213,176 +94,69 @@ This seems like a complicated problem. Let&rsquo;s start by first making intuiti
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Roots of f(f(..f(x)..)), f(x) = ax² &#43; bx &#43; c</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Apr 30, 2020</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><blockquote>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">Roots of f(f(..f(x)..)), f(x) = ax² + bx + c</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Apr 30, 2020</time>
+</div>
+</header>
+<section><blockquote>
 <p>Define $ f(x) = ax^2 + bx + c , a,b,c \in \mathbb{R}$ and $ f^n(x) = f(f^{n-1}(x)), n&gt;1 $. Prove that the real roots of $ f^n(x) $ are symmetric about the vertical line passing through vertex i.e. $ x = \frac{-b}{2a} $</p>
 </blockquote>
-<p>This seems like a complicated problem. Let&rsquo;s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots. Also, all roots of a quadratic of the form $ ax^2 + bx + c , a,b \in \mathbb{R} $ can be expressed as $ \frac{-b}{2a} \pm k$, where $k$ is some constant, which can be real or complex. To find all the real roots of $ f^n(x) $, we have to solve the set of equations $ f^{n-1}(x) = \alpha_i \backepsilon \alpha_i $ is a root of $ f^{n-1}(x) $.</p>
+<p>This seems like a complicated problem. Let’s start by first making intuitional sense of this problem. We can say that $ f^n(x) $ will be a polynomial of the order $ 2^n $ and will have as many roots. Also, all roots of a quadratic of the form $ ax^2 + bx + c , a,b \in \mathbb{R} $ can be expressed as $ \frac{-b}{2a} \pm k$, where $k$ is some constant, which can be real or complex. To find all the real roots of $ f^n(x) $, we have to solve the set of equations $ f^{n-1}(x) = \alpha_i \backepsilon \alpha_i $ is a root of $ f^{n-1}(x) $.</p>
 <p>This problem can be recursively broken down until we arrive at finding the roots of $ f^2(x) $, which are the roots of $ f(x) = \alpha_1 = \frac{-b}{2a} + k $ and $ f(x) = \alpha_2 = \frac{-b}{2a} - k $. Since these two quadratics also assume the form in the paragraph discussed above, their roots can be written as $ \frac{-b}{2a} \pm u $ and $ \frac{-b}{2a} \pm v $. Note that if the equation has complex roots, then the values of u and v would be imaginary. This does not matter, as any further equations solved upon them will continue to have their roots expressed as $ \frac{-b}{2a} \pm k $. Moving to solve $ f^3(x) $ requires us to solve the equations $f(x) = \frac{-b}{2a} \pm u $ and $f(x) = \frac{-b}{2a} \pm v $. If we continue to do this, we can notice that all the $ 2^n $ roots of $ ax^2 + bx + c $ can be expressed in the same form $ \frac{-b}{2a} \pm v $, as the value of the first two coefficients of the quadratic(s) to be solved remains the same. Thus, all the real roots are symmetric about the said vertical line and all imaginary roots have their real part equal to $ \frac{-b}{2a} $. $ \blacksquare $</p>
-<p>A graphical proof for this is as follows: consider any arbitary quadratic with two real roots (this can also be proven with a quadratic with no real roots, but that requires mapping the complex plane on the z-axis, which I don&rsquo;t want to do).</p>
-<p><img src="/articles/2020/res/roots_1.png" alt="Quadratic f(x)"></p>
+<p>A graphical proof for this is as follows: consider any arbitary quadratic with two real roots (this can also be proven with a quadratic with no real roots, but that requires mapping the complex plane on the z-axis, which I don’t want to do).</p>
+<p><img alt="Quadratic f(x)" src="/articles/2020/res/roots_1.png"/></p>
 <p>Here the roots are A and B. Reflecting them onto the Y-axis and drawing two parallel lines through them gives us the following graph:</p>
-<p><img src="/articles/2020/res/roots_2.png" alt="Quadratic with roots on y-axis"></p>
-<p>The two lines represent the roots and the points of intersection of the parabola with the line (That&rsquo;s C,D,E and F) represent the roots of the equation $f^2(x)$. This can be verified by plotting $ f(f(x)) $ in the same graph</p>
-<p><img src="/articles/2020/res/roots_3.png" alt="Quadratic f(f(x))"></p>
-<p>This provides a more intuitive approach to the above proof. As is clearly visible, $ f^2(x) $ has all it&rsquo;s roots symmetrical. This procedure can be repeated $n$ times, giving us the requisite proof.</p>
+<p><img alt="Quadratic with roots on y-axis" src="/articles/2020/res/roots_2.png"/></p>
+<p>The two lines represent the roots and the points of intersection of the parabola with the line (That’s C,D,E and F) represent the roots of the equation $f^2(x)$. This can be verified by plotting $ f(f(x)) $ in the same graph</p>
+<p><img alt="Quadratic f(f(x))" src="/articles/2020/res/roots_3.png"/></p>
+<p>This provides a more intuitive approach to the above proof. As is clearly visible, $ f^2(x) $ has all it’s roots symmetrical. This procedure can be repeated $n$ times, giving us the requisite proof.</p>
 <p>Both of my proofs are not very mathematically rigorous. A rigorous proof would involve induction using the principles I showed here. That exercise is left to the readers (mainly because my induction &amp; formal proof-writing skills are horrible :P).</p>
 <p>An application of this problem can be found in the <a href="https://jason-shi-f9dm.squarespace.com/s/2019Algebra_A.pdf">PUMAC 2019 Algebra A paper, Q3</a>. This is a rather nice problem, which involves the sum of the roots of $ f^n(x) $. Since all the roots are symmetric, you would end up with $ 2^n $ times the abscissa of the vertex of said quadratic.</p>
 </section>
-
-  
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2020/inorganic-heterocycles/"
-      ><span class="mr-1.5">←</span><span>Inorganic Heterocyclic compounds</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2020/zeta-2-integral/"
-      ><span>An integral involving ζ(2) (And Euler&#39;s first proof for the Basel Problem)</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2020/inorganic-heterocycles/"><span class="mr-1.5">←</span><span>Inorganic Heterocyclic compounds</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2020/zeta-2-integral/"><span>An integral involving ζ(2) (And Euler's first proof for the Basel Problem)</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>

@@ -1,102 +1,21 @@
-<!doctype html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
-  lang="en-us"
->
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  
-  <title>Electronic Clock II - Generating the Clock Signal pt.1 - Aniruddha Deb</title>
-
-  
-  <meta name="theme-color" />
-
-  
-  
-  
-  <meta name="description" content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it&rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." />
-  <meta name="author" content="Aniruddha Deb" />
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://aniruddhadeb.com/main.min.css" />
-
-  
-
-  
-     
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/theme.svg" />
-
-  
-  
-  
-  <link rel="preload" as="image" href="/pic.png" />
-  
-  
-
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/twitter.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/github.svg" />
-  
-  <link rel="preload" as="image" href="https://aniruddhadeb.com/rss.svg" />
-  
-  
-
-  
-  
-  <script>
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>Electronic Clock II - Generating the Clock Signal pt.1 - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
+###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,71 +26,33 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
 </script>
-
-  
-  
-  
-
-  
-  <link rel="icon" href="https://aniruddhadeb.com/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://aniruddhadeb.com/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://aniruddhadeb.com/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://aniruddhadeb.com/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://aniruddhadeb.com/favicon/site.webmanifest">
-
-  
-  <meta name="generator" content="Hugo 0.115.1">
-
-  
-  
-
-  
-  
-  
-  
-  
-  <meta itemprop="name" content="Electronic Clock II - Generating the Clock Signal pt.1">
-<meta itemprop="description" content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it&rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)."><meta itemprop="datePublished" content="2018-06-14T22:30:00+00:00" />
-<meta itemprop="dateModified" content="2018-06-14T22:30:00+00:00" />
-<meta itemprop="wordCount" content="398">
-<meta itemprop="keywords" content="" />
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Electronic Clock II - Generating the Clock Signal pt.1"/>
-<meta name="twitter:description" content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it&rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)."/>
-
-  
-  
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="Electronic Clock II - Generating the Clock Signal pt.1" itemprop="name"/>
+<meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
+###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." itemprop="description"/><meta content="2018-06-14T22:30:00+00:00" itemprop="datePublished"/>
+<meta content="2018-06-14T22:30:00+00:00" itemprop="dateModified"/>
+<meta content="398" itemprop="wordCount"/>
+<meta content="" itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Electronic Clock II - Generating the Clock Signal pt.1" name="twitter:title"/>
+<meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
+###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="twitter:description"/>
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://aniruddhadeb.com"
-      >Aniruddha Deb</a
-    >
-    <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  
-  <script>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
     
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
@@ -213,175 +94,68 @@ MathJax = {
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/articles/"
-        >Blog</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/publications/"
-        >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="/files/cv.pdf"
-        >CV</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
-    >
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./twitter.svg)"
-        href="https://twitter.com/hairband_dude"
-        target="_blank"
-        rel="me"
-      >
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
         twitter
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/Aniruddha-Deb"
-        target="_blank"
-        rel="me"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
         github
       </a>
-      
-      <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./rss.svg)"
-        href="https://aniruddhadeb.com/index.xml"
-        target="_blank"
-        rel="alternate"
-      >
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
         rss
       </a>
-      
-    </nav>
-    
-  </div>
+</nav>
+</div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Electronic Clock II - Generating the Clock Signal pt.1</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Jun 14, 2018</time>
-      
-      
-      
-      
-    </div>
-    
-  </header>
-
-  <section><p>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&rsquo;m going to engineer the clock signal generator, the most crucial part of our clock</p>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">Electronic Clock II - Generating the Clock Signal pt.1</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Jun 14, 2018</time>
+</div>
+</header>
+<section><p>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock</p>
 <p>###Importance of the Signal in a clock
-Every clock is only as accurate as it&rsquo;s signal. An <a href="https://en.wikipedia.org/wiki/Atomic_clock">atomic clock</a> uses radiations emitted by cesium-133 as it&rsquo;s signal, a <a href="https://en.wikipedia.org/wiki/Quartz_clock">quartz clock</a> uses a 32768 Hz quartz crystal as it&rsquo;s signal whereas a mechanical clock uses an <a href="https://en.wikipedia.org/wiki/Escapement">Escapement</a> powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!</p>
+Every clock is only as accurate as it’s signal. An <a href="https://en.wikipedia.org/wiki/Atomic_clock">atomic clock</a> uses radiations emitted by cesium-133 as it’s signal, a <a href="https://en.wikipedia.org/wiki/Quartz_clock">quartz clock</a> uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an <a href="https://en.wikipedia.org/wiki/Escapement">Escapement</a> powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!</p>
 <h3 id="make-an-accurate-electronic-signal">Make an accurate electronic signal</h3>
-<p>Our clock (like most other clocks) is going to use a quartz crystal as it&rsquo;s main signal. An <a href="https://en.wikipedia.org/wiki/RC_oscillator">RC</a> or <a href="https://en.wikipedia.org/wiki/LC_circuit">LC</a> oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%</p>
-<p>The signal generated by this crystal has a frequency of 32768 Hz, which isn&rsquo;t very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.</p>
+<p>Our clock (like most other clocks) is going to use a quartz crystal as it’s main signal. An <a href="https://en.wikipedia.org/wiki/RC_oscillator">RC</a> or <a href="https://en.wikipedia.org/wiki/LC_circuit">LC</a> oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%</p>
+<p>The signal generated by this crystal has a frequency of 32768 Hz, which isn’t very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.</p>
 <p>The HEF4060 has the capacity to give us a minimum frequency of 32768/214 = 2 Hz. This will later be scaled down using a flip-flop to give us a frequency of 1 Hz. The circuit for this looks like the following:</p>
-<p><img src="/articles/2018/res/clock_signal_schematic.png" alt="Clock circuit"></p>
+<p><img alt="Clock circuit" src="/articles/2018/res/clock_signal_schematic.png"/></p>
 <p>After testing the above circuit on a breadboard, pin 7 (Q4) gave the following results on an oscilloscope:</p>
-<p><img src="/articles/2018/res/pic_44_3.bmp" alt="oscilloscope"></p>
+<p><img alt="oscilloscope" src="/articles/2018/res/pic_44_3.bmp"/></p>
 <p>These results were expected as 32768/16 gives us 2048, which is approximately 2.049 kHz. the extra 1 Hz is probably a result of breadboard capacitance, which should go away once the circuit is soldered on a PCB.</p>
 <p>In the next installment, I will use a flip flop to halve the 2Hz signal to give us a resultant signal of 1Hz, which can be used to drive the seconds counter.</p>
 <p>- Deb</p>
 </section>
-
-  
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii/"
-      ><span class="mr-1.5">←</span><span>Electronic Clock II - Generating the Clock Signal pt. 2</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://aniruddhadeb.com/articles/2018/electronic-clock-1/"
-      ><span>Electronic Clock I - Getting Started</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii/"><span class="mr-1.5">←</span><span>Electronic Clock II - Generating the Clock Signal pt. 2</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2018/electronic-clock-1/"><span>Electronic Clock I - Getting Started</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
     const disqusShortname = 'aniruddha-deb';
     const script = document.createElement('script');
     script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.head.appendChild(script);
   </script>
-  
-
-  
-  
 </article>
-
-
-    </main>
-
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60"
->
-  <div class="mr-auto">
-    &copy; 2023
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2023
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
-  </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Built with Hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/Aniruddha-Deb/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >✎ Paper</a
-  >
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
 </footer>
-
-  </body>
+</body>
 </html>
