@@ -9,13 +9,14 @@ help:
 	@echo '                                                                          '
 
 html:
-	hugo
-
-clean:
-	[ ! -d public ] || rm -rf public
+	hugo --cleanDestinationDir && hugo-encrypt 
 
 serve:
-	hugo server
+	hugo -D server
+
+serve-encrypt:
+	hugo && hugo-encrypt 
+	cd public && python3 -m http.server 1313
 
 # Doesn't work!
 github: html

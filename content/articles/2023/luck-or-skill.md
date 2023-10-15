@@ -139,6 +139,9 @@ becaues most of it is an extension of the JEE syllabus anyway, and keep your
 CGPA as high as possible. Expect nothing else from the system, and you won't 
 be disappointed.
 
+**UPDATE**: I gave a talk regarding this at Pathfinder, BSW's session on 
+department change for freshers. You can find the slides [here](https://docs.google.com/presentation/d/1-rP4ywexFtNwoUgRlthBNI2sa9NAWtWpvz_9uhUDPCI/edit?usp=sharing) 
+
 ## Appendix: Code for the luck simulation
 
 <script src="https://gist.github.com/Aniruddha-Deb/774da08070d45f5d050c76673523c3b6.js"></script>

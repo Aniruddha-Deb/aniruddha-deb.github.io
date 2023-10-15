@@ -5,26 +5,33 @@ Mausam](https://www.cse.iitd.ac.in/~mausam). I am also a [Reliance Foundation
 Scholar](https://www.scholarships.reliancefoundation.org/) in Artificial
 Intelligence and Computer Sciences. I was an SWE intern at
 [Optiver](https://www.optiver.com/) last summer, and an Undergraduate Research
-Assistant at the Neuroimaging Lab the summer before that.
+Assistant at the Neuroimaging Lab at IIT Delhi the summer before that.
 
-Apart from this, I've been a volunteer teacher for NSS, an Academic Mentor for
-MTL100, a runner-up in [Mimamsa 2021](http://mimamsa.iiserpune.ac.in/), a
-journalist at [Board for Student Publications](https://www.bspiitd.com/), a
-Representative for the [Quizzing Club](https://qciitdelhi.netlify.app/), and 
-a [Board of Student Welfare](https://bsw.iitd.ac.in/) Mentor for freshers.
+Apart from this, I've worn many hats during my time at IIT Delhi, as a
+volunteer teacher for NSS, an Academic Mentor for MTL100, a runner-up in
+[Mimamsa 2021](http://mimamsa.iiserpune.ac.in/), a journalist at [Board for
+Student Publications](https://www.bspiitd.com/), a Representative for the
+[Quizzing Club](https://qciitdelhi.netlify.app/), and most recently, as a
+[Board of Student Welfare](https://bsw.iitd.ac.in/) Mentor for freshers and a 
+teaching assistant for COL333/COL671 (Intro to Artificial Intelligence).
 
 ## Research Interests
 
-My current research interests can be broadly divided into two:
+My primary research interests lie in Natural Language Processing with LLMs. I
+am interested in building solutions with foundation models to solve real-world
+problems. More discretely, my interests can be divided into two:
 
-1. **Reasoning in LLMs**, including but not limited to constrained reasoning,
-   guided decoding and ensembling. LLMs are still unable to reason
-   as effectively as humans, and I'm intereted in looking for ways to augment
-   or improve their reasoning abilities.
-2. **Multilingual NLP**, primarily for low-resource languages. Since the
-   majority of LLM training data is in high-resource languages, I'm looking for
-   ways to use high-resource languages to improve performance on tasks that are
-   in low-resource languages.
+1. **High-Level techniques**, including but not limited to reasoning,
+   autonomous agents, robustness, multimodality and interpretability. LLM
+   capabilities in these areas are limited, and using them in critical systems
+   would require major work in one or more of the above facets.
+
+2. **Low-Level techniques**, such as efficient training and inference, model
+   compression and quantization, tokenization and model parallelization. The
+   proliferation of AI models will only be possible if they are able to run on
+   consumer devices and edge devices such as robots or cameras independently.
+   Further work in optimizing and compressing models to be able to run with a
+   small footprint is key.
 
 Some other things I've worked on/tried out/dabbled with :
 
@@ -39,9 +46,8 @@ Some other things I've worked on/tried out/dabbled with :
   [[Variance Estimators for Regression](https://aniruddhadeb.com/articles/2022/heteroscedastic-variance-estimation/)],
   [[Transformers](https://aniruddhadeb.com/articles/2023/properly-illustrated-transformer/)]
 
-**I would be applying for PhD/MS (Research) positions in the 2023-24 cycle**.
-If you are accepting students and believe I would be a good fit, please do
-reach out.
+**I would be applying for PhD positions in the 2023-24 cycle**. If you are
+accepting students and believe I would be a good fit, please do reach out.
 
 ## Quizzing at IIT Delhi
 

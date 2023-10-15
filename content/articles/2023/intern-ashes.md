@@ -4,6 +4,7 @@ publishDate: '2023-07-29T19:50:00'
 categories: General
 tags:
 - Intern
+- Travelogue
 slug: intern-ashes
 ---
 

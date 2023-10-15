@@ -47,7 +47,7 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   # home page profile
   avatar = '/pic.png'                 # gravatar email or image url
   name = 'Aniruddha Deb'
-  bio = "The Truth is Out There"
+  bio = "Free Your Mind"
 
   # misc
   disableHLJS = true                        # disable highlight.js
