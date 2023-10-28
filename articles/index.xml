@@ -140,8 +140,7 @@ How is a bootable device found? A device is considered bootable if it has the ma
       <pubDate>Mon, 28 Nov 2022 03:00:00 +0000</pubDate>
       
       <guid>https://aniruddhadeb.com/articles/2022/filtrations/</guid>
-      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
-Recap If you remember the note on random variables, then this picks up exactly where that left off.
+      <description>Recap If you remember the note on random variables, then this picks up exactly where that left off. $\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
 Definition 1.1: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.
 Recall that a $\sigma$-algebra is simply a collection of subsets over $X$ that is closed over unions, intersections and complements.
 Definition 1.2: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a sub $\sigma$-algebra of $\mathcal{A}$</description>
@@ -358,7 +357,6 @@ C: Debu, please stop making me feel dumb</description>
       
       <guid>https://aniruddhadeb.com/articles/2020/icosahedron-resistor-network/</guid>
       <description>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:
-![icosahedron](/articles/2020/res/icosa_res_net/icosa_1.png)
 A) The resistance between points A and B is $\frac{r}{2}$
 B) The resistance between points A and B is $\frac{r}{3}$
 C) The resistance between any two adjacent vertices is $\frac{11r}{30}$
@@ -458,7 +456,7 @@ The summations can now be evaluated as Riemann sums by multiplying numerator and
       
       <guid>https://aniruddhadeb.com/articles/2018/electronic-clock-2-ii/</guid>
       <description>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
-###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
 The truth table of this device looks somewhat like this:
 Note that the flip flop toggles only on the rising edge of the clock.</description>
     </item>
@@ -470,7 +468,7 @@ Note that the flip flop toggles only on the rising edge of the clock.</descripti
       
       <guid>https://aniruddhadeb.com/articles/2018/electronic-clock-2-i/</guid>
       <description>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I&amp;rsquo;m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it&amp;rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&amp;rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&amp;rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks).</description>
+Importance of the Signal in a clock Every clock is only as accurate as it&amp;rsquo;s signal. An atomic clock uses radiations emitted by cesium-133 as it&amp;rsquo;s signal, a quartz clock uses a 32768 Hz quartz crystal as it&amp;rsquo;s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks).</description>
     </item>
     
     <item>

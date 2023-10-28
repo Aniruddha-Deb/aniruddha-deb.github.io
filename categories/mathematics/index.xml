@@ -34,8 +34,7 @@ $$\begin{align} \theta_{\text{MAP}} &amp;amp;= \text{argmax}_{\theta} ; P(\theta
       <pubDate>Mon, 28 Nov 2022 03:00:00 +0000</pubDate>
       
       <guid>https://aniruddhadeb.com/articles/2022/filtrations/</guid>
-      <description>$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
-Recap If you remember the note on random variables, then this picks up exactly where that left off.
+      <description>Recap If you remember the note on random variables, then this picks up exactly where that left off. $\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
 Definition 1.1: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.
 Recall that a $\sigma$-algebra is simply a collection of subsets over $X$ that is closed over unions, intersections and complements.
 Definition 1.2: If $\mathcal{A}$ and $\mathcal{B}$ are $\sigma$-algebras defined on $\Omega$ and $\mathcal{B} \subseteq \mathcal{A}$, then $\mathcal{B}$ is a sub $\sigma$-algebra of $\mathcal{A}$</description>

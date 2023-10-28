@@ -36,7 +36,7 @@ MathJax = {
 <meta content="Seven Days of Creation" itemprop="name"/>
 <meta content="When you learn more in the last week than in any other week in your life. A summary of how I built a high-performance peer-server-peer file sharing network in the span of a week." itemprop="description"/><meta content="2022-09-18T12:00:00+00:00" itemprop="datePublished"/>
 <meta content="2022-09-18T12:00:00+00:00" itemprop="dateModified"/>
-<meta content="2745" itemprop="wordCount"/>
+<meta content="2742" itemprop="wordCount"/>
 <meta content="Programming,Systems," itemprop="keywords"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="Seven Days of Creation" name="twitter:title"/>
@@ -251,21 +251,19 @@ MathJax = {
 <p>This was probably the most frustrating part: after three straight days of programming, I realized that to switch protocols, I’d have to do it all over again. This is where effective design comes into picture: rather than making a hacky proof-of-concept server, abstracting out the various things that would have separate implementations from the start would’ve made this exercise very easy.</p>
 <p>I set about redesigning the server. Fortunately, a full rewrite wasn’t needed, and a lot of the components could just be reused directly. For changing the protocol, I defined the interfaces in a header file, and implementation-specific versions in a source file. This allows me to change the implementation at compile time rather than in source (which would need me to subclass Server and override these methods). All I need to do now to change the protocol is <code>make proto=TCP</code> instead of normal <code>make</code>.</p>
 <p>The makefile flags to do something like this are:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>PROTO<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">TCP)</span>
-</span></span><span style="display:flex;"><span>    SRC_SERVER <span style="color:#f92672">+=</span> &lt;tcp implementation files&gt;
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>    SERVER :<span style="color:#f92672">=</span> bin/server_tcp
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else</span>
-</span></span><span style="display:flex;"><span>    SRC_SERVER <span style="color:#f92672">+=</span> &lt;udp implementation files&gt;
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>    SERVER :<span style="color:#f92672">=</span> bin/server_udp
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span>
-</span></span></code></pre></div><p>The final source design looked like this (leaving out other non-relevant items)</p>
-<center>
-![protocol](/articles/2022/res/protocol.svg)
-</center>
+<pre tabindex="0"><code>ifeq ($(PROTO), TCP)
+    SRC_SERVER += &lt;tcp implementation files&gt;
+    ...
+    SERVER := bin/server_tcp
+    ...
+else
+    SRC_SERVER += &lt;udp implementation files&gt;
+    ...
+    SERVER := bin/server_udp
+    ...
+endif
+</code></pre><p>The final source design looked like this (leaving out other non-relevant items)</p>
+<p><img alt="protocol" src="/articles/2022/res/protocol.svg"/></p>
 <h2 id="day-five">Day Five</h2>
 <blockquote>
 <p>And God said, <strong>“Let this bounty be available to the users of Linux as well”</strong>, and it was so. God did not have a working Linux machine, so he created a QEMU VM to run Manjaro and to compile the code, and when he was done, he saw that it was good.</p>
@@ -273,9 +271,7 @@ MathJax = {
 <p>The Linux machine I’d gotten from home had a broken keyboard, and my Raspberry Pi was not connecting to the cellular network (apparently my cellphone provider switched from an ipv4 to an ipv6 network, so arp-scan and everything was a mess; I couldn’t locate my pi’s IP, and an iPhone being an iPhone, doesn’t let you see the IP of the devices connected to it’s WiFi hotspot.)</p>
 <p>After messing around with an ethernet cable, a friend’s laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that <a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image">it doesn’t have a default password</a>, and an ISO containing login credentials had to be booted with the image to allow you to login, <em>and that too only via SSH</em>.</p>
 <p>Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly.</p>
-<center>
-![qemu](/articles/2022/res/qemu_vm_2.png)
-</center>
+<p><img alt="qemu" src="/articles/2022/res/qemu_vm_2.png"/></p>
 <p>QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that’s for another post :)</p>
 <p>With access to a linux machine, there were two choices:</p>
 <ol>
@@ -284,23 +280,21 @@ MathJax = {
 </ol>
 <p>I really didn’t want to do (2), but it looked like there was no choice. I decided to give libkqueue a final chance on linux, and since it was not available on manjaro default repositories, I downloaded and compiled from source.</p>
 <p>And it worked! I had to link the library with <code>-lkqueue</code> and <code>-lpthread</code>, so made some linux-specific flags for that. I can now see why <code>cmake</code> is such a popular build tool, as this os-dependent complexity would only increase with more modules</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">ifneq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>OS<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,Windows_NT)</span>
-</span></span><span style="display:flex;"><span>    uname_os <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell uname<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>    ifneq <span style="color:#f92672">(</span><span style="color:#66d9ef">$(</span>uname_os<span style="color:#66d9ef">)</span>,Darwin<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>        CPPFLAGS <span style="color:#f92672">+=</span> -I/usr/include/kqueue
-</span></span><span style="display:flex;"><span>        LFLAGS <span style="color:#f92672">+=</span> -lkqueue -lpthread
-</span></span><span style="display:flex;"><span>    endif
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span>
-</span></span></code></pre></div><h2 id="day-six">Day Six</h2>
+<pre tabindex="0"><code>ifneq ($(OS),Windows_NT)
+    uname_os := $(shell uname)
+    ifneq ($(uname_os),Darwin)
+        CPPFLAGS += -I/usr/include/kqueue
+        LFLAGS += -lkqueue -lpthread
+    endif
+endif
+</code></pre><h2 id="day-six">Day Six</h2>
 <blockquote>
 <p>And God said, <strong>“Let there be a client manager to spawn clients, so that I may be absolved of the burden of testing”</strong>, and it was so. God crafted a client manager using threads, and did the server benchmarks, and he saw that they were good.</p>
 </blockquote>
 <p>This (and benchmarking) were boring but rewarding. For starters, a few changes had to be made in the protocol to make it a bit more reliable, and then some bookkeeping code had to be written for clients so that they could save their packet request round trip times to files, and also be called independently and run on separate threads. Once that was done, I created a client manager that took care of spawning a bunch of clients and making requests to the server</p>
 <p>The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.</p>
 <p>Here are some numbers. For context, A2_small_file.txt is a 100kB text file.</p>
-<center>
-![times](/articles/2022/res/time_clients.svg)
-</center>
+<p><img alt="times" src="/articles/2022/res/time_clients.svg"/></p>
 <h2 id="day-seven">Day Seven</h2>
 <blockquote>
 <p>Thus, the clients and server were completed in all their vast array, so on the seventh day, God rested from all his work. Then God <strike>Blessed the seventh day and made it holy</strike> <em>Cursed himself for having spent so much time on one assignment, when there were four more to do, and minors would begin in a week</em></p>

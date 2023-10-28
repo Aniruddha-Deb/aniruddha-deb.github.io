@@ -7,7 +7,7 @@
 <title>Electronic Clock II - Generating the Clock Signal pt. 2 - Aniruddha Deb</title>
 <meta name="theme-color"/>
 <meta content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
-###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
 The truth table of this device looks somewhat like this:
 Note that the flip flop toggles only on the rising edge of the clock." name="description"/>
 <meta content="Aniruddha Deb" name="author"/>
@@ -38,7 +38,7 @@ MathJax = {
 <meta content="Hugo 0.115.1" name="generator"/>
 <meta content="Electronic Clock II - Generating the Clock Signal pt. 2" itemprop="name"/>
 <meta content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
-###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
 The truth table of this device looks somewhat like this:
 Note that the flip flop toggles only on the rising edge of the clock." itemprop="description"/><meta content="2018-06-16T10:30:00+00:00" itemprop="datePublished"/>
 <meta content="2018-06-16T10:30:00+00:00" itemprop="dateModified"/>
@@ -47,7 +47,7 @@ Note that the flip flop toggles only on the rising edge of the clock." itemprop=
 <meta content="summary" name="twitter:card"/>
 <meta content="Electronic Clock II - Generating the Clock Signal pt. 2" name="twitter:title"/>
 <meta content="In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
-###Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
+Flip-Flop: Concept A Flip flop is a one-bit storage device which looks somewhat like this:
 The truth table of this device looks somewhat like this:
 Note that the flip flop toggles only on the rising edge of the clock." name="twitter:description"/>
 </head>
@@ -128,14 +128,14 @@ Note that the flip flop toggles only on the rising edge of the clock." name="twi
 </div>
 </header>
 <section><p>In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:</p>
-<p>###Flip-Flop: Concept
-A Flip flop is a one-bit storage device which looks somewhat like this:</p>
+<h3 id="flip-flop-concept">Flip-Flop: Concept</h3>
+<p>A Flip flop is a one-bit storage device which looks somewhat like this:</p>
 <p><img alt="flip flop" src="/articles/2018/res/flip_flop.png"/></p>
 <p>The truth table of this device looks somewhat like this:</p>
 <p><img alt="truth table" src="/articles/2018/res/jk-flip-flop-truth-table.jpg"/></p>
 <p>Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin.</p>
-<p>###Adding the flip-flop to our circuit:
-On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):</p>
+<h3 id="adding-the-flip-flop-to-our-circuit">Adding the flip-flop to our circuit:</h3>
+<p>On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):</p>
 <p><img alt="1hz schematic" src="/articles/2018/res/1hz_schematic.png"/></p>
 <p>As calculated, this gives us a frequency of 1 Hz on the Q pin</p>
 <p><img alt="oscilloscope output" src="/articles/2018/res/pic.png"/></p>

@@ -7,7 +7,7 @@
 <title>Electronic Clock II - Generating the Clock Signal pt.1 - Aniruddha Deb</title>
 <meta name="theme-color"/>
 <meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="description"/>
+Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="description"/>
 <meta content="Aniruddha Deb" name="author"/>
 <link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
 <link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
@@ -36,14 +36,14 @@ MathJax = {
 <meta content="Hugo 0.115.1" name="generator"/>
 <meta content="Electronic Clock II - Generating the Clock Signal pt.1" itemprop="name"/>
 <meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." itemprop="description"/><meta content="2018-06-14T22:30:00+00:00" itemprop="datePublished"/>
+Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." itemprop="description"/><meta content="2018-06-14T22:30:00+00:00" itemprop="datePublished"/>
 <meta content="2018-06-14T22:30:00+00:00" itemprop="dateModified"/>
 <meta content="398" itemprop="wordCount"/>
 <meta content="" itemprop="keywords"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="Electronic Clock II - Generating the Clock Signal pt.1" name="twitter:title"/>
 <meta content="In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock
-###Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="twitter:description"/>
+Importance of the Signal in a clock Every clock is only as accurate as it’s signal. An atomic clock uses radiations emitted by cesium-133 as it’s signal, a quartz clock uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an Escapement powered by a hairspring (in wristwatches) or by a pendulum (in clocks)." name="twitter:description"/>
 </head>
 <body class="text-black duration-200 ease-out dark:text-white">
 <header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
@@ -122,8 +122,8 @@ MathJax = {
 </div>
 </header>
 <section><p>In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I’m going to engineer the clock signal generator, the most crucial part of our clock</p>
-<p>###Importance of the Signal in a clock
-Every clock is only as accurate as it’s signal. An <a href="https://en.wikipedia.org/wiki/Atomic_clock">atomic clock</a> uses radiations emitted by cesium-133 as it’s signal, a <a href="https://en.wikipedia.org/wiki/Quartz_clock">quartz clock</a> uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an <a href="https://en.wikipedia.org/wiki/Escapement">Escapement</a> powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!</p>
+<h3 id="importance-of-the-signal-in-a-clock">Importance of the Signal in a clock</h3>
+<p>Every clock is only as accurate as it’s signal. An <a href="https://en.wikipedia.org/wiki/Atomic_clock">atomic clock</a> uses radiations emitted by cesium-133 as it’s signal, a <a href="https://en.wikipedia.org/wiki/Quartz_clock">quartz clock</a> uses a 32768 Hz quartz crystal as it’s signal whereas a mechanical clock uses an <a href="https://en.wikipedia.org/wiki/Escapement">Escapement</a> powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!</p>
 <h3 id="make-an-accurate-electronic-signal">Make an accurate electronic signal</h3>
 <p>Our clock (like most other clocks) is going to use a quartz crystal as it’s main signal. An <a href="https://en.wikipedia.org/wiki/RC_oscillator">RC</a> or <a href="https://en.wikipedia.org/wiki/LC_circuit">LC</a> oscillator cannot be an accurate signal as the frequency will change with changes in temperature. Also, tuning an RC/LC oscillator to an exact frequency requires a ton of precision - the frequency has to be within a standard deviation of ±0.01%</p>
 <p>The signal generated by this crystal has a frequency of 32768 Hz, which isn’t very useful to us. In order to use it to drive the seconds counter, we must scale it down to 1 Hz (1 pulse per second). In order to do this, I will use a HEF4060, which is a 14 bit binary ripple counter.</p>
