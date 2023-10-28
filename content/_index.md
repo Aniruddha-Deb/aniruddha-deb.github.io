@@ -1,37 +1,51 @@
-I'm a Senior Undergraduate in the Computer Science and Engineering Department
-at IIT Delhi, advised by [Parag
-Singla](https://www.cse.iitd.ac.in/~parags/) and [
-Mausam](https://www.cse.iitd.ac.in/~mausam). I am also a [Reliance Foundation
-Scholar](https://www.scholarships.reliancefoundation.org/) in Artificial
-Intelligence and Computer Sciences. I was an SWE intern at
-[Optiver](https://www.optiver.com/) last summer, and an Undergraduate Research
-Assistant at the Neuroimaging Lab at IIT Delhi the summer before that.
+I try to improve the reasoning and multilingual capabilities of LLMs at IIT
+Delhi, with Prof. [Parag Singla](https://www.cse.iitd.ac.in/~parags/) and Prof. 
+[Mausam](https://www.cse.iitd.ac.in/~mausam). In the past, I've done some
+systems programming at [Optiver](https://www.optiver.com/), and some research
+at the Neuroimaging Lab with Prof. [Rahul
+Garg](https://www.cse.iitd.ac.in/~rahulgarg/) before that.
 
-Apart from this, I've worn many hats during my time at IIT Delhi, as a
-volunteer teacher for NSS, an Academic Mentor for MTL100, a runner-up in
-[Mimamsa 2021](http://mimamsa.iiserpune.ac.in/), a journalist at [Board for
-Student Publications](https://www.bspiitd.com/), a Representative for the
-[Quizzing Club](https://qciitdelhi.netlify.app/), and most recently, as a
-[Board of Student Welfare](https://bsw.iitd.ac.in/) Mentor for freshers and a 
-teaching assistant for COL333/COL671 (Intro to Artificial Intelligence).
+Apart from this, I've worn many hats during my time at IIT Delhi, as
+a [TA](https://www.cse.iitd.ac.in/~mausam/courses/col333/autumn2023/),
+a [quizzer](https://qciitdelhi.netlify.app),
+a [journalist](https://www.bspiitd.com) and
+a [mentor](https://bsw.iitd.ac.in). When I'm not buried under coursework, I
+enjoy a quick badminton match, or a round of the boardgame I'm hooked on to
+(currently [riichi Mahjong](https://en.wikipedia.org/wiki/Japanese_mahjong)).
 
 ## Research Interests
 
-My primary research interests lie in Natural Language Processing with LLMs. I
-am interested in building solutions with foundation models to solve real-world
-problems. More discretely, my interests can be divided into two:
+I'm excited by Foundation Models, and aim to build atop
+them (improving aspects such as reasoning, planning, robustness, domain
+knowledge) or under them (optimizing the foundations of foundation
+models, such as model serving, efficient attention mechanisms, model
+quantization, and efficient inference). I am primarily interested in two key
+directions:
 
-1. **High-Level techniques**, including but not limited to reasoning,
-   autonomous agents, robustness, multimodality and interpretability. LLM
-   capabilities in these areas are limited, and using them in critical systems
-   would require major work in one or more of the above facets.
+1. **Reasoning:** Language models display a strong baseline performance across
+   a variety of tasks in different domains. My experiments with these models
+   lead me to believe that the lack of strong reasoning mechanisms are the only
+   handicap holding these models back from becoming experts in these domains.
+   **Can we find novel approaches in the form of architectural modifications** to
+   transformers that can be used for reasoning tasks? Or, **can we develop a
+   standardized curricula or learning regime that would help improve their
+   reasoning capabilities across multiple domains and modalities**? Even if we
+   improve their reasoning capabilities in a certain domain, such as math,
+   **would these capabilities generalize across diverse domains**, such as
+   planning, code generation, and embodied agents?
 
-2. **Low-Level techniques**, such as efficient training and inference, model
-   compression and quantization, tokenization and model parallelization. The
-   proliferation of AI models will only be possible if they are able to run on
-   consumer devices and edge devices such as robots or cameras independently.
-   Further work in optimizing and compressing models to be able to run with a
-   small footprint is key.
+2. **Efficiency:** With the release of LLaMa, we are seeing a proliferation of
+   LLM-powered personal assistants capable of running on users' devices.
+   However, there is a widening gap between the hardware required to run these
+   models and the hardware that is available to run these models where they are
+   most required. For example, Consumer devices such as smartphones struggle to
+   run inference on these models at usable speeds. I believe that solving
+   on-device inference will strongly push adoption of foundation models at a
+   larger scale. In this direction, I am primarily interested in **foundation
+   model quantization and weight pruning**, with a focus on **making these models
+   accessible and usable by everyone**. I'm also interested in optimizing these
+   models for deployment on edge devices such as robots, as I believe that
+   would be the primary use case for language/vision models in the near future.
 
 Some other things I've worked on/tried out/dabbled with :
 
