@@ -179,7 +179,7 @@ I set about redesigning the server. Fortunately, a full rewrite wasn't needed, a
 
 The makefile flags to do something like this are:
 
-```makefile
+```
 ifeq ($(PROTO), TCP)
     SRC_SERVER += <tcp implementation files>
     ...
@@ -195,9 +195,7 @@ endif
 
 The final source design looked like this (leaving out other non-relevant items)
 
-<center>
 ![protocol](/articles/2022/res/protocol.svg)
-</center>
 
 ## Day Five
 
@@ -209,9 +207,7 @@ After messing around with an ethernet cable, a friend's laptop and computer-to-c
 
 Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly. 
 
-<center>
 ![qemu](/articles/2022/res/qemu_vm_2.png)
-</center>
 
 QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that's for another post :)
 
@@ -224,7 +220,7 @@ I really didn't want to do (2), but it looked like there was no choice. I decide
 
 And it worked! I had to link the library with `-lkqueue` and `-lpthread`, so made some linux-specific flags for that. I can now see why `cmake` is such a popular build tool, as this os-dependent complexity would only increase with more modules
 
-```makefile
+```
 ifneq ($(OS),Windows_NT)
     uname_os := $(shell uname)
     ifneq ($(uname_os),Darwin)
@@ -244,9 +240,7 @@ The load benchmarks were great, for small files. For large files, I was transfer
 
 Here are some numbers. For context, A2_small_file.txt is a 100kB text file.
 
-<center>
 ![times](/articles/2022/res/time_clients.svg)
-</center>
 
 ## Day Seven
 

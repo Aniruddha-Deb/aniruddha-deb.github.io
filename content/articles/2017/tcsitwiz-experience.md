@@ -6,7 +6,7 @@ slug: tcsitwiz-experience
 summary: A Firsthand account of the TCS IT Wiz 2017 Journey
 ---
 
-Anyone who is in college or in high school and is interested in quizzing will know about the TCS IT Wiz (website: [www.tcsitwiz.com](www.tcsitwiz.com)) - one of the most prestigious high school quizzes, sponsored by Tata Consultancy Services and hosted by Greycaps CEO Giri 'Pickbrain' Balasubramaniam.
+Anyone who is in college or in high school and is interested in quizzing will know about the TCS IT Wiz - one of the most prestigious high school quizzes, sponsored by Tata Consultancy Services and hosted by Greycaps CEO Giri 'Pickbrain' Balasubramaniam.
 
 I got my first taste of this quiz when I was in eighth standard. I sheepishly went up to the head of department of computers and said that I was interested in participating in the TCS IT Wiz. After an announcement in class about the quiz, all the scholars in the class soon followed suit. Looking back, I barely knew anything about IT then. Around 30 of us were put in a bus and taken to the venue, where we managed to get a balcony seat. I couldn't answer more than 8 questions correctly. It was a complete disaster
 
@@ -22,8 +22,13 @@ The quiz finals are held on 10th December every year, at Taj Lands End in Mumbai
 
 Tata Consultancy Services are very generous with prizes. All national finalists got 35,000 rupees in Amazon gift vouchers, whereas the runner up got 1,00,000 and the winners received 1,50,000. Even though I lost, the experience in Mumbai will be unforgettable. Hope to come back next year and give the contestants some stiff competition!
 
-Watch the 2017 national finals [here](https://www.youtube.com/watch?v=3VsvX1Ateys)
+Watch the 2017 national finals ~~[here](https://www.youtube.com/watch?v=3VsvX1Ateys)~~
 
-Best of luck for next year's quiz!
+**EDIT Late Oct 2023**: The URL www.tcsitwiz.com is broken, and the YouTube video has become private. 
+
+{{< tweet 1718285712192319810 >}}
+
+~~Best of luck for next year's quiz!~~ I'd wish you luck, but the quiz is online 
+now so anything goes :')
 
 \- Deb

@@ -23,14 +23,18 @@ This list consists of the limits that I found most challenging.
 
 Answers:
 
-> 1. $e$
-> 2. $-\frac 12$
-> 3. $1 - \frac 1e$
-> 4. $\exp\left( \int\_0^x \ln \left( \frac{t+1}{t^2+1}\right)dt\right)$ (from JEE(A) 2016)
-> 5. $n$
-> 6. $e^{-1}$
-> 7. $1$
-> 8. $0$
-> 9. $3$ (Ramanujan found this one :)
-> 10. $\frac{a^n e^a}{n!}$
-> 11. $2$
+{{% spoiler %}}
+
+1. $e$
+2. $-\frac 12$
+3. $1 - \frac 1e$
+4. $\exp\left( \int\_0^x \ln \left( \frac{t+1}{t^2+1}\right)dt\right)$ (from JEE(A) 2016)
+5. $n$
+6. $e^{-1}$
+7. $1$
+8. $0$
+9. $3$ (Ramanujan found this one :)
+10. $\frac{a^n e^a}{n!}$
+11. $2$
+
+{{% /spoiler %}}

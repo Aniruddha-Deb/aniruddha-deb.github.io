@@ -32,11 +32,11 @@ It's easy to see that no square is ending in 3 (or 2, 7 or 8 for that matter). W
 > How many solutions of $x$ exist such that $$\sum\_{i=1}^x i! = n^2, \space n \in N$$
 
 In simpler terms, what summations of the factorial give us a perfect square? We can work out the first few by hand
-$$\begin{gather}
-x = 1 \implies S\_1 = 1! = 1\\\\
-x = 2 \implies S\_2 = S\_1 + 2! = 3 \\\\
-x = 3 \implies S\_3 = S\_2 + 3! = 9 \\\\
-x = 4 \implies S\_4 = S\_3 + 4! = 33
-\end{gather}$$
+$$\begin{align}
+x = 1 &\implies S\_1 = 1! = 1\\\\
+x = 2 &\implies S\_2 = S\_1 + 2! = 3 \\\\
+x = 3 &\implies S\_3 = S\_2 + 3! = 9 \\\\
+x = 4 &\implies S\_4 = S\_3 + 4! = 33
+\end{align}$$
 
 For $5!$ and above, the last number is always 0. When we use the above recurrence relation for $x \ge 5$, the last digit will always be 3, and since no square ends in 3, there are only two values of $x$ for which the given equation holds, which are $1$ and $3$.  $\blacksquare$

@@ -8,7 +8,7 @@ tags:
 slug: rcu-comic
 ---
 
-![From my notes](/articles/2023/res/RCU.jpeg)
+![From my notes](/articles/2023/res/RCU.jpg)
 
 ----
 

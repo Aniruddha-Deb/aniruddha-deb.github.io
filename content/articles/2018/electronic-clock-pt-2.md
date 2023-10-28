@@ -7,7 +7,7 @@ categories: Electronics
 
 In the previous installment of this series, I spoke about the requirements and the architecture of the clock. In this installment, I'm going to engineer the clock signal generator, the most crucial part of our clock
 
-###Importance of the Signal in a clock
+### Importance of the Signal in a clock
 Every clock is only as accurate as it's signal. An [atomic clock](https://en.wikipedia.org/wiki/Atomic_clock) uses radiations emitted by cesium-133 as it's signal, a [quartz clock](https://en.wikipedia.org/wiki/Quartz_clock) uses a 32768 Hz quartz crystal as it's signal whereas a mechanical clock uses an [Escapement](https://en.wikipedia.org/wiki/Escapement) powered by a hairspring (in wristwatches) or by a pendulum (in clocks). The signal has a cascading effect on the accuracy of a clock - even a 0.1% divergence in the period of the second hand causes a clock to lose or gain 86.4 seconds a day, or in larger terms, lose or gain almost half a day in a year!
 
 ### Make an accurate electronic signal

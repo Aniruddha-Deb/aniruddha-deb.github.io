@@ -7,7 +7,7 @@ categories: Electronics
 
 In the previous post, we saw how to make a 2Hz clock signal. However, for the seconds counter, we will need a 1Hz clock signal. In order to achieve this, I will clock down the frequency using a JK Flip Flop:
 
-###Flip-Flop: Concept
+### Flip-Flop: Concept
 A Flip flop is a one-bit storage device which looks somewhat like this:
 
 ![flip flop](/articles/2018/res/flip_flop.png)
@@ -18,7 +18,7 @@ The truth table of this device looks somewhat like this:
 
 Note that the flip flop toggles only on the rising edge of the clock. Therefore, in order to clock down the frequency by 2, we need to set the J and K bits high and feed the clock signal in to the CLK pin, thereby obtaining a 1Hz signal on the Q pin. 
 
-###Adding the flip-flop to our circuit:
+### Adding the flip-flop to our circuit:
 On adding the flip flop to our circuit, the schematic looks somewhat like this (The 4060 has been carried over from the previous post):
 
 ![1hz schematic](/articles/2018/res/1hz_schematic.png)

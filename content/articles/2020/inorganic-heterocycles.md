@@ -8,15 +8,15 @@ slug: inorganic-heterocycles
 The 45th IChO preparatory problem list had this as it's fifth problem:
 
 > **5.1** The interaction of thionyl chloride and sodium azide at $-30^\circ \text{C}$ gives colorless crystals **X**, containing 36.4 wt.% of Cl. The crystals consist of cyclic trimers. Find the composition of **X** and give the reaction equation.
-
+>
 > **5.2** Draw two stereoisomers of **X**.
-
+>
 > **5.3** A colorless liquid **Y** was prepared by a reaction between **X** and antimony(III) fluoride. Addition of 1.00 g of **Y** to the excess of barium acetate aqueous solution gave the precipitate with the mass of 3.96 g. Determine the chemical formula of **Y**, draw its structure and write the reaction equation.
-
+>
 > **5.4** **Y** enters the substitution reactions with typical nucleophiles such as methylamine. What product will be formed in the reaction between **Y** and the excess of methylamine? Draw its structure.
-
+>
 > **5.5** Give two examples of molecules or ions which are isoelectronic to **Y**, draw their structures.
-
+>
 > **5.6** One of the substances isoelectronic to **Y** transforms in the presence of water traces into polymer **Z**. 1.00 g of **Z** was dissolved in water and the resulting solution was added to the excess of barium acetate solution. The precipitate with the mass of 2.91 g was formed. Determine the formula of **Z** and draw its structure.
 
 This looks like a very sketchy problem: we know for a fact that:

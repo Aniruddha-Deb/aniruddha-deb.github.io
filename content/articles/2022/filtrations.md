@@ -6,11 +6,10 @@ tags:
 - Mathematics
 slug: filtrations
 ---
-
-$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
 ## Recap
 
 If you remember the [note on random variables](https://aniruddhadeb.com/articles/2021/note-on-random-variables.md), then this picks up exactly where that left off.
+$\newcommand{\triple}{(\Omega, \mathcal{F}, \mathbf{P})}$$\newcommand{\P}{\mathbf{P}}$
 
 > **Definition 1.1**: A Measurable space $(X,\Sigma)$ consists of a set $X$ and a $\sigma$-algebra $\Sigma$ defined on $X$.
 

@@ -40,43 +40,47 @@ And just like that, I won the _Japan jaane ka mauka_ 🇯🇵
 
 ## Night flight to Japan
 
-After the auspices of a Visa and other preparations were done, our flight was
+Once the auspices of a Visa and other preparations were done, our flight was
 scheduled on the evening of 23rd September, around 7 PM. Before leaving, we met
 at ex hall to get to know each other, and to book seats on the flight together.
 With the pleasantries out of the way, our _paltan_ booked out row 55 of the 
 flight, and decided to meet near Jwala Circle at 3 PM tomorrow.
 
-The security check and emigration were fairly hassle-free. We bumped into the 
-DU contingent on our way, and 
+The 23rd finally rolled around, and four of us made our way to the airport from 
+campus. Checking in, emigration and security checks were all smooth, and there 
+was relatively little rush on a Saturday afternoon. After that, we met up with 
+the DU contingent, whom we had also met while receiving our visas at the 
+embassy. While waiting around the departure gate, there seemed to be a 
+surprisingly large number of college students. I thought most of them would be 
+studying in Japan, and some would be our compatriots from the IITs in North 
+India. Didn't think much of this, and soon it was time to board.
 
 After boarding, the flight attendants started to make their way through the 
-cabin, marking out the seats where an asian vegetarian meal would be served with
-a green AVML sticker. This included my seat.
+cabin, marking out the seats where an asian vegetarian meal would be served
+with a green AVML sticker. This included my seat. Seemed very meticulous. Very 
+precise. Very _Japanese_.
 
-I will admit one of my bad habits on planes is pixel-peeping. It's always more 
-fun to see others enjoy in-flight entertainment than it is to see it yourself.
-On this fine occasion, The young Indian gentleman to the front and left of me 
-was enjoying the OG _Mission: Impossible_, while clicking pictures of his food 
-and everything around him. The young japanese gentleman to the front and right 
-was . I couldn't directly see who was sitting in front of me, but Rajeev was 
-sitting to my right, and he pointed out that she had a IIT Madras logo on her 
-hoodie. 
+It must be mentioned that at this time, I was working on a paper for ICLR whose 
+deadline was on the 28th. After submitting the abstract, some flaws were popping
+up in a method that I had proposed, and the hour I spent waiting for the flight 
+was spent fixing some part of this. I thought that I would make more progress,
+but it's hard to develop without internet access, and JAL's internet access is 
+completely paid. No free tier. Oof.
 
-"Wouldn't IIT Madras fly out to Japan from Madras itself? Weird" I thought.
-
-Dinner took these thoughts off my mind. It was nothing spectacular: Paneer
+Dinner took some of this off my mind. It was nothing spectacular: Paneer
 curry with some rice, fruits, boiled corn, dahi bhalla and a scone. I have no
 idea why every economy in-flight meal serves this scone. It was there even when
 I flew KLM. Although that was breakfast, and they also served a slice of cheese
 with it. There was literally nothing I could pair the scone with. I finally
-resorted to having it with butter and some paneer curry. _yum_.
+resorted to having it with butter and some paneer curry. Not great, but it'll 
+pass.
 
-Soon, it was time to doze off. 
-
-
-Japan requires you to fill these immigration forms. In Japanese fashion, they're 
-very _kawaii_ and seem like postcards rather than serious government documents.
-They're also fastidiously precise, with every field being in a box. 
+Soon, it was time to doze off. Once I woke up, I ate the second meal they had
+given me, which was some fruit and a cupcake. We had an hour to land, and they 
+started to distribute immigration forms. Japan requires you to fill these
+immigration forms. In Japanese fashion, they're very _kawaii_ and seem like
+postcards rather than serious government documents. They're also fastidiously
+precise, with every field being in a box. 
 
 ![Japanese immigration form]()
 
@@ -85,13 +89,15 @@ Exceru_ is deprecated. Or if _Officeu sree-shixty-fiveu_ is discontinued. Maybe
 budding _mangakas_ would be hired to draw pixel-perfect government forms? One
 can wonder...
 
-Soon, we were about to land, with bianca castafiore singing in our ears. One 
-of Tokyo Haneda's runways is built on land reclaimed from the sea. Unfortunately, 
-we did not land on this runway :( (Maybe add a line about kansai airport sinking)
+The reassuring _thud_ of land soon came by. One of Tokyo Haneda's runways is
+built on land reclaimed from the sea. Unfortunately, we did not land on this
+runway. Maybe it was for the best, as things built on the ocean have a lower 
+shelf life than their inland counterparts
+\[[1](https://tomorrow.city/a/dubai-man-made-islands),
+[2](https://simpleflying.com/osaka-kansai-airport/)\]
 
-The resounding _thud_ of land soon came by 
-
-It was time to say
+On disembarking, the rays of the rising sun caressed our faces. Three months
+after winning the _Japan Jaane ka Mauka_, it was finally time to say
 
 ## Ohayo Nihon! (24 Sep)
 
@@ -114,15 +120,19 @@ leave out the details, because some are not safe for work.
 
 After wrapping that up, we had to get through immigration. The Japanese love
 for QR codes beats their love for Microsoft Excel, because there are QR codes 
-_everywhere_. 
+_everywhere_. There's one for getting through immigration (You can fill their 
+online form and get a QR code), theres' one on the immigration sticker they 
+put on your passport, and there's one to get through customs (Again, If you 
+filled their online form).
+
+After making it past these
 
 ### Jetlag who?
 
-We decided to head out at 7:30 PM to Shibuya.
+After a short dinner at a restaurant that was walking distance from our hotel, 
+
 
 ## 
-
-Ohayo Nihon, we landed early on 24th and after filling in the immigration forms and customs declaration, some of us actually had QR codes for this but I filled it in with pen and paper on the flight. Did you know that Japan requires you to declare if you are bringing meat or any vegetable products to Japan? Japan, this is to prevent their own produce from getting infected by foreign strains of viruses and since they don't have any immunity having that spread amongst their things. So the ones who had QR code, tried scanning the QR code, but after grabbing our luggage, which took quite a bit of time, we went through customs, Japanese customs and then we met our our coordinators. After meeting our coordinators, they handed us breakfast, which was some fruit juice and some fruit juice, a rice cake and a banana, I think. I don't remember. After that, we actually realized that all other IITs were with us as well on the flight, including the few contingents we had spied. And then we were then allocated into buses. So I think we went on bus one and bus two. Japanese buses are not very different from Indian buses. But the important thing that I sort of realized is that they asked you to wear a seat belt at all times. And the buses were sort of better. They had the climbing seats and some other cool stuff, including a child's seat in the back, which I'll get to later. But for now, I think we sat in the front. And the ride out of an airport is-- it's not the first time I'm riding out of an airport, but every time I ride out of an airport, I didn't actually place my jaw drops in awe. And I stare out and look at the scenery that goes by me. And the first thing I sort of saw was the huge roads in Japan are very well maintained. And the cars, I think the sort of driving style of the Japanese is that they'll drive really slowly and really gently, really artfully. Right? So almost as if their cars are, their cars glide to a stop. Their cars, they don't stop single landed. They don't stop and go like we do. There's immaculately in discipline, I could see a lot of runners running about because it was a Sunday. And the first, our agenda for the first day was sightseeing. So what we actually ended up doing was go to our Sakuza, the Sansoji temple, which is sort of right of passage for people visiting Tokyo. And we got to know a bit about Japanese customs. We had to wash our hands and our face with the wooden ladle. Our hands and our mouth with the wooden ladle there. and we had to, it ruins our hands in our face with the wooden ladle there. Then we went in and saw the Asakusa temple along with the shrine that was beside it. It was the Sensoji temple and the shrine that was beside it. We then went down the road to Thundergate. And there was some good luck incense there that we were, we actually went and put on our head. So apparently exam students, people in Japan, students in Japan put this on their head for good luck before exams. I hope I have some of that now because I really need it. And we had to come back by 950, so we sort of did double time to reach Thundergate. It was a nice experience, was working with that contingent down and then we came back. The next place we went was Tokyo Skytree. I think the Skytree was huge. It looks really small from far away, but getting close up, you sort of have to crane your neck all the way up to 90 degrees to even see the top. And it's not a building, it's a tie. And I've seen previous things. I've seen-- I've seen Uromast back in Rotterdam. And this was twice the height of Uromast. The Euromass highest point was the base observation deck on Skytree. And it was interesting just the lifts in Skytree actually are the fastest in Tokyo. They get you up in I think less around 50 seconds. Right? And well, we actually ran around on our own and built really the fuck.
 
 - Landing: Immigration forms and Customs Declaration, QR codes, Breakfast, realising all other IITs are with us as well
 - Ride to Asakusa; Sensoji Temple, Washing Hands and Mouth before going in, Good Luck Incense, Thunder Gate, back by 9:50

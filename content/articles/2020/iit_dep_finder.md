@@ -240,4 +240,7 @@ All of these things will be tackled one by one, but developing and setting up
 my first full stack app was a challenging experience and certainly one of the
 trickier projects I have undertaken so far.
 
-The WebApp is live at [https://apps.aniruddhadeb.com/IIT\_dep\_finder](https://apps.aniruddhadeb.com/IIT_dep_finder).
+The WebApp is ~~live at 
+[https://apps.aniruddhadeb.com/IIT\_dep\_finder](https://apps.aniruddhadeb.com/IIT_dep_finder).~~
+Not live anymore, unfortunately. Didn't make sense to keep it up year-round, now 
+that I don't have a VM
