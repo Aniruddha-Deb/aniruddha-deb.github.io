@@ -105,34 +105,103 @@ It was around 6:30 AM Japan time when we landed. Haneda is no different from
 any large airport, and the walk from the skybridge to the terminal was a long 
 and awe-filled one. 
 
-Until I got to a restroom.
-
-No, it wasn't the japanese toilet, that comes later. Japanese urinals don't have 
-dividers between them.
-
-![no dividers]()
-
-It's said that when you're a kid, peeing and pooping are funny. When you're an
-adolescent, sex jokes are funny. When you're an adult, your sense of humour
-is murdered by the seriousness of the world and is not reborn until you retire.
-Anyway, my sense of humor aged from 0 to 60 while using those urinals. I will 
-leave out the details, because some are not safe for work. 
-
-After wrapping that up, we had to get through immigration. The Japanese love
+After grabbing our bags, we had to get through immigration. The Japanese love
 for QR codes beats their love for Microsoft Excel, because there are QR codes 
 _everywhere_. There's one for getting through immigration (You can fill their 
 online form and get a QR code), theres' one on the immigration sticker they 
 put on your passport, and there's one to get through customs (Again, If you 
-filled their online form).
+filled their online form). Unfortunately, the customs one requires a digital 
+passport, and we didn't have one, so it was time to get into another queue.
 
-After making it past these
+Once we got through, people from all the invited universities started to
+trickle in. Apparently, _all_ universities had to board the flight from Delhi 
+to get to Japan, and getting to Delhi was their headache. It was fortunate then,
+that our visa was hassle-free at the embassy, and all we had to do was take a 
+cab to IGI. Delhi for the win!
+
+We got handed breakfast, and soon piled into a bus, led by our coordinator. Once 
+we were all in the bus, She introduced herself as Kumiko Aizawa, and we were to 
+call her _Kumiko-san_. That's interesting, because Rahul told me that the 
+Japanese preferred to be called by their last names. I'm sure that's true 
+though, so don't take this experience at face value.
+
+The drive out from Haneda was amazing. We got on these japanese highways, and
+the signboards were in both English and Japanese. Reminded me of _Wangan
+Midnight_. A post-hoc analysis reveals we took the Shuto Expressway into the
+city, and probably covered part of the Bayshore route. _Omoshiroi_!
+
+The first stop on our journey was Asakusa, and the Sensoji Temple. Standard 
+homecoming fare: Take the blessings of god before embarking on your journey, 
+and it shall go well. The Japanese are superstitious, but I'm some-stitious.
+Nevertheless, some of their stitions rubbed off on me. I hope the lucky incense 
+made me a bit smarter (I'll need it for PhD admissions :P)
+
+![](image)
+
+Soon after, we hopped down to Tokyo Skytree. This is the latest and tallest 
+observation deck in Tokyo, and is the tallest freestanding structure there (
+640 metres, iirc). I've been to Euromast previously, and that was hardly half 
+the height of this monstrosity. You'd sprain your neck looking up at the top.
+Fortunately you don't need to look up for a long time, as the superfast lifts 
+will take you up in less than a minute! Each lift has a theme, and we took the 
+spring one while going up and the winter one while coming down. The acceleration 
+is quite gradual, so the only indication you're moving very fast is the 
+pressure change, and you can feel your ears pop as you get higher.
+
+Once upstairs, you could see all of Tokyo. There wasn't much to see, other than 
+a metric ton of buildings. A concrete forest, laced with the occasional shining 
+stream of water.
+
+![](image)
+
+After taking a quick round, we had more time to kill, so we ran down to the 
+transparent floor area and took some pictures. We returned back to the meeting 
+point, only to be taken back to the transparent floor again :) very nice.
+
+After this was time for lunch. We went to an Indian restaurant, which almost 
+all of us had booked out (or I thought so, as I didn't see any others there).
+The vegetarians and non-vegetarians were separated, and I had _palak chicken_ 
+with Dal, Naan and Sticky Rice. While the food was decent, there's more about 
+it later.
+
+The next stop was the JST office, located at the Science Plaza. The area seemed 
+expensive: A Bentley Bentayga and Rolls Royce were casually parked around. I 
+don't think government officials are paid very much more, so the surrounding 
+neighbourhood probably became more expensive, and the building stayed where it 
+was. Once in, we were shuttled off to the basement. With thirty minutes left 
+before we started (The japanese are super-punctual), I went to the washroom.
+And there I had my first tryst with the Japanese Toilets.
+
+![](image)
+
+Japanese toilets themselves are like any other. The only difference is the
+_Washlet_, which is a smart toilet seat made by Toto. It's got umpteen bells
+and whistles, and an even larger number of buttons to ring these bells. I think
+the complexity is a bit overrated though, because I was able to use it without
+knowing how to read Japanese.
+
+After the meeting, the last stop was our hotel. We were living at the
+Metropolitan Edmont, in Iidabashi. We were allotted three a room, but with only
+one card to start out with. It was okay in a pinch, as we had to stick around
+for a week at most. Housing in Tokyo is also quite expensive, so JST probably
+had a limit on how much they could spend on housing. Which is fair. The rooms,
+however, were great. Decently large and quite inviting, with a view out
+over the highway. The Japanese equivalent of _Atithi Devo Bhava_ is
+_Omotenashi_, meaning to wholeheartedly look after guests. I think they had
+this down to a T so far.
+
+After settling in, I took a quick shower, had some green tea and chatted with 
+my roommates. We then dropped down for dinner at another Indian place close by.
+Surprisingly, the dinner was almost exactly the same: Naan, rice, dal, chicken 
+and a _Onion Bhajji_. While _Omotenashi_ is great, it dawned on us that we 
+would be eating Indian food every lunch and dinner. And I was already tired of 
+eating _Naan_.
 
 ### Jetlag who?
 
-After a short dinner at a restaurant that was walking distance from our hotel, 
-
-
-## 
+Sitting around the dinner table, we quickly hashed out a plan of visiting
+Shibuya, Jetlag be damned. We decided to convene downstairs at 7:30 PM, and 
+take the metro to Shibuya.
 
 - Landing: Immigration forms and Customs Declaration, QR codes, Breakfast, realising all other IITs are with us as well
 - Ride to Asakusa; Sensoji Temple, Washing Hands and Mouth before going in, Good Luck Incense, Thunder Gate, back by 9:50
@@ -146,7 +215,10 @@ After a short dinner at a restaurant that was walking distance from our hotel,
 - Shibuya scramble: take pics and do one loop around the crossing (running across the middle one!)
 - Head back, shower and sleep ~11:30
 
-## Imperial Palace, Keio (Mita) (25 Sep)
+## Imperial Palace, Keio University (Mita Campus) (25 Sep)
+
+After a moderately-sound sleep
+
 - Start at 8:45, late start from everyone (us included)
 - Imperial palace nearby, see statue of Shogun
 - Learn about japanese culture and emperor/empress. Doors open only twice a year, so no can do. Take pictures, walk around the outer (jogging) track, go back. Go to imperial palace gift shop, everything is overpriced! Go back to bus
@@ -180,6 +252,12 @@ Night:
 - Mahjong and Donuts
 
 ## Miraikan, Indo-Japan Career Fest (27 Sep)
+
+Halfway through the experience, I was already super-tired. Atleast the beds were
+comfo
+
+The first thing on our itinerary was Miraikan, which is a japanese science 
+museum. They had some super cool stuff, like MNIST and 
 
 - TCP packet
 - Earth, Thinking back from the future
