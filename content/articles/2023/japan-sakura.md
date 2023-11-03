@@ -84,7 +84,7 @@ immigration forms. In Japanese fashion, they're very _kawaii_ and seem like
 postcards rather than serious government documents. They're also fastidiously
 precise, with every field being in a box. 
 
-![Japanese immigration form]()
+![immigration form](/articles/2023/res/japan/immigration.png "source: [Gen Matsui](https://medium.com/@genmatsui/legibility-of-the-immigration-form-67dbd288c891)")
 
 I wonder what will happen to the Japanese Bureaucracy once _Maikurosoftu
 Exceru_ is deprecated. Maybe budding _mangakas_ would be hired to draw
@@ -153,16 +153,16 @@ spring one while going up and the winter one while coming down. The acceleration
 is quite gradual, so the only indication you're moving very fast is the 
 pressure change, and you can feel your ears pop as you get higher.
 
-![skytree 2](/articles/2023/res/japan/winter.jpg)
-![skytree 2](/articles/2023/res/japan/spring.jpg)
+![skytree 2](/articles/2023/res/japan/winter.jpg "winter")
+![skytree 2](/articles/2023/res/japan/spring.jpg "spring")
 
 Once upstairs, you could see all of Tokyo. There wasn't much to see, other than 
 a metric ton of buildings. A concrete forest, laced with the occasional shining 
 stream of water. You could make out Mt. Fuji in the distance, rising amidst 
 the fog.
 
-![view from skytree, with fuji in the distance](/articles/2023/res/japan/skytree_fuji.jpg)
-![skytree 2](/articles/2023/res/japan/skytree_2.jpg)
+![view from skytree, with fuji in the distance](/articles/2023/res/japan/skytree_fuji.jpg "If you squint, you can see Mt. Fuji!")
+![skytree 2](/articles/2023/res/japan/skytree_2.jpg "Sumida River")
 
 After taking a quick round, we had more time to kill, so we ran down to the 
 transparent floor area and took some pictures. We returned back to the meeting 
@@ -181,16 +181,7 @@ expensive: A Bentley Bentayga and Rolls Royce were casually parked around. I
 don't think government officials are paid very much more, so the surrounding 
 neighbourhood probably became more expensive, and the building stayed where it 
 was. Once in, we were shuttled off to the basement. With thirty minutes left 
-before we started (The japanese are super-punctual), I went to the washroom.
-And there I had my first tryst with the Japanese Toilets.
-
-![](image)
-
-Japanese toilets themselves are like any other. The only difference is the
-_Washlet_, which is a smart toilet seat made by Toto. It's got umpteen bells
-and whistles, and an even larger number of buttons to ring these bells. I think
-the complexity is a bit overrated though, because I was able to use it without
-knowing how to read Japanese.
+before we started (The japanese are super-punctual).
 
 After the meeting, the last stop was our hotel. We were living at the
 Metropolitan Edmont, in Iidabashi. We were allotted three a room, but with only
@@ -249,7 +240,7 @@ instead of an _Onitsuka Tiger_.
 
 What's the difference?
 
-![onitsuka shibuya parco](/articles/2023/res/japan/onitsuka.jpg)
+![onitsuka shibuya parco](/articles/2023/res/japan/onitsuka.jpg "Source: [Shibuya Parco](https://shibuya.parco.jp/shop/detail/?cd=025730)")
 
 _Onitsuka_ is apparently a more formal spinoff substore of Onitsuka Tiger, which 
 itself is a semi-formal spinoff of what is now ASICS. We had made the rookie
@@ -262,7 +253,7 @@ also just a five-minute walk, so we set off for it.
 
 On reaching, we found that the store spanned seven floors, with toys somewhere 
 on the fifth floor. Welp, atleast they had escalators. They also had cosmetics,
-which Shriya wanted to have a look at. After a totally democratic vote<cite>, 
+which Shriya wanted to have a look at. After a totally democratic vote[^1],
 we decided to scour the shop from top to bottom.
 
 On reaching the top, there was nothing of particular interest. Going one floor
@@ -290,14 +281,31 @@ those at home.
 Buying the cheaper set would have been the Smart decision. Guess which set I 
 took back.
 
-![]()
+![](/articles/2023/res/japan/amos_masters.gif "source: [alban](https://www.alban.co.jp/products/detail/681)")
 
 And so, Mission Mahjong was accomplished. The next stop was the cosmetics 
-section, but 
+section, but I'll leave the gory details out of that one. Suffice it to say, 
+it was the equivalent of \<metaphor here\>. However, we proved to be of some
+help, and found atleast a couple things. 
 
+On the way down, we bumped into the KGP group, who had stuffed their bags with 
+KitKats. 
 
-With that out of the way, the next stop was the cosmetics section.
+After checking out and taking the metro back, I hit the bed and grabbed 
+whatever little sleep I could. This was going to be a rollercoaster of a week!
 
+## Imperial Palace, Keio University (Mita Campus) (25 Sep)
+
+## Acknowledgements 
+
+Thanks to Raj, Shriya, Rajeev and Atul for a lot of the pictures. I'm probably
+the last person to pull their phone out to take a shot, and their enthusiasm 
+more than makes up for my lethargy :)
+
+[^1]: With a gender ratio of 4:1, the odds in favour of cosmetics shopping 
+      weren't exactly great.
+
+<!--
 ## Imperial Palace, Keio University (Mita Campus) (25 Sep)
 
 ## Keio (Yagami and Hiroshi), Keio (Mita) (26 Sep)
@@ -312,7 +320,6 @@ With that out of the way, the next stop was the cosmetics section.
 
 ## Appendix B: Thoughts on Higher education in Japan
 
-<!--
 - Landing: Immigration forms and Customs Declaration, QR codes, Breakfast, realising all other IITs are with us as well
 - Ride to Asakusa; Sensoji Temple, Washing Hands and Mouth before going in, Good Luck Incense, Thunder Gate, back by 9:50
 - Tokyo Skytree: Huge, looking out, pics, going to glass floor by ourselves, clicking pics, reuniting with entourage, going back down (Winter lift up,  Spring lift down)..
