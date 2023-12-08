@@ -27,7 +27,6 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
     [markup.goldmark.renderer]
       unsafe = true
 
-
 [params]
   # color style
   color = 'linen'                           # linen, wheat, gray, light
