@@ -1,8 +1,8 @@
 ---
-title: "Lost in Japan: A Travelogue"
-publishDate: '2023-10-01T10:00:00'
-categories: General
-draft: true
+title: "Lost in Japan: A Travelogue (Part 1)"
+publishDate: '2023-12-15T20:30:00+05:30'
+categories: 
+- General
 tags:
 - Travelogue
 slug: japan-sakura
@@ -14,19 +14,18 @@ slug: japan-sakura
 > Knowledge and culture exchanged<br>
 > Memories to last a lifetime
 
-_Note: This is a work in progress. Major edits pending._
-
 ## Introduction
 
-Sometime when I was interning at Optiver, an innocent-looking email dropped into 
+Sometime when I was interning in Summer, an innocent-looking email dropped into 
 my Inbox
 
 ![Japan email](/articles/2023/res/japan_email.png)
 
-It's premise was simple: _form bharo aur jeeto Japan jaane ka mauka!_ (Fill 
-this form and win a trip to Japan!)
+It's premise was comically simple, in a way that reminded me of lottery ads on 
+TV: _form bharo aur jeeto Japan jaane ka mauka!_ (Fill this form and win a trip
+to Japan!)
 
-Not thinking much, I filled it in. It took about 10 minutes to do so. IITD 
+Not thinking much, I filled it in. It took all of 10 minutes to do so. IITD 
 being IITD, I knew my chances were slim, because they would inevitably CG sort 
 the candidates and my CG was far from spectacular.
 
@@ -37,8 +36,6 @@ Life carried on as usual. Until I got a call from my dad one day when at work
 > "This lady from your university called me because she couldn't reach your 
 >  number. Can you email her your details?"<br>
 > "Oh yeah, sure. Sure thing."
-
-And just like that, I won the _Japan jaane ka mauka_ 🇯🇵
 
 ## Night flight to Japan
 
@@ -90,7 +87,7 @@ I wonder what will happen to the Japanese Bureaucracy once _Maikurosoftu
 Exceru_ is deprecated. Maybe budding _mangakas_ would be hired to draw
 pixel-perfect government forms? One can wonder...
 
-The reassuring _thud_ of land soon came by. One of Tokyo Haneda's runways is
+The reassuring thud of land soon came by. One of Tokyo Haneda's runways is
 built on land reclaimed from the sea. Unfortunately, we did not land on this
 runway. Maybe it was for the best, as things built on the ocean have a lower 
 shelf life than their inland counterparts
@@ -202,6 +199,8 @@ eating _Naan_.
 
 ![dinner](/articles/2023/res/japan/dinner.jpg)
 
+## Shibuya (24th night)
+
 Chatting around the dinner table, we quickly hashed out a plan of visiting
 Shibuya, jetlag be damned. We decided to convene downstairs at 7:30 PM, and 
 take the metro to Shibuya.
@@ -284,149 +283,288 @@ took back.
 ![](/articles/2023/res/japan/amos_masters.gif "source: [alban](https://www.alban.co.jp/products/detail/681)")
 
 And so, Mission Mahjong was accomplished. The next stop was the cosmetics 
-section, but I'll leave the gory details out of that one. Suffice it to say, 
-it was the equivalent of \<metaphor here\>. However, we proved to be of some
-help, and found atleast a couple things. 
+section, but I'll leave the gory details out of that one. It was the equivalent
+of leaving four dogs and a cat loose in a china store. However, we proved to be
+of some help, and found atleast a couple things. 
 
 On the way down, we bumped into the KGP group, who had stuffed their bags with 
-KitKats. 
+KitKats. KitKat was a bit cliche, and most of the kitkats we looked at were 
+overpriced. Our group took a lot of Pocky back instead.
 
 After checking out and taking the metro back, I hit the bed and grabbed 
 whatever little sleep I could. This was going to be a rollercoaster of a week!
 
 ## Imperial Palace, Keio University (Mita Campus) (25 Sep)
 
+We were supposed to start at 8:45 AM the next day. Breakfast was in the hotel,
+and we (or I) was still stuck following Indian Standard Time, which means 
+being 15 minutes late to every event. It didn't help that my roomies were 
+similar too. 
+
+After throwing on a shirt, jeans and my bag, I hopped down to grab breakfast.
+I had only 15 minutes left on my clock, and just threw together whatever I could 
+find, skipping the fruits/salad section entirely. There was a lot of meat on 
+the table. Being a vegetarian seems to be an Indian thing.
+
+After gobbling down breakfast, we hopped down to the meeting point just outside 
+the hotel entrance. There, Kumiko-san took our temperatures and noted them down
+on a paper. Which had a table to note every person's temperature, for 7 days. On 
+a clipboard.
+
+These people were meticulous! I love it!
+
+The same can't be said of us. Half of us were late by atleast 15-20 minutes on
+the first day. Once all members of a contingent assembled, they were asked to 
+go to the bus in which they had originally sat yesterday. We had Bus No. 2.
+
+Once in, everyone got what amounted to a mini scolding.
+
+> Japanese are very panc-tu-aru. Prease try to be on time.
+
+This would've been the best school trip, if I was still in school. Might even
+have come to Japan to do my undergraduate. Things felt cozy so far!
+
+We then got introduced to Keiko-san, who was the second guide on our bus. She 
+also sang a song, and then started teaching us about the emperor of Japan and 
+the Royal Family. Like every monarchy, even they have their problems. Their
+princess married a commoner (similar to Prince Harry) and had to give up the
+royal title. The heir to their throne is 10 years old. Also, like every other 
+monarchy, it's constitutional, so very little actual power rests in their 
+hands.
+
+We soon reached the imperial palace, and saw the statue of Kusunoki Masashige.
+
+![](/articles/2023/res/japan/kusunoki.jpg "source: [Wikipedia](https://en.wikipedia.org/wiki/Kusunoki_Masashige#/media/File:Kusunoki_Masashige.JPG)")
+
+Masashige was a samurai, remembered for his loyalty to the emperor. After this, 
+we went to the front of the imperial palace, and took contingent pictures in 
+front of the nijubashi bridge.
+
+![](/articles/2023/res/japan/nijubashi.png "Nijubashi")
+![](/articles/2023/res/japan/imperial_1.png "Imperial Palace Moat")
+![](/articles/2023/res/japan/imperial_2.png "Buildings around the palace")
+
+The doors to the palace open only twice a year, and today was not one of those 
+days. After walking around, we went to the souvenir shop, where everything was 
+super expensive. Since nobody wanted to buy anything, we went back to the bus 
+and chatted a bit. After that, everyone caught up on some sleep on the journey 
+to Keio.
+
+We stopped at another Indian restaurant close to Keio for lunch. In the spirit 
+of Omotenashi, it was all but confirmed that we would have Indian every single 
+day of the week. The Indian food in Japan is okay. The naan is a bit westernised,
+and more bread-like than naan usually is. It's also not buttered, and is a bit 
+too big (see above for the size).
+
+Anyway, with lunch done, the buses took us a short distance to Keio University's 
+Mita Campus. The campus was about as large as St. Stephens, and gave old-money 
+vibes. It had a very modern entrance, with a flight of steps to walk through to 
+enter. The campus was also quite empty! I expected a bit more bustle. This was 
+a common theme across most campuses we visited. Where are the students? Or is 
+it holiday season in late september in Japan?
+
+Once in Keio, we were shuffled into their conference room. Keio had a bottle 
+of water emblazoned with their own logo. The advantages of old money. I wonder
+what would happen if we started handing out bottles of water which said 'IIT
+Delhi' to all our visitors. Taxpayer advocates would have a field day.
+
+Soon, a lady walked up and said 'Namaste'. She then started speaking
+impeccable hindi. Which was surprising, considering she was Japanese. She then 
+introduced herself as Tomo Kawane. She had wanted to study about Gandhi, and 
+so came to India and did her masters in JNU, so she was familiar with what
+_zindabad_ and _murdabad_ meant. Kawane-san then spent a long time in India
+before coming back to Japan.
+
+Wow.
+
+Talk about making a statement. I was hooked at this point. Fortunately, the 
+other speakers were good too: We had Prof. Rajib Paul speak about the 
+India-Japan Laboratory, and some Indian and Japanese postdocs there spoke about
+their experiences. This was followed by a host of three speakers from Keio, 
+Rakuten and Yokogawa Electric.
+
+Once that was done, we dropped down to the auditorium for a group photograph.
+Walking out of Keio around sunset, the campus looked grand. Wouldn't be a bad 
+place to study. Unfortunately, the Mita campus is only for their humanities 
+students. Engineering is located on the Yagami campus, which we were to visit 
+tomorrow.
+
+After this, a nice dinner was planned for us in Ginza. The bus first took us 
+down to a toy shop (Yes, this would have been much better if I was in school).
+Dinner was on the sixth floor of the building, and we had half an hour to 
+stroll around. This is another interesting tokyo quirk: Large stores are spread 
+out vertically and not horizontally. Multiple stores occupying consecutive 
+floors of a high-rise are not uncommon here. Seems like a smart decision, 
+considering how densely built up Tokyo is.
+
+I got a compass for my sister with a retracting tip. I also saw the exact same 
+mahjong set a few floors up, retailing for 11,000 Yen. So I hadn't made a bad 
+purchase per se :) I also fancied a deck of [Hanafuda cards](https://en.wikipedia.org/wiki/Hanafuda).
+A friend had taught me to play Koikoi, and we used to play with his deck. 
+Would have walked out with a deck but they were unfortunately a bit too pricey.
+
+<!-- pics of raj/shriya with soft toys (if they consent)-->
+
+Dinner was good. Chicken biryani. A welcome change from naan. Dinner also 
+gave me a good view of the highway outside, and I could see the cars whizzing 
+by, filled with salarymen returning home from their jobs. Things were very 
+orderly here. 
+
+![Ginza](/articles/2023/res/japan/ginza.jpg)
+
+Once done, we had a few minutes to stroll through Ginza. Ginza is the upmarket 
+shopping district of Tokyo. The closest equivalent is Select CityWalk in Delhi,
+but that still feels like a tacky gimmick compared to Ginza. Watches costing 
+tens of thousands of dollars are casually placed in storefronts for people to 
+wishfully window-shop. Narrow sushi shops which are probably michelin-starred
+dot the place. If this were India, you'd probably have barred gates and
+multiple security guards in front of each store. Ginza is luxury done right, a
+phenomenon only possible in a lawful and peaceful State.
+
+Since none of us have such expensive tastes (yet!), We walked into an apple
+store across the street and took some pictures. Played around with the new
+iPhone (The power button doesn't move!). After window-shopping a bit more, time 
+was up and we hopped on the bus to take us back to the hotel. On the way back, 
+we spied the [Wako store](https://en.wikipedia.org/wiki/Wako_(retailer)) while 
+going through the famous Ginza 4-chome crossing.
+
+## Shinjuku (25th night)
+
+Daiso is a cute store where everything retails for a 100 yen[^2]. It's the
+japanese equivalent of a dollar store. After getting some snacks, we hopped into 
+the metro.
+
+Tokyo's metro is the best metro system I've travelled in, bar none. There are 
+gates everywhere, stations are huge, train cars are huge, trains are on time 
+and super frequent, it's very clean and well-maintained and there are
+signboards in English! It's also not prohibitively expensive like Amsterdam, 
+but also not as cheap as Delhi.
+
+Unfortunately, for newbie metro users, the experience can be a bit jarring.
+There are two metro operators in Tokyo: One is Tokyo Metro, which controls most 
+of the lines, and then there's Toei subway, which controls a few. **Tickets 
+bought for the Tokyo metro lines don't work on the Toei Subway lines**. Which 
+is what surprised us when we bought a ticket and it wasn't punching through.
+Not knowing these two lines are different, we went up to a official sitting 
+near the gates.
+
+> "Sir, these tickets doesn't work"<br>
+> _squints_ "Ooo, you take ticket from there" _points to right_<br>
+> "Okay. What do we do with these tickets?"<br>
+> <br>
+> _scrounges in the back_<br>
+> <br>
+> _coming back with a refund in hand_ "Give ticket"<br>
+
+Wow. That was smooth. And very helpful. After profusely thanking him, we took 
+tickets and got on the metro. Next stop: The Tokyo Metropolitan building.
+
+The Metropolitan building is basically a government office for the Tokyo 
+Metropolitan authority. In a country where people pay their taxes, the
+government has a very nice office building. So nice, in fact, that the top 
+floors double up as an observation deck! And entry is free, and they have a 
+hyperfast lift to take you up!
+
+![TMA Observation Deck view](/articles/2023/res/japan/obsdeck_1.jpg)
+![TMA Observation Deck view](/articles/2023/res/japan/obsdeck_2.jpg)
+![Merch](/articles/2023/res/japan/tma_merch.jpg "Quiz Club Merch, anyone?")
+
+After staring out of the large windows, taking umpteen pictures, and bumping 
+into other uni contingents, we eventually left because it closes by 10. A very 
+kind lady gestured us into the lift while leaving, and graciously bowed. We 
+bowed back. It was close to the end of her shift, and she must have done this 
+a million times already, yet she still did it once again. People are respectful 
+and truly dedicated to their jobs here.
+
+Once down, we decided to walk down to Shinjuku, which was about a kilometre 
+away. I had some internet, and decided to set the navigator to a place called 
+Golden Gai, because the pictures on google photos looked good. But more on
+this later.
+
+![Human tunnel](/articles/2023/res/japan/subway_shinjuku.jpg "A Human Tunnel!")
+
+Google maps is great for pedestrian navigation in Japan. So great that it led 
+us into this amazing food alley in Shinjuku
+
+![Food alley](/articles/2023/res/japan/shinjuku_gully.jpg)
+
+This place was super intsagrammable! Dense and smelling heavenly as a 
+consequence of all the barbeques around. Coming out of the alley got us into 
+Shinjuku proper 
+
+![Shinjuku](/articles/2023/res/japan/shinjuku.jpg)
+![Shinjuku](/articles/2023/res/japan/shinjuku_3.jpg)
+
+Shinjuku was just as, if not more eye-popping than Shibuya. The first thing 
+we did was drop into a [_pachinko_](https://en.wikipedia.org/wiki/Pachinko)
+parlor, because why not?
+
+![Shinjuku](/articles/2023/res/japan/shinjuku_2.jpg "Pachinko, anyone?")
+
+The parlor was surprisingly devoid of youngsters. It was mostly middle-aged 
+people watching their balls roll down the hole. Seemed both sad and amusing at 
+the same time. We were willing to play for 100-200 yen, but the minimum wager 
+was a 1000, so hard luck.
+
+And now we come to Golden Gai. It was only once I returned back to my hotel 
+that I learnt [Golden Gai](https://en.wikipedia.org/wiki/Shinjuku_Golden_Gai)
+was a prostitution hotbed till 1958, when prostitution was _criminalized_[^3].
+Golden Gai today is a dimly lit set of six lanes with a lot of bars.
+
+Since none of us drink, we took a walk up and down a couple lanes, and yeeted 
+out of there quickly. Surprisingly, _However, Golden Gai is not a cheap place
+to drink, and the clientele that it attracts are generally well off_ according
+to Wikipedia. Did I tell you photography is prohibited, and there's a fee you
+have to pay to take photos?
+
+Once we were out of Golden Gai, Raj and Rajeev wanted to go to a Casino. We 
+hopped into a lift which took us to a poker casino + bar, but buy in was 10k 
+yen and none of us were _that_ good at Poker.
+
+The next idea was to eat something. We finally dropped in to a small shop for 
+Yakitori, and trust me, you _need_ to know conversational japanese to live here 
+comfortably. After a bit of menu finger-pointing because the waiter didn't get 
+english, a southeast asian cook came out of the kitchen and took our order. The
+yakitori was good, but a bit plain for my Indian palette, and quite expensive 
+for the quantity in my opinion.
+
+The metro journey back was a long one, and I immediately crashed, because we 
+had a wake up time of 7 AM tomorrow.
+
+## Day 3,4,5,6 
+
+Stay tuned for Part 2 :)
+
 ## Acknowledgements 
 
-Thanks to Raj, Shriya, Rajeev and Atul for a lot of the pictures. I'm probably
-the last person to pull their phone out to take a shot, and their enthusiasm 
-more than makes up for my lethargy :)
+The last time I wrote a [travelogue](https://aniruddhadeb.com/articles/2023/intern-ashes/#conclusion), 
+I promised to not write another long travelogue. And I wasn't going to, until 
+Atul said he was going to write one on [his new
+blog](https://kohinoor23.github.io/), and I decided to play along.
+
+Meanwhile, I also started reading a bit about writing (William Zinsser, Strunk 
+and White), and thought I'd do this one properly. There was an interview where 
+George RR Martin asked Stephen King how he wrote so many books. King's answer 
+was very pragmatic:
+
+> I commit to six pages daily
+
+That's really hard to do! I realized this article wouldn't end when it's took
+me an hour to write the forty or so lines about the imperial palace. Writing
+well is very tricky business, and writing a travelogue in such detail is even
+more so. My free time is limited, and it doesn't make sense to use it writing 
+something neither I nor others will spend more than ten minutes on in the
+future. So part 2 is, diplomatically speaking, _indefinetly postponed_.
+
+Of course, this trip wouldn't have been possible if not for the generous 
+support of JICA, JST and the Sakura Science Club. Thank you so much for hosting
+us. Also shoutout to Raj, Shriya, Rajeev and Atul for a lot of the pictures.
+And for putting up with me on the trip :P
 
 [^1]: With a gender ratio of 4:1, the odds in favour of cosmetics shopping 
       weren't exactly great.
 
-<!--
-## Imperial Palace, Keio University (Mita Campus) (25 Sep)
+[^2]: Not 250 (daiso => dhai so => 250 in Hindi), as I initially thought.
 
-## Keio (Yagami and Hiroshi), Keio (Mita) (26 Sep)
-
-## Miraikan, Indo-Japan Career Fest (27 Sep)
-
-## Todai (28 Sep)
-
-## NIMS and closing ceremony (29 Sep)
-
-## Appendix A: Logistics
-
-## Appendix B: Thoughts on Higher education in Japan
-
-- Landing: Immigration forms and Customs Declaration, QR codes, Breakfast, realising all other IITs are with us as well
-- Ride to Asakusa; Sensoji Temple, Washing Hands and Mouth before going in, Good Luck Incense, Thunder Gate, back by 9:50
-- Tokyo Skytree: Huge, looking out, pics, going to glass floor by ourselves, clicking pics, reuniting with entourage, going back down (Winter lift up,  Spring lift down)..
-- Lunch at tiny nepalese-indian place. Non-Vegetarian (Palak Chicken), Dal, Naan (first of many). Pics.
-- JST office (science building). posh place (expensive cars around). Intro to JST and this program. meeting group 2, sharing numbers, todai report work assignment.
-- Hotel: Three a room, one key per room, got in, showered, chatted w Milan, had green tea (very bitter)
-- Walked down to dinner at another tiny place. Very delayed. Ran experiments once again, then came down at 7:30 to go to Shibuya
-- Get there by metro, first thing we see coming out of the station is shibuya crossing
-- Take pics, then walk the streets. First try going to Onitsuka Tiger (led by Rajeev). Can't find it, so backtrack and go to Don Quixote. Start on the seventh floor, and find Mahjong on the 5th floor. Cosmetics on 3rd, KitKats/Pocky/Milky on 2nd. Checkout and walk back
-- Shibuya scramble: take pics and do one loop around the crossing (running across the middle one!)
-- Head back, shower and sleep ~11:30
-
-## Imperial Palace, Keio University (Mita Campus) (25 Sep)
-
-After a moderately-sound sleep
-
-- Start at 8:45, late start from everyone (us included)
-- Imperial palace nearby, see statue of Shogun
-- Learn about japanese culture and emperor/empress. Doors open only twice a year, so no can do. Take pictures, walk around the outer (jogging) track, go back. Go to imperial palace gift shop, everything is overpriced! Go back to bus
-- Lunch underground near Keio. Decent lunch. Tired of naan at this point. Eat and go back to bus
-- Keio university, Mita campus. Very nice entrance and plaza. Walked down to one of their buildings, in the conference room above. Conference droned on and on and on. Very sleepy, but got featured in one of their posts. 
-- Conference details:
-  - India Japan Laboratory overview (Tomo Kawane-san)
-  - IJL and Keio's SFC campus (Rajib Paul)
-  - India and Japan collaboration numbers (Takahashi (Sony))
-  - Rakuten 
-  - Some engineering company
-- Toy shop - compass for munni
-- Ginza biryani + stroll
-
-Night:
-- Daiso
-- Tokyo Metropolitan Building
-- Shinjuku: Food alley, Pachinko arcade, Golden Gai, Poker casino, Yakitori finally
-- Back and sleep late
-
-## Keio (Yagami and Hiroshi), Keio (Mita) (26 Sep)
-
-- Yagami Campus: Mei and others. Speech by engineering faculty, study at keio brochure followed by guided campus tour and lab visits. 
-- Huge hill. "When you can't climb the hill, it's time to retire."
-- Back from Yagami, Lunch at the same place as yesterday. Met KGP 4y ppl
-- Keio VP speech <3
-- QnA session
-- Akihabara, bought donuts, looked around Yodabashi Akiba
-- Dinner (Veg Biryani), PhD v/s startup debate
-- 
-- Mahjong and Donuts
-
-## Miraikan, Indo-Japan Career Fest (27 Sep)
-
-Halfway through the experience, I was already super-tired. Atleast the beds were
-comfo
-
-The first thing on our itinerary was Miraikan, which is a japanese science 
-museum. They had some super cool stuff, like MNIST and 
-
-- TCP packet
-- Earth, Thinking back from the future
-- Space exhibition, clean energy. Amazing exhibits.
-- Stayed a bit overtime
-- Lunch at Mall 7th floor (Dip franchise)
-
-- Could not get immersive experience tickets, so went to Akihabara.
-- Ramen Street
-- Ginza Skip
-
-## Todai (28 Sep)
-
-- Insanely old, rich campus. 
-- Beautiful campus
-- Agricultural presentation. Very nicely explained, good labs
-- 
-- Canteen dinner, Vegetarian / Non Vegetarian
-
-- Dorayaki night sprint
-- Daiso + convenience store trip, got sweets for home
-- Paper Deadline tomorrow so stayed home and worked
-- Caught up on some sleep
-
-# NIMS and closing ceremony (29 Sep)
-
-- Super early start
-- 
-
-On the way back to the hotel from NIMS, Keiko-san taught us how to 
-
-
-> Oooo you made the crane!
-> ...
-> Oooo you helped others make the crane! 
-> You are a genius! When did you learn this..
-
-> They finally realized
-
-# There and back again (30 Sep)
-- Salmon Sushi and chicken Tempura
-- Dorayaki sprint, quick decision on taking it!
-- Came back 
-
-# Appendix A: Logistics
-
-- Applying, Visa + flights, other details
-
-# Appendix B: Thoughts on Higher education in Japan
-
-# Appendix C: On a personal note
-- GRE, TOEFL done
-- ICLR submission
-- Application focus, back to wrapping up semester
--->
+[^3]: In the interest of keeping this PG-13, prostitution falls in a bit of a 
+      grey area in Japan. Maybe google the details.
