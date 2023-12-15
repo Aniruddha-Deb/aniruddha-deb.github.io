@@ -542,10 +542,11 @@ I promised to not write another long travelogue. And I wasn't going to, until
 Atul said he was going to write one on [his new
 blog](https://kohinoor23.github.io/), and I decided to play along.
 
-Meanwhile, I also started reading a bit about writing (William Zinsser, Strunk 
-and White), and thought I'd do this one properly. There was an interview where 
-George RR Martin asked Stephen King how he wrote so many books. King's answer 
-was very pragmatic:
+Meanwhile, I also started reading a bit about writing (William Zinsser, Strunk
+and White), and thought I'd do this one properly. Unfortunately, this
+took a long time to write (I started in October) and an even longer time to
+edit and polish. There was an interview where George RR Martin asked Stephen
+King how he wrote so many books. King's answer was very pragmatic:
 
 > I commit to six pages daily
 
