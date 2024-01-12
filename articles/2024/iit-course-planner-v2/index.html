@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>LLMs for parsing unstructured data (IIT Course Planner v2!) - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
+The total pageviews is more than I expected :) It’s also no secret that I was working on a successor for the course planner for a while." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
+</script>
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="LLMs for parsing unstructured data (IIT Course Planner v2!)" itemprop="name"/>
+<meta content="Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
+The total pageviews is more than I expected :) It’s also no secret that I was working on a successor for the course planner for a while." itemprop="description"/><meta content="2024-01-12T23:00:00+05:30" itemprop="datePublished"/>
+<meta content="2024-01-12T23:00:00+05:30" itemprop="dateModified"/>
+<meta content="720" itemprop="wordCount"/>
+<meta content="Programming,Data,Frontend,LLM," itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="LLMs for parsing unstructured data (IIT Course Planner v2!)" name="twitter:title"/>
+<meta content="Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
+The total pageviews is more than I expected :) It’s also no secret that I was working on a successor for the course planner for a while." name="twitter:description"/>
+</head>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
+        twitter
+      </a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
+        github
+      </a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
+        rss
+      </a>
+</nav>
+</div>
+</header>
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
+<article>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">LLMs for parsing unstructured data (IIT Course Planner v2!)</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Jan 12, 2024</time>
+</div>
+</header>
+<section><p>Happy new year! IIT Course planner (the course dependency graphs)
+used to be (and probably still is) the only reason people used to visit my
+blog. So much that it accounts for more views than any other webpage, except
+the homepage, and outdoes my next most popular article by 2x</p>
+<p>
+<figure>
+<img alt="That&amp;rsquo;s very few hits :(" src="/articles/2024/res/iitcp_hits.png"/>
+<figcaption>The total pageviews is more than I expected :)</figcaption>
+</figure>
+</p>
+<p>It’s also no secret that I was working on a successor for the course planner
+for a while. The previous article had stowed the graphs right at the end, as
+an appendix of sorts, and people had to scroll down all the time. So I’ll make
+that easier this time.</p>
+<p><strong>TL;DR:</strong> If you’re here for the successor, go <a href="https://aniruddhadeb.com/IIT_course_planner">here</a>.
+<strong>It’s still a work in progress.</strong></p>
+<h2 id="contributors">Contributors?</h2>
+<p>There were 6 open things I wanted people to work on when it came to the initial
+release, which can be seen on the
+<a href="https://github.com/Aniruddha-Deb/IIT_course_planner/commit/eeb29e4bfd30c79ccb9cac11f35558d95cc59ad2">README</a>.
+This was committed on Mar 2, 2022 and it has been almost two years since then.</p>
+<p>In two years, I’ve got no contributors for these issues.</p>
+<p>This is not a typo. I don’t know if I should be flattered, because I did it so
+nicely in the first go or if I should be disappointed because everyone except
+ES1 has access to these, and AM1/MS1 have pretty terrible diagrams because
+their courses were newly introduced. I did get one text from one interested
+person to add the ES1 dependencies, but that never materialized into anything.</p>
+<p>Not having enough motivation to get the wheels rolling on v2, I tugged at my
+ex-roommate<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" role="doc-noteref">1</a></sup> (who is now the overall coordinator of
+<a href="https://devclub.in/#/">DevClub</a>), and asked him if he could get some
+interested contributors.</p>
+<h2 id="teamwork">Teamwork</h2>
+<p>My seventh semester was hectic, to say the least. I was trying to push a
+publication out while simultaneously applying to grad school, doing courses and
+TAing a course (also why I didn’t blog much). While I do think I got a good
+team, I barely got any time to scope out the project, do the scaffolding and
+add boilerplate code so most of them could take the project forward. I think
+only one guy came forward, forked my old repo and repurposed the <a href="https://aniruddhadeb.com/articles/2022/iit-course-planner-1/">pipeline</a> to
+work on the 2023-24 courses of study. I didn’t pay much heed to this until my
+semester was over, when I realized I should probably have a look. Cloning and
+playing with the extraction code gave me some clean results. The recommmended
+course extraction was not great, but I hacked something together in a few that
+seemed to work. Unfortunately, this person was busy with a wedding and then
+with other things, so Sisyphus was now carrying this rock alone up the hill.</p>
+<p>Sisyphus, though, wanted to drop the rock and let it roll down the hill while
+he enjoyed his last few months of being an undergraduate. Aditya didn’t like
+that.</p>
+<blockquote>
+<p>“Kuch toh results dikha de”
+“Yaar I can give it 20 hours. I think kuch toh nikal jayega but not promising anything”</p>
+</blockquote>
+<h2 id="data-pipeline">Data pipeline</h2>
+<p>I had learnt a lot from last time, and that can roughly be summed up in 3 lines:</p>
+<ol>
+<li>No Jupyter Notebooks</li>
+<li>No XML, use JSON</li>
+<li>Manual labour where neccessary, LLMs where impossible</li>
+</ol>
+<p>So the first task was porting the pipeline from Jupyter to bash, and exporting
+the details to JSON files. I drew up a small schema and got the data saved for
+both courses and programmes to their respective JSON files.</p>
+<p>The next step was extracting the recommended courses. I semi-automated this.
+Table recognition has advanced a bit more since the last time I wrote the
+script, and since our table had lines, <a href="https://betterprogramming.pub/extracting-tables-from-images-in-python-made-easy-ier-3be959555f6f">img2table</a>
+made it easy. It wasn’t perfect, though. The results still had to be manually
+verified. In hindsight, GPT-4V or LLaVa would be a good model to automate this
+process. But that’s too much ML too early in the game, without good reason.</p>
+<p>I had the course database and program data cleaned up in 5 hours, and the rest
+to kill on building the UI. While I am a better frontend engineer now than I
+was <a href="https://aniruddhadeb.com/articles/2022/rise-of-codefluencer/">last year</a>,
+I didn’t want to do frontend yet.</p>
+<p>Which finally brings us to the title :)</p>
+<h2 id="llms-as-parsers-for-unstructured-data">LLMs as parsers for unstructured data</h2>
+<p>TODO</p>
+<h2 id="frontend">Frontend</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Final year, single rooms. Although his room is still next to mine ^_^ <a class="footnote-backref" href="#fnref:1" role="doc-backlink">↩︎</a></p>
+</li>
+</ol>
+</div>
+</section>
+<footer class="mt-12 flex flex-wrap">
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/programming">Programming</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/data">Data</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/frontend">Frontend</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/llm">LLM</a>
+</footer>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2023/japan-sakura/"><span>Lost in Japan: A Travelogue (Part 1)</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+</article>
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2024
+    <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
+</footer>
+</body>
+</html>

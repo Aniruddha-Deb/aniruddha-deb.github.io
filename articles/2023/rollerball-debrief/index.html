@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="not-ready lg:text-base" lang="en-us" style="--bg: #faf8f1">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<title>Rollerball Debrief - Aniruddha Deb</title>
+<meta name="theme-color"/>
+<meta content="Since the semester is finally over, I think this is a good time to discuss my primary programming project over the last semester. This is unique enough to merit it’s own blog post: It’s something that impacted a lot of people at scale, and also something I believe is novel and required a metric ton of effort from my end to make a reality.
+This is Rollerball, the COL333 competitive assignment for this semester." name="description"/>
+<meta content="Aniruddha Deb" name="author"/>
+<link as="style" href="https://aniruddhadeb.com/main.min.css" rel="preload stylesheet"/>
+<link as="image" href="https://aniruddhadeb.com/theme.svg" rel="preload"/>
+<link as="image" href="/pic.png" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/twitter.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/github.svg" rel="preload"/>
+<link as="image" href="https://aniruddhadeb.com/rss.svg" rel="preload"/>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" type="text/javascript">
+</script>
+<link href="https://aniruddhadeb.com/favicon/favicon.ico" rel="icon"/>
+<link href="https://aniruddhadeb.com/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://aniruddhadeb.com/favicon/site.webmanifest" rel="manifest"/>
+<meta content="Hugo 0.115.1" name="generator"/>
+<meta content="Rollerball Debrief" itemprop="name"/>
+<meta content="Since the semester is finally over, I think this is a good time to discuss my primary programming project over the last semester. This is unique enough to merit it’s own blog post: It’s something that impacted a lot of people at scale, and also something I believe is novel and required a metric ton of effort from my end to make a reality.
+This is Rollerball, the COL333 competitive assignment for this semester." itemprop="description"/><meta content="2023-12-08T17:00:00+05:30" itemprop="datePublished"/>
+<meta content="2023-12-08T17:00:00+05:30" itemprop="dateModified"/>
+<meta content="3365" itemprop="wordCount"/>
+<meta content="Programming," itemprop="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Rollerball Debrief" name="twitter:title"/>
+<meta content="Since the semester is finally over, I think this is a good time to discuss my primary programming project over the last semester. This is unique enough to merit it’s own blog post: It’s something that impacted a lot of people at scale, and also something I believe is novel and required a metric ton of effort from my end to make a reality.
+This is Rollerball, the COL333 competitive assignment for this semester." name="twitter:description"/>
+</head>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-4xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+<div aria-label="Dark" class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role="button"></div>
+</div>
+<div aria-label="Menu" class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role="button"></div>
+<script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/articles/">Blog</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/publications/">Publications</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href="/files/cv.pdf">CV</a>
+</nav>
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://twitter.com/hairband_dude" rel="me" style="--url: url(./twitter.svg)" target="_blank">
+        twitter
+      </a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://github.com/Aniruddha-Deb" rel="me" style="--url: url(./github.svg)" target="_blank">
+        github
+      </a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" href="https://aniruddhadeb.com/index.xml" rel="alternate" style="--url: url(./rss.svg)" target="_blank">
+        rss
+      </a>
+</nav>
+</div>
+</header>
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-4xl px-8 pb-16 pt-12 dark:prose-invert">
+<article>
+<header class="mb-16">
+<h1 class="!my-0 pb-2.5">Rollerball Debrief</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Dec 8, 2023</time>
+</div>
+</header>
+<section><p>Since the semester is finally over, I think this is a good time to discuss my
+primary programming project over the last semester. This is unique enough to
+merit it’s own blog post: It’s something that impacted a lot of people at
+scale, and also something I believe is novel and required a metric ton of
+effort from my end to make a reality.</p>
+<p>This is Rollerball, the COL333 competitive assignment for this semester.</p>
+<h2 id="context">Context</h2>
+<p>COL333 is a junior undergraduate/graduate bridge course in Artificial
+Intelligence, and one of the most valuable/fun courses undergrads do in their
+time. Multiple reasons why, primarily how <em>cool</em> the field is right now, the
+competitive assignments, and the joy of seeing algorithms you create do tasks
+better than you could.</p>
+<p>As TAs, we had to make two quizzes, work on one assignment and help grade the
+midterm and endterm. Seems simple enough. However, this time I wanted to
+do something special. The competitive assignment for every COL333 course is
+very exciting for students. In my opinion, the last offering’s assignment was
+too simple, and basically ripped off an existing assignment with minor
+modifications and presented it to students.</p>
+<p>I wanted to do something different. Something groundbreaking. Something that
+highlighted how IITD is on par with top universities when it comes to teaching,
+and how we are capable of rolling out our own assignments from scratch.</p>
+<p>Enter Rollerball. An obscure chess variant I dug up during the free time at
+my internship, Rollerball seemed like the perfect fit. No bots or strategy
+guides existed for it. The only working implementation existed in <a href="https://mi-g.github.io/jocly/examples/browser/control.html?game=rollerball-chess">Jocly</a>,
+which used a generalized MCTS written in JS, so it was also near impossible to
+ape. It was venturing into the unknown, and exactly the kind of assignment
+bright minds would need to stay occupied. I quickly hacked up a working
+implementation in under a couple of weeks, and presented it the first time we
+had a TA meet.</p>
+<p>There were supposed to be 5 assignments, and the second and fifth ones were
+competitive ones. The second assignment was a 4-mark warmup, while the
+last would be a 12-mark tournament. With the timeline set and consensus on what
+we should work on, I set out to wrap up the initial starter code.</p>
+<h2 id="rollerball-v1">Rollerball v1</h2>
+<p>The amount of engineering that went into developing this probably places it in
+my top 3 projects of all time. And I’ve done a lot of projects. Rollerball
+shaped up to be one of those assignments where the student code is smaller
+than the TA code, and for good reason.</p>
+<p>To keep things modular, I started out by separating the engine and the UI,
+since we don’t need the UI while evaluating. The UI was then written in
+JavaScript and Vue, because <a href="https://chessboardjs.com/">chessboard.js</a> is a very nice javascript
+chessboard library. This would then communicate with the client engine via
+WebSockets. I cooked up a small protocol based on <a href="https://www.chessprogramming.org/UCI">UCI</a>, and things were
+good to go. We had made the entire car, but we didn’t have an engine.</p>
+<p>Deciding which language to code the engine in was tricky. Python was my first
+pick, because of how simple it is. WebSockets would also be well supported.
+However, the last offering’s assignment was in Python, and instead of
+developing a good algorithm, I went into optimization hell trying to create a
+bitboard for Connect 4. Python is a terrible language for programming a fast
+tree-search algorithm, and I didn’t want students to even consider that path.</p>
+<p>Which meant the engine was going to be written in C++.</p>
+<p>The first task was finding and creating a WebSocket library to communicate with
+the frontend. I settled on using websocketpp, which in turn used asio. These
+libraries were include-only, which meant students would be able to use a simple
+Makefile and wouldn’t have to get their hands dirty with CMake or other build
+systems. I had a small C++ client up and running, which communicated with the
+frontend.</p>
+<p>The next step was to create the move generation and validation algorithms. This
+was the core of the engine. My personal requirements were speed and robustness.
+If you’ve done any chess programming, the standard board representation is
+via Bitboards, and the fastest way to generate moves is using Magic Bitboards
+and sliding piece attacks.</p>
+<p>There was just one gripe: This was <em>rollerball</em>, not chess. Chess doesn’t have
+a gaping hole in the middle of the board. Chess doesn’t have pieces bouncing off
+the corners. Chess doesn’t have pieces whose direction of movement changes
+depending on their location. These issues threw any and all chess-specific
+programming out the window, and I was back to square one on deciding how to
+generate moves.</p>
+<p>The first thing to notice was the four-fold symmetry. I mapped the squares on
+the board to integers, and created rotation maps: maps that would take one
+square to another when the board was rotated by 90 degrees. All I had to do now
+was generate moves for one quadrant, which was 10 squares. For a piece that
+didn’t lie in these ten squares, I’d apply the transformation on the board
+to get that piece into these ten squares, generate the moves in this transformed
+coordinate space, and then map the squares back using the inverse transform.</p>
+<p>
+<img alt="move generation" src="/articles/2023/res/movegen.png"/>
+</p>
+<p>Note that there were 12 pieces, and 6 of them (the black ones) would seldom
+be in the first 10 squares. Rotation was also an expensive operation. Instead
+of rotating, the faster technique was to maintain four boards, each of which
+would contain a particular rotation (0, 90, 180, 270). Also maintain four area
+maps, which would map squares to which segment of the board they lay in, and
+which board should be used to generate their moves.</p>
+<p>Now that move generation was a bit simplified, it was time to think of move
+representation. Skylake has 64 kB L1 cache per core, which is a lot. Ideally,
+the entire board should fit in a fraction of that space. Since this board was
+7x7, I represented each coordinate with 3 bits. A position then took 8 bits,
+and a move took 16. The board would then contain piece positions (12 bytes),
+and four boards (for preventing range errors, I let the boards be 8x8 for now).
+The boards took 4x64 = 256 bytes each. This was encapsulated in a <code>BoardData</code>
+struct rather than the base <code>Board</code> struct. The <code>BoardData</code> struct now looked
+something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BoardData</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    U8 w_rook_ws <span style="color:#f92672">=</span> pos(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    U8 w_rook_bs <span style="color:#f92672">=</span> pos(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    U8 b_pawn_ws <span style="color:#f92672">=</span> pos(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>    U8 b_pawn_bs <span style="color:#f92672">=</span> pos(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    U8 board_0[<span style="color:#ae81ff">64</span>], board_90[<span style="color:#ae81ff">64</span>], board_180[<span style="color:#ae81ff">64</span>], board_270[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The board squares also had a representation of their own: two bits were reserved
+for color (white|black), and six bits for piece type. The piece type and color
+were one-hot encoded, so that you could use bitmasks to get and modify the type
+and color quickly.</p>
+<p>We now had a very small board, and a way to generate moves. The actual move
+generation logic that I initially wrote was super messy. For the bishop, it
+was an if-else over the ten squares, and I manually pushed moves onto a stack
+depending on the case (This raised problems later). Checking for collisions
+for sliding pieces was also done manually, the brute-force way. Checking for
+reflections was also done via conditions.</p>
+<p>The next step was move validation. This involved checking if the king was in
+check, and if it was, restricting the set of possible moves. The initial
+version bruteforced this: it would basically evaluate the tree upto one move
+(2 ply), checking each of the possible moves, and seeing if the king was under
+threat as a result of any of them. If it was, it would simply discard the
+original move that put it under check.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> Board<span style="color:#f92672">::</span>under_threat(U8 piece_pos) <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> pseudolegal_moves <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>get_pseudolegal_moves_for_side(
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>data.player_to_play <span style="color:#f92672">^</span> (WHITE <span style="color:#f92672">|</span> BLACK)
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> move : pseudolegal_moves) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (getp1(move) <span style="color:#f92672">==</span> piece_pos) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>All this to get a simple assignment out the door. And we weren’t done yet. The
+guidelines mentioned that people would be able to submit their assignments in
+C++, Python or Java. After dropping Java submissions because it was impossible
+to port the code to Java, we started working on a set of Python bindings.
+<code>pybind3</code> was our tool of choice, and the bindings it generated were quite
+usable. We also issued an advisory that students submitting in python may face
+issues because python is inherently slower, so they are strongly advised to
+code in c++.</p>
+<p>Finally, the small things remained. Note that there was no move validation or
+arbitration on the frontend, so how would the engine know that there was a
+checkmate? This was done via move validation before sending the move to the
+engine. Since the engine could not mutate the board passed to it, we would take
+the gold board and check if the move the engine returned was in the set of
+valid moves here. This was baked into the client. Another issue was timing:
+We had decided on giving a fixed 2 seconds per move, and there was ambiguity
+regarding what action to take if a user didn’t return a move in the fixed
+duration, or if the user didn’t return a valid move. These were fixed by
+consensus.</p>
+<p>After this, I started working on the document. ChatGPT is great at TikZ, and
+after some prompting attempts, I had a cool-looking rollerball board in pure
+LaTeX (which is what was used to generate the diagram above :))</p>
+<h3 id="other-requests">Other requests</h3>
+<p>There was a decision between having a fixed time limit per move, or giving each
+engine a time budget (as is done in chess). Previous iterations of the course
+had done the latter, while we believed doing and implementing the former was
+easier, as students would crib about their clock going out of sync with the
+clock on the arbiter. We would need to modify the protocol to sync the arbiter
+clock with the student clock at each move, and that would take time, which we
+didn’t have.</p>
+<p>Other issues centered around keeping the board size flexible, as was done in
+all of the previous iterations of the prof’s course. I felt like this was more
+of a non-issue, as the final assignment would be competitive and centered
+around Deep Learning. Wishful thinking would inevitably come and bite me in the
+ass later.</p>
+<h3 id="a-barrage-of-issues">A barrage of issues</h3>
+<p>Testing is a thing. There is a reason Facebook spends millions to maintain a
+farm of mobile phones to test their apps on, and there is a reason why software
+quality assurance is a job in and of itself. If 200 students play the game even
+ten times, they’ve just played it 2000 times in total. The probability of a bug
+popping up in those 2000 attempts is much more than it popping up in the less
+than hundred or so times I ran the game. The best I could do is urge my co-TAs
+to play around and stress test it (Which I don’t think anyone did).</p>
+<p>And soon, the bugs started popping up one by one. My piazza started buzzing off
+the hook with bug reports, for things such as ‘Sir, my program isn’t compiling’
+to ‘Sir, the bishop is moving weirdly’. Most annoying were the followup
+comments on bugs which I had fixed already, and just updating the code would
+have helped. I think we also made a mistake with distribution: The starter code
+was distributed via a zip on the course webpage, which linked to google drive.
+To push an update, I had to package the code and upload it to google drive.
+Another one of the many things I hoped to fix next time.</p>
+<h2 id="rollerball-v2">Rollerball v2</h2>
+<p>For version 2, we initially planned on making it deep-learning based. We’d
+provide PyTorch bindings. All these hopes were dashed when we walked into the
+Professor’s office to discuss the assignment.</p>
+<blockquote>
+<p>Deep Learning is taught to them only for a week, and they simply won’t know
+how to use it practically. You should have said this before.<br/>
+<br/>
+We’ll do what we did previously: Make 3 different boards, and run 3 different
+tournaments. I hope that’s not too much work, considering your code would be
+modular as we had discussed this possibility before.</p>
+</blockquote>
+<p>I now had to refactor and include three boards, along with a UI for them. There
+goes my weekend!</p>
+<h3 id="the-big-refactor">The big refactor</h3>
+<p>There was a huge checklist of things to get done. Some of these were hard
+requirements, and some were things that would be nice to have. In no particular
+order, here was the list of things I got done:</p>
+<ul>
+<li>
+<p><strong>Three Boards:</strong> There would be a 8x4 board (8x8 with a 4x4 hole in the
+middle), and a 8x2 board in addition to the 7x3 board we already had.
+Each board would have a different tournament, and the final scores would be
+summed across all three tournaments.</p>
+</li>
+<li>
+<p><strong>Fixing the clock:</strong> We’d move to giving each user a time budget, and syncing
+the clocks at each move. This would require adding a time field in the protocol,
+and maintaining a clock in the engine.</p>
+</li>
+<li>
+<p><strong>Move validation on the Arbiter:</strong> Since we would extend the A2 arbiter for
+move validation and since it was written in C++, we could plug in the same
+board library. Validating the moves on the client side was no longer a
+requirement.</p>
+</li>
+<li>
+<p><strong>Knight moves:</strong> We planned on introducing a Knight to the 8x2 board. The
+knight would move in the same manner as a chess knight, and would be able
+to jump and ignore directions. We would need to create a new piece type,
+allocate a new bit to it and create a new method to generate moves for it.</p>
+</li>
+<li>
+<p><strong>Better UI:</strong> The UI was hacky. It didn’t maintain state properly, and had
+to be reloaded and reconnected to bots every time a new game was to be
+started. I wanted to create state machines for the connection and game in the
+UI so that we could connect/disconnect and start games on demand.</p>
+</li>
+<li>
+<p><strong>More robust move generation:</strong> Since board layouts were going to be
+generalized, we could no longer do a hacky if-else over the squares to
+generate moves. Cleaning up that code would also remove any hidden bugs in the
+move generation</p>
+</li>
+<li>
+<p><strong>Tournament Rules:</strong> Deciding on seeding, tournament allocations, group
+stage matchups etc. Points scoring. This was less of code and more of decision
+making.</p>
+</li>
+<li>
+<p><strong>Generalized Pawn Promotion:</strong> Each board would have it’s own squares for
+pawn promotion, and we would need to generate moves keeping that in mind.</p>
+</li>
+<li>
+<p><strong>Distribution:</strong> We’d distribute the source code over Git this time. It’s
+easier to push updates.</p>
+</li>
+</ul>
+<p>What followed were five days of pure coding. In a feat reminiscent to the
+<a href="https://aniruddhadeb.com/articles/2022/seven-days-of-creation/">Seven days of creation</a>, I spent two days doing a variable-sized board the
+right way, by creating board maps and rotation matrices for 8x8 boards.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> U8 board_8_2[<span style="color:#ae81ff">64</span>] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> U8 cw_90_8x8[<span style="color:#ae81ff">64</span>] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">56</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">8</span>,  <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">49</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">9</span>,  <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">26</span>, <span style="color:#ae81ff">18</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">59</span>, <span style="color:#ae81ff">51</span>, <span style="color:#ae81ff">43</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">27</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">52</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">61</span>, <span style="color:#ae81ff">53</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">62</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">46</span>, <span style="color:#ae81ff">38</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">63</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">39</span>, <span style="color:#ae81ff">31</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
+</span></span></span></code></pre></div><p>our <code>BoardData</code> struct would now have pointers to the rotation matrices, and the
+board map and board type.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" tabindex="0"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BoardData</span> {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Variables that record the game status and configuration.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    BoardType board_type <span style="color:#f92672">=</span> SEVEN_THREE;
+</span></span><span style="display:flex;"><span>    U8 <span style="color:#f92672">*</span>board_mask;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Transformation arrays for 90, 180, and 270 degree rotations of the matrix.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    U8 <span style="color:#f92672">*</span>transform_array[<span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>    U8 <span style="color:#f92672">*</span>inverse_transform_array[<span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>BoardData</code> also had a lot of new pieces and pawns, so we used the suffixes
+<code>_1</code>, <code>_2</code> … instead of <code>_ws</code>, <code>_bs</code> (white square / black square). We also
+had to change the <code>DEAD</code> constant from <code>pos(7,7)</code> to <code>0xff</code> because the (7,7)
+square would now be in use.</p>
+<p>The next step was cleaning up the move generation. The king move generation was
+okay, using a loop around the king with a range/piece check. I copied this over
+for the knight. Rook and bishop move generation had to be rewritten almost
+from scratch, taking me a couple hours to implement and debug.</p>
+<p>Pawn promotion was a bit trickier. I created an array to store the squares
+where pawns can be promoted, and did an inclusion check to see if the final
+position is in these two/three squares, and if the square is opposite the color.</p>
+<p>It was mostly smooth sailing after this point. Once I was confident the moves
+were okay, I started testing other boards. Ironing out the kinks across boards
+took a day, mostly due to some annoying small things. We had to leave out
+promotions to knight in the larger board because only two bits were reserved
+for promotions in moves. I then added the time, redid the engine so that it
+inherited from the <code>AbstractEngine</code> class, and people could now modify the header
+file (something they raised on Piazza previously). Two-sided timing was also
+implemented.</p>
+<p>Once the board was done, I moved on to redoing the UI. This took one and a half
+days, mostly because my Vue was very rusty. First course of action was to
+formalize the state, and then write the functions that would modify state.
+Once I made sure this was robust (with some logging to console), I laid out the
+UI and started tying the UI components to the code. Once the UI was done, it
+was time to integration test: I spun up two bots, and tried to disconnect and
+connect.</p>
+<p>As usual, nothing worked the first time. Stopping the game merely stopped the
+timer, but the bots kept playing with each other. I had around a day left,
+and needed to wrap this up pronto. Cue another day of frustratedly debugging
+JS, and I was finally done. I still think the UI came out very neat, supporting
+switching between three boards, a timer, and multiplayer connections across
+different machines. Most importantly, I had made this nearly from scratch, and
+I never considered myself much of a frontend designer. Being a full stack
+engineer is it’s own reward :)</p>
+<h3 id="fewer-bugs">Fewer bugs</h3>
+<p>This time, the release was not as turbulent. There were way fewer bugs, and most
+bugs were a consequence of student code.</p>
+<p>Unfortunately, impressions stick. I got the feeling that students perceived
+that if a bug popped up, it was there in the TA code instead of in their code,
+as there were quite a few bugs in the first iteration. Other than logistic
+doubts, there were very few updates pushed this time, and I’m happy the code
+stood up.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This was not all that went into creating Rollerball: We had to develop TA bots,
+an arbiter, an evaluation framework and finally seed and run the tournaments.
+This was a team effort after all, and these things wouldn’t have been possible
+without the other TAs on this assignment.</p>
+<p>I’m quite pleased with how this turned out. Was it hectic? Sure. Was there
+a better way to spend my time? Yes. I had to give up quite a bit of my life to
+make this happen. Would I do it again? Probably not. Doing it once is enough
+pain.</p>
+<p>Every cloud has a silver lining, though. In terms of pushing my engineering
+skills, very little comes close to creating, deploying and managing an
+assignment like this, and I’m happy I got the chance to do so.</p>
+<p>If you want to try your hand at this, the starter code is <a href="https://github.com/Aniruddha-Deb/rollerball-v2">here</a>, and the
+assignment guidelines for <a href="https://www.cse.iitd.ac.in/~mausam/courses/col333/autumn2023/A2/A2.pdf">A2</a> and <a href="https://www.cse.iitd.ac.in/~mausam/courses/col333/autumn2023/A5/A5.pdf">A5</a> are public. Happy Hacking!</p>
+</section>
+<footer class="mt-12 flex flex-wrap">
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href="https://aniruddhadeb.com/tags/programming">Programming</a>
+</footer>
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+<a class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2023/japan-sakura/"><span class="mr-1.5">←</span><span>Lost in Japan: A Travelogue (Part 1)</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href="https://aniruddhadeb.com/articles/2023/luck-skill-both/"><span>Luck, Skill or Both: Department Change at IITs</span><span class="ml-1.5">→</span></a>
+</nav>
+<div class="mt-24" id="disqus_thread"></div>
+<script>
+    const disqusShortname = 'aniruddha-deb';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+</article>
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+<div class="mr-auto">
+    © 2024
+    <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
+</div>
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
+  <a class="link" href="https://github.com/Aniruddha-Deb/hugo-paper" rel="noopener" target="_blank">✎ Paper</a>
+</footer>
+</body>
+</html>

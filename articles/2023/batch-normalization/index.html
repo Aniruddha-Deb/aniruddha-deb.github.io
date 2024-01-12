@@ -157,7 +157,9 @@ taking any information away (the model is still free to learn whatever mean
 and variance it chooses to learn by updating $\gamma$ and $\beta$.)</p>
 <h3 id="backprop">Backprop</h3>
 <p>Before manually doing the backprop, a computation graph really helps here.</p>
-<p><img alt="comp_graph" src="/articles/2023/res/batch_norm_graph.jpg"/></p>
+<p>
+<img alt="comp_graph" src="/articles/2023/res/batch_norm_graph.jpg"/>
+</p>
 <p>This is a small computation graph that uses just three examples, but it’s
 sufficient to show which variables are dependent on each other, and how. This
 allows us to go ahead and obtain all the partial derivatives via chain rule:</p>
@@ -208,13 +210,17 @@ show that Internal Covariate Shift is not as detrimental to learning as thought
 of, by synthetically injecting noise <em>after</em> BatchNorm layers. The result was
 that the network doesn’t do as poorly as expected, but it still outperforms
 the standard network.</p>
-<p><img alt="batch norm graphs" src="/articles/2023/res/batch_norm_noisy_graphs.png"/></p>
+<p>
+<img alt="batch norm graphs" src="/articles/2023/res/batch_norm_noisy_graphs.png"/>
+</p>
 <p>The explanation that they gave was that Batch norm assists the optimizer by
 making the loss landscape smoother. Formally, the magnitude of the gradient of
 the loss $||\grad_{y_j}\mathcal{L}||$ captures the smoothness of the loss.
 Batch norm reduces the bound on the gradient relative to an un-batch normed
 network significantly.</p>
-<p><img alt="batch norm inequality" src="/articles/2023/res/batch_norm_ineq.png"/></p>
+<p>
+<img alt="batch norm inequality" src="/articles/2023/res/batch_norm_ineq.png"/>
+</p>
 <p>Batch norm also imposes some second-order constraints on the hessian, which can
 intuitively be summarized as saying that the step we take in the direction
 of the gradient is more likely to lead us to a minima for a batch-normalized
@@ -245,7 +251,7 @@ time permits.</p>
 </main>
 <footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
 <div class="mr-auto">
-    © 2023
+    © 2024
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
 </div>
 <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️

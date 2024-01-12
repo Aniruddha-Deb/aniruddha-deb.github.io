@@ -3,13 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://aniruddhadeb.com/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/articles/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/categories/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/data/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/frontend/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/llm/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/articles/2024/iit-course-planner-v2/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/programming/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/categories/programming/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/</loc>
+    <lastmod>2024-01-12T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/categories/general/</loc>
+    <lastmod>2023-12-15T20:30:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/articles/2023/japan-sakura/</loc>
+    <lastmod>2023-12-15T20:30:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/tags/travelogue/</loc>
+    <lastmod>2023-12-15T20:30:00+05:30</lastmod>
+  </url><url>
+    <loc>https://aniruddhadeb.com/articles/2023/rollerball-debrief/</loc>
+    <lastmod>2023-12-08T17:00:00+05:30</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/tags/general/</loc>
     <lastmod>2023-09-01T17:00:00+00:00</lastmod>
@@ -20,25 +53,10 @@
     <loc>https://aniruddhadeb.com/tags/mathematics/</loc>
     <lastmod>2023-09-01T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aniruddhadeb.com/tags/programming/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aniruddhadeb.com/categories/programming/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aniruddhadeb.com/tags/</loc>
-    <lastmod>2023-09-01T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aniruddhadeb.com/categories/general/</loc>
-    <lastmod>2023-07-29T19:50:00+00:00</lastmod>
-  </url><url>
     <loc>https://aniruddhadeb.com/tags/intern/</loc>
     <lastmod>2023-07-29T19:50:00+00:00</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/articles/2023/intern-ashes/</loc>
-    <lastmod>2023-07-29T19:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aniruddhadeb.com/tags/travelogue/</loc>
     <lastmod>2023-07-29T19:50:00+00:00</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/tags/deep-learning/</loc>
@@ -121,9 +139,6 @@
   </url><url>
     <loc>https://aniruddhadeb.com/articles/2022/arch-linux-1/</loc>
     <lastmod>2022-08-07T15:30:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aniruddhadeb.com/tags/data/</loc>
-    <lastmod>2022-03-02T01:36:00+00:00</lastmod>
   </url><url>
     <loc>https://aniruddhadeb.com/articles/2022/iit-course-planner-1/</loc>
     <lastmod>2022-03-02T01:36:00+00:00</lastmod>

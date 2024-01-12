@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LLM on Aniruddha Deb</title>
+    <link>https://aniruddhadeb.com/tags/llm/</link>
+    <description>Recent content in LLM on Aniruddha Deb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jan 2024 23:00:00 +0530</lastBuildDate><atom:link href="https://aniruddhadeb.com/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLMs for parsing unstructured data (IIT Course Planner v2!)</title>
+      <link>https://aniruddhadeb.com/articles/2024/iit-course-planner-v2/</link>
+      <pubDate>Fri, 12 Jan 2024 23:00:00 +0530</pubDate>
+      
+      <guid>https://aniruddhadeb.com/articles/2024/iit-course-planner-v2/</guid>
+      <description>Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
+The total pageviews is more than I expected :) It&amp;rsquo;s also no secret that I was working on a successor for the course planner for a while.</description>
+    </item>
+    
+  </channel>
+</rss>

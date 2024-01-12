@@ -136,6 +136,8 @@ This question looks really tricky." name="twitter:description"/>
 <section><blockquote>
 <p>Consider the icosahedral resistance network shown in the following figure. Each edge is made of a rod of resistance $r$. Select the option(s) that is(are) correct:<br/>
 <img alt="icosahedron" src="/articles/2020/res/icosa_res_net/icosa_1.png"/>
+
+
 A) The resistance between points A and B is $\frac{r}{2}$<br/>
 B) The resistance between points A and B is $\frac{r}{3}$<br/>
 C) The resistance between any two adjacent vertices is $\frac{11r}{30}$<br/>
@@ -143,20 +145,32 @@ D) The resistance between any two adjacent vertices is $\frac{11r}{20}$<br/></p>
 </blockquote>
 <p>This question looks really tricky. This is a variation of the problem of finding the resistance of a wire cube. This can be solved in a similar way, using symmetry and equipotential reduction.</p>
 <p>Let’s start off by finding the resistance between A and B, since this is easier than finding the resistance between adjacent vertices. On connecting a battery, the points marked in the same colour will be at the same potential.</p>
-<p><img alt="battery" src="/articles/2020/res/icosa_res_net/icosa_2.png"/></p>
+<p>
+<img alt="battery" src="/articles/2020/res/icosa_res_net/icosa_2.png"/>
+</p>
 <p>You can clearly see the symmetry now. If we connect all the points with the same potential, we end up with the following resistor network (each resistance is $r$).</p>
-<p><img alt="res net" src="/articles/2020/res/icosa_res_net/res_net.png"/></p>
+<p>
+<img alt="res net" src="/articles/2020/res/icosa_res_net/res_net.png"/>
+</p>
 <p>This is simple to solve. It’s resistance is
 $$R_{AB} = \frac r5 + \frac r{10} + \frac r5 = \boxed{\frac r2}$$
 which corresponds to option (A).</p>
 <p>Solving the network between adjacent vertices is a lot trickier. The first trick is to pick a pair of vertices from which symmetry is easily identifiable. If I connect my battery as shown in the following figure, it is easy to identify which points are equipotential and how the currents are flowing.</p>
-<p><img alt="currents" src="/articles/2020/res/icosa_res_net/icosa_3.png"/></p>
+<p>
+<img alt="currents" src="/articles/2020/res/icosa_res_net/icosa_3.png"/>
+</p>
 <p>The dotted line shows the plane of symmetry of this icosahedron perpendicular to $CD$ whereas the blue dots show equipotential nodes. We can see that no current flows through $R_{AJ}$ and $R_{EB}$ since the ends are at the same potential. Also, at all equipotential points, no mixing of currents occurs. This means that $I_{AC} = I_{AD}$ and $I_{CE} = I_{ED}$, along with a few others. Performing some modifications on this circuit in line with the above observations reduces the complexity quite drastically as shown below:</p>
-<p><img alt="simple" src="/articles/2020/res/icosa_res_net/icosa_4.png"/></p>
+<p>
+<img alt="simple" src="/articles/2020/res/icosa_res_net/icosa_4.png"/>
+</p>
 <p>Simplifying these resistors, we obtain a cubical network with a resistor across two opposite face diagonals</p>
-<p><img alt="cube" src="/articles/2020/res/icosa_res_net/icosa_5.png"/></p>
+<p>
+<img alt="cube" src="/articles/2020/res/icosa_res_net/icosa_5.png"/>
+</p>
 <p>It is easy to see that $V_F = V_L$ and $V_G = V_K$. Connecting these two points and getting rid of the resistances $R_{GK}$ and $R_{LF}$, we get the following resistor network:</p>
-<p><img alt="simplest" src="/articles/2020/res/icosa_res_net/icosa_6.png"/></p>
+<p>
+<img alt="simplest" src="/articles/2020/res/icosa_res_net/icosa_6.png"/>
+</p>
 <p>It is now simple to calculate the resistance across CD by using the formulae for resistors in parallel and series.</p>
 <p>$$\begin{gather}
 \frac 1 {R_{FG}} = \frac 2 r + \frac 2 {3r} \\
@@ -187,7 +201,7 @@ R_{FG} = \frac{3r}{8} \\
 </main>
 <footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
 <div class="mr-auto">
-    © 2023
+    © 2024
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
 </div>
 <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️

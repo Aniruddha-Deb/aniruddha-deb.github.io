@@ -263,7 +263,9 @@ else
     ...
 endif
 </code></pre><p>The final source design looked like this (leaving out other non-relevant items)</p>
-<p><img alt="protocol" src="/articles/2022/res/protocol.svg"/></p>
+<p>
+<img alt="protocol" src="/articles/2022/res/protocol.svg"/>
+</p>
 <h2 id="day-five">Day Five</h2>
 <blockquote>
 <p>And God said, <strong>“Let this bounty be available to the users of Linux as well”</strong>, and it was so. God did not have a working Linux machine, so he created a QEMU VM to run Manjaro and to compile the code, and when he was done, he saw that it was good.</p>
@@ -271,7 +273,9 @@ endif
 <p>The Linux machine I’d gotten from home had a broken keyboard, and my Raspberry Pi was not connecting to the cellular network (apparently my cellphone provider switched from an ipv4 to an ipv6 network, so arp-scan and everything was a mess; I couldn’t locate my pi’s IP, and an iPhone being an iPhone, doesn’t let you see the IP of the devices connected to it’s WiFi hotspot.)</p>
 <p>After messing around with an ethernet cable, a friend’s laptop and computer-to-computer WiFi connections, I decided to leave the option of connecting to another machine, and instead run a VM on my machine. I already had QEMU installed, but had never figured out how to use it. The next day, I downloaded an Ubuntu 20.04 server image from online, only to find out that <a href="https://stackoverflow.com/questions/29137679/login-credentials-of-ubuntu-cloud-server-image">it doesn’t have a default password</a>, and an ISO containing login credentials had to be booted with the image to allow you to login, <em>and that too only via SSH</em>.</p>
 <p>Noped out of that pretty quick. I then downloaded a Manjaro<sup><a href="#footnote-3">3</a></sup> image, and installed and ran that painlessly.</p>
-<p><img alt="qemu" src="/articles/2022/res/qemu_vm_2.png"/></p>
+<p>
+<img alt="qemu" src="/articles/2022/res/qemu_vm_2.png"/>
+</p>
 <p>QEMU is a charm: it barely uses any CPU while idling, and boots lightning fast. Forwarding an SSH port to it is also very easy. Will probably play around with more exotic machines on qemu, but that’s for another post :)</p>
 <p>With access to a linux machine, there were two choices:</p>
 <ol>
@@ -294,7 +298,9 @@ endif
 <p>This (and benchmarking) were boring but rewarding. For starters, a few changes had to be made in the protocol to make it a bit more reliable, and then some bookkeeping code had to be written for clients so that they could save their packet request round trip times to files, and also be called independently and run on separate threads. Once that was done, I created a client manager that took care of spawning a bunch of clients and making requests to the server</p>
 <p>The load benchmarks were great, for small files. For large files, I was transferring around 50kb/sec to 50 clients each, on my machine. Note that if you simulate a large number of clients, your server CPU allocation will be disproportionate to the number of clients: for a 100 clients, my server was using only 3-4% of the processor, while the clients were using ~90%. Something to keep an eye out for. Or just use a more powerful machine with more cores while simulating.</p>
 <p>Here are some numbers. For context, A2_small_file.txt is a 100kB text file.</p>
-<p><img alt="times" src="/articles/2022/res/time_clients.svg"/></p>
+<p>
+<img alt="times" src="/articles/2022/res/time_clients.svg"/>
+</p>
 <h2 id="day-seven">Day Seven</h2>
 <blockquote>
 <p>Thus, the clients and server were completed in all their vast array, so on the seventh day, God rested from all his work. Then God <strike>Blessed the seventh day and made it holy</strike> <em>Cursed himself for having spent so much time on one assignment, when there were four more to do, and minors would begin in a week</em></p>
@@ -326,7 +332,7 @@ endif
 </main>
 <footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
 <div class="mr-auto">
-    © 2023
+    © 2024
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
 </div>
 <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️

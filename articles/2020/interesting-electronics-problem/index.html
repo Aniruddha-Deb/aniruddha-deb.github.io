@@ -122,13 +122,21 @@ This looks like a simple wheatstone bridge problem, but note that the top right 
 </div>
 </header>
 <section><p>An interesting electronics problem I encountered recently was this: Find the resistance between points A and B in the following resistor network</p>
-<p><img alt="resistor network" src="/articles/2020/res/iep_1.png"/></p>
+<p>
+<img alt="resistor network" src="/articles/2020/res/iep_1.png"/>
+</p>
 <p>This looks like a simple wheatstone bridge problem, but note that the top right and bottom left resistances are R and not r. To solve this problem, we’ll use the concept of symmetry and a few tricks. Let’s start by connecting a battery to the circuit and labeling the currents and loops</p>
-<p><img alt="tweaked resistor network" src="/articles/2020/res/iep_2.png"/></p>
+<p>
+<img alt="tweaked resistor network" src="/articles/2020/res/iep_2.png"/>
+</p>
 <p>We notice that there is no mixing of currents in node B. This allows us to disconnect the node and separate it into two components, both of which are relatively easy to solve.</p>
-<p><img alt="currents" src="/articles/2020/res/iep_3.png"/></p>
+<p>
+<img alt="currents" src="/articles/2020/res/iep_3.png"/>
+</p>
 <p>The net resistance is now $$\frac 1 {R_{n}} = \frac 1r + \frac 1 {R_p} \tag{1}$$, where \( R_p \) is the resistance of the disconnected network. This resistance can be easily found by using KVL and KCL after connecting a battery to the network.</p>
-<p><img alt="loops" src="/articles/2020/res/iep_4.png"/></p>
+<p>
+<img alt="loops" src="/articles/2020/res/iep_4.png"/>
+</p>
 <p>Solving the loops gives us the equations</p>
 <p>$$\begin{align} &amp; V = Ri_3 + ri_1 \tag{2} \\ &amp; 2ri_1 - ri_3 = Ri_3 \tag{3} \end{align}$$</p>
 <p>Solving these gives us $$V = \frac{3Rr + r^2}{R+r}i_1$$</p>
@@ -155,7 +163,7 @@ This looks like a simple wheatstone bridge problem, but note that the top right 
 </main>
 <footer class="opaco mx-auto flex h-[4.5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
 <div class="mr-auto">
-    © 2023
+    © 2024
     <a class="link" href="https://aniruddhadeb.com">Aniruddha Deb</a>
 </div>
 <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Built with Hugo️️</a>️
