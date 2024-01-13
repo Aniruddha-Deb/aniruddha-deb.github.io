@@ -64,7 +64,7 @@ Sisyphus, though, wanted to drop the rock and let it roll down the hill while
 he enjoyed his last few months of being an undergraduate. Aditya didn't like 
 that. 
 
-> "Kuch toh results dikha de"
+> "Kuch toh results dikha de"<br>
 > "Yaar I can give it 20 hours. I think kuch toh nikal jayega but not promising anything"
 
 ## Data pipeline
@@ -95,8 +95,154 @@ Which finally brings us to the title :)
 
 ## LLMs as parsers for unstructured data
 
-TODO
+To motivate the problem, consider a data extraction task. Suppose we need to 
+go from a table to a JSON:
+
+```
+                                                  "recommended": [
+                                                    [
+ +------+--------+--------+--------+--------+         "COL100",
+ | Sem1 | COL100 | ELL101 | PYL101 | MTL100 |         "ELL101",
+ +------+--------+--------+--------+--------+         "PYL101",
+ | Sem2 | APL100 | CML101 | MCP100 | MTL101 |         "MTL100"
+ +------+--------+--------+--------+--------+  ->   ],
+ | Sem3 | COL202 | COL215 | COL106 | MTL106 |       [
+ +------+--------+--------+--------+--------+         "APL100",
+ | Sem4 | COL216 | COL226 | COP290 | ELL205 |         ...
+ +------+--------+--------+--------+--------+       ],
+                                                    ...
+                                                  ]
+```
+
+Because the input and output structure are well-defined, it's easy to write a 
+program that traverses the table row by row and accumulates the courses. However,
+if the input structure is not well-defined, or is mostly in natural language, 
+the task becomes a bit more interesting. Consider extracting course prerequisite 
+relations from text.
+
+```
+CLL251, MCL242, ESL760 -> [CLL251 && MCL242 && ESL760]
+AML701/AML734/CEL719/MEL733 -> [AML701 || AML734 || CEL719 || MEL733]
+```
+
+If every course relation was defined so cleanly, this would also be a structured 
+data extraction problem. The issue is that in the wild, prerequisites look 
+something like this 
+
+```
+APL104 or equivalent, APL106 or equivalent
+Basic Mathematics (Class 10 level)
+APL104/APL105/APL108 EC 50
+TXL111/TXL221 for uG students
+ELL101 and ELL202 and (ELL211 or ELL231)
+To be declared by Instructor
+```
+
+If you had a lot of people, you'd harvest these manually. If you had a small 
+team of developers, you'd accumulate a bunch of heuristics and rules to parse.
+Since I'm a single developer, using an LLM and calling it a day seems best 
+
+### Prior work 
+
+Surprisingly, I couldn't find many papers which propose this task. This is 
+probably an Information Extraction task, with a specific schema. Generalizing 
+IE from task-specific models such as tagging/semantic parsing/relation extraction
+to models capable of handling generalized schemas seems to be a task called 
+Universal Information Extraction [[1](https://arxiv.org/pdf/2312.17617.pdf)], 
+and there are some techniques for this [[2](https://arxiv.org/pdf/2304.08085.pdf)].
+
+In my opinion, this is a good research direction. Semi-automated, or fully 
+automated extraction of data from unstructured sets, with:
+
+1. Either a focus on **varying schemas**, where the ability of models are not 
+   their accuracy on the task, but how accurately they are capable of adapting 
+   and generalizing to new schemas and structures, or
+2. A focus on **LLMs generating the best schemas for the data on their own**.
+
+Considering the advances with LLMs, and considering how much unstructured data 
+there is, this is somewhat similar to LLMs cleaning up data to train themselves,
+but in a more general context.
+
+But enough playing Paul Graham. Let's build something!
+
+### Not your Weights, Not your Brain
+
+I initially tried using the perplexity API, but they kept declining my card. 
+I then spent an hour and a half setting up Mistral-7B on my MBP. This is a good 
+time to shout out to [MLX](https://github.com/ml-explore/mlx), which is fast 
+becoming the de-facto framework for ML on Apple Silicon. Just like everything 
+Apple does: Metal instead of better OpenGL/Vulkan, Swift/Objective-C instead of 
+C++, and MLX instead of PyTorch. Atleast MLX shipped with some very nice 
+[examples](https://github.com/ml-explore/mlx-examples/), which basically tell 
+you how to quantize and run your mistral quickly on Mac. This was easy to set 
+up, and fine-grained control over the prompt allowed me to cache the in-context
+examples beforehand, making inference fairly quick.
+
+If you don't have an apple silicon or NVIDIA GPU for inference, I later signed 
+up for Together's API, which also gives you $25 in free credits! That's a good 
+alternative.
+
+With a model set up, we can now move to the prompt and task itself
+
+### Parsing at last
+
+This was fairly simple if you know a bit of prompt engineering. You don't even 
+need to take care of the Mistral Instruction tokens (`[INST]` and `[/INST]`),
+as I got better results without them. For completeness, here was the prompt:
+
+```
+You need to parse a set of course prerequisites into logical expressions which can be parsed by a machine. The input format is in plaintext, and the output is a boolean expression within square brackets. If there is any confusion, choose the most unambiguous combination. Ignore "Or Equivalent", "Undergraduate" or any other qualifiers. ONLY include alphanumeric course codes, or EC values. EXACTLY FOLLOW THE FORMAT.
+
+Prerequisites: APL104/APL105/APL108 EC50
+Parsed: [(APL104 || APL105 || APL108) && EC50]
+
+Prerequisites: APL106 or equivalent, APL321
+Parsed: [APL106 && APL321]
+
+Prerequisites: BBL131, BBL331 or Masters’ degree in
+Parsed: [BBL131 && BBL331]
+
+Prerequisites: CVL242 or Concurrent with CVL242
+Parsed: [CVL242 || CVL242c]
+
+Prerequisites: CVL281 and CVL282
+Parsed: [CVL281 && CVL282]
+
+Prerequisites: CVL282 or EC 75
+Parsed: [CVL282 || EC75]
+
+Prerequisites: To be declared by Instructor
+Parsed: []
+
+Prerequisites: CLL222, CLL352
+Parsed: [CLL252 && CLL352]
+
+Prerequisites: M.Tech: Nil; B.Tech: Instructor's permission
+Parsed: []
+
+Prerequisites: MCL140, APL106 or APL105, ESL200, ESL262,
+Parsed: [MCL140 && (APL106 || APL105) && ESL200 && ESL262]
+
+Prerequisites: (example here)
+Parsed:
+```
+
+Note the extra concurrent example. Only the Civil Engineering department has 
+this. Picking the examples required me to skim over the dataset and look for 
+abnormalities. We don't really care about similarity between the in-context 
+and parsed examples, as we're not doing an eval here.
+
+This gave quite decent results, and took a bit under 1.5 hours to run on my 
+machine for >5000 courses. With this done, the boring part was left.
 
 ## Frontend
+
+Kick starting any project with ChatGPT is a godsend, and should become standard
+practice at this point. The first version just loaded the JSON courses and 
+displayed them on a table.
+
+![]()
+
+The next version was a bit better.
 
 [^1]: Final year, single rooms. Although his room is still next to mine ^_^
