@@ -38,7 +38,7 @@ MathJax = {
 <meta content="Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
 The total pageviews is more than I expected :) It’s also no secret that I was working on a successor for the course planner for a while." itemprop="description"/><meta content="2024-01-12T23:00:00+05:30" itemprop="datePublished"/>
 <meta content="2024-01-12T23:00:00+05:30" itemprop="dateModified"/>
-<meta content="720" itemprop="wordCount"/>
+<meta content="1629" itemprop="wordCount"/>
 <meta content="Programming,Data,Frontend,LLM," itemprop="keywords"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="LLMs for parsing unstructured data (IIT Course Planner v2!)" name="twitter:title"/>
@@ -169,7 +169,7 @@ with other things, so Sisyphus was now carrying this rock alone up the hill.</p>
 he enjoyed his last few months of being an undergraduate. Aditya didn’t like
 that.</p>
 <blockquote>
-<p>“Kuch toh results dikha de”
+<p>“Kuch toh results dikha de”<br/>
 “Yaar I can give it 20 hours. I think kuch toh nikal jayega but not promising anything”</p>
 </blockquote>
 <h2 id="data-pipeline">Data pipeline</h2>
@@ -194,8 +194,126 @@ was <a href="https://aniruddhadeb.com/articles/2022/rise-of-codefluencer/">last 
 I didn’t want to do frontend yet.</p>
 <p>Which finally brings us to the title :)</p>
 <h2 id="llms-as-parsers-for-unstructured-data">LLMs as parsers for unstructured data</h2>
-<p>TODO</p>
+<p>To motivate the problem, consider a data extraction task. Suppose we need to
+go from a table to a JSON:</p>
+<pre tabindex="0"><code>                                                  "recommended": [
+                                                    [
+ +------+--------+--------+--------+--------+         "COL100",
+ | Sem1 | COL100 | ELL101 | PYL101 | MTL100 |         "ELL101",
+ +------+--------+--------+--------+--------+         "PYL101",
+ | Sem2 | APL100 | CML101 | MCP100 | MTL101 |         "MTL100"
+ +------+--------+--------+--------+--------+  -&gt;   ],
+ | Sem3 | COL202 | COL215 | COL106 | MTL106 |       [
+ +------+--------+--------+--------+--------+         "APL100",
+ | Sem4 | COL216 | COL226 | COP290 | ELL205 |         ...
+ +------+--------+--------+--------+--------+       ],
+                                                    ...
+                                                  ]
+</code></pre><p>Because the input and output structure are well-defined, it’s easy to write a
+program that traverses the table row by row and accumulates the courses. However,
+if the input structure is not well-defined, or is mostly in natural language,
+the task becomes a bit more interesting. Consider extracting course prerequisite
+relations from text.</p>
+<pre tabindex="0"><code>CLL251, MCL242, ESL760 -&gt; [CLL251 &amp;&amp; MCL242 &amp;&amp; ESL760]
+AML701/AML734/CEL719/MEL733 -&gt; [AML701 || AML734 || CEL719 || MEL733]
+</code></pre><p>If every course relation was defined so cleanly, this would also be a structured
+data extraction problem. The issue is that in the wild, prerequisites look
+something like this</p>
+<pre tabindex="0"><code>APL104 or equivalent, APL106 or equivalent
+Basic Mathematics (Class 10 level)
+APL104/APL105/APL108 EC 50
+TXL111/TXL221 for uG students
+ELL101 and ELL202 and (ELL211 or ELL231)
+To be declared by Instructor
+</code></pre><p>If you had a lot of people, you’d harvest these manually. If you had a small
+team of developers, you’d accumulate a bunch of heuristics and rules to parse.
+Since I’m a single developer, using an LLM and calling it a day seems best</p>
+<h3 id="prior-work">Prior work</h3>
+<p>Surprisingly, I couldn’t find many papers which propose this task. This is
+probably an Information Extraction task, with a specific schema. Generalizing
+IE from task-specific models such as tagging/semantic parsing/relation extraction
+to models capable of handling generalized schemas seems to be a task called
+Universal Information Extraction [<a href="https://arxiv.org/pdf/2312.17617.pdf">1</a>],
+and there are some techniques for this [<a href="https://arxiv.org/pdf/2304.08085.pdf">2</a>].</p>
+<p>In my opinion, this is a good research direction. Semi-automated, or fully
+automated extraction of data from unstructured sets, with:</p>
+<ol>
+<li>Either a focus on <strong>varying schemas</strong>, where the ability of models are not
+their accuracy on the task, but how accurately they are capable of adapting
+and generalizing to new schemas and structures, or</li>
+<li>A focus on <strong>LLMs generating the best schemas for the data on their own</strong>.</li>
+</ol>
+<p>Considering the advances with LLMs, and considering how much unstructured data
+there is, this is somewhat similar to LLMs cleaning up data to train themselves,
+but in a more general context.</p>
+<p>But enough playing Paul Graham. Let’s build something!</p>
+<h3 id="not-your-weights-not-your-brain">Not your Weights, Not your Brain</h3>
+<p>I initially tried using the perplexity API, but they kept declining my card.
+I then spent an hour and a half setting up Mistral-7B on my MBP. This is a good
+time to shout out to <a href="https://github.com/ml-explore/mlx">MLX</a>, which is fast
+becoming the de-facto framework for ML on Apple Silicon. Just like everything
+Apple does: Metal instead of better OpenGL/Vulkan, Swift/Objective-C instead of
+C++, and MLX instead of PyTorch. Atleast MLX shipped with some very nice
+<a href="https://github.com/ml-explore/mlx-examples/">examples</a>, which basically tell
+you how to quantize and run your mistral quickly on Mac. This was easy to set
+up, and fine-grained control over the prompt allowed me to cache the in-context
+examples beforehand, making inference fairly quick.</p>
+<p>If you don’t have an apple silicon or NVIDIA GPU for inference, I later signed
+up for Together’s API, which also gives you $25 in free credits! That’s a good
+alternative.</p>
+<p>With a model set up, we can now move to the prompt and task itself</p>
+<h3 id="parsing-at-last">Parsing at last</h3>
+<p>This was fairly simple if you know a bit of prompt engineering. You don’t even
+need to take care of the Mistral Instruction tokens (<code>[INST]</code> and <code>[/INST]</code>),
+as I got better results without them. For completeness, here was the prompt:</p>
+<pre tabindex="0"><code>You need to parse a set of course prerequisites into logical expressions which can be parsed by a machine. The input format is in plaintext, and the output is a boolean expression within square brackets. If there is any confusion, choose the most unambiguous combination. Ignore "Or Equivalent", "Undergraduate" or any other qualifiers. ONLY include alphanumeric course codes, or EC values. EXACTLY FOLLOW THE FORMAT.
+
+Prerequisites: APL104/APL105/APL108 EC50
+Parsed: [(APL104 || APL105 || APL108) &amp;&amp; EC50]
+
+Prerequisites: APL106 or equivalent, APL321
+Parsed: [APL106 &amp;&amp; APL321]
+
+Prerequisites: BBL131, BBL331 or Masters’ degree in
+Parsed: [BBL131 &amp;&amp; BBL331]
+
+Prerequisites: CVL242 or Concurrent with CVL242
+Parsed: [CVL242 || CVL242c]
+
+Prerequisites: CVL281 and CVL282
+Parsed: [CVL281 &amp;&amp; CVL282]
+
+Prerequisites: CVL282 or EC 75
+Parsed: [CVL282 || EC75]
+
+Prerequisites: To be declared by Instructor
+Parsed: []
+
+Prerequisites: CLL222, CLL352
+Parsed: [CLL252 &amp;&amp; CLL352]
+
+Prerequisites: M.Tech: Nil; B.Tech: Instructor's permission
+Parsed: []
+
+Prerequisites: MCL140, APL106 or APL105, ESL200, ESL262,
+Parsed: [MCL140 &amp;&amp; (APL106 || APL105) &amp;&amp; ESL200 &amp;&amp; ESL262]
+
+Prerequisites: (example here)
+Parsed:
+</code></pre><p>Note the extra concurrent example. Only the Civil Engineering department has
+this. Picking the examples required me to skim over the dataset and look for
+abnormalities. We don’t really care about similarity between the in-context
+and parsed examples, as we’re not doing an eval here.</p>
+<p>This gave quite decent results, and took a bit under 1.5 hours to run on my
+machine for &gt;5000 courses. With this done, the boring part was left.</p>
 <h2 id="frontend">Frontend</h2>
+<p>Kick starting any project with ChatGPT is a godsend, and should become standard
+practice at this point. The first version just loaded the JSON courses and
+displayed them on a table.</p>
+<p>
+<img alt="" src=""/>
+</p>
+<p>The next version was a bit better.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr/>
 <ol>
