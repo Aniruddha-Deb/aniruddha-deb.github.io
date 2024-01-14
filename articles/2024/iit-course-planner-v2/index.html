@@ -38,7 +38,7 @@ MathJax = {
 <meta content="Happy new year! IIT Course planner (the course dependency graphs) used to be (and probably still is) the only reason people used to visit my blog. So much that it accounts for more views than any other webpage, except the homepage, and outdoes my next most popular article by 2x
 The total pageviews is more than I expected :) It’s also no secret that I was working on a successor for the course planner for a while." itemprop="description"/><meta content="2024-01-12T23:00:00+05:30" itemprop="datePublished"/>
 <meta content="2024-01-12T23:00:00+05:30" itemprop="dateModified"/>
-<meta content="1629" itemprop="wordCount"/>
+<meta content="1909" itemprop="wordCount"/>
 <meta content="Programming,Data,Frontend,LLM," itemprop="keywords"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="LLMs for parsing unstructured data (IIT Course Planner v2!)" name="twitter:title"/>
@@ -311,9 +311,59 @@ machine for &gt;5000 courses. With this done, the boring part was left.</p>
 practice at this point. The first version just loaded the JSON courses and
 displayed them on a table.</p>
 <p>
-<img alt="" src=""/>
+<img alt="v2.1" src="/articles/2024/res/iitcp_v2.1.png"/>
 </p>
-<p>The next version was a bit better.</p>
+<p>After a few improvements: adding <a href="https://bevacqua.github.io/dragula/">Dragula</a>
+for dragging/dropping courses and
+<a href="https://github.com/tarkant/svg-dom-arrows">svg-dom-arrows</a> for drawing
+dependency arrows, the plans looked a bit better.</p>
+<p>
+<img alt="v2.2" src="/articles/2024/res/iitcp_v2.2.png"/>
+</p>
+<p>The theme is too dark, according to a friend, and there is too much darkness
+in the degree (a bit too realistic according to him)</p>
+<h2 id="what-next">What next?</h2>
+<p>Using <code>jison</code>, I also hacked up a small parser for parsing the course
+dependency language</p>
+<pre tabindex="0"><code>%{
+
+function And(a, b) {
+    this.left = a;
+    this.right = b;
+}
+
+function Or(a, b) {
+    this.left = a;
+    this.right = b;
+}
+
+%}
+
+%left AND OR
+%start deps
+
+%%
+deps: START expr END {return $2;}
+    ;
+
+expr: expr AND expr {$$ = new And($1, $3);}
+    | expr OR expr {$$ = new Or($1, $3);}
+    | LBRACKET expr RBRACKET {$$ = $2;}
+    | TERM {$$ = yytext;}
+    | /* epsilon */
+    ;
+</code></pre><p>While the arrows as of now don’t use the OR dependencies in any way, this is
+something that would be fixed soon (maybe using different groups of colors for
+different conditions?). I’ll also need to allow checking off courses, saving
+and loading course plans, and adding available courses to your DE/OC/HUL slots.
+Further extensions would leverage slotting data. That data, while private, is
+much easier to parse and shouldn’t be too difficult to integrate.</p>
+<p>However, there’s a course review due either next year or the year after that,
+and I’ve heard on the grapevine that there would be some major changes. In
+light of this, I don’t even know how useful this would be in the long term.</p>
+<p>This was a fun project to hack around with, and while I’ll try to keep giving
+it some slices of my time whenever I get some, only time would tell how useful
+this is.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr/>
 <ol>
