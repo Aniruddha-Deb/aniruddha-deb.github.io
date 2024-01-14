@@ -241,8 +241,66 @@ Kick starting any project with ChatGPT is a godsend, and should become standard
 practice at this point. The first version just loaded the JSON courses and 
 displayed them on a table.
 
-![]()
+![v2.1](/articles/2024/res/iitcp_v2.1.png)
 
-The next version was a bit better.
+After a few improvements: adding [Dragula](https://bevacqua.github.io/dragula/)
+for dragging/dropping courses and
+[svg-dom-arrows](https://github.com/tarkant/svg-dom-arrows) for drawing
+dependency arrows, the plans looked a bit better.
+
+![v2.2](/articles/2024/res/iitcp_v2.2.png)
+
+The theme is too dark, according to a friend, and there is too much darkness 
+in the degree (a bit too realistic according to him)
+
+## What next?
+
+Using `jison`, I also hacked up a small parser for parsing the course 
+dependency language
+
+```
+%{
+
+function And(a, b) {
+    this.left = a;
+    this.right = b;
+}
+
+function Or(a, b) {
+    this.left = a;
+    this.right = b;
+}
+
+%}
+
+%left AND OR
+%start deps
+
+%%
+deps: START expr END {return $2;}
+    ;
+
+expr: expr AND expr {$$ = new And($1, $3);}
+    | expr OR expr {$$ = new Or($1, $3);}
+    | LBRACKET expr RBRACKET {$$ = $2;}
+    | TERM {$$ = yytext;}
+    | /* epsilon */
+    ;
+```
+
+While the arrows as of now don't use the OR dependencies in any way, this is 
+something that would be fixed soon (maybe using different groups of colors for 
+different conditions?). I'll also need to allow checking off courses, saving 
+and loading course plans, and adding available courses to your DE/OC/HUL slots.
+Further extensions would leverage slotting data. That data, while private, is 
+much easier to parse and shouldn't be too difficult to integrate.
+
+However, there's a course review due either next year or the year after that, 
+and I've heard on the grapevine that there would be some major changes. In 
+light of this, I don't even know how useful this would be in the long term.
+
+This was a fun project to hack around with, and while I'll try to keep giving 
+it some slices of my time whenever I get some, only time would tell how useful
+this is.
 
 [^1]: Final year, single rooms. Although his room is still next to mine ^_^
