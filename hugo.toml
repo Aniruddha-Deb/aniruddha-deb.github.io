@@ -17,10 +17,6 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   name = "Publications"
   url = "/publications/"
   weight = 2
-[[menu.main]]
-  name = "CV"
-  url = "/files/cv.pdf"
-  weight = 3
 
 [markup]
   [markup.goldmark]
