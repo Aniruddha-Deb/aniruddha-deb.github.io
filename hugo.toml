@@ -40,7 +40,7 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   rss = true                                # show rss icon
 
   # home page profile
-  avatar = '/pic.png'                 # gravatar email or image url
+  avatar = '/pic_anime.png'                 # gravatar email or image url
   name = 'Aniruddha Deb'
   bio = "Free Your Mind"
 

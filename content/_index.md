@@ -1,3 +1,8 @@
+I like to build stuff.
+
+Currently a CS undergrad at IIT Delhi. Previously at Optiver.
+
+<!--
 I try to improve the reasoning and multilingual capabilities of LLMs at IIT
 Delhi, with Prof. [Parag Singla](https://www.cse.iitd.ac.in/~parags/) and Prof. 
 [Mausam](https://www.cse.iitd.ac.in/~mausam). In the past, I've done some
@@ -129,3 +134,4 @@ For other useful IITD Websites, check out [Aditya Singh's Webpage](https://as160
 MTL106 Tutorial Solutions by Rishabh [here](https://fricai.github.io/mtl106/tutorial-solutions.pdf)
 
 A few talks I've given: [Department Change at IIT Delhi](https://docs.google.com/presentation/d/1-rP4ywexFtNwoUgRlthBNI2sa9NAWtWpvz_9uhUDPCI/), [Exploring Career paths at IIT Delhi](https://docs.google.com/presentation/d/1VbXfUnTcWNXigDUFCTqn3829kfIELY3xnaCQbINOeF4/), [Intro to Quant Finance](https://drive.google.com/file/d/1YvKM1ka1iktR0DxHXXzZ23IacFJ7gV5h/view?usp=drive_link), [T distributions](https://github.com/Aniruddha-Deb/back_to_normal), [Cellular Automata](https://github.com/Aniruddha-Deb/automata-talk)
+-->

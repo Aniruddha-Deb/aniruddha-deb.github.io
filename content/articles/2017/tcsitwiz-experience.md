@@ -26,8 +26,6 @@ Watch the 2017 national finals ~~[here](https://www.youtube.com/watch?v=3VsvX1At
 
 **EDIT Late Oct 2023**: The URL www.tcsitwiz.com is broken, and the YouTube video has become private. 
 
-{{< tweet 1718285712192319810 >}}
-
 ~~Best of luck for next year's quiz!~~ I'd wish you luck, but the quiz is online 
 now so anything goes :')
 
