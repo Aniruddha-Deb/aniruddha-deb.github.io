@@ -8,6 +8,12 @@ tags:
 slug: end-credits
 ---
 
+An update on the research situation is due for a long time. What follows is a 
+condensation of my experiences over the past year, leading up to the end of my 
+degree.
+
+## The Seventh Semester
+
 I tried to live my seventh semester like a typical grad student. Two very light
 courses, Two projects heading towards publication, one course to TA and
 managing my applications on the side (TOEFL/GRE/essays etc). This constitutes
@@ -41,8 +47,8 @@ during my intern was busy meeting one, and all of them still did normal hours,
 plus an hour at most. Once the deadline was met, everyone celebrated with a
 beer on Friday evening.
 
-> "But you can't become a professor if you don't do a PhD, and one of your late-
-> life goals was becoming a professor!"
+> "But you can't become a professor if you don't do a PhD, and one of your late-life 
+> goals was becoming a professor!"
 
 If you haven't already read [Rollerball debrief][2], now is a good time to do 
 so. TL;DR, creating something original takes a lot of effort and engineering 
@@ -52,19 +58,31 @@ motivation for going the extra mile, and at the end of the day, there seemed to
 be little to no purpose to doing this: Neither students nor the instructor 
 seemed to be appreciative of the code, there was very little backing or 
 sponsorship and it felt like I had to stand up and defend it at times because 
-it was my idea. 
+it was my idea.
 
-Soon, reality started catching up to me. I had not developed any specific 
-skills this semester:
-All I knew were the magic words to get ChatGPT to do what I wanted, and there 
-was little mathematics or computer science in doing so. It was an experimental
-science. Mix the reagents in the medium, put it on the boiler and come
-back after six hours to check the yield, sans the nerdy goggles, lab coats and
-pipettes. I was not doing any significant engineering, save for some infra to
-make API calls and log runs / outputs. Moreover, I had just one semster left 
-in college, and I felt like I should spend my time doing things that made me happy, 
-like quizzing till 3AM, making a complex piece of software like a compiler or raytracer, 
-or enjoying the little time I have left with my friends.
+## Thoughts on NLP research
+
+With LLMs, NLP research feels a bit like talking to a parrots. Everyday you
+go in and tell the parrot something, and the parrot says something back. You 
+write down what it says and see if it's right. Try out a few hundred methods 
+of doing so, or ask it different questions in different languages, and make a
+big table describing the results. Bonus points if your parrot is smart:
+GPT-4, Claude Opus or LLaMa-2 are the parrots everyone wants to talk to. Bigger 
+parrots are able to solve harder problems, but nobody in academia seems to be 
+training bigger parrots. Everyone's just talking to them, while for-profits 
+with thousands of GPUs and billions of dollars in funding train them.
+
+After two months of doing this, reality started catching up to me. I had not
+developed any specific skills this semester: All I knew were the magic words to
+get the parrot to say what I wanted to hear. There was little mathematics or
+computer science in doing so. It was an experimental science. Mix the reagents
+in the medium, put it on the boiler and come back after six hours to check the
+yield, sans the nerdy goggles, lab coats and pipettes. I was not doing any
+significant engineering, save for some infra to make API calls and log runs /
+outputs. Moreover, I had just one semster left in college, and I felt like I
+should spend my time doing things that made me happy, like quizzing till 3AM,
+making a complex piece of software like a compiler or raytracer, or enjoying
+the little time I have left with my friends.
 
 The other consequence of being in a fast-paced field is deciding what to keep
 up with. If there are multiple breakthrough every week, but you still have to
@@ -78,7 +96,7 @@ very foundational or very left-field, there's a nonzero chance of this
 happening. In this case, you have no option but to reframe and repitch your
 work, lest it should go waste.
 
-This segures nicely into peer review. Our ICLR reviews came out in early November, and I'm fairly sure
+This segues nicely into peer review. Our ICLR reviews came out in early November, and I'm fairly sure
 atleast one was LLM-generated. Unfortunately, this also happened to
 be the review that had rated our work most highly. Two other reviews were on
 the fence, and one had been unfairly critical (in our opinion), claiming that
@@ -113,8 +131,9 @@ get all their ideas implemented and written up by their students, effectively
 playing the role of a manager. While this was a good end-of-life goal to 
 have initially, spending more time in academia has convinced me otherwise.
 
-But enough crying. Apart from the several problems I've mentioned above,
-there are two major takeaways:
+## Takeaways
+
+Apart from the several problems I've mentioned above, there are two major takeaways:
 
 ### learn the machine, don't make the machine learn.
 
@@ -135,7 +154,7 @@ an already unalluring academic career had to be prestigious enough to
 remotely consider over a well-paying core CS SWE job offer. And I haven't 
 even gotten started about how most innovation is being driven by GPU-rich 
 tech companies while academics are left to come up with low-compute party 
-tricks for free.[^2]
+tricks for free.[^1]
 
 Doing atleast one Machine Learning course is a rite of passage for a CS 
 undergrad, and rightly so in this day and age. But to an undergrad 
@@ -176,7 +195,7 @@ it a shot.
 Another is to take a MS. While odds are about on par or better than the 
 predoctoral route, you do need to pay a lot. Not to mention the missed
 opportunity cost of taking this route if you already have a quant offer
-already and the very marginal gains it would provide. Three semesters
+already and the very marginal gains it would provide.[^2] Three semesters
 or 5 quarters is not much time to learn something groundbreaking, 
 especially if you've already done a lot of grad level courses during
 your undergrad.
@@ -238,3 +257,11 @@ knows, you may be an amazing researcher! However, this is (probably) where I dra
 curtain on my research journey.
 
 Time to build something.
+
+[1]: https://aniruddhadeb.com/articles/2023/japan-sakura/
+[2]: https://aniruddhadeb.com/articles/2023/rollerball-debrief/
+
+[^1]: RoPE, FlashAttention etc. [OLMo](https://allenai.org/olmo) is the only 
+      LLM I know of trained purely openly in academia (in collaboration with 
+      EleutherAI)
+[^2]: I was in this situation
