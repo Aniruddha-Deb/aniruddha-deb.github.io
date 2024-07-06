@@ -32,7 +32,7 @@ disqusShortname = 'aniruddha-deb'   # use disqus comments
   publishDateFormat = '2006-01-02 15:04'
 
   # header social icons
-  twitter = 'hairband_dude'               # twitter.com/YOUR_TWITTER_ID
+  # twitter = 'hairband_dude'               # twitter.com/YOUR_TWITTER_ID
   github = 'Aniruddha-Deb'                 # github.com/YOUR_GITHUB_ID
   # instagram = 'YOUR_INSTAGRAM_ID'           # instagram.com/YOUR_INSTAGRAM_ID
   # linkedin = 'YOUR_LINKEDIN_ID'             # linkedin.com/in/YOUR_LINKEDIN_ID
