@@ -46,14 +46,14 @@ I won't be repeating whatever was mentioned there, but a few things that tripped
 // some code here
 getaddrinfo(nullptr, std::to_string(port).c_str(), &hints, &res);
 
-uintptr_t fd = socket(/articles/2022/res->ai_family, res->ai_socktype, res->ai_protocol);
+uintptr_t fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 
 const int reuse = 1;
 setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));
 
 bind(fd, res->ai_addr, res->ai_addrlen);
 fcntl(fd, F_SETFL, O_NONBLOCK);
-freeaddrinfo(/articles/2022/res);
+freeaddrinfo(res);
 // more code here
 ```
 
@@ -69,7 +69,7 @@ std::string errstr(std::string msg) {
 int ret = getaddrinfo(nullptr, std::to_string(port).c_str(), &hints, &res);
 assert (ret != -1 and errstr("Could not get address information"));
 
-uintptr_t fd = socket(/articles/2022/res->ai_family, res->ai_socktype, res->ai_protocol);
+uintptr_t fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 assert (fd != -1 and errstr("Could not create socket"));
 
 const int reuse = 1;
