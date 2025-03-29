@@ -6,7 +6,7 @@ draft: true
 
 For roughly 48 hours, I had the "fastest orderbook" in the world
 
-![]()
+![Order Book](/articles/2025/res/highload_orderbook.jpg)
 
 This is not photoshopped or modified via Inspect Element. My orderbook was so 
 _impossibly_ fast that it beat first place by 8000 points, on a challenge whose 
@@ -16,7 +16,7 @@ to death.
 
 Unfortunately for this solution, it was like running a four-minute mile: once 
 you did it, everyone noticed, realized this could be done and that doing this 
-doesn't test how fast an orderbook is. And so the author rewrote the checker, 
+doesn't test how fast an orderbook is. The author ended up rewriting the generator, 
 and my magic trick no longer worked.
 
 So, are you watching closely?
@@ -25,39 +25,50 @@ So, are you watching closely?
 
 If you're not familiar with [HighLoad](https://highload.fun), it's a site where 
 you _join the community of the best software engineers and write the fastest 
-code._ Think of it like kaggle but optimizing for speed and not accuracy. Matt
-Stuchlik had some good explainer articles [here][2] and [here][3] on how to 
-approach and solve these problems. These are very good articles. I got my
+code._ Think of it like kaggle but optimizing for speed and not accuracy. While 
+documentation regarding the site is sparse, Matt Stuchlik had previously written 
+some notes on how to approach and solve the [parse integers][2] and 
+[count uint8][3] challenges. These are very good articles. I got my
 start to solving these problems from them. If you completely understand and 
 break down the ideas implemented in them, you can easily break into the top 20 
 in every challenge.
 
 By now I've tackled enough challenges to have a playbook ready to approach new
-problems, which roughly goes somewhat like this 
+problems, which goes like this:
 
-1. Create an input generator 
-2. Create a candidate solution. The first solution will be really simple, and 
-   will mostly just be mmap'ing the input and doing a first-pass naive algorithm.
-3. Throw new ideas 
-3. Profile this first pass to find hotspots. In most cases you're memory bound,
-   so 
-4. If profiling yields no results, analyse with uICA
-5. If uICA yiel
-4. If you're not #1, go back 
+1. Create an input generator. For _most_ problems taking random bytes, this is just 
+   `openssl rand 250000000 > input.bin`. For problems taking ASCII input, more 
+   care is needed.
+2. Create a baseline. This should be really simple, i.e. just mmap the input and 
+   implement the most naive algorithm you can think of.
+3. Come up with new ideas to implement. This can be done qualitatively, by trying 
+   to write a faster implementation that uses SIMD, or quantitatively by using
+   tools (perf, processor trace, uICA etc)
+4. Implement the idea and create a new submission.
+5. If you're #1 on the leaderboard or out of energy and ideas, take a break and 
+   move on to a new problem. If not, go back to step 3.
 
-Coming back to this challenge, we have three main oeprations:
+Coming back to [this][4] challenge in particular, we have three main types of
+book updates:
 
-1. Inserts
-2. Deletes
-3. Buys
+1. Inserts - add an offer to the orderbook, at a given price and size
+2. Deletes - delete the nth order in the book. The ordering is according to 
+   [price-time priority][5]
+3. Buys - lift n lots from the orderbook.
 
-the first thing I had to worry about was creating
-the input generator. For this, I needed to know the range each of those four 
-values could take, and the rough distribution of these operations. Highload lets you 
-print to stderr and will show you the first 1000ish lines, so printing summary 
-statistics for the input is okay. It was easy to make counters for each value 
-tracking the max and min and printing them out. I didn't need more specific 
-information, such as the histogram etc.
+We need to process 1 million updates, and then lift 1000 lots from whatever 
+orders are left. Seems simple enough to implement, and very reminiscent of the 
+[QuantCup challenge][6] from roughly 15 years ago.
+
+## The Turn
+
+The first thing I had to worry about was creating the input generator. For this, 
+I needed to know the range each of those four values could take, and the rough 
+distribution of these operations. Highload lets you print to stderr and will 
+show you the first 1000ish lines, so printing summary statistics for the input 
+is doable. It was easy to make counters for each value tracking the max and min 
+and printing them out. I didn't need more specific information, such as the 
+histogram etc.
 
 The final interesting statistics I got were as follows:
 ```
@@ -69,19 +80,22 @@ shares,200,2000
 
 inserts 590570
 deletes 389379
-bids 20051
+buys 20051
 
 size is NOT always a multiple of 10
-bid is NOT always a multiple of 10
+buy is NOT always a multiple of 10
 
 max of max caps is 18
 ```
 
-Running this multiple times made me realize that 
+Running this multiple times made me realize that the price is always between
+0 and 5000, size is always between 20 and 200, position is less than 1100 and
+shares are always between 200 and 2000. The _max of max caps_ is the maximum 
+queue depth, which is always less than 30 in my experiments. The ratio of 
+inserts to deletes to bids is roughly 59:39:2 consistently.
 
-## The Turn
-
-There are a few obvious optimization ideas with these values:
+Even without writing a test input generator, there are a few obvious optimization 
+ideas if you look at these values closely:
 
 1. Fix the number of levels to 5000 
 2. Use int8's for size (with the possibility of SIMD'ing this - because 
@@ -104,6 +118,10 @@ pointer would need to be updated when a better offer is inserted, and I'd reckon
 that would make up >95% of the inserts, because most book activity happens at 
 the top of book and not deep in the book. So, we only get rid of inserting 5% 
 of inserts, which is not a super-significant speed up.
+
+Can we do better?
+
+## The Prestige
 
 In a more abstract sense, idea 3 tries to reduce the number of levels we track,
 by eliminating updates we know are irrelevant to our final operation. This begs
@@ -138,31 +156,13 @@ We get the following results if we do so:
 1170: [999877,29]
 ```
 
-Bingo! The orders we lift are concentrated at the end. This makes sense, because
-orderbooks are more fluid at the top rather than at the bottom. We now know for 
-a fact that we don't have to process the first 999'000 updates - 99.9% of 
-the data! All we have to do is this:
+Bingo! The orders we lift are concentrated at the end. This is not a one-off, and 
+multiple runs of this experiment always yielded orders with ID's less than 1000
+from the end. This makes sense, because orderbooks are more fluid at the top 
+than at the bottom. All we have to do to implement this is process the last 
+three pages of input, and skip the rest.
 
-```
-for (int i=0; i<999000; i++) {
-    // read and ignore input
-}
-for (int i=0; i<1000; i++) {
-    // read and process input
-}
-```
-
-## The Prestige
-
-We can do better.
-
-If you profile this, you'd see that most of our time is _not_ spent updating 
-the orderbook, but reading the input.
-
-Since we don't do anything with the input, we can simply skip it when we `mmap`
-the input file
-
-```
+```c++
 off_t fsize = lseek(STDIN_FILENO, 0, SEEK_END);
 size_t page_size = 4096;
 size_t map_offset = (fsize - page_size*3) & ~(page_size - 1);
@@ -187,31 +187,70 @@ while (i < map_length) {
 // buy 1000 lots and print cost
 ```
 
-To test this quick-and-dirty hypothesis, I iterated over input one character at 
-a time when processing it and did naive deletes and bids in my vector orderbook. 
-An optimal solution would SIMD shuffle the input to decode it and use all the 
-orderbook tricks I discussed above. 
+To test this quick-and-dirty hypothesis works, I iterated over input one
+character at a time when processing it and did naive deletes and bids in my
+vector orderbook. An optimal solution would SIMD shuffle the input to decode it
+and use all the orderbook tricks I discussed above. 
 
 My first submission had debug logging to stderr in the hot loop that I forgot 
 to remove when I submitted, and it's score was <6000, 1.5x as fast as the best 
-solution. Removing debug logging got me down to 1700. And at that point I opened 
-the window for some fresh air.
+solution. Removing debug logging got me down to 1700. I was at the top of the 
+leaderboard, and it was time to take a break.
 
 ## Concluding thoughts
 
-```
-Simple maybe, but not easy.
+> Simple maybe, but not easy.
+> 
+> ~ Alfred Borden
 
-- Alfred Borden, _The Prestige_
-```
+I think what surprised me the most was not the fact that this worked, but that 
+I was the first person to find this hack in the roughly four years that this 
+challenge has been up. I'm also not complaining, and am more than happy to be 
+the first to discover this and share my findings.
 
-Surprised nobody saw this, assumed the top solution(s) would be doing some 
-variant of this 
+As for what happened after this, other users immediately guessed I'm not processing
+most of the input. Yuriy (challenge author) then tested out a hypotheis of his 
+own where he skipped input, and came to the same conclusion. There were a few 
+tasks in the past, such as parse integers, where people discovered that processing
+the entire input is not neccessary. In those cases, a new generator was written,
+and the same was done for this challenge.
 
-Eyes on the prize. Focus on the end goal, and the rules of the system.
+While I think this is for the best, it's hard to not be slightly disappointed. 
+Though I do this for fun, and easy come easy go, IMHO solutions should either be:
 
-Checker changed. I'm a bit sad about moving goalposts - but I do this for fun and it's author's 
-prerogative. Not the first time this has changed - moved from 3 to 9 submissions,
-and there are debates on anybody being allowed to make testcases, testcases being
-nondeterministic etc etc etc. Easy come easy go. I started solving with shared 
-knowledge, and I believe knowledge should be shared.
+1. Completely deterministic, and pass user-submitted edge cases in addition to 
+   being scored when performance tested. This is similar to 'hacks' on CodeForces.
+2. Probabilistic, and pass the generator created when the problem was initially 
+   published. The generator should not be changed after that. Since it is hard
+   to craft a perfect generator, complex generators should be open-sourced and put
+   for review to the community for a short period whenever a new challenge is
+   published. Such a change will move the focus solely to writing fast solutions. 
+
+As of now, you cannot write a top solution that's not probabilistic
+in half of the callenges, and there is a very wide gray area between what's legal
+and what's not. There are no clear rules on the platform regarding what
+constitutes a 'valid' submission, and most decision making seems to be done by
+committee on a telegram group. It's not bad, but it's a model that won't scale
+as more people join the platform. If a new user spends a lot of time and effort to
+find an inconsistency in a closed-source generator only to have their solution
+shot down because the community or the author decided that their solution
+didn't satisfy unmentioned rules, it's quite unfair and disincentivizes new people
+from competing. Someone who does find a loophole will make sure to sandbag and
+not give away the fact that they're not processing all of the input. At the
+very least, **clear guidelines on what constitutes a valid problem and a valid
+solution should be written, for problem setters as well as solvers**. 
+
+This shouldn't be taken as a rant. I've learnt so much on the platform and from 
+the community, and I hope some of this feedback does make it into [v2][7] of 
+the platform. I'm also looking forward to the blog system on v2, as knowledge 
+grows when shared. Many Thanks to X, Y, and Z for reading early drafts of this 
+and providing feedback.
+
+
+[1]: https://highload.fun
+[2]: https://blog.mattstuchlik.com/2024/07/12/summing-integers-fast.html
+[3]: https://blog.mattstuchlik.com/2024/07/21/fastest-memory-read.html
+[4]: https://highload.fun/tasks/15
+[5]: https://en.wikipedia.org/wiki/Order_matching_system#Price/Time_algorithm_(or_First-in-First-out)
+[6]: https://web.archive.org/web/20110615032059/http://quantcup.org/
+[7]: https://github.com/Highload-fun/platform/blob/v2/draft.md
